@@ -50,7 +50,7 @@ if(isset($_GET['id']))
 
 else 
 {
-	$per_page = 5; //pagination script
+	$per_page = 3; //pagination script
 	$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc";
 	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -109,6 +109,7 @@ else
                     if ($total_pages > 1) {
                         echo paginate($reload, $show_page, $total_pages);
                     }
+					echo "</ul></div>";
 }
 ?>
 

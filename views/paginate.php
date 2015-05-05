@@ -9,7 +9,7 @@
 |                   but i'll be glad if i my name listed in the credits'
 ---------------------------------------------------------------------------------------------*/
 function paginate($reload, $page, $tpages) {
-    $adjacents = 2;
+    $adjacents = 3;
     $prevlabel = "&lsaquo; Prev";
     $nextlabel = "Next &rsaquo;";
     $out = "";
