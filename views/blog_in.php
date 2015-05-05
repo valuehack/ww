@@ -21,13 +21,13 @@ if(isset($_GET['id']))
 {
 	$id = $_GET['id'];
 
- 	$sql = "SELECT * from blog WHERE id='$id'";	
+ 	$sql = "SELECT * from blog WHERE id='$id'";
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	$entry = mysql_fetch_array($result);
 
 	$title = $entry[title];
-	$private = $entry[private_text];
-	$public = $entry[public_text];
+	$private = $entry['private'];
+	$public = $entry['public'];
 	$publ_date = $entry[publ_date];
 	
 	echo "<h5>".$title."</h5>";
@@ -57,20 +57,22 @@ else
 	if ($offset) $sql=$sql.$offset.",";
 	if ($limit) $sql=$sql."$limit";
 	
+	echo "$sql";
+	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 	while($entry = mysql_fetch_array($result))
 	{
 		$id = $entry[id];
 		$title = $entry[title];
-		$private = $entry[private_text];
+		$private = $entry['private'];
 		$publ_date = $entry[publ_date];
 
 		echo "<h5><a href='?id=$id'>".$title."</a></h5>";
 		echo "<i>Keyword: ".$id."&nbsp &nbsp &nbsp Datum: ".date('d.m.Y', strtotime($publ_date))."</i><br>";
 		
-		if (strlen($private) > 300) {
-			echo substr ($private, 0, 300);
+		if (strlen($private) > 500) {
+			echo substr ($private, 0, 500);
 			echo " ... </p><a href='?id=$id'>&rarr; Weiterlesen</a><hr>";
 		}
 		else {
