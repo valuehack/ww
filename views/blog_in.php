@@ -51,6 +51,7 @@ if(isset($_GET['id']))
 else 
 {
 	$per_page = 3; //pagination script
+	$n = 0;
 	$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc";
 	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -102,14 +103,16 @@ else
 			echo $private;
 			echo " <a href='?id=$id'>&rarr; Weiterlesen</a><hr>";
 		}
-	
+	$n++;
 	}
+	if ($n == $per_page) {
 	$reload = $_SERVER['PHP_SELF'] . "?tpages=" . $tpages;
                     echo '<div class="pagination"><ul>';
                     if ($total_pages > 1) {
                         echo paginate($reload, $show_page, $total_pages);
                     }
 					echo "</ul></div>";
+	}
 }
 ?>
 
