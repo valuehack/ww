@@ -4,8 +4,8 @@
 
 <?php
 
-@$con=mysql_connect("newBig.db.6152056.hostedresource.com","newBig","bmbClat1!") or die ("cannot connect to MySQL");
-mysql_select_db("newBig");
+@$con=mysql_connect(DB_HOST,DB_USER,DB_PASS) or die ("cannot connect to MySQL");
+mysql_select_db(DB_NAME);
 
 $user_id = $_SESSION['user_id'];
 
