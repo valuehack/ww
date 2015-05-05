@@ -1,54 +1,11 @@
-<script>
-var ALERT_TITLE = "Oops!";
-var ALERT_BUTTON_TEXT = "Ok";
+<!-- Bootstrap -->
+<link href="../style/modal.css" rel="stylesheet">
 
-if(document.getElementById) {
-    window.alert = function(txt) {
-        createCustomAlert(txt);
-    }
-}
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../tools/bootstrap.js"></script>
 
-function createCustomAlert(txt) {
-    d = document;
-
-    if(d.getElementById("modalContainer")) return;
-
-    mObj = d.getElementsByTagName("body")[0].appendChild(d.createElement("div"));
-    mObj.id = "modalContainer";
-    mObj.style.height = d.documentElement.scrollHeight + "px";
-
-    alertObj = mObj.appendChild(d.createElement("div"));
-    alertObj.id = "alertBox";
-    if(d.all && !window.opera) alertObj.style.top = document.documentElement.scrollTop + "px";
-    alertObj.style.left = (d.documentElement.scrollWidth - alertObj.offsetWidth)/2 + "px";
-    alertObj.style.visiblity="visible";
-
-    h1 = alertObj.appendChild(d.createElement("h1"));
-    h1.appendChild(d.createTextNode(ALERT_TITLE));
-
-    msg = alertObj.appendChild(d.createElement("p"));
-    //msg.appendChild(d.createTextNode(txt));
-    msg.innerHTML = txt;
-
-    btn = alertObj.appendChild(d.createElement("a"));
-    btn.id = "closeBtn";
-    btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
-    btn.href = "#";
-    btn.focus();
-    btn.onclick = function() { removeCustomAlert();return false; }
-
-    alertObj.style.display = "block";
-
-}
-
-function removeCustomAlert() {
-    document.getElementsByTagName("body")[0].removeChild(document.getElementById("modalContainer"));
-}
-
-function windowMessage() {
-    alert("Das Institut für Wertewirtschaft ist eine gemeinnützige Einrichtung, die sich durch einen besonders langfristigen Zugang auszeichnet. Um unsere Unabhängigkeit zu bewahren, akzeptieren wir keinerlei Mittel, die aus unfreiwilligen Zahlungen (Steuern, Gebühren, Zwangsmitgliedschaften etc.) stammen. Umso mehr sind wir auf freiwillige Investitionen angewiesen. Nur mit Ihrer Unterstützung können wir unsere Arbeit aufrecht erhalten oder ausweiten. <br> Klicken Sie <a href='../edit.php'>hier</a>, um zahlendes Mitglied zu werden");
-}
-</script>
 
 <?
 include "_db.php";
@@ -114,7 +71,8 @@ if ($_SESSION['Mitgliedschaft'] == 1) {
                           <option value="4">4</option>
                           <option value="5">5</option>        
                         </select> 
-                        <input type="button" value="Add to Basket" onclick="alert('Alert this pages');">
+                          <!-- Button trigger modal -->
+                          <input type="button" value="Add to Basket" data-toggle="modal" data-target="#myModal">  
                       </form>
                         
                   <?php
@@ -146,6 +104,33 @@ if ($_SESSION['Mitgliedschaft'] == 1) {
 
           </table></p>
 
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="myModalLabel">Unterstützen</h2>
+      </div>
+      <div class="modal-body">
+        <p>Das Institut f&uuml;r Wertewirtschaft ist eine gemeinn&uuml;tzige Einrichtung, die sich durch einen besonders langfristigen Zugang auszeichnet. Um unsere Unabh&auml;ngigkeit zu bewahren, akzeptieren wir keinerlei Mittel, die aus unfreiwilligen Zahlungen (Steuern, Geb&uuml;hren, Zwangsmitgliedschaften etc.) stammen. Umso mehr sind wir auf freiwillige Investitionen angewiesen. Nur mit Ihrer Unterst&uuml;tzung k&ouml;nnen wir unsere Arbeit aufrecht erhalten oder ausweiten.</p>
+
+<p><b>Warum in das Institut f&uuml;r Wertewirtschaft investieren?</b></p>
+
+<p> Wo gibt es sonst noch vollkommen unabh&auml;ngige Universalgelehrte, die im Wahnsinn der Gegenwart den &Uuml;berblick bewahren und den Verlockungen von Macht und Geld widerstehen? Einst hatten Universit&auml;ten diese Aufgabe, doch sind diese l&auml;ngst durch die Politik korrumpiert und im Kern zerst&ouml;rt.  Jeder rationale Anleger sollte ebenso in die Institutionen investieren, die f&uuml;r eine freie und wohlhabende Gesellschaft unverzichtbar sind. Ohne Menschen, die ihr Leben der Erkenntnis widmen, sind den Illusionen, die zu Unfreiheit und Versklavung f&uuml;hren, keine Grenzen gesetzt.  Das Institut f&uuml;r Wertewirtschaft ist, obwohl wir wenig pragmatisch sind, wohl eines der effizientesten Institute weltweit. Wir leisten mehr als Einrichtungen, die das Hundertfache unseres Budgets aufweisen. Durch gro&szlig;en pers&ouml;nlichen Einsatz , &auml;u&szlig;erst sparsames Management und unternehmerische Einstellung k&ouml;nnen wir auch mit geringen Betr&auml;gen gro&szlig;en Mehrwert schaffen.  Eine Gesellschaft, in der nahezu die gesamte Bildung und Forschung in staatlicher Hand liegt, befindet sich auf direktem Weg in den Totalitarismus. Sagen Sie nachher nicht, wir h&auml;tten Sie nicht gewarnt.  Warnung: Wir k&ouml;nnen nat&uuml;rlich auch keine Wunder vollbringen (wiewohl wir uns oft wundern, was uns alles trotz unser knappen Mittel gelingt). Wir sind keinesfalls geneigt, uns in irgendeiner Form f&uuml;r Geldmittel zu verbiegen. Wenn Sie in unsere Arbeit investieren, dann tun Sie das, weil Sie unsere Selbst&auml;ndigkeit und Unkorrumpierbarkeit sch&auml;tzen. Finanzmittel sind nur eine Zutat, und keinesfalls die Wichtigste. Wir bitten Sie darum, weil materielle Unabh&auml;ngigkeit die Voraussetzung unserer Arbeit ist - und diese Unabh&auml;ngigkeit k&ouml;nnen wir nur durch eine Vielfalt an Stiftern erreichen.</p>
+
+<p><b>Ihre Vorteile:</b></p>
+
+<p> Deutliche Erm&auml;&szlig;igungen bei unseren Akademie-Veranstaltungen (schon bei wenigen Besuchen bringt Ihnen die Mitgliedschaft einen finanziellen Vorteil)  Erm&auml;&szlig;igter Eintritt zu unseren Salon-Veranstaltungen (Video&uuml;bertragung f&uuml;r ausw&auml;rtige Mitglieder)  Abonnement der Scholien inkludiert  Wachsende Zahl exklusiver Inhalte (Audio/Video)  Nutzung der Bibliothek, B&uuml;cherleihe  F&ouml;rderer:  F&ouml;rderer leisten einen regelm&auml;&szlig;igen Beitrag, der &uuml;ber die Kosten hinausgeht, um uns bei unserer Arbeit zu ermutigen und zu unterst&uuml;tzen. Daf&uuml;r sind sie etwas mehr in unser Institut eingebunden und erhalten zus&auml;tzlich zu den Mitgliedschaftsvorteilen:  Hintergrundinformationen zu unserer Arbeit  Einladung zu exklusiven Veranstaltungen  Ihre Begleitung erh&auml;lt den Mitgliedertarif bei unseren Veranstaltungen  ab 300 &euro; Beitrag: Zusendung signierter Exemplare aller Bucherscheinungen und sonstiger Publikationen </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+        <a href="../edit.php"><button type="button" class="btn btn-primary">Jetzt upgraden</button></a>
+      </div>
+    </div>
+  </div>
+</div>
 
        <h5>Unser Angebot</h5>
 
