@@ -105,8 +105,8 @@ else
 		}
 	$n++;
 	}
-	if ($n == $per_page) {
 	$reload = $_SERVER['PHP_SELF'] . "?tpages=" . $tpages;
+	if ($n == $per_page) {
                     echo '<div class="pagination"><ul>';
                     if ($total_pages > 1) {
                         echo paginate($reload, $show_page, $total_pages);
