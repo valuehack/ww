@@ -1,0 +1,602 @@
+/**
+*margin: oben rechts unten links;
+*/
+body {
+	font: normal 11pt "Bitstream Charter";
+	color:#494949;
+	background: #d2cdc7 url(gfx/bg.png) repeat-x 0 0;
+	width: 1020px;
+	margin: 0 auto; /*Inhalt wird zentriert*/
+}
+h1 {
+	font: italic 16pt "Bitstream Charter";
+	color: #2e4a62;
+	margin: 5px 0;
+}
+h2 {
+	font: italic 24pt "Bitstream Charter";
+	color: #2e4a62;
+	margin: 10px 0px;
+}
+h3 {
+	font: italic 22pt "Bitstream Charter";
+	color: #2e4a62;
+	margin: 5px 0;
+}
+h4 {
+	font: italic 10pt "Bitstream Charter";
+	color: #2e4a62;
+	margin: 5px 0;
+}
+h5 {
+	font: italic 18pt "Bitstream Charter";
+	color: #2e4a62;
+	margin: 5px 0;
+}
+h6 {
+	font: italic bold 11pt "Bitstream Charter";
+	color: #2e4a62;
+	margin: 0;
+	padding: 0;
+}
+table {
+	margin: 5px 0;
+	font: normal 10pt "Bitstream Charter";
+}
+th {
+	text-align: center;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+td {
+	padding: .1em;
+}
+td.bottomline {
+	border-bottom: 1px solid #ccc;
+	margin: 10px 0;
+}
+ul.sub {
+	list-style-type: square;
+}
+li {
+	list-style: circle;
+}
+li.ort {
+	list-style: none;
+}
+li.scholien {
+	list-style: decimal;
+	font: normal 9pt "Bitstream Charter";
+	margin-bottom: 2pt;
+}
+img {
+	border: 0;
+	float: left;
+	margin-right: 10px;
+}
+img.left {
+	border: 0;
+	float: right;	
+	margin-left: 10px;
+}
+p {
+	text-align: justify;
+}
+
+a:link, a:visited {
+	color: #2e4a62;
+	text-decoration: none;
+}
+a:hover, a:active {
+	color: #2e4a62;
+	text-decoration: underline;
+}
+.inputfield {
+	color: #2e4a62;
+	background-color: #fff;
+	font: italic 12pt "Bitstream Charter";
+	border: 1px solid #2d495e;
+	margin-bottom: 2px;
+	width: 170px;
+}
+.input {
+	font: italic normal 12pt "Bitstream Charter";
+	color: #5c5c5c; 
+}
+.inputbutton {
+	text-decoration: none;
+	color: #2e4a62;
+	font: normal normal 14pt "Bitstream Charter";
+	background: transparent url(http://wertewirtschaft.org/neu/style/arrow_blue.png) no-repeat 95% 7px;
+	border: 0;
+}
+a.input:link, a.input:hover, a.input:active, a.input:visited {
+	text-decoration: underline;
+	color: #2e4a62;
+	font: normal normal 14pt "Bitstream Charter";
+}
+
+/**
+*Layout
+*/
+
+#container {
+	max-width: 1020px;
+	background: #d2cdc7;
+}
+#container #header {
+	height: 103px;
+	background: #071019 url(gfx/header_neu5.gif) no-repeat 0 0;
+}
+img.logo {
+	float:left;
+	position: relative;
+	top: 19px;
+	left: 105px;
+	border: 0;	
+}
+img.flagge {
+	float:left;
+	position: relative;
+	top: 2px;
+	left: 0px;
+	border: 0;
+	margin-right: 5px;
+}
+a.flagge:link, a.flagge:visited {
+	float:left;
+	position: relative;
+	top: 7px;
+	left: 555px;
+	text-decoration: none;
+	color: #fff;
+	font: normal 11px "Bitstream Charter";	
+}
+a.flagge:active, a.flagge:hover {
+	float:left;
+	position: relative;
+	top: 7px;
+	left: 555px;
+	text-decoration: underline;
+	color: #fff;
+	font: normal 11px "Bitstream Charter";	
+}
+#container #menu {
+	height: 35px;
+	background: #b9b1a9 url(gfx/bg_menu.png) repeat-x 0 0;
+	/*border-top: 1px solid #ffffff;*/
+	/*border-bottom: 1px solid #ffffff;*/
+}
+#container #center {
+	width:1020px;
+	overflow: auto; /*Div Container wächst mit, wenn innere Container wachsen.*/
+	min-height: 550px;
+	background: transparent url(gfx/bg_container_t.gif) no-repeat 340px 0;
+}
+#container #center #content {
+	float: left;
+	width: 570px;
+	min-height: 650px;
+	/*background: #ffffff;*/
+	background: #ffffff url(gfx/bg_content.png) no-repeat 0px 25px;
+	margin: 20px 5px 10px 40px;
+	padding: 10px 30px 10px 20px;
+}
+#content a:link, #content a:visited {
+	text-decoration: none;
+	color: #2e4a62;
+}
+#content a:active, #content a:hover {
+	text-decoration: underline;
+} 
+a.content:link, a.content:hover, a.content:active, a.content:visited {
+	text-decoration: none;
+	color: #2e4a62;
+	font: normal 12px "Bitstream Charter";
+}
+a.content:hover, a.content:active {
+	text-decoration: underline;
+}
+.semimg {
+	float: left;
+	border: 0;
+	margin-right: 5px;
+	width: 175px;
+}
+/*.anaimg {
+	float: left;
+	padding: 4px;
+    border: 1px solid #2e4a62;
+    background-color: transparent;
+	margin-right: 5px;
+}*/
+.wallimg {
+   padding: 4px;
+   border: 1px solid #2e4a62;
+   background-color: transparent;
+   margin-bottom: 15px;
+   float: none;
+}
+.big {
+	width: 565px;
+}
+.entry {
+	border-bottom: 2px solid #e5e4e2;
+	padding: 10px 0;
+}
+
+.mainvid {
+	padding: 4px;
+	border: 1px solid #2e4a62;
+	background-color: transparent;
+	padding-bottom: 0px;
+}
+#container #footer {
+  	/*background: #d2cdc7;*/
+	height:3em;
+}
+#container #footer #impressum {
+	float: left;
+	width: 620px;
+	text-align: center;
+	font: normal normal 15px "Bitstream Charter";
+	color: #716a62;
+	margin: 0px 5px 0px 40px;
+}
+a.impressum:link, a.impressum:hover, a.impressum:active, a.impressum:visited {
+	text-decoration: none;
+	color: #716a62;
+	font-family: "Bitstream Charter";
+}
+#container #footer #space {
+	float: right;
+	width: 340px;
+	margin: 0px 10px 0px 5px;
+}
+
+#tabs-wrapper {
+	margin: 0 0 10px 0;
+	padding: 0 0 3px 0;
+	border-bottom: 4px solid #2d495e;
+	text-align: left;
+	font: italic 28pt "Bitstream Charter";
+	color: #2e4a62; 	
+}
+#tabs-wrapper-lower {
+	margin: 0;
+	padding: 3px;
+	border-bottom: 4px solid #2d495e;
+}
+a.tabs-wrapper-lower:link, a.tabs-wrapper-lower:visited {
+	text-decoration: none;
+	color: #2e4a62;
+	font-family: "Bitsream Charter";
+}
+a.tabs-wrapper-lower:hover, a.tabs-wrapper-lower:active {
+	text-decoration: underline;
+	color: #2e4a62;
+	font-family: "Bitstream Charter";
+}
+#container #center #sidebar {
+	float: right;
+	width: 310px;
+	/*background: #d2cdc7;*/
+	margin: 20px 10px 20px 5px;
+	padding: 0 15px;
+	color:#2e4a62;
+}
+#tabs-wrapper-sidebar {
+	margin: 5px 0px 10px 0px;
+	padding: 3px 25px;
+	border-bottom: 1px solid #2d495e;
+}
+a.termine:link, a.termine:visited a.termine:hover, a.termine:active {
+	font: normal 11pt "Bitstream Charter";
+}
+
+/**
+*Menu
+*/
+#navbar {
+   	position: relative;
+   	top: 76px;
+   	right: 0;
+   	margin: 0;
+   	padding: 0;
+	font: normal 14pt "Bitstream Charter";
+	text-align: center;
+}
+#navbar li {
+   	list-style: none;
+   	float: right; 
+	height: 32px;
+   	display: block;
+  	/*background-color: #786e64;*/
+}
+#navbar li a {
+   	display: block;
+  	text-decoration: none; 
+   	color: #fff; 
+	padding: 3px 10px;
+}
+#navbar li a:hover {
+	/*background: transparent url(bg-navigation-item-hover.png) no-repeat 50% 100%;*/
+}
+#navbar li ul {
+  	display: none; 
+}
+#navbar li:hover ul, #navbar li.hover ul {
+   	position: absolute;
+   	display: inline;
+	width: 100%;
+   	left: 0;
+   	margin: 0;
+   	padding: 0; 
+}
+#navbar li:hover li, #navbar li.hover li {
+   	float: left; 
+   	font-size: 11pt;
+   	color: #fff;
+}
+#navbar li:hover li a, #navbar li.hover li a {
+	width: 100%;
+	display: block;
+	text-indent: 3px;
+	text-decoration: none;
+	/*background: #bab1aa;*/
+	/*border: 1px solid #fff;*/
+}
+#navbar li li a:hover {
+	text-decoration: underline;
+}
+li.navbar {
+	width: 135px;
+	margin-left:1px;
+}
+li.navlong {
+	width: 235px/*227px - 127px*/;
+	padding-top: 2px;
+	margin: 0 10px;
+}
+li.navshort {
+	width: 75px;
+	padding-top: 2px;
+	margin: 0 20px;
+}
+/**
+*Anmeldung
+**/
+
+table.apply {
+	width: 100%;
+	border: 0;
+	font-size: 10pt;
+	background: #e5e4e2;	
+}
+th.apply {
+	background: #fff;
+	border: 1px solid #fff;
+	border-top: 1px solid #e5e4e2;
+	padding: 4px 0;
+}
+td.apply {
+	padding: .4em 0;
+}
+.radioapply {
+	border: 0;
+	font-size: 10pt;
+	margin-top: 10px;
+}
+.inputfieldapply {
+	color: #2e4a62;
+	background-color: #fff;
+	font: normal 10pt "Bitstream Charter";
+	border: 1px solid #2d495e;
+	width: 325px;
+}
+.inputfieldapplys {
+	color: #2e4a62;
+	background-color: #fff;
+	font: normal 10pt "Bitstream Charter";
+	border: 1px solid #2d495e;
+}
+.inputfieldapplies {
+	color: #2e4a62;
+	background-color: #fff;
+	font: normal 8pt "Bitstream Charter";
+	border: 1px solid #2d495e;	
+	margin: 1px 0;
+}
+.wrong {
+	background-color: #ccc;
+}
+.inputbuttonapply {
+	text-decoration: none;
+	color: #2e4a62;
+	font: normal normal 12pt "Bitstream Charter";
+	background: #fff url(../style/arrow_blue_small.png) no-repeat 95% 5px;
+	/*border: 1px solid #2e4a62;*/
+	margin: 10px 0;
+	
+}
+textarea.apply {
+	background-color: #fff;
+	font: normal 10pt "Bitstream Charter";
+	border: 1px solid #2d495e;
+	width: 325px;
+}
+select.apply {
+	background-color: #fff;
+	font: normal 10pt "Bitstream Charter";
+	border: 1px solid #2d495e;
+	width: 325px;
+}
+img.captcha {
+	border: 1px solid #2d495e;
+	float: none;
+}
+
+a:hover.amd, a:active.amd {
+	text-decoration: none;
+}
+/*Hilfe-Box*/
+
+a.help {
+	position: relative;
+	z-index: 1;
+	color: #2e4a62;
+	text-decoration: none;
+}
+
+a:hover.help {
+	z-index: 2;
+}
+
+a.help span {
+	display: none;
+}
+
+a:hover.help span {
+	display: block;
+	position: absolute;
+	top: 2em;
+	left: 2em;
+	width: 15em;
+	border: 1px solid #2d495e;
+	background-color: #fff;
+	color: #2e4a62;
+	text-align: center;
+	padding: 5px;
+	font-size: 1em;
+} 
+a.help img {
+	float: left;
+	margin-right: 10px;
+}
+
+/*Bildergalerie*/
+
+#galerie {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#galerie table.galerie {
+	margin: 0 auto;
+	text-align: center;
+	border: 1px solid #2e4a62;
+	padding: 4px;
+	background: transparent;
+}
+#galerie td.thumbcell {
+	width: 175px;
+	height: 150px;
+	text-align: center;
+	vertical-align: middle;
+	background: #000;
+	border: 0;
+	margin: 0;
+}
+
+#galerie td.thumbcell img {
+	border-style: none;
+	width: 165px;
+}
+
+/*Show - Hide Text*/
+
+.more {
+	display: none;
+}
+
+a.show, a.hide {
+	font: normal 9pt "Bitstream Charter";	
+}
+p.showhide {
+    text-align: right;
+    margin-top: -12pt;	
+}
+.bottomline {
+    border-bottom: 1px solid #ccc;
+}
+
+/*Mitliederbereich: Audio - Video - Scholien*/
+
+.audioentry {
+	margin-bottom: 15px;
+}
+
+.autor {
+	font: normal 9pt "Bitstream Charter";
+	border-bottom: 0.5px solid #2d495e;	
+}
+
+.audiofile {
+	/*background: #000;*/
+	border-bottom: 2px solid #e5e4e2;
+	padding: 10px 0 5px 0;
+}
+
+.videoentry {
+	margin-bottom: 25px;
+}
+
+.videofile {
+	background: #000;
+	padding: 5px 0 20px 0
+}
+
+.weitere {
+	text-align: right;
+	margin-top: 0;
+}
+a.scholien {
+	position: relative;
+	z-index: 1;
+	color: #2e4a62;
+	text-decoration: none;
+}
+
+a:hover.scholien {
+	z-index: 2;
+}
+
+a.scholien span {
+	display: none;
+}
+
+a:hover.scholien span {
+	display: block;
+	position: absolute;
+	top: -17em;
+	left: 12em;
+	width: 35em;
+	border: 1px solid #2d495e;
+	background-color: #fff;
+	color: #2e4a62;
+	text-align: center;
+	padding: 5px;
+	font-size: 10pt;
+} 
+a.scholien img {
+	float: left;
+	margin-right: 10px;
+}
+
+.intern {
+	font-size: 14pt;
+	font-weight: 400;
+	text-align: center;
+	padding: 3px 0;
+	border-top: 1px solid #2d495e;
+	border-bottom: 1px solid #2d495e;
+	margin-top: 0;
+}
+
+.hinweis {
+	border: 2px solid rgb(170,0,0);
+	color: rgb(170,0,0);
+	padding: 5px;
+	margin: 5px 0;
+	font-size: 9pt;
+}
