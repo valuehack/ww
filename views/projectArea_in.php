@@ -62,7 +62,7 @@ function displayCredits()
 // include "header1.inc.php";
 
 include ("_header.php"); 
-$title="Projects";
+$title="Spenden";
 
 // if ($id) echo "This is id: ".$id;
 // echo "here: ".$_GET["id"];
@@ -89,10 +89,10 @@ if ($id = $_GET["id"])
 <!--Content-->
 <div id="center">
 <div id="content">
-<a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="index.php">Projects</a>
+<a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="index.php">Spenden</a>
 <div id="tabs-wrapper-lower"></div>
 
-<h3>Projects</h3>  
+<h3>Spenden</h3>  
 
 <div id="tabs-wrapper-sidebar"></div>
 <div id="tabs-wrapper-lower" style="margin-top:10px;">
