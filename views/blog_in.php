@@ -21,13 +21,13 @@ if(isset($_GET['id']))
 {
 	$id = $_GET['id'];
 
- 	$sql = "SELECT * from blog WHERE id='$id'";
+ 	$sql = "SELECT * from blog WHERE id='$id'";	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	$entry = mysql_fetch_array($result);
 
 	$title = $entry[title];
-	$private = $entry['private'];
-	$public = $entry['public'];
+	$private = $entry[private_text];
+	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
 	
 	echo "<h5>".$title."</h5>";
@@ -49,28 +49,42 @@ if(isset($_GET['id']))
 
 else 
 {
+	$limit=5;
+	$n=0;
 	$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc";
+	
+	if ($offset||$limit) $sql=$sql." limit ";
+	if ($offset) $sql=$sql.$offset.",";
+	if ($limit) $sql=$sql."$limit";
+	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 	while($entry = mysql_fetch_array($result))
 	{
 		$id = $entry[id];
 		$title = $entry[title];
-		$private = $entry['private'];
+		$private = $entry[private_text];
 		$publ_date = $entry[publ_date];
 
 		echo "<h5><a href='?id=$id'>".$title."</a></h5>";
 		echo "<i>Keyword: ".$id."&nbsp &nbsp &nbsp Datum: ".date('d.m.Y', strtotime($publ_date))."</i><br>";
 		
-		if (strlen($private) > 500) {
-			echo substr ($private, 0, 500);
+		if (strlen($private) > 300) {
+			echo substr ($private, 0, 300);
 			echo " ... </p><a href='?id=$id'>&rarr; Weiterlesen</a><hr>";
 		}
 		else {
 			echo $private;
 			echo " <a href='?id=$id'>&rarr; Weiterlesen</a><hr>";
 		}
+	$n++;
 	}
+if ($n==$limit)
+	{
+  ?>
+          <div align="right"><b><a href="?offset=<?=($offset+$limit)?>">&rarr;Mehr Blogposts</a></b></div>
+<?
+        }
 }
 ?>
 
