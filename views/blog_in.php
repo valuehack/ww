@@ -57,8 +57,6 @@ else
 	if ($offset) $sql=$sql.$offset.",";
 	if ($limit) $sql=$sql."$limit";
 	
-	echo "$sql";
-	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 	while($entry = mysql_fetch_array($result))
@@ -83,6 +81,7 @@ else
 	}
 if ($n==$limit)
 	{
+		echo $sql;
   ?>
           <div align="right"><b><a href="?offset=<?=($offset+$limit)?>">&rarr;Mehr Blogposts</a></b></div>
 <?
