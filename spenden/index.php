@@ -1,11 +1,18 @@
 <?php
 
-// Author: Bernhard Hegyi
-// Content: Blog with different views for members and non-members
-
+/**
+ * A simple PHP Login Script / ADVANCED VERSION
+ * For more versions (one-file, minimal, framework-like) visit http://www.php-login.net
+ *
+ * @author Panique
+ * @link http://www.php-login.net
+ * @link https://github.com/panique/php-login-advanced/
+ * @license http://opensource.org/licenses/MIT MIT License
+ */
 
 // check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
+    echo PHP_VERSION;
     exit('Sorry, this script does not run on a PHP version smaller than 5.3.7 !');
 } else if (version_compare(PHP_VERSION, '5.5.0', '<')) {
     // if you are using PHP 5.3 or PHP 5.4 you have to include the password_api_compatibility_library.php
@@ -23,19 +30,29 @@ require_once('../libraries/PHPMailer.php');
 
 // load the login class
 require_once('../classes/Login.php');
+require_once('../classes/Registration.php');
 
 // create a login object. when this object is created, it will do all login/logout stuff automatically
 // so this single line handles the entire login process.
 $login = new Login();
+$registration = new Registration();
 
 // ... ask if we are logged in here:
-if ($login->isUserLoggedIn() == true) {
+if ($login->isUserLoggedIn() == true) 
+{
     // the user is logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are logged in" view.
-    include("../views/blog_in.php");
+    include("../views/spenden_in.php");
+    // echo "wtf";
+    #include("views/header2.inc.php");
 
-} else {
+
+} 
+else {
     // the user is not logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are not logged in" view.
-    include("../views/blog_not_in.php");
+    include("../views/index_not_in.php");
+    // echo "hello";
+    #include("views/header2.inc.php");
+    
 }
