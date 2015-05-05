@@ -26,8 +26,8 @@ if(isset($_GET['id']))
 	$entry = mysql_fetch_array($result);
 
 	$title = $entry[title];
-	$private = $entry['private'];
-	$public = $entry['public'];
+	$private = $entry[private_text];
+	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
 	
 	echo "<h5>".$title."</h5>";
@@ -49,13 +49,8 @@ if(isset($_GET['id']))
 
 else 
 {
-	$limit=5;
-	$n=0;
+
 	$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc";
-	
-	if ($offset||$limit) $sql=$sql." limit ";
-	if ($offset) $sql=$sql.$offset.",";
-	if ($limit) $sql=$sql."$limit";
 	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
@@ -63,7 +58,7 @@ else
 	{
 		$id = $entry[id];
 		$title = $entry[title];
-		$private = $entry['private'];
+		$private = $entry[private_text];
 		$publ_date = $entry[publ_date];
 
 		echo "<h5><a href='?id=$id'>".$title."</a></h5>";
@@ -77,15 +72,8 @@ else
 			echo $private;
 			echo " <a href='?id=$id'>&rarr; Weiterlesen</a><hr>";
 		}
-	$n++;
+	
 	}
-if ($n==$limit)
-	{
-		echo $sql;
-  ?>
-          <div align="right"><b><a href="?offset=<?=($offset+$limit)?>">&rarr;Mehr Blogposts</a></b></div>
-<?
-        }
 }
 ?>
 
