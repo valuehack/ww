@@ -93,13 +93,45 @@ if(isset($_GET['id']))
   
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
+
+  if ($_SESSION['Mitgliedschaft'] == 1 || $_SESSION['Mitgliedschaft'] == 4) {
+    ?>
+    <form>
+      <select name="quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>        
+      </select> 
+      <!-- Button trigger modal -->
+      <input type="button" value="Add to Basket" data-toggle="modal" data-target="#myModal">  
+    </form>
+    
+  <?php
+  } 
+  else {
+    ?>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $id; ?>" />
+      <select name="quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>        
+      </select> 
+      <input type="submit" value="Add to Basket">
+    </form>
+  <?php
+  }
 }
 
 else {
   
   echo "<h2>Seminare</h2>";
 
-  if ($_SESSION['Mitgliedschaft'] == 1) {
+  if ($_SESSION['Mitgliedschaft'] == 1 || $_SESSION['Mitgliedschaft'] == 4) {
   ?>
     <p><img class="wallimg big" src="akademie.jpg" alt="" titel="Akademieveranstaltung"></p>
          
@@ -153,7 +185,7 @@ else {
     echo " <a href='?id=$id'>";
     echo "&rarr; N&auml;here Informationen</a></p>";
     
-    if ($_SESSION['Mitgliedschaft'] == 1) {
+    if ($_SESSION['Mitgliedschaft'] == 1 || $_SESSION['Mitgliedschaft'] == 4) {
       ?>
       <form>
         <select name="quantity">
@@ -197,7 +229,7 @@ else {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="myModalLabel">Unterstützen</h2>
+        <h2 class="modal-title" id="myModalLabel">Mitgliedschaft 150</h2>
       </div>
       <div class="modal-body">
         <p>Das Institut f&uuml;r Wertewirtschaft ist eine gemeinn&uuml;tzige Einrichtung, die sich durch einen besonders langfristigen Zugang auszeichnet. Um unsere Unabh&auml;ngigkeit zu bewahren, akzeptieren wir keinerlei Mittel, die aus unfreiwilligen Zahlungen (Steuern, Geb&uuml;hren, Zwangsmitgliedschaften etc.) stammen. Umso mehr sind wir auf freiwillige Investitionen angewiesen. Nur mit Ihrer Unterst&uuml;tzung k&ouml;nnen wir unsere Arbeit aufrecht erhalten oder ausweiten.</p>
