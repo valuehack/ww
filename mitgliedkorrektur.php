@@ -2,6 +2,8 @@
 @$con=mysql_connect("wertewirtschaft1.db.6152056.hostedresource.com","wertewirtschaft1","Werte333wirte") or die ("cannot connect to MySQL");
 mysql_select_db("wertewirtschaft1");
 
+// test
+
 $sql = "SELECT id,Scholien from Mitglieder3 order by id asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
 while ($entry = mysql_fetch_array($result))
