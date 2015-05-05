@@ -126,7 +126,7 @@ if ($_SESSION['Mitgliedschaft'] == 1) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-        <a href="../edit.php"><button type="button" class="btn btn-primary">Jetzt upgraden</button></a>
+        <a href="../upgrade.php"><button type="button" class="btn btn-primary">Jetzt upgraden</button></a>
       </div>
     </div>
   </div>
