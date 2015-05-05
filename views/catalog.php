@@ -1,7 +1,10 @@
-<!--Author: Bernhard Hegyi
-    Content: Catalog of random items for test purposes of checkout process-->
-
 <?php 
+//Author: Bernhard Hegyi
+//Content: Catalog of random items for test purposes of checkout process
+
+//testing secureDownload
+include_once("secdown/functions.php");
+dbconnect();
 
 require_once('classes/Login.php');
 include('_header.php'); 
@@ -117,7 +120,15 @@ echo "</table><br><br>";
 
           	//<input type="text" name="quantity" size="2" maxlength="2" placeholder="1">
 
+//test Secure download ?>
+<a class="scholien" href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/scholien0314.pdf','scholien_universitaet'); ?>" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>
+<br><br>
+
+<?php
+$zeit = date_default_timezone_get();
+echo "Current timezone: ".$zeit."<br><br>";
 ?>
+
 
 <!-- backlink -->
 <a href="basket.php">Go to Basket</a>

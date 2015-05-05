@@ -25,7 +25,7 @@ And here is your <a href="/mitglied/bitcoin.pdf">book.</a>
             <p class="intern">
 
             <!-- <a href="audio.php" alt="">Tonaufnahmen</a> - <a href="video.php" alt="">Videoaufnahmen</a> - <a href="scholienarchiv.php" alt="">Scholienarchiv</a></p> -->
-            Tonaufnahmen - Videoaufnahmen - Scholienarchiv </p>
+            Tonaufnahmen - Videoaufnahmen</p>
             <p></p>
             
             <!-- <a href="audio.php"><h5>Audio</h5></a> -->
@@ -116,11 +116,11 @@ And here is your <a href="/mitglied/bitcoin.pdf">book.</a>
        <?
         }
        ?>          
-          <!-- <a href="scholienarchiv.php"><h5>Scholienarchiv</h5></a> -->
+          <!-- <a href="scholienarchiv.php"><h5>Scholienarchiv</h5></a> 
           <h5>Scholienarchiv</h5>
 
           <p>Hier finden Sie alle unsere bisher erschienenen <a href="../scholien/" alt="">Scholien</a> als PDF zum Download.</p>
-          
+          -->
           <div id="tabs-wrapper-lower"></div>
         </div>
          <? include "_side_in.php"; ?>

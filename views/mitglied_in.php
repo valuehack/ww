@@ -1,6 +1,6 @@
 <?
 // include "_db.php";
-$title="Mitgliederbereich";
+$title="Medien";
 // include "../views/header2.inc.php";
 include "_werte_db.php";
 include "_header.php";
@@ -11,13 +11,13 @@ include "_header.php";
 <!--Content-->
 <div id="center">
         <div id="content">
-          <a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="#">Mitgliederbereich</a>
+          <a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="#"> Medien</a>
 	    <div id="tabs-wrapper"></div>
-          <h3>Mitgliederbereich</h3>
+          <h3>Medien</h3>
 
             <p><!--<img class="wallimg big" src="../style/gfx/platzhalter.png" alt="Platzhalter" title="Platzhalter">--></p>
 
-            <p class="intern"><a href="audio.php" alt="">Tonaufnahmen</a> - <a href="video.php" alt="">Videoaufnahmen</a> - <a href="scholienarchiv.php" alt="">Scholienarchiv</a></p>
+            <p class="intern"><a href="audio.php" alt="">Tonaufnahmen</a> - <a href="video.php" alt="">Videoaufnahmen</a></p>
 
             <p></p>
             
@@ -91,10 +91,10 @@ include "_header.php";
           <div class="weitere"><i><a href="video.php">Weitere Videoaufnahmen</a></i></div>
        <?
         }
-       ?>          
-          <a href="scholienarchiv.php"><h5>Scholienarchiv</h5></a>
-          <p>Hier finden Sie alle unsere bisher erschienenen <a href="../scholien/" alt="">Scholien</a> als PDF zum Download.</p>
-          
+                
+          //<a href="scholienarchiv.php"><h5>Scholienarchiv</h5></a>
+          //<p>Hier finden Sie alle unsere bisher erschienenen <a href="../scholien/" alt="">Scholien</a> als PDF zum Download.</p>
+          ?> 
           <div id="tabs-wrapper-lower"></div>
         </div>
          <? include "_side_in.php"; ?>

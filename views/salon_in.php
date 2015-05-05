@@ -1,3 +1,55 @@
+<script>
+var ALERT_TITLE = "Oops!";
+var ALERT_BUTTON_TEXT = "Ok";
+
+if(document.getElementById) {
+    window.alert = function(txt) {
+        createCustomAlert(txt);
+    }
+}
+
+function createCustomAlert(txt) {
+    d = document;
+
+    if(d.getElementById("modalContainer")) return;
+
+    mObj = d.getElementsByTagName("body")[0].appendChild(d.createElement("div"));
+    mObj.id = "modalContainer";
+    mObj.style.height = d.documentElement.scrollHeight + "px";
+
+    alertObj = mObj.appendChild(d.createElement("div"));
+    alertObj.id = "alertBox";
+    if(d.all && !window.opera) alertObj.style.top = document.documentElement.scrollTop + "px";
+    alertObj.style.left = (d.documentElement.scrollWidth - alertObj.offsetWidth)/2 + "px";
+    alertObj.style.visiblity="visible";
+
+    h1 = alertObj.appendChild(d.createElement("h1"));
+    h1.appendChild(d.createTextNode(ALERT_TITLE));
+
+    msg = alertObj.appendChild(d.createElement("p"));
+    //msg.appendChild(d.createTextNode(txt));
+    msg.innerHTML = txt;
+
+    btn = alertObj.appendChild(d.createElement("a"));
+    btn.id = "closeBtn";
+    btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
+    btn.href = "#";
+    btn.focus();
+    btn.onclick = function() { removeCustomAlert();return false; }
+
+    alertObj.style.display = "block";
+
+}
+
+function removeCustomAlert() {
+    document.getElementsByTagName("body")[0].removeChild(document.getElementById("modalContainer"));
+}
+
+function windowMessage() {
+    alert("Das Institut für Wertewirtschaft ist eine gemeinnützige Einrichtung, die sich durch einen besonders langfristigen Zugang auszeichnet. Um unsere Unabhängigkeit zu bewahren, akzeptieren wir keinerlei Mittel, die aus unfreiwilligen Zahlungen (Steuern, Gebühren, Zwangsmitgliedschaften etc.) stammen. Umso mehr sind wir auf freiwillige Investitionen angewiesen. Nur mit Ihrer Unterstützung können wir unsere Arbeit aufrecht erhalten oder ausweiten. <br> Klicken Sie <a href='../edit.php'>hier</a>, um zahlendes Mitglied zu werden");
+}
+</script>
+
 <?
 include "_db.php";
 $title="Salon";
@@ -23,48 +75,77 @@ if(isset($_POST['add'])){
 
   $_SESSION['basket'][$add_id] = $add_quantity; 
 }
-?>
 
-          <p><img class="wallimg big" src="salon.jpg" alt="Salon im Institut für Wertewirtschaft"></p>
-          
-          <p>Unser <i>Salon</i> erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition. N&uuml;tzen Sie die Gelegenheit, das Institut und dessen au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Dabei beginnen Rahim Taghizadegan und Eugen Maria Schulak ein kritisches Gespr&auml;ch, das bei einem Buffet in angenehmer Atmosph&auml;re fortgesetzt wird.</p>
-          
+//für Interessenten (Mitgliedschaft 1) Erklärungstext oben
+if ($_SESSION['Mitgliedschaft'] == 1) {
+    echo "<p><img class='wallimg big' src='salon.jpg' alt='Salon im Institut für Wertewirtschaft'></p>";
+    echo "<p>Unser <i>Salon</i> erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition. N&uuml;tzen Sie die Gelegenheit, das Institut und dessen au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Dabei beginnen Rahim Taghizadegan und Eugen Maria Schulak ein kritisches Gespr&auml;ch, das bei einem Buffet in angenehmer Atmosph&auml;re fortgesetzt wird.</p>";
+  }
+?>       
+             
           <h5>Termine:</h5>        
 
           <p><table>
-           <tr>
-            <td class="bottomline">01.10.2014</td>
-            <td class="bottomline"><b>Freihandel und Globalisierung</b></td>
-           </tr> 
-           <tr>
-            <td><b>Mi</b>, 19:00</td>
-            <td class="bottomline">Anl&auml;sslich des TTIP-Abkommens ist der Freihandel wieder in Verdacht geraten, nur den Interessen von Politik und Gro&szlig;konzernen zu dienen. Was bringen solche Abkommen, wem schaden sie? Brauchen wir mehr oder weniger Freihandel? Welche Ph&auml;nomene sind mit der Globalisierung verbunden, gibt es Alternativen dazu? Befinden wir uns in einer Phase zunehmender oder abnehmender Globalisierung? Was erkl&auml;rt die starken Vorbehalte und &Auml;ngste? Was sind die &ouml;konomischen und philosophischen Aspekte globaler Mobilit&auml;t von G&uuml;tern, Ideen und Menschen, aber auch von Pflanzen, Tieren und Viren?
-             <b><a href="http://www.amiando.com/salon-freihandel">&rarr;Anmeldung</a></b>
-             </td>
-           </tr>
-           <tr>
-            <td class="bottomline">26.11.2014</td>
-            <td class="bottomline"><b>Kooperation statt Konkurrenz?</b></td>
-           </tr> 
-           <tr>
-            <td><b>Mi</b>, 19:00</td>
-            <td class="bottomline">Der Konkurrenzdruck scheint zuzunehmen, viele empfinden sich als rastlos Getriebene der Wirtschaftsentwicklung. Auch an Schulen und Universit&aumten wird vielfach der Konkurrenzdruck beklagt, und an vielen Arbeitspl&aumtzen scheint eine Ellenbogenmentalit&aumt zu herrschen. Bringt das Konkurrenzsystem einer Marktwirtschaft das Schlechteste im Menschen an die Oberfl&aumche? W&aumre mehr Kooperation tats&aumchlich wünschenswert? Was steht &oumkonomisch und philosophisch hinter der Konkurrenz und den Vorbehalten und &Aumngsten vor dem Wettbewerb? Ist ein Wirtschaftssystem denkbar, das in gr&oumßerem Ausmaß auf Kooperation beruht? M&uumssen Konkurrenz und Kooperation überhaupt ein Widerspruch sein? Gibt es auch Schattenseiten der Kooperation? Welche Rolle spielen Konkurrenz und Kooperation in Unternehmen, und welche sollten sie spielen?
-               <br>Quantity: <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                <input type="hidden" name="add" value="1052" />
-                  <select name="quantity">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>        
-                  </select> 
-                <input type="submit" value="Add to Basket"></form></td>
-           </tr>
-           <tr>
-            <td></td>
-            <td>&nbsp;</td>
-           </tr>
+       
+          <?php
+          $sql = "SELECT * from termine WHERE type LIKE 'salon' AND end > NOW() order by start asc, id asc";
+          $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+
+          while($entry = mysql_fetch_array($result))
+          {
+            $event_id = $entry[id];
+              ?>
+              <tr>
+                  <td class="bottomline"><?php echo date("d.m.Y",strtotime($entry[start])); ?></td>
+                  <td class="bottomline"><?php echo "<i>".$event_id."</i> <b>".$entry[title]; ?></b></td>
+               </tr> 
+               <tr>
+                <td><?php echo date("H:i",strtotime($entry[start])); ?></td>
+                <td class="bottomline"><?php echo $entry[text]; ?>
+                  <?php 
+                    
+                    if ($_SESSION['Mitgliedschaft'] == 1) {
+                      ?>
+                      <form>
+                        <select name="quantity">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>        
+                        </select> 
+                        <input type="button" value="Add to Basket" onclick="alert('Alert this pages');">
+                      </form>
+                        
+                  <?php
+                    } 
+
+                    else {
+                      ?>
+                      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                        <input type="hidden" name="add" value="<?php echo $event_id; ?>" />
+                        <select name="quantity">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>        
+                        </select> 
+                        <input type="submit" value="Add to Basket">
+                      </form>
+                  <?php
+                    } 
+                  ?>
+
+                  </td>
+               </tr>
+               <tr><td>&nbsp;</td><td></td></tr>
+          <?php
+          }
+          ?>
+
           </table></p>
+
 
        <h5>Unser Angebot</h5>
 
@@ -91,24 +172,7 @@ if(isset($_POST['add'])){
        </td></tr>
        </table></p>
 
-<!--        
-        <p><b>Weitere Einblicke</b></p>
-        
-          <div id="galerie">
-            <table width="570px" class="galerie">
-           <tr>
-             
-          <td class="thumbcell"><a href="img/iww_01.jpg" rel="lightbox[galerie]" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft"><img src="img/iww_01.jpg" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft" alt="R&auml;me des Instituts f&uuml;r Wertewirtschaft" /></a></td>
-
-          <td class="thumbcell"><a href="img/iww_02.jpg" rel="lightbox[galerie]" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft"><img src="img/iww_02.jpg" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft" alt="R&auml;me des Instituts f&uuml;r Wertewirtschaft" /></a></td>
-
-          <td class="thumbcell"><a href="img/iww_03.jpg" rel="lightbox[galerie]" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft"><img src="img/iww_03.jpg" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft" alt="R&auml;me des Instituts f&uuml;r Wertewirtschaft" /></a></td>
-       
-             </tr>
-            </table>
-          </div>
--->
-                   
+          
           <div id="tabs-wrapper-lower"></div>
         </div>
          <? include "_side_in.php"; ?>
