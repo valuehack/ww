@@ -5,6 +5,7 @@
 
 require_once('../classes/Login.php');
 include('_header.php'); 
+include('paginate.php');//pagination script
 $title="Blog";
 
 ?>
@@ -49,10 +50,39 @@ if(isset($_GET['id']))
 
 else 
 {
-
+	$per_page = 5; //pagination script
 	$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc";
 	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+	
+	//Start Pagination Script
+	$total_results = mysql_num_rows($result); 
+	$total_pages = ceil($total_results / $per_page);//total pages we going to have
+
+	//-------------if page is setcheck------------------//
+	if (isset($_GET['page'])) {
+    	$show_page = $_GET['page'];             //it will telles the current page
+   	 if ($show_page > 0 && $show_page <= $total_pages) {
+       	 $start = ($show_page - 1) * $per_page;
+       	 $end = $start + $per_page;
+  	  } else {
+      	  // error - show first set of results
+     	   $start = 0;              
+      	  $end = $per_page;
+  	  }
+	} else {
+   	 // if page isn't set, show first set of results
+   	 $start = 0;
+   	 $end = $per_page;
+	}
+	// display pagination
+	$page = intval($_GET['page']);
+
+	$tpages=$total_pages;
+	if ($page <= 0)
+    	$page = 1;
+
+	//End Pagination
 
 	while($entry = mysql_fetch_array($result))
 	{
@@ -74,6 +104,11 @@ else
 		}
 	
 	}
+	$reload = $_SERVER['PHP_SELF'] . "?tpages=" . $tpages;
+                    echo '<div class="pagination"><ul>';
+                    if ($total_pages > 1) {
+                        echo paginate($reload, $show_page, $total_pages);
+                    }
 }
 ?>
 
