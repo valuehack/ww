@@ -67,7 +67,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
          <li class="navbar"><a href="/institut/mitglied.php">Mitgliedschaft</a></li>
          <li class="navbar"><a href="/salon/">Salon</a></li>
-         <li class="navbar"><a href="/akademie/">Kakademie</a></li>
+         <li class="navbar"><a href="/akademie/">Akademie</a></li>
       </ul>
       </div>
       <div id="menu">
