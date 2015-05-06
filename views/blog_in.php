@@ -50,6 +50,7 @@ if(isset($_GET['id']))
 
 else 
 {
+	//Pagination Script found at http://www.phpeasystep.com/phptu/29.html
 	$tbl_name="blog";		//your table name
 	// How many adjacent pages should be shown on each side?
 	$adjacents = 3;
