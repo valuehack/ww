@@ -51,7 +51,7 @@ if ($login->isUserLoggedIn() == true)
 else {
     // the user is not logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are not logged in" view.
-    include("../views/index_not_in.php");
+    include("../views/bibliothek_not_in.php");
     // echo "hello";
     #include("views/header2.inc.php");
     

@@ -59,7 +59,7 @@ if ($login->isUserLoggedIn() == true)
             include("../views/level1View.php");
             break;
         case 4:
-            include("../views/mitglied_in.php");
+            include("../views/medien_in.php");
             break;
         default: 
             include("../views/testView.php"); 
@@ -71,15 +71,13 @@ if ($login->isUserLoggedIn() == true)
     // include("../views/mitglied_in.php");
     #include("views/header2.inc.php");
 
-
-
 } 
 else {
     // the user is not logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are not logged in" view.
     // include("../views/mitglied_not_in.php");
     // header("Location:http://www.wertewirtschaft.org/");
-header("Location:http://localhost:4567/");
+    include("../views/medien_not_in.php");
 
 
     #include("views/header2.inc.php"); 

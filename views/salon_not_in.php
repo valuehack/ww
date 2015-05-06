@@ -1,5 +1,14 @@
+<!-- Bootstrap -->
+<link href="../style/modal.css" rel="stylesheet">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../tools/bootstrap.js"></script>
+
+
 <?
-include "_db.php";
+require_once('../classes/Login.php');
 $title="Salon";
 include "_header.php"; 
 ?>
@@ -10,34 +19,70 @@ include "_header.php";
       <div id="tabs-wrapper"></div>
           <h3>Salon</h3>
 
-          <p><img class="wallimg big" src="salon.jpg" alt="Salon im Institut für Wertewirtschaft"></p>
-          
-          <p>Unser <i>Salon</i> erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition. N&uuml;tzen Sie die Gelegenheit, das Institut und dessen au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Dabei beginnen Rahim Taghizadegan und Eugen Maria Schulak ein kritisches Gespr&auml;ch, das bei einem Buffet in angenehmer Atmosph&auml;re fortgesetzt wird.</p>
-          
-          <h5>Termine:</h5>        
+<p><img class='wallimg big' src='salon.jpg' alt='Salon im Institut für Wertewirtschaft'></p>
+<p>Unser <i>Salon</i> erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition. N&uuml;tzen Sie die Gelegenheit, das Institut und dessen au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Dabei beginnen Rahim Taghizadegan und Eugen Maria Schulak ein kritisches Gespr&auml;ch, das bei einem Buffet in angenehmer Atmosph&auml;re fortgesetzt wird.</p>
+         
+<h5>Termine:</h5>        
 
-          <p><table>
-           <tr>
-            <td class="bottomline">01.10.2014</td>
-            <td class="bottomline"><b>Freihandel und Globalisierung</b></td>
-           </tr> 
-           <tr>
-            <td><b>Mi</b>, 19:00</td>
-            <td class="bottomline">Anl&auml;sslich des TTIP-Abkommens ist der Freihandel wieder in Verdacht geraten, nur den Interessen von Politik und Gro&szlig;konzernen zu dienen. Was bringen solche Abkommen, wem schaden sie? Brauchen wir mehr oder weniger Freihandel? Welche Ph&auml;nomene sind mit der Globalisierung verbunden, gibt es Alternativen dazu? Befinden wir uns in einer Phase zunehmender oder abnehmender Globalisierung? Was erkl&auml;rt die starken Vorbehalte und &Auml;ngste? Was sind die &ouml;konomischen und philosophischen Aspekte globaler Mobilit&auml;t von G&uuml;tern, Ideen und Menschen, aber auch von Pflanzen, Tieren und Viren?<b><a href="http://www.amiando.com/salon-freihandel">&rarr;Anmeldung</a></b></td>
-           </tr>
-           <tr>
-            <td class="bottomline">26.11.2014</td>
-            <td class="bottomline"><b>Kooperation statt Konkurrenz?</b></td>
-           </tr> 
-           <tr>
-            <td><b>Mi</b>, 19:00</td>
-            <td class="bottomline">Der Konkurrenzdruck scheint zuzunehmen, viele empfinden sich als rastlos Getriebene der Wirtschaftsentwicklung. Auch an Schulen und Universit&aumten wird vielfach der Konkurrenzdruck beklagt, und an vielen Arbeitspl&aumtzen scheint eine Ellenbogenmentalit&aumt zu herrschen. Bringt das Konkurrenzsystem einer Marktwirtschaft das Schlechteste im Menschen an die Oberfl&aumche? W&aumre mehr Kooperation tats&aumchlich wünschenswert? Was steht &oumkonomisch und philosophisch hinter der Konkurrenz und den Vorbehalten und &Aumngsten vor dem Wettbewerb? Ist ein Wirtschaftssystem denkbar, das in gr&oumßerem Ausmaß auf Kooperation beruht? M&uumssen Konkurrenz und Kooperation überhaupt ein Widerspruch sein? Gibt es auch Schattenseiten der Kooperation? Welche Rolle spielen Konkurrenz und Kooperation in Unternehmen, und welche sollten sie spielen?<b><a href="http://www.amiando.com/salon-kooperation">&rarr;Anmeldung</a></b></td>
-           </tr>
-           <tr>
-            <td></td>
-            <td>&nbsp;</td>
-           </tr>
-          </table></p>
+<p><table>
+
+<?php
+$sql = "SELECT * from termine WHERE type LIKE 'salon' AND end > NOW() order by start asc, id asc";
+$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+
+while($entry = mysql_fetch_array($result))
+{
+  $event_id = $entry[id];
+    ?>
+    <tr>
+      <td class="bottomline"><?php echo date("d.m.Y",strtotime($entry[start])); ?></td>
+      <td class="bottomline"><?php echo "<i>".$event_id."</i> <b>".$entry[title]; ?></b></td>
+    </tr> 
+    <tr>
+      <td><?php echo date("H:i",strtotime($entry[start])); ?></td>
+      <td class="bottomline"><?php echo $entry[text]; ?>
+        <form>
+          <select name="quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>        
+          </select> 
+            <!-- Button trigger modal -->
+            <input type="button" value="Add to Basket" data-toggle="modal" data-target="#myModal">  
+        </form>
+      </td>
+    </tr>
+     <tr><td>&nbsp;</td><td></td></tr>
+<?php
+}
+?>
+
+</table></p>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="myModalLabel">email eintragen</h2>
+      </div>
+      <div class="modal-body">
+        <i>Wenn Sie unseren Salon besuchen, tragen Sie sich hier völlig unverbindlich ein:</i><br><br>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform" style="text-aligna:center; paddinga: 10px ">
+          <input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required /><br>
+          <input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+      </div>
+    </div>
+  </div>
+</div>
 
        <h5>Unser Angebot</h5>
 
@@ -64,24 +109,7 @@ include "_header.php";
        </td></tr>
        </table></p>
 
-<!--        
-        <p><b>Weitere Einblicke</b></p>
-        
-          <div id="galerie">
-            <table width="570px" class="galerie">
-           <tr>
-             
-          <td class="thumbcell"><a href="img/iww_01.jpg" rel="lightbox[galerie]" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft"><img src="img/iww_01.jpg" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft" alt="R&auml;me des Instituts f&uuml;r Wertewirtschaft" /></a></td>
-
-          <td class="thumbcell"><a href="img/iww_02.jpg" rel="lightbox[galerie]" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft"><img src="img/iww_02.jpg" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft" alt="R&auml;me des Instituts f&uuml;r Wertewirtschaft" /></a></td>
-
-          <td class="thumbcell"><a href="img/iww_03.jpg" rel="lightbox[galerie]" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft"><img src="img/iww_03.jpg" title="R&auml;ume des Instituts f&uuml;r Wertewirtschaft" alt="R&auml;me des Instituts f&uuml;r Wertewirtschaft" /></a></td>
-       
-             </tr>
-            </table>
-          </div>
--->
-                   
+          
           <div id="tabs-wrapper-lower"></div>
         </div>
          <? include "_side_not_in.php"; ?>
