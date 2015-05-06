@@ -63,8 +63,8 @@ else
 	$total_pages = $total_pages[num];
 	
 	/* Setup vars for query. */
-	$targetpage = "blog_in.php"; 	//your file name  (the name of this file)
-	$limit = 5; 								//how many items to show per page
+	$targetpage = "_/views/blog_in.php"; 	//your file name  (the name of this file)
+	$limit = 2; 								//how many items to show per page
 	$page = $_GET['page'];
 	if($page) 
 		$start = ($page - 1) * $limit; 			//first item to display on this page
@@ -99,7 +99,8 @@ else
 			$pagination.= "<span class=\"disabled\">� previous</span>";	
 		
 		//pages	
-		if ($lastpage < 7 + ($adjacents * 2))	//not enough pages to bother breaking it up
+		if ($lastpage < 2)	//not enough pages to bother breaking it up
+		//if ($lastpage < 7 + ($adjacents * 2))	//not enough pages to bother breaking it up <-org
 		{	
 			for ($counter = 1; $counter <= $lastpage; $counter++)
 			{
