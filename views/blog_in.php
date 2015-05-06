@@ -63,8 +63,8 @@ else
 	$total_pages = $total_pages[num];
 	
 	/* Setup vars for query. */
-	$targetpage = "../blog_in.php"; 	//your file name  (the name of this file)
-	$limit = 2; 								//how many items to show per page
+	$targetpage = "../views/blog_in.php"; 	//your file name  (the name of this file)
+	$limit = 4; 								//how many items to show per page
 	$page = $_GET['page'];
 	if($page) 
 		$start = ($page - 1) * $limit; 			//first item to display on this page
