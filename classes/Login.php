@@ -576,6 +576,8 @@ public function checkout ($items)
 
     $_SESSION['credits_left'] = $userCredits;
 
+	mysql_query("SET time_zone = 'Europe/Vienna'");
+
     $itemsPrice = 0;
     foreach ($items as $key => $quantity) 
     {
@@ -591,7 +593,7 @@ public function checkout ($items)
         {
         foreach ($items as $key => $quantity) 
                 {      
-                    $checkout_query = "INSERT INTO registration (event_id, user_id, quantity) VALUES ('$key', '$user_id', '$quantity')";
+                    $checkout_query = "INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES ('$key', '$user_id', '$quantity', NOW())";
                     mysql_query($checkout_query);
 
                     $credits_left = $userCredits - $itemsPrice;
