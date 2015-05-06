@@ -63,7 +63,7 @@ else
 	$total_pages = $total_pages[num];
 	
 	/* Setup vars for query. */
-	$targetpage = "_/views/blog_in.php"; 	//your file name  (the name of this file)
+	$targetpage = "../blog_in.php"; 	//your file name  (the name of this file)
 	$limit = 2; 								//how many items to show per page
 	$page = $_GET['page'];
 	if($page) 
@@ -72,7 +72,7 @@ else
 		$start = 0;								//if no page var is given, set start to 0
 	
 	/* Get data. */
-	$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc";
+	$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT $start, $limit";
 	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	
