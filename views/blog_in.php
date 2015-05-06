@@ -100,7 +100,7 @@ else
 		
 		//pages	
 		if ($lastpage < 7 + ($adjacents * 2))	//not enough pages to bother breaking it up
-		
+		{	
 			for ($counter = 1; $counter <= $lastpage; $counter++)
 			{
 				if ($counter == $page)
