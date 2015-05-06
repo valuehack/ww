@@ -189,6 +189,7 @@ else
 	
 		}
 	}
+}
 	?>
 
 <?=$pagination?>
