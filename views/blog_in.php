@@ -188,6 +188,7 @@ else
 			echo " <a href='?id=$id'>&rarr; Weiterlesen</a><hr>";
 	
 		}
+	}
 	?>
 
 <?=$pagination?>
