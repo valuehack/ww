@@ -8,7 +8,7 @@
 
 
 <?
-include "_db.php";
+require_once('../classes/Login.php');
 $title="Salon";
 include "_header.php"; 
 ?>

@@ -74,6 +74,9 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
       </div>
 
 <?php
+//set timezone
+mysql_query("SET time_zone = 'Europe/Vienna'");
+
 // show potential errors / feedback (from login object)
 if (isset($login)) {
     if ($login->errors) {
