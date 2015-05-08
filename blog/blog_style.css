@@ -61,8 +61,8 @@ table {
 
 /*=========================================*/
 
-.body {
-	font-family: "Libre Baskerville", serif;
+p, h1, h2, a {
+	font-family: "Baskerville", Times, serif;
 }
 
 .header {
