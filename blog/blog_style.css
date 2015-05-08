@@ -62,7 +62,7 @@ table {
 /*=========================================*/
 
 .body {
-	font-family: "Baskerville";
+	font-family: "Libre Baskerville", serif;
 }
 
 .header {
@@ -186,7 +186,7 @@ table {
 }
 
 .article h1 {
-	font-family: 'Essays 1743';
+	font-family: 'Libre Baskerville', serif;
 	text-align: center;
 	font-size: 72px;
 	text-transform: uppercase;
