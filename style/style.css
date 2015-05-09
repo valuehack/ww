@@ -79,6 +79,13 @@ img.left {
 	float: right;	
 	margin-left: 10px;
 }
+
+blockquote {
+	font-style:italic;
+	border: 1px solid #2e4a62;
+	padding: 10px 10px;
+}
+
 p {
 	text-align: justify;
 }
@@ -224,6 +231,13 @@ a.content:hover, a.content:active {
 .entry {
 	border-bottom: 2px solid #e5e4e2;
 	padding: 10px 0;
+}
+
+.quote {
+	font-style:italic;
+	border: 1px solid #2e4a62;
+	margin: 20px 20px;
+	padding: 10px 10px;
 }
 
 .mainvid {

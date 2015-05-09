@@ -11,9 +11,9 @@ include "_header.php";
 <!--Content-->
 <div id="center">
         <div id="content">
-          <a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="#">Mitgliederbereich</a>
+          <a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="#">Medien</a>
 	    <div id="tabs-wrapper"></div>
-          <h3>Mitgliederbereich</h3>
+          <h3>Medien</h3>
 
 <p class="intern">
 Dear User, welcome to the member's area. In order to see the contents please become a paying member.

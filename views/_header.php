@@ -67,13 +67,16 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
          <li class="navbar"><a href="/institut/mitglied.php">Mitgliedschaft</a></li>
          <li class="navbar"><a href="/salon/">Salon</a></li>
-         <li class="navbar"><a href="/akademie/">BAkademie</a></li>
+         <li class="navbar"><a href="/akademie/">Akademie</a></li>
       </ul>
       </div>
       <div id="menu">
       </div>
 
 <?php
+//set timezone
+mysql_query("SET time_zone = 'Europe/Vienna'");
+
 // show potential errors / feedback (from login object)
 if (isset($login)) {
     if ($login->errors) {
