@@ -71,11 +71,11 @@ p, h1, h2, a, ul, ol {
 	color: #000;
 }
 
-/*.header {
-	min-height: 50px;
+.header {
+	min-height: 103px;
 	width: 100%;
 	background: rgb(26,26,26);
-}*/
+}
 
 .content {
 	width: 75%;
@@ -310,10 +310,6 @@ p, h1, h2, a, ul, ol {
 
 /*============================ Header Alt=========================*/
 
-.header {
-	height: 103px;
-	background: #071019 url(gfx/header_neu5.gif) no-repeat 0 0;
-}
 img.logo {
 	float:left;
 	position: relative;
@@ -347,11 +343,6 @@ a.flagge:active, a.flagge:hover {
 	color: #fff;
 	font: normal 11px "Bitstream Charter";	
 }
-#container #menu {
-	height: 35px;
-	background: #b9b1a9 url(gfx/bg_menu.png) repeat-x 0 0;
-	/*border-top: 1px solid #ffffff;*/
-	/*border-bottom: 1px solid #ffffff;*/
 
 /*=====Navbar====*/
 #navbar {
