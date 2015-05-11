@@ -100,10 +100,10 @@ if ($publ_rows == 0) {
 	
 
 	//normal quote marks
-	$quote_query = "UPDATE blog SET public_text = replace(public_text, '„', '&bdquo;') WHERE n = '$n'";
+	$quote_query = "UPDATE blog SET public_text = replace(public_text, '&bdquo;', '&bdquo;') WHERE n = '$n'";
 	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
 
-	$quote_query = "UPDATE blog SET private_text = replace(private_text, '“', '&rdquo;') WHERE n = '$n'";
+	$quote_query = "UPDATE blog SET private_text = replace(private_text, '&rdquo;', '&rdquo;') WHERE n = '$n'";
 	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
 
 
