@@ -72,19 +72,19 @@ p, h1, h2, a {
 }
 
 .content {
-	width: 1024px;
+	width: 75%;
 	margin: 0 auto;
 	text-align: justify;
 }
 
-.banner {
+.banner_blog {
 	background: #000;
 	width: 100%;
 	height: 300px;
 	position: relative;
 }
 
-.bannerimg {
+.banner_blogimg {
 	width: 100%;
 	height: 100%;
 	max-height: 300px;
@@ -92,13 +92,13 @@ p, h1, h2, a {
 	opacity: 0.7;
 }
 
-.bannerms {
+.banner_blogms {
 	width: 900px;
 	margin: -350px auto;
 	position: relative;
 }
 
-.bannerms h1 {
+.banner_blogms h1 {
 	font-size: 45pt;
 	line-height: 1.1em;
 	color: #fff;
@@ -106,7 +106,7 @@ p, h1, h2, a {
 	text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
 }
 
-.bannerms p {
+.banner_blogms p {
 	font-size: 8pt;
 	color: rgba(250,250,250,0.3);
 	line-height: 1.1em;
@@ -116,11 +116,11 @@ p, h1, h2, a {
 	margin-top: 170px;
 }
 
-.bannerms a{
+.banner_blogms a{
 	color: rgba(250,250,250,0.5);
 }
 
-.bannerms a:hover {
+.banner_blogms a:hover {
 	color: rgba(250,250,250,0.7);
 }
 

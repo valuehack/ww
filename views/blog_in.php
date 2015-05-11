@@ -4,18 +4,36 @@
 <?php 
 
 require_once('../classes/Login.php');
-include('_header.php'); 
+include('_header_in.php'); 
 include('paginate.php');//pagination script
 $title="Blog";
 
 ?>
 
-<div id="center">  
+<!--<div id="center">  
 <div id="content">
 <a class="content" href="../index.php">Index &raquo;</a><a class="content" href="<?php echo $_SERVER['PHP_SELF']; ?>"> Blog</a>
-<div id="tabs-wrapper-lower"></div>
+<div id="tabs-wrapper-lower"></div>-->
 
-<h2>Scholien</h2>
+<div class="banner_blog">
+            <div class="banner_blogimg" style="background-image: url(gfx/names.jpg);"></div>
+            <div class="banner_blogms"><h1>Namensgebung</h1>
+                <p>Copyright by <a href="">Jamie</a>, published under <a href="">Creative Commons</a>, original version can be found <a href="">here</a>.</p>
+            </div>
+        </div>
+        <aside class="social">
+                   <ul>
+                       <li><a href=""><img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
+                       <li><a href=""><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
+                       <li><a href=""><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
+                       <li><a href=""><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
+                       <li><a href=""><img src="gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
+                    </ul>                 
+               </aside>
+        <div class="content">
+           <article class="article">
+               <header>
+
 
 <?php 
 if(isset($_GET['id']))
@@ -31,9 +49,12 @@ if(isset($_GET['id']))
 	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
 	
-	echo "<h5>".$title."</h5>";
+	echo "<h1>".$title."</h1>";
+	echo "</header>";
 	echo "<i>Keyword: ".$id."&nbsp &nbsp &nbsp Datum: ".date('d.m.Y', strtotime($publ_date))."</i><br>";
-	
+?>
+    <p class="linie"><img src="gfx/linie.png" alt=""></p>
+<?               		
 	if ($_SESSION['Mitgliedschaft'] == 1) {
 		echo $public."<br>";
 		echo "Beschreibung Mitgliedschaft: <br> Das Institut für Wertewirtschaft ist eine gemeinnützige Einrichtung, die sich durch einen besonders langfristigen Zugang auszeichnet. Um unsere Unabhängigkeit zu bewahren, akzeptieren wir keinerlei Mittel, die aus unfreiwilligen Zahlungen (Steuern, Gebühren, Zwangsmitgliedschaften etc.) stammen. Umso mehr sind wir auf freiwillige Investitionen angewiesen. Nur mit Ihrer Unterstützung können wir unsere Arbeit aufrecht erhalten oder ausweiten.";
@@ -45,7 +66,17 @@ if(isset($_GET['id']))
 		echo $private."<br><br>";
 		echo "<a href='index.php'>Alle Scholien</a>";
 	}
-	
+?>
+				<footer class="article">
+                   <div class="socialimg">
+                   <a href=""><img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
+                   <a href=""><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
+                   <a href=""><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
+                   <a href=""><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
+                   <a href=""><img src="gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a>
+                   </div>
+               </footer>
+<?	
 }
 
 else 
@@ -194,8 +225,11 @@ else
 	?>
 
 <?=$pagination?>
-
+				
+               <p class="linie"><img src="gfx/linie.png" alt=""></p>
+           </article> 
+        </div>
 </div>
-<?php include('_side_in.php'); ?>
+<!--<?php include('_side_in.php'); ?>-->
 </div>
 <?php include('_footer.php'); ?>
