@@ -307,12 +307,12 @@ p, h1, h2, a, ul, ol {
 
 .article footer p {
 	text-align: right;
-	margin-bottom: 20px;
-	font-size: 18pt;
+	margin-bottom: 30px !important;
+	font-size: 18pt !important;
 }
 
 .article footer p a:link {
-	color: rgb(46,74,98);
+	color: rgba(46,74,98,0.6);
 	border-bottom: 1px dotted;
 }
 
