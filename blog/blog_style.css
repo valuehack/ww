@@ -332,6 +332,21 @@ p, h1, h2, a, ul, ol {
 	text-align: center;
 	color: #fff;
 }
+
+.upgrade a:link {
+	display: block;
+	background: rgb(26,26,26);
+	color: #fff;
+	box-shadow: 1px 1px 2px rgb(20,20,20);
+}
+
+.upgrade a:hover {
+	display: block;
+	background: rgba(26,26,26,0.4);
+	color: #fff;
+	box-shadow: 1px 1px 2px rgb(25,25,25);
+}
+	
 /*============================ Header Alt=========================*/
 
 img.logo {
