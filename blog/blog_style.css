@@ -382,7 +382,7 @@ p, h1, h2, a, ul, ol {
 	padding: 2px 5px 2px 5px;
 	margin: 2px;
 	text-decoration: none; /* no underline */
-	color: #000099;
+	color: rgb(46,74,98);
 }
 
 .pagination a:hover, .pagination a:active {
