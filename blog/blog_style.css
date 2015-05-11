@@ -297,8 +297,9 @@ p, h1, h2, a, ul, ol {
 }
 
 .socialimg {
-	width: 375px;
-	margin: 0 auto;
+	text-align: center;
+	/*width: 375px;
+	margin: 0 auto;*/
 }
 
 .article footer img {
