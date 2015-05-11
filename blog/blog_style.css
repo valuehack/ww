@@ -62,8 +62,9 @@ table {
 /*=========================================*/
 
 body {
-	background-color: #000;
+	background-color: #fff;
 	background-image: none;
+	width: 100%;
 
 p, h1, h2, a, ul, ol {
 	font-family: "Baskerville", Georgia, Times, serif;
