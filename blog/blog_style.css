@@ -140,6 +140,12 @@ p, h1, h2, a, ul, ol {
 	
 }
 
+.blogdate {
+	font-size: 12pt;
+	font-style: italic;
+	text-align: right;
+	margin: 80px;
+
 .linie {
 	text-align: center;
 	margin-top: 50px;
@@ -305,6 +311,9 @@ p, h1, h2, a, ul, ol {
 	margin: 50px 0 0 0;
 }
 
+.footer p {
+	text-align: justify;
+}
 /*============================ Header Alt=========================*/
 
 img.logo {
