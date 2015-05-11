@@ -71,11 +71,11 @@ p, h1, h2, a, ul, ol {
 	color: #000;
 }
 
-.header {
+/*.header {
 	min-height: 50px;
 	width: 100%;
 	background: rgb(26,26,26);
-}
+}*/
 
 .content {
 	width: 75%;
@@ -306,4 +306,117 @@ p, h1, h2, a, ul, ol {
 	width: 100%;
 	background: rgb(26,26,26);
 	margin: 50px 0 0 0;
+}
+
+/*============================ Header Alt=========================*/
+
+.header {
+	height: 103px;
+	background: #071019 url(gfx/header_neu5.gif) no-repeat 0 0;
+}
+img.logo {
+	float:left;
+	position: relative;
+	top: 19px;
+	left: 105px;
+	border: 0;	
+}
+img.flagge {
+	float:left;
+	position: relative;
+	top: 2px;
+	left: 0px;
+	border: 0;
+	margin-right: 5px;
+}
+a.flagge:link, a.flagge:visited {
+	float:left;
+	position: relative;
+	top: 7px;
+	left: 555px;
+	text-decoration: none;
+	color: #fff;
+	font: normal 11px "Bitstream Charter";	
+}
+a.flagge:active, a.flagge:hover {
+	float:left;
+	position: relative;
+	top: 7px;
+	left: 555px;
+	text-decoration: underline;
+	color: #fff;
+	font: normal 11px "Bitstream Charter";	
+}
+#container #menu {
+	height: 35px;
+	background: #b9b1a9 url(gfx/bg_menu.png) repeat-x 0 0;
+	/*border-top: 1px solid #ffffff;*/
+	/*border-bottom: 1px solid #ffffff;*/
+
+/*=====Navbar====*/
+#navbar {
+   	position: relative;
+   	top: 76px;
+   	right: 0;
+   	margin: 0;
+   	padding: 0;
+	font: normal 14pt "Bitstream Charter";
+	text-align: center;
+}
+#navbar li {
+   	list-style: none;
+   	float: right; 
+	height: 32px;
+   	display: block;
+  	/*background-color: #786e64;*/
+}
+#navbar li a {
+   	display: block;
+  	text-decoration: none; 
+   	color: #fff; 
+	padding: 3px 10px;
+}
+#navbar li a:hover {
+	/*background: transparent url(bg-navigation-item-hover.png) no-repeat 50% 100%;*/
+}
+#navbar li ul {
+  	display: none; 
+}
+#navbar li:hover ul, #navbar li.hover ul {
+   	position: absolute;
+   	display: inline;
+	width: 100%;
+   	left: 0;
+   	margin: 0;
+   	padding: 0; 
+}
+#navbar li:hover li, #navbar li.hover li {
+   	float: left; 
+   	font-size: 11pt;
+   	color: #fff;
+}
+#navbar li:hover li a, #navbar li.hover li a {
+	width: 100%;
+	display: block;
+	text-indent: 3px;
+	text-decoration: none;
+	/*background: #bab1aa;*/
+	/*border: 1px solid #fff;*/
+}
+#navbar li li a:hover {
+	text-decoration: underline;
+}
+li.navbar {
+	width: 135px;
+	margin-left:1px;
+}
+li.navlong {
+	width: 235px/*227px - 127px*/;
+	padding-top: 2px;
+	margin: 0 10px;
+}
+li.navshort {
+	width: 75px;
+	padding-top: 2px;
+	margin: 0 20px;
 }
