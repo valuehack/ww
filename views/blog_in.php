@@ -30,7 +30,7 @@ if(isset($_GET['id']))
 	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
 ?>
-<div class="banner_blog">
+		<div class="banner_blog">
             <div class="banner_blogimg" style="background-image: url(<?=$img?>);"></div>
             <div class="banner_blogms"><h1><?=$title?></h1>
                 <p>Copyright by <a href="">Jamie</a>, published under <a href="">Creative Commons</a>, original version can be found <a href="">here</a>.</p>
@@ -60,7 +60,7 @@ if(isset($_GET['id']))
 ?>		<h2>Beschreibung Mitgliedschaft:</h2>
 
 		<p>Das Institut für Wertewirtschaft ist eine gemeinnützige Einrichtung, die sich durch einen besonders langfristigen Zugang auszeichnet. Um unsere Unabhängigkeit zu bewahren, akzeptieren wir keinerlei Mittel, die aus unfreiwilligen Zahlungen (Steuern, Gebühren, Zwangsmitgliedschaften etc.) stammen. Umso mehr sind wir auf freiwillige Investitionen angewiesen. Nur mit Ihrer Unterstützung können wir unsere Arbeit aufrecht erhalten oder ausweiten.<br><br>
-		<a class="upgrade" href="/upgrade.php"> &rarr; Upgrade</a></p>
+		<a class="upgrade" href="/upgrade.php">Upgrade</a></p>
 		
 		<footer class="article">
 		<p><a href="index.php">Alle Scholien</a></p>
@@ -206,7 +206,9 @@ else
 		$pagination.= "</div>\n";		
 	}
 ?>
-	<h1>Scholien</h1>
+	 <div class="content">
+           <article class="article">
+			<h1>Scholien</h1>
 	<?php
 		while($entry = mysql_fetch_array($result))
 		{
@@ -217,11 +219,11 @@ else
 		$publ_date = $entry[publ_date];
 
 		echo "<h5><a href='?id=$id'>".$title."</a></h5>";
-		echo "<i>Keyword: ".$id."&nbsp &nbsp &nbsp Datum: ".date('d.m.Y', strtotime($publ_date))."</i><br>";
+		echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp Datum: -->".date('d.m.Y', strtotime($publ_date))."</p>";
 		
 		if (strlen($private) > 500) {
 			echo substr ($private, 0, 500);
-			echo " ... </p><a href='?id=$id'>&rarr; Weiterlesen</a><hr>";
+			echo " ... <a href='?id=$id'>&rarr; Weiterlesen</a>";
 		}
 		else {
 			echo $private;
@@ -235,8 +237,7 @@ else
 <?=$pagination?>
            </article> 
         </div>
-</div>
-
+        
 <?php //include('_side_in.php'); ?>
 
 <?php include('_footer_blog.php'); ?>
