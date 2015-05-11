@@ -25,13 +25,14 @@ if(isset($_GET['id']))
 	$entry = mysql_fetch_array($result);
 
 	$title = $entry[title];
+	$img = $entry[img];
 	$private = $entry[private_text];
 	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
 ?>
 <div class="banner_blog">
-            <div class="banner_blogimg" style="background-image: url(gfx/names.jpg);"></div>
-            <div class="banner_blogms"><h1><?"$title"?></h1>
+            <div class="banner_blogimg" style="background-image: url(<?=$img?>);"></div>
+            <div class="banner_blogms"><h1><?=$title?></h1>
                 <p>Copyright by <a href="">Jamie</a>, published under <a href="">Creative Commons</a>, original version can be found <a href="">here</a>.</p>
             </div>
         </div>
@@ -46,10 +47,10 @@ if(isset($_GET['id']))
                </aside>
         <div class="content">
            <article class="article">
-               <div>
+               <header>
 <?               			
 	echo "<h1>".$title."</h1>";
-	echo "</div>";
+	echo "</header>";
 	echo "<i>Keyword: ".$id."&nbsp &nbsp &nbsp Datum: ".date('d.m.Y', strtotime($publ_date))."</i><br>";
 ?>
     <p class="linie"><img src="gfx/linie.png" alt=""></p>
@@ -232,4 +233,4 @@ else
 
 <?php //include('_side_in.php'); ?>
 
-<?php include('_footer.php'); ?>
+<?php include('_footer_blog.php'); ?>
