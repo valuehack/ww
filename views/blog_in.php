@@ -15,6 +15,21 @@ $title="Blog";
 <a class="content" href="../index.php">Index &raquo;</a><a class="content" href="<?php echo $_SERVER['PHP_SELF']; ?>"> Blog</a>
 <div id="tabs-wrapper-lower"></div>-->
 
+
+<?php 
+if(isset($_GET['id']))
+{
+	$id = $_GET['id'];
+
+ 	$sql = "SELECT * from blog WHERE id='$id'";
+	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+	$entry = mysql_fetch_array($result);
+
+	$title = $entry[title];
+	$private = $entry[private_text];
+	$public = $entry[public_text];
+	$publ_date = $entry[publ_date];
+?>
 <div class="banner_blog">
             <div class="banner_blogimg" style="background-image: url(gfx/names.jpg);"></div>
             <div class="banner_blogms"><h1>Namensgebung</h1>
@@ -32,25 +47,10 @@ $title="Blog";
                </aside>
         <div class="content">
            <article class="article">
-               <header>
-
-
-<?php 
-if(isset($_GET['id']))
-{
-	$id = $_GET['id'];
-
- 	$sql = "SELECT * from blog WHERE id='$id'";
-	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-	$entry = mysql_fetch_array($result);
-
-	$title = $entry[title];
-	$private = $entry[private_text];
-	$public = $entry[public_text];
-	$publ_date = $entry[publ_date];
-	
+               <div>
+<?               			
 	echo "<h1>".$title."</h1>";
-	echo "</header>";
+	echo "</div>";
 	echo "<i>Keyword: ".$id."&nbsp &nbsp &nbsp Datum: ".date('d.m.Y', strtotime($publ_date))."</i><br>";
 ?>
     <p class="linie"><img src="gfx/linie.png" alt=""></p>
