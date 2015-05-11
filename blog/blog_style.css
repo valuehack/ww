@@ -215,8 +215,6 @@ p, h1, h2, a, ul, ol {
 }
 
 .article h2 {
-	font-size: 22pt;
-	margin: 40px 0 25px 0;	
 }
 
 .article a {
@@ -362,6 +360,16 @@ p, h1, h2, a, ul, ol {
 .weitere {
 	color: rgb(46,74,98);
 	border-bottom: 1px solid;
+}
+
+.blog_entry {
+	margin: 30px 0 20px 0;
+	background: #ccc;
+}
+
+.blog_entry h2 {
+	font-size: 22pt;
+	margin: 10px 0;	
 }
 	
 /*============================ Header Alt=========================*/

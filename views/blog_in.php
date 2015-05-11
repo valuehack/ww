@@ -208,7 +208,9 @@ else
 ?>
 	 <div class="content">
            <article class="article">
+           	<header>
 			<h1>Scholien</h1>
+			</header>
 	<?php
 		while($entry = mysql_fetch_array($result))
 		{
@@ -218,17 +220,20 @@ else
 		$private = $entry[private_text];
 		$publ_date = $entry[publ_date];
 
+		echo "<div class='blog_entry'>";
 		echo "<h2><a href='?id=$id'>".$title."</a></h2>";
 		echo "<p class='blogdates'><!--Keyword: ".$id."&nbsp &nbsp &nbsp Datum: -->".date('d.m.Y', strtotime($publ_date))."</p>";
 		
 		if (strlen($private) > 500) {
 			echo substr ($private, 0, 500);
 			echo " ... <a class='weitere' href='?id=$id'> Weiterlesen</a>";
+			echo "</div>";
 			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
 		}
 		else {
 			echo $private;
 			echo " <a class='weitere' href='?id=$id'> Weiterlesen</a>";
+			echo "</div>";
 			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
 		}
 	}
