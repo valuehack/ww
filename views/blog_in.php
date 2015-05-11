@@ -5,7 +5,7 @@
 
 require_once('../classes/Login.php');
 include('_header.php'); 
-include('paginate.php');//pagination script
+#include('paginate.php');//pagination script
 $title="Blog";
 
 ?>
