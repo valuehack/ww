@@ -57,10 +57,11 @@ if(isset($_GET['id']))
 	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";		
 	if ($_SESSION['Mitgliedschaft'] == 1) {
 		echo $public."<br>";
-		echo "Beschreibung Mitgliedschaft: <br> Das Institut für Wertewirtschaft ist eine gemeinnützige Einrichtung, die sich durch einen besonders langfristigen Zugang auszeichnet. Um unsere Unabhängigkeit zu bewahren, akzeptieren wir keinerlei Mittel, die aus unfreiwilligen Zahlungen (Steuern, Gebühren, Zwangsmitgliedschaften etc.) stammen. Umso mehr sind wir auf freiwillige Investitionen angewiesen. Nur mit Ihrer Unterstützung können wir unsere Arbeit aufrecht erhalten oder ausweiten.";
-		echo "<a href='/upgrade.php'> &rarr; Upgrade</a>";
-		echo "<footer class='article'>";
-		echo "<a href='index.php'>Alle Scholien</a>";
+?>		"Beschreibung Mitgliedschaft: <br> Das Institut für Wertewirtschaft ist eine gemeinnützige Einrichtung, die sich durch einen besonders langfristigen Zugang auszeichnet. Um unsere Unabhängigkeit zu bewahren, akzeptieren wir keinerlei Mittel, die aus unfreiwilligen Zahlungen (Steuern, Gebühren, Zwangsmitgliedschaften etc.) stammen. Umso mehr sind wir auf freiwillige Investitionen angewiesen. Nur mit Ihrer Unterstützung können wir unsere Arbeit aufrecht erhalten oder ausweiten.";
+		<a href="/upgrade.php"> &rarr; Upgrade</a>;
+		<footer class="article">;
+		<a href="index.php">Alle Scholien</a>;
+<?
 	}
 
 	else {
