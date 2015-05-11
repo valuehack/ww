@@ -12,7 +12,7 @@ $publ_query = "SELECT * FROM blog WHERE publ_date <= CURDATE() AND DATEDIFF(CURD
 $publ_result = mysql_query($publ_query) or die("Failed Query of " .$publ_query. mysql_error());
 $publ_rows = mysql_num_rows($publ_result); 
 
-echo $publ_rows;
+//echo $publ_rows;
 
 if ($publ_rows == 0) {
 	//get the id of the next entry which gets published
@@ -83,30 +83,23 @@ if ($publ_rows == 0) {
 	mysql_query($paragraph_query) or die("Failed Query of " .$paragraph_query. mysql_error());
 
 	
-	//special css format for blockquotes (french)
-	//$quote = '"quote"';
+	//special css format for quotes
+	$quote = '"quote"';
 
-	$quote_query = "UPDATE blog SET public_text = replace(public_text, '<p>&laquo;', '<blockquote>') WHERE n = '$n'";
+	$quote_query = "UPDATE blog SET public_text = replace(public_text, '>&laquo;', ' class=$quote>') WHERE n = '$n'";
 	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
 
-	$quote_query = "UPDATE blog SET public_text = replace(public_text, '&raquo;</p>', '</blockquote>') WHERE n = '$n'";
+	$quote_query = "UPDATE blog SET public_text = replace(public_text, '&raquo;', '') WHERE n = '$n'";
 	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
 
-	$quote_query = "UPDATE blog SET private_text = replace(private_text, '<p>&laquo;', '<blockquote>') WHERE n = '$n'";
+	$quote_query = "UPDATE blog SET private_text = replace(private_text, '>&laquo;', ' class=$quote>') WHERE n = '$n'";
 	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
 
-	$quote_query = "UPDATE blog SET private_text = replace(private_text, '&raquo;</p>', '</blockquote>') WHERE n = '$n'";
+	$quote_query = "UPDATE blog SET private_text = replace(private_text, '&raquo;', '') WHERE n = '$n'";
 	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
 	
-
-	//normal quote marks
-	$quote_query = "UPDATE blog SET public_text = replace(public_text, '„', '&bdquo;') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-
-	$quote_query = "UPDATE blog SET private_text = replace(private_text, '“', '&rdquo;') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-
-
+	//oder statt class="quote" <blockquote>
+	
 }
 
 /*
