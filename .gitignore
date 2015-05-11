@@ -1,5 +1,5 @@
-!config/
-!config/config.php
+config/*
+config/config.php
 
 ._db.php
 .werte_db.php

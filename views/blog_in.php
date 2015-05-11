@@ -5,7 +5,6 @@
 
 require_once('../classes/Login.php');
 include('_header_in.php'); 
-include('paginate.php');//pagination script
 $title="Blog";
 
 ?>
@@ -230,6 +229,7 @@ else
            </article> 
         </div>
 </div>
-<!--<?php include('_side_in.php'); ?>-->
+
+<?php //include('_side_in.php'); ?>
 </div>
 <?php include('_footer.php'); ?>

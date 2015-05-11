@@ -32,7 +32,7 @@ if(isset($_GET['id']))
 	$entry = mysql_fetch_array($result);
 
 	$title = $entry[title];
-	$public = $entry['public'];
+	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
 
 	echo "<h5>".$title."</h5>";
@@ -171,7 +171,7 @@ else
 	{
 		$id = $entry[id];
 		$title = $entry[title];
-		$public = $entry['public'];
+		$public = $entry[public_text];
 		$publ_date = $entry[publ_date];
 
 		echo "<h5><a href='?id=$id'>".$title."</a></h5>";

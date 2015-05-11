@@ -61,8 +61,8 @@ table {
 
 /*=========================================*/
 
-p, h1, h2, a {
-	font-family: "Baskerville", Times, serif;
+p, h1, h2, a, ul, ol {
+	font-family: "Baskerville", Georgia, Times, serif;
 }
 
 .header {
