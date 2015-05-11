@@ -134,9 +134,7 @@ else
 		$pagination .= "<div class=\"pagination\">";
 		//previous button
 		if ($page > 1) 
-			$pagination.= "<a href=\"$targetpage?page=$prev\">� previous</a>";
 		else
-			$pagination.= "<span class=\"disabled\">� previous</span>";	
 		
 		//pages	
 		if ($lastpage < 7 + ($adjacents * 2))	//not enough pages to bother breaking it up
@@ -200,9 +198,7 @@ else
 		
 		//next button
 		if ($page < $counter - 1) 
-			$pagination.= "<a href=\"$targetpage?page=$next\">next �</a>";
 		else
-			$pagination.= "<span class=\"disabled\">next �</span>";
 		$pagination.= "</div>\n";		
 	}
 ?>
