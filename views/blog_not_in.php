@@ -4,7 +4,7 @@
 <?php 
 
 require_once('../classes/Login.php');
-include('_header.php'); 
+include('_header_not_in.php'); 
 $title="Blog";
 
 ?>
@@ -13,8 +13,6 @@ $title="Blog";
 <div id="content">
 <a class="content" href="../index.php">Index &raquo;</a><a class="content" href="<?php echo $_SERVER['PHP_SELF']; ?>"> Blog</a>
 <div id="tabs-wrapper-lower"></div>
-
-<h2>Scholien</h2>
 
 <?php 
 if(isset($_GET['id']))
@@ -50,6 +48,8 @@ if(isset($_GET['id']))
 }
 else 
 {
+	echo "<h2>Scholien</h2>";
+
 	//Pagination Script found at http://www.phpeasystep.com/phptu/29.html
 	$tbl_name="blog";		//your table name
 	// How many adjacent pages should be shown on each side?
@@ -192,6 +192,6 @@ else
 <?=$pagination?>
 
 </div>
-<?php include('_side_not_in.php'); ?>
+<?php //include('_side_not_in.php'); ?>
 </div>
 <?php include('_footer.php'); ?>
