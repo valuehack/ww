@@ -144,7 +144,7 @@ p, h1, h2, a, ul, ol {
 	font-size: 12pt;
 	font-style: italic;
 	text-align: right;
-	margin: 80px;
+	margin: 80px 0;
 }
 
 .linie {
@@ -303,6 +303,22 @@ p, h1, h2, a, ul, ol {
 
 .article footer a:link, a:hover, a:visited {
 	border: 0;
+}
+
+.article footer p {
+	text-align: right;
+	margin-bottom: 20px;
+	font-size: 18pt;
+}
+
+.article footer p a:link {
+	color: rgb(46,74,98);
+	border-bottom: 1px dotted;
+}
+
+.article footer p a:hover, a:visited {
+	color: rgb(46,74,98);
+	border-bottom: 1px solid;
 }
 
 .footer {
