@@ -78,6 +78,7 @@ if(isset($_GET['id']))
                    <a href=""><img src="gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a>
                    </div>
                </footer>
+               <p class="linie"><img src="gfx/linie.png" alt=""></p>
 <?	
 }
 
@@ -200,7 +201,7 @@ else
 		$pagination.= "</div>\n";		
 	}
 ?>
-
+<h1>Scholien</h1>
 	<?php
 		while($entry = mysql_fetch_array($result))
 		{
@@ -227,8 +228,6 @@ else
 	?>
 
 <?=$pagination?>
-				
-               <p class="linie"><img src="gfx/linie.png" alt=""></p>
            </article> 
         </div>
 </div>
