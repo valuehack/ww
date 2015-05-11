@@ -147,6 +147,13 @@ p, h1, h2, a, ul, ol {
 	margin: 80px 0;
 }
 
+.blogdates {
+	font-size: 14pt;
+	font-style: italic;
+	text-align: right;
+	margin: 20px 0;
+}
+
 .linie {
 	text-align: center;
 	margin-top: 50px;
@@ -200,7 +207,6 @@ p, h1, h2, a, ul, ol {
 }
 
 .article h1 {
-	font-family: 'Libre Baskerville', serif;
 	text-align: center;
 	font-size: 72px;
 	text-transform: uppercase;
@@ -209,7 +215,8 @@ p, h1, h2, a, ul, ol {
 }
 
 .article h2 {
-	
+	font-size: 16pt;
+	margin: 40px 0 25px 0;	
 }
 
 .article a {
@@ -345,6 +352,16 @@ p, h1, h2, a, ul, ol {
 	background: rgba(26,26,26,0.4);
 	color: #fff;
 	box-shadow: 1px 1px 2px rgb(25,25,25);
+}
+
+.weitere {
+	color: rgba(46,74,98,0.6);
+	border-bottom: 1px dotted;
+}
+
+.weitere {
+	color: rgb(46,74,98);
+	border-bottom: 1px solid;
 }
 	
 /*============================ Header Alt=========================*/

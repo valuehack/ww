@@ -218,16 +218,16 @@ else
 		$private = $entry[private_text];
 		$publ_date = $entry[publ_date];
 
-		echo "<h5><a href='?id=$id'>".$title."</a></h5>";
-		echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp Datum: -->".date('d.m.Y', strtotime($publ_date))."</p>";
+		echo "<h2><a href='?id=$id'>".$title."</a></h2>";
+		echo "<p class='blogdates'><!--Keyword: ".$id."&nbsp &nbsp &nbsp Datum: -->".date('d.m.Y', strtotime($publ_date))."</p>";
 		
 		if (strlen($private) > 500) {
 			echo substr ($private, 0, 500);
-			echo " ... <a href='?id=$id'>&rarr; Weiterlesen</a>";
+			echo " ... <a class='weitere' href='?id=$id'> Weiterlesen</a>";
 		}
 		else {
 			echo $private;
-			echo " <a href='?id=$id'>&rarr; Weiterlesen</a><hr>";
+			echo " <a class='weitere' href='?id=$id'> Weiterlesen</a>";
 	
 		}
 	}
