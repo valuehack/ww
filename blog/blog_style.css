@@ -132,7 +132,7 @@ p, h1, h2, a, ul, ol {
 
 .article {
 	padding: 25px;
-	font-size: 16pt;
+	font-size: 20pt;
 }
 
 .article header {
@@ -215,7 +215,7 @@ p, h1, h2, a, ul, ol {
 }
 
 .article h2 {
-	font-size: 16pt;
+	font-size: 22pt;
 	margin: 40px 0 25px 0;	
 }
 
