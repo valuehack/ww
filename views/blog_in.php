@@ -31,7 +31,7 @@ if(isset($_GET['id']))
 ?>
 <div class="banner_blog">
             <div class="banner_blogimg" style="background-image: url(gfx/names.jpg);"></div>
-            <div class="banner_blogms"><h1>Namensgebung</h1>
+            <div class="banner_blogms"><h1><?"$title"?></h1>
                 <p>Copyright by <a href="">Jamie</a>, published under <a href="">Creative Commons</a>, original version can be found <a href="">here</a>.</p>
             </div>
         </div>
@@ -231,6 +231,5 @@ else
 </div>
 
 <?php //include('_side_in.php'); ?>
-</div>
 
 <?php include('_footer.php'); ?>
