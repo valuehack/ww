@@ -31,6 +31,8 @@ if(isset($_GET['id']))
 	$private = $entry[private_text];
 	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
+	$length = str_word_count($private, 0, 'äüöÄÜÖß') - str_word_count($public, 0, 'äüöÄÜÖß');
+
 ?>
 		<div class="banner_blog">
             <div class="banner_blogimg" style="background-image: url(http://test.wertewirtschaft.net/blog/gfx/<?php echo $id;?>.jpg);"></div>
@@ -55,6 +57,7 @@ if(isset($_GET['id']))
 		echo $public;
 		echo "</div>";
 ?>		<div class="upgrade">
+		<p>Wenn Sie jetzt zahlendes Mitlied werden, können Sie noch <? echo $length;?> Wörter mehr lesen.</p>
 		<h2>Beschreibung Mitgliedschaft:</h2>
 
 		<p>Das Institut für Wertewirtschaft ist eine gemeinnützige Einrichtung, die sich durch einen besonders langfristigen Zugang auszeichnet. Um unsere Unabhängigkeit zu bewahren, akzeptieren wir keinerlei Mittel, die aus unfreiwilligen Zahlungen (Steuern, Gebühren, Zwangsmitgliedschaften etc.) stammen. Umso mehr sind wir auf freiwillige Investitionen angewiesen. Nur mit Ihrer Unterstützung können wir unsere Arbeit aufrecht erhalten oder ausweiten.<br><br>
