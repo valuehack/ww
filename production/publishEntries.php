@@ -63,13 +63,15 @@ if ($publ_rows == 0) {
 
 	
 	//special css format for blockquotes (french quote marks)
-	$quote_query = "UPDATE blog SET public_text = replace(public_text, '<p>&laquo;', '<blockquote><p>') WHERE n = '$n'";
+	$blockquote = '"blockquote"';
+
+	$quote_query = "UPDATE blog SET public_text = replace(public_text, '<p>&laquo;', '<blockquote class=$blockquote><p>') WHERE n = '$n'";
 	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
 
 	$quote_query = "UPDATE blog SET public_text = replace(public_text, '&raquo;</p>', '</p></blockquote>') WHERE n = '$n'";
 	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
 
-	$quote_query = "UPDATE blog SET private_text = replace(private_text, '<p>&laquo;', '<blockquote><p>') WHERE n = '$n'";
+	$quote_query = "UPDATE blog SET private_text = replace(private_text, '<p>&laquo;', '<blockquote class=$blockquote><p>') WHERE n = '$n'";
 	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
 
 	$quote_query = "UPDATE blog SET private_text = replace(private_text, '&raquo;</p>', '</p></blockquote>') WHERE n = '$n'";
