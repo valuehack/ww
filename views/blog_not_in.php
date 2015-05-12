@@ -184,9 +184,9 @@ else
 		
 		//next button
 		if ($page < $counter - 1) 
-			$pagination.= "<a href=\"$targetpage?page=$next\">vor</a>";
+			$pagination.= "<a href=\"$targetpage?page=$next\">vor »</a>";
 		else
-			$pagination.= "<span class=\"disabled\">vor</span>";
+			$pagination.= "<span class=\"disabled\">vor »</span>";
 		$pagination.= "</div>\n";		
 	}
 ?>
