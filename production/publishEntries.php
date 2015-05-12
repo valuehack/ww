@@ -41,8 +41,21 @@ if ($publ_rows == 0) {
 	//publish the entry where publ_date is NULL, which has the lowest identification number(n)
 	$update_query = "UPDATE blog SET publ_date = CURDATE() WHERE n = '$n'";
 	mysql_query($update_query) or die("Failed Query of " .$update_query. mysql_error());
+}	
 
-	
+
+//edit the future entries
+$edit_query = "SELECT * FROM blog WHERE edited = 0";
+$edit_result = mysql_query($edit_query) or die("Failed Query of " .$edit_query. mysql_error());
+$edit_rows = mysql_num_rows($edit_result); 
+
+echo $edit_rows;
+
+if (!$edit_rows == 0) {
+
+	$edit_entry = mysql_fetch_array($edit_result);
+	$n = $edit_entry[n];
+
 	//transformation of published entry to HTML in title
 	$html_query = "SELECT * FROM blog WHERE n = '$n'";
 	$html_result = mysql_query($html_query) or die("Failed Query of " .$html_query. mysql_error());
@@ -90,6 +103,13 @@ if ($publ_rows == 0) {
 	$line_query = "UPDATE blog SET private_text = replace(private_text, '<hr />', '') WHERE n = '$n'";
 	mysql_query($line_query) or die("Failed Query of " .$line_query. mysql_error());
 }
+
+
+
+
+
+
+
 
 
 	/*
