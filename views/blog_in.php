@@ -34,9 +34,7 @@ if(isset($_GET['id']))
 ?>
 		<div class="banner_blog">
             <div class="banner_blogimg" style="background-image: url(<?=$img?>);"></div>
-            <div class="banner_blogms"><h1><?=$title?></h1>
-                <p>Copyright by <a href="">Jamie</a>, published under <a href="">Creative Commons</a>, original version can be found <a href="">here</a>.</p>
-            </div>
+            <div class="banner_blogms"><h1><?=$title?></h1></div>
         </div>
         <aside class="social">
                    <ul>
@@ -49,12 +47,7 @@ if(isset($_GET['id']))
                </aside>
         <div class="content">
            <article class="article">
-               <header>
-<?               			
-	echo "<h1>".$title."</h1>";
-	echo "</header>";
-?>
-    <p class="linie"><img src="gfx/linie.png" alt=""></p>
+    	   <p class="linie"><img src="gfx/linie.png" alt=""></p>
 <?               
 	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";		
 	if ($_SESSION['Mitgliedschaft'] == 1) {
