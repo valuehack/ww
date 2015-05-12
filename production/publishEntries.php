@@ -83,6 +83,10 @@ if ($publ_rows == 0) {
 	$nbsp_query = "UPDATE blog SET public_text = replace(public_text, '&nbsp;', ' ') WHERE n = '$n'";
 	mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
 
+
+	//get rid of the line
+	$line_query = "UPDATE blog SET public_text = replace(public_text, '<hr />', '') WHERE n = '$n'";
+	mysql_query($line_query) or die("Failed Query of " .$line_query. mysql_error());
 }
 
 
