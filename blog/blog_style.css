@@ -347,14 +347,15 @@ strong {
 
 .upgrade {
 	margin: 30px 0;
+	padding: 30px;
 	width: 100%;
     background-color: #fafafa;
     border: 1px solid #f0f0f0;
     border-radius: 6px;
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.05) inset;
     display: inline-block;
-    font-size: 14pt;
-    max-width: 960px;
+    font-size: 16pt;
+    max-width: 922px;
     position: relative;
     text-align: justify;
 }
@@ -365,7 +366,7 @@ strong {
 }
 
 .upgrade p {
-	line-height: 1.4em;
+	line-height: 1.5em;
 }
 
 .upgrade a {
