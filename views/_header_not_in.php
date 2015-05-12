@@ -114,9 +114,9 @@ if (isset($registration)) {
 <!-- test login -->
 <form method="post" action="index.php" name="loginform" style="text-aligna:center;">
         <label for="user_email"><?php# echo WORDING_LOGIN; ?></label>
-        <input class="inputfield" id="user_email" type="text" name="user_email" placeholder=" E-Mail Adresse" required /><br>
+        <input class="inputfield" id="user_email" type="text" name="user_email" placeholder=" E-Mail Adresse" required />
         <label for="user_password"><?php #echo WORDING_PASSWORD; ?></label>
-        <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" required /><br>
+        <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" required />
         <input class="inputbutton" type="submit" name="login" value="Anmelden" />
     </form>
 
