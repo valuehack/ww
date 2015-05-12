@@ -399,7 +399,7 @@ strong {
 	margin: 10px 0;
 }
 
-.upgrade a {
+.linkbutton a {
 	text-decoration: none;
 	display: block;
 	background: rgb(46,74,98);
@@ -413,12 +413,12 @@ strong {
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
 }
 
-.upgrade a:link {
+.linkbutton a:link {
 	display: block;
 	color: #fff;
 }
 
-.upgrade a:hover {
+.linkbutton a:hover {
 	background: rgb(30,48,64);
 }
 

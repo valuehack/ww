@@ -61,7 +61,7 @@ if(isset($_GET['id']))
 		<h2>Beschreibung Mitgliedschaft:</h2>
 
 		<p>Das Institut für Wertewirtschaft ist eine gemeinnützige Einrichtung, die sich durch einen besonders langfristigen Zugang auszeichnet. Um unsere Unabhängigkeit zu bewahren, akzeptieren wir keinerlei Mittel, die aus unfreiwilligen Zahlungen (Steuern, Gebühren, Zwangsmitgliedschaften etc.) stammen. Umso mehr sind wir auf freiwillige Investitionen angewiesen. Nur mit Ihrer Unterstützung können wir unsere Arbeit aufrecht erhalten oder ausweiten.<br><br>
-		<a class="upgrade" href="/upgrade.php">Upgrade</a></p>
+		<a class="linkbutton" href="/upgrade.php">Upgrade</a></p>
 		</div>
 		<footer class="article">
 		<p><a href="index.php">Alle Scholien</a></p>
