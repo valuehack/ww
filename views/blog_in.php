@@ -64,9 +64,11 @@ if(isset($_GET['id']))
 	}
 
 	else {
+		echo "<div class='blog_b'>";
 		echo $private;
 		echo "<footer class='article'>";
 		echo "<p><a href='index.php'>Alle Scholien</a></p>";
+		echo "</div>";
 		
 	}
 ?>
