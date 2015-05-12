@@ -207,14 +207,14 @@ else
 		echo "<h2><a href='?id=$id'>".$title."</a></h2>";
 		echo "<p class='blogdates'><!--Keyword: ".$id."&nbsp &nbsp &nbsp Datum: -->".date('d.m.Y', strtotime($publ_date))."</p>";
 		
-		if (strlen($private) > 500) {
-			echo substr ($private, 0, 500);
+		if (strlen($public) > 500) {
+			echo substr ($public, 0, 500);
 			echo " ... <a href='?id=$id'>Weiterlesen</a>";
 			echo "</div>";
 			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
 		}
 		else {
-			echo $private;
+			echo $public;
 			echo "... <a href='?id=$id'>Weiterlesen</a>";
 			echo "</div>";
 			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
