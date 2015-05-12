@@ -53,7 +53,7 @@ echo $edit_rows;
 
 if (!$edit_rows == 0) {
 
-	while($entry = mysql_fetch_array($edit_result))
+	while($edit_entry = mysql_fetch_array($edit_result))
 	{
 		$n = $edit_entry[n];
 
