@@ -44,7 +44,7 @@ if(isset($_GET['id']))
                        <li><a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/blog/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
                        <li><a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/blog/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
                        <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/blog/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
-                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/blog/index.php?id=<?php echo $id;?>"><img src="gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
+                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/blog/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
                     </ul>                 
                </aside>
         <div class="content">
@@ -83,7 +83,7 @@ if(isset($_GET['id']))
                    <a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/blog/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
                    <a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/blog/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
                    <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/blog/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
-                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/blog/index.php?id=<?php echo $id;?>"><img src="gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
+                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/blog/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
                    </div>
                </footer>
                <p class="linie"><img src="gfx/linie.png" alt=""></p>
