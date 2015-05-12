@@ -75,6 +75,10 @@ em {
 	font-style: italic;
 }
 
+strong {
+	font-weight: bold;
+}
+
 .header {
 	min-height: 103px;
 	width: 100%;
@@ -372,8 +376,9 @@ em {
 	text-shadow: 0px 0px 1px #666;
 }
 
-.blog_entry h2 a {
+.blog_entry h2 a:link,  .blog_entry h2 a:hover, .blog_entry h2 a:visited {
 	color: #000;
+	border: 0;
 }
 
 .blog_entry a:link {
