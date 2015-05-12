@@ -347,7 +347,9 @@ strong {
 
 .upgrade {
 	margin: 30px 0;
-	box-shadow: 1px 1px 1px rgb(26,26,26);	
+	width: 70%;
+	background: rgb(46,74,98);
+	box-shadow: 2px 0px 2px rgb(26,26,26);	
 }
 
 .upgrade h2 {
@@ -356,7 +358,7 @@ strong {
 }
 
 .upgrade p {
-	line-height: 1.4pt;
+	line-height: 1.4em;
 }
 
 .upgrade a:link {
