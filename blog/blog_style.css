@@ -402,8 +402,8 @@ strong {
 a.linkbutton {
 	text-decoration: none;
 	display: block;
-	background: rgb(46,74,98);
 	color: #fff;
+	background: rgb(46,74,98);
 	border: 0;
 	margin: 5px;
 	width: 200px;
@@ -411,6 +411,7 @@ a.linkbutton {
 	font-size: 16pt;
 	font-family: "Baskerville", Georgia, Times, serif;
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
+	text-align: center;
 }
 
 a.linkbutton:link {
@@ -419,6 +420,7 @@ a.linkbutton:link {
 }
 
 a.linkbutton:hover {
+	color: #fff;
 	background: rgb(30,48,64);
 }
 
