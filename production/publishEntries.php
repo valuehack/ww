@@ -43,17 +43,46 @@ if ($publ_rows == 0) {
 	mysql_query($update_query) or die("Failed Query of " .$update_query. mysql_error());
 
 	
-	//transformation of published entry to HTML
+	//transformation of published entry to HTML in title
 	$html_query = "SELECT * FROM blog WHERE n = '$n'";
 	$html_result = mysql_query($html_query) or die("Failed Query of " .$html_query. mysql_error());
 	$html_entry = mysql_fetch_array($html_result);
 
-	$title = htmlentities($html_entry[title]);
-	$public = htmlentities($html_entry[public_text]);
-	$private = htmlentities($html_entry[private_text]);
+	$title = htmlentities($html_entry[title])
 
 	$transform_query = "UPDATE blog SET title = '$title' WHERE n = '$n'";
 	mysql_query($transform_query) or die("Failed Query of " .$transform_query. mysql_error());
+
+
+	//get rid of <p>&nbsp;</p>
+	$nbsp_query = "UPDATE blog SET private_text = replace(private_text, '<p>&nbsp;</p>', '') WHERE n = '$n'";
+	mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
+
+	$nbsp_query = "UPDATE blog SET public_text = replace(public_text, '<p>&nbsp;</p>', '') WHERE n = '$n'";
+	mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
+
+
+	/*
+	//special css format for blockquotes (french quote marks)
+	$quote_query = "UPDATE blog SET public_text = replace(public_text, '<p>&laquo;', '<blockquote>') WHERE n = '$n'";
+	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+
+	$quote_query = "UPDATE blog SET public_text = replace(public_text, '&raquo;</p>', '</blockquote>') WHERE n = '$n'";
+	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+
+	$quote_query = "UPDATE blog SET private_text = replace(private_text, '<p>&laquo;', '<blockquote>') WHERE n = '$n'";
+	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+
+	$quote_query = "UPDATE blog SET private_text = replace(private_text, '&raquo;</p>', '</blockquote>') WHERE n = '$n'";
+	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+	*/
+
+}
+
+
+	/*
+	$public = htmlentities($html_entry[public_text]);
+	$private = htmlentities($html_entry[private_text]);
 
 	$transform_query = "UPDATE blog SET public_text = '$public' WHERE n = '$n'";
 	mysql_query($transform_query) or die("Failed Query of " .$transform_query. mysql_error());
@@ -105,9 +134,9 @@ if ($publ_rows == 0) {
 
 	$quote_query = "UPDATE blog SET private_text = replace(private_text, '&rdquo;', '&rdquo;') WHERE n = '$n'";
 	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+	*/
 
 
-}
 
 /*
 //Another possible, but more complicated solution (using htmlentities) for transforming to html that has some mistake:
