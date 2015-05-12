@@ -193,7 +193,7 @@ strong {
 	
 }
 
-.blog_b {
+.blog_b p {
 	line-height: 1.6em;
 	margin: 80px 0;
 	
@@ -210,8 +210,7 @@ strong {
 	text-align: center;
 	font-size: 72px;
 	text-transform: uppercase;
-	text-shadow: 0px 0px 1px #666;
-	
+	text-shadow: 0px 0px 1px #666;	
 }
 
 .article h2 {
@@ -264,7 +263,7 @@ strong {
 	color: rgba(0,0,0,0.6);
 }
 
-.blockquote {
+.blockquote p {
 	line-height: 1.5em;
 	padding: 0 50px 0 50px;
 	color: rgba(0,0,0,0.6);
