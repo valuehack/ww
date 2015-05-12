@@ -52,8 +52,8 @@ if (!isset($ok))
 
                 <!-- <label for="user_password_old"><?php #echo WORDING_OLD_PASSWORD; ?></label> -->
                 <input type="radio" name="payment_amount" value="90" required/>Standard<br>
-                <input type="radio" name="payment_amount" value="210"/>Middle<br>
-                <input type="radio" name="payment_amount" value="600"/>TheBestOne<br>
+                <input type="radio" name="payment_amount" value="150"/>Middle<br>
+                <input type="radio" name="payment_amount" value="300"/>TheBestOne<br>
             <hr>
                 <input type="radio" name="payment_type" value="bank" required/>Bank<br>
                 <input type="radio" name="payment_type" value="kredit"/>Paypal<br>
@@ -138,10 +138,14 @@ else
             </p>
 
             <p><b>Bitte verwenden Sie als Sie als Zahlungsreferenz/Betreff unbedingt &quot;Mitglied Nr. <?php echo $user_id ?>&quot;</b></p>
-            <?
+            <?php
             }
             if ($zahlung=="kredit")
             {
+            
+            #used to populate paypal 
+            $result_row = $login->getUserData(trim($_SESSION['user_email']));
+
             ?>
             <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <?=$betrag?> per Paypal: Einfach auf das Symbol unterhalb klicken, Ihre Kreditkartennummer eingeben, fertig. Unser Partner PayPal garantiert eine schnelle, einfache und sichere Zahlung (an Geb&uuml;hren fallen 2-3% vom Betrag an). Sie m&uuml;ssen kein eigenes Konto bei PayPal einrichten, die Eingabe Ihrer Kreditkartendaten reicht.</p><br>
 
@@ -156,11 +160,22 @@ else
             <input type="hidden" name="no_note" value="1">
             <input type="hidden" name="currency_code" value="EUR">
             <input type="hidden" name="tax" value="0">
+
+            <!-- prepopulate paypal -->
+            <INPUT TYPE="hidden" NAME="first_name" VALUE="<?php echo $result_row->Vorname ?>">
+            <INPUT TYPE="hidden" NAME="last_name" VALUE="<?php echo $result_row->Nachname ?>">
+            <INPUT TYPE="hidden" NAME="address1" VALUE="<?php echo $result_row->Strasse?>">
+            <INPUT TYPE="hidden" NAME="city" VALUE="<?php echo $result_row->Ort ?>">
+            <INPUT TYPE="hidden" NAME="zip" VALUE="<?php echo "" ?>">
+            <INPUT TYPE="hidden" NAME="lc" VALUE="AT">
+
             <input type="hidden" name="bn" value="PP-BuyNowBF">
             <input type="image" src="https://www.paypal.com/de_DE/i/btn/x-click-but6.gif" border="0" name="submit" alt="" style="border:none">
             <img alt="" border="0" src="https://www.paypal.com/de_DE/i/scr/pixel.gif" width="1" height="1">
             </form>
             </div>
+
+
             <?
             }
 

@@ -1017,7 +1017,7 @@ public function sendEventRegMail($events)
 public function upgradeUserAccount($payment_amount, $payment_type)
 {
 
-    switch ($payment_amount) {
+/*    switch ($payment_amount) {
         case 90:
             $Mitgliedschaft = 4;
             break;
@@ -1034,18 +1034,20 @@ public function upgradeUserAccount($payment_amount, $payment_type)
 
         $upgrade_query = "UPDATE mitgliederExt SET Mitgliedschaft='$Mitgliedschaft'  WHERE `user_email` LIKE '$user_email'";
         $upgrade_result = mysql_query($upgrade_query) or die("Failed Query of " . $upgrade_query. mysql_error());
-
         $_SESSION['Mitgliedschaft'] = $Mitgliedschaft;
+*/
+
+
+
+        $this->sendUpgradeMailToUser($payment_amount, $payment_type);
+        $this->sendUpgradeMailToInstitute();
 
         $this->messages[] = 'Upgrade successful! Please check your email - '. $_SESSION['user_email'] .' - for further instructions.';
-
-        $this->sendUpgradeMailToUser();
-        $this->sendUpgradeMailToInstitute();
 
 }
 
 /**/
-public function sendUpgradeMailToUser()
+public function sendUpgradeMailToUser($payment_amount, $payment_type)
     {
         $mail = new PHPMailer;
 
@@ -1072,6 +1074,7 @@ public function sendUpgradeMailToUser()
         }
 
         $user_email = $_SESSION['user_email'];
+        $user_id = $_SESSION['user_id'];
 
         $mail->From = EMAIL_PASSWORDRESET_FROM;
         $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
@@ -1083,31 +1086,120 @@ public function sendUpgradeMailToUser()
         
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
-        $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://www.wertewirtschaft.org/tools/Erinnerung-Header-01.png" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
-                    <!--#/image#-->
-                    </td>
-                    </tr>
-                    </tbody>
-                    </table>
-                    <!--#loopsplit#-->
-                    <table class="editable text" border="0" width="100%">
-                    <tbody>
-                    <tr>
-                    <td valign="top">
-                    <div style="text-align: justify;">
-                    <h2></h2>
-                    <!--#html #-->
-                    <span style="font-family: times new roman,times;">
-                    <span style="font-size: 12pt;">
-                    <span style="color: #000000;">
-                    <!--#/html#-->
-                    <br>            
-                    Dear economist,
-                    <br>
-                    Thanks for upgrading your account. <br>
-                    You will receive another email once your payment is confirmed. 
+        $body .='
+            <img style="" class="" title="" alt="" src="http://www.wertewirtschaft.org/tools/Erinnerung-Header-01.png" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+            <!--#/image#-->
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            <!--#loopsplit#-->
+            <table class="editable text" border="0" width="100%">
+            <tbody>
+            <tr>
+            <td valign="top">
+            <div style="text-align: justify;">
+            <h2></h2>
+            <!--#html #-->
+            <span style="font-family: times new roman,times;">
+            <span style="font-size: 12pt;">
+            <span style="color: #000000;">
+            <!--#/html#-->
+            <br>            
+            Dear economist,
+            <br>
+            Thanks for upgrading your account. <br>
+            You will receive another email once your payment is confirmed. 
+            <br>
+            <p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p>
+            <p><b>Laufzeit und K&uuml;ndigung:</b></p>   
+
+            <p>Die Mitgliedschaft l&auml;uft ein Jahr und verl&auml;ngernt sich automatisch um ein weiteres Jahr wenn Sie nicht zwei Wochen vor Ablauf k&uuml;ndigen. Eine K&uuml;ndigung ist jederzeit m&ouml;glich, E-Mail oder Fax gen&uuml;gt.</p>
                         ';
+
+
+        switch ($payment_amount) {
+        case 90: 
+            $body .="<li>Standardmitgliedschaft</li>";           
+            break;
+        case 150:
+            $body .="<li>F&ouml;rdermitgliedschaft (150 &euro;)</li>";
+            break;
+        case 300:
+            $body .="<li>F&ouml;rdermitgliedschaft (300 &euro;)</li>";
+            break;
+        default: 
+            #some text in here if all above fails
+            break;
+        }
+
+        switch ($payment_type) {
+
+        case "bar":   
+        $body .="<p>Bitte schicken Sie uns den gew&auml;hlten Betrag von ".$payment_amount."  &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das Institut f&uuml;r Wertewirtschaft, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich im Institut (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>";
+            break;
+
+        case "kredit":
+#this does not work in the email/ paypal complains
+/*        $body .='
+            <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR '.$payment_amount.' per Paypal: Einfach auf das Symbol unterhalb klicken, Ihre Kreditkartennummer eingeben, fertig. Unser Partner PayPal garantiert eine schnelle, einfache und sichere Zahlung (an Geb&uuml;hren fallen 2-3% vom Betrag an). Sie m&uuml;ssen kein eigenes Konto bei PayPal einrichten, die Eingabe Ihrer Kreditkartendaten reicht.</p><br>
+
+            <div align="center">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" name="paypal">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="info@wertewirtschaft.org">
+            <input type="hidden" name="item_name" value="Mitglied Nr.'.$user_id.'">
+            <input type="hidden" name="amount" value="<?php=$betrag?>">
+            <input type="hidden" name="shipping" value="0">
+            <input type="hidden" name="no_shipping" value="1">
+            <input type="hidden" name="no_note" value="1">
+            <input type="hidden" name="currency_code" value="EUR">
+            <input type="hidden" name="tax" value="0">
+            <input type="hidden" name="bn" value="PP-BuyNowBF">
+            <input type="image" src="https://www.paypal.com/de_DE/i/btn/x-click-but6.gif" border="0" name="submit" alt="" style="border:none">
+            <img alt="" border="0" src="https://www.paypal.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+            </form>
+            </div>
+            ';*/
+
+        break;
+
+        case "bank":
+
+        $body .= "
+        <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR ".$payment_amount." an:</p>
+        <p><i>International</i>
+        <ul>
+        <li>Institut f&uuml;r Wertewirtschaft</li>
+        <li>Erste Bank, Wien/&Ouml;sterreich</li>
+        <li>Kontonummer: 28824799900</li>
+        <li>Bankleitzahl: 20111</li>
+        <li>IBAN: AT332011128824799900</li>
+        <li>BIC: GIBAATWW</li>
+        </ul></p>
+
+        <p>Alternativ k&ouml;nnen Sie den Gegenwert in Schweizer Franken auf folgendes Konto &uuml;berweisen:</p>
+
+        <p>
+        <ul>
+        <li>Institut f&uuml;r Wertewirtschaft</li>
+        <li>Liechtensteinische Landesbank</li>
+        <li>Kontonummer: 23103297</li>
+        <li>Bankleitzahl: 08800</li>
+        <li>IBAN: LI6308800000023103297</li>
+        <li>BIC: LILALI2X</li>
+        </ul>
+        </p>
+
+        <p><b>Bitte verwenden Sie als Sie als Zahlungsreferenz/Betreff unbedingt &quot;Mitglied Nr.".$user_id."&quot;</b></p>
+        ";
+
+            break;
+
+        default: 
+            #some text in here if all above fails
+            break;
+        }
 
 /*        $body = $body.'
                     <table cellspacing="0" cellpadding="0"> <tr>
