@@ -76,7 +76,8 @@ class Registration
         }
     }   
 
-private function subscribeNewUser($user_email)
+    //main function to deal with registration of new users
+    private function subscribeNewUser($user_email)
     {
         // we just remove extra space on email
         $user_email = trim($user_email);
@@ -145,7 +146,7 @@ private function subscribeNewUser($user_email)
 
                if ($query_new_user_insert) {
                    // send a verification email
-                   if ($this->sendVerificationEmail($user_id, $user_email, $user_activation_hash, $user_password)) {
+                   if ($this->sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password)) {
                        // when mail has been send successfully
                        $this->messages[] = MESSAGE_VERIFICATION_MAIL_SENT;
                        $this->registration_successful = true;
@@ -170,7 +171,7 @@ private function subscribeNewUser($user_email)
 
                 if ($query_new_user_insert) 
                 {
-                    $this->errors[] = "Successfully registered.";
+                    #$this->errors[] = "Successfully registered.";
                     // $this->messages[] =
                     
 
@@ -180,120 +181,26 @@ private function subscribeNewUser($user_email)
                     $this->errors[] = MESSAGE_REGISTRATION_FAILED;
                 }
 
-
-                            }
-                        }
-                    }
-
-#generates a random string of 6 characters
-private function randomPasswordGenerator() {
-    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";  
-
-    $size = strlen( $chars );
-    for( $i = 0; $i < 6; $i++ ) {
-        $str .= $chars[ rand( 0, $size - 1 ) ];
-    }
-
-    return $str;
-}
-
-public function sendVerificationEmail($user_id, $user_email, $user_activation_hash, $user_password)
-    {
-        $mail = new PHPMailer;
-
-        // please look into the config/config.php for much more info on how to use this!
-        // use SMTP or use mail()
-        if (EMAIL_USE_SMTP) {
-            // Set mailer to use SMTP
-            $mail->IsSMTP();
-            //useful for debugging, shows full SMTP errors
-            //$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-            // Enable SMTP authentication
-            $mail->SMTPAuth = EMAIL_SMTP_AUTH;
-            // Enable encryption, usually SSL/TLS
-            if (defined(EMAIL_SMTP_ENCRYPTION)) {
-                $mail->SMTPSecure = EMAIL_SMTP_ENCRYPTION;
             }
-            // Specify host server
-            $mail->Host = EMAIL_SMTP_HOST;
-            $mail->Username = EMAIL_SMTP_USERNAME;
-            $mail->Password = EMAIL_SMTP_PASSWORD;
-            $mail->Port = EMAIL_SMTP_PORT;
-        } else {
-            $mail->IsMail();
-        }
-
-        $mail->From = EMAIL_VERIFICATION_FROM;
-        $mail->FromName = EMAIL_VERIFICATION_FROM_NAME;
-        $mail->AddAddress($user_email);
-        $mail->Subject = EMAIL_VERIFICATION_SUBJECT;
-
-        $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
-
-        // the link to your register.php, please set this value in config/email_verification.php
-        $mail->Body = EMAIL_VERIFICATION_CONTENT.' '.$link.' Password: '.$user_password;
-
-        if(!$mail->Send()) {
-            $this->errors[] = MESSAGE_VERIFICATION_MAIL_NOT_SENT . $mail->ErrorInfo;
-            return false;
-        } else {
-            return true;
         }
     }
 
-#ADDITION
-#Creating password for newly subscribed members
-public function subscriptionVerification($user_id,$user_email,$user_activation_hash)
-    {
-        $user_email = trim($user_email);
+    //generates a random string of 6 characters used for temporary passwords
+    private function randomPasswordGenerator() {
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";  
 
-        if (empty($user_email)) {
-            $this->errors[] = MESSAGE_EMAIL_EMPTY;
-
-        } else {
-            // generate timestamp (to see when exactly the user (or an attacker) requested the password reset mail)
-            // btw this is an integer ;)
-            $temporary_timestamp = time();
-            // generate random hash for email password reset verification (40 char string)
-            $user_password_reset_hash = sha1(uniqid(mt_rand(), true));
-            // database query, getting all the info of the selected user
-            
-
-#PROBLEM here. take user email from session id\\ no need for more data
-#$result_row = $this->getUserData($user_email);
-
-            // if this user exists
-            #if (isset($result_row->user_id)) {
-
-
-                // database query:
-                $query_update = $this->db_connection->prepare('UPDATE mitgliederExt SET user_password_reset_hash = :user_password_reset_hash,
-                                                               user_password_reset_timestamp = :user_password_reset_timestamp
-                                                               WHERE user_email = :user_email');
-                $query_update->bindValue(':user_password_reset_hash', $user_password_reset_hash, PDO::PARAM_STR);
-                $query_update->bindValue(':user_password_reset_timestamp', $temporary_timestamp, PDO::PARAM_INT);
-                $query_update->bindValue(':user_email', $user_email, PDO::PARAM_STR);
-                $query_update->execute();
-
-                // check if exactly one row was successfully changed:
-                if ($query_update->rowCount() == 1) {
-                    // send a mail to the user, containing a link with that token hash string
-                    $this->sendSubscriptionMail($user_email, $user_password_reset_hash);
-
-
-                    return true;
-                } else {
-                    $this->errors[] = MESSAGE_DATABASE_ERROR;
-                }
-#            } else {
-#                $this->errors[] = MESSAGE_USER_DOES_NOT_EXIST;
-#            }
+        $size = strlen( $chars );
+        for( $i = 0; $i < 6; $i++ ) {
+            $str .= $chars[ rand( 0, $size - 1 ) ];
         }
-        // return false (this method only returns true when the database entry has been set successfully)
-        return false;
+
+        return $str;
     }
-#-------------------------------------
-public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash)
+
+
+    #-------------------------------------
+    //send an email to a newly subscribed member, containing password and activation link
+    public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password)
     {
         $mail = new PHPMailer;
 
@@ -327,83 +234,88 @@ public function sendSubscriptionMail($user_id, $user_email, $user_activation_has
         #verification link
         $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
 
+
+        // the link to your register.php, please set this value in config/email_verification.php
+        $mail->Body = EMAIL_VERIFICATION_CONTENT.' '.$link.' Password: '.$user_password;
+
+
         #password reset link
         #$link = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
 
 
         // $mail->Body = EMAIL_PASSWORDRESET_CONTENT . ' ' . $link;
 
-#---------------------------------------------------------------------------------------------
-#------------------HTML-BODY------------------------------------------------------------------
-#---------------------------------------------------------------------------------------------
+    #---------------------------------------------------------------------------------------------
+    #------------------HTML-BODY------------------------------------------------------------------
+    #---------------------------------------------------------------------------------------------
 
 
-// $mail->Body = include();
+    // $mail->Body = include();
 
-$body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
+    $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
-$body = $body.'
-            <img style="" class="" title="" alt="" src="http://www.wertewirtschaft.org/tools/Erinnerung-Header-01.png" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
-            <!--#/image#-->
-            </td>
-            </tr>
-            </tbody>
-            </table>
-            <!--#loopsplit#-->
-            <table class="editable text" border="0" width="100%">
-            <tbody>
-            <tr>
-            <td valign="top">
-            <div style="text-align: justify;">
-            <h2></h2>
-            <!--#html #-->
-            <span style="font-family: times new roman,times;">
-            <span style="font-size: 12pt;">
-            <span style="color: #000000;">
-            <!--#/html#-->
-            <br>            
-            Dear economist,
-            <br>
-            Thank you for becoming a member.
-            <br>
-            Please consider supporting us by becoming a paying member. 
-            In addition you will get access to our members area. 
+    $body = $body.'
+                <img style="" class="" title="" alt="" src="http://www.wertewirtschaft.org/tools/Erinnerung-Header-01.png" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                <!--#/image#-->
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                <!--#loopsplit#-->
+                <table class="editable text" border="0" width="100%">
+                <tbody>
+                <tr>
+                <td valign="top">
+                <div style="text-align: justify;">
+                <h2></h2>
+                <!--#html #-->
+                <span style="font-family: times new roman,times;">
+                <span style="font-size: 12pt;">
+                <span style="color: #000000;">
+                <!--#/html#-->
+                <br>            
+                Dear economist,
+                <br>
+                Thank you for becoming a member.
+                <br>
+                Please consider supporting us by becoming a paying member. 
+                In addition you will get access to our members area. 
 
+                    ';
+
+    $body = $body.'
+                And finally, please click on the link below to redeem your free credit with which you will be able to register for one of our events. 
+                <table cellspacing="0" cellpadding="0"> <tr>
+                <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
+                <a href="'.$link.'" style="font-size:16px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
+                <span style="color: #000000">
+                Click here for membership!
+                </span></a></td></tr></table> 
+                <strong>And your password is: </strong>'.$user_password.'
                 ';
 
-$body = $body.'
-            And finally, please click on the link below to redeem your free credit with which you will be able to register for one of our events. 
-            <table cellspacing="0" cellpadding="0"> <tr>
-            <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
-            <a href="'.$link.'" style="font-size:16px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
-            <span style="color: #000000">
-            Click here for membership!
-            </span>
-            </a></td></tr></table> 
-            ';
+
+    $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
+
+    $mail->Body = $body;
 
 
-$body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
-
-$mail->Body = $body;
-
-
-$mail->isHTML(true);
-#---------------------------------------------------------------------------------------------
-#------------------END HTML-BODY--------------------------------------------------------------
-#---------------------------------------------------------------------------------------------
+    $mail->isHTML(true);
+    #---------------------------------------------------------------------------------------------
+    #------------------END HTML-BODY--------------------------------------------------------------
+    #---------------------------------------------------------------------------------------------
 
 
-        if(!$mail->Send()) {
-            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED . $mail->ErrorInfo;
-            return false;
-        } else {
-            // $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
-            $this->messages[] = "Please check your inbox.";
-            return true;
+            if(!$mail->Send()) {
+                $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED . $mail->ErrorInfo;
+                return false;
+            } else {
+                // $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
+                #$this->messages[] = "Please check your inbox.";
+                return true;
+            }
         }
-    }
-#-------------------------------------
+    #-------------------------------------
 
     
     /**

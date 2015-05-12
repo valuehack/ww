@@ -361,6 +361,9 @@ GET user data using old database connection
      */
     private function loginWithPostData($user_email, $user_password, $user_rememberme)
     {
+
+        $user_password = trim($user_password);
+
         if (empty($user_email)) {
             $this->errors[] = MESSAGE_USERNAME_EMPTY;
         } else if (empty($user_password)) {
@@ -391,6 +394,11 @@ GET user data using old database connection
                 $this->errors[] = MESSAGE_LOGIN_FAILED;
             } else if (($result_row->user_failed_logins >= 3) && ($result_row->user_last_failed_login > (time() - 30))) {
                 $this->errors[] = MESSAGE_PASSWORD_WRONG_3_TIMES;
+            
+            // has the user activated their account with the verification email
+            } else if ($result_row->user_active != 1) {
+                $this->errors[] = MESSAGE_ACCOUNT_NOT_ACTIVATED;
+
             // using PHP 5.5's password_verify() function to check if the provided passwords fits to the hash of that user's password
             } else if (! password_verify($user_password, $result_row->user_password_hash)) {
                 // increment the failed login counter for that user
@@ -400,9 +408,8 @@ GET user data using old database connection
                 $sth->execute(array(':user_email' => $user_email, ':user_last_failed_login' => time()));
 
                 $this->errors[] = MESSAGE_PASSWORD_WRONG;
-            // has the user activated their account with the verification email
-            } else if ($result_row->user_active != 1) {
-                $this->errors[] = MESSAGE_ACCOUNT_NOT_ACTIVATED;
+            
+            
             } else {
                 // write user data into PHP SESSION [a file on your server]
                 $_SESSION['user_id'] = $result_row->user_id;
