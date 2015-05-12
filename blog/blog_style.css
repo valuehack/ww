@@ -345,7 +345,7 @@ strong {
 	color: #fff;
 }
 
-/*.upgrade {
+.upgrade {
 	margin: 30px 5%;
 	padding: 10px;
 	width: 100%;
@@ -358,7 +358,7 @@ strong {
     max-width: 960px;
     position: relative;
     text-align: justify;
-}*/
+}
 
 .upgrade h2 {
 	margin: 10px 0;
@@ -372,6 +372,7 @@ strong {
 .upgrade a {
 	border: 0;
 	width: 100px;
+}
 
 .upgrade a:link {
 	display: block;
