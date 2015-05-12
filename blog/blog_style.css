@@ -370,12 +370,16 @@ p, h1, h2, a, ul, ol {
 
 .blog_entry h2 {
 	font-size: 26pt;
-	margin: 10px 0;	
+	margin: 25px 0 0 0;	
+	text-align: center;
+	text-shadow: 1px 1px 2px rgb(36,58,76);
 }
 
 .pagination {
 	padding: 3px;
-	margin: 10px auto 5px 0;	
+	margin: 10px auto 5px 0;
+	font-size: 16pt;
+	text-align: center;
 }
 
 .pagination a {
@@ -383,7 +387,6 @@ p, h1, h2, a, ul, ol {
 	margin: 2px;
 	text-decoration: none; /* no underline */
 	color: rgb(46,74,98);
-		font-size: 16pt;
 }
 
 .pagination a:hover, .pagination a:active {
