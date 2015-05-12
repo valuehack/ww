@@ -50,6 +50,7 @@ if(isset($_GET['id']))
 	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
 	echo "<div class='blog_b'>";
 	echo $public;
+	echo "</div>"
 ?>
 	<div class="upgrade">
 		<p>Institutsgr&uuml;nder Rahim Taghizadegan l&auml;dt ein zu einer ganz pers&ouml;nlichen Weltschau. Seine Scholien (Scholion: Randnotiz) erscheinen als Quartalsschrift und enthalten Gedanken, Ideen, Fragen, Rezensionen, Empfehlungen, Exzerpte, Gedichte, Kontakte und Fundst&uuml;cke. Dieses Angebot richtet sich primär an Freunde und Seelenverwandte und ist daher pers&ouml;nlich und frei von der Leber geschrieben - ohne Blatt vor dem Mund.</p>
@@ -58,7 +59,6 @@ if(isset($_GET['id']))
   			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required /><br>
   			<input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
 		</form>
-	</div>
 	</div>
 	<footer class="article">
 		<p><a href='index.php'>Alle Scholien</a></p>
