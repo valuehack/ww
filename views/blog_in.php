@@ -4,7 +4,9 @@
 <?php 
 
 require_once('../classes/Login.php');
+
 include('_header_in.php'); 
+
 $title="Blog";
 
 ?>

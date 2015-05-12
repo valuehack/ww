@@ -135,12 +135,17 @@ class Login
         
 
         }
+        // login with cookie
         elseif (isset($_POST['user_rememberme'])) {
             $this->newRememberMeCookie();
             #header("Location:http://test.wertewirtschaft.net/");
+
+            #used to refresh page for logging in with a cookie
+            #please define REFRESH_URL in your local config file
+            header("Location:".REFRESH_URL);
        
         }
-        // login with cookie
+        
 
         // if user just submitted a login form
         elseif (isset($_POST["login"])) {
@@ -152,9 +157,9 @@ class Login
 
         #elseif (true) {  
         elseif (isset($_COOKIE['rememberme'])) {  
-            #echo "sadfsadfsadf";
             $this->loginWithCookieData();
-        
+            #$this->errors[] = "there is a cookie";
+
         }
 
         // checking if user requested a password reset mail
@@ -424,7 +429,7 @@ GET user data using old database connection
                 // if user has check the "remember me" checkbox, then generate token and write cookie
                 if (isset($user_rememberme)) {
                     $this->newRememberMeCookie();
-                    $this->errors[] = "A new cookie has been created.";
+                    #$this->errors[] = "A new cookie has been created.";
                 } else {
                     // Reset remember-me token
                     $this->deleteRememberMeCookie();
@@ -923,7 +928,7 @@ public function sendEventRegMail($events)
             }
             // Specify host server
             $mail->Host = EMAIL_SMTP_HOST;
-            #$mail->Username = EMAIL_SMTP_USERNAME;
+            $mail->Username = EMAIL_SMTP_USERNAME;
             $mail->Password = EMAIL_SMTP_PASSWORD;
             $mail->Port = EMAIL_SMTP_PORT;
         } else {
@@ -1052,7 +1057,7 @@ public function sendUpgradeMailToUser()
             }
             // Specify host server
             $mail->Host = EMAIL_SMTP_HOST;
-            #$mail->Username = EMAIL_SMTP_USERNAME;
+            $mail->Username = EMAIL_SMTP_USERNAME;
             $mail->Password = EMAIL_SMTP_PASSWORD;
             $mail->Port = EMAIL_SMTP_PORT;
         } else {
@@ -1140,7 +1145,7 @@ public function sendUpgradeMailToInstitute()
             }
             // Specify host server
             $mail->Host = EMAIL_SMTP_HOST;
-            #$mail->Username = EMAIL_SMTP_USERNAME;
+            $mail->Username = EMAIL_SMTP_USERNAME;
             $mail->Password = EMAIL_SMTP_PASSWORD;
             $mail->Port = EMAIL_SMTP_PORT;
         } else {
@@ -1187,7 +1192,7 @@ public function sendUpgradeMailToInstitute()
             }
             // Specify host server
             $mail->Host = EMAIL_SMTP_HOST;
-            #$mail->Username = EMAIL_SMTP_USERNAME;
+            $mail->Username = EMAIL_SMTP_USERNAME;
             $mail->Password = EMAIL_SMTP_PASSWORD;
             $mail->Port = EMAIL_SMTP_PORT;
         } else {
@@ -1607,7 +1612,7 @@ user_plz
             }
             // Specify host server
             $mail->Host = EMAIL_SMTP_HOST;
-            #$mail->Username = EMAIL_SMTP_USERNAME;
+            $mail->Username = EMAIL_SMTP_USERNAME;
             $mail->Password = EMAIL_SMTP_PASSWORD;
             $mail->Port = EMAIL_SMTP_PORT;
         } else {
