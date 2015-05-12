@@ -85,7 +85,7 @@ if ($publ_rows == 0) {
 
 
 	//get rid of the line
-	$line_query = "UPDATE blog SET public_text = replace(public_text, '<hr />', '') WHERE n = '$n'";
+	$line_query = "UPDATE blog SET private_text = replace(private_text, '<hr />', '') WHERE n = '$n'";
 	mysql_query($line_query) or die("Failed Query of " .$line_query. mysql_error());
 }
 
