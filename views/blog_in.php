@@ -79,7 +79,7 @@ if(isset($_GET['id']))
 ?>
 				<!--<footer class="article">-->			   
                    <div class="socialimg">
-                   <a href=""><img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
+                   <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $_SERVER['PHP_SELF']; ?>" target="_blank"> <img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
                    <a href=""><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
                    <a href=""><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
                    <a href=""><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
