@@ -33,7 +33,7 @@ if(isset($_GET['id']))
 	$publ_date = $entry[publ_date];
 ?>
 		<div class="banner_blog">
-            <div class="banner_blogimg" style="background-image: url(<?=$img?>);"></div>
+            <div class="banner_blogimg" style="background-image: url(http://test.wertewirtschaft.net/blog/gfx/<?php echo $id;?>.jpg);"></div>
             <div class="banner_blogms"><h1><?=$title?></h1></div>
         </div>
         <aside class="social">
