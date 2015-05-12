@@ -8,13 +8,14 @@
 mysql_select_db(DB_NAME);
 
 $user_id = $_SESSION['user_id'];
+$user_email = $_SESSION['user_email'];
 
 #echo $user_email;
 
 if (!isset($user_id)) echo ""; 
 else
 {
-$query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '%$user_id%' ";
+$query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '%$user_id%' AND `user_email` LIKE '%$user_email%' ";
 
 $result = mysql_query($query) or die("Failed Query of " . $query. mysql_error());
 
