@@ -51,7 +51,9 @@ if(isset($_GET['id']))
 <?               
 	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";		
 	if ($_SESSION['Mitgliedschaft'] == 1) {
-		echo $public."<br>";
+		echo "<div class='blog_b'>";
+		echo $public;
+		echo "</div>";
 ?>		<div class="upgrade">
 		<h2>Beschreibung Mitgliedschaft:</h2>
 
@@ -66,9 +68,9 @@ if(isset($_GET['id']))
 	else {
 		echo "<div class='blog_b'>";
 		echo $private;
+		echo "</div>";
 		echo "<footer class='article'>";
 		echo "<p><a href='index.php'>Alle Scholien</a></p>";
-		echo "</div>";
 		
 	}
 ?>
