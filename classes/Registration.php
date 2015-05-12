@@ -117,18 +117,24 @@ private function subscribeNewUser($user_email)
                 // the PASSWORD_DEFAULT constant is defined by the PHP 5.5, or if you are using PHP 5.3/5.4, by the password hashing
                 // compatibility library. the third parameter looks a little bit shitty, but that's how those PHP 5.5 functions
                 // want the parameter: as an array with, currently only used with 'cost' => XX.
-                #$user_password_hash = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => $hash_cost_factor));
+                
+                //generate a new password
+                $user_password = $this->randomPasswordGenerator();
+
+                //encrypt password for storage in the database, so no one would see it in plain text
+                $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => $hash_cost_factor));
+
                 // generate random hash for email verification (40 char string)
                 $user_activation_hash = sha1(uniqid(mt_rand(), true));
 
                 // write new users data into database
                 
-                    $query_new_user_insert = $this->db_connection->prepare('INSERT INTO mitgliederExt (user_email, Mitgliedschaft, user_activation_hash, user_registration_ip, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :user_activation_hash, :user_registration_ip, now())');
+                $query_new_user_insert = $this->db_connection->prepare('INSERT INTO mitgliederExt (user_email, Mitgliedschaft, user_password_hash, user_activation_hash, user_registration_ip, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :user_password_hash, :user_activation_hash, :user_registration_ip, now())');
                 #$query_new_user_insert->bindValue(':user_name', $user_name, PDO::PARAM_STR);
-                #$query_new_user_insert->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
 
                 $query_new_user_insert->bindValue(':user_email', $user_email, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':Mitgliedschaft', '1', PDO::PARAM_STR);
+                $query_new_user_insert->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_activation_hash', $user_activation_hash, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
                 $query_new_user_insert->execute();
@@ -139,7 +145,7 @@ private function subscribeNewUser($user_email)
 
                if ($query_new_user_insert) {
                    // send a verification email
-                   if ($this->sendVerificationEmail($user_id, $user_email, $user_activation_hash)) {
+                   if ($this->sendVerificationEmail($user_id, $user_email, $user_activation_hash, $user_password)) {
                        // when mail has been send successfully
                        $this->messages[] = MESSAGE_VERIFICATION_MAIL_SENT;
                        $this->registration_successful = true;
@@ -179,7 +185,19 @@ private function subscribeNewUser($user_email)
                         }
                     }
 
-public function sendVerificationEmail($user_id, $user_email, $user_activation_hash)
+#generates a random string of 6 characters
+private function randomPasswordGenerator() {
+    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";  
+
+    $size = strlen( $chars );
+    for( $i = 0; $i < 6; $i++ ) {
+        $str .= $chars[ rand( 0, $size - 1 ) ];
+    }
+
+    return $str;
+}
+
+public function sendVerificationEmail($user_id, $user_email, $user_activation_hash, $user_password)
     {
         $mail = new PHPMailer;
 
@@ -213,7 +231,7 @@ public function sendVerificationEmail($user_id, $user_email, $user_activation_ha
         $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
 
         // the link to your register.php, please set this value in config/email_verification.php
-        $mail->Body = EMAIL_VERIFICATION_CONTENT.' '.$link;
+        $mail->Body = EMAIL_VERIFICATION_CONTENT.' '.$link.' Password: '.$user_password;
 
         if(!$mail->Send()) {
             $this->errors[] = MESSAGE_VERIFICATION_MAIL_NOT_SENT . $mail->ErrorInfo;
