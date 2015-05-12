@@ -106,7 +106,7 @@ else
 	
 	/* Setup vars for query. */
 	$targetpage = "index.php"; 	//your file name  (the name of this file)
-	$limit = 4; 								//how many items to show per page
+	$limit = 5; 								//how many items to show per page
 	$page = $_GET['page'];
 	if($page) 
 		$start = ($page - 1) * $limit; 			//first item to display on this page
