@@ -195,11 +195,11 @@ strong {
 
 .blog_b p {
 	line-height: 1.6em;
-	margin: 80px 0;
+	margin: 50px 0;
 	
 }
 
-.blog_a:first-letter {
+.blog_b:first-letter {
     font-size: 7em;
     float: left;
     margin-right: 0.02em;
@@ -238,6 +238,7 @@ strong {
 .article img {
 	max-width: 974px;
 	margin: 0;
+	text-align: center;
 }
 
 
@@ -345,12 +346,17 @@ strong {
 }
 
 .upgrade {
+	margin: 30px 0;
+	box-shadow: 1px 1px 1px rgb(26,26,26);	
 }
 
 .upgrade h2 {
+	margin: 10px 0;
+	font-size: 24pt;
 }
 
 .upgrade p {
+	line-height: 1.4pt;
 }
 
 .upgrade a:link {
