@@ -9,10 +9,26 @@ $title="Blog";
 
 ?>
 
-<div id="center">  
+<!--<div id="center">  
 <div id="content">
 <a class="content" href="../index.php">Index &raquo;</a><a class="content" href="<?php echo $_SERVER['PHP_SELF']; ?>"> Blog</a>
-<div id="tabs-wrapper-lower"></div>
+<div id="tabs-wrapper-lower"></div>-->
+
+			<div class="banner_blog">
+            <div class="banner_blogimg" style="background-image: url(http://test.wertewirtschaft.net/blog/gfx/<?php echo $id;?>.jpg);"></div>
+            <div class="banner_blogms"><h1><?=$title?></h1></div>
+        </div>
+        <aside class="social">
+                   <ul>
+                       <li><a href=""><img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
+                       <li><a href=""><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
+                       <li><a href=""><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
+                       <li><a href=""><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
+                       <li><a href=""><img src="gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
+                    </ul>                 
+        </aside>
+        <div class="content">
+           <article class="article">
 
 <?php 
 if(isset($_GET['id']))
@@ -33,23 +49,34 @@ if(isset($_GET['id']))
 	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
 
-	echo "<h5>".$title."</h5>";
-	echo "<i>Keyword: ".$id."&nbsp &nbsp &nbsp Datum: ".date('d.m.Y', strtotime($publ_date))."</i><br>";
-	echo $public."<br>";
+	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
+	echo "<div class='blog_b'>";
+	echo $public;
+	echo "</div>";
 ?>
-	<i>Wenn Sie weiterlesen wollen, tragen Sie sich hier völlig unverbindlich ein:</i><br><br>
+	<div class="upgrade">
+	<p><i>Wenn Sie weiterlesen wollen, tragen Sie sich hier völlig unverbindlich ein:</i><br><br>
 	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform" style="text-aligna:center; paddinga: 10px ">
   		<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required /><br>
   		<input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
-	</form><br>
-
-	<a href='index.php'>Alle Scholien</a>
+	</form>
+	</p>
+	</div>
+	<footer class="article">
+		<a href='index.php'>Alle Scholien</a>
+		<div class="socialimg">
+                   <a href=""><img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
+                   <a href=""><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
+                   <a href=""><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
+                   <a href=""><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
+                   <a href=""><img src="gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a>
+                   </div>
+    </footer>
+		<p class="linie"><img src="gfx/linie.png" alt=""></p>
 <?php
 }
 else 
 {
-	echo "<h2>Scholien</h2>";
-
 	//Pagination Script found at http://www.phpeasystep.com/phptu/29.html
 	$tbl_name="blog";		//your table name
 	// How many adjacent pages should be shown on each side?
@@ -65,7 +92,7 @@ else
 	
 	/* Setup vars for query. */
 	$targetpage = "index.php"; 	//your file name  (the name of this file)
-	$limit = 4; 								//how many items to show per page
+	$limit = 5; 								//how many items to show per page
 	$page = $_GET['page'];
 	if($page) 
 		$start = ($page - 1) * $limit; 			//first item to display on this page
@@ -165,7 +192,11 @@ else
 		$pagination.= "</div>\n";		
 	}
 ?>
-
+		<div class="content">
+           <article class="article">
+           	<header>
+			<h1>Scholien</h1>
+			</header>
 	<?php
 	while($entry = mysql_fetch_array($result))
 	{
@@ -174,16 +205,22 @@ else
 		$public = $entry[public_text];
 		$publ_date = $entry[publ_date];
 
-		echo "<h5><a href='?id=$id'>".$title."</a></h5>";
-		echo "<i>Keyword: ".$id."&nbsp &nbsp &nbsp Datum: ".date('d.m.Y', strtotime($publ_date))."</i><br>";
+		echo "<div class='blog_entry'>";
+		echo "<h2><a href='?id=$id'>".$title."</a></h2>";
+		echo "<p class='blogdates'><!--Keyword: ".$id."&nbsp &nbsp &nbsp Datum: -->".date('d.m.Y', strtotime($publ_date))."</p>";
 		
-		if (strlen($public) > 500) {
-			echo substr ($public, 0, 500);
-			echo " ... </p><a href='?id=$id'>&rarr; Weiterlesen</a><hr>";
+		if (strlen($private) > 500) {
+			echo substr ($private, 0, 500);
+			echo " ... <a href='?id=$id'>Weiterlesen</a>";
+			echo "</div>";
+			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
 		}
 		else {
-			echo $public;
-			echo " <a href='?id=$id'>&rarr; Weiterlesen</a><hr>";
+			echo $private;
+			echo "... <a href='?id=$id'>Weiterlesen</a>";
+			echo "</div>";
+			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
+
 		}
 	}
 }
@@ -191,7 +228,8 @@ else
 
 <?=$pagination?>
 
+</article>
 </div>
 <?php //include('_side_not_in.php'); ?>
-</div>
+
 <?php include('_footer.php'); ?>

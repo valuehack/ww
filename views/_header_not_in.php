@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../style/style.css">
     <link rel="stylesheet" type="text/css" href="../blog/blog_style.css">
 
     <title><?=$title?> | Institut f&uuml;r Wertewirtschaft</title>
@@ -54,8 +53,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 <body>
 <!-- Layout-->
-    <div id="container">
-      <div id="header">
+      <header id="header">
     <a href="/"><img class="logo" src="http://wertewirtschaft.org/style/gfx/logo.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
     <a href="/" class="flagge"><img class="flagge" src="http://wertewirtschaft.org/style/gfx/flagge_us.png" alt="English Version" name="">English Version</a>
     <ul id="navbar">
@@ -71,9 +69,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
          <li class="navbar"><a href="/salon/">Salon</a></li>
          <li class="navbar"><a href="/akademie/">Akademie</a></li>
       </ul>
-      </div>
-      <div id="menu">
-      </div>
+      </header>
 
 <?php
 //set timezone
