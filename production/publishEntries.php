@@ -53,55 +53,62 @@ echo $edit_rows;
 
 if (!$edit_rows == 0) {
 
-	$edit_entry = mysql_fetch_array($edit_result);
-	$n = $edit_entry[n];
+	while($entry = mysql_fetch_array($edit_result))
+	{
+		$n = $edit_entry[n];
 
-	//transformation of published entry to HTML in title
-	$html_query = "SELECT * FROM blog WHERE n = '$n'";
-	$html_result = mysql_query($html_query) or die("Failed Query of " .$html_query. mysql_error());
-	$html_entry = mysql_fetch_array($html_result);
+		//transformation of published entry to HTML in title
+		$html_query = "SELECT * FROM blog WHERE n = '$n'";
+		$html_result = mysql_query($html_query) or die("Failed Query of " .$html_query. mysql_error());
+		$html_entry = mysql_fetch_array($html_result);
 
-	$title = htmlentities($html_entry[title]);
+		$title = htmlentities($html_entry[title]);
 
-	$transform_query = "UPDATE blog SET title = '$title' WHERE n = '$n'";
-	mysql_query($transform_query) or die("Failed Query of " .$transform_query. mysql_error());
-
-
-	//get rid of <p>&nbsp;</p>
-	$nbsp_query = "UPDATE blog SET private_text = replace(private_text, '<p>&nbsp;</p>', '') WHERE n = '$n'";
-	mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
-
-	$nbsp_query = "UPDATE blog SET public_text = replace(public_text, '<p>&nbsp;</p>', '') WHERE n = '$n'";
-	mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
-
-	
-	//special css format for blockquotes (french quote marks)
-	$blockquote = '"blockquote"';
-
-	$quote_query = "UPDATE blog SET public_text = replace(public_text, '<p>&laquo;', '<blockquote class=$blockquote><p>') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-
-	$quote_query = "UPDATE blog SET public_text = replace(public_text, '&raquo;</p>', '</p></blockquote>') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-
-	$quote_query = "UPDATE blog SET private_text = replace(private_text, '<p>&laquo;', '<blockquote class=$blockquote><p>') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-
-	$quote_query = "UPDATE blog SET private_text = replace(private_text, '&raquo;</p>', '</p></blockquote>') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-	
-
-	//get rid of &nbsp; --> WYSIWYG-editor error for some PDFs
-	$nbsp_query = "UPDATE blog SET private_text = replace(private_text, '&nbsp;', ' ') WHERE n = '$n'";
-	mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
-
-	$nbsp_query = "UPDATE blog SET public_text = replace(public_text, '&nbsp;', ' ') WHERE n = '$n'";
-	mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
+		$transform_query = "UPDATE blog SET title = '$title' WHERE n = '$n'";
+		mysql_query($transform_query) or die("Failed Query of " .$transform_query. mysql_error());
 
 
-	//get rid of the line
-	$line_query = "UPDATE blog SET private_text = replace(private_text, '<hr />', '') WHERE n = '$n'";
-	mysql_query($line_query) or die("Failed Query of " .$line_query. mysql_error());
+		//get rid of <p>&nbsp;</p>
+		$nbsp_query = "UPDATE blog SET private_text = replace(private_text, '<p>&nbsp;</p>', '') WHERE n = '$n'";
+		mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
+
+		$nbsp_query = "UPDATE blog SET public_text = replace(public_text, '<p>&nbsp;</p>', '') WHERE n = '$n'";
+		mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
+
+		
+		//special css format for blockquotes (french quote marks)
+		$blockquote = '"blockquote"';
+
+		$quote_query = "UPDATE blog SET public_text = replace(public_text, '<p>&laquo;', '<blockquote class=$blockquote><p>') WHERE n = '$n'";
+		mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+
+		$quote_query = "UPDATE blog SET public_text = replace(public_text, '&raquo;</p>', '</p></blockquote>') WHERE n = '$n'";
+		mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+
+		$quote_query = "UPDATE blog SET private_text = replace(private_text, '<p>&laquo;', '<blockquote class=$blockquote><p>') WHERE n = '$n'";
+		mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+
+		$quote_query = "UPDATE blog SET private_text = replace(private_text, '&raquo;</p>', '</p></blockquote>') WHERE n = '$n'";
+		mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+		
+
+		//get rid of &nbsp; --> WYSIWYG-editor error for some PDFs
+		$nbsp_query = "UPDATE blog SET private_text = replace(private_text, '&nbsp;', ' ') WHERE n = '$n'";
+		mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
+
+		$nbsp_query = "UPDATE blog SET public_text = replace(public_text, '&nbsp;', ' ') WHERE n = '$n'";
+		mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
+
+
+		//get rid of the line
+		$line_query = "UPDATE blog SET private_text = replace(private_text, '<hr />', '') WHERE n = '$n'";
+		mysql_query($line_query) or die("Failed Query of " .$line_query. mysql_error());
+
+
+		//set edited to 1
+		$update_query = "UPDATE blog SET edited = '1' WHERE n = '$n'";
+		mysql_query($update_query) or die("Failed Query of " .$update_query. mysql_error());
+	}
 }
 
 
