@@ -222,13 +222,13 @@ else
 		
 		if (strlen($private) > 500) {
 			echo substr ($private, 0, 500);
-			echo " ... <a class='weitere' href='?id=$id'> Weiterlesen</a>";
+			echo " ... <a href='?id=$id'>Weiterlesen</a>";
 			echo "</div>";
 			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
 		}
 		else {
 			echo $private;
-			echo '<a class="weitere" href="?id=$id"> Weiterlesen</a>';
+			echo "... <a href='?id=$id'>Weiterlesen</a>";
 			echo "</div>";
 			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
 		}

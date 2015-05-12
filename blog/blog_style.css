@@ -71,6 +71,10 @@ p, h1, h2, a, ul, ol {
 	color: #000;
 }
 
+em {
+	font-style: italic;
+}
+
 .header {
 	min-height: 103px;
 	width: 100%;
@@ -372,12 +376,12 @@ p, h1, h2, a, ul, ol {
 	color: #000;
 }
 
-.weitere a:link {
+.blog_entry a:link {
 	color: rgba(46,74,98,0.6);
 	border-bottom: 1px dotted;
 }
 
-.weitere a:hover, a:visited {
+.blog_entry a:hover, a:visited {
 	color: rgb(46,74,98);
 	border-bottom: 1px solid;
 }
