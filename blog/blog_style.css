@@ -413,12 +413,12 @@ a.linkbutton {
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
 }
 
-.linkbutton a:link {
+a.linkbutton:link {
 	display: block;
 	color: #fff;
 }
 
-.linkbutton a:hover {
+a.linkbutton:hover {
 	background: rgb(30,48,64);
 }
 
