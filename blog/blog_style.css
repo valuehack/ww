@@ -399,7 +399,7 @@ strong {
 	margin: 10px 0;
 }
 
-.linkbutton a {
+a.linkbutton {
 	text-decoration: none;
 	display: block;
 	background: rgb(46,74,98);
