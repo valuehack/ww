@@ -140,6 +140,25 @@ strong {
 	
 }
 
+.inputfield {
+	padding: 16px 14px;
+	background-color: #fff;
+	border: 1px solid rgb(20,20,20);
+	margin: 5px;
+	width: 200px;
+	height: 50px;
+}
+
+.inputbutton {
+	text-decoration: none;
+	background: rgb(46,74,98);
+	color: #fff;
+	border: 0;
+	margin: 5px;
+	width: 200px;
+	height: 50px;
+}
+
 .blogdate {
 	font-size: 18pt;
 	font-style: italic;
