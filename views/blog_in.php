@@ -47,7 +47,7 @@ if(isset($_GET['id']))
                </aside>
         <div class="content">
            <article class="article">
-    	   <p class="linie"><img src="gfx/linie.png" alt=""></p>
+    	   <!--<p class="linie"><img src="gfx/linie.png" alt=""></p>-->
 <?               
 	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";		
 	if ($_SESSION['Mitgliedschaft'] == 1) {
