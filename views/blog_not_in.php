@@ -14,27 +14,9 @@ $title="Blog";
 <a class="content" href="../index.php">Index &raquo;</a><a class="content" href="<?php echo $_SERVER['PHP_SELF']; ?>"> Blog</a>
 <div id="tabs-wrapper-lower"></div>-->
 
-			<div class="banner_blog">
-            <div class="banner_blogimg" style="background-image: url(http://test.wertewirtschaft.net/blog/gfx/<?php echo $id;?>.jpg);"></div>
-            <div class="banner_blogms"><h1><?=$title?></h1></div>
-        </div>
-        <aside class="social">
-                   <ul>
-                       <li><a href=""><img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
-                       <li><a href=""><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
-                       <li><a href=""><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
-                       <li><a href=""><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
-                       <li><a href=""><img src="gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
-                    </ul>                 
-        </aside>
-        <div class="content">
-           <article class="article">
-
 <?php 
 if(isset($_GET['id']))
 {
-	 echo "Institutsgrülnder Rahim Taghizadegan lädt ein zu einer ganz persönlichen Weltschau. Seine Scholien (Scholion: Randnotiz) erscheinen als Quartalsschrift und enthalten Gedanken, Ideen, Fragen, Rezensionen, Empfehlungen, Exzerpte, Gedichte, Kontakte und Fundstücke. Dieses Angebot richtet sich primär an Freunde und Seelenverwandte und ist daher persönlich und frei von der Leber geschrieben - ohne Blatt vor dem Mund. <hr><br>";
-	
 	// #$scholien = htmlentities($scholien);
 
 	// echo $scholien;
@@ -48,19 +30,35 @@ if(isset($_GET['id']))
 	$title = $entry[title];
 	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
-
+?>
+	<div class="banner_blog">
+    	<div class="banner_blogimg" style="background-image: url(http://test.wertewirtschaft.net/blog/gfx/<?php echo $id;?>.jpg);"></div>
+    	<div class="banner_blogms"><h1><?=$title?></h1></div>
+    </div>
+        <aside class="social">
+                   <ul>
+                       <li><a href=""><img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
+                       <li><a href=""><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
+                       <li><a href=""><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
+                       <li><a href=""><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
+                       <li><a href=""><img src="gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
+                    </ul>                 
+        </aside>
+        <div class="content">
+           <article class="article">
+           	<p>Institutsgr&uuml;nder Rahim Taghizadegan l&auml;dt ein zu einer ganz pers&ouml;nlichen Weltschau. Seine Scholien (Scholion: Randnotiz) erscheinen als Quartalsschrift und enthalten Gedanken, Ideen, Fragen, Rezensionen, Empfehlungen, Exzerpte, Gedichte, Kontakte und Fundst&uuml;cke. Dieses Angebot richtet sich primär an Freunde und Seelenverwandte und ist daher pers&ouml;nlich und frei von der Leber geschrieben - ohne Blatt vor dem Mund.</p>
+<?
 	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
 	echo "<div class='blog_b'>";
 	echo $public;
 	echo "</div>";
 ?>
 	<div class="upgrade">
-	<p><i>Wenn Sie weiterlesen wollen, tragen Sie sich hier völlig unverbindlich ein:</i><br><br>
+	<p><i>Wenn Sie weiterlesen wollen, tragen Sie sich hier völlig unverbindlich ein:</i><br><br></p>
 	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform" style="text-aligna:center; paddinga: 10px ">
   		<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required /><br>
   		<input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
 	</form>
-	</p>
 	</div>
 	<footer class="article">
 		<a href='index.php'>Alle Scholien</a>
@@ -232,4 +230,4 @@ else
 </div>
 <?php //include('_side_not_in.php'); ?>
 
-<?php include('_footer.php'); ?>
+<?php include('_footer_blog.php'); ?>
