@@ -61,7 +61,7 @@ if(isset($_GET['id']))
 	</form>
 	</div>
 	<footer class="article">
-		<a href='index.php'>Alle Scholien</a>
+		<p><a href='index.php'>Alle Scholien</a></p>
 		<div class="socialimg">
                    <a href=""><img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
                    <a href=""><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
