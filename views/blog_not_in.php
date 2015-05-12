@@ -46,19 +46,19 @@ if(isset($_GET['id']))
         </aside>
         <div class="content">
            <article class="article">
-           	<p>Institutsgr&uuml;nder Rahim Taghizadegan l&auml;dt ein zu einer ganz pers&ouml;nlichen Weltschau. Seine Scholien (Scholion: Randnotiz) erscheinen als Quartalsschrift und enthalten Gedanken, Ideen, Fragen, Rezensionen, Empfehlungen, Exzerpte, Gedichte, Kontakte und Fundst&uuml;cke. Dieses Angebot richtet sich primär an Freunde und Seelenverwandte und ist daher pers&ouml;nlich und frei von der Leber geschrieben - ohne Blatt vor dem Mund.</p>
 <?
 	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
 	echo "<div class='blog_b'>";
 	echo $public;
-	echo "</div>";
 ?>
 	<div class="upgrade">
-	<p><i>Wenn Sie weiterlesen wollen, tragen Sie sich hier völlig unverbindlich ein:</i><br><br></p>
-	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform" style="text-aligna:center; paddinga: 10px ">
-  		<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required /><br>
-  		<input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
-	</form>
+		<p>Institutsgr&uuml;nder Rahim Taghizadegan l&auml;dt ein zu einer ganz pers&ouml;nlichen Weltschau. Seine Scholien (Scholion: Randnotiz) erscheinen als Quartalsschrift und enthalten Gedanken, Ideen, Fragen, Rezensionen, Empfehlungen, Exzerpte, Gedichte, Kontakte und Fundst&uuml;cke. Dieses Angebot richtet sich primär an Freunde und Seelenverwandte und ist daher pers&ouml;nlich und frei von der Leber geschrieben - ohne Blatt vor dem Mund.</p>
+		<p><i>Wenn Sie weiterlesen wollen, tragen Sie sich hier völlig unverbindlich ein:</i></p>
+		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform" style="text-aligna:center; paddinga: 10px ">
+  			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required /><br>
+  			<input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
+		</form>
+	</div>
 	</div>
 	<footer class="article">
 		<p><a href='index.php'>Alle Scholien</a></p>
@@ -118,9 +118,9 @@ else
 		$pagination .= "<div class=\"pagination\">";
 		//previous button
 		if ($page > 1) 
-			$pagination.= "<a href=\"$targetpage?page=$prev\">� previous</a>";
+			$pagination.= "<a href=\"$targetpage?page=$prev\">« zur&uuml;ck</a>";
 		else
-			$pagination.= "<span class=\"disabled\">� previous</span>";	
+			$pagination.= "<span class=\"disabled\">« zur&uuml;ck</span>";	
 		
 		//pages	
 		if ($lastpage < 7 + ($adjacents * 2))	//not enough pages to bother breaking it up
@@ -184,9 +184,9 @@ else
 		
 		//next button
 		if ($page < $counter - 1) 
-			$pagination.= "<a href=\"$targetpage?page=$next\">next �</a>";
+			$pagination.= "<a href=\"$targetpage?page=$next\">vor</a>";
 		else
-			$pagination.= "<span class=\"disabled\">next �</span>";
+			$pagination.= "<span class=\"disabled\">vor</span>";
 		$pagination.= "</div>\n";		
 	}
 ?>
