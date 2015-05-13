@@ -1423,14 +1423,14 @@ user_plz
         $street = substr(trim($street), 0, 64);
         $plz = substr(trim($plz), 0, 64);
 
-        /*
+        
         $name = htmlentities($name);
         $surname = htmlentities($surname);
         $country = htmlentities($country);
         $city = htmlentities($city);
         $street = htmlentities($street);
         $plz = htmlentities($plz);
-        */
+        
 
         $user_email = $_SESSION['user_email'];
 
