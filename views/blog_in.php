@@ -33,9 +33,18 @@ if(isset($_GET['id']))
 	$publ_date = $entry[publ_date];
 	$length = str_word_count($private, 0, 'äüöÄÜÖß') - str_word_count($public, 0, 'äüöÄÜÖß');
 
+	//check, if there is a image in the blog/gfx folder
+	$img = '/gfx/$id.jpg';
+
+	if (file_exists($img)) {
+	    $img_url = "http://test.wertewirtschaft.net/blog/gfx/".$id.".jpg";
+	} else {
+	    $img_url = "http://test.wertewirtschaft.net/blog/gfx/default.jpg";
+	}
+
 ?>
 		<div class="banner_blog">
-            <div class="banner_blogimg" style="background-image: url(http://test.wertewirtschaft.net/blog/gfx/<?php echo $id;?>.jpg);"></div>
+            <div class="banner_blogimg" style="background-image: url(<?php echo $img_url;?>);"></div>
             <div class="banner_blogms"><h1><?=$title?></h1></div>
         </div>
         <aside class="social">
