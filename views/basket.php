@@ -66,7 +66,7 @@ if($_SESSION['basket']) {
     $total = 0;
 
     foreach ($items as $key => $quantity) {
-        $items_extra_query = "SELECT * from termine WHERE `id` LIKE '%$key%' ORDER BY start DESC";
+        $items_extra_query = "SELECT * from termine WHERE `id` LIKE '$key' ORDER BY start DESC";
         $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
         $itemsExtraArray = mysql_fetch_array($items_extra_result);
         

@@ -580,7 +580,7 @@ public function checkout ($items)
 {
     $user_id = $_SESSION['user_id'];
    
-    $user_credits_query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '%$user_id%' ";
+    $user_credits_query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '$user_id' ";
     $user_credits_result = mysql_query($user_credits_query) or die("Failed Query of " . $user_credits_query. mysql_error());
 
     $userCreditsArray = mysql_fetch_array($user_credits_result);
@@ -593,7 +593,7 @@ public function checkout ($items)
     $itemsPrice = 0;
     foreach ($items as $key => $quantity) 
     {
-        $items_price_query = "SELECT * from termine WHERE `id` LIKE '%$key%'";
+        $items_price_query = "SELECT * from termine WHERE `id` LIKE '$key'";
         $items_price_result = mysql_query($items_price_query) or die("Failed Query of " . $items_price_query. mysql_error());
         $itemsPriceArray = mysql_fetch_array($items_price_result);
         $itemsPriceSum = $quantity * $itemsPriceArray[event_price];
@@ -629,7 +629,7 @@ public function checkout ($items)
         echo "<td style='width:10%'><b>Quantity</b></td></tr>";
 
         foreach ($items as $key => $quantity) {
-            $items_extra_query = "SELECT * from termine WHERE `id` LIKE '%$key%' ORDER BY start DESC";
+            $items_extra_query = "SELECT * from termine WHERE `id` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
             
