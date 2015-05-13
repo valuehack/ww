@@ -1,5 +1,14 @@
 <?php
-	include("config.php");
+
+	#uses the current config file to connect to the database
+	require_once("config/config.php");
+
+	$conn = mysql_connect(DB_HOST,DB_USER,DB_PASS)or die(mysql_error());
+         mysql_select_db(DB_NAME,$conn)or die(mysql_error());
+
+	$db_table= "mitgliederExt";		// Table name
+	$db_column = "user_email";	// Table column from which suggestions will get shown
+
 	$keyword = $_POST['data'];
 	$sql = "select user_email from ".$db_table." where ".$db_column." like '".$keyword."' limit 0,20";
 	//$sql = "select name from ".$db_table."";
