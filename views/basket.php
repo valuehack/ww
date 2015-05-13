@@ -34,42 +34,21 @@ if(isset($_POST['delete'])) {
     unset($_SESSION['basket']);
 }
 
+//Check if a item was removed
+if(isset($_POST['remove'])) {
+    $remove_id = $_POST['remove'];
+    unset($_SESSION['basket'][$remove_id]);
+}
+
 //Check if checkout was made. If yes, show bought items.
 if(isset($_POST['checkout'])) {
     $items = $_SESSION['basket'];
-    $login->checkout($items);
-
-    echo "<b>You bought the following items:</b><br>";
-    echo "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>";
-    echo "<td style='width:55%'><b>Name</b></td>";
-    echo "<td style='width:10%'><b>Quantity</b></td></tr>";
-
-    foreach ($items as $key => $quantity) {
-        $items_extra_query = "SELECT * from termine WHERE `id` LIKE '%$key%' ORDER BY start DESC";
-        $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
-        $itemsExtraArray = mysql_fetch_array($items_extra_result);
-        
-        $sum = $quantity*$itemsExtraArray[event_price];
-
-        echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
-        echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
-        echo "<td>&nbsp &nbsp".$quantity."</td></tr>";
-       
-       // TO DO: Find better solution to display the relevant information for different product categories  
-       if (!(is_null($itemsExtraArray[start]))) {
-            echo "<tr><td></td><td>".date("d.m.Y",strtotime($itemsExtraArray[start]));
-            if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]))."</td></tr>";
-        }       
-    }
-   echo "</table><hr>";
-   
-   //delete bought items from session variable
-    unset($_SESSION['basket']);
+    $login->checkout($items);   
 }
 
 
 //Array with all the selected items, which are displayed in the basket:
-elseif($_SESSION['basket']) { 
+if($_SESSION['basket']) { 
     $items = $_SESSION['basket'];
 
     /*echo "Items: ";
@@ -78,7 +57,8 @@ elseif($_SESSION['basket']) {
 
     echo "You have the following items in your basket:";
     echo "<hr><table><tr><td style='width:5%'><b>ID</b></td>";
-    echo "<td style='width:55%'><b>Name</b></td>";
+    echo "<td style='width:45%'><b>Name</b></td>";
+    echo "<td style='width:10%'></td>";
     echo "<td style='width:10%'><b>Quantity</b></td>";
     echo "<td style='width:15%'><b>Price</b></td>";
     echo "<td><b>Sum</b></td></tr>";
@@ -94,6 +74,11 @@ elseif($_SESSION['basket']) {
 
         echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
         echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
+        ?>
+        <td><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <input type="hidden" name="remove" value="<?php echo $key ?>" />
+                <input type="submit" value="Remove" onClick="return checkMe()"></form></td>
+        <?php
         echo "<td>&nbsp &nbsp".$quantity."</td>";
         echo "<td><i>".$itemsExtraArray[event_price]." Credits</i></td>";
         echo "<td>".$sum." Credits</td></tr>";
@@ -108,7 +93,7 @@ elseif($_SESSION['basket']) {
 
         //TO DO: remove-button
     }
-    echo "<tr><td></td><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
+    echo "<tr><td></td><td></td><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
     echo "</table><hr>";      
 ?>
 

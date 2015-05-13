@@ -575,8 +575,6 @@ public function getUserEvents()
 
 }
 
-
-#events stuff goes here
 # adjustment of function registerForEvents for the new checkout process by Bernhard Hegyi
 public function checkout ($items)
 {
@@ -590,7 +588,7 @@ public function checkout ($items)
 
     $_SESSION['credits_left'] = $userCredits;
 
-	mysql_query("SET time_zone = 'Europe/Vienna'");
+    mysql_query("SET time_zone = 'Europe/Vienna'");
 
     $itemsPrice = 0;
     foreach ($items as $key => $quantity) 
@@ -602,7 +600,12 @@ public function checkout ($items)
         $itemsPrice += $itemsPriceSum;
     }
 
-    if (!($userCredits >= $itemsPrice)) $this->errors[] = "You do not have enough credits to buy the items in your basket.";
+    if (!($userCredits >= $itemsPrice)) {
+        $this->errors[] = "You do not have enough credits to buy the items in your basket.";
+        //error message does not work, alternate message above
+        echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
+        }
+
         else 
         {
         foreach ($items as $key => $quantity) 
@@ -619,6 +622,35 @@ public function checkout ($items)
                     mysql_query($space_query);
                 
                 }
+        
+        echo "<b>You bought the following items:</b><br>";
+        echo "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>";
+        echo "<td style='width:55%'><b>Name</b></td>";
+        echo "<td style='width:10%'><b>Quantity</b></td></tr>";
+
+        foreach ($items as $key => $quantity) {
+            $items_extra_query = "SELECT * from termine WHERE `id` LIKE '%$key%' ORDER BY start DESC";
+            $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
+            $itemsExtraArray = mysql_fetch_array($items_extra_result);
+            
+            $sum = $quantity*$itemsExtraArray[event_price];
+
+            echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
+            echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
+            echo "<td>&nbsp &nbsp".$quantity."</td></tr>";
+           
+            // TO DO: Find better solution to display the relevant information for different product categories  
+            if (!(is_null($itemsExtraArray[start]))) {
+                echo "<tr><td></td><td>".date("d.m.Y",strtotime($itemsExtraArray[start]));
+                if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]))."</td></tr>";
+            }       
+        }
+        
+        echo "</table><hr>";
+
+        //delete bought items from session variable
+        unset($_SESSION['basket']);
+
 
                 //$this->sendEventRegMail($items);
         }
