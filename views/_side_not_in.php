@@ -21,23 +21,31 @@
 
     </form> -->
 
-<form method="post" action="index.php" name="registerform" style="text-aligna:center; paddinga: 10px ">
-  <input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required /><br>
-  <input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
-</form>
+      <!-- fancy form that is connected to script.js -->
+      <form method="post" action="index.php" name="registerform" style="text-aligna:center; paddinga: 10px ">
+        <input class="inputfield" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required /><br>
+        <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" style="display:none"  /><br>
+        <input class="inputbutton" id="inputbutton" type="submit" name="fancy_ajax_form_submit" value="Eintragen" />
+      </form>
+
+
+<!--       <form method="post" action="index.php" name="registerform" style="text-aligna:center; paddinga: 10px ">
+        <input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required /><br>
+        <input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
+      </form> -->
 
   </div>
 
   <div style="float: righta;widtha:500px;">
     <!-- <p style="text-aligna:center;"> Mitgliederbereich </p> -->
-    <h5>Mitgliederbereich</h5>
-    <form method="post" action="index.php" name="loginform" style="text-aligna:center;">
+    <!-- <h5>Mitgliederbereich</h5> -->
+<!--     <form method="post" action="index.php" name="loginform" style="text-aligna:center;">
         <label for="user_email"><?php# echo WORDING_LOGIN; ?></label>
         <input class="inputfield" id="user_email" type="text" name="user_email" placeholder=" E-Mail Adresse" required /><br>
         <label for="user_password"><?php #echo WORDING_PASSWORD; ?></label>
         <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" required /><br>
         <input class="inputbutton" type="submit" name="login" value="Anmelden" />
-    </form>
+    </form> -->
 <!-- <a href="register.php"><?php #echo WORDING_REGISTER_NEW_ACCOUNT; ?></a> -->
 <p style="text-align:centera;"><a href="/password_reset.php"><?php echo WORDING_FORGOT_MY_PASSWORD; ?></a></p>
 

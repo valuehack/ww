@@ -15,6 +15,11 @@
     <script src="http://wertewirtschaft.org/tools/Lightbox/prototype.js" type="text/javascript"></script>
     <script src="http://wertewirtschaft.org/tools/Lightbox/scriptaculous.js?load=effects,builder" type="text/javascript"></script>
     <script src="http://wertewirtschaft.org/tools/Lightbox/lightbox.js" type="text/javascript"></script>
+
+    <!-- this is used for this fancy login form -->
+    <SCRIPT LANGUAGE="JavaScript" src="/js/jquery.js"></SCRIPT>
+    <SCRIPT LANGUAGE="JavaScript" src="/js/script.js"></SCRIPT>
+
 <!-- Ende -->
 
 <script type="text/javascript">

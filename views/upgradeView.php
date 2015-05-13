@@ -164,7 +164,7 @@ else
             <!-- prepopulate paypal -->
             <INPUT TYPE="hidden" NAME="first_name" VALUE="<?php echo $result_row->Vorname ?>">
             <INPUT TYPE="hidden" NAME="last_name" VALUE="<?php echo $result_row->Nachname ?>">
-            <INPUT TYPE="hidden" NAME="address1" VALUE="<?php echo $result_row->Strasse?>">
+            <INPUT TYPE="hidden" NAME="address1" VALUE="<?php echo $result_row->Strasse ?>">
             <INPUT TYPE="hidden" NAME="city" VALUE="<?php echo $result_row->Ort ?>">
             <INPUT TYPE="hidden" NAME="zip" VALUE="<?php echo "" ?>">
             <INPUT TYPE="hidden" NAME="lc" VALUE="AT">

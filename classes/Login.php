@@ -148,11 +148,13 @@ class Login
         
 
         // if user just submitted a login form
-        elseif (isset($_POST["login"])) {
-            if (!isset($_POST['user_rememberme'])) {
-                #$_POST['user_rememberme'] = null;
-            }
+        // registerform comes from this single ajax form
+        elseif (isset($_POST["fancy_ajax_form_submit"]) and ($_POST["fancy_ajax_form_submit"] === "Anmelden" )) {
+ 
+            // if (isset($_POST['user_email']) and !(trim($_POST['user_password']) === "")) {
             $this->loginWithPostData($_POST['user_email'], $_POST['user_password'], 1);
+            // }
+            
         } 
 
         #elseif (true) {  

@@ -44,10 +44,18 @@ class Registration
         // if we have such a GET request, call the verifyNewUser() method
         } else if (isset($_GET["id"]) && isset($_GET["verification_code"])) {
             $this->verifyNewUser($_GET["id"], $_GET["verification_code"]);
-        } else if (isset($_POST["subscribe"])) {
+
+
+
+        } elseif (isset($_POST["fancy_ajax_form_submit"]) and ($_POST["fancy_ajax_form_submit"] === "Eintragen" )) {
+        //} elseif (isset($_POST["fancy_ajax_form_submit"]) and (trim($_POST["user_password"]) === "" )) {
+
             $this->subscribeNewUser($_POST['user_email']);
         }
+
+
     }
+
 
     /**
      * Checks if database connection is opened and open it if not
