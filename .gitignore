@@ -1,5 +1,6 @@
 config/*
 config/config.php
+rahim/header1.inc.php
 
 ._db.php
 .werte_db.php
