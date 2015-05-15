@@ -1424,17 +1424,13 @@ user_plz
         $plz = substr(trim($plz), 0, 64);
 
         
-        $name = htmlentities($name);
-        $surname = htmlentities($surname);
-        $country = htmlentities($country);
-        $city = htmlentities($city);
-        $street = htmlentities($street);
-        $plz = htmlentities($plz);
-        
-        echo "<br>".$name."<br>";
-        echo mb_detect_encoding($name);
-        echo $surname."<br>";
-        echo mb_detect_encoding($name);
+        $name = htmlentities($name, ENT_QUOTES, "UTF-8");
+        $surname = htmlentities($surname, ENT_QUOTES, "UTF-8");
+        $country = htmlentities($country, ENT_QUOTES, "UTF-8");
+        $city = htmlentities($city, ENT_QUOTES, "UTF-8");
+        $street = htmlentities($street, ENT_QUOTES, "UTF-8");
+        $plz = htmlentities($plz, ENT_QUOTES, "UTF-8");
+
 
         $user_email = $_SESSION['user_email'];
 
