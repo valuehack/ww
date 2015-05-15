@@ -1431,6 +1431,10 @@ user_plz
         $street = htmlentities($street);
         $plz = htmlentities($plz);
         
+        echo "<br>".$name."<br>";
+        echo mb_detect_encoding($name);
+        echo $surname."<br>";
+        echo mb_detect_encoding($name);
 
         $user_email = $_SESSION['user_email'];
 
