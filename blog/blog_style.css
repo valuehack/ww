@@ -176,8 +176,8 @@ strong {
 	margin-top: 20px;
 }
 
-.scholie_info a:hoover {
-	
+.scholie_info a:hover {
+	color: rgba(46,74,98,0.8);
 }
 
 .blogdate {
@@ -334,8 +334,8 @@ strong {
   font-size: 12em;
   line-height: 0.1em;
   margin-left: 0.25em;
-  vertical-align: -0.15em;*/
-}
+  vertical-align: -0.15em;
+}*/
 
 .article footer {
 	max-height: 30px;
