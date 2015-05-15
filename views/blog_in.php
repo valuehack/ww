@@ -73,7 +73,7 @@ if(isset($_GET['id']))
 		echo $public;
 		echo "</div>";
 ?>		<div class="upgrade">
-		<p>Weitere <? echo $length;?> W&ouml;rter Kontext nur f&uuml;r G&auml;ste. Wir freuen uns, dass Sie &uuml;ber die Scholien an unseren Erkenntnissen teilhaben m&ouml;chten. Die Scholien enthalten oft allzu pers&ouml;nliche Gedanken, Hintergrundinformationen, intimes Wissen, sind aus gesetzlichen Gr&uuml;nden nicht teilbar, oder sonstwie heikel. Wir k&ouml;nnen Sie nur G&auml;sten offen zug&auml;nglich machen, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r auch die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie <a href="http://wertewirtschaft.org/abo.php">diesem Link</a> und in K&uuml;rze erhalten Sie Zugriff auf alle unsere Scholien in voller L&auml;nge.</p>
+		<p>Weitere <? echo $length;?> W&ouml;rter Kontext nur f&uuml;r G&auml;ste. Wir freuen uns, dass Sie &uuml;ber die Scholien an unseren Erkenntnissen teilhaben m&ouml;chten. Die Scholien enthalten oft allzu pers&ouml;nliche Gedanken, Hintergrundinformationen, intimes Wissen, sind aus gesetzlichen Gr&uuml;nden nicht teilbar, oder sonstwie heikel. Wir k&ouml;nnen Sie nur G&auml;sten offen zug&auml;nglich machen, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r auch die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie <a href="http://wertewirtschaft.org/abo.php">diesem Link</a> und in K&uuml;rze erhalten Sie Zugriff auf alle unsere Scholien in voller L&auml;nge.
 
 		<a class="linkbutton" href="/upgrade.php">Upgrade</a></p>
 		</div>

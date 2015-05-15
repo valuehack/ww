@@ -105,6 +105,10 @@ else
 	<li>Die Scholien sind eine Anregung f&uuml;r Vielleser, aber vielmehr noch eine Dienstleistung f&uuml;r Wenigleser &ndash; insbesondere f&uuml;r Praktiker, die es auch unter schwierigsten Bedingungen nicht aufgeben, Werte zu schaffen und zu wahren, und f&uuml;r Erkenntnis- und Sinnsucher in Zeiten inflation&auml;rer Desinformation.</li>
 	<li>Wenn Sie sich angesprochen f&uuml;hlen, treten Sie doch bitte zun&auml;chst einen Schritt weit aus der Anonymit&auml;t und tragen Sie hier Ihre E-Mail-Adresse ein, Sie k&ouml;nnen dann die letzten Scholien-Beitr&auml;ge anlesen.</li>
 </ul>
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform" style="text-aligna:center; paddinga: 10px ">
+  			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required />
+  			<input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
+		</form>
 </div>
 
 
