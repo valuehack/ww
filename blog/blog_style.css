@@ -177,6 +177,7 @@ strong {
 }
 
 .scholie_info a:hoover {
+	
 }
 
 .blogdate {
@@ -425,7 +426,7 @@ a.linkbutton {
 	color: #fff;
 	background: rgb(46,74,98);
 	border: 0;
-	margin: 5px;
+	margin: 30px 0 10px 350px;
 	width: 200px;
 	height: 37px;
 	padding-top: 13px;
