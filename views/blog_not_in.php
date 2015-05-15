@@ -102,6 +102,7 @@ else
 			<p>Themen: Unternehmerische Herausforderungen auf verzerrten M&auml;rkten, Werte und Wirtschaft, Theorie und Praxis des guten Lebens, Freiheit und Ordnung, Erkenntnis, Dynamiken und Hintergr&uuml;nde der Gegenwart und Vergangenheit, Ideengeschichte, Alternativen und Traditionen, Aktuelles und Zeitloses, Strategie und Einstellung, Sprache und Symbole, Spirituelles und Materielles, Fragen und Antworten, hilfreiche Hinweise und Ratschl&auml;ge, Kunst und Kultur.</p>
 			<p>Die Scholien sind eine Anregung f&uuml;r Vielleser, aber vielmehr noch eine Dienstleistung f&uuml;r Wenigleser &ndash; insbesondere f&uuml;r Praktiker, die es auch unter schwierigsten Bedingungen nicht aufgeben, Werte zu schaffen und zu wahren, und f&uuml;r Erkenntnis- und Sinnsucher in Zeiten inflation&auml;rer Desinformation.</p>
 			<p>Wenn Sie sich angesprochen f&uuml;hlen, treten Sie doch bitte zun&auml;chst einen Schritt weit aus der Anonymit&auml;t und tragen Sie hier Ihre E-Mail-Adresse ein, Sie k&ouml;nnen dann die letzten Scholien-Beitr&auml;ge anlesen.</p>
+		</div>
 		<div class="subscribe">
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
   			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required />
@@ -109,7 +110,7 @@ else
 		</form>
 		</div>
 		<p class="linie"><img src="gfx/linie.png" alt=""></p>
-		</div>
+		
 </article>
 </div>
 
