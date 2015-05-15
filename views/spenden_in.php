@@ -48,7 +48,7 @@ echo '<p>Wir bieten Ihnen durch unsere zahlreichen Angebote stets vollen Gegenwe
 echo "</div>";
 
 
-$sql = "SELECT * from termine WHERE `type` LIKE 'project'";
+$sql = "SELECT * from termine WHERE `type` LIKE 'project' AND spots_sold <= spots";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 ?>
