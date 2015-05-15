@@ -68,7 +68,7 @@ if(isset($_GET['id']))
 		<p>Weitere <? echo $length;?> W&ouml;rter Kontext nur f&uuml;r G&auml;ste. Bitte um Verzeihung, dieser Text ist f&uuml;r Fremde nicht sichtbar. 
 		Er k&ouml;nnte allzu pers&ouml;nliche Gedanken, Hintergrundinformationen, intimes Wissen enthalten, aus gesetzlichen Gr&uuml;nden nicht teilbar, oder sonstwie heikel sein. 
 		Beehren Sie eine der letzten v&ouml;llig unabh&auml;ngigen Bildungs- und&nbsp;Forschungseinrichtungen als Gast und sichern Sie sich Ihren Wissensvorteil. 
-		Treten Sie dazu bitte zun&auml;chst einen Schritt weit aus der Anonymit&auml;t und tragen Sie hier Ihre E-Mail-Adresse ein:
+		Treten Sie dazu bitte zun&auml;chst einen Schritt weit aus der Anonymit&auml;t und tragen Sie hier Ihre E-Mail-Adresse ein:</p>
 
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform" style="text-aligna:center; paddinga: 10px ">
   			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required />
