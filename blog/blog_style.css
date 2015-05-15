@@ -374,8 +374,7 @@ strong {
 	color: #fff;
 }
 
-.upgrade {
-	margin: 30px 0;
+.upgrade, .subscribe {
 	padding: 30px;
 	width: 100%;
     background-color: #fafafa;
@@ -387,6 +386,17 @@ strong {
     max-width: 900px;
     position: relative;
     text-align: justify;
+}
+
+.subscribe {
+    max-width: 500px;
+    margin: 30px 200px;
+}
+
+.upgrade {
+	width: 100%;
+    max-width: 900px;
+    margin: 30px 0;
 }
 
 .upgrade h2 {
