@@ -48,7 +48,7 @@ echo '<p>Wir bieten Ihnen durch unsere zahlreichen Angebote stets vollen Gegenwe
 echo "</div>";
 
 
-$sql = "SELECT * from termine WHERE `type` LIKE 'project' AND spots_sold < spots order by id desc";
+$sql = "SELECT * from termine WHERE `type` LIKE 'project' AND spots_sold < spots order by id asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 ?>
@@ -84,7 +84,8 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
     <tr>
         <td class="bottomline" colspan="2" style="text-align:right"><i><?php echo $entry[spots_sold]." von ".$entry[spots]." möglichen Credits zugewiesen"; ?></i></td>
     </tr>      
-
+    <tr><td>&nbsp;</td><td></td></tr>
+    
     <?php
     }
     ?>
