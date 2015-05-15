@@ -12,6 +12,8 @@ function checkMe() {
 </script>
 
 <?php 
+include_once("secdown/functions.php");
+dbconnect();
 
 require_once('classes/Login.php');
 include('_header.php'); 

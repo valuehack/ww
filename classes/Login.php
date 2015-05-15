@@ -626,7 +626,8 @@ public function checkout ($items)
         echo "<b>You bought the following items:</b><br>";
         echo "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>";
         echo "<td style='width:55%'><b>Name</b></td>";
-        echo "<td style='width:10%'><b>Quantity</b></td></tr>";
+        echo "<td style='width:10%'><b>Quantity</b></td>";
+        echo "<td style='width:10%'>&nbsp;</td></tr>";
 
         foreach ($items as $key => $quantity) {
             $items_extra_query = "SELECT * from termine WHERE `id` LIKE '$key' ORDER BY start DESC";
@@ -634,10 +635,12 @@ public function checkout ($items)
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
             
             $sum = $quantity*$itemsExtraArray[event_price];
+            $download_link = '<a href="<?php downloadurl(\'http://test.wertewirtschaft.net/secdown/sec_files/$id.pdf\',\'$id\'); ?>" onclick="updateReferer(this.href);">Download</a>';
 
             echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
-            echo "<td>&nbsp &nbsp".$quantity."</td></tr>";
+            echo "<td>&nbsp; &nbsp;".$quantity."</td>";
+            echo "<td>".$download_link."</td></tr>";
            
             // TO DO: Find better solution to display the relevant information for different product categories  
             if (!(is_null($itemsExtraArray[start]))) {
