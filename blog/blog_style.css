@@ -249,10 +249,10 @@ strong {
 	text-decoration: none;
 }
 
-.blog_a a:link, .blog_b a:link {
+/*.blog_a a:link, .blog_b a:link {
 	color: rgb(46,74,98);
 	border-bottom: 1px dotted;
-}
+}*/
 
 .blog_a a:hover, .blog_b a:hover {
 	border-bottom: 1px solid;
