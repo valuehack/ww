@@ -73,7 +73,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
         <td class="bottomline">
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <input type="hidden" name="add" value="<?php echo $event_id ?>" />
-            <input type="number" name="quantity" width="50px">
+            <input type="number" name="quantity" style="width:50px;">
             <input type="submit" value="Add to Basket"></form>
         </td>
     </tr>
