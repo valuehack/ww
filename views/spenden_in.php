@@ -48,7 +48,7 @@ echo '<p>Wir bieten Ihnen durch unsere zahlreichen Angebote stets vollen Gegenwe
 echo "</div>";
 
 
-$sql = "SELECT * from termine WHERE `type` LIKE 'project' AND spots_sold <= spots";
+$sql = "SELECT * from termine WHERE `type` LIKE 'project' AND spots_sold < spots order by id desc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 ?>
@@ -66,6 +66,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
   while($entry = mysql_fetch_array($result))
   {
     $event_id = $entry[id];
+    $available_spots = $entry[spots] - $entry[spots_sold];
    ?>
 
     <tr>
@@ -73,7 +74,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
         <td class="bottomline">
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <input type="hidden" name="add" value="<?php echo $event_id ?>" />
-            <input type="number" name="quantity" style="width:50px;">
+            <input type="number" name="quantity" style="width:50px;" min="1" max="<?php echo $available_spots;?>">
             <input type="submit" value="Add to Basket"></form>
         </td>
     </tr>
