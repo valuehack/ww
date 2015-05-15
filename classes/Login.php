@@ -635,7 +635,7 @@ public function checkout ($items)
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
             
             $sum = $quantity*$itemsExtraArray[event_price];
-            $download_link = '<a href="<?php downloadurl(\'http://test.wertewirtschaft.net/secdown/sec_files/$id.pdf\',\'$id\'); ?>" onclick="updateReferer(this.href);">Download</a>';
+            $download_link = '<a href="<?php downloadurl(\'http://test.wertewirtschaft.net/secdown/sec_files/$key.pdf\',\'$key\'); ?>" onclick="updateReferer(this.href);">Download</a>';
 
             echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
