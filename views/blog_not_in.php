@@ -110,6 +110,9 @@ else
 
 </article>
 </div>
-<?php //include('_side_not_in.php'); ?>
+
+<?php 
+}
+//include('_side_not_in.php'); ?>
 
 <?php include('_footer_blog.php'); ?>
