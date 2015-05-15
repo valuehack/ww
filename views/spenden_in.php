@@ -57,7 +57,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 <table style="width:100%;border-collapse: collapse">
 
   <tr>
-    <td style="width:60%"><b>Titel</b></td>
+    <td style="width:60%">&nbsp;</td>
     <td style="width:30%"><b>Credits</b></td>
   </tr>
 
@@ -69,11 +69,11 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
    ?>
 
     <tr>
-        <td class="bottomline"><b><?php echo $event_id." ".$entry[title];?></b>
+        <td class="bottomline"><i><?php echo $event_id."</i> <b>".$entry[title];?></b>
         <td class="bottomline">
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <input type="hidden" name="add" value="<?php echo $event_id ?>" />
-            <input type="number" name="quantity" width="50">
+            <input type="number" name="quantity" width="50px">
             <input type="submit" value="Add to Basket"></form>
         </td>
     </tr>
@@ -81,7 +81,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
         <td colspan="2"><?php echo $entry[text]; ?></td>
     </tr>  
     <tr>
-        <td class="bottomline" colspan="2"><i><?php echo $entry[spots_sold]." von ".$entry[spots]."möglichen Credits zugewiesen"; ?></i></td>
+        <td class="bottomline" colspan="2" style="text-align:right"><i><?php echo $entry[spots_sold]." von ".$entry[spots]." möglichen Credits zugewiesen"; ?></i></td>
     </tr>      
 
     <?php
