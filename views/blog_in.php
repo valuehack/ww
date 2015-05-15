@@ -42,7 +42,14 @@ if(isset($_GET['id']))
 	    $img_url = "http://test.wertewirtschaft.net/blog/gfx/default.jpg";
 	}
 
+
+	if ($_SESSION['Mitgliedschaft'] == 1) { 
+		echo "<div>";
+		echo '<p>Mit Scholion bezeichnete man urspr&uuml;nglich eine Randnotiz, die Gelehrte in den B&uuml;chern anbrachten, die ihre st&auml;ndigen Wegbegleiter waren. Heute sind die Scholien die Randnotizen von <a href="http://rahim.cc">Rahim Taghizadegan</a>, die Erkenntnisgewinne im Rahmen der Wertewirtschaft dokumentieren: der tiefgehenden Reflexion und praktischen &Uuml;berpr&uuml;fung der M&ouml;glichkeiten, unter erschwerten Bedingungen noch Werte zu schaffen, Realit&auml;t von Illusion zu unterscheiden und Sinn zu finden.</p>';
+		echo "</div>";
+		}	
 ?>
+
 		<div class="banner_blog">
             <div class="banner_blogimg" style="background-image: url(<?php echo $img_url;?>);"></div>
             <div class="banner_blogms"><h1><?=$title?></h1></div>
@@ -223,7 +230,14 @@ else
            	<header>
 			<h1>Scholien</h1>
 			</header>
-	<?php
+	
+		<?php if ($_SESSION['Mitgliedschaft'] == 1) { 
+		echo "<div>";
+		echo '<p>Mit Scholion bezeichnete man urspr&uuml;nglich eine Randnotiz, die Gelehrte in den B&uuml;chern anbrachten, die ihre st&auml;ndigen Wegbegleiter waren. Heute sind die Scholien die Randnotizen von <a href="http://rahim.cc">Rahim Taghizadegan</a>, die Erkenntnisgewinne im Rahmen der Wertewirtschaft dokumentieren: der tiefgehenden Reflexion und praktischen &Uuml;berpr&uuml;fung der M&ouml;glichkeiten, unter erschwerten Bedingungen noch Werte zu schaffen, Realit&auml;t von Illusion zu unterscheiden und Sinn zu finden.</p>';
+		echo "</div>";
+		}
+
+
 		while($entry = mysql_fetch_array($result))
 		{
 	
