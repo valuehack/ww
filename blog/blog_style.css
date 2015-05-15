@@ -170,10 +170,13 @@ strong {
 }
 
 .scholie_info {
-	font-size: 14pt;
+	font-size: 15pt;
 	font-style: italic;
-	line-height: 1.6em;
+	line-height: 1.8em;
 	margin-top: 20px;
+}
+
+.scholie_info a:hoover {
 }
 
 .blogdate {
