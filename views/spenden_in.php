@@ -56,10 +56,6 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 
 <table style="width:100%;border-collapse: collapse">
 
-  <tr>
-    <td style="width:60%">&nbsp;</td>
-    <td style="width:30%"><b>Credits</b></td>
-  </tr>
 
 <?php
 
@@ -70,8 +66,8 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
    ?>
 
     <tr>
-        <td class="bottomline"><i><?php echo $event_id."</i> <b>".$entry[title];?></b>
-        <td class="bottomline">
+        <td class="bottomline" style="width:60%"><i><?php echo $event_id."</i> <b>".$entry[title];?></b>
+        <td class="bottomline" style="width:40%"><i>Credits: </i>
           <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <input type="hidden" name="add" value="<?php echo $event_id ?>" />
             <input type="number" name="quantity" style="width:50px;" min="1" max="<?php echo $available_spots;?>">
