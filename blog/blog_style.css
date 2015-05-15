@@ -277,8 +277,7 @@ strong {
 
 .article img {
 	max-width: 974px;
-	margin: 0;
-	text-align: center;
+	margin: 0 auto;
 }
 
 
