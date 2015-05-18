@@ -83,7 +83,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
    ?>
 
     <tr>
-        <td class="bottomline"><i><?php echo $event_id."</i> <b>".$entry[title];?></b>
+        <td class="bottomline"><a href='?id=<?php echo $id;?>'><i><?php echo $event_id."</i> <b>".$entry[title];?></b></a>
     </tr>
     <tr>
         <td><?php echo $entry[text]; ?></td>
