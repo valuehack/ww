@@ -109,9 +109,11 @@ if(isset($_POST['checkout'])) {
             echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
-            ?>
+            echo '<td><a href="';
+            $download_link = downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf,'.$key);
+            echo '" onclick="updateReferer(this.href);">Download</a></td></tr>';
 
-            <td><a href="<?php echo $download_link; ?>" onclick="updateReferer(this.href);">Download</a></td></tr>";
+            ?>
            
            <?php
             // TO DO: Find better solution to display the relevant information for different product categories  
