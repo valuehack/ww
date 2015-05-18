@@ -121,7 +121,7 @@ echo "</table><br><br>";
           	//<input type="text" name="quantity" size="2" maxlength="2" placeholder="1">
 
 //test Secure download ?>
-<a class="scholien" href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/sampledoc.doc','scholien_universitaet'); ?>" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>
+<a class="scholien" href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/samplepdf.pdf','scholien_universitaet'); ?>" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>
 <br><br>
 
 <?php
