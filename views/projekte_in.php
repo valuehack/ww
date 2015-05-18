@@ -155,12 +155,12 @@ else {
 
     while($entry = mysql_fetch_array($result))
     {
-      $event_id = $entry[id];
+      $id = $entry[id];
       $available_spots = $entry[spots] - $entry[spots_sold];
      ?>
 
       <tr>
-          <td class="bottomline" style="width:60%"><a href='?id=<?php echo $id;?>'><i><?php echo $event_id."</i> <b>".$entry[title];?></b></a>
+          <td class="bottomline" style="width:60%"><a href='?id=<?php echo $id;?>'><i><?php echo $id."</i> <b>".$entry[title];?></b></a>
           <td class="bottomline" style="width:40%">
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
               <i>Credits: </i>
