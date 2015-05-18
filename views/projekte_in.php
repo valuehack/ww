@@ -1,6 +1,11 @@
 <!-- Bootstrap -->
 <link href="../style/modal.css" rel="stylesheet">
 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../tools/bootstrap.js"></script>
+
 <?php 
 require_once('../classes/Login.php');
 include ("_header.php"); 
@@ -14,7 +19,6 @@ $title="Projekte";
 <a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="index.php">Projekte</a>
 <div id="tabs-wrapper-lower"></div>
 
-<h2>Projekte</h2>  
 
 <?php 
 if(isset($_POST['add'])){
@@ -66,6 +70,8 @@ if ($id = $_GET["id"])
 }
 
 else {
+
+  echo "<h2>Projekte</h2>";  
 
   if ($_SESSION['Mitgliedschaft'] == 1) { 
     echo "<div>";
