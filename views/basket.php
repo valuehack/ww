@@ -104,16 +104,16 @@ if(isset($_POST['checkout'])) {
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
 
             $sum = $quantity*$itemsExtraArray[event_price];
-            $download_link = "downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf,\''.$key.\'')";
+            downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf,\''.$key.\'');
 
             echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
-            ?>
-
-            <td><a href="<?php echo $download_link; ?>" onclick="updateReferer(this.href);">Download</a></td></tr>
+            echo '<td><a href="';
+            downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf,\''.$key.\'');
+            echo '" onclick="updateReferer(this.href);">Download</a></td></tr>';
            
-           <?php
+        
             // TO DO: Find better solution to display the relevant information for different product categories  
             if (!(is_null($itemsExtraArray[start]))) {
                 echo "<tr><td></td><td>".date("d.m.Y",strtotime($itemsExtraArray[start]));
