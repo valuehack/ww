@@ -38,7 +38,7 @@ if ($id = $_GET["id"])
   $avail=$entry[spots]-$entry[spots_sold];
   $text=$entry[text];
 
-  echo '<h3 style="font-style:none;">'.ucfirst($entry3[type])." ".$entry3[title].'</h3>';
+  echo '<h3>'.$title.'</h3>';
 
   echo "<p>".$text."</p>";
 
@@ -47,25 +47,7 @@ if ($id = $_GET["id"])
       <!-- Button trigger modal -->
      <input type="button" value="Investieren" data-toggle="modal" data-target="#myModal"> 
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h2 class="modal-title" id="myModalLabel">Investieren</h2>
-          </div>
-          <div class="modal-body">
-            Spendenformular
-
-            </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    
     <?php
     }
     else {
@@ -176,6 +158,24 @@ else {
 } 
 ?>
 
+<!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h2 class="modal-title" id="myModalLabel">Investieren</h2>
+          </div>
+          <div class="modal-body">
+            Spendenformular
+
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 </div>
