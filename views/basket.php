@@ -102,9 +102,6 @@ elseif(isset($_POST['checkout'])) {
             $items_extra_query = "SELECT * from termine WHERE `id` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
-            
-            include_once("secdown/functions.php");
-            dbconnect();
 
             $sum = $quantity*$itemsExtraArray[event_price];
             $download_link = '<a href="<?php downloadurl(\'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf\',\''.$key.'\'); ?>" onclick="updateReferer(this.href);">Download</a>';
@@ -122,6 +119,8 @@ elseif(isset($_POST['checkout'])) {
         }
         
         echo "</table><hr>";
+        echo "<a href=\"<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057'); ?>\" onclick=\"updateReferer(this.href);\">03/14 Universit&auml;t (Test secureDownload)</a>";
+
 
         //delete bought items from session variable
         unset($_SESSION['basket']);
@@ -181,7 +180,7 @@ elseif($_SESSION['basket']) {
     echo "<tr><td></td><td></td><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
     echo "</table><hr>";      
 ?>
-<a class="scholien" href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057'); ?>" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>
+<a href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057'); ?>" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>
 
 <!-- Clear Basket + Checkout Buttons-->
 
