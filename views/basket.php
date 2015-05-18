@@ -98,7 +98,7 @@ if($_SESSION['basket']) {
     echo "<tr><td></td><td></td><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
     echo "</table><hr>";      
 ?>
-<a class="scholien" href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/test.pdf','scholien_universitaet'); ?>" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>
+<a class="scholien" href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/samplepdf.pdf','scholien_universitaet'); ?>" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>
 
 <!-- Clear Basket + Checkout Buttons-->
 
