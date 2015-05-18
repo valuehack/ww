@@ -1,3 +1,5 @@
+<!-- Bootstrap -->
+<link href="../style/modal.css" rel="stylesheet">
 
 <?php 
 require_once('../classes/Login.php');
@@ -53,7 +55,7 @@ if ($id = $_GET["id"])
 
   echo '<h3 style="font-style:none;">'.ucfirst($entry3[type])." ".$entry3[title].'</h3>';
 
-  if ($entry[text]) echo "<p>$entry3[text]</p>";
+  echo "<p>".$text."</p>";
 
   if ($_SESSION['Mitgliedschaft'] == 1) { 
     ?>
