@@ -104,7 +104,7 @@ if(isset($_POST['checkout'])) {
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
 
             $sum = $quantity*$itemsExtraArray[event_price];
-            $download_link = '<?php downloadurl(\'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf\',\''.$key.'\'); ?>';
+            $download_link = downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf',$key);
 
             echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
@@ -112,6 +112,7 @@ if(isset($_POST['checkout'])) {
             ?>
 
             <td><a href="<?php echo $download_link; ?>" onclick="updateReferer(this.href);">Download</a>
+
 </td></tr>";
            
            <?php
