@@ -111,7 +111,7 @@ if(isset($_POST['checkout'])) {
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
             ?>
 
-            <td><a href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/$key.pdf','$key'); ?>" onclick="updateReferer(this.href);">Download</a>
+            <td><a href="<?php echo $download_link; ?>" onclick="updateReferer(this.href);">Download</a>
 </td></tr>";
            
            <?php
