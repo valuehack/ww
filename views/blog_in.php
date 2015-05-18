@@ -34,7 +34,7 @@ if(isset($_GET['id']))
 	$length = str_word_count($private, 0, 'äüöÄÜÖß') - str_word_count($public, 0, 'äüöÄÜÖß');
 
 	//check, if there is a image in the blog/gfx folder
-	$img = '/gfx/$id.jpg';
+	$img = '/gfx/'.$id.'.jpg';
 
 	if (file_exists($img)) {
 	    $img_url = "http://test.wertewirtschaft.net/blog/gfx/".$id.".jpg";

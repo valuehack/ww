@@ -109,8 +109,16 @@ if(isset($_POST['checkout'])) {
             echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
-            echo '<td><a href="/secdown/sec_files/'.$key.'.pdf" download>Download';
-            echo '</a></td></tr>';
+            
+            $file = '/secdown/sec_files/'.$key.'.jpg';
+            if (file_exists($file)) {
+                echo '<td><a href="'.$file.'" download>Download</a></td></tr>';
+            } 
+            else {
+                //generated ticket should come here
+                echo '<td><a href="">Download</a></td></tr>';
+
+            }
 
             ?>
            
