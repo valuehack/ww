@@ -48,7 +48,7 @@ while ($entry = mysql_fetch_array($result))
     <br>
     <a href="/medien/">Medien</a>
     <br>
-    <a href="/spenden/">Spenden</a>
+    <a href="/projekte/">Projekte</a>
     <br>
     <a href="/bibliothek/">Bibliothek</a>
     <br><br>
