@@ -26,7 +26,7 @@ if ($id = $_GET["id"])
   $avail=$entry[spots]-$entry[spots_sold];
   $text=$entry[text];
 
-  echo '<h3 style="font-style:none;">'.ucfirst($entry3[type])." ".$entry3[title].'</h3>';
+  echo '<h3>'.$title.'</h3>';
 
   echo "<p>".$text."</p>";
 

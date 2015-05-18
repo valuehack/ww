@@ -6,21 +6,6 @@ require_once('../classes/Login.php');
 include ("_header.php"); 
 $title="Projekte";
 
-/* Single page view??
-if ($id = $_GET["id"])
-{
-  $sql="SELECT * from termine WHERE id='$id'";
-  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-  $entry3 = mysql_fetch_array($result);
-  $title=$entry3[title];
-  $avail=$entry3[spots]-$entry3[spots_sold];
-  $gold=$entry3[gold];
-  $gold2=$entry3[gold2];
-  $adresse=$entry3[adresse];
-  $date=strftime("%d.%m.%Y", strtotime($entry3[start]));
-  $date2= substr($entry3[start],0,10);
-}
-*/
 ?>
 
 <!--Content-->
@@ -122,7 +107,7 @@ else {
        ?>
 
         <tr>
-            <td class="bottomline"><i><?php echo $event_id."</i> <b>".$entry[title];?></b>
+            <td class="bottomline"><a href='?id=<?php echo $id;?>'><i><?php echo $event_id."</i> <b>".$entry[title];?></b></a>
         </tr>
         <tr>
             <td><?php echo $entry[text]; ?></td>
