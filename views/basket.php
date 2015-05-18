@@ -103,6 +103,9 @@ elseif(isset($_POST['checkout'])) {
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
             
+            include_once("secdown/functions.php");
+            dbconnect();
+
             $sum = $quantity*$itemsExtraArray[event_price];
             $download_link = '<a href="<?php downloadurl(\'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf\',\''.$key.'\'); ?>" onclick="updateReferer(this.href);">Download</a>';
 
