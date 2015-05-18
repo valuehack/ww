@@ -199,7 +199,7 @@ if($_SESSION['basket']) {
 
 else {
     if(isset($_POST['checkout'])) {
-        echo NULL;
+        echo "";
     else {
         echo "You have no items in your basket.<br><br>"; 
     }
