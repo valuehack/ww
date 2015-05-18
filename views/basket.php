@@ -109,8 +109,12 @@ if(isset($_POST['checkout'])) {
             echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
-            echo "<td>".$download_link."</td></tr>";
+            ?>
+
+            <td><a href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/$key.pdf','$key'); ?>" onclick="updateReferer(this.href);">Download</a>
+</td></tr>";
            
+           <?php
             // TO DO: Find better solution to display the relevant information for different product categories  
             if (!(is_null($itemsExtraArray[start]))) {
                 echo "<tr><td></td><td>".date("d.m.Y",strtotime($itemsExtraArray[start]));
@@ -119,7 +123,6 @@ if(isset($_POST['checkout'])) {
         }
         
         echo "</table><hr>";
-        echo "<a href=\"<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057'); ?>\" onclick=\"updateReferer(this.href);\">03/14 Universit&auml;t (Test secureDownload)</a>";
 
 
         //delete bought items from session variable
@@ -179,7 +182,6 @@ if($_SESSION['basket']) {
     }
     echo "<tr><td></td><td></td><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
     echo "</table><hr>";  
-    echo "<a href=\"<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057'); ?>\" onclick=\"updateReferer(this.href);\">03/14 Universit&auml;t (Test secureDownload)</a>";
     
 ?>
 <a href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057'); ?>" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>
