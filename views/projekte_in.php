@@ -103,11 +103,11 @@ else {
 
       while($entry = mysql_fetch_array($result))
       {
-        $event_id = $entry[id];
+        $id = $entry[id];
        ?>
 
         <tr>
-            <td class="bottomline"><a href='?id=<?php echo $id;?>'><i><?php echo $event_id."</i> <b>".$entry[title];?></b></a>
+            <td class="bottomline"><a href='?id=<?php echo $id;?>'><i><?php echo $id."</i> <b>".$entry[title];?></b></a>
         </tr>
         <tr>
             <td><?php echo $entry[text]; ?></td>
