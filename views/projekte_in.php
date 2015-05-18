@@ -56,7 +56,7 @@ if ($id = $_GET["id"])
     }
     else {
       ?>
-      <i><?php echo $avail." von ".$entry[spots]." möglichen Credits zugewiesen"; ?></i><br>
+      <i><?php echo $entry[spots_sold]." von ".$entry[spots]." möglichen Credits zugewiesen"; ?></i><br>
 
       <div><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <i>Credits: </i>
