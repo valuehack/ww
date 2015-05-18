@@ -37,13 +37,13 @@ if(isset($_POST['delete'])) {
 }
 
 //Check if a item was removed
-elseif(isset($_POST['remove'])) {
+if(isset($_POST['remove'])) {
     $remove_id = $_POST['remove'];
     unset($_SESSION['basket'][$remove_id]);
 }
 
 //Check if checkout was made. If yes, show bought items.
-elseif(isset($_POST['checkout'])) {
+if(isset($_POST['checkout'])) {
     $items = $_SESSION['basket'];
     //$login->checkout($items);   
 
@@ -132,7 +132,7 @@ elseif(isset($_POST['checkout'])) {
 
 
 //Array with all the selected items, which are displayed in the basket:
-elseif($_SESSION['basket']) { 
+if($_SESSION['basket']) { 
     $items = $_SESSION['basket'];
 
     /*echo "Items: ";
@@ -178,7 +178,9 @@ elseif($_SESSION['basket']) {
         //TO DO: remove-button
     }
     echo "<tr><td></td><td></td><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
-    echo "</table><hr>";      
+    echo "</table><hr>";  
+    echo "<a href=\"<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057'); ?>\" onclick=\"updateReferer(this.href);\">03/14 Universit&auml;t (Test secureDownload)</a>";
+    
 ?>
 <a href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057'); ?>" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>
 
@@ -196,7 +198,12 @@ elseif($_SESSION['basket']) {
 }
 
 else {
-    echo "You have no items in your basket.<br><br>";
+    if(isset($_POST['checkout'])) {
+        echo NULL;
+    else {
+        echo "You have no items in your basket.<br><br>"; 
+    }
+    
 }
 ?>
 
