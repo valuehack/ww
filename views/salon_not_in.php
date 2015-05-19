@@ -24,7 +24,7 @@ if(isset($_GET['id']))
   $id = $_GET['id'];
 
   //Termindetails
-  $sql="SELECT * from termine WHERE id='$id'";
+  $sql="SELECT * from produkte WHERE id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
 ?>
@@ -72,7 +72,7 @@ else {
   <p><table>
 
   <?php
-  $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND end > NOW() AND spots > spots_sold AND status = 1 order by start asc, id asc";
+  $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND start > NOW() AND spots > spots_sold AND status = 1 order by start asc, id asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
   while($entry = mysql_fetch_array($result))
