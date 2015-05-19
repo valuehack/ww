@@ -333,7 +333,8 @@ GET user data using old database connection
                         $_SESSION['credits_left'] = $result_row->credits_left;
                         $_SESSION['user_logged_in'] = 1;
                         #MOD
-                        $_SESSION['user_level'] = $result_row->user_level;
+                        #$_SESSION['user_level'] = $result_row->user_level;
+                        $_SESSION['Mitgliedschaft'] = $result_row->Mitgliedschaft;
 
                         // declare user id, set the login status to true
                         $this->user_id = $result_row->user_id;

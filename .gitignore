@@ -1,4 +1,4 @@
-config/*
+config/
 config/config.php
 rahim/header1.inc.php
 
