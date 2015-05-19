@@ -102,9 +102,10 @@ else
 		</div>
 		<div class="subscribe">
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
-  			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required />
-  			<input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
-		</form>
+        <input class="inputfield" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required /><br>
+        <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" style="display:none"  /><br>
+        <input class="inputbutton" id="inputbutton" type="submit" name="fancy_ajax_form_submit" value="Eintragen" />
+      </form>	
 		</div>
 		<p class="linie"><img src="gfx/linie.png" alt=""></p>
 		
@@ -113,6 +114,4 @@ else
 
 <?php 
 }
-//include('_side_not_in.php'); ?>
-
-<?php include('_footer_blog.php'); ?>
+include('_footer_blog.php'); ?>
