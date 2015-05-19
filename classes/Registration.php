@@ -148,6 +148,8 @@ class Registration
                 $query_new_user_insert->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
                 $query_new_user_insert->execute();
 
+                $_SESSION['Mitgliedschaft'] = 1;
+
                 // id of new user
                 $user_id = $this->db_connection->lastInsertId();
                 $_SESSION['user_id'] = $user_id;
