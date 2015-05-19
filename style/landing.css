@@ -62,13 +62,76 @@ table {
 /*=========================================*/
 
 body {
-	background: rgb(6,11,16);
+	background: rgb(7,16,24);
+}
+
+.landing_header {
+	background: rgb(10,10,20);
+	width: 100%;
+	height: 50px;
+    margin: 0 auto;
+}
+
+.landing_nav {
+	position: relative;
+   	right: 0;
+   	margin: 0 0 0 20%;
+   	padding: 0;
+	text-align: center;
+	border-left: 1px solid rgba(0,0,0,0.5);
+	font-size: 12pt;
+	text-shadow: 2px 2px 2px rgb(20,20,20);
+}
+
+.landing_nav li {
+	list-style: none;
+   	float: left; 
+	height: 50px;
+   	display: block;
+}
+
+.landing_nav li a {
+	display: block;
+	text-decoration: none;
+	padding: 17px 20px;
+	color: rgb(180,180,180);
+	box-shadow: 1px 0px 0px rgba(0,0,0,0.5);
+}
+
+.landing_nav li a:active {
+	color: rgb(225,225,225);
+}
+
+.landing_nav li a:hover {
+	color: rgb(225,225,225);
+}
+
+.landing_login {
+	color: rgb(220,220,220);
+	font-size: 12pt;
+	padding: 14px 0;
+	display: block;
+	margin-right: 5%;
+	text-align: right;
+	text-shadow: 2px 2px 2px rgb(20,20,20);
+}
+
+.landing_login a {
+	text-decoration: none;
+	color: #fff;
 }
 
 .landing_logo {
 	background: rgb(7,16,24) url(gfx/ww_landing_dark_logo.png) no-repeat center 0;
 	width: 963px;
 	height: 452px;
+	margin: 0 auto;
+}
+
+.landing_logo_s {
+	background: rgb(7,16,24) url(gfx/sch_landing_dark_logo.png) no-repeat center 0;
+	width: 969px;
+	height: 455px;
 	margin: 0 auto;
 }
 

@@ -422,6 +422,7 @@ strong {
 a.linkbutton {
 	text-decoration: none;
 	display: block;
+	border-radius: 2px;
 	color: #fff;
 	background: rgb(46,74,98);
 	border: 0;
