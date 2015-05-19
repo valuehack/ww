@@ -110,9 +110,10 @@ if(isset($_POST['checkout'])) {
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
 
-            $download_link = downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057');
-            echo $download_link;
-            echo '<td><a href="'. $download_link .'" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>';
+            $file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf'.$key;
+            $download_link = downloadurl($file_path , $key);
+            //echo $download_link;
+            echo '<td><a href="'.$download_link.'" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>';
 
 ?>
 
