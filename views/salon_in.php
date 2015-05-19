@@ -30,7 +30,13 @@ if(isset($_POST['add'])){
   //array_push($_SESSION[basket],$add_id);
   echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../basket.php'>Go to Basket</a><hr><br></div>";
 
-  $_SESSION['basket'][$add_id] = $add_quantity; 
+  if ($_SESSION['basket'][$add_id]) {
+    $_SESSION['basket'][$add_id] += $add_quantity; 
+  }
+  else {
+    $_SESSION['basket'][$add_id] = $add_quantity; 
+  }
+
 }
 
 //für Interessenten (Mitgliedschaft 1) Erklärungstext oben
