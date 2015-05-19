@@ -141,7 +141,7 @@ else {
     echo $entry[text];
     echo " <a href='?id=$id'>";
     echo "&rarr; N&auml;here Informationen</a></p>";
-    echo "</div>";
+    echo "</div></div>";
 
   } 
 } 
