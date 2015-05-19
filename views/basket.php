@@ -178,7 +178,7 @@ if($_SESSION['basket']) {
                 <input type="submit" value="Remove" onClick="return checkMe()"></form></td>
         <?php
         echo "<td>&nbsp &nbsp".$quantity."</td>";
-        echo "<td><i>".$itemsExtraArray[event_price]." Credits</i></td>";
+        echo "<td><i>".$itemsExtraArray[price]." Credits</i></td>";
         echo "<td>".$sum." Credits</td></tr>";
        
        // TO DO: Find better solution to display the relevant information for different product categories  
