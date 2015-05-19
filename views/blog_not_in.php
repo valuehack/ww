@@ -4,7 +4,7 @@
 <?php 
 
 require_once('../classes/Login.php');
-include('_header_not_in.php'); 
+include('_header.php'); 
 $title="Blog";
 
 ?>
@@ -93,9 +93,6 @@ else
 ?>
 <div class="content">
            <article class="article">
-           	<header>
-			<h1>Scholien</h1>
-			</header>
 			<div class="blog_b">
 			<p>Mit Scholion bezeichnete man urspr&uuml;nglich eine Randnotiz, die Gelehrte in den B&uuml;chern anbrachten, die ihre st&auml;ndigen Wegbegleiter waren. Heute sind die Scholien die Randnotizen von <a href="http://www.rahim.cc">Rahim Taghizadegan</a>, die Erkenntnisgewinne im Rahmen der Wertewirtschaft dokumentieren: der tiefgehenden Reflexion und praktischen &Uuml;berpr&uuml;fung der M&ouml;glichkeiten, unter erschwerten Bedingungen noch Werte zu schaffen, Realit&auml;t von Illusion zu unterscheiden und Sinn zu finden.</p>
 			<p>Das Institut f&uuml;r Wertewirtschaft ist ein lernendes Unternehmen, in dem aus der Spannung zwischen mu&szlig;evoll-theoretischer Reflexion und praktisch-unternehmerischem Schaffen Erkenntnis gewonnen wird. Die Sp&auml;ne, die bei dieser Erkenntnissuche abfallen, teilt <a href="http://www.rahim.cc">Rahim Taghizadegan</a> an dieser Stelle mit Seelenverwandten. Die Scholien sind daher pers&ouml;nlich und frei von der Leber geschrieben &ndash; ohne Blatt vor dem Mund.</p>

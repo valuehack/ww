@@ -58,17 +58,12 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
     <a href="/"><img class="logo" src="http://wertewirtschaft.org/style/gfx/logo.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
     <a href="/" class="flagge"><img class="flagge" src="http://wertewirtschaft.org/style/gfx/flagge_us.png" alt="English Version" name="">English Version</a>
     <ul id="navbar">
-      <li class="navbar" style="margin-right:25px;"><a href="/scholien/">Schriften</a>
-          <ul>
-               <li class="navshort" style="margin-left:640px;"><a href="/analysen/">Analysen</a></li>
-               <li class="navshort"><a href="/scholien/">Scholien</a></li>
-               <li class="navshort"><a href="/buecher/">B&uuml;cher</a></li>
-            </ul>
-         </li>
-
-         <li class="navbar"><a href="/institut/mitglied.php">Mitgliedschaft</a></li>
-         <li class="navbar"><a href="/salon/">Salon</a></li>
-         <li class="navbar"><a href="/akademie/">Akademie</a></li>
+               <li class="navbar"><a href="/scholien/">Scholien</a></li>
+               <li class="navbar"><a href="/salon/">Salon</a></li>
+               <li class="navbar"><a href="/kurse/">Kurse</a></li>
+               <li class="navbar"><a href="/schriften/">Schriften</a></li>
+               <li class="navbar"><a href="/medien/">Bibliothek</a></li>
+               <li class="navbar"><a href="/kurse/">Projekte</a></li>
       </ul>
       </header>
 
@@ -111,42 +106,4 @@ if (isset($registration)) {
     }
 }
 ?>
-
-<?php
-
-
-//test login status
-@$con=mysql_connect(DB_HOST,DB_USER,DB_PASS) or die ("cannot connect to MySQL");
-mysql_select_db(DB_NAME);
-
-$user_id = $_SESSION['user_id'];
-$user_email = $_SESSION['user_email'];
-
-#echo $user_email;
-
-if (!isset($user_id)) echo ""; 
-else
-{
-$query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '%$user_id%' AND `user_email` LIKE '%$user_email%' ";
-
-$result = mysql_query($query) or die("Failed Query of " . $query. mysql_error());
-
-echo "You are logged in as:<br>";
-
-while ($entry = mysql_fetch_array($result))
-{
-  #var_dump( $entry );
-
-    echo " ". $entry[user_email]."<br>";
-    echo "Membership: ".$entry[Mitgliedschaft]."<br>";
-
-}
-
-?>
-
-<div>
-    <a href="/index.php?logout"><?php echo WORDING_LOGOUT; ?></a>
-</div>
-          
-<?php } ?> 
    
