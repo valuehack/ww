@@ -68,8 +68,8 @@ else {
 <table style="width:100%;border-collapse: collapse">
 
 	<tr>
-    	<td style="width:60%"><b>Titel</b></td>
-   		<td style="width:20%"><b>Quantity</b></td>
+    	<td><b>Titel</b></td>
+
 	</tr>
 
 <?php

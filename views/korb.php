@@ -181,7 +181,7 @@ if($_SESSION['basket']) {
         $sum = $quantity*$itemsExtraArray[price];
 
         echo "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
-        echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
+        echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]."</td>";
         ?>
         <td><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <input type="hidden" name="remove" value="<?php echo $key ?>" />

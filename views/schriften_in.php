@@ -106,8 +106,8 @@ else {
 <table style="width:100%;border-collapse: collapse">
 
   <tr>
-      <td style="width:60%"><b>Titel</b></td>
-      <td style="width:20%"><b>Quantity</b></td>
+      <td><b>Titel</b></td>
+      
   </tr>
 
 <?php
@@ -122,8 +122,8 @@ while($entry = mysql_fetch_array($result))
         <td>
           <?php 
           echo "<a href='?id=$id'><i>".ucfirst($entry[type])."</i> ".$entry[title];
-      if ($entry[author]) echo " ".$entry[author]; 
-      if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
+      if ($entry[author]) echo " - ".$entry[author]." </a></td>"; 
+      //if ($entry[format]) echo " ".$entry[format]; 
 
 ?>    
     </tr>
