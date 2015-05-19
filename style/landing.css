@@ -73,14 +73,14 @@ body {
 }
 
 .landing_info {
-	width: 70%;
-	margin: 15px 15% 25px 15%;
+	width: 60%;
+	margin: 0px 20% 30px 20%;
 }
 
 .landing_info p {
 	color: #fff;
 	font-family: "Baskerville", Georgia, Times, serif;
-	font-size: 12pt;
+	font-size: 18pt;
 	line-height: 1.8em;
 	text-align: justify;
 }
