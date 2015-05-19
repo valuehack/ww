@@ -62,7 +62,7 @@ if(isset($_POST['checkout'])) {
     $itemsPrice = 0;
     foreach ($items as $key => $quantity) 
     {
-        $items_price_query = "SELECT * from termine WHERE `id` LIKE '$key'";
+        $items_price_query = "SELECT * from produkte WHERE `n` LIKE '$key'";
         $items_price_result = mysql_query($items_price_query) or die("Failed Query of " . $items_price_query. mysql_error());
         $itemsPriceArray = mysql_fetch_array($items_price_result);
         $itemsPriceSum = $quantity * $itemsPriceArray[event_price];
@@ -87,7 +87,7 @@ if(isset($_POST['checkout'])) {
                     $left_credits_query = "UPDATE mitgliederExt SET credits_left='$credits_left' WHERE `user_id` LIKE '$user_id'";
                     mysql_query($left_credits_query) or die("Failed Query of " . $left_credits_query. mysql_error());
 
-                    $space_query = "UPDATE termine SET spots_sold = spots_sold + '$quantity' WHERE `id` LIKE '$key'";
+                    $space_query = "UPDATE produkte SET spots_sold = spots_sold + '$quantity' WHERE `n` LIKE '$key'";
                     mysql_query($space_query);
                 
                 }
@@ -99,14 +99,14 @@ if(isset($_POST['checkout'])) {
         echo "<td style='width:10%'>&nbsp;</td></tr>";
 
         foreach ($items as $key => $quantity) {
-            $items_extra_query = "SELECT * from termine WHERE `id` LIKE '$key' ORDER BY start DESC";
+            $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
 
             $sum = $quantity*$itemsExtraArray[event_price];
             //$download_link = downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf\','.$key);
 
-            echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
+            echo "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
             echo '<td><a href="/secdown/sec_files/'.$key.'.pdf" download>Download';
@@ -164,13 +164,13 @@ if($_SESSION['basket']) {
     $total = 0;
 
     foreach ($items as $key => $quantity) {
-        $items_extra_query = "SELECT * from termine WHERE `id` LIKE '$key' ORDER BY start DESC";
+        $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
         $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
         $itemsExtraArray = mysql_fetch_array($items_extra_result);
         
         $sum = $quantity*$itemsExtraArray[event_price];
 
-        echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
+        echo "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
         echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
         ?>
         <td><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

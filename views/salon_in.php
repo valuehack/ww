@@ -17,7 +17,7 @@ include "_header.php";
         <div id="content">
           <a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="#">Salon</a>
       <div id="tabs-wrapper"></div>
-          <h3>Salon</h3>
+
 <?php 
 //print_r($_SESSION);
 
@@ -49,6 +49,7 @@ if(isset($_GET['id']))
   $sql="SELECT * from produkte WHERE id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
+  $n = $entry3[n];
 
 ?>
   
@@ -83,7 +84,7 @@ if(isset($_GET['id']))
   else {
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      <input type="hidden" name="add" value="<?php echo $id; ?>" />
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />
       <select name="quantity">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -91,7 +92,7 @@ if(isset($_GET['id']))
         <option value="4">4</option>
         <option value="5">5</option>        
       </select> 
-      <input type="submit" value="In den Einkaufskorb">
+      <input type="submit" value="In den Einkaufskorb">&nbsp;EUR <?php echo $entry3[price]<; ?>
     </form>
 <?php  
   }
@@ -99,6 +100,8 @@ if(isset($_GET['id']))
 }
 
 else {
+    echo "<h3>Salon</h3>";
+
 //für Interessenten (Mitgliedschaft 1) Erklärungstext oben
   if ($_SESSION['Mitgliedschaft'] == 1) {
     //echo "<p><img class='wallimg big' src='salon.jpg' alt='Salon im Institut für Wertewirtschaft'></p>";
@@ -135,11 +138,6 @@ else {
   ?>
 
   </table></p>
-
-
-   <h5>Unser Angebot</h5>
-
-   <p>Wir organisieren und gestalten philosophische Caf&eacute;s, Salons und Seminare f&uuml;r Ihre Mitarbeiter, Ihren Ort, Ihren Freundeskreis. Sch&ouml;pfen Sie Kraft, abseits vom Wahnsinn des Alltags die Mu&szlig;e zu finden, einmal tiefgehend nachzudenken. Wir regen kontroversiellen aber konstruktiven Gedankenaustausch an. Immer mehr Unternehmen ziehen solche Anl&auml;sse mit tieferem Sinn oberfl&auml;chlichen Schulungen und Teambuildings vor. Hier k&ouml;nnen unter fachlicher Anleitung die Hintergr&uuml;nde realer Probleme beleuchtet werden, k&ouml;nnen Gedanken und Beobachtung ausgedr&uuml;ckt werden, die in einer kurzlebigen Zeit sonst niemals an die Oberfl&auml;che kommen. G&ouml;nnen Sie Ihren Mitarbeitern und G&auml;sten den Luxus der Mu&szlig;e, um tief Luft zu holen f&uuml;r neue Aufgaben. Anfragen an: <a href="mailto:&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;">&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;</a>.</p>
 
 
    <h5>Informationen</h5>
