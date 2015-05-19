@@ -67,14 +67,14 @@ body {
 
 .landing_logo {
 	background: rgb(7,16,24) url(gfx/ww_landing_dark_logo.png) no-repeat center 0;
-	width: 1000px;
-	height: 450px;
+	width: 963px;
+	height: 452px;
 	margin: 0 auto;
 }
 
 .landing_info {
 	width: 60%;
-	margin: 0px 20% 30px 20%;
+	margin: 80px 20% 160px 20%;
 }
 
 .landing_info p {
