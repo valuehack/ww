@@ -63,7 +63,7 @@ if(isset($_GET['id']))
     if ($day==0) $day=7;
     echo Phrase('day'.$day).", ";
     */
-    echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]);
+    echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
   
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";

@@ -56,13 +56,13 @@ while ($entry = mysql_fetch_array($result))
     <br><br> 
     <a href="/profil/">Profil</a>
     <br>
-    <a href="/abo/">Abo/a>
+    <a href="/abo/">Abo</a>
     <br>
-    <a href="/akteure/">Akteure/a>
+    <a href="/akteure/">Akteure</a>
     <br>
-    <a href="/agb/">AGB/a>
+    <a href="/agb/">AGB</a>
     <br>
-    <a href="/impressum/">AGB/a>
+    <a href="/impressum/">Impressum</a>
     <br><br>
     <a href="/index.php?logout"><?php echo WORDING_LOGOUT; ?></a>
 
