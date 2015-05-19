@@ -98,26 +98,63 @@ body {
 	height: 49px;
 }
 
+.link_1 p, .link_2 p, .link_3 p {
+	
+}
+
 .link_1 {
-	padding: 85px 0 0 150px;
+	padding: 75px 0 0 150px;
 	width: 250px;	
 }
 
 .link_2{
 	text-align: center;
-	padding: 85px 0 0 260px;
+	padding: 70px 0 0 260px;
 	width: 140px;
 }
 
 .link_3 {
 	text-align: right;
-	padding: 85px 40px 0 0;
+	padding: 75px 40px 0 0;
 	width: 360px;
 }
 
 .link_1 a, .link_2 a, .link_3 a {
 	color: rgb(26,26,26);
-	text-shadow: 2px 2px 5px 0 rgb(250,250,250);
 	text-decoration: none;
+}
+
+.button_1, .button_2, .button_3 {
+	text-align: center;
+	display: block;
+	border-radius: 2px;	
+	padding: 5px;
+	background: rgba(250,250,250,0.6);
+	box-shadow: 2px 2px 3px rgb(20,20,20);
+}
+
+.button_1 {
+	width: 68px;
 	font-size: 20pt;
+}
+
+.button_2 {
+	width: 90px;
+	font-size: 24pt;
+	margin-left: 40px;
+}
+
+.button_3 {
+	width: 114px;
+	font-size: 20pt;
+	margin-left: 230px;
+}
+
+.button_1:hover, .button_2:hover, .button_3:hover {
+	text-align: center;
+	display: block;
+	border-radius: 2px;	
+	padding: 5px;
+	background: rgba(175,175,175,0.6);
+	box-shadow: 2px 2px 3px rgb(20,20,20) inset;
 }
