@@ -12,21 +12,21 @@ function checkMe() {
 </script>
 
 <?php 
-include_once("secdown/functions.php");
+include_once("../secdown/functions.php");
 dbconnect();
 
-require_once('classes/Login.php');
+require_once('../classes/Login.php');
 include('_header.php'); 
-$title="Basket";
+$title="Korb";
 
 ?>
 
 <div id="center">  
 <div id="content">
-<a class="content" href="../index.php">Index &raquo;</a><a class="content" href="<?php echo $_SERVER['PHP_SELF']; ?>"> Basket</a>
+<a class="content" href="../index.php">Index &raquo;</a><a class="content" href="<?php echo $_SERVER['PHP_SELF']; ?>"> Korb</a>
 <div id="tabs-wrapper-lower"></div>
 
-<h2>Basket</h2>
+<h2>Korb</h2>
 
 <?php 
 //print_r($_SESSION);

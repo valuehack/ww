@@ -52,9 +52,9 @@ while ($entry = mysql_fetch_array($result))
     <br>
     <a href="/bibliothek/">Bibliothek</a>
     <br><br>
-    <a href="/basket.php">Basket</a>
+    <a href="/abo/korb.php">Korb</a>
     <br><br> 
-    <a href="/profil/">Profil</a>
+    <a href="/abo/profil.php">Profil</a>
     <br>
     <a href="/abo/">Abo</a>
     <br>

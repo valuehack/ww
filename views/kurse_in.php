@@ -31,7 +31,7 @@ if(isset($_POST['add'])){
 	//$actual_quantity = $_SESSION['basket'][$add_id];
 	$add_quantity = $_POST['quantity'];
 	//$new_quantity = $add_quantity + $actual_quantity;
- 	echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../basket.php'>Go to Basket</a><hr><br></div>";
+ 	echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../abo/korb.php'>Go to Basket</a><hr><br></div>";
 
  	if (isset($_SESSION['basket'][$add_id])) {
     $_SESSION['basket'][$add_id] += $add_quantity; 
@@ -90,7 +90,7 @@ if(isset($_GET['id']))
         <option value="4">4</option>
         <option value="5">5</option>        
       </select> 
-      <input type="submit" value="Auswählen">
+      <input type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
     </form>
   <?php
   }
@@ -104,7 +104,7 @@ else {
   ?>
          
     <p>Unsere Kurse inmitten unserer einzigartigen Bibliothek bieten inhaltliche Vertiefungen abseits des Mainstream-Lehrbetriebs. Wir folgen dabei dem Beispiel der klassischen Akademie &ndash; der Bibliothek im Hain der Mu&szlig;e fern vom Wahnsinn der Zeit, in der Freundschaften durch regen Austausch und gemeinsames Nachdenken gestiftet werden. Alle unsere Lehrangebote zeichnen sich durch geb&uuml;hrende Tiefe bei gleichzeitiger Verst&auml;ndlichkeit, kleine Gruppen und gro&szlig;en Freiraum f&uuml;r Fragen und Diskussionen aus. Tauchen Sie mit uns in intellektuelle Abenteuer, wie sie unsere Zeit kaum noch zul&auml;&szlig;t.</p>
-  <hr>
+ 
   <?
   } ?>
 

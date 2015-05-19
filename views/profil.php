@@ -1,7 +1,8 @@
 
 <?php 
 
-require_once('classes/Login.php');
+require_once('../classes/Login.php');
+$title="Profil";
 include('_header.php'); 
 // include ('testView.php');
 
@@ -10,11 +11,11 @@ include('_header.php');
 <div id="center">  
 <div id="content">
 <!-- <div id="tabs-wrapper-lower"></div> -->
-<a class="content" href="../index.php">Index &raquo;</a>
+<a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="#">Profil</a>
 <div id="tabs-wrapper-lower"></div>
 
 <!-- clean separation of HTML and PHP -->
-<h2>Profile</h2>
+<h2>Profil</h2>
 
 
 <!-- Your profile: <br> -->

@@ -45,11 +45,11 @@ if(isset($_GET['id']))
 ?>
   <hr>
   <h5>Anmeldung</h5>
-  <i><p>Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r den Kurs, sondern auch Zugang zu den Scholien, unserem Salon, Schriften, Medien etc.</p></i><br><br>
+  <i><p>Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r den Kurs, sondern auch Zugang zu den Scholien, unserem Salon, Schriften, Medien etc.</p></i>
 
   <div>
     Platzhalter Anmeldeformular
-  </div>
+  </div><br>
 
   <div class="subscribe">
           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
@@ -69,7 +69,7 @@ else {
   <!--<p><img class="wallimg big" src="akademie.jpg" alt="" titel="Akademieveranstaltung"></p>-->
          
   <p>Unsere Kurse inmitten unserer einzigartigen Bibliothek bieten inhaltliche Vertiefungen abseits des Mainstream-Lehrbetriebs. Wir folgen dabei dem Beispiel der klassischen Akademie &ndash; der Bibliothek im Hain der Mu&szlig;e fern vom Wahnsinn der Zeit, in der Freundschaften durch regen Austausch und gemeinsames Nachdenken gestiftet werden. Alle unsere Lehrangebote zeichnen sich durch geb&uuml;hrende Tiefe bei gleichzeitiger Verst&auml;ndlichkeit, kleine Gruppen und gro&szlig;en Freiraum f&uuml;r Fragen und Diskussionen aus. Tauchen Sie mit uns in intellektuelle Abenteuer, wie sie unsere Zeit kaum noch zul&auml;&szlig;t.</p>
-  <hr>
+
   <h5>Termine</h5>
              
   <div id="tabs-wrapper-sidebar"></div>
