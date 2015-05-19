@@ -20,7 +20,6 @@ $title="Schriften";
 <a class="content" href="../index.php">Index &raquo;</a><a class="content" href="<?php echo $_SERVER['PHP_SELF']; ?>"> Schriften</a>
 <div id="tabs-wrapper-lower"></div>
 
-<h2>Schriften</h2>
 
 <?php 
 if(!isset($_SESSION['basket'])){
@@ -33,72 +32,100 @@ if(isset($_POST['add'])){
 	//$actual_quantity = $_SESSION['basket'][$add_id];
 	$add_quantity = $_POST['quantity'];
 	//$new_quantity = $add_quantity + $actual_quantity;
- 	echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../basket.php'>Go to Basket</a><hr><br></div>";
+ 	echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../abo/korb.php'>Go to Basket</a><hr><br></div>";
 
- 	$_SESSION['basket'][$add_id] = $add_quantity; 
+ 	if (isset($_SESSION['basket'][$add_id])) {
+    $_SESSION['basket'][$add_id] += $add_quantity; 
+  }
+  else {
+    $_SESSION['basket'][$add_id] = $add_quantity; 
+  }
 }
 
-if ($_SESSION['Mitgliedschaft'] == 1) {
-?>       
-  <p>Erklärungstext zu Schriften...</p>     
-<?
-} ?>
 
+if(isset($_GET['id']))
+{
+  $id = $_GET['id'];
 
-<h5>Choose your books:</h5>
+  //Termindetails
+  $sql="SELECT * from produkte WHERE id='$id'";
+  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+  $entry3 = mysql_fetch_array($result);
+  $n = $entry3[n];
+?>
+  
+  <h3 style="font-style:none;"><?echo $entry3[title]?></h3>
 
-<div id="tabs-wrapper-sidebar"></div>
+<? 
+  if ($entry3[img]) echo $entry3[img];
+
+  if ($entry3[text]) echo "<p>$entry3[text]</p>";
+  if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
+
+  if ($_SESSION['Mitgliedschaft'] == 1) {  
+    //Button trigger modal
+    echo '<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';  
+  }
+  else {
+    ?>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />
+      <select name="quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>        
+      </select> 
+      <input type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
+    </form>
+<?php 
+  }
+
+}
+     
+
+else {
+  echo "<h2>Schriften</h2>";
+
+  if ($_SESSION['Mitgliedschaft'] == 1) {
+  ?>       
+    <p>Unsere Schriften umfassen derzeit:<br>
+      <ul>
+        <li>B&uuml;cher &ndash; teilweise eigene, eher f&uuml;r ein breiteres Publikum, teilweise &Uuml;bersetzungen, meist schwierigere Texte</li>
+        <li>Analysen &ndash; besonders effiziente und lesbare Texte f&uuml;r einen schnellen, aber profunden &Uuml;berblick zu einem Thema</li>
+        <li>Restexemplare der gedruckten Scholien bis 2014</li>
+        <li>neue Druckausgaben der Scholien</li>
+      </ul>
+</p>     
+  <?
+  } ?>
+
+  <div id="tabs-wrapper-sidebar"></div>
 
 <table style="width:100%;border-collapse: collapse">
 
-	<tr>
-    	<td style="width:60%"><b>Titel</b></td>
-   		<td style="width:20%"><b>Quantity</b></td>
-	</tr>
+  <tr>
+      <td style="width:60%"><b>Titel</b></td>
+      <td style="width:20%"><b>Quantity</b></td>
+  </tr>
 
 <?php
-$sql = "SELECT * from termine WHERE type LIKE 'Buch' OR type LIKE 'Scholien' order by title asc, id asc";
+$sql = "SELECT * from produkte WHERE type LIKE 'buch' OR type LIKE 'scholien' AND status > 0 order by title asc, id asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
-	$event_id = $entry[id];
+  $id = $entry[id];
 ?>
-   	<tr>
-      	<td style="width:60%"><?php echo $event_id." <i>".ucfirst($entry[type])."</i> ".$entry[title]." ".$entry[author]." <i>".$entry[format]."</i>";?></a>
-        <td style="width:20%">
-          <?php
-          if ($_SESSION['Mitgliedschaft'] == 1) {
-          ?>
-            <form>
-              <select name="quantity">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>        
-              </select> 
-                <!-- Button trigger modal -->
-                <input type="button" value="Add to Basket" data-toggle="modal" data-target="#myModal">  
-            </form>
-          <?php
-          } 
-          else {
-            ?>
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-              <input type="hidden" name="add" value="<?php echo $event_id; ?>" />
-              <select name="quantity">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>        
-              </select> 
-              <input type="submit" value="Add to Basket">
-            </form>
-          <?php
-          } ?>
-        </td>
+    <tr>
+        <td>
+          <?php 
+          echo "<a href='?id=$id'><i>".ucfirst($entry[type])."</i> ".$entry[title];
+      if ($entry[author]) echo " ".$entry[author]; 
+      if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
+
+?>    
     </tr>
 
 <?php
@@ -106,9 +133,8 @@ while($entry = mysql_fetch_array($result))
 
 echo "</table><br><br>";
 
+}
 ?>
-
-<a href="../basket.php">Go to Basket</a>
 
 
 <!-- Modal -->
@@ -120,15 +146,7 @@ echo "</table><br><br>";
         <h2 class="modal-title" id="myModalLabel">Mitgliedschaft 75</h2>
       </div>
       <div class="modal-body">
-        <p>Das Institut f&uuml;r Wertewirtschaft ist eine gemeinn&uuml;tzige Einrichtung, die sich durch einen besonders langfristigen Zugang auszeichnet. Um unsere Unabh&auml;ngigkeit zu bewahren, akzeptieren wir keinerlei Mittel, die aus unfreiwilligen Zahlungen (Steuern, Geb&uuml;hren, Zwangsmitgliedschaften etc.) stammen. Umso mehr sind wir auf freiwillige Investitionen angewiesen. Nur mit Ihrer Unterst&uuml;tzung k&ouml;nnen wir unsere Arbeit aufrecht erhalten oder ausweiten.</p>
-
-<p><b>Warum in das Institut f&uuml;r Wertewirtschaft investieren?</b></p>
-
-<p> Wo gibt es sonst noch vollkommen unabh&auml;ngige Universalgelehrte, die im Wahnsinn der Gegenwart den &Uuml;berblick bewahren und den Verlockungen von Macht und Geld widerstehen? Einst hatten Universit&auml;ten diese Aufgabe, doch sind diese l&auml;ngst durch die Politik korrumpiert und im Kern zerst&ouml;rt.  Jeder rationale Anleger sollte ebenso in die Institutionen investieren, die f&uuml;r eine freie und wohlhabende Gesellschaft unverzichtbar sind. Ohne Menschen, die ihr Leben der Erkenntnis widmen, sind den Illusionen, die zu Unfreiheit und Versklavung f&uuml;hren, keine Grenzen gesetzt.  Das Institut f&uuml;r Wertewirtschaft ist, obwohl wir wenig pragmatisch sind, wohl eines der effizientesten Institute weltweit. Wir leisten mehr als Einrichtungen, die das Hundertfache unseres Budgets aufweisen. Durch gro&szlig;en pers&ouml;nlichen Einsatz , &auml;u&szlig;erst sparsames Management und unternehmerische Einstellung k&ouml;nnen wir auch mit geringen Betr&auml;gen gro&szlig;en Mehrwert schaffen.  Eine Gesellschaft, in der nahezu die gesamte Bildung und Forschung in staatlicher Hand liegt, befindet sich auf direktem Weg in den Totalitarismus. Sagen Sie nachher nicht, wir h&auml;tten Sie nicht gewarnt.  Warnung: Wir k&ouml;nnen nat&uuml;rlich auch keine Wunder vollbringen (wiewohl wir uns oft wundern, was uns alles trotz unser knappen Mittel gelingt). Wir sind keinesfalls geneigt, uns in irgendeiner Form f&uuml;r Geldmittel zu verbiegen. Wenn Sie in unsere Arbeit investieren, dann tun Sie das, weil Sie unsere Selbst&auml;ndigkeit und Unkorrumpierbarkeit sch&auml;tzen. Finanzmittel sind nur eine Zutat, und keinesfalls die Wichtigste. Wir bitten Sie darum, weil materielle Unabh&auml;ngigkeit die Voraussetzung unserer Arbeit ist - und diese Unabh&auml;ngigkeit k&ouml;nnen wir nur durch eine Vielfalt an Stiftern erreichen.</p>
-
-<p><b>Ihre Vorteile:</b></p>
-
-<p> Deutliche Erm&auml;&szlig;igungen bei unseren Akademie-Veranstaltungen (schon bei wenigen Besuchen bringt Ihnen die Mitgliedschaft einen finanziellen Vorteil)  Erm&auml;&szlig;igter Eintritt zu unseren Salon-Veranstaltungen (Video&uuml;bertragung f&uuml;r ausw&auml;rtige Mitglieder)  Abonnement der Scholien inkludiert  Wachsende Zahl exklusiver Inhalte (Audio/Video)  Nutzung der Bibliothek, B&uuml;cherleihe  F&ouml;rderer:  F&ouml;rderer leisten einen regelm&auml;&szlig;igen Beitrag, der &uuml;ber die Kosten hinausgeht, um uns bei unserer Arbeit zu ermutigen und zu unterst&uuml;tzen. Daf&uuml;r sind sie etwas mehr in unser Institut eingebunden und erhalten zus&auml;tzlich zu den Mitgliedschaftsvorteilen:  Hintergrundinformationen zu unserer Arbeit  Einladung zu exklusiven Veranstaltungen  Ihre Begleitung erh&auml;lt den Mitgliedertarif bei unseren Veranstaltungen  ab 300 &euro; Beitrag: Zusendung signierter Exemplare aller Bucherscheinungen und sonstiger Publikationen </p>
+        <p>Wir freuen uns, dass Sie eine unserer Schriften bestellen m&ouml;chten. Allerdings sind einige Schriften nicht f&uuml;r die &Ouml;ffentlichkeit bestimmt, andere sind im Buchhandel zu erwerben,&nbsp;da ein Vertrieb und Versand f&uuml;r uns nicht wirtschaftlich&nbsp;ist. Unser Webshop, &uuml;ber den alle Schriften entweder bestellt oder in allen digitalen Formaten f&uuml;r Leseger&auml;te heruntergeladen werden k&ouml;nnen, steht nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf unsere Schriften:&nbsp;</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
