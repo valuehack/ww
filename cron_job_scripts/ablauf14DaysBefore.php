@@ -1,11 +1,12 @@
 <!-- 
 send email to everyone that matches query
 of expiration of account 14 days in advance
+TO DO: PDO, PHPMailer
 -->
 
 <?php
 
-@$con=mysql_connect				  ("wertewirtschaft1.db.6152056.hostedresource.com","wertewirtschaft1","Werte333wirte") or die ("cannot connect to MySQL");
+@$con=mysql_connect ("wertewirtschaft1.db.6152056.hostedresource.com","wertewirtschaft1","Werte333wirte") or die ("cannot connect to MySQL");
 
 #@$con=mysql_connect("localhost","testwerte","password") or die ("cannot connect to MySQL");
 

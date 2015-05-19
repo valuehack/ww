@@ -18,6 +18,10 @@
     <script src="http://wertewirtschaft.org/tools/Lightbox/lightbox.js" type="text/javascript"></script>
 <!-- Ende -->
 
+    <!-- this is used for this fancy login form -->
+    <SCRIPT LANGUAGE="JavaScript" src="/js/jquery.js"></SCRIPT>
+    <SCRIPT LANGUAGE="JavaScript" src="/js/script.js"></SCRIPT>
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
