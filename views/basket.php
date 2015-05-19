@@ -109,8 +109,17 @@ if(isset($_POST['checkout'])) {
             echo "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
-            echo '<td><a href="/secdown/sec_files/'.$key.'.pdf" download>Download';
-            echo '</a></td></tr>';
+
+            $download_link = downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057');
+            echo $download_link;
+            echo '<td><a href="'. $download_link .'" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>';
+
+?>
+
+<a href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057'); ?>" onclick="updateReferer(this.href);">This should work</a>
+<?php
+            
+            echo '</td></tr>';
 
             /*
             $file = '/secdown/sec_files/'.$key.'.jpg';

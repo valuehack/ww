@@ -129,11 +129,13 @@ else {
       <div class="modal-body">
         <p>Wir freuen uns, dass Sie Interesse an einer Teilnahme haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten einer Teilnahme zu erfahren:</p>
         <div class="subscribe">
+<!--           
+  Commented out, because of the clashes between forms
           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
           <input class="inputfield" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required />
           <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" style="display:none"  />
           <input class="inputbutton" id="inputbutton" type="submit" name="fancy_ajax_form_submit" value="Eintragen" />
-          </form> 
+          </form>  -->
         </div>
       </div>
       <div class="modal-footer">
