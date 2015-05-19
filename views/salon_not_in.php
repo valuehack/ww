@@ -72,16 +72,16 @@ else {
   <p><table>
 
   <?php
-  $sql = "SELECT * from termine WHERE type LIKE 'salon' AND end > NOW() order by start asc, id asc";
+  $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND end > NOW() AND spots > spots_sold AND status = 1 order by start asc, id asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
   while($entry = mysql_fetch_array($result))
   {
-    $event_id = $entry[id];
+    $id = $entry[id];
       ?>
       <tr>
         <td class="bottomline"><?php echo date("d.m.Y",strtotime($entry[start])); ?></td>
-        <td class="bottomline"><?php echo "<i>".$event_id."</i> <b>".$entry[title]; ?></b></td>
+        <td class="bottomline"><?php echo "<a href='?id=$id'><i>".$event_id."</i> <b>".$entry[title]; ?></b></a></td>
       </tr> 
       <tr>
         <td><?php echo date("H:i",strtotime($entry[start])); ?></td>
