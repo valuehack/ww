@@ -30,7 +30,7 @@ if(isset($_POST['add'])){
   $add_id = $_POST['add'];
   $add_quantity = $_POST['quantity'];
   //array_push($_SESSION[basket],$add_id);
-  echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../basket.php'>Go to Basket</a><hr><br></div>";
+  echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../abo/basket.php'>Go to Basket</a><hr><br></div>";
 
   if (isset($_SESSION['basket'][$add_id])) {
     $_SESSION['basket'][$add_id] += $add_quantity; 
@@ -92,7 +92,7 @@ if(isset($_GET['id']))
         <option value="4">4</option>
         <option value="5">5</option>        
       </select> 
-      <input type="submit" value="In den Einkaufskorb">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
+      <input type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
     </form>
 <?php  
   }
