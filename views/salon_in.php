@@ -19,6 +19,8 @@ include "_header.php";
       <div id="tabs-wrapper"></div>
           <h3>Salon</h3>
 <?php 
+print_r($_SESSION);
+
 //Inserted from catalog.php
 if(!isset($_SESSION['basket'])){
     $_SESSION['basket'] = array();

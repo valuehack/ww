@@ -38,11 +38,11 @@ while ($entry = mysql_fetch_array($result))
 <div>
 
     <br>
-    <a href="/blog/">Scholien (Blog)</a>
+    <a href="/scholien/">Scholien</a>
     <br>
     <a href="/salon/">Salon</a>
     <br>
-    <a href="/seminare/">Seminare</a>
+    <a href="/kurse/">Kurse</a>
     <br>
     <a href="/schriften/">Schriften</a>
     <br>
@@ -52,13 +52,17 @@ while ($entry = mysql_fetch_array($result))
     <br>
     <a href="/bibliothek/">Bibliothek</a>
     <br><br>
-    <a href="/catalog.php">//Catalog</a>
-    <br>
     <a href="/basket.php">Basket</a>
     <br><br> 
-    <a href="/edit.php">Profil</a>
+    <a href="/profil/">Profil</a>
     <br>
-    <a href="/upgrade.php">Upgrade</a>
+    <a href="/abo/">Abo/a>
+    <br>
+    <a href="/akteure/">Akteure/a>
+    <br>
+    <a href="/agb/">AGB/a>
+    <br>
+    <a href="/impressum/">AGB/a>
     <br><br>
     <a href="/index.php?logout"><?php echo WORDING_LOGOUT; ?></a>
 
