@@ -65,7 +65,7 @@ if(isset($_POST['checkout'])) {
         $items_price_query = "SELECT * from produkte WHERE `n` LIKE '$key'";
         $items_price_result = mysql_query($items_price_query) or die("Failed Query of " . $items_price_query. mysql_error());
         $itemsPriceArray = mysql_fetch_array($items_price_result);
-        $itemsPriceSum = $quantity * $itemsPriceArray[event_price];
+        $itemsPriceSum = $quantity * $itemsPriceArray[price];
         $itemsPrice += $itemsPriceSum;
     }
 
@@ -103,7 +103,7 @@ if(isset($_POST['checkout'])) {
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
 
-            $sum = $quantity*$itemsExtraArray[event_price];
+            $sum = $quantity*$itemsExtraArray[price];
             //$download_link = downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf\','.$key);
 
             echo "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
@@ -168,7 +168,7 @@ if($_SESSION['basket']) {
         $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
         $itemsExtraArray = mysql_fetch_array($items_extra_result);
         
-        $sum = $quantity*$itemsExtraArray[event_price];
+        $sum = $quantity*$itemsExtraArray[price];
 
         echo "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
         echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
