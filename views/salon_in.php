@@ -92,7 +92,7 @@ if(isset($_GET['id']))
         <option value="4">4</option>
         <option value="5">5</option>        
       </select> 
-      <input type="submit" value="In den Einkaufskorb">&nbsp;EUR <?php echo $entry3[price]<; ?>
+      <input type="submit" value="In den Einkaufskorb">&nbsp;EUR <?php echo $entry3[price]; ?>
     </form>
 <?php  
   }
