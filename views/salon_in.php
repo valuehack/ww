@@ -19,7 +19,7 @@ include "_header.php";
       <div id="tabs-wrapper"></div>
           <h3>Salon</h3>
 <?php 
-print_r($_SESSION);
+//print_r($_SESSION);
 
 //Inserted from catalog.php
 if(!isset($_SESSION['basket'])){
@@ -137,26 +137,6 @@ else {
   </table></p>
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h2 class="modal-title" id="myModalLabel">Reservieren</h2>
-        </div>
-        <div class="modal-body">
-          <p>Wir freuen uns, dass Sie erstmals teilnehmen wollen! Ein Salon ist jedoch, wenn man ihn ernst nimmt und nicht nur den sch&ouml;nen Namen f&uuml;hrt, eine intime und exklusive Veranstaltung, die viel Vertrauen erfordert. Eine Einzelkarte k&ouml;nnen nur bestehende G&auml;ste der Wertewirtschaft erwerben. Sie k&ouml;nnen entweder einen Ihnen bekannten Gast darum bitten, f&uuml;r Sie zu b&uuml;rgen und eine Eintrittskarte f&uuml;r Sie zu erwerben. Oder Sie werden Teil unseres exklusiven Netzwerks, indem Sie unsere Arbeit mit nur 6.25&euro; im Monat unterst&uuml;tzen und damit auch aus unserer Arbeit vollen Nutzen ziehen k&ouml;nnen: Sie erhalten nicht nur Zugang zu unserem Salon (ohne weitere Mehrkosten, inklusive Abendessen), sondern unter anderem auch Zugang zu den Scholien und zu unserer einzigartigen physischen und digitalen Bibliothek. Ist es das wert? Vertrauen Sie uns (Wertsch&ouml;pfung ist unser Antrieb) &ndash; dann vertrauen auch wir Ihnen.</p>
-          <p>Sind Sie gar nicht in Wien zuhause? Keine Sorge, die meisten unserer G&auml;ste kommen von au&szlig;erhalb. Wenn sich kein Wienbesuch mit einem sch&ouml;nen Abend bei uns &uuml;berschneiden sollte, erleiden Sie keine Einbu&szlig;e: Sie k&ouml;nnen stattdessen im selben Gegenwert Aufzeichnungen anh&ouml;ren, Schriften beziehen oder anderswie aus unserem umfangreichen Angebot Nutzen ziehen &ndash; ein Angebot, das insbesondere f&uuml;r Nicht-Wiener gedacht ist, denn vom Unternehmergeist und Erkenntnisdrang des alten Wiens bestehen im neuen leider nur noch letzte Reste. Inspiration findet sich hier aber noch genug, und wir bringen Leben ins Freilicht-Museum! Geben Sie uns eine Chance, auch Sie zu inspirieren und zu beleben.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-          <a href="../abo/"><button type="button" class="btn btn-primary">Jetzt upgraden</button></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
    <h5>Unser Angebot</h5>
 
    <p>Wir organisieren und gestalten philosophische Caf&eacute;s, Salons und Seminare f&uuml;r Ihre Mitarbeiter, Ihren Ort, Ihren Freundeskreis. Sch&ouml;pfen Sie Kraft, abseits vom Wahnsinn des Alltags die Mu&szlig;e zu finden, einmal tiefgehend nachzudenken. Wir regen kontroversiellen aber konstruktiven Gedankenaustausch an. Immer mehr Unternehmen ziehen solche Anl&auml;sse mit tieferem Sinn oberfl&auml;chlichen Schulungen und Teambuildings vor. Hier k&ouml;nnen unter fachlicher Anleitung die Hintergr&uuml;nde realer Probleme beleuchtet werden, k&ouml;nnen Gedanken und Beobachtung ausgedr&uuml;ckt werden, die in einer kurzlebigen Zeit sonst niemals an die Oberfl&auml;che kommen. G&ouml;nnen Sie Ihren Mitarbeitern und G&auml;sten den Luxus der Mu&szlig;e, um tief Luft zu holen f&uuml;r neue Aufgaben. Anfragen an: <a href="mailto:&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;">&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;</a>.</p>
@@ -185,30 +165,25 @@ else {
 }    
   ?> 
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="myModalLabel">Reservierung</h2>
-      </div>
-      <div class="modal-body">
-        <p>Wir freuen uns, dass Sie Interesse an einer Teilnahme haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten einer Teilnahme zu erfahren:</p>
-        <div class="subscribe">
-          <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
-          <input class="inputfield" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required />
-          <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" style="display:none"  />
-          <input class="inputbutton" id="inputbutton" type="submit" name="fancy_ajax_form_submit" value="Eintragen" />
-          </form> 
+ <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h2 class="modal-title" id="myModalLabel">Reservieren</h2>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+        <div class="modal-body">
+          <p>Wir freuen uns, dass Sie erstmals teilnehmen wollen! Ein Salon ist jedoch, wenn man ihn ernst nimmt und nicht nur den sch&ouml;nen Namen f&uuml;hrt, eine intime und exklusive Veranstaltung, die viel Vertrauen erfordert. Eine Einzelkarte k&ouml;nnen nur bestehende G&auml;ste der Wertewirtschaft erwerben. Sie k&ouml;nnen entweder einen Ihnen bekannten Gast darum bitten, f&uuml;r Sie zu b&uuml;rgen und eine Eintrittskarte f&uuml;r Sie zu erwerben. Oder Sie werden Teil unseres exklusiven Netzwerks, indem Sie unsere Arbeit mit nur 6.25&euro; im Monat unterst&uuml;tzen und damit auch aus unserer Arbeit vollen Nutzen ziehen k&ouml;nnen: Sie erhalten nicht nur Zugang zu unserem Salon (ohne weitere Mehrkosten, inklusive Abendessen), sondern unter anderem auch Zugang zu den Scholien und zu unserer einzigartigen physischen und digitalen Bibliothek. Ist es das wert? Vertrauen Sie uns (Wertsch&ouml;pfung ist unser Antrieb) &ndash; dann vertrauen auch wir Ihnen.</p>
+          <p>Sind Sie gar nicht in Wien zuhause? Keine Sorge, die meisten unserer G&auml;ste kommen von au&szlig;erhalb. Wenn sich kein Wienbesuch mit einem sch&ouml;nen Abend bei uns &uuml;berschneiden sollte, erleiden Sie keine Einbu&szlig;e: Sie k&ouml;nnen stattdessen im selben Gegenwert Aufzeichnungen anh&ouml;ren, Schriften beziehen oder anderswie aus unserem umfangreichen Angebot Nutzen ziehen &ndash; ein Angebot, das insbesondere f&uuml;r Nicht-Wiener gedacht ist, denn vom Unternehmergeist und Erkenntnisdrang des alten Wiens bestehen im neuen leider nur noch letzte Reste. Inspiration findet sich hier aber noch genug, und wir bringen Leben ins Freilicht-Museum! Geben Sie uns eine Chance, auch Sie zu inspirieren und zu beleben.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+          <a href="../abo/"><button type="button" class="btn btn-primary">Jetzt upgraden</button></a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
           <div id="tabs-wrapper-lower"></div>
