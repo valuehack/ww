@@ -1,102 +1,191 @@
+<!-- Bootstrap -->
+<link href="../style/modal.css" rel="stylesheet">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../tools/bootstrap.js"></script>
+
+
 <?
-// include "_db.php";
+require_once('../classes/Login.php');
 $title="Medien";
-// include "../views/header2.inc.php";
-include "_werte_db.php";
 include "_header.php";
-
-
 
 ?>
 <!--Content-->
 <div id="center">
         <div id="content">
-          <a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="#"> Medien</a>
+          <a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="index.php"> Medien</a>
 	    <div id="tabs-wrapper"></div>
-          <h3>Medien</h3>
 
-            <p><!--<img class="wallimg big" src="../style/gfx/platzhalter.png" alt="Platzhalter" title="Platzhalter">--></p>
+<?php 
+if(!isset($_SESSION['basket'])){
+    $_SESSION['basket'] = array();
+}
 
-            <p class="intern"><a href="audio.php" alt="">Tonaufnahmen</a> - <a href="video.php" alt="">Videoaufnahmen</a></p>
+if(isset($_POST['add'])){
 
-            <p></p>
-            
-            <a href="audio.php"><h5>Audio</h5></a>
-            
-<?
-         $limit=2;
-         $n=0;
-         $sql="SELECT * from audio";
-         if ($id) $sql=$sql." WHERE id='$id'";
-          elseif ($tag) $sql=$sql." WHERE tags LIKE '%$tag%'";
-        $sql=$sql." order by time desc";
-        if ($offset||$limit) $sql=$sql." limit ";
-        if ($offset) $sql=$sql.$offset.",";
-        if ($limit) $sql=$sql."$limit";
-        $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-        while($entry = mysql_fetch_array($result))
-        {
+  $add_id = $_POST['add'];
+  //$actual_quantity = $_SESSION['basket'][$add_id];
+  $add_quantity = $_POST['quantity'];
+  //$new_quantity = $add_quantity + $actual_quantity;
+  echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../abo/korb.php'>Go to Basket</a><hr><br></div>";
 
-         //ereg() not used anymore in PHP5.3 and up 
-         // if (!ereg("0000",$entry[time])) $date=strftime("%d.%m.%Y", strtotime($entry[time]));
-         if (!preg_match('/ 0000 /',$entry[time])) $date=strftime("%d.%m.%Y", strtotime($entry[time]));
-         else $date=strftime("%d.%m.%Y", strtotime($entry[time_input]));
-		          
-            echo "<div class=\"audioentry\">
-            <div><b>$entry[titel]</b></div>
-            <div class=\"autor\">$entry[autor], $date</div>
-          	<p>$entry[text]</p>
-            <p><a href=\"audio.php#$entry[titel]\"><b>Anh&ouml;ren</b></a></p>
-          </div>";
-	   $n++;
-	   }
-       if ($n==$limit)
-	   {
-	   	?>
-          <div class="weitere"><i><a href="audio.php">Weitere Tonaufnahmen</a></i></div>
-       <?
-        }
-       ?>          
-            
-            
-            <a href="video.php"><h5>Video</h5></a>
-<?
-         $limit2=2;
-         $n2=0;
-         $sql2="SELECT * from video";
-         if ($id2) $sql2=$sql2." WHERE id='$id2'";
-          elseif ($tag2) $sql2=$sql2." WHERE tags LIKE '%$tag2%'";
-        $sql2=$sql2." order by time desc";
-        if ($offset2||$limit2) $sql2=$sql2." limit ";
-        if ($offset2) $sql2=$sql2.$offset2.",";
-        if ($limit2) $sql2=$sql2."$limit2";
-        $result2 = mysql_query($sql2) or die("Failed Query of " . $sql2. " - ". mysql_error());
-        while($entry2 = mysql_fetch_array($result2))
-        {
-         // if (!ereg("0000",$entry2[time])) $date2=strftime("%d.%m.%Y", strtotime($entry2[time]));
-         if (!preg_match('/ 0000 /',$entry2[time])) $date2=strftime("%d.%m.%Y", strtotime($entry2[time]));
-         else $date2=strftime("%d.%m.%Y", strtotime($entry2[time_input]));
-		          
-            echo "<div class=\"videoentry\">
-            <div><b>$entry2[titel]</b></div>
-            <div class=\"autor\">$entry2[autor], $date2</div>
-          	<p>$entry2[text]</p>
-            <p><a href=\"video.php#$entry2[titel]\"><b>Ansehen</b></a></p>
-          </div>";
-	   $n2++;
-	   }
-       if ($n2==$limit2)
-	   {
-	   	?>
-          <div class="weitere"><i><a href="video.php">Weitere Videoaufnahmen</a></i></div>
-       <?
-        }
-                
-          //<a href="scholienarchiv.php"><h5>Scholienarchiv</h5></a>
-          //<p>Hier finden Sie alle unsere bisher erschienenen <a href="../scholien/" alt="">Scholien</a> als PDF zum Download.</p>
-          ?> 
-          <div id="tabs-wrapper-lower"></div>
+  if (isset($_SESSION['basket'][$add_id])) {
+    $_SESSION['basket'][$add_id] += $add_quantity; 
+  }
+  else {
+    $_SESSION['basket'][$add_id] = $add_quantity; 
+  }
+}
+
+
+if(isset($_GET['id']))
+{
+  $id = $_GET['id'];
+
+  //Termindetails
+  $sql="SELECT * from produkte WHERE type LIKE 'audio' OR type LIKE 'video' AND id='$id'";
+  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+  $entry3 = mysql_fetch_array($result);
+  $n = $entry3[n];
+?>
+  
+  <h3 style="font-style:none;"><?=$entry3[title]." (".ucfirst($entry3[type]).")";?></h3>
+
+<? 
+  if ($entry3[img]) echo $entry3[img];
+
+  if ($entry3[text]) echo "<p>$entry3[text]</p>";
+  if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
+
+  if ($_SESSION['Mitgliedschaft'] == 1) {  
+    //Button trigger modal
+    echo '<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';  
+  }
+  else {
+    ?>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />
+      <select name="quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>        
+      </select> 
+      <input type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
+    </form>
+<?php 
+  }
+
+}
+     
+
+else {
+  echo "<h2>Medien</h2>";
+
+  if ($_SESSION['Mitgliedschaft'] == 1) {
+  ?>       
+      <p>Da die meisten unserer G&auml;ste nicht in Wien zuhause sind und unsere Arbeit ein Publikum im gesamten deutschsprachigen Raum anspricht (hinter der Wertewirtschaft stehen deutsche, Schweizer und Liechtensteiner Unternehmer), bieten wir selbstverst&auml;ndlich digitale Medien an, die es erlauben, an unseren Erkenntnissen auch aus der Ferne teilzuhaben. Wir geben uns dabei viel M&uuml;he, den Fernzugang zu angenehm wie m&ouml;glich zu halten. Sie k&ouml;nnen also nicht bequem nachlesen, sondern meist auch nachh&ouml;ren, was sich in der Wertewirtschaft tut.</p>
+  <?
+  } ?>
+
+<div id="tabs-wrapper-sidebar"></div>
+
+<h5>Audio</h5>
+
+<table style="width:100%;border-collapse: collapse">
+
+
+<?php
+$sql = "SELECT * from produkte WHERE type LIKE 'audio' AND status > 0 order by title asc, n asc";
+$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+
+while($entry = mysql_fetch_array($result))
+{
+  $id = $entry[id];
+?>
+    <tr>
+        <td>
+          <?php 
+          echo "<a href='?id=$id'><i>".$entry[title];
+      if ($entry[author]) echo " - ".$entry[author]; 
+      if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
+
+?>    
+    </tr>
+
+<?php
+}
+
+echo "</table><br><br>";
+
+
+?>
+
+<h5>Video</h5>
+
+<table style="width:100%;border-collapse: collapse">
+
+
+<?php
+$sql = "SELECT * from produkte WHERE type LIKE 'video' AND status > 0 order by title asc, id asc";
+$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+
+while($entry = mysql_fetch_array($result))
+{
+  $id = $entry[id];
+?>
+    <tr>
+        <td>
+          <?php 
+          echo "<a href='?id=$id'><i>".$entry[title];
+      if ($entry[author]) echo " - ".$entry[author]; 
+      if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
+
+?>    
+    </tr>
+
+<?php
+}
+
+echo "</table><br><br>";
+
+}
+?>
+<br><br><br><br><br><br><br><br><br>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="myModalLabel">Reservierung</h2>
+      </div>
+      <div class="modal-body">
+          <p>Wir freuen uns, dass Sie eine unserer Aufzeichnungen herunterladen m&ouml;chten. Allerdings sind einige Aufnahmen nicht f&uuml;r die &Ouml;ffentlichkeit bestimmt &ndash; wir und unsere G&auml;ste m&uuml;ssten uns ein allzu gro&szlig;es Blatt vor den Mund nehmen, wenn jeder mith&ouml;ren k&ouml;nnte. Das Herunterladen von Medien steht nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r die meisten Medien kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf alle unsere Medien:</p>
+        <div class="subscribe">
+<!--           
+  Commented out, because of the clashes between forms
+          <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+          <input class="inputfield" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required />
+          <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" style="display:none"  />
+          <input class="inputbutton" id="inputbutton" type="submit" name="fancy_ajax_form_submit" value="Eintragen" />
+          </form>  -->
         </div>
-         <? include "_side_in.php"; ?>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+<? include "_side_in.php"; ?>
+</div>
 <? include "_footer.php"; ?>

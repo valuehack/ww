@@ -9,7 +9,7 @@ $title="Kurse";
 
 <div id="center">  
 <div id="content">
-<a class="content" href="../index.php">Index &raquo;</a><a class="content" href="<?php echo $_SERVER['PHP_SELF']; ?>"> Kurse</a>
+<a class="content" href="../index.php">Index &raquo;</a><a class="content" href="index.php"> Kurse</a>
 <div id="tabs-wrapper-lower"></div>
 
 <?php 
@@ -19,7 +19,7 @@ if(isset($_GET['id']))
   $id = $_GET['id'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE id='$id'";
+  $sql="SELECT * from produkte WHERE type='lehrgang' or type='seminar' or type='kurs' AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $title=$entry3[title];
@@ -77,7 +77,7 @@ else {
   <?php
   $current_dateline=strtotime(date("Y-m-d"));
   
-  $sql="SELECT * from produkte WHERE (UNIX_TIMESTAMP(start)>=$current_dateline) and (type='lehrgang' or type='seminar' or type='kurs') and status>0 order by start asc, id asc";
+  $sql="SELECT * from produkte WHERE (UNIX_TIMESTAMP(start)>=$current_dateline) and (type='lehrgang' or type='seminar' or type='kurs') and status>0 order by start asc, n asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   
   while($entry = mysql_fetch_array($result))

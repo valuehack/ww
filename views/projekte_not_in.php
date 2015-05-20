@@ -23,7 +23,7 @@ $title="Projekte";
 <?php
 if ($id = $_GET["id"])
 {
-  $sql="SELECT * from termine WHERE id='$id'";
+  $sql="SELECT * from produkte WHERE `type` LIKE 'projekt' AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry = mysql_fetch_array($result);
   $title=$entry[title];
@@ -32,8 +32,10 @@ if ($id = $_GET["id"])
 
   echo '<h3>'.$title.'</h3>';
 
-  echo "<p>".$text."</p>";
+ if ($entry[img]) echo $entry[img];
 
+  if ($entry[text]) echo "<p>$entry[text]</p>";
+  if ($entry[text2]) echo "<p>$entry[text2]</p>";
 
 ?>
   <!-- Button trigger modal -->
@@ -52,10 +54,12 @@ else {
 <p>In der Wertewirtschaft finden Sie eine professionelle, seri&ouml;se und realistische Alternative, als B&uuml;rger in den langfristigen Bestand, die Entwicklung und das Gedeihen Ihrer Gesellschaft zu investieren. Ohne dieses b&uuml;rgerliche Engagement bliebe es bei der ewigen Polarisierung von Markt und Staat, die meist zugunsten der Gewalt entschieden wird. Wir &uuml;berlassen Ihnen aber freilich Ausma&szlig; und Verwendung Ihres Beitrages &ndash; bitte w&auml;hlen Sie jene Projekte aus, die Ihnen sinnvoll erscheinen. Je nach H&ouml;he Ihrer Investition profitieren Sie als Anerkennung Ihres Beitrages von den Angeboten der Wertewirtschaft.</p>
 </div>
 
+<div id="tabs-wrapper-sidebar"></div>
+
 <?php 
 
 
-$sql = "SELECT * from termine WHERE `type` LIKE 'project' AND spots_sold < spots order by id asc";
+$sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status > 0 order by n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 ?>
@@ -72,7 +76,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
    ?>
 
     <tr>
-        <td class="bottomline"><a href='?id=<?php echo $id;?>'><i><?php echo $id."</i> <b>".$entry[title];?></b></a>
+        <td class="bottomline"><a href='?id=<?php echo $id;?>'><b><?php echo $entry[title];?></b></a>
     </tr>
     <tr>
         <td><?php echo $entry[text]; ?></td>
@@ -89,6 +93,8 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 <?php 
 } 
 ?>
+
+<br><br><br><br><br><br><br><br><br>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

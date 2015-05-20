@@ -53,23 +53,16 @@ if ($login->isUserLoggedIn() == true)
     #display the members area according to membership level
     switch ($_SESSION['Mitgliedschaft']) {
         case 0:
-            echo "Well, there are no such members...";
+            include("../views/medien_not_in.php");
             break;
-        case 1:
-            include("../views/level1View.php");
-            break;
-        case 4:
+        case ($_SESSION['Mitgliedschaft'] >= 1):
             include("../views/medien_in.php");
             break;
         default: 
-            include("../views/testView.php"); 
+            include("../views/medien_not_in.php"); 
             break;
     }
 
-
-    // include("../views/testView.php");
-    // include("../views/mitglied_in.php");
-    #include("views/header2.inc.php");
 
 } 
 else {

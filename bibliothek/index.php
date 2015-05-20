@@ -42,10 +42,17 @@ if ($login->isUserLoggedIn() == true)
 {
     // the user is logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are logged in" view.
-    include("../views/bibliothek_in.php");
-    // echo "wtf";
-    #include("views/header2.inc.php");
-
+    switch ($_SESSION['Mitgliedschaft']) {
+        case 0:
+            include("../views/bibliothek_not_in.php");
+            break;
+        case ($_SESSION['Mitgliedschaft'] >= 1):
+            include("../views/bibliothek_in.php");
+            break;
+        default: 
+            include("../views/bibliothek_not_in.php"); 
+            break;
+    }
 
 } 
 else {

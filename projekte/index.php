@@ -40,11 +40,17 @@ $registration = new Registration();
 // ... ask if we are logged in here:
 if ($login->isUserLoggedIn() == true) 
 {
-    // the user is logged in. you can do whatever you want here.
-    // for demonstration purposes, we simply show the "you are logged in" view.
-    include("../views/projekte_in.php");
-    // echo "wtf";
-    #include("views/header2.inc.php");
+    switch ($_SESSION['Mitgliedschaft']) {
+        case 0:
+            include("../views/projekte_not_in.php");
+            break;
+        case ($_SESSION['Mitgliedschaft'] >= 1):
+            include("../views/projekte_in.php");
+            break;
+        default: 
+            include("../views/projekte_not_in.php"); 
+            break;
+    }
 
 
 } 

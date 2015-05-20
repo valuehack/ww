@@ -161,7 +161,7 @@ user_plz -->
 <hr/> -->
 This is a password change form:
 <hr>
-<form method="post" action="edit.php" name="user_edit_form_password">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="user_edit_form_password">
     <label for="user_password_old"><?php echo WORDING_OLD_PASSWORD; ?></label>
 <br>
     <input id="user_password_old" type="password" name="user_password_old" autocomplete="off" />
@@ -182,7 +182,7 @@ This is a password change form:
 
 This is only used to test views of different memberships:
 <hr/>
-<form method="post" action="edit.php" name="user_edit_form_level">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="user_edit_form_level">
     <label for="user_level"></label>
     <input id="user_level" type="text" name="user_level" placeholder="Membership Level" required/>
 <br>

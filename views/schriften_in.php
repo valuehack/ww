@@ -17,7 +17,7 @@ $title="Schriften";
 
 <div id="center">  
 <div id="content">
-<a class="content" href="../index.php">Index &raquo;</a><a class="content" href="<?php echo $_SERVER['PHP_SELF']; ?>"> Schriften</a>
+<a class="content" href="../index.php">Index &raquo;</a><a class="content" href="index.php"> Schriften</a>
 <div id="tabs-wrapper-lower"></div>
 
 
@@ -48,7 +48,7 @@ if(isset($_GET['id']))
   $id = $_GET['id'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE id='$id'";
+  $sql="SELECT * from produkte WHERE type LIKE 'buch' OR type LIKE 'scholien' AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
@@ -111,7 +111,7 @@ else {
   </tr>
 
 <?php
-$sql = "SELECT * from produkte WHERE type LIKE 'buch' OR type LIKE 'scholien' AND status > 0 order by title asc, id asc";
+$sql = "SELECT * from produkte WHERE type LIKE 'buch' OR type LIKE 'scholien' AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
