@@ -111,7 +111,7 @@ if(isset($_POST['checkout'])) {
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
 
             //$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf'.$key;
-            $file_path = '/secdown/sec_files/'.$key.'.pdf';
+            $file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf';
             //$download_link = downloadurl($file_path , $key);
             //echo $file_path;
             //echo '<td><a href="'.$download$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'/.pdf';_link.'" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>';
