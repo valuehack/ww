@@ -27,27 +27,26 @@ if(!isset($_SESSION['basket'])){
 
 if(isset($_POST['add'])){
 
-	$add_id = $_POST['add'];
-	//$actual_quantity = $_SESSION['basket'][$add_id];
-	$add_quantity = $_POST['quantity'];
-	//$new_quantity = $add_quantity + $actual_quantity;
- 	echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../abo/korb.php'>Go to Basket</a><hr><br></div>";
+  $add_id = $_POST['add'];
+  $add_quantity = $_POST['quantity'];
+  $add_code = $add_id . "0";
+  echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../abo/korb.php'>Go to Basket</a><hr><br></div>";
 
- 	if (isset($_SESSION['basket'][$add_id])) {
-    $_SESSION['basket'][$add_id] += $add_quantity; 
+  if (isset($_SESSION['basket'][$add_id])) {
+    $_SESSION['basket'][$add_code] += $add_quantity; 
   }
   else {
-    $_SESSION['basket'][$add_id] = $add_quantity; 
+    $_SESSION['basket'][$add_code] = $add_quantity; 
   }
 }
 
 
-if(isset($_GET['id']))
+if(isset($_GET['q']))
 {
-  $id = $_GET['id'];
+  $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE type='lehrgang' or type='seminar' or type='kurs' AND id='$id'";
+  $sql="SELECT * from produkte WHERE (type='lehrgang' or type='seminar' or type='kurs') AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
@@ -89,7 +88,7 @@ if(isset($_GET['id']))
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>        
-      </select> 
+      </select>
       <input type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
     </form>
   <?php
@@ -124,7 +123,7 @@ else {
     $id = $entry[id];
     echo "<div class=\"entry\">";
     echo "<h1>";
-    echo "<a href='?id=$id'>";
+    echo "<a href='?q=$id'>";
     echo ucfirst($entry[type])." ".$entry[title]."</a></h1>";
      
     echo "<div style=\"padding:5px;\">";
@@ -139,7 +138,7 @@ else {
     echo "<p>";
     if ($entry[img]) echo $entry[img];
     echo $entry[text];
-    echo " <a href='?id=$id'>";
+    echo " <a href='?q=$id'>";
     echo "&rarr; N&auml;here Informationen</a></p>";
     echo "</div></div>";
 

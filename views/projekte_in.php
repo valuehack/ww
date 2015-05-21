@@ -24,21 +24,20 @@ $title="Projekte";
 if(isset($_POST['add'])){
 
   $add_id = $_POST['add'];
-  //$actual_quantity = $_SESSION['basket'][$add_id];
   $add_quantity = $_POST['quantity'];
-  //$new_quantity = $add_quantity + $actual_quantity;
+  $add_code = $add_id . "0";
   echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../abo/korb.php'>Go to Basket</a><hr><br></div>";
 
   if (isset($_SESSION['basket'][$add_id])) {
-    $_SESSION['basket'][$add_id] += $add_quantity; 
+    $_SESSION['basket'][$add_code] += $add_quantity; 
   }
   else {
-    $_SESSION['basket'][$add_id] = $add_quantity; 
+    $_SESSION['basket'][$add_code] = $add_quantity; 
   }
 }
 
 
-if ($id = $_GET["id"])
+if ($id = $_GET["q"])
 {
   $sql="SELECT * from produkte WHERE `type` LIKE 'projekt' AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -110,7 +109,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
    ?>
 
     <tr>
-        <td class="bottomline"><a href='?id=<?php echo $id;?>'><b><?php echo $entry[title];?></b></a>
+        <td class="bottomline"><a href='?q=<?php echo $id;?>'><b><?php echo $entry[title];?></b></a>
     </tr>
     <tr>
         <td><?php echo $entry[text]; ?></td>

@@ -21,7 +21,7 @@ $title="Projekte";
 
 
 <?php
-if ($id = $_GET["id"])
+if ($id = $_GET["q"])
 {
   $sql="SELECT * from produkte WHERE `type` LIKE 'projekt' AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -76,7 +76,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
    ?>
 
     <tr>
-        <td class="bottomline"><a href='?id=<?php echo $id;?>'><b><?php echo $entry[title];?></b></a>
+        <td class="bottomline"><a href='?q=<?php echo $id;?>'><b><?php echo $entry[title];?></b></a>
     </tr>
     <tr>
         <td><?php echo $entry[text]; ?></td>

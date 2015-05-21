@@ -19,9 +19,9 @@ include "_header.php";
       <div id="tabs-wrapper"></div>
 <?php
 
-if(isset($_GET['id']))
+if(isset($_GET['q']))
 {
-  $id = $_GET['id'];
+  $id = $_GET['q'];
 
   //Termindetails
   $sql="SELECT * from produkte WHERE type LIKE 'salon' AND id='$id'";
@@ -81,7 +81,7 @@ else {
       ?>
       <tr>
         <td class="bottomline"><?php echo date("d.m.Y",strtotime($entry[start])); ?></td>
-        <td class="bottomline"><?php echo "<a href='?id=$id'><i>".$event_id."</i> <b>".$entry[title]; ?></b></a></td>
+        <td class="bottomline"><?php echo "<a href='?q=$id'><i>".$event_id."</i> <b>".$entry[title]; ?></b></a></td>
       </tr> 
       <tr>
         <td><?php echo date("H:i",strtotime($entry[start])); ?></td>

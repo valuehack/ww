@@ -15,13 +15,13 @@ $title="Scholien";
 <div id="tabs-wrapper-lower"></div>-->
 
 <?php 
-if(isset($_GET['id']))
+if(isset($_GET['q']))
 {
 	// #$scholien = htmlentities($scholien);
 
 	// echo $scholien;
 
-	$id = $_GET['id'];
+	$id = $_GET['q'];
 
  	$sql = "SELECT * from blog WHERE id='$id'";
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -34,12 +34,12 @@ if(isset($_GET['id']))
 	$length = str_word_count($private, 0, 'äüöÄÜÖß') - str_word_count($public, 0, 'äüöÄÜÖß');
 
 	//check, if there is a image in the blog/gfx folder
-	$img = '/gfx/$id.jpg';
+	$img = 'http://test.wertewirtschaft.net/scholien/gfx/'.$id.'.jpg';
 
-	if (file_exists($img)) {
-	    $img_url = "http://test.wertewirtschaft.net/blog/gfx/".$id.".jpg";
+	if (@getimagesize($img)) {
+	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/blog/gfx/default.jpg";
+	    $img_url = "http://test.wertewirtschaft.net/scholien/gfx/default.jpg";
 	}
 
 ?>

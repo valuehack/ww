@@ -27,26 +27,25 @@ if(!isset($_SESSION['basket'])){
 if(isset($_POST['add'])){
 
   $add_id = $_POST['add'];
-  //$actual_quantity = $_SESSION['basket'][$add_id];
-  $add_quantity = $_POST['quantity'];
-  //$new_quantity = $add_quantity + $actual_quantity;
+  $add_quantity = 1;
+  $add_code = $add_id . "0";
   echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../abo/korb.php'>Go to Basket</a><hr><br></div>";
 
   if (isset($_SESSION['basket'][$add_id])) {
-    $_SESSION['basket'][$add_id] += $add_quantity; 
+    $_SESSION['basket'][$add_code] += $add_quantity; 
   }
   else {
-    $_SESSION['basket'][$add_id] = $add_quantity; 
+    $_SESSION['basket'][$add_code] = $add_quantity; 
   }
 }
 
 
-if(isset($_GET['id']))
+if(isset($_GET['q']))
 {
-  $id = $_GET['id'];
+  $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE type LIKE 'audio' OR type LIKE 'video' AND id='$id'";
+  $sql="SELECT * from produkte WHERE (type LIKE 'audio' OR type LIKE 'video') AND id = '$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
@@ -68,13 +67,13 @@ if(isset($_GET['id']))
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />
-      <select name="quantity">
+      <!--<select name="quantity">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>        
-      </select> 
+      </select> -->
       <input type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
     </form>
 <?php 
@@ -110,7 +109,7 @@ while($entry = mysql_fetch_array($result))
     <tr>
         <td>
           <?php 
-          echo "<a href='?id=$id'><i>".$entry[title];
+          echo "<a href='?q=$id'><i>".$entry[title];
       if ($entry[author]) echo " - ".$entry[author]; 
       if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
 
@@ -136,12 +135,12 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 
 while($entry = mysql_fetch_array($result))
 {
-  $id = $entry[id];
+  $video_id = $entry[id];
 ?>
     <tr>
         <td>
           <?php 
-          echo "<a href='?id=$id'><i>".$entry[title];
+          echo "<a href='?q=$video_id'><i>".$entry[title];
       if ($entry[author]) echo " - ".$entry[author]; 
       if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
 

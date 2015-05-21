@@ -18,9 +18,9 @@ $title="Scholien";
 
 
 <?php 
-if(isset($_GET['id']))
+if(isset($_GET['q']))
 {
-	$id = $_GET['id'];
+	$id = $_GET['q'];
 
  	$sql = "SELECT * from blog WHERE id='$id'";
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -34,12 +34,12 @@ if(isset($_GET['id']))
 	$length = str_word_count($private, 0, 'äüöÄÜÖß') - str_word_count($public, 0, 'äüöÄÜÖß');
 
 	//check, if there is a image in the blog/gfx folder
-	$img = '/gfx/'.$id.'.jpg';
+	$img = 'http://test.wertewirtschaft.net/scholien/gfx/'.$id.'.jpg';
 
-	if (file_exists($img)) {
-	    $img_url = "http://test.wertewirtschaft.net/blog/gfx/".$id.".jpg";
+	if (@getimagesize($img)) {
+	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/blog/gfx/default.jpg";
+	    $img_url = "http://test.wertewirtschaft.net/scholien/gfx/default.jpg";
 	}
 
 ?>
@@ -246,18 +246,18 @@ else
 		$publ_date = $entry[publ_date];
 
 		echo "<div class='blog_entry'>";
-		echo "<h2><a href='?id=$id'>".$title."</a></h2>";
+		echo "<h2><a href='?q=$id'>".$title."</a></h2>";
 		echo "<p class='blogdates'><!--Keyword: ".$id."&nbsp &nbsp &nbsp Datum: -->".date('d.m.Y', strtotime($publ_date))."</p>";
 		
 		if (strlen($private) > 500) {
 			echo substr ($private, 0, 500);
-			echo " ... <a href='?id=$id'>Weiterlesen</a>";
+			echo " ... <a href='?q=$id'>Weiterlesen</a>";
 			echo "</div>";
 			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
 		}
 		else {
 			echo $private;
-			echo "... <a href='?id=$id'>Weiterlesen</a>";
+			echo "... <a href='?q=$id'>Weiterlesen</a>";
 			echo "</div>";
 			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
 		}

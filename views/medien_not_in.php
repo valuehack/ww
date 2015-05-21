@@ -22,12 +22,12 @@ $title="Mitgliederbereich";
     <div id="tabs-wrapper"></div>
  
  <?php
-if(isset($_GET['id']))
+if(isset($_GET['q']))
 {
-  $id = $_GET['id'];
+  $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE type LIKE 'audio' OR type LIKE 'video' AND id='$id'";
+  $sql="SELECT * from produkte WHERE (type LIKE 'audio' OR type LIKE 'video') AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
 ?>
@@ -74,7 +74,7 @@ while($entry = mysql_fetch_array($result))
     <tr>
         <td>
           <?php 
-          echo "<a href='?id=$id'><i>".$entry[title];
+          echo "<a href='?q=$id'><i>".$entry[title];
       if ($entry[author]) echo " - ".$entry[author]; 
       if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
 
@@ -105,7 +105,7 @@ while($entry = mysql_fetch_array($result))
     <tr>
         <td>
           <?php 
-          echo "<a href='?id=$id'><i>".$entry[title];
+          echo "<a href='?q=$id'><i>".$entry[title];
       if ($entry[author]) echo " - ".$entry[author]; 
       if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
 

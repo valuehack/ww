@@ -6,6 +6,25 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../tools/bootstrap.js"></script>
 
+<script>
+function changeView(price, price2) {
+    var x = document.getElementById("change").value;
+    
+    if (x == 4) {    
+      document.getElementById("quantity").innerHTML = '<input type="number" name="quantity" style="width:35px;" value="1" min="1" max="100">';
+      document.getElementById("price").innerHTML = price2 + " Credits";
+
+    }
+    else {
+      document.getElementById("quantity").innerHTML = "";
+      document.getElementById("price").innerHTML = price + " Credits";
+
+
+    }
+}
+</script>
+
+
 <?php 
 //Author: Bernhard Hegyi
 
@@ -29,26 +48,26 @@ if(!isset($_SESSION['basket'])){
 if(isset($_POST['add'])){
 
 	$add_id = $_POST['add'];
-	//$actual_quantity = $_SESSION['basket'][$add_id];
-	$add_quantity = $_POST['quantity'];
-	//$new_quantity = $add_quantity + $actual_quantity;
- 	echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../abo/korb.php'>Go to Basket</a><hr><br></div>";
+  $add_quantity = $_POST['quantity'];
+  $add_format = $_POST['format'];
+  $add_code = $add_id . $add_format;
+ 	echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id." Format: ".$add_format.") to your basket.</i> &nbsp <a href='../abo/korb.php'>Go to Basket</a><hr><br></div>";
 
  	if (isset($_SESSION['basket'][$add_id])) {
-    $_SESSION['basket'][$add_id] += $add_quantity; 
+    $_SESSION['basket'][$add_code] += $add_quantity; 
   }
   else {
-    $_SESSION['basket'][$add_id] = $add_quantity; 
+    $_SESSION['basket'][$add_code] = $add_quantity; 
   }
 }
 
 
-if(isset($_GET['id']))
+if(isset($_GET['q']))
 {
-  $id = $_GET['id'];
+  $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE type LIKE 'buch' OR type LIKE 'scholien' AND id='$id'";
+  $sql="SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien' OR type LIKE 'analyse') AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
@@ -67,17 +86,28 @@ if(isset($_GET['id']))
     echo '<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';  
   }
   else {
+    $pdf = substr($entry3[format],0,1);
+    $epub = substr($entry3[format],1,1);
+    $kindle = substr($entry3[format],2,1);
+    $druck = substr($entry3[format],3,1);
+
+    $price = $entry3[price];
+    $price2 = $entry3[price2];
+
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />
-      <select name="quantity">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>        
-      </select> 
-      <input type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
+      <span id="quantity"></span>
+      <select name="format" id="change" onchange="changeView(<?php echo $price; ?>, <?php echo $price2; ?>)">
+        <?php
+        if ($pdf == 1) echo '<option value="1">PDF</option>';
+        if ($epub == 1) echo '<option value="2">ePub</option>';
+        if ($kindle == 1) echo '<option value="3">Kindle</option>';
+        if ($druck == 1) echo '<option value="4">Druck</option>';   
+         ?>
+      </select>
+      
+      <input type="submit" value="Auswählen">&nbsp;&nbsp;<i><span id="price"><?echo $entry3[price]?> Credits</span></i>
     </form>
 <?php 
   }
@@ -111,7 +141,7 @@ else {
   </tr>
 
 <?php
-$sql = "SELECT * from produkte WHERE type LIKE 'buch' OR type LIKE 'scholien' AND status > 0 order by title asc, n asc";
+$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien' OR type LIKE 'analyse') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
@@ -121,7 +151,7 @@ while($entry = mysql_fetch_array($result))
     <tr>
         <td>
           <?php 
-          echo "<a href='?id=$id'><i>".ucfirst($entry[type])."</i> ".$entry[title];
+          echo "<a href='?q=$id'><i>".ucfirst($entry[type])."</i> ".$entry[title];
       if ($entry[author]) echo " - ".$entry[author]." </a></td>"; 
       //if ($entry[format]) echo " ".$entry[format]; 
 

@@ -27,23 +27,23 @@ if(!isset($_SESSION['basket'])){
 }
 
 if(isset($_POST['add'])){
+
   $add_id = $_POST['add'];
   $add_quantity = $_POST['quantity'];
-  //array_push($_SESSION[basket],$add_id);
+  $add_code = $add_id . "0";
   echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id.") to your basket.</i> &nbsp <a href='../abo/korb.php'>Go to Basket</a><hr><br></div>";
 
   if (isset($_SESSION['basket'][$add_id])) {
-    $_SESSION['basket'][$add_id] += $add_quantity; 
+    $_SESSION['basket'][$add_code] += $add_quantity; 
   }
   else {
-    $_SESSION['basket'][$add_id] = $add_quantity; 
+    $_SESSION['basket'][$add_code] = $add_quantity; 
   }
-
 }
 
-if(isset($_GET['id']))
+if(isset($_GET['q']))
 {
-  $id = $_GET['id'];
+  $id = $_GET['q'];
 
   //Termindetails
   $sql="SELECT * from produkte WHERE type LIKE 'salon' AND id='$id'";
@@ -126,7 +126,7 @@ else {
       ?>
       <tr>
         <td class="bottomline"><?php echo date("d.m.Y",strtotime($entry[start])); ?></td>
-        <td class="bottomline"><?php echo "<a href='?id=$id'><i>".$event_id."</i> <b>".$entry[title]; ?></b></a></td>
+        <td class="bottomline"><?php echo "<a href='?q=$id'><i>".$event_id."</i> <b>".$entry[title]; ?></b></a></td>
       </tr> 
       <tr>
         <td><?php echo date("H:i",strtotime($entry[start])); ?></td>

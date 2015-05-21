@@ -22,12 +22,12 @@ $title="Schriften";
 <div id="tabs-wrapper-lower"></div>
 
 <?php
-if(isset($_GET['id']))
+if(isset($_GET['q']))
 {
-  $id = $_GET['id'];
+  $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE type LIKE 'buch' OR type LIKE 'scholien' AND id='$id'";
+  $sql="SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien') AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
 ?>
@@ -73,7 +73,7 @@ else {
 	</tr>
 
 <?php
-$sql = "SELECT * from produkte WHERE type LIKE 'buch' OR type LIKE 'scholien' AND status > 0 order by title asc, n asc";
+$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
@@ -83,7 +83,7 @@ while($entry = mysql_fetch_array($result))
    	<tr>
       	<td>
       		<?php 
-      		echo "<a href='?id=$id'><i>".ucfirst($entry[type])."</i> ".$entry[title];
+      		echo "<a href='?id=$q'><i>".ucfirst($entry[type])."</i> ".$entry[title];
 			if ($entry[author]) echo " ".$entry[author]; 
 			if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
 

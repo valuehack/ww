@@ -60,14 +60,31 @@ if(isset($_POST['checkout'])) {
     mysql_query("SET time_zone = 'Europe/Vienna'");
 
     $itemsPrice = 0;
-    foreach ($items as $key => $quantity) 
+    foreach ($items as $code => $quantity) 
     {
+        $length = strlen($code) - 1;
+
+        $key = substr($code,-2,$length);
+        $format = substr($code,-1,1);
+
         $items_price_query = "SELECT * from produkte WHERE `n` LIKE '$key'";
         $items_price_result = mysql_query($items_price_query) or die("Failed Query of " . $items_price_query. mysql_error());
         $itemsPriceArray = mysql_fetch_array($items_price_result);
-        $itemsPriceSum = $quantity * $itemsPriceArray[price];
+        
+        if ($format == 4 && $itemsPriceArray[price2]) {
+            $itemsPriceSum = $quantity * $itemsPriceArray[price2];
+        }
+        else {
+            $itemsPriceSum = $quantity * $itemsPriceArray[price];
+        }
+
         $itemsPrice += $itemsPriceSum;
+
+        if ($format == 4) {
+            $versand += 1;
+        }
     }
+    if ($versand >= 1) $itemsPrice += 5;
 
     if (!($userCredits >= $itemsPrice)) {
         //$this->errors[] = "You do not have enough credits to buy the items in your basket.";
@@ -77,9 +94,21 @@ if(isset($_POST['checkout'])) {
 
         else 
         {
-        foreach ($items as $key => $quantity) 
-                {      
-                    $checkout_query = "INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES ('$key', '$user_id', '$quantity', NOW())";
+        foreach ($items as $code => $quantity) 
+                {    
+                    $length = strlen($code) - 1;
+
+                    $key = substr($code,-2,$length);
+                    $format = substr($code,-1,1);
+                    switch ($format) {
+                        case 1: $format = "PDF"; break;
+                        case 2: $format = "ePub"; break;
+                        case 3: $format = "Kindle"; break;
+                        case 4: $format = "Druck"; break;
+                        default: $format = NULL; break;
+                    }
+
+                    $checkout_query = "INSERT INTO registration (event_id, user_id, quantity, format, reg_datetime) VALUES ('$key', '$user_id', '$quantity', '$format', NOW())";
                     mysql_query($checkout_query);
 
                     $credits_left = $userCredits - $itemsPrice;
@@ -96,19 +125,45 @@ if(isset($_POST['checkout'])) {
         echo "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>";
         echo "<td style='width:55%'><b>Name</b></td>";
         echo "<td style='width:10%'><b>Quantity</b></td>";
+        echo "<td style='width:10%'><b>Total</b></td>";
         echo "<td style='width:10%'>&nbsp;</td></tr>";
 
-        foreach ($items as $key => $quantity) {
+        foreach ($items as $code => $quantity) {
+            $length = strlen($code) - 1;
+
+            $key = substr($code,-2,$length);
+            $format = substr($code,-1,1);
+
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
 
-            $sum = $quantity*$itemsExtraArray[price];
+            if ($format == 4 && $itemsExtraArray[price2]) {
+                $sum = $quantity*$itemsExtraArray[price2];
+            }
+            else {
+                $sum = $quantity*$itemsExtraArray[price];
+            }
             //$download_link = downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf\','.$key);
 
             echo "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
-            echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
+            echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>";
+            switch ($format) {
+                case 1: echo "PDF"; break;
+                case 2: echo "ePub"; break;
+                case 3: echo "Kindle"; break;
+                case 4: echo "Druck"; break;
+                default: NULL; break;
+            }
+            echo "</i></td>";
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
+            echo "<td><i>".$sum." Credits</i></td>";
+
+             $total += $sum;
+
+            if ($format == 4) {
+                $versand += 1;
+            }
 
             //$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf'.$key;
             $file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf';
@@ -141,11 +196,17 @@ if(isset($_POST['checkout'])) {
            <?php
             // TO DO: Find better solution to display the relevant information for different product categories  
             if (!(is_null($itemsExtraArray[start]))) {
-                echo "<tr><td></td><td>".date("d.m.Y",strtotime($itemsExtraArray[start]));
-                if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]))."</td></tr>";
+                echo "<tr><td></td><td>".date("d.m.Y",strtotime($itemsExtraArray[start]))."</td></tr>";
             }       
         }
         
+        if ($versand >= 1) {
+            echo "<tr><td></td><td>Versandkostenpauschale</td><td></td><td>5 Credits</td><td></td></tr>";
+            $total += 5;
+        }
+
+        echo "<tr><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
+
         echo "</table><hr>";
 
 
@@ -176,23 +237,49 @@ if($_SESSION['basket']) {
 
     $total = 0;
 
-    foreach ($items as $key => $quantity) {
+    foreach ($items as $code => $quantity) {
+        $length = strlen($code) - 1;
+
+        $key = substr($code,-2,$length);
+        $format = substr($code,-1,1);
+
         $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
         $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
         $itemsExtraArray = mysql_fetch_array($items_extra_result);
         
-        $sum = $quantity*$itemsExtraArray[price];
+        if ($format == 4 && $itemsExtraArray[price2]) {
+            $sum = $quantity*$itemsExtraArray[price2];
+        }
+        else {
+            $sum = $quantity*$itemsExtraArray[price];
+        }
 
         echo "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
-        echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]."</td>";
+        echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>";
+        switch ($format) {
+            case 1: echo "PDF"; break;
+            case 2: echo "ePub"; break;
+            case 3: echo "Kindle"; break;
+            case 4: echo "Druck"; break;
+            default: NULL; break;
+        }
+
+        echo "</i></td>";
         ?>
         <td><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                <input type="hidden" name="remove" value="<?php echo $key ?>" />
+                <input type="hidden" name="remove" value="<?php echo $code ?>" />
                 <input type="submit" value="Remove" onClick="return checkMe()"></form></td>
         <?php
-        echo "<td>&nbsp &nbsp".$quantity."</td>";
-        echo "<td><i>".$itemsExtraArray[price]." Credits</i></td>";
-        echo "<td>".$sum." Credits</td></tr>";
+        echo "<td>&nbsp &nbsp".$quantity."</td><td><i>";
+        
+        if ($format == 4 && $itemsExtraArray[price2]) {
+            echo $itemsExtraArray[price2];
+        }
+        else {
+            echo $itemsExtraArray[price];
+        }
+        
+        echo " Credits</i></td><td>".$sum." Credits</td></tr>";
        
        // TO DO: Find better solution to display the relevant information for different product categories  
        if (!(is_null($itemsExtraArray[start]))) {
@@ -202,13 +289,20 @@ if($_SESSION['basket']) {
         
         $total += $sum;
 
-        //TO DO: remove-button
+        if ($format == 4) {
+            $versand += 1;
+        }
+
     }
+    if ($versand >= 1) {
+        echo "<tr><td></td><td>Versandkostenpauschale</td><td></td><td></td><td>5 Credits</td><td>5 Credits</td></tr>";
+        $total += 5;
+    }
+
     echo "<tr><td></td><td></td><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
     echo "</table><hr>";  
-    
+
 ?>
-<a href="<?php downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf','1057'); ?>" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>
 
 <!-- Clear Basket + Checkout Buttons-->
 
