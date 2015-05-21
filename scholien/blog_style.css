@@ -537,14 +537,22 @@ a.linkbutton:hover {
 }
 
 .pay_option_box2 {
-	background: rgb(242,219,174);
+	background: rgb(21,87,100);
 }
 
 .pay_option_box3 {
 	background: rgb(1,39,68);
 }
 
-.pay_option_box4 {
+.pay_option_box4 {	
+	background: rgb(21,87,100);
+}
+
+.pay_option_box5 {
+	background: rgb(88,134,129);
+}
+
+.pay_option_box6 {
 	background: rgb(140,156,136);
 }
 
@@ -618,7 +626,7 @@ a.linkbutton:hover {
 	text-shadow: 1px 1px 4px 0 rgba(0,0,0,0.9);
 	border: 0;
 	border-radius: 2px;
-	margin: 5px;
+	margin: 15px;
 	width: 240px;
 	height: 50px;
 	font-size: 16pt;
