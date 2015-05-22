@@ -533,8 +533,8 @@ a.linkbutton:hover {
 
 .payment_info {
 	font-family: "Baskerville", Georgia, Times, serif;
-	line-height: 1.4em;
-	font-size: 14pt;
+	line-height: 1.6em;
+	font-size: 13pt;
 	text-align: justify;
 }
 
@@ -577,7 +577,7 @@ a.linkbutton:hover {
 }*/
 
 .pay_option_box table {
-	margin-bottom: 30px;
+
 }
 
 .pay_option_box tr {
@@ -640,6 +640,7 @@ a.linkbutton:hover {
 
 .pay_option_form {
 	text-align: center;
+	height: 110px;
 }
 
 .pay_option_box_inputbutton {
