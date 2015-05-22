@@ -511,8 +511,8 @@ a.linkbutton:hover {
 /*====================================*/
 
 .payment {
-	width: 80%;
-	margin: 50px 10%;
+	width: 75%;
+	margin: 50px auto;
 }
 
 .payment_info {
@@ -524,8 +524,8 @@ a.linkbutton:hover {
 
 .pay_option_box {
 	width: 95%;
-	padding: 25px;
-	margin: 50px auto;
+	padding: 10px;
+	margin: 50px auto 20px auto;
 	box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.25);
 	box-shadow: 1px 1px 10px 0 rgba(0,0,0,0.15) inset;
 	border-radius: 6px;
@@ -565,23 +565,30 @@ a.linkbutton:hover {
 }
 
 .pay_option_box tr {
-	
 }
 
-.pay_option_box td {
+.pay_option_box th {
 	color: #fff;
-	width: 33%;
+	width: 25%;
 	padding: 0 30px;
 	vertical-align: middle;
 }
 
-.pay_option_box_td_m {
-	border-left: 1px solid #fff;
-	border-right: 1px solid #fff;
+.pay_option_box td {
+	color: #fff;
+	width: 75%;
+	padding: 0 20px;
+	vertical-align: middle;
+
 }
 
+/*.pay_option_box_td_top {
+	border-bottom: 1px solid #fff;
+	border-right: 1px solid #fff;
+}*/
+
 .pay_option_box h1 {
-	font-size: 40px;
+	font-size: 30px;
 	font-weight: bold;
 	margin-bottom: 15px;
 	text-align: center;
@@ -590,13 +597,13 @@ a.linkbutton:hover {
 }
 
 .pay_option_box h2 {
-	font-size: 20px;
+	font-size: 15px;
 	text-align: center;
 	color: #fff;
 }
 	
 .pay_option_box p {
-	line-height: 1.6em;
+	line-height: 1.8em;
 	font-size: 14px;
 	margin: 30px 0;	
 	text-align: left;
@@ -615,7 +622,7 @@ a.linkbutton:hover {
 	line-height: 1.6em;
 }
 
-.pay_option_box form {
+.pay_option_form {
 	text-align: center;
 }
 
@@ -626,8 +633,8 @@ a.linkbutton:hover {
 	text-shadow: 1px 1px 4px 0 rgba(0,0,0,0.9);
 	border: 0;
 	border-radius: 2px;
-	margin: 15px;
-	width: 240px;
+	margin: 10px 0 15px 0;
+	width: 400px;
 	height: 50px;
 	font-size: 16pt;
 	font-family: "Baskerville", Georgia, Times, serif;
