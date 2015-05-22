@@ -544,8 +544,14 @@ a.linkbutton:hover {
 	margin: 50px auto 20px auto;
 	box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.25);
 	box-shadow: 1px 1px 10px 0 rgba(0,0,0,0.15) inset;
-	border-radius: 6px;
+	border-radius: 2px;
 	min-height: 200px;
+	opacity: 0.8;
+}
+
+.pay_option_box:hover {
+	box-shadow: 2px 2px 15px 0 rgb(153,210,23), -2px 2px 15px 0 rgb(153,210,23), 2px -2px 15px 0 rgb(153,210,23), -2px -2px 15px 0 rgb(153,210,23);
+	opacity: 1;
 }
 
 .pay_option_box1 {
@@ -572,10 +578,6 @@ a.linkbutton:hover {
 	background: rgb(140,156,136);
 }
 
-/*.pay_option_box:hover {
-	box-shadow: 1px 1px 12px 0 green, -1px -1px 12px 0 green, 1px -1px 12px 0 green, -1px 1px 12px 0 green;
-}*/
-
 .pay_option_box table {
 
 }
@@ -598,24 +600,19 @@ a.linkbutton:hover {
 
 }
 
-/*.pay_option_box_td_top {
-	border-bottom: 1px solid #fff;
-	border-right: 1px solid #fff;
-}*/
-
 .pay_option_box h1 {
-	font-size: 34pt;
-	font-weight: bold;
-	margin-bottom: 15px;
+	font-size: 24pt;
 	text-align: center;
 	color: #fff;
-	text-shadow: 0px 0px 2px rgba(250,250,250,0.7);
+	margin-bottom: 15px;
 }
 
 .pay_option_box h2 {
-	font-size: 20pt;
+	font-size: 26pt;
+	font-weight: bold;
 	text-align: center;
 	color: #fff;
+	text-shadow: 0px 0px 2px rgba(250,250,250,0.7);
 }
 	
 .pay_option_box p {
