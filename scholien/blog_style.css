@@ -381,8 +381,23 @@ strong {
 
 .footer p {
 	text-align: center;
-	color: #fff;
 }
+
+.footer p a {
+	font-size: 12pt;
+	color: rgb(180,180,180);
+	text-shadow: 1px 1px 1px 0 rgb(20,20,20);
+}
+
+.footer p a {
+	font-size: 12pt;
+	color: rgb(220,220,220);
+	text-shadow: 1px 1px 1px 0 rgb(20,20,20);
+}
+
+/*====================================*/
+/*                Blog                */
+/*====================================*/
 
 .upgrade, .subscribe {
 	padding: 30px;
@@ -517,13 +532,13 @@ a.linkbutton:hover {
 
 .payment_info {
 	font-family: "Baskerville", Georgia, Times, serif;
-	line-height: 1.6em;
+	line-height: 1.4em;
 	font-size: 14pt;
 	text-align: justify;
 }
 
 .pay_option_box {
-	width: 95%;
+	width: 100%;
 	padding: 10px;
 	margin: 50px auto 20px auto;
 	box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.25);
@@ -588,7 +603,7 @@ a.linkbutton:hover {
 }*/
 
 .pay_option_box h1 {
-	font-size: 36pt;
+	font-size: 34pt;
 	font-weight: bold;
 	margin-bottom: 15px;
 	text-align: center;
@@ -597,7 +612,7 @@ a.linkbutton:hover {
 }
 
 .pay_option_box h2 {
-	font-size: 22pt;
+	font-size: 20pt;
 	text-align: center;
 	color: #fff;
 }
