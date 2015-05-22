@@ -385,14 +385,15 @@ strong {
 
 .footer p a {
 	font-size: 12pt;
-	color: rgb(180,180,180);
-	text-shadow: 1px 1px 1px 0 rgb(20,20,20);
+	color: rgb(140,140,140);
+	text-shadow: 1px 1px 1px 0 rgb(15,15,15);
+	text-decoration: none;
 }
 
-.footer p a {
+.footer p a:hover {
 	font-size: 12pt;
-	color: rgb(220,220,220);
-	text-shadow: 1px 1px 1px 0 rgb(20,20,20);
+	color: rgb(200,200,200);
+	text-shadow: 1px 1px 1px 0 rgb(15,15,15);
 }
 
 /*====================================*/
