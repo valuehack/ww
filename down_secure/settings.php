@@ -10,7 +10,7 @@ define('DBNAME', 'newBig'); // Add Name of Database Here
 define('DBUSER', 'newBig'); // Add Database Username here
 define('DBPASS', 'bmbClat1!'); //Mysql User Password 
 
-define('URLTOFILES', 'http://test.wertewirtschaft.net/secdown/');  /* Url to folder where files for SECURE DOWNLOAD LINKS script are stored. If you uploaded the secdown folder in root folder of your website then you just need to replace yourdomainame.com with the name of your domain. */
+define('URLTOFILES', 'http://test.wertewirtschaft.net/down_secure/');  /* Url to folder where files for SECURE DOWNLOAD LINKS script are stored. If you uploaded the secdown folder in root folder of your website then you just need to replace yourdomainame.com with the name of your domain. */
 
 define('NOOFFILES', '10000'); // Expected Number of downloadable Files. 
 define('STARTOVER',365); //Number of days after which unusable data from database is flushed or removed. 
