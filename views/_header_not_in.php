@@ -57,23 +57,16 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 <body>
 <!-- Layout-->
-      <header class="header">
-    <a href="/"><img class="logo" src="../scholien/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home" style="max-height:90px;"></a>
-    <a href="/" class="flagge"><img class="flagge" src="http://wertewirtschaft.org/style/gfx/flagge_us.png" alt="English Version" name="">English Version</a>
-    <ul id="navbar">
-      <li class="navbar" style="margin-right:25px;"><a href="/scholien/">Schriften</a>
-          <ul>
-               <li class="navshort" style="margin-left:640px;"><a href="/analysen/">Analysen</a></li>
-               <li class="navshort"><a href="/scholien/">Scholien</a></li>
-               <li class="navshort"><a href="/buecher/">B&uuml;cher</a></li>
-            </ul>
-         </li>
-
-         <li class="navbar"><a href="/institut/mitglied.php">Mitgliedschaft</a></li>
-         <li class="navbar"><a href="/salon/">Salon</a></li>
-         <li class="navbar"><a href="/akademie/">Akademie</a></li>
-      </ul>
-      </header>
+        <header class="header1">
+            <div class="logo">
+                <a href="/"><img class="logo_img" src="../scholien/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
+                <span class="login"><a href="">Ulrich M&ouml;ller</a></span>
+            </div>
+            <div class="nav">
+                <div class="navi">
+                </div>
+           </div>
+        </header>
 
 <?php
 //set timezone
