@@ -10,7 +10,7 @@
 <?
 require_once('../classes/Login.php');
 $title="Salon";
-include "_header.php"; 
+include "_header_in.php"; 
 
 //print_r($_SESSION);
 
