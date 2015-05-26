@@ -194,6 +194,14 @@ strong {
 	margin: 20px 0;
 }
 
+.blog_img {
+	width: 470.4px;
+	height: 246px;
+	background: #000;
+	text-align: center;
+	margin: 30px 0;
+}
+
 .linie {
 	text-align: center;
 	margin-top: 50px;

@@ -1,6 +1,3 @@
-<!--Author: Bernhard Hegyi
-    Content: Blog view for members-->
-
 <?php 
 
 require_once('../classes/Login.php');
@@ -24,21 +21,21 @@ if(isset($_GET['q']))
 	$publ_date = $entry[publ_date];
 	$length = str_word_count($private, 0, 'äüöÄÜÖß') - str_word_count($public, 0, 'äüöÄÜÖß');
 
-	//check, if there is a image in the blog/gfx folder
-	$img = 'http://test.wertewirtschaft.net/scholien/gfx/'.$id.'.jpg';
+	//check, if there is a image in the scholien folder
+	$img = 'http://test.wertewirtschaft.net/scholien/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/scholien/gfx/default.jpg";
+	    $img_url = "http://test.wertewirtschaft.net/scholien/default.jpg";
 	}
 
 ?>
 
-		<div class="banner_blog">
+		<!--<div class="banner_blog">
             <div class="banner_blogimg" style="background-image: url(<?php echo $img_url;?>);"></div>
             <div class="banner_blogms"><h1><?=$title?></h1></div>
-        </div>
+     </div>-->
         <aside class="social">
                    <ul>
                        <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://test.wertewirtschaft.net/blog/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
@@ -50,6 +47,10 @@ if(isset($_GET['q']))
                </aside>
         <div class="content">
            <article class="article">
+           	
+        <div class="blog_img">
+        	<img src="<?php echo $img_url;?>" alt="<?php echo $id?>"> 
+        </div>   	
 <?  
 	if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div>";
