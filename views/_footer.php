@@ -6,7 +6,7 @@
 					<a href="http://wertewirtschaft.org/agb/">AGB</a> &nbsp; 
 					<a href="http://wertewirtschaft.org/akteure/">Akteure</a>
        		</footer>
-    	</div> <!--Container -->
+
 <!-- Layout -->
 	</body>
 </html>
