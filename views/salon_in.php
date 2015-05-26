@@ -59,12 +59,21 @@ if(isset($_GET['q']))
 
   <b>Termin:</b> 
   <?php
-  /* weekdays don't work
-    $day=date("w",strtotime($entry3[start]));
-    if ($day==0) $day=7;
-    echo Phrase('day'.$day).", ";
-    */
-    echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
+  <? if ($entry3[start]!="0000-00-00"&&$entry3[start]!=$entry3[end])
+      {
+      $day=date("w",strtotime($entry3[start]));
+      if ($day==0) $day=7;
+      echo Phrase('day'.$day).", ";
+      echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]))." - ";
+    if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
+        {
+        $day=date("w",strtotime($entry3[end]));
+        if ($day==0) $day=7;
+        echo Phrase('day'.$day).", ";
+        echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+      }
+    else echo strftime("%H:%M Uhr", strtotime($entry3[end]));
+      }
   
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
