@@ -46,7 +46,7 @@ if(isset($_GET['q']))
                     </ul>                 
                </aside>
         <div class="content">
-           <article class="article">
+           <article class="blog">
            	
         <!--<div class="blog_img">
         	<img class="blog_img" src="<?php echo $img_url;?>" alt="<?php echo $id?>"> 
@@ -56,22 +56,24 @@ if(isset($_GET['q']))
 		echo "<div>";
 		echo '<p class="scholie_info">Mit Scholion bezeichnete man urspr&uuml;nglich eine Randnotiz, die Gelehrte in den B&uuml;chern anbrachten, die ihre st&auml;ndigen Wegbegleiter waren. Heute sind die Scholien die Randnotizen von <a href="http://rahim.cc">Rahim Taghizadegan</a>, die Erkenntnisgewinne im Rahmen der Wertewirtschaft dokumentieren: der tiefgehenden Reflexion und praktischen &Uuml;berpr&uuml;fung der M&ouml;glichkeiten, unter erschwerten Bedingungen noch Werte zu schaffen, Realit&auml;t von Illusion zu unterscheiden und Sinn zu finden. Um alle Scholien in voller Länge lesen zu können, <a href="/upgrade.php"> beehren Sie uns bitte als Gast</a></p>';
 		echo "</div>";
+		echo "<header>";
 		echo "<h1>$title</h1>";
+		echo "</header>";
 		echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
 		}	
 		
 	if ($_SESSION['Mitgliedschaft'] == 1) {
 		echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
-		echo "<div class='blog_b'>";
+		echo "<div class='blog_text'>";
 		echo "<img class='blog_img' src='$img_url' alt='$id''>";
 		echo $public;
 		echo "</div>";
-?>		<div class="upgrade">
+?>		<div class="_blog_upgrade">
 		<p>Weitere <? echo $length;?> W&ouml;rter Kontext nur f&uuml;r G&auml;ste. Wir freuen uns, dass Sie &uuml;ber die Scholien an unseren Erkenntnissen teilhaben m&ouml;chten. Die Scholien enthalten oft allzu pers&ouml;nliche Gedanken, Hintergrundinformationen, intimes Wissen, sind aus gesetzlichen Gr&uuml;nden nicht teilbar, oder sonstwie heikel. Wir k&ouml;nnen Sie nur G&auml;sten offen zug&auml;nglich machen, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r auch die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie <a href="http://wertewirtschaft.org/abo.php">diesem Link</a> und in K&uuml;rze erhalten Sie Zugriff auf alle unsere Scholien in voller L&auml;nge.</p>
 
-		<a class="linkbutton" href="/upgrade.php">Upgrade</a>
+		<a class="blog_linkbutton" href="/upgrade.php">Upgrade</a>
 		</div>
-		<footer class="article">
+		<footer class="blog_footer">
 		<p><a href="index.php">Alle Scholien</a></p>
 <?
 	}
@@ -79,12 +81,12 @@ if(isset($_GET['q']))
 	else {
 		echo "<h1>$title</h1>";
 		echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
-		echo "<div class='blog_b'>";
+		echo "<div class='blog_text'>";
 		echo "<img class='blog_img' src='$img_url' alt='$id''>";
 		echo $public."\n";
 		echo $private;
 		echo "</div>";
-		echo "<footer class='article'>";
+		echo "<footer class='blog_footer>";
 		echo "<p><a href='index.php'>Alle Scholien</a></p>";
 		
 	}
@@ -222,7 +224,7 @@ else
 	}
 ?>
 	 <div class="content">
-           <article class="article">
+           <article class="blog">
            	<header>
 			<h1>Scholien</h1>
 			</header>
@@ -266,7 +268,5 @@ else
 <?=$pagination?>
            </article> 
         </div>
-        
-<?php //include('_side_in.php'); ?>
 
 <?php include('_footer_blog.php'); ?>
