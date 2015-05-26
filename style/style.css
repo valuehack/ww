@@ -374,6 +374,7 @@ strong {
 .blog {
 	padding: 25px;
 	font-size: 20pt;
+	margin-top: 50px;
 }
 
 .blog header {
@@ -483,7 +484,6 @@ strong {
 }
 
 .blog_footer {
-	max-height: 30px;
 	text-align: center;
 }
 
