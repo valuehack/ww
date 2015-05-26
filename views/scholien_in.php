@@ -48,9 +48,9 @@ if(isset($_GET['q']))
         <div class="content">
            <article class="article">
            	
-        <div class="blog_img">
+        <!--<div class="blog_img">
         	<img class="blog_img" src="<?php echo $img_url;?>" alt="<?php echo $id?>"> 
-        </div>   	
+        </div>-->   	
 <?  
 	if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div>";
@@ -79,6 +79,7 @@ if(isset($_GET['q']))
 	else {
 		echo "<h1>$title</h1>";
 		echo "<div class='blog_b'>";
+		echo "<img class='blog_img' src='$img_url' alt='$id''>";
 		echo $private;
 		echo "</div>";
 		echo "<footer class='article'>";
