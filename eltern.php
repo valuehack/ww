@@ -1,7 +1,7 @@
 <?php 
 
-require_once('../classes/Login.php');
-include('_header_not_in.php'); 
+require_once('/classes/Login.php');
+include('/_header_not_in.php'); 
 $title="B&uuml;rger | Wertewirtschaft";
 
 ?>
