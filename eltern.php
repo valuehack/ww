@@ -1,6 +1,6 @@
 <?php 
 
-require_once('classes/Login.php');
+//require_once('classes/Login.php');
 include('views/_header_not_in.php'); 
 $title="B&uuml;rger | Wertewirtschaft";
 
