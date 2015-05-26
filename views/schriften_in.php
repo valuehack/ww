@@ -9,17 +9,14 @@
 <script>
 function changeView(price, price2) {
     var x = document.getElementById("change").value;
-    
-    if (x == 4) {    
-      document.getElementById("quantity").innerHTML = '<input type="number" name="quantity" style="width:35px;" value="1" min="1" max="100">';
-      document.getElementById("price").innerHTML = price2 + " Credits";
 
+    if (x == 4) {    
+      document.getElementById("quantity").innerHTML = 'Menge: <input type="number" name="quantity" style="width:35px;" value="1" min="1" max="100">';
+      document.getElementById("price").innerHTML = price2 + " Credits pro St&uuml;ck";
     }
     else {
-      document.getElementById("quantity").innerHTML = "";
+      document.getElementById("quantity").innerHTML = '<input type="hidden" name="quantity" value="1" />';
       document.getElementById("price").innerHTML = price + " Credits";
-
-
     }
 }
 </script>
@@ -97,8 +94,8 @@ if(isset($_GET['q']))
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />
-      <span id="quantity"></span>
-      <select name="format" id="change" onchange="changeView(<?php echo $price; ?>, <?php echo $price2; ?>)">
+      <span id="quantity"><input type="hidden" name="quantity" value="1" /></span>
+      Format: <select name="format" id="change" onchange="changeView(<?php echo $price; ?>, <?php echo $price2; ?>)">
         <?php
         if ($pdf == 1) echo '<option value="1">PDF</option>';
         if ($epub == 1) echo '<option value="2">ePub</option>';
@@ -152,8 +149,6 @@ while($entry = mysql_fetch_array($result))
         <td>
           <?php 
           echo "<a href='?q=$id'><i>".ucfirst($entry[type])."</i> ".$entry[title];
-      if ($entry[author]) echo " - ".$entry[author]." </a></td>"; 
-      //if ($entry[format]) echo " ".$entry[format]; 
 
 ?>    
     </tr>

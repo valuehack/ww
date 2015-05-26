@@ -110,7 +110,6 @@ while($entry = mysql_fetch_array($result))
         <td>
           <?php 
           echo "<a href='?q=$id'><i>".$entry[title];
-      if ($entry[author]) echo " - ".$entry[author]; 
       if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
 
 ?>    
@@ -121,7 +120,7 @@ while($entry = mysql_fetch_array($result))
 
 echo "</table><br><br>";
 
-
+/*
 ?>
 
 <h5>Video</h5>
@@ -151,8 +150,10 @@ while($entry = mysql_fetch_array($result))
 }
 
 echo "</table><br><br>";
+*/
 
 }
+
 ?>
 <br><br><br><br><br><br><br><br><br>
 

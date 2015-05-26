@@ -84,7 +84,6 @@ while($entry = mysql_fetch_array($result))
       	<td>
       		<?php 
       		echo "<a href='?id=$q'><i>".ucfirst($entry[type])."</i> ".$entry[title];
-			if ($entry[author]) echo " ".$entry[author]; 
 			if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
 
 ?>    

@@ -75,7 +75,6 @@ while($entry = mysql_fetch_array($result))
         <td>
           <?php 
           echo "<a href='?q=$id'><i>".$entry[title];
-      if ($entry[author]) echo " - ".$entry[author]; 
       if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
 
 ?>    

@@ -67,7 +67,7 @@ if ($id = $_GET["q"])
         <i>Credits: </i>
         <input type="hidden" name="add" value="<?php echo $n ?>" />
         <input type="number" name="quantity" style="width:50px;" value="1" min="1" max="<?php echo $avail;?>">
-        <input type="submit" value="Add to Basket">
+        <input type="submit" value="Zuweisen">
       </form></div>
     <?php
     }
