@@ -681,11 +681,14 @@ a.linkbutton:hover {
 
 .logo {
 	background: transparent;
+	width: 900px;
 	height: 135px;	
+	margin: 0 auto;
+	text-align: center;
 }
 
 .logo_img {
-	margin: 15px 450px;
+	margin: 15px 237px;
 	width: 425px;
 }
 
