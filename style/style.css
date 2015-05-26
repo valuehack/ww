@@ -635,7 +635,8 @@ a.socialimg:hover  {
 }
 
 .salon img {
-	
+	text-align: center;
+	margin: 25px 0;
 }
 
 .salon h1 {
@@ -646,14 +647,16 @@ a.socialimg:hover  {
 }
 
 .salon h2 {
-	font-size: 26pt;
-	text-transform: uppercase;	
+	font-size: 22pt;
+	text-transform: uppercase;
+	margin-bottom: 10px;
 }
 
 .salon p {
 	font-size: 20pt;
 	margin: 15px 0;
 	text-align: justify;
+	line-height: 1.6em;
 }
 
 .salon_form {
@@ -661,7 +664,7 @@ a.socialimg:hover  {
 }
 
 .salon_form select {
-	padding: 10px;
+	padding: 5px;
 	font-size: 20pt;
 }
 
