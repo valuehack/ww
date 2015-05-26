@@ -222,9 +222,6 @@ else
 ?>
 	 <div class="content">
            <article class="blog">
-           	<header>
-			<h1>Scholien</h1>
-			</header>
 	
 		<?php if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div>";
