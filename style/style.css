@@ -1,633 +1,822 @@
-/**
-*margin: oben rechts unten links;
-*/
+@font-face {
+	font-family: 'Baskerville';
+	src: url('baskerville_regular.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Baskerville';
+	src: url('baskerville_italic.otf') format('opentype');
+	font-style: italic;
+}
+
+/*==================================
+ * CSS Reset
+ ===================================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+u, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+   display: block;
+}
 body {
-	font: normal 11pt "Bitstream Charter";
-	color:#494949;
-	background: #d2cdc7 url(gfx/bg.png) repeat-x 0 0;
-	width: 1020px;
-	margin: 0 auto; /*Inhalt wird zentriert*/
+   line-height: 1;
 }
-h1 {
-	font: italic 16pt "Bitstream Charter";
-	color: #2e4a62;
-	margin: 5px 0;
+ul {
+   list-style: none;
 }
-h2 {
-	font: italic 24pt "Bitstream Charter";
-	color: #2e4a62;
-	margin: 10px 0px;
+ol {
+	list-style-position: inside;
 }
-h3 {
-	font: italic 22pt "Bitstream Charter";
-	color: #2e4a62;
-	margin: 5px 0;
+blockquote, q {
+   quotes: none;
 }
-h4 {
-	font: italic 10pt "Bitstream Charter";
-	color: #2e4a62;
-	margin: 5px 0;
-}
-h5 {
-	font: italic 18pt "Bitstream Charter";
-	color: #2e4a62;
-	margin: 5px 0;
-}
-h6 {
-	font: italic bold 11pt "Bitstream Charter";
-	color: #2e4a62;
-	margin: 0;
-	padding: 0;
+blockquote:before, blockquote:after,
+q:before, q:after {
+   content: '';
+   content: none;
 }
 table {
-	margin: 5px 0;
-	font: normal 10pt "Bitstream Charter";
-}
-th {
-	text-align: center;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-}
-td {
-	padding: .1em;
-}
-td.bottomline {
-	border-bottom: 1px solid #ccc;
-	margin: 10px 0;
-}
-ul.sub {
-	list-style-type: square;
-}
-li {
-	list-style: circle;
-}
-li.ort {
-	list-style: none;
-}
-li.scholien {
-	list-style: decimal;
-	font: normal 9pt "Bitstream Charter";
-	margin-bottom: 2pt;
-}
-img {
-	border: 0;
-	float: left;
-	margin-right: 10px;
-}
-img.left {
-	border: 0;
-	float: right;	
-	margin-left: 10px;
+   border-collapse: collapse;
+   border-spacing: 0;
 }
 
-blockquote {
-	font-style:italic;
-	border: 1px solid #2e4a62;
-	padding: 10px 10px;
+/*=========================================*/
+
+
+/*==================================================*/
+/*                  General		                    */
+/*==================================================*/
+
+body {
 }
 
-p {
-	text-align: justify;
+p, h1, h2, a, ul, ol {
+	font-family: "Baskerville", Georgia, Times, serif;
 }
 
-a:link, a:visited {
-	color: #2e4a62;
-	text-decoration: none;
-}
-a:hover, a:active {
-	color: #2e4a62;
-	text-decoration: underline;
-}
-.inputfield {
-	color: #2e4a62;
-	background-color: #fff;
-	font: italic 12pt "Bitstream Charter";
-	border: 1px solid #2d495e;
-	margin-bottom: 2px;
-	width: 170px;
-}
-.input {
-	font: italic normal 12pt "Bitstream Charter";
-	color: #5c5c5c; 
-}
-.inputbutton {
-	text-decoration: none;
-	color: #2e4a62;
-	font: normal normal 14pt "Bitstream Charter";
-	background: transparent url(http://wertewirtschaft.org/neu/style/arrow_blue.png) no-repeat 95% 7px;
-	border: 0;
-}
-a.input:link, a.input:hover, a.input:active, a.input:visited {
-	text-decoration: underline;
-	color: #2e4a62;
-	font: normal normal 14pt "Bitstream Charter";
+em {
+	font-style: italic;
 }
 
-/**
-*Layout
-*/
-
-#container {
-	max-width: 1020px;
-	background: #d2cdc7;
-}
-#container #header {
-	height: 103px;
-	background: #071019 url(gfx/header_neu5.gif) no-repeat 0 0;
-}
-img.logo {
-	float:left;
-	position: relative;
-	top: 19px;
-	left: 105px;
-	border: 0;	
-}
-img.flagge {
-	float:left;
-	position: relative;
-	top: 2px;
-	left: 0px;
-	border: 0;
-	margin-right: 5px;
-}
-a.flagge:link, a.flagge:visited {
-	float:left;
-	position: relative;
-	top: 7px;
-	left: 555px;
-	text-decoration: none;
-	color: #fff;
-	font: normal 11px "Bitstream Charter";	
-}
-a.flagge:active, a.flagge:hover {
-	float:left;
-	position: relative;
-	top: 7px;
-	left: 555px;
-	text-decoration: underline;
-	color: #fff;
-	font: normal 11px "Bitstream Charter";	
-}
-#container #menu {
-	height: 35px;
-	background: #b9b1a9 url(gfx/bg_menu.png) repeat-x 0 0;
-	/*border-top: 1px solid #ffffff;*/
-	/*border-bottom: 1px solid #ffffff;*/
-}
-#container #center {
-	width:1020px;
-	overflow: auto; /*Div Container wächst mit, wenn innere Container wachsen.*/
-	/*min-height: 550px;*/
-	background: transparent url(gfx/bg_container_t.gif) no-repeat 340px 0;
-}
-#container #center #content {
-	float: left;
-	width: 570px;
-	/*min-height: 650px;*/
-	/*min-height: 500px;*/
-	/*background: #ffffff;*/
-	background: #ffffff url(gfx/bg_content.png) no-repeat 0px 25px;
-	margin: 20px 5px 10px 40px;
-	padding: 10px 30px 10px 20px;
-}
-#content a:link, #content a:visited {
-	text-decoration: none;
-	color: #2e4a62;
-}
-#content a:active, #content a:hover {
-	text-decoration: underline;
-} 
-a.content:link, a.content:hover, a.content:active, a.content:visited {
-	text-decoration: none;
-	color: #2e4a62;
-	font: normal 12px "Bitstream Charter";
-}
-a.content:hover, a.content:active {
-	text-decoration: underline;
-}
-.semimg {
-	float: left;
-	border: 0;
-	margin-right: 5px;
-	width: 175px;
-}
-/*.anaimg {
-	float: left;
-	padding: 4px;
-    border: 1px solid #2e4a62;
-    background-color: transparent;
-	margin-right: 5px;
-}*/
-.wallimg {
-   padding: 4px;
-   border: 1px solid #2e4a62;
-   background-color: transparent;
-   margin-bottom: 15px;
-   float: none;
-}
-.big {
-	width: 565px;
-}
-.entry {
-	border-bottom: 2px solid #e5e4e2;
-	padding: 10px 0;
+strong {
+	font-weight: bold;
 }
 
-.quote {
-	font-style:italic;
-	border: 1px solid #2e4a62;
-	margin: 20px 20px;
-	padding: 10px 10px;
-}
+/*==================================================*/
+/*                   Header                    		*/
+/*==================================================*/
 
-.mainvid {
-	padding: 4px;
-	border: 1px solid #2e4a62;
-	background-color: transparent;
-	padding-bottom: 0px;
-}
-#container #footer {
-  	/*background: #d2cdc7;*/
-	height:3em;
-}
-#container #footer #impressum {
-	float: left;
-	width: 620px;
-	text-align: center;
-	font: normal normal 15px "Bitstream Charter";
-	color: #716a62;
-	margin: 0px 5px 0px 40px;
-}
-a.impressum:link, a.impressum:hover, a.impressum:active, a.impressum:visited {
-	text-decoration: none;
-	color: #716a62;
-	font-family: "Bitstream Charter";
-}
-#container #footer #space {
-	float: right;
-	width: 340px;
-	margin: 0px 10px 0px 5px;
-}
-
-#tabs-wrapper {
-	margin: 0 0 10px 0;
-	padding: 0 0 3px 0;
-	border-bottom: 4px solid #2d495e;
-	text-align: left;
-	font: italic 28pt "Bitstream Charter";
-	color: #2e4a62; 	
-}
-#tabs-wrapper-lower {
+.header {
+	width: 100%;
+	height: 175px;
 	margin: 0;
-	padding: 3px;
-	border-bottom: 4px solid #2d495e;
-}
-a.tabs-wrapper-lower:link, a.tabs-wrapper-lower:visited {
-	text-decoration: none;
-	color: #2e4a62;
-	font-family: "Bitsream Charter";
-}
-a.tabs-wrapper-lower:hover, a.tabs-wrapper-lower:active {
-	text-decoration: underline;
-	color: #2e4a62;
-	font-family: "Bitstream Charter";
-}
-#container #center #sidebar {
-	float: right;
-	width: 310px;
-	/*background: #d2cdc7;*/
-	margin: 20px 10px 20px 5px;
-	padding: 0 15px;
-	color:#2e4a62;
-}
-#tabs-wrapper-sidebar {
-	margin: 5px 0px 10px 0px;
-	padding: 3px 25px;
-	border-bottom: 1px solid #2d495e;
-}
-a.termine:link, a.termine:visited a.termine:hover, a.termine:active {
-	font: normal 11pt "Bitstream Charter";
+	top: 0;
+	left: 0;
+	background: #0b131e url(gfx/header_neu_blau.png) no-repeat center -250px;
+	/*background: rgb(30,48,64);*/
 }
 
-/**
-*Menu
-*/
-#navbar {
-   	position: relative;
-   	top: 76px;
+.logo {
+	background: transparent;
+	width: 900px;
+	height: 135px;	
+	margin: 0 auto;
+	text-align: center;
+}
+
+.logo_img {
+	margin: 15px 237px;
+	width: 425px;
+}
+
+.login {
+	position: absolute;
+	top: 15px;
+	right: 5%;
+}
+
+.login:before {
+	content: url(../style/gfx/user_icon.png);
+	height: 5px;
+}
+
+.login a {
+	font-size: 12pt;
+	text-decoration: none;
+	color: #fff;
+	text-transform: uppercase;
+	margin: 0 6px;
+}
+
+.login a:hover {
+	text-decoration: underline;
+}
+
+/*================  User Navigation  ===============*/
+
+/*================  Main Navigation  ===============*/
+
+.nav {
+	height: 40px;
+	background: /*transparent*/ rgb(185,177,169);
+	background-image: -moz-linear-gradient(center top, rgba(250,250,250,0.1), rgb(185,177,169));
+	position: relative;
    	right: 0;
    	margin: 0;
-   	padding: 0;
-	font: normal 14pt "Bitstream Charter";
+   	padding: 0 17%;
 	text-align: center;
+	/*opacity: 0.8;*/
+	box-shadow: 0 0 2px 0 rgb(20,20,20);
 }
-#navbar li {
-   	list-style: none;
-   	float: right; 
-	height: 32px;
-   	display: block;
-  	/*background-color: #786e64;*/
+
+.navi {
+	height: 40px;
+	width: 846px;
+	/*border-right: 0.5px solid rgb(26,26,26);*/
 }
-#navbar li a {
+
+.navi ul {
+	text-align: center;
+	opacity: 1;
+	
+}
+
+.navi li {
+	float: left;
+	width: 130px;
+	padding: 6px 5px 4px 5px;
+	height: 30px;
+	margin: 0 0.5px;
+	list-style: none;
    	display: block;
+   	font-size: 16pt;
+   	/*border-left: 1px solid rgb(26,26,26);*/
+   	/*background: rgb(144,134,125) url(gfx/nav_bg.png) no-repeat;
+   	background-size: cover;*/
+   	border-radius: 1px;
+}
+
+.navi li:hover {
+	background: #827d77;
+	/*background: rgb(255,198,18);*/
+}
+
+.navi li a {
+	display: block;
   	text-decoration: none; 
    	color: #fff; 
 	padding: 3px 10px;
+	text-shadow: 0 0 1px 0 rgba{0,0,0,0.4};
+	font-size: 14pt;
 }
-#navbar li a:hover {
-	/*background: transparent url(bg-navigation-item-hover.png) no-repeat 50% 100%;*/
-}
-#navbar li ul {
-  	display: none; 
-}
-#navbar li:hover ul, #navbar li.hover ul {
-   	position: absolute;
-   	display: inline;
-	width: 100%;
-   	left: 0;
-   	margin: 0;
-   	padding: 0; 
-}
-#navbar li:hover li, #navbar li.hover li {
-   	float: left; 
-   	font-size: 11pt;
-   	color: #fff;
-}
-#navbar li:hover li a, #navbar li.hover li a {
-	width: 100%;
-	display: block;
-	text-indent: 3px;
-	text-decoration: none;
-	/*background: #bab1aa;*/
-	/*border: 1px solid #fff;*/
-}
-#navbar li li a:hover {
-	text-decoration: underline;
-}
-li.navbar {
-	width: 135px;
-	margin-left:1px;
-}
-li.navlong {
-	width: 235px/*227px - 127px*/;
-	padding-top: 2px;
-	margin: 0 10px;
-}
-li.navshort {
-	width: 75px;
-	padding-top: 2px;
-	margin: 0 20px;
-}
-/**
-*Anmeldung
-**/
 
-table.apply {
-	width: 100%;
-	border: 0;
-	font-size: 10pt;
-	background: #e5e4e2;	
+/*==================================================*/
+/*                 Content General                  */
+/*==================================================*/
+
+
+.content {
+	width: 75%;
+	margin: 0 auto;
+	text-align: justify;
 }
-th.apply {
-	background: #fff;
-	border: 1px solid #fff;
-	border-top: 1px solid #e5e4e2;
-	padding: 4px 0;
+
+.article {
+	padding: 25px;
+	font-size: 20pt;
 }
-td.apply {
-	padding: .4em 0;
-}
-.radioapply {
-	border: 0;
-	font-size: 10pt;
-	margin-top: 10px;
-}
-.inputfieldapply {
-	color: #2e4a62;
-	background-color: #fff;
-	font: normal 10pt "Bitstream Charter";
-	border: 1px solid #2d495e;
-	width: 325px;
-}
-.inputfieldapplys {
-	color: #2e4a62;
-	background-color: #fff;
-	font: normal 10pt "Bitstream Charter";
-	border: 1px solid #2d495e;
-}
-.inputfieldapplies {
-	color: #2e4a62;
-	background-color: #fff;
-	font: normal 8pt "Bitstream Charter";
-	border: 1px solid #2d495e;	
-	margin: 1px 0;
-}
-.wrong {
-	background-color: #ccc;
-}
-.inputbuttonapply {
-	text-decoration: none;
-	color: #2e4a62;
-	font: normal normal 12pt "Bitstream Charter";
-	background: #fff url(../style/arrow_blue_small.png) no-repeat 95% 5px;
-	/*border: 1px solid #2e4a62;*/
-	margin: 10px 0;
+
+.article header {
+	margin: 50px 0;
 	
 }
-textarea.apply {
-	background-color: #fff;
-	font: normal 10pt "Bitstream Charter";
-	border: 1px solid #2d495e;
-	width: 325px;
-}
-select.apply {
-	background-color: #fff;
-	font: normal 10pt "Bitstream Charter";
-	border: 1px solid #2d495e;
-	width: 325px;
-}
-img.captcha {
-	border: 1px solid #2d495e;
-	float: none;
+
+.article h1 {
+	text-align: center;
+	font-size: 72px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 1px #666;	
 }
 
-a:hover.amd, a:active.amd {
-	text-decoration: none;
+.article h2 {
 }
-/*Hilfe-Box*/
 
-a.help {
-	position: relative;
-	z-index: 1;
-	color: #2e4a62;
+.article a {
 	text-decoration: none;
 }
 
-a:hover.help {
-	z-index: 2;
+.article img {
 }
 
-a.help span {
-	display: none;
+
+.article ol {
+	list-style-type: decimal;
+	list-style-position: outside;
 }
 
-a:hover.help span {
-	display: block;
-	position: absolute;
-	top: 2em;
-	left: 2em;
-	width: 15em;
-	border: 1px solid #2d495e;
+.article ul {
+	list-style-type: none;
+	list-style-position: outside;
+}
+.article li {
+	padding-bottom: 0.75em;
+}
+
+.article footer img {
+}
+
+.article footer a:link, a:hover, a:visited {
+}
+
+.article footer p {
+}
+
+.article footer p a:link {
+}
+
+.article footer p a:hover, a:visited {
+}
+
+.inputfield {
+	padding: 0 14px;
 	background-color: #fff;
-	color: #2e4a62;
-	text-align: center;
-	padding: 5px;
-	font-size: 1em;
-} 
-a.help img {
-	float: left;
-	margin-right: 10px;
+	border: 1px solid #cfcfcf;
+	margin: 5px;
+	width: 172px;
+	height: 50px;
+	font-size: 16pt;
+	font-family: "Baskerville", Georgia, Times, serif;
 }
 
-/*Bildergalerie*/
-
-#galerie {
-	margin: 0 auto;
-	text-align: center;
-}
-
-#galerie table.galerie {
-	margin: 0 auto;
-	text-align: center;
-	border: 1px solid #2e4a62;
-	padding: 4px;
-	background: transparent;
-}
-#galerie td.thumbcell {
-	width: 175px;
-	height: 150px;
-	text-align: center;
-	vertical-align: middle;
-	background: #000;
+.inputbutton {
+	text-decoration: none;
+	background: rgb(46,74,98);
+	color: #fff;
 	border: 0;
-	margin: 0;
+	border-radius: 2px;
+	margin: 5px;
+	width: 200px;
+	height: 50px;
+	font-size: 16pt;
+	font-family: "Baskerville", Georgia, Times, serif;
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
 }
 
-#galerie td.thumbcell img {
-	border-style: none;
-	width: 165px;
+.inputbutton:hover {
+	background: rgb(30,48,64);
 }
 
-/*Show - Hide Text*/
+/*==================================================*/
+/*                 Scholien/ Blog	                */
+/*==================================================*/
 
-.more {
-	display: none;
+.blog_info {
+	font-size: 15pt;
+	font-style: italic;
+	line-height: 1.8em;
+	margin-top: 20px;
 }
 
-a.show, a.hide {
-	font: normal 9pt "Bitstream Charter";	
-}
-p.showhide {
-    text-align: right;
-    margin-top: -12pt;	
-}
-.bottomline {
-    border-bottom: 1px solid #ccc;
+.blog_info a:hover {
+	color: rgba(46,74,98,0.8);
 }
 
-/*Mitliederbereich: Audio - Video - Scholien*/
+/* Blog Article List */
 
-.audioentry {
+.blogdates {
+	font-size: 16pt;
+	font-style: italic;
+	text-align: right;
+	margin: 20px 0;
+}
+
+.blog_entry {
+	margin: 30px 0 20px 0;
+	line-height: 1.6em;
+}
+
+.blog_entry h2 {
+	font-size: 26pt;
+	color: #000;
+	margin: 40px 0 0 0;	
+	text-align: center;
+	text-shadow: 0px 0px 1px #666;
+}
+
+.blog_entry h2 a:link,  .blog_entry h2 a:hover, .blog_entry h2 a:visited {
+	color: #000;
+	border: 0;
+}
+
+.blog_entry a:link {
+	color: rgba(46,74,98,0.6);
+	border-bottom: 1px dotted;
+}
+
+.blog_entry a:hover, a:visited {
+	color: rgb(46,74,98);
+	border-bottom: 1px solid;
+}
+
+.pagination {
+	padding: 3px;
+	margin: 50px auto 5px 0;
+	font-size: 16pt;
+	text-align: center;
+}
+
+.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	text-decoration: none; /* no underline */
+	color: rgb(46,74,98);
+}
+
+.pagination a:hover, .pagination a:active {
+	color: #000;
+}
+
+.pagination span.current {
+	padding: 1px 5px 1px 5px;
+	margin: 1px 2px;
+	font-weight: bold;
+	background-color: rgb(46,74,98);
+	color: #fff;
+}
+
+.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	color: #000;
+}
+
+/* Individual Blog Article */
+
+.blog {
+	padding: 25px;
+	font-size: 20pt;
+}
+
+.blog header {
+	margin: 50px 0;	
+}
+
+.blog h1 {
+	text-align: center;
+	font-size: 72px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 1px #666;	
+}
+
+.blogdate {
+	font-size: 18pt;
+	font-style: italic;
+	text-align: right;
+	margin: 40px 0;
+}
+
+.blog_img {
+	width: 300px;
+	background: #000;
+	text-align: center;
+	margin: 0 5px 5px 5px;
+	float: right;
+}
+
+.blog p {
+	line-height: 1.6em;
+	margin: 50px 0;	
+}
+
+.blog:first-letter {
+    font-size: 7em;
+    float: left;
+    margin-right: 0.02em;
+    line-height: 0.75;
+}
+
+.blog a:link {
+	color: rgb(46,74,98);
+	border-bottom: 1px dotted;
+}
+
+.blog a:hover {
+	border-bottom: 1px solid;
+	color: rgba(46,74,98,0.8);
+}
+
+.blog a:visited {
+	border-bottom: 1px solid;
+	color: rgba(46,74,98,0.6);
+}
+
+.blog h1 {
+	text-align: center;
+	font-size: 72px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 1px #666;	
+}
+
+.blog a {
+	text-decoration: none;
+}
+
+.blog img {
+	max-width: 974px;
+	margin: 0 auto;
+}
+
+.blog ol {
+	margin: 40px 0 40px 60px;
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+
+.blog ul {
+	margin: 40px 0 40px 60px;
+	list-style-type: none;
+	list-style-position: outside;
+}
+
+.blog li {
+	padding-bottom: 0.75em;	
+}
+
+.blog blockquote {
+	line-height: 1.5em;
+	padding: 0 50px 0 50px;
+	color: rgba(0,0,0,0.6);
+}
+
+.blockquote p {
+	line-height: 1.5em;
+	padding: 0 50px 0 50px;
+	color: rgba(0,0,0,0.6);
+}
+
+.linie {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.linie img {
+	max-height: 35px;
+}
+
+.blog_footer {
+	max-height: 30px;
+	text-align: center;
+}
+
+.blog_footer img {
+	margin: 0 20px;
+	max-height: 30px;
+}
+
+.blog_footer a:link, a:hover, a:visited {
+	border: 0;
+}
+
+.blog_footer p {
+	text-align: right;
+	margin: 0 0 50px 0;
+	font-size: 16pt !important;
+}
+
+.blog_footer p a:link {
+	color: rgba(46,74,98,0.6);
+	border-bottom: 1px dotted;
+}
+
+.blog_footer p a:hover, a:visited {
+	color: rgb(46,74,98);
+	border-bottom: 1px solid;
+}
+
+/* Blog Upgrade and Subscription */
+
+.blog_upgrade, .blog_subscribe {
+	padding: 30px;
+	width: 100%;
+    background-color: #fafafa;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.05) inset;
+    display: inline-block;
+    font-size: 16pt;
+    max-width: 900px;
+    position: relative;
+    text-align: justify;
+}
+
+.blog_subscribe {
+    max-width: 438px;
+    margin: 30px 200px;
+}
+
+.blog_upgrade {
+	width: 100%;
+    max-width: 900px;
+    margin: 30px 0;
+}
+
+.blog_upgrade h2 {
+	margin: 10px 0;
+	font-size: 24pt;
+}
+
+.blog_upgrade p {
+	line-height: 1.5em;
+	margin: 10px 0;
+}
+
+a.blog_linkbutton {
+	text-decoration: none;
+	display: block;
+	border-radius: 2px;
+	color: #fff;
+	background: rgb(46,74,98);
+	border: 0;
+	margin: 30px 0 10px 350px;
+	width: 200px;
+	height: 37px;
+	padding-top: 13px;
+	font-size: 16pt;
+	font-family: "Baskerville", Georgia, Times, serif;
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
+	text-align: center;
+}
+
+a.blog_linkbutton:hover {
+	color: #fff;
+	background: rgb(30,48,64);
+}
+
+a.blog_linkbutton:visited {
+	color: #fff;
+}
+
+/*=============  Social Media Buttons  =============*/
+
+/* Fixed Sidebar */
+
+.social {
+	position: fixed;
+	right: 40px;
+	bottom: 50px;
+}
+
+.social ul {
+	margin: 0 0 20px 60px;
+}
+
+.social li {
+	margin: 20px 0;
+	list-style: none;
+}
+
+.social a:link, a:hover, a:visited {
+	border: 0;
+}
+
+.social img {
+	margin: 0 20px;
+	max-height: 30px;
+}
+
+/* Bottom Bar */
+
+.socialimg {
+	text-align: center;
+	padding-bottom: 20px;
+	/*width: 375px;
+	margin: 0 auto;*/
+}
+
+/*====================================*/
+/*        Upgrade/Payment Page        */
+/*====================================*/
+
+.payment {
+	width: 75%;
+	margin: 50px auto;
+}
+
+.payment_info {
+	font-family: "Baskerville", Georgia, Times, serif;
+	line-height: 1.6em;
+	font-size: 13pt;
+	text-align: justify;
+}
+
+.pay_option_box {
+	width: 100%;
+	padding: 10px;
+	margin: 50px auto 20px auto;
+	box-shadow: 1px 1px 2px 0 rgba(0,0,0,0.25);
+	box-shadow: 1px 1px 10px 0 rgba(0,0,0,0.15) inset;
+	border-radius: 2px;
+	min-height: 200px;
+	opacity: 0.95;
+}
+
+.pay_option_box:hover {
+	/*box-shadow: 2px 2px 15px 0 rgb(153,210,23), -2px 2px 15px 0 rgb(153,210,23), 2px -2px 15px 0 rgb(153,210,23), -2px -2px 15px 0 rgb(153,210,23);*/
+	opacity: 1;
+	box-shadow: 2px 2px 15px 0 rgba(237,120,2,0.5), -2px 2px 15px 0 rgba(237,120,2,0.5), 2px -2px 15px 0 rgba(237,120,2,0.5), -2px -2px 15px 0 rgba(237,120,2,0.5);
+	
+}
+
+.pay_option_box1 {
+	background: rgb(88,134,129);
+}
+
+.pay_option_box2 {
+	background: rgb(21,87,100);
+}
+
+.pay_option_box3 {
+	background: rgb(1,39,68);
+}
+
+.pay_option_box4 {	
+	background: rgb(21,87,100);
+}
+
+.pay_option_box5 {
+	background: rgb(88,134,129);
+}
+
+.pay_option_box6 {
+	background: rgb(140,156,136);
+}
+
+.pay_option_box table {
+
+}
+
+.pay_option_box tr {
+}
+
+.pay_option_box th {
+	color: #fff;
+	width: 25%;
+	padding: 0 30px;
+	vertical-align: middle;
+}
+
+.pay_option_box td {
+	color: #fff;
+	width: 75%;
+	padding: 0 20px;
+	vertical-align: middle;
+
+}
+
+.pay_option_box h1 {
+	font-size: 24pt;
+	text-align: center;
+	color: #fff;
 	margin-bottom: 15px;
 }
 
-.autor {
-	font: normal 9pt "Bitstream Charter";
-	border-bottom: 0.5px solid #2d495e;	
+.pay_option_box h2 {
+	font-size: 26pt;
+	font-weight: bold;
+	text-align: center;
+	color: #fff;
+	text-shadow: 0px 0px 2px rgba(250,250,250,0.7);
+}
+	
+.pay_option_box p {
+	line-height: 1.8em;
+	font-size: 14pt;
+	margin: 30px 0;	
+	text-align: left;
+	color: #fff;
+}	
+
+.pay_option_box ul {
+	list-style-position: outside;
+	list-style-type: disc;
+	font-size: 14pt;
+	padding-left: 12px;
+	color: #fff;
 }
 
-.audiofile {
-	/*background: #000;*/
-	border-bottom: 2px solid #e5e4e2;
-	padding: 10px 0 5px 0;
+.pay_option_box li {
+	line-height: 1.6em;
 }
 
-.videoentry {
-	margin-bottom: 25px;
+.pay_option_form {
+	text-align: center;
+	height: 110px;
 }
 
-.videofile {
-	background: #000;
-	padding: 5px 0 20px 0
+.pay_option_box_inputbutton {
+	text-decoration: none;
+	background: /*rgb(153,210,23)*/ rgb(237,120,2);
+	color: #fff;
+	text-shadow: 1px 1px 4px 0 rgba(0,0,0,0.9);
+	border: 0;
+	border-radius: 2px;
+	margin: 10px 0 15px 0;
+	width: 400px;
+	height: 50px;
+	font-size: 16pt;
+	font-family: "Baskerville", Georgia, Times, serif;
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16) inset, 0px 0px 10px 0px rgba(0, 0, 0, 0.34) inset;
 }
 
-.weitere {
-	text-align: right;
-	margin-top: 0;
+.pay_option_box_inputbutton:hover {
+	/*background: rgb(111,153,17);*/
+	background: rgb(230,103,2);
 }
-a.scholien {
-	position: relative;
-	z-index: 1;
-	color: #2e4a62;
+
+/*==================================================*/
+/*                   Footer                    		*/
+/*==================================================*/
+
+.footer {
+	min-height: 35px;
+	width: 100%;
+	background: rgb(11,19,30);
+	margin: 50px 0 0 0;
+	padding-top: 15px;
+}
+
+.footer p {
+	text-align: center;
+}
+
+.footer p a {
+	font-size: 12pt;
+	color: rgb(200,200,200);
+	text-shadow: 1px 1px 1px 0 rgb(15,15,15);
 	text-decoration: none;
 }
 
-a:hover.scholien {
-	z-index: 2;
+.footer p a:hover {
+	font-size: 12pt;
+	color: rgb(230,230,230);
+	text-shadow: 1px 1px 1px 0 rgb(15,15,15);
 }
 
-a.scholien span {
-	display: none;
+/*.banner_blog {
+	background: #000;
+	width: 100%;
+	height: 300px;
+	position: relative;
 }
 
-a:hover.scholien span {
-	display: block;
-	position: absolute;
-	top: -17em;
-	left: 12em;
-	width: 35em;
-	border: 1px solid #2d495e;
-	background-color: #fff;
-	color: #2e4a62;
-	text-align: center;
-	padding: 5px;
-	font-size: 10pt;
-} 
-a.scholien img {
-	float: left;
-	margin-right: 10px;
+.banner_blogimg {
+	width: 100%;
+	height: 100%;
+	max-height: 300px;
+	background-size: cover;
+	opacity: 0.7;
 }
 
-.intern {
-	font-size: 14pt;
-	font-weight: 400;
-	text-align: center;
-	padding: 3px 0;
-	border-top: 1px solid #2d495e;
-	border-bottom: 1px solid #2d495e;
-	margin-top: 0;
+.banner_blogms {
+	width: 80%;
+	margin: -350px auto;
+	position: relative;
 }
 
-.hinweis {
-	border: 2px solid rgb(170,0,0);
-	color: rgb(170,0,0);
-	padding: 5px;
-	margin: 5px 0;
-	font-size: 9pt;
-}
-/*Used for symposion*/	
-p.programm 
-{
-	font-size: 10pt;
-	font-weight: 400;
-	text-align: center;
-	padding: 5px 3px;
-	margin-top: 0;
-	margin-bottom: 0;
+.banner_blogms h1 {
+	font-size: 45pt;
+	line-height: 1.1em;
+	color: #fff;
+	padding-top: 100px;
+	text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
 }
 
-td.programm
-{
-	border: 1px solid black;
-}
-
+.banner_blogms p {
+	font-size: 8pt;
+	color: rgba(250,250,250,0.3);
+	line-height: 1.1em;
+	text-align: right;
+	text-shadow: 0px 0px 5px rgba(0,0,0,0.7);
+	margin-left: 400px;
+	margin-top: 170px;
+}*/
