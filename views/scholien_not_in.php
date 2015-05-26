@@ -104,4 +104,4 @@ else
 
 <?php 
 }
-include('_footer_blog.php'); ?>
+include('_footer.php'); ?>

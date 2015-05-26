@@ -266,4 +266,4 @@ else
            </article> 
         </div>
 
-<?php include('_footer_blog.php'); ?>
+<?php include('_footer.php'); ?>
