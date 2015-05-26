@@ -239,7 +239,7 @@ else
 	
 		$id = $entry[id];
 		$title = $entry[title];
-		$puclic = $entry[public_text];
+		$public = $entry[public_text];
 		$publ_date = $entry[publ_date];
 
 		echo "<div class='blog_entry'>";
