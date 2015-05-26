@@ -60,7 +60,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 <!-- Layout-->
         <header class="header1">
             <div class="logo">
-                <a href="/"><img class="logo_img" src="../scholien/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
+                <a href="/"><img class="logo_img" src="../style/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
                 <span class="login"><a href="">Ulrich M&ouml;ller</a></span>
             </div>
             <div class="nav">

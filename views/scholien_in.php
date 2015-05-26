@@ -90,7 +90,7 @@ if(isset($_GET['q']))
 ?>
 				<!--<footer class="article">-->			   
                    <div class="socialimg">
-                   <a href="https://www.facebook.com/sharer/sharer.php?u=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"> <img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
+                   <a href="https://www.facebook.com/sharer/sharer.php?u=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"> <img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
                    <a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
                    <a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
                    <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
