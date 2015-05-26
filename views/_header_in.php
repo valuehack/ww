@@ -54,18 +54,24 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 <body>
 <!-- Layout-->
-      <header class="header">
-    <a href="/"><img class="logo" src="../scholien/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home" style="max-height: 90px;"></a>
-    <a href="/" class="flagge"><img class="flagge" src="http://wertewirtschaft.org/style/gfx/flagge_us.png" alt="English Version" name="">English Version</a>
-    <ul class="nav">
-               <li><a href="/scholien/">Scholien</a></li>
-               <li><a href="/salon/">Salon</a></li>
-               <li><a href="/kurse/">Kurse</a></li>
-               <li><a href="/schriften/">Schriften</a></li>
-               <li><a href="/medien/">Bibliothek</a></li>
-               <li><a href="/kurse/">Projekte</a></li>
-      </ul>
-      </header>
+        <header class="header1">
+            <div class="logo">
+                <a href="/"><img class="logo_img" src="../scholien/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
+                <span class="login"><a href="">Ulrich M&ouml;ller</a></span>
+            </div>
+            <div class="nav">
+                <div class="navi">
+                <ul class="navi">
+                    <li><a href="/scholien/">Scholien</a></li>
+                    <li><a href="/salon/">Salon</a></li>
+                    <li><a href="/kurse/">Kurse</a></li>
+                    <li><a href="/schriften/">Schriften</a></li>
+                    <li><a href="/medien/">Bibliothek</a></li>
+                    <li><a href="/kurse/">Projekte</a></li>
+                </ul>
+                </div>
+           </div>
+        </header>
 
 <?php
 //set timezone
