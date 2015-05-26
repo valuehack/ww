@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <!--<link rel="stylesheet" type="text/css" href="../style/style.css">-->
+    <link rel="stylesheet" type="text/css" href="../scholien/blog_style.css">
     <title><?=$title?> | Institut f&uuml;r Wertewirtschaft</title>
 
 <!--Dateien - Bildgalerie -->
