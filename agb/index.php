@@ -12,7 +12,7 @@ $title="AGB";
 
           <p>Die Anmeldung zu den Seminaren kann online &uuml;ber wertewirtschaft.org, per e-Mail, per Fax, telefonisch oder pers&ouml;nlich erfolgen und konstituiert einen Vertragsabschlu&szlig;. Falls nicht anders angegeben, sind Kostenbeitr&auml;ge sp&auml;testens bei der Veranstaltung bar zu begleichen.</p>
 
-          <h5>2. Stornobedingungen, Umbuchung</h5>
+          <h5>2. tornobedingungen, Umbuchung</h5>
 
           <p>Die kostenlose Stornierung der Teilnahme ist bei Eintreffen der Stornierung (schriftlich, per Post, per eMail) bis mindestens 14 Tage vor dem Veranstaltungstermin m&ouml;glich. Bei Storno innerhalb von 14 Tagen vor dem Veranstaltungstermin wird eine Stornogeb&uuml;hr von 30% des Seminarpreises verrechnet. Bei Storno innerhalb von 7 Tagen vor dem Veranstaltungsbeginn wird eine Stornogeb&uuml;hr von 50% des Seminarpreises verrechnet. Bei Stornierung am Vortag des Kursbeginns oder bei Nichterscheinen betr&auml;gt die Stornogeb&uuml;hr 100%. Bei Nominierung eines Ersatzteilnehmers entf&auml;llt die Stornogeb&uuml;hr zur G&auml;nze.</p>
 
