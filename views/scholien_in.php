@@ -59,9 +59,9 @@ if(isset($_GET['q']))
 		echo "<h1>$title</h1>";
 		echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
 		}	
-
-	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";		
+		
 	if ($_SESSION['Mitgliedschaft'] == 1) {
+		echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
 		echo "<div class='blog_b'>";
 		echo "<img class='blog_img' src='$img_url' alt='$id''>";
 		echo $public;
@@ -78,6 +78,7 @@ if(isset($_GET['q']))
 
 	else {
 		echo "<h1>$title</h1>";
+		echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
 		echo "<div class='blog_b'>";
 		echo "<img class='blog_img' src='$img_url' alt='$id''>";
 		echo $private;
