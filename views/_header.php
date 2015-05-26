@@ -58,25 +58,24 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 <body>
 <!-- Layout-->
     <div id="container">
-      <div id="header">
-    <a href="/"><img class="logo" src="http://wertewirtschaft.org/style/gfx/logo.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
-    <a href="/" class="flagge"><img class="flagge" src="http://wertewirtschaft.org/style/gfx/flagge_us.png" alt="English Version" name="">English Version</a>
-    <ul id="navbar">
-      <li class="navbar" style="margin-right:25px;"><a href="/scholien/">Schriften</a>
-          <ul>
-               <li class="navshort" style="margin-left:640px;"><a href="/analysen/">Analysen</a></li>
-               <li class="navshort"><a href="/scholien/">Scholien</a></li>
-               <li class="navshort"><a href="/buecher/">B&uuml;cher</a></li>
-            </ul>
-         </li>
-
-         <li class="navbar"><a href="/institut/mitglied.php">Mitgliedschaft</a></li>
-         <li class="navbar"><a href="/salon/">Salon</a></li>
-         <li class="navbar"><a href="/akademie/">Akademie</a></li>
-      </ul>
-      </div>
-      <div id="menu">
-      </div>
+        <header class="header1">
+            <div class="logo">
+                <a href="/"><img class="logo_img" src="../scholien/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
+                <span class="login"><a href="">Ulrich M&ouml;ller</a></span>
+            </div>
+            <div class="nav">
+                <div class="navi">
+                <ul class="navi">
+                    <li><a href="/scholien/">Scholien</a></li>
+                    <li><a href="/salon/">Salon</a></li>
+                    <li><a href="/kurse/">Kurse</a></li>
+                    <li><a href="/schriften/">Schriften</a></li>
+                    <li><a href="/medien/">Bibliothek</a></li>
+                    <li><a href="/kurse/">Projekte</a></li>
+                </ul>
+                </div>
+           </div>
+        </header>
 
 <?php
 //set timezone
