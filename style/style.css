@@ -608,8 +608,15 @@ a.blog_linkbutton:visited {
 .socialimg {
 	text-align: center;
 	padding-bottom: 20px;
-	/*width: 375px;
-	margin: 0 auto;*/
+}
+
+.socialimg img {
+	max-height: 30px;
+}
+
+.socialimg a {
+	border: 0;
+	text-decoration: none;
 }
 
 /*====================================*/
