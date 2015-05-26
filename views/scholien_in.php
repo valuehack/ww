@@ -81,6 +81,7 @@ if(isset($_GET['q']))
 		echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
 		echo "<div class='blog_b'>";
 		echo "<img class='blog_img' src='$img_url' alt='$id''>";
+		echo $public."\n";
 		echo $private;
 		echo "</div>";
 		echo "<footer class='article'>";
