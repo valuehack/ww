@@ -65,7 +65,7 @@ if(isset($_GET['q']))
 	if ($_SESSION['Mitgliedschaft'] == 1) {
 		echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
 		echo "<div class='blog_text'>";
-		echo "<img class='blog_img' src='$img_url' alt='$id''>";
+		echo "<img class='blog_img' src='$img_url' alt='$id'>";
 		echo $public;
 		echo "</div>";
 ?>		<div class="_blog_upgrade">
