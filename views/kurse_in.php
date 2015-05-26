@@ -82,14 +82,14 @@ if(isset($_GET['q']))
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />
-      <select name="quantity">
+      Menge: <select name="quantity">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>        
       </select>
-      <input type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
+      <input type="submit" value="Reservieren">&nbsp;<i><?php echo $entry3[price]; ?> Credits pro Reservierung</i>
     </form>
   <?php
   }
@@ -99,7 +99,7 @@ else {
   
   echo "<h2>Kurse</h2>";
 
-  if ($_SESSION['Mitgliedschaft'] == 1 || $_SESSION['Mitgliedschaft'] == 4) {
+  if ($_SESSION['Mitgliedschaft'] == 1 || $_SESSION['Mitgliedschaft'] == 2) {
   ?>
          
     <p>Unsere Kurse inmitten unserer einzigartigen Bibliothek bieten inhaltliche Vertiefungen abseits des Mainstream-Lehrbetriebs. Wir folgen dabei dem Beispiel der klassischen Akademie &ndash; der Bibliothek im Hain der Mu&szlig;e fern vom Wahnsinn der Zeit, in der Freundschaften durch regen Austausch und gemeinsames Nachdenken gestiftet werden. Alle unsere Lehrangebote zeichnen sich durch geb&uuml;hrende Tiefe bei gleichzeitiger Verst&auml;ndlichkeit, kleine Gruppen und gro&szlig;en Freiraum f&uuml;r Fragen und Diskussionen aus. Tauchen Sie mit uns in intellektuelle Abenteuer, wie sie unsere Zeit kaum noch zul&auml;&szlig;t.</p>

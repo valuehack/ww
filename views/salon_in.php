@@ -85,14 +85,14 @@ if(isset($_GET['q']))
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />
-      <select name="quantity">
+      Menge: <select name="quantity">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>        
       </select> 
-      <input type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
+      <input type="submit" value="Reservieren">&nbsp;<i><?php echo $entry3[price]; ?> Credits pro Reservierung</i>
     </form>
 <?php  
   }

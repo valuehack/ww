@@ -12,7 +12,7 @@ function checkMe() {
 </script>
 
 <?php 
-include_once("../secdown/functions.php");
+include_once("../down_secure/functions.php");
 dbconnect();
 
 require_once('../classes/Login.php');
@@ -121,7 +121,7 @@ if(isset($_POST['checkout'])) {
                 
                 }
         
-        echo "<b>You bought the following items:</b><br>";
+        echo "Folgende Produkte haben Sie erworben. Bitte laden Sie die Dateien gleich auf Ihren PC herunter. Es wurde ein eMail an Sie verschickt. <br>";
         echo "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>";
         echo "<td style='width:55%'><b>Name</b></td>";
         echo "<td style='width:10%'><b>Quantity</b></td>";
@@ -159,25 +159,44 @@ if(isset($_POST['checkout'])) {
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
             echo "<td><i>".$sum." Credits</i></td>";
 
-             $total += $sum;
+            $id = $itemsExtraArray[id];
+            $type = $itemsExtraArray[type];
+
+            switch ($format) {
+                case 0: if ($type == 'audio') $extension = '.mp3'; break;
+                case 1: $extension = '.pdf'; break;
+                case 2: $extension = '.epub'; break;
+                case 3: $extension = '.mobi'; break;
+                default: NULL; break;
+            }
+
+            $total += $sum;
 
             if ($format == 4) {
                 $versand += 1;
             }
 
-            //$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf'.$key;
-            $file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf';
-            //$download_link = downloadurl($file_path , $key);
-            //echo $file_path;
-            //echo '<td><a href="'.$download$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'/.pdf';_link.'" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>';
 
-?>
-<td><a href="<?php downloadurl($file_path,$key);?>" onclick="updateReferer(this.href);">Download</a></td>
-</tr>
+                //$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf'.$key;
+                $file_path = 'http://test.wertewirtschaft.net/down_secure/content_secure/'.$id.$extension;
+                //$download_link = downloadurl($file_path , $key);
+                echo $file_path;
+                //echo '<td><a href="'.$download$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'/.pdf';_link.'" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>';
+           
 
+                if (($type == 'scholien' || $type == 'analyse' || $type == 'buch' || $type == 'audio') && $format != 4) {
 
-<?php
-            
+                ?>
+                <td><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href);">Download</a></td>
+                </tr>
+
+                <?php
+                 }
+
+                else {
+                    echo "<td>Reserviert</td></tr>";
+                }
+
             //echo '</td></tr>';
 
             /*
@@ -214,8 +233,124 @@ if(isset($_POST['checkout'])) {
         unset($_SESSION['basket']);
 
 
-                //$this->sendEventRegMail($items);
+        //send email
+        $mail = new PHPMailer;
+
+        $user_email = $_SESSION['user_email'];
+
+         if (EMAIL_USE_SMTP) {
+            // Set mailer to use SMTP
+            $mail->IsSMTP();
+            //useful for debugging, shows full SMTP errors
+            //$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+            // Enable SMTP authentication
+            $mail->SMTPAuth = EMAIL_SMTP_AUTH;
+            // Enable encryption, usually SSL/TLS
+            if (defined(EMAIL_SMTP_ENCRYPTION)) {
+                $mail->SMTPSecure = EMAIL_SMTP_ENCRYPTION;
+            }
+            // Specify host server
+            $mail->Host = EMAIL_SMTP_HOST;
+            $mail->Username = EMAIL_SMTP_USERNAME;
+            $mail->Password = EMAIL_SMTP_PASSWORD;
+            $mail->Port = EMAIL_SMTP_PORT;
+        } else {
+            $mail->IsMail();
         }
+
+        $mail->From = EMAIL_PASSWORDRESET_FROM;
+        $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
+        $mail->AddAddress($user_email);
+        $mail->Subject = 'Produktbestellung';
+ 
+        $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
+
+        $body = $body.'
+                    <img style="" class="" title="" alt="" src="http://www.wertewirtschaft.org/tools/Erinnerung-Header-01.png" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <!--#/image#-->
+                    </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    <!--#loopsplit#-->
+                    <table class="editable text" border="0" width="100%">
+                    <tbody>
+                    <tr>
+                    <td valign="top">
+                    <div style="text-align: justify;">
+                    <h2></h2>
+                    <!--#html #-->
+                    <span style="font-family: times new roman,times;">
+                    <span style="font-size: 12pt;">
+                    <span style="color: #000000;">
+                    <!--#/html#-->
+                    <br> Sie haben folgende Produkte gekauft';           
+      
+
+        $body = $body. "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>
+                        <td style='width:55%'><b>Name</b></td>
+                        <td style='width:10%'><b>Quantity</b></td>
+                        <td style='width:10%'><b>Total</b></td></tr>";
+
+       
+        foreach ($items as $code => $quantity) {
+            $length = strlen($code) - 1;
+
+            $key = substr($code,-2,$length);
+            $format = substr($code,-1,1);
+
+            $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
+            $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
+            $itemsExtraArray = mysql_fetch_array($items_extra_result);
+
+            if ($format == 4 && $itemsExtraArray[price2]) {
+                $sum = $quantity*$itemsExtraArray[price2];
+            }
+            else {
+                $sum = $quantity*$itemsExtraArray[price];
+            }
+
+            $body = $body. "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
+            $body = $body. "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>";
+            switch ($format) {
+                case 1: $body = $body. "PDF"; break;
+                case 2: $body = $body. "ePub"; break;
+                case 3: $body = $body. "Kindle"; break;
+                case 4: $body = $body. "Druck"; break;
+                default: NULL; break;
+            }
+            $body = $body. "</i></td>";
+            $body = $body. "<td>&nbsp; &nbsp;".$quantity."</td>";
+            $body = $body. "<td><i>".$sum." Credits</i></td></tr>";
+
+            $total += $sum;
+
+            if ($format == 4) {
+                $versand += 1;
+            }
+ 
+            if (!(is_null($itemsExtraArray[start]))) {
+                $body = $body. "<tr><td></td><td>".date("d.m.Y",strtotime($itemsExtraArray[start]))."</td></tr>";
+            }       
+        }
+        
+        if ($versand >= 1) {
+            $body = $body. "<tr><td></td><td>Versandkostenpauschale</td><td></td><td>5 Credits</td></tr>";
+            $total += 5;
+        }
+
+        $body = $body. "<tr><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
+
+        $body = $body. "</table><hr>";
+        
+
+        $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
+
+        $mail->Body = $body;
+
+        $mail->isHTML(true);
+
+    }
 }
 
 
