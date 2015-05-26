@@ -57,7 +57,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
       <header class="header">
     <a href="/"><img class="logo" src="../scholien/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home" style="max-height: 90px;"></a>
     <a href="/" class="flagge"><img class="flagge" src="http://wertewirtschaft.org/style/gfx/flagge_us.png" alt="English Version" name="">English Version</a>
-    <ul class="navbar">
+    <ul class="nav">
                <li><a href="/scholien/">Scholien</a></li>
                <li><a href="/salon/">Salon</a></li>
                <li><a href="/kurse/">Kurse</a></li>
