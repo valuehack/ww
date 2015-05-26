@@ -40,7 +40,7 @@
                     <li><a href="/kurse/">Kurse</a></li>
                     <li><a href="/schriften/">Schriften</a></li>
                     <li><a href="/medien/">Medien</a></li>
-                    <li><a href="/bibiliothek/">Bibliothek</a></li>
+                    <!-- <li><a href="/bibiliothek/">Bibliothek</a></li> --!>
                     <li><a href="/projekte/">Projekte</a></li>
                 </ul>
                 </div>
