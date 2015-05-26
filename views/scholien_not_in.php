@@ -35,10 +35,10 @@ if(isset($_GET['q']))
         <aside class="social">
                    <ul>
                        <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
-                       <li><a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
-                       <li><a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
-                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
-                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
+                       <li><a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
+                       <li><a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
+                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
+                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
                     </ul>                 
         </aside>
         <div class="content">
@@ -47,7 +47,7 @@ if(isset($_GET['q']))
 	echo "<header>";
 	echo "<h1>$title</h1>";
 	echo "</header>";
-	echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
+	echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
 	echo "<img class='blog_img' src='$img_url' alt='$id''>";
 	echo "<div class='blog_text'>";
@@ -69,13 +69,13 @@ if(isset($_GET['q']))
 		<p><a href='index.php'>Alle Scholien</a></p>
 		<div class="socialimg">
                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"> <img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
-                   <a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
-                   <a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
-                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
-                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
+                   <a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
+                   <a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
+                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
+                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
                    </div>
     </footer>
-		<p class="linie"><img src="gfx/linie.png" alt=""></p>
+		<p class="linie"><img src="../style/gfx/linie.png" alt=""></p>
 <?php
 }
 else 
@@ -97,7 +97,7 @@ else
         <input class="inputbutton" id="inputbutton" type="submit" name="fancy_ajax_form_submit" value="Eintragen" />
       </form>	
 		</div>
-		<p class="linie"><img src="gfx/linie.png" alt=""></p>
+		<p class="linie"><img src="../style/gfx/linie.png" alt=""></p>
 		
 </article>
 </div>

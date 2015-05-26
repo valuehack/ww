@@ -38,19 +38,16 @@ if(isset($_GET['q']))
      </div>-->
         <aside class="social">
                    <ul>
-                       <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
-                       <li><a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
-                       <li><a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
-                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
-                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
+                       <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
+                       <li><a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
+                       <li><a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
+                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
+                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
                     </ul>                 
                </aside>
         <div class="content">
            <article class="blog">
-           	
-        <!--<div class="blog_img">
-        	<img class="blog_img" src="<?php echo $img_url;?>" alt="<?php echo $id?>"> 
-        </div>-->   	
+           		
 <?  
 	if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div>";
@@ -59,7 +56,7 @@ if(isset($_GET['q']))
 		echo "<header>";
 		echo "<h1>$title</h1>";
 		echo "</header>";
-		echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
+		echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 		}	
 		
 	if ($_SESSION['Mitgliedschaft'] == 1) {
@@ -94,13 +91,13 @@ if(isset($_GET['q']))
 				<!--<footer class="article">-->			   
                    <div class="socialimg">
                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"> <img src="gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
-                   <a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
-                   <a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
-                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
-                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
+                   <a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
+                   <a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
+                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
+                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
                    </div>
                </footer>
-               <p class="linie"><img src="gfx/linie.png" alt=""></p>
+               <p class="linie"><img src="../style/gfx/linie.png" alt=""></p>
 <?	
 }
 
@@ -233,7 +230,7 @@ else
 		echo "<div>";
 		echo '<p class="scholie_info">Mit Scholion bezeichnete man urspr&uuml;nglich eine Randnotiz, die Gelehrte in den B&uuml;chern anbrachten, die ihre st&auml;ndigen Wegbegleiter waren. Heute sind die Scholien die Randnotizen von <a href="http://rahim.cc">Rahim Taghizadegan</a>, die Erkenntnisgewinne im Rahmen der Wertewirtschaft dokumentieren: der tiefgehenden Reflexion und praktischen &Uuml;berpr&uuml;fung der M&ouml;glichkeiten, unter erschwerten Bedingungen noch Werte zu schaffen, Realit&auml;t von Illusion zu unterscheiden und Sinn zu finden. Um alle Scholien in voller Länge lesen zu können, <a href="/upgrade.php"> beehren Sie uns bitte als Gast</a>.</p>';
 		echo "</div>";
-		echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
+		echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 		}
 
 
@@ -253,13 +250,13 @@ else
 			echo substr ($public, 0, 500);
 			echo " ... <a href='?q=$id'>Weiterlesen</a>";
 			echo "</div>";
-			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
+			echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 		}
 		else {
 			echo $public;
 			echo "... <a href='?q=$id'>Weiterlesen</a>";
 			echo "</div>";
-			echo "<p class='linie'><img src='gfx/linie.png' alt=''></p>";
+			echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 		}
 	}
 }
