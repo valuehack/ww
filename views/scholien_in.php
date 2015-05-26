@@ -5,19 +5,10 @@
 
 require_once('../classes/Login.php');
 
-include('_header_in.php'); 
+include('_header.php'); 
 
 $title="Scholien";
 
-?>
-
-<!--<div id="center">  
-<div id="content">
-<a class="content" href="../index.php">Index &raquo;</a><a class="content" href="<?php echo $_SERVER['PHP_SELF']; ?>"> Blog</a>
-<div id="tabs-wrapper-lower"></div>-->
-
-
-<?php 
 if(isset($_GET['q']))
 {
 	$id = $_GET['q'];
