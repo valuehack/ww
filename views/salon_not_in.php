@@ -10,7 +10,7 @@
 <?
 require_once('../classes/Login.php');
 $title="Salon";
-include "_header.php"; 
+include "_header_not_in.php"; 
 ?>
 <!--Content-->
 <div id="center">
