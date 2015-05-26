@@ -47,4 +47,4 @@ $title="B&uuml;rger | Wertewirtschaft";
 	</div>
 </div>
 
-<?php include('_footer.php'); ?>
+<?php include('views/_footer.php'); ?>

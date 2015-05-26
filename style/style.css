@@ -628,6 +628,51 @@ a.socialimg:hover  {
 /*        Upgrade/Payment Page        */
 /*====================================*/
 
+.salon {
+	padding: 25px;
+	font-size: 20pt;
+	margin-top: 50px;
+}
+
+.salon img {
+	
+}
+
+.salon h1 {
+	text-align: center;
+	font-size: 48px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 1px rgb(20,20,20);	
+}
+
+.salon h2 {
+	font-size: 26pt;
+	text-transform: uppercase;	
+}
+
+.salon p {
+	font-size: 20pt;
+	margin: 15px 0;
+	text-align: justify;
+}
+
+.salon_form {
+	margin: 15px 0;
+}
+
+.salon_form select {
+	padding: 10px;
+	font-size: 20pt;
+}
+
+.salon_info {
+	
+}
+
+/*====================================*/
+/*        Upgrade/Payment Page        */
+/*====================================*/
+
 .payment {
 	width: 75%;
 	margin: 50px auto;

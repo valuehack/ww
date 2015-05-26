@@ -11,14 +11,7 @@
 require_once('../classes/Login.php');
 $title="Salon";
 include "_header.php"; 
-?>
-<!--Content-->
-<div id="center">
-        <div id="content">
-          <a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="index.php">Salon</a>
-      <div id="tabs-wrapper"></div>
 
-<?php 
 //print_r($_SESSION);
 
 //Inserted from catalog.php
@@ -51,13 +44,23 @@ if(isset($_GET['q']))
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
 
+	//check, if there is a image in the salon folder
+	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
+
+	if (@getimagesize($img)) {
+	    $img_url = $img;
+	} else {
+	    $img_url = "http://test.wertewirtschaft.net/salon/default.jpg";
+	}
+
 ?>
-  
-  <h3 style="font-style:none;"><?echo $entry3[title]?></h3>
+  <div class="content">
+  	<div class="salon">
+  		<h1><?echo $entry3[title]?></h1>
 
-  <p><? if ($entry3[img]) echo $entry3[img]; ?>
+  		<img src="<?echo $img_url;?>" alt="<? echo $id;?>">
 
-  <b>Termin:</b> 
+  		<h2>Termin:</h2> 
   <?php
   /* weekdays don't work
     $day=date("w",strtotime($entry3[start]));
@@ -70,20 +73,19 @@ if(isset($_GET['q']))
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
 
 ?>
-  <hr>
+
   <p>Unser Salon erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition.</p>
 
   <p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>
-  <hr>
 
 <?php
   if ($_SESSION['Mitgliedschaft'] == 1) {  
     //Button trigger modal
-    echo '<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';  
+    echo '<input class="inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';  
   }
   else {
     ?>
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form class="salon_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />
       <select name="quantity">
         <option value="1">1</option>
@@ -92,7 +94,7 @@ if(isset($_GET['q']))
         <option value="4">4</option>
         <option value="5">5</option>        
       </select> 
-      <input type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
+      <input class="inputbutton" type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
     </form>
 <?php  
   }
@@ -100,11 +102,10 @@ if(isset($_GET['q']))
 }
 
 else {
-    echo "<h3>Salon</h3>";
+    echo "<h1>Salon</h1>";
 
 //für Interessenten (Mitgliedschaft 1) Erklärungstext oben
   if ($_SESSION['Mitgliedschaft'] == 1) {
-    //echo "<p><img class='wallimg big' src='salon.jpg' alt='Salon im Institut für Wertewirtschaft'></p>";
     echo "<p>Unser Salon erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition.</p>";
 
     echo "<p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>";
@@ -184,8 +185,8 @@ else {
   </div>
 
 
-          <div id="tabs-wrapper-lower"></div>
+
         </div>
-         <? include "_side_in.php"; ?>
+
         </div>
 <? include "_footer.php"; ?>
