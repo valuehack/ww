@@ -214,7 +214,7 @@ strong {
 .social {
 	position: fixed;
 	right: 40px;
-	bottom: 0;
+	bottom: 50px;
 }
 
 .social ul {
@@ -351,6 +351,7 @@ strong {
 
 .socialimg {
 	text-align: center;
+	margin-bottom: 20px;
 	/*width: 375px;
 	margin: 0 auto;*/
 }
@@ -469,6 +470,10 @@ a.linkbutton {
 a.linkbutton:hover {
 	color: #fff;
 	background: rgb(30,48,64);
+}
+
+a.linkbutton:visited {
+	color: #fff;
 }
 
 .blog_entry {
