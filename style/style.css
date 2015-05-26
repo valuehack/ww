@@ -636,7 +636,7 @@ a.socialimg:hover  {
 
 .salon img {
 	text-align: center;
-	margin: 25px 0;
+	margin: 30px 0;
 }
 
 .salon h1 {
@@ -646,9 +646,8 @@ a.socialimg:hover  {
 	text-shadow: 0px 0px 1px rgb(20,20,20);	
 }
 
-.salon h2 {
+.salon_date {
 	font-size: 22pt;
-	text-transform: uppercase;
 	margin-bottom: 10px;
 }
 

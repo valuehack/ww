@@ -60,7 +60,7 @@ if(isset($_GET['q']))
 
   		<img src="<?echo $img_url;?>" alt="<? echo $id;?>">
 
-  		<h2>Termin:</h2> 
+  		<p class="salon_date">Termin: 
   <?php
   /* weekdays don't work
     $day=date("w",strtotime($entry3[start]));
@@ -68,7 +68,7 @@ if(isset($_GET['q']))
     echo Phrase('day'.$day).", ";
     */
     echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
-  
+  	echo "</p>";
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
 
