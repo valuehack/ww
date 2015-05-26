@@ -614,7 +614,12 @@ a.blog_linkbutton:visited {
 	max-height: 30px;
 }
 
-.socialimg a {
+a.socialimg  {
+	border: 0;
+	text-decoration: none;
+}
+
+a.socialimg:hover  {
 	border: 0;
 	text-decoration: none;
 }

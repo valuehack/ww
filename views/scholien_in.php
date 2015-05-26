@@ -83,7 +83,7 @@ if(isset($_GET['q']))
 		echo $public."\n";
 		echo $private;
 		echo "</div>";
-		echo "<footer class='blog_footer>";
+		echo "<footer class='blog_footer'>";
 		echo "<p><a href='index.php'>Alle Scholien</a></p>";
 		
 	}
