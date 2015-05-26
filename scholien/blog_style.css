@@ -551,8 +551,10 @@ a.linkbutton:hover {
 }
 
 .pay_option_box:hover {
-	box-shadow: 2px 2px 15px 0 rgb(153,210,23), -2px 2px 15px 0 rgb(153,210,23), 2px -2px 15px 0 rgb(153,210,23), -2px -2px 15px 0 rgb(153,210,23);
+	/*box-shadow: 2px 2px 15px 0 rgb(153,210,23), -2px 2px 15px 0 rgb(153,210,23), 2px -2px 15px 0 rgb(153,210,23), -2px -2px 15px 0 rgb(153,210,23);*/
 	opacity: 1;
+	box-shadow: 2px 2px 15px 0 rgba(237,120,2,0.5), -2px 2px 15px 0 rgba(237,120,2,0.5), 2px -2px 15px 0 rgba(237,120,2,0.5), -2px -2px 15px 0 rgba(237,120,2,0.5);
+	
 }
 
 .pay_option_box1 {
@@ -643,7 +645,7 @@ a.linkbutton:hover {
 
 .pay_option_box_inputbutton {
 	text-decoration: none;
-	background: rgb(153,210,23);
+	background: /*rgb(153,210,23)*/ rgb(237,120,2);
 	color: #fff;
 	text-shadow: 1px 1px 4px 0 rgba(0,0,0,0.9);
 	border: 0;
@@ -658,7 +660,8 @@ a.linkbutton:hover {
 }
 
 .pay_option_box_inputbutton:hover {
-	background: rgb(111,153,17);
+	/*background: rgb(111,153,17);*/
+	background: rgb(230,103,2);
 }
 
 /*==================================================*/
@@ -672,8 +675,8 @@ a.linkbutton:hover {
 	top: 0;
 	left: 0;
 	position: absolute;
-	/*background: #0b131e url(gfx/header_neu_blau.png) no-repeat center -250px;*/
-	background: rgb(30,48,64);
+	background: #0b131e url(gfx/header_neu_blau.png) no-repeat center -250px;
+	/*background: rgb(30,48,64);*/
 }
 
 .logo {
@@ -682,7 +685,7 @@ a.linkbutton:hover {
 }
 
 .logo_img {
-	margin: 15px 100px;
+	margin: 15px 450px;
 	width: 425px;
 }
 
