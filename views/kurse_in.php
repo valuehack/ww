@@ -107,9 +107,9 @@ else {
   {
     $found=1;
     $id = $entry[id];
-    echo "<h1>";
+    echo "<h3>";
     echo "<a href='?q=$id'>";
-    echo ucfirst($entry[type])." ".$entry[title]."</a></h1>";
+    echo ucfirst($entry[type])." ".$entry[title]."</a></h3>";
      
     echo "<div class='salon_date'>";
     /* weekdays don't work:
