@@ -129,6 +129,7 @@ else {
   </div>
   
 	<div class="location_box">  
+		<div class="centered">
    		<table>
    			<tr>
    				<td>
@@ -147,6 +148,7 @@ else {
    				</td>
    			</tr>
    		</table>
+   		</div>
    </div>
 <?php
 }    
