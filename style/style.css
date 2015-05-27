@@ -294,6 +294,27 @@ strong {
 .location_box td {
 	padding: 0 20px;
 	width: 50%;
+	vertical-align: top;
+}
+
+.location_box h1 {
+	font-size: 28pt;
+	line-height: 1.6em;
+	font-weight: bold;
+}
+
+.loaction_box li {
+	font-size: 22pt;
+	line-height: 1.9em;
+}
+
+.loaction_box li a {
+	color: rgb(46,74,98);
+	text-decoration: none;
+}
+
+.loaction_box li a:hover {
+	color: rgba(46,74,140,0.6);
 }
 
 /*==================================================*/
@@ -868,7 +889,7 @@ a.socialimg:hover  {
 	min-height: 35px;
 	width: 100%;
 	background: rgb(11,19,30);
-	margin: 50px 0 0 0;
+	margin: 0;
 	padding-top: 15px;
 }
 

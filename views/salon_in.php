@@ -116,22 +116,21 @@ else {
       <div class="salon">
 <?php echo "<h3><a href='?q=$id'><i>".$event_id."</i>".$entry[title]; ?></a></h3>
 		<div class="salon_dates"><?php echo date("d.m.Y",strtotime($entry[start])); ?> &ndash; 
-						 	 <?php echo date("H:i",strtotime($entry[start])); ?>
+						 	 <?php echo date("H:i",strtotime($entry[start])); ?> Uhr
 		</div>
-		<?php echo $entry[text]; ?>
+		<?php echo $entry[text]; ?> 
+			<span class="salon_anmeldung"><a href="<? echo'?q=$id';?>">Zur Anmeldung</a></span>
 		        </div>
 	</div>
   <?php
   }
   ?>
-	<div class="location_box">
-   		<h1>Informationen</h1>
-   
+	<div class="location_box">  
    		<table>
    			<tr>
    				<td>
+   					<h1>Wertewirtschaft</h1>
    					<ul>
-    					<li><b>Wertewirtschaft</b></li>
     					<li>Schl&ouml;sselgasse 19/2/18</li>
     					<li>A 1080 Wien</li>
     					<li>&Ouml;sterreich</li>
