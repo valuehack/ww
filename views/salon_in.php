@@ -105,7 +105,9 @@ else {
     echo "<p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>";
      echo "</div>";
   }
-	
+?>
+		<div class="salon">
+<?	
   $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND start > NOW() AND spots > spots_sold AND status = 1 order by start asc, n asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
@@ -113,18 +115,19 @@ else {
   {
     $id = $entry[id];
       ?>
-      <div class="salon">
+      
 <?php echo "<h3><a href='?q=$id'><i>".$event_id."</i>".$entry[title]; ?></a></h3>
 		<div class="salon_dates"><?php echo date("d.m.Y",strtotime($entry[start])); ?> &ndash; 
 						 	 <?php echo date("H:i",strtotime($entry[start])); ?> Uhr
 		</div>
 		<?php echo $entry[text]; ?> 
 			<div class="salon_anmeldung"><a href="<? echo'?q=$id';?>">zur Anmeldung</a></div>
-		        </div>
-	</div>
+		        </div>	
   <?php
   }
   ?>
+  </div>
+  
 	<div class="location_box">  
    		<table>
    			<tr>
