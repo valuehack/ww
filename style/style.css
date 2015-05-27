@@ -746,12 +746,11 @@ a.socialimg:hover  {
 	font-size: 14pt;
 	font-style: italic;
 	line-height: 1.8em;
-	margin: 40px 0 20px 0;
-	text-align: justify;
+	margin: 50px 0 15px 0;	
 }
 
 .salon_info p {
-	margin: 10px 0;
+	text-align: justify;
 }
 
 .salon_reservation  {
