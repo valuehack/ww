@@ -710,7 +710,7 @@ a.socialimg:hover  {
 	color: rgb(46,74,98);
 }
 
-.salon_date {
+.salon_date p {
 	font-size: 22pt;
 	margin: 10px 0 30px 0;
 }
