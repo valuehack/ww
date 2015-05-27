@@ -113,7 +113,7 @@ else {
     echo "<p>Unser Salon erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition.</p>";
 
     echo "<p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>";
-     echo "<div>";
+     echo "</div>";
   }
 ?>       
              
@@ -131,13 +131,11 @@ else {
 	<div class="salon_dates"><?php echo date("d.m.Y",strtotime($entry[start])); ?> %ndash; 
 						 	 <?php echo date("H:i",strtotime($entry[start])); ?>
 	</div>
-		<p>
-<?php echo $entry[text]; ?>
-		</p>
+		<?php echo $entry[text]; ?>
+		
   <?php
   }
   ?>
-
 
    <h5>Informationen</h5>
    
