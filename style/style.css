@@ -747,6 +747,10 @@ a.socialimg:hover  {
 	margin: 10px 0;
 }
 
+.salon_anmeldung {
+	text-align: right;
+}
+
 .salon_anmeldung a {
 	color: rgb(46,74,98);
 	font-size: 18pt;
