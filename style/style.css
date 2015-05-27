@@ -81,11 +81,6 @@ strong {
 	font-weight: bold;
 }
 
-.centered {
-	text-align: center;
-	margin: 0 auto;
-}
-
 /*==================================================*/
 /*                   Header                    		*/
 /*==================================================*/
@@ -290,6 +285,8 @@ strong {
 	background: rgb(30,48,64);
 }
 
+/*============== Location Information ==============*/
+
 .location_box {
 	width: 70%;
 	padding: 30px 15%;
@@ -298,7 +295,7 @@ strong {
 	text-align: center;
 }
 
-.table {
+.location_box table {
 	margin: 0 auto;
 }
 
