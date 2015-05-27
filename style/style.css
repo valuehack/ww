@@ -290,11 +290,15 @@ strong {
 	padding: 30px 15%;
 	background: rgb(185,177,169);
 	box-shadow: 0 0 2px 0 rgb(20,20,20);
+	text-align: center;
+}
+
+.table {
+	margin: 0 auto;
 }
 
 .location_box td {
 	padding: 0 20px;
-	width: 50%;
 	vertical-align: top;
 }
 
@@ -302,22 +306,21 @@ strong {
 	font-size: 28pt;
 	line-height: 1.6em;
 	font-weight: bold;
+	text-align: right;
 }
 
 .location_box ul {
 	line-height: 1.9em;
+	font-size: 16pt;
+	text-align: right;
 }
 
-.loaction_box li {
-	font-size: 24pt;
-}
-
-.loaction_box li a {
+.loaction_box ul a {
 	color: rgb(46,74,98);
 	text-decoration: none;
 }
 
-.loaction_box li a:hover {
+.loaction_box ul a:hover {
 	color: rgba(46,74,140,0.6);
 }
 
@@ -731,7 +734,7 @@ a.socialimg:hover  {
 	font-size: 14pt;
 	font-style: italic;
 	line-height: 1.8em;
-	margin: 20px 0;
+	margin: 40px 0 20px 0;
 	text-align: justify;
 }
 
