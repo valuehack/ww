@@ -289,6 +289,7 @@ strong {
 	width: 70%;
 	padding: 30px 15%;
 	background: rgb(185,177,169);
+	box-shadow: 0 0 2px 0 rgb(20,20,20);
 }
 
 .location_box td {
@@ -303,9 +304,12 @@ strong {
 	font-weight: bold;
 }
 
-.loaction_box li {
-	font-size: 22pt;
+.location_box ul {
 	line-height: 1.9em;
+}
+
+.loaction_box li {
+	font-size: 24pt;
 }
 
 .loaction_box li a {
@@ -740,6 +744,19 @@ a.socialimg:hover  {
 	margin: 10px 0;
 }
 
+.salon_anmeldung a {
+	color: rgb(46,74,98);
+	font-size: 18pt;
+	text-decoration: none;
+	border-bottom: 1px dotted rgb(46,74,98);
+	text-align: center;
+	margin: 0 auto;
+}
+
+.salon_anmeldung a:hover{
+	color: rgb(46,74,98);
+	border-bottom: 1px solid rgb(46,74,98);
+}
 /*====================================*/
 /*        Upgrade/Payment Page        */
 /*====================================*/
