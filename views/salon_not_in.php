@@ -74,7 +74,7 @@ else {
 		</div>
 		<?php echo $entry[text]; ?> 
 			<div class="salon_anmeldung"><a href="<? echo'?q=$id';?>">zur Anmeldung</a></div>
-			<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>	
+			<div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>	
   <?php
   }
   ?>

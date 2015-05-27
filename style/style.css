@@ -81,6 +81,7 @@ strong {
 	font-weight: bold;
 }
 
+/* Class for div - centers everything within */
 .centered {
 	margin: 0 auto;
 	text-align: center;
@@ -339,7 +340,7 @@ strong {
 	font-size: 15pt;
 	font-style: italic;
 	line-height: 1.8em;
-	margin-top: 20px;
+	margin-top: -30px;
 }
 
 .blog_info a:hover {
@@ -746,11 +747,12 @@ a.socialimg:hover  {
 	font-size: 14pt;
 	font-style: italic;
 	line-height: 1.8em;
-	margin: 50px 0 15px 0;	
+	
 }
 
 .salon_info p {
 	text-align: justify;
+	margin: 50px 0 15px 0;
 }
 
 .salon_reservation  {
