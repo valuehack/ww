@@ -69,8 +69,10 @@ if(isset($_GET['q']))
 <?php
   if ($_SESSION['Mitgliedschaft'] == 1) {  
     //Button trigger modal
+    echo '<div class="centered">';
     echo '<div class="salon_reservation">';
-    echo '<div class="centered"><input class="inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal"></div>';
+    echo '<input class="inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';
+	echo '</div>';
 	echo '</div>';
 	echo '</div>';
 	echo '</div>';
