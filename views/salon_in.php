@@ -74,6 +74,8 @@ if(isset($_GET['q']))
     echo '<div class="salon_reservation">';
     echo '<input class="inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';
 	echo '</div>';
+	echo '</div>';
+	echo '</div>';
   }
   else {
     ?>
@@ -88,6 +90,9 @@ if(isset($_GET['q']))
       </select> 
       <input class="inputbutton" type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits pro Credits</i>
     </form>
+	</div>
+</div>
+
 <?php  
   }
 
@@ -121,7 +126,8 @@ else {
 						 	 <?php echo date("H:i",strtotime($entry[start])); ?> Uhr
 		</div>
 		<?php echo $entry[text]; ?> 
-			<div class="salon_anmeldung"><a href="<? echo'?q=$id';?>">zur Anmeldung</a></div>	
+			<div class="salon_anmeldung"><a href="<? echo'?q=$id';?>">zur Anmeldung</a></div>
+			<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>	
   <?php
   }
   ?>
