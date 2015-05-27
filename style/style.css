@@ -285,6 +285,17 @@ strong {
 	background: rgb(30,48,64);
 }
 
+.location_box {
+	width: 70%;
+	padding: 30px 15%;
+	background: rgb(185,177,169);
+}
+
+.location_box td {
+	padding: 0 20px;
+	width: 50%;
+}
+
 /*==================================================*/
 /*                 Scholien/ Blog	                */
 /*==================================================*/
@@ -652,10 +663,10 @@ a.socialimg:hover  {
 }
 
 .salon h3 {
-	font-size: 36px;
+	font-size: 36pt;
 	text-transform: uppercase;
 	text-shadow: 0px 0px 1px rgb(20,20,20);
-	margin: 50px 0;
+	margin: 50px 0 10px 0;
 	text-align: center;
 }
 
@@ -670,7 +681,7 @@ a.socialimg:hover  {
 
 .salon_dates {
 	font-size: 16pt;
-	margin: 10px 0;
+	margin: 0 0 25px 0;
 	text-align: center;
 }
 
