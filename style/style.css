@@ -750,7 +750,15 @@ a.socialimg:hover  {
 
 .salon_reservation  {
 	text-align: center;
-	margin: 10px 0;
+	margin: 10px auto;
+	padding: 30px;
+    background-color: #fafafa;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.05) inset;
+    display: inline-block;
+    font-size: 16pt;
+    position: relative;
 }
 
 .salon_anmeldung {
