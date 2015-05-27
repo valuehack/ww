@@ -517,9 +517,6 @@ strong {
 
 .linie {
 	margin-top: 50px;
-}
-
-.linie p {
 	text-align: center;
 }
 
@@ -710,9 +707,10 @@ a.socialimg:hover  {
 	color: rgb(46,74,98);
 }
 
-.salon_date p {
+.salon_date  {
 	font-size: 22pt;
 	margin: 10px 0 30px 0;
+	text-align: center;
 }
 
 .salon_dates {
