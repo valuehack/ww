@@ -7,6 +7,13 @@
     	<link rel="shortcut icon" href="/favicon.ico">
     	<link rel="stylesheet" type="text/css" href="../style/style.css">
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+		<!-- Bootstrap -->
+		<link href="../style/modal.css" rel="stylesheet">
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="../tools/bootstrap.js"></script>
+
     	<!-- this is used for this fancy login form -->
     	<script language="javascript" src="/js/jquery.js"></script>
     	<script language="javascript" src="/js/script.js"></script>
