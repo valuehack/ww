@@ -41,6 +41,8 @@ if(isset($_GET['q']))
   <input type="button" class="inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">  
     </div>
     </div>
+    		</div>
+	</div>
 <?php
 }
          
@@ -76,7 +78,8 @@ else {
   <?php
   }
   ?>
-
+			</div>
+	</div>
   <div class="location_box">  
    		<table>
    			<tr>
@@ -101,9 +104,6 @@ else {
 <?php
 }
 ?> 
-
-		</div>
-	</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
