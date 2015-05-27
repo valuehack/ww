@@ -47,18 +47,16 @@ if(isset($_GET['q']))
   <div class="content">
   	<div class="salon">
   		<h1><?echo $entry3[title]?></h1>
-
+		<p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));?></p>
   		<img src="<?echo $img_url;?>" alt="<? echo $id;?>">
 
-  		<p class="salon_date">Termin: 
+  		
   <?php
   /* weekdays don't work
     $day=date("w",strtotime($entry3[start]));
     if ($day==0) $day=7;
     echo Phrase('day'.$day).", ";
     */
-    echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
-  	echo "</p>";
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
 

@@ -415,7 +415,7 @@ strong {
 .blog {
 	padding: 25px;
 	font-size: 20pt;
-	margin-top: 50px;
+	margin: 50px 0;
 }
 
 .blog header {
@@ -516,8 +516,11 @@ strong {
 }
 
 .linie {
-	text-align: center;
 	margin-top: 50px;
+}
+
+.linie p {
+	text-align: center;
 }
 
 .linie img {
@@ -674,7 +677,7 @@ a.socialimg:hover  {
 .salon {
 	padding: 25px;
 	font-size: 20pt;
-	margin-top: 50px;
+	margin: 50px 0;
 }
 
 .salon img {
@@ -709,7 +712,7 @@ a.socialimg:hover  {
 
 .salon_date {
 	font-size: 22pt;
-	margin-bottom: 10px;
+	margin: 10px 0 30px 0;
 }
 
 .salon_dates {
