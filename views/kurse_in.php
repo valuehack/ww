@@ -26,6 +26,15 @@ if(isset($_POST['add'])){
   }
 }
 
+    	//check, if there is a image in the salon folder
+	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
+
+	if (@getimagesize($img)) {
+	    $img_url = $img;
+	} else {
+	    $img_url = "http://test.wertewirtschaft.net/salon/default.jpg";
+	}
+
 if(isset($_GET['q']))
 {
   $id = $_GET['q'];
@@ -36,19 +45,12 @@ if(isset($_GET['q']))
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
   
-    	//check, if there is a image in the salon folder
-	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
-
-	if (@getimagesize($img)) {
-	    $img_url = $img;
-	} else {
-	    $img_url = "http://test.wertewirtschaft.net/salon/default.jpg";
-	}
 ?>
   	<div class="salon">
  	 	<h1><?=ucfirst($entry3[type])." ".$entry3[title]?></h1>
   		<p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));?></p>
-
+		<img src="<?echo $img_url;?>" alt="<? echo $id;?>">
+		
   <? 
   /* weekdays don't work
     $day=date("w",strtotime($entry3[start]));
