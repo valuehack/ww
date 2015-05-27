@@ -14,6 +14,15 @@ if(isset($_GET['q']))
   $sql="SELECT * from produkte WHERE type LIKE 'salon' AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
+  
+    	//check, if there is a image in the salon folder
+	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
+
+	if (@getimagesize($img)) {
+	    $img_url = $img;
+	} else {
+	    $img_url = "http://test.wertewirtschaft.net/salon/default.jpg";
+	}
 ?>
   
   <h1><?echo $entry3[title]?></h1>
@@ -73,7 +82,7 @@ else {
 						 	 <?php echo date("H:i",strtotime($entry[start])); ?> Uhr
 		</div>
 		<?php echo $entry[text]; ?> 
-			<div class="salon_anmeldung"><a href="<? echo'?q=$id';?>">zur Anmeldung</a></div>
+			<div class="salon_anmeldung"><a href="<? echo "?q=$id";?>">zur Anmeldung</a></div>
 			<div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>	
   <?php
   }
