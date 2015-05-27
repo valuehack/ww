@@ -121,11 +121,11 @@ else {
 						 	 <?php echo date("H:i",strtotime($entry[start])); ?> Uhr
 		</div>
 		<?php echo $entry[text]; ?> 
-			<div class="salon_anmeldung"><a href="<? echo'?q=$id';?>">zur Anmeldung</a></div>
-		        </div>	
+			<div class="salon_anmeldung"><a href="<? echo'?q=$id';?>">zur Anmeldung</a></div>	
   <?php
   }
   ?>
+  	</div>
   </div>
   
 	<div class="location_box">  
