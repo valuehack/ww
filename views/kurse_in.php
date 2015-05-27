@@ -1,12 +1,11 @@
 <?php 
 require_once('../classes/Login.php');
-include('_header.php'); 
+include('_header_in.php'); 
 $title="Kurse";
 
 ?>
 
 <div class="content">
-	<div class="salon">
 <?php 
 if(!isset($_SESSION['basket'])){
     $_SESSION['basket'] = array();
@@ -46,9 +45,9 @@ if(isset($_GET['q']))
 	    $img_url = "http://test.wertewirtschaft.net/salon/default.jpg";
 	}
 ?>
-  
-  <h1><?=ucfirst($entry3[type])." ".$entry3[title]?></h1>
-  <p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));?></p>
+  	<div class="salon">
+ 	 	<h1><?=ucfirst($entry3[type])." ".$entry3[title]?></h1>
+  		<p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));?></p>
 
   <? 
   /* weekdays don't work
@@ -60,8 +59,9 @@ if(isset($_GET['q']))
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
 
+	echo "<div class='salon_info'>";
   echo "<p>Unsere Kurse inmitten unserer einzigartigen Bibliothek bieten inhaltliche Vertiefungen abseits des Mainstream-Lehrbetriebs. Wir folgen dabei dem Beispiel der klassischen Akademie &ndash; der Bibliothek im Hain der Mu&szlig;e fern vom Wahnsinn der Zeit, in der Freundschaften durch regen Austausch und gemeinsames Nachdenken gestiftet werden. Alle unsere Lehrangebote zeichnen sich durch geb&uuml;hrende Tiefe bei gleichzeitiger Verst&auml;ndlichkeit, kleine Gruppen und gro&szlig;en Freiraum f&uuml;r Fragen und Diskussionen aus. Tauchen Sie mit uns in intellektuelle Abenteuer, wie sie unsere Zeit kaum noch zul&auml;&szlig;t.</p>";
-
+	echo "</div>";
   if ($_SESSION['Mitgliedschaft'] == 1) {
     echo "Platzhalter Anmeldeformular";
     }
@@ -89,14 +89,12 @@ if(isset($_GET['q']))
 
 else {
   
-  echo "<h2>Kurse</h2>";
-
   if ($_SESSION['Mitgliedschaft'] == 1 || $_SESSION['Mitgliedschaft'] == 2) {
   ?>
     <div class="salon_info">    
     	<p>Unsere Kurse inmitten unserer einzigartigen Bibliothek bieten inhaltliche Vertiefungen abseits des Mainstream-Lehrbetriebs. Wir folgen dabei dem Beispiel der klassischen Akademie &ndash; der Bibliothek im Hain der Mu&szlig;e fern vom Wahnsinn der Zeit, in der Freundschaften durch regen Austausch und gemeinsames Nachdenken gestiftet werden. Alle unsere Lehrangebote zeichnen sich durch geb&uuml;hrende Tiefe bei gleichzeitiger Verst&auml;ndlichkeit, kleine Gruppen und gro&szlig;en Freiraum f&uuml;r Fragen und Diskussionen aus. Tauchen Sie mit uns in intellektuelle Abenteuer, wie sie unsere Zeit kaum noch zul&auml;&szlig;t.</p>
     </div> 
- 
+ 		<div class="salon">
   <?
   } 
   
@@ -120,10 +118,9 @@ else {
     echo Phrase('day'.$day).", ";
     */
     echo date("d.m.Y",strtotime($entry[start]));
-    echo "</div>;";
-    
+    echo "</div>";
     echo "<p>";
-    echo '<img src="<?echo $img_url;?>" alt="<? echo $id;?>"';
+    echo "<img src='$img_url' alt='$id'>";
     echo $entry[text];
     echo "<div class='salon_anmeldung'><a href='?q=$id'>zur Anmeldung</a></div>";
 	echo "<div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>";
