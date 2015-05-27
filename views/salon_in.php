@@ -43,16 +43,15 @@ if(isset($_GET['q']))
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
-
-	//check, if there is a image in the salon folder
+  
+  	//check, if there is a image in the salon folder
 	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
 	    $img_url = "http://test.wertewirtschaft.net/salon/default.jpg";
-	}
-
+	}  
 ?>
   <div class="content">
   	<div class="salon">
@@ -81,7 +80,9 @@ if(isset($_GET['q']))
 <?php
   if ($_SESSION['Mitgliedschaft'] == 1) {  
     //Button trigger modal
-    echo '<input class="inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';  
+    echo '<div class="salon_reservation">';
+    echo '<input class="inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';
+	echo '</div>';
   }
   else {
     ?>
@@ -102,20 +103,21 @@ if(isset($_GET['q']))
 }
 
 else {
-    echo "<h1>Salon</h1>";
-
+?>		
+	<div class="content">
+  		<div class="salon">
+		<?
 //für Interessenten (Mitgliedschaft 1) Erklärungstext oben
+	echo "<div class='salon_info'>";
   if ($_SESSION['Mitgliedschaft'] == 1) {
     echo "<p>Unser Salon erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition.</p>";
 
     echo "<p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>";
-     
+     echo "<div>";
   }
 ?>       
              
-  <h5>Termine:</h5>        
-
-  <p><table>
+  <h2>Termine:</h2>        
 
   <?php
   $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND start > NOW() AND spots > spots_sold AND status = 1 order by start asc, n asc";
@@ -125,20 +127,16 @@ else {
   {
     $id = $entry[id];
       ?>
-      <tr>
-        <td class="bottomline"><?php echo date("d.m.Y",strtotime($entry[start])); ?></td>
-        <td class="bottomline"><?php echo "<a href='?q=$id'><i>".$event_id."</i> <b>".$entry[title]; ?></b></a></td>
-      </tr> 
-      <tr>
-        <td><?php echo date("H:i",strtotime($entry[start])); ?></td>
-        <td class="bottomline"><?php echo $entry[text]; ?></td>
-      </tr>
-      <tr><td>&nbsp;</td><td></td></tr>
+<?php echo "<h3><a href='?q=$id'><i>".$event_id."</i>".$entry[title]; ?></a></h3>
+	<div class="salon_dates"><?php echo date("d.m.Y",strtotime($entry[start])); ?> %ndash; 
+						 	 <?php echo date("H:i",strtotime($entry[start])); ?>
+	</div>
+		<p>
+<?php echo $entry[text]; ?>
+		</p>
   <?php
   }
   ?>
-
-  </table></p>
 
 
    <h5>Informationen</h5>
@@ -184,9 +182,6 @@ else {
     </div>
   </div>
 
-
-
         </div>
-
-        </div>
+	</div>
 <? include "_footer.php"; ?>

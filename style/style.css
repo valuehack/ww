@@ -625,7 +625,7 @@ a.socialimg:hover  {
 }
 
 /*====================================*/
-/*        Upgrade/Payment Page        */
+/*             Salon       			  */
 /*====================================*/
 
 .salon {
@@ -646,9 +646,25 @@ a.socialimg:hover  {
 	text-shadow: 0px 0px 1px rgb(20,20,20);	
 }
 
+.salon h2 {
+	font-size: 22pt;
+	margin: 5px 0;
+}
+
+.salon h3 {
+	font-size: 30px;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 1px rgb(20,20,20);
+}
+
 .salon_date {
 	font-size: 22pt;
 	margin-bottom: 10px;
+}
+
+.salon_dates {
+	font-size: 18pt;
+	margin: 10px 0;
 }
 
 .salon p {
@@ -668,9 +684,20 @@ a.socialimg:hover  {
 }
 
 .salon_info {
-	
+	font-size: 15pt;
+	font-style: italic;
+	line-height: 1.8em;
+	margin-top: 20px;
 }
 
+.salon_info a:hover {
+	color: rgba(46,74,98,0.8);
+}
+
+.salon_reservation  {
+	text-align: center;
+	margin: 10px 0;
+}
 /*====================================*/
 /*        Upgrade/Payment Page        */
 /*====================================*/
