@@ -81,6 +81,11 @@ strong {
 	font-weight: bold;
 }
 
+.centered {
+	margin: 0 auto;
+	text-align: center;
+}
+
 /*==================================================*/
 /*                   Header                    		*/
 /*==================================================*/
@@ -566,18 +571,19 @@ strong {
     font-size: 16pt;
     max-width: 900px;
     position: relative;
-    text-align: justify;
+    text-align: center;
 }
 
 .blog_subscribe {
     max-width: 438px;
-    margin: 30px 200px;
+    margin: 30px auto;
 }
 
 .blog_upgrade {
 	width: 100%;
     max-width: 900px;
     margin: 30px 0;
+    text-align: justify;
 }
 
 .blog_upgrade h2 {
