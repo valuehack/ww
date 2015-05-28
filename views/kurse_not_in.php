@@ -119,7 +119,7 @@ else {
     echo Phrase('day'.$day).", ";
     */
     echo "<div class='salon_dates'>";
-    echo date("d.m.Y",strtotime($entry[start]));
+    echo date("d.m.Y",strtotime($entry[start])." %ndash; "."d.m.Y",strtotime($entry3[end]));
     echo "</div>";
     
     echo $entry[text];

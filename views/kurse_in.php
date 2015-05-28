@@ -150,13 +150,13 @@ if(isset($_GET['q']))
     echo "<a href='?q=$id'>";
     echo ucfirst($entry[type])." ".$entry[title]."</a></h1>";
      
-    echo "<div class='salon_date'>";
+    echo "<div class='salon_dates'>";
     /* weekdays don't work:
     $day=date("w",strtotime($entry[start]));
     if ($day==0) $day=7;
     echo Phrase('day'.$day).", ";
     */
-    echo date("d.m.Y",strtotime($entry[start]));
+    echo date("d.m.Y",strtotime($entry[start])." %ndash; "."d.m.Y",strtotime($entry3[end]));
     echo "</div>";
     echo "<p>";
     //echo "<img src='$img_url' alt='$id'>";
