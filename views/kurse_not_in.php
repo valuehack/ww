@@ -32,12 +32,27 @@ if(isset($_GET['q']))
 
   <b>Termin:</b> 
   <? 
-  /* weekdays don't work
-    $day=date("w",strtotime($entry3[start]));
-    if ($day==0) $day=7;
-    echo Phrase('day'.$day).", ";
-    */
-    echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
+  if ($entry3[start] != NULL && $entry3[end] != NULL)
+    {
+    $tag=date("w",strtotime($entry3[start]));
+    $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
+    echo $tage[$tag]." ";
+    echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]))." - ";
+    if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
+      {
+      $tag=date("w",strtotime($entry3[end]));
+      echo $tage[$tag]." ";
+      echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+      }
+    else echo strftime("%H:%M Uhr", strtotime($entry3[end]));
+  }
+  elseif ($entry3[start]!= NULL)
+    {
+    $tag=date("w",strtotime($entry3[start]));
+    echo $tage[$tag]." ";
+    echo strftime("%d.%m.%Y", strtotime($entry3[start]));
+  }
+  else echo "noch offen";
   
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
