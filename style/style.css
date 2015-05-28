@@ -679,22 +679,22 @@ a.socialimg:hover  {
 /*====================================*/
 
 .salon_info {
-	font-size: 14pt;
-	font-style: italic;
-	line-height: 1.8em;
 	width: 75%;
 	padding: 25px 12.5%;
 }
 
 .salon_info h1 {
-	font-size: 32pt;
+	font-size: 80pt;
 	color: rgba(0,0,0,0.9);
-	box-shadow: 0 0 1px 0 rgb(20,20,20);
+	text-shadow: 0 0 1px 0 rgb(20,20,20);
 	margin-bottom: 25px;
 	text-align: center;
 }
 
 .salon_info p {
+	line-height: 1.8em;
+	font-size: 14pt;
+	font-style: italic;
 	text-align: justify;
 	margin: 20px 0;
 }
