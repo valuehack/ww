@@ -155,6 +155,7 @@ strong {
 .navi {
 	height: 40px;
 	margin: 0 auto;
+	width: 847px ;/*987px with Bibliothek*/
 }
 
 .navi ul {
