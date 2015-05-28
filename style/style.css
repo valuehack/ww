@@ -714,7 +714,6 @@ a.socialimg:hover  {
 }
 
 .salon {
-	font-size: 20pt;
 	width: 75%;
 	padding: 25px 12.5%;
 }
@@ -726,9 +725,11 @@ a.socialimg:hover  {
 
 .salon h1 {
 	text-align: center;
-	font-size: 54px;
+	font-size: 60pt;
+	line-height: 1.2em;
 	text-transform: uppercase;
 	text-shadow: 0px 0px 1px rgb(20,20,20);	
+	margin: 80px;
 }
 
 .salon h2 {
@@ -750,9 +751,9 @@ a.socialimg:hover  {
 }
 
 .salon_date  {
-	font-size: 22pt;
+	font-size: 22pt !important;
 	margin: 10px 0 30px 0;
-	text-align: center;
+	text-align: center !important;
 }
 
 .salon_dates {
