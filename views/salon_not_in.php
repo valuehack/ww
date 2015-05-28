@@ -84,7 +84,7 @@ else {
     $id = $entry[id];
       ?>
       
-<?php echo "<h3><a href='?q=$id'><i>".$event_id."</i>".$entry[title]; ?></a></h3>
+<?php echo "<h1><a href='?q=$id'><i>".$event_id."</i>".$entry[title]; ?></a></h1>
 		<div class="salon_dates"><?php echo date("d.m.Y",strtotime($entry[start])); ?> &ndash; 
 						 	 <?php echo date("H:i",strtotime($entry[start])); ?> Uhr
 		</div>
