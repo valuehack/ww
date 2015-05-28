@@ -1,5 +1,6 @@
 <script>
-function changePrice(totalQuantity, price){
+function changePrice(price){
+    var change = document.getElementById("change").value;
     document.getElementById("salon_reservation_span_b").innerHTML = (totalQuantity * price) + " Credits";
 }
 </script>
@@ -61,14 +62,14 @@ if(isset($_GET['q']))
         $tag=date("w",strtotime($entry3[start]));
         $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
         echo $tage[$tag]." ";
-        echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]))." &ndash; ";
+        echo strftime("%d.%m.%Y %H:%M", strtotime($entry3[start]));
         if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
           {
           $tag=date("w",strtotime($entry3[end]));
           echo $tage[$tag]." ";
-          echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+          echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
           }
-        else echo strftime("%H:%M Uhr", strtotime($entry3[end]));
+        else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry3[end]));
       }
       elseif ($entry3[start]!= NULL)
         {
@@ -92,7 +93,7 @@ if(isset($_GET['q']))
     <span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Eintrittskarten</span><br>
     <form class="salon_reservation_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
-      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      <select name="quantity" id="change" onchange="changePrice('<?php echo $price; ?>')">
       	<option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
