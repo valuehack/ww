@@ -157,7 +157,7 @@ if(isset($_GET['q']))
     echo Phrase('day'.$day).", ";
     */
     echo date("d.m.Y",strtotime($entry[start]));
-    echo " %ndash; ";
+    echo " &ndash; ";
     echo date("d.m.Y",strtotime($entry3[end]));
     echo "</div>";
     echo "<p>";
