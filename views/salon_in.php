@@ -69,7 +69,8 @@ if(isset($_GET['q']))
         <option value="4">4</option>
         <option value="5">5</option>        
       </select> 
-      <input class="inputbutton" type="submit" value="Auswählen"><span><?php echo $entry3[price]; ?> Credits pro Eintrittskarte</span>
+      <input class="inputbutton" type="submit" value="Auswählen"><br>
+      <span><?php echo $entry3[price]; ?> Credits pro Eintrittskarte</span>
     </form>
 
 <?php  

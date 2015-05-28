@@ -798,12 +798,12 @@ a.socialimg:hover  {
 
 .salon_reservation span {
 	font-size: 16pt;
-	margin: 0 5px;
+	margin: 10px 0;
 }
 
 .salon_reservation_form select {
 	padding: 10px;
-	font-size: 22pt;
+	font-size: 17pt;
 }
 
 .salon_anmeldung {
