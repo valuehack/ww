@@ -39,29 +39,29 @@ if(isset($_GET['q']))
     {
     $tag=date("w",strtotime($entry3[start]));
     $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
-    echo $tage[$tag]." ";
-    echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]))." - ";
+    echo $tage[$tag].", ";
+    echo strftime("%d.%m.%Y, %H:%M Uhr", strtotime($entry3[start]))." &ndash; ";
     if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
       {
       $tag=date("w",strtotime($entry3[end]));
-      echo $tage[$tag]." ";
-      echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+      echo $tage[$tag].", ";
+      echo strftime("%d.%m.%Y, %H:%M Uhr", strtotime($entry3[end]));
       }
     else echo strftime("%H:%M Uhr", strtotime($entry3[end]));
   }
   elseif ($entry3[start]!= NULL)
     {
     $tag=date("w",strtotime($entry3[start]));
-    echo $tage[$tag]." ";
+    echo $tage[$tag].", ";
     echo strftime("%d.%m.%Y", strtotime($entry3[start]));
   }
-  else echo "noch offen";
+  else echo "Der Termin wird in k&uuml;rze bekannt gegeben";
 ?>
   		</p>
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		<div class="centered">
 			<div class="salon_reservation">
-  				<p class="salon_reservartion_span_a">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r den Kurs, sondern auch Zugang zu den Scholien, unserem Salon, Schriften, Medien etc.</p>
+  				<p class="salon_reservation_span_a">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r den Kurs, sondern auch Zugang zu den Scholien, unserem Salon, Schriften, Medien etc.</p>
   				<!--<a href="#form" class="salon_linkbutton">Anmelden</a>-->  
   				<!-- Button trigger modal -->
   				<input type="button" class="salon_reservation_inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">
