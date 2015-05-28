@@ -699,7 +699,7 @@ a.socialimg:hover  {
 	margin: 20px 0;
 }
 
-.salon_termine {
+.salon_seperator {
 	box-shadow: 0 0 1px 0 rgba(0,0,0,0.6);
 	width: 100%;
 	text-align: center;
@@ -713,7 +713,7 @@ a.socialimg:hover  {
 	text-transform: uppercase;
 }
 
-.salon {
+.salon_content {
 	width: 75%;
 	padding: 25px 12.5%;
 }
@@ -783,13 +783,26 @@ a.socialimg:hover  {
 	text-align: center;
 	margin: 10px auto;
 	padding: 30px;
-    background-color: #fafafa;
-    border: 1px solid #f0f0f0;
-    border-radius: 6px;
-    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.05) inset;
     display: inline-block;
-    font-size: 16pt;
     position: relative;
+}
+
+.salon_reservation_inputbutton {
+	text-decoration: none;
+	background: rgb(46,74,98);
+	color: #fff;
+	border: 0;
+	border-radius: 2px;
+	margin: 5px;
+	width: 300px;
+	height: 75px;
+	font-size: 22pt;
+	font-family: "Baskerville", Georgia, Times, serif;
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
+}
+
+.salon_reservation_inputbutton:hover {
+	background: rgb(30,48,64);
 }
 
 .salon_anmeldung {
