@@ -5,12 +5,17 @@ require_once('../classes/Login.php');
 include('_header_not_in.php'); 
 $title="Kurse";
 
+    	//check, if there is a image in the salon folder
+	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
+
+	if (@getimagesize($img)) {
+	    $img_url = $img;
+	} else {
+	    $img_url = "http://test.wertewirtschaft.net/salon/default.jpg";
+	}
 ?>
 
-<div id="center">  
-<div id="content">
-<a class="content" href="../index.php">Index &raquo;</a><a class="content" href="index.php"> Kurse</a>
-<div id="tabs-wrapper-lower"></div>
+<div class="content">
 
 <?php 
 
@@ -26,12 +31,10 @@ if(isset($_GET['q']))
   $avail=$entry3[spots]-$entry3[spots_sold];
 ?>
   
-  <h3 style="font-style:none;"><?=ucfirst($entry3[type])." ".$entry3[title]?></h3>
-
-  <p><? if ($entry3[img]) echo $entry3[img]; ?>
-
-  <b>Termin:</b> 
-  <? 
+  	<div class="salon_head">
+  		<h1><?=ucfirst($entry3[type])." ".$entry3[title]?></h1>
+  		<p class="salon_date">
+  			  <? 
   if ($entry3[start] != NULL && $entry3[end] != NULL)
     {
     $tag=date("w",strtotime($entry3[start]));
@@ -53,19 +56,95 @@ if(isset($_GET['q']))
     echo strftime("%d.%m.%Y", strtotime($entry3[start]));
   }
   else echo "noch offen";
-  
+?>
+  		</p>
+  		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
+		<div class="centered">
+			<div class="salon_reservation">
+  				<p class="salon_reservartion_span_a">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r den Kurs, sondern auch Zugang zu den Scholien, unserem Salon, Schriften, Medien etc.</p>
+  				<!--<a href="#form" class="salon_linkbutton">Anmelden</a>-->  
+  				<!-- Button trigger modal -->
+  				<input type="button" class="salon_reservation_inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">
+    		</div>
+    	</div>
+    </div>
+	<div class="salon_seperator">
+		<h1>Inhalt und Informationen</h1>
+	</div>
+	<div class="salon_content">
+<?  
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
-
 ?>
-  <hr>
-  <h5>Anmeldung</h5>
-  <i><p>Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r den Kurs, sondern auch Zugang zu den Scholien, unserem Salon, Schriften, Medien etc.</p></i>
+	</div>
 
-  <br>
-  <div>
+<!--<div class="subscribe">
+          <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+          <input class="inputfield" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required />
+          <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" style="display:none"  />
+          <input class="inputbutton" id="inputbutton" type="submit" name="fancy_ajax_form_submit" value="Eintragen" />
+          </form> 
+  </div>-->
+<?php
+}
 
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="user_create_profile_form">
+else {
+  ?>
+	<div class="salon_info">
+  		<h1>Kurse</h1>
+		<p>Unsere Kurse inmitten unserer einzigartigen Bibliothek bieten inhaltliche Vertiefungen abseits des Mainstream-Lehrbetriebs. Wir folgen dabei dem Beispiel der klassischen Akademie &ndash; der Bibliothek im Hain der Mu&szlig;e fern vom Wahnsinn der Zeit, in der Freundschaften durch regen Austausch und gemeinsames Nachdenken gestiftet werden. Alle unsere Lehrangebote zeichnen sich durch geb&uuml;hrende Tiefe bei gleichzeitiger Verst&auml;ndlichkeit, kleine Gruppen und gro&szlig;en Freiraum f&uuml;r Fragen und Diskussionen aus. Tauchen Sie mit uns in intellektuelle Abenteuer, wie sie unsere Zeit kaum noch zul&auml;&szlig;t.</p>
+
+    </div>
+    <div class="salon_seperator">
+    	<h1>Termine</h1>
+    </div>
+    <div class="salon_content">
+
+  <?php
+  $current_dateline=strtotime(date("Y-m-d"));
+  
+  $sql="SELECT * from produkte WHERE (UNIX_TIMESTAMP(start)>=$current_dateline) and (type='lehrgang' or type='seminar' or type='kurs') and status>0 order by start asc, n asc";
+  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+  
+  while($entry = mysql_fetch_array($result))
+  {
+    $found=1;
+    $id = $entry[id];
+    echo "<h1>";
+    echo "<a href='?q=$id'>";
+    echo ucfirst($entry[type])." ".$entry[title]."</a></h1>";
+	     
+    /* weekdays don't work:
+    $day=date("w",strtotime($entry[start]));
+    if ($day==0) $day=7;
+    echo Phrase('day'.$day).", ";
+    */
+    echo "<div class='salon_dates'>";
+    echo date("d.m.Y",strtotime($entry[start]));
+    echo "</div>";
+    
+    echo $entry[text];
+    echo "<div class='salon_anmeldung'> <a href='?q=$id'>";
+    echo "zur Anmeldung</a></div>";
+  } 
+?> 
+  		<div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
+	</div>
+<?
+}
+?>
+	</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="myModalLabel">Anmeldung</h2>
+      </div>
+      <div class="modal-body">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="user_create_profile_form">
 
         <label for="user_email">Email</label>
     <br> 
@@ -97,73 +176,15 @@ if(isset($_GET['q']))
     <br> 
     <br>  
     <input type="submit" name="user_create_profile_submit" value="Anmelden"/>
-    </form><hr/>
-
-<!--TO DO: Create account when registering for the event -->
-
-  </div><br>
-
-  <div class="subscribe">
-          <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
-          <input class="inputfield" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required />
-          <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" style="display:none"  />
-          <input class="inputbutton" id="inputbutton" type="submit" name="fancy_ajax_form_submit" value="Eintragen" />
-          </form> 
+    </form>
+    <!--TO DO: Create account when registering for the event -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+      </div>
+    </div>
   </div>
-<?php
-}
-
-else {
-  ?>
-
-  <h2>Kurse</h2>
-
-  <!--<p><img class="wallimg big" src="akademie.jpg" alt="" titel="Akademieveranstaltung"></p>-->
-         
-  <p>Unsere Kurse inmitten unserer einzigartigen Bibliothek bieten inhaltliche Vertiefungen abseits des Mainstream-Lehrbetriebs. Wir folgen dabei dem Beispiel der klassischen Akademie &ndash; der Bibliothek im Hain der Mu&szlig;e fern vom Wahnsinn der Zeit, in der Freundschaften durch regen Austausch und gemeinsames Nachdenken gestiftet werden. Alle unsere Lehrangebote zeichnen sich durch geb&uuml;hrende Tiefe bei gleichzeitiger Verst&auml;ndlichkeit, kleine Gruppen und gro&szlig;en Freiraum f&uuml;r Fragen und Diskussionen aus. Tauchen Sie mit uns in intellektuelle Abenteuer, wie sie unsere Zeit kaum noch zul&auml;&szlig;t.</p>
-
-  <h5>Termine</h5>
-             
-  <div id="tabs-wrapper-sidebar"></div>
-
-  <?php
-  $current_dateline=strtotime(date("Y-m-d"));
-  
-  $sql="SELECT * from produkte WHERE (UNIX_TIMESTAMP(start)>=$current_dateline) and (type='lehrgang' or type='seminar' or type='kurs') and status>0 order by start asc, n asc";
-  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-  
-  while($entry = mysql_fetch_array($result))
-  {
-    $found=1;
-    $id = $entry[id];
-    echo "<div class=\"entry\">";
-    echo "<h1>";
-    echo "<a href='?q=$id'>";
-    echo ucfirst($entry[type])." ".$entry[title]."</a></h1>";
-     
-    echo "<div style=\"padding:5px;\">";
-    /* weekdays don't work:
-    $day=date("w",strtotime($entry[start]));
-    if ($day==0) $day=7;
-    echo Phrase('day'.$day).", ";
-    */
-    echo date("d.m.Y",strtotime($entry[start]));
-    
-    
-    echo "<p>";
-    if ($entry[img]) echo $entry[img];
-    echo $entry[text];
-    echo " <a href='?q=$id'>";
-    echo "&rarr; N&auml;here Informationen</a></p>";
-    echo "</div></div>";
-  } 
-}
-?>
-
-<div id="tabs-wrapper-lower" style="margin-top:10px;"></div>
-
-
 </div>
-<?php include('_side_not_in.php'); ?>
-</div>
+
 <?php include('_footer.php'); ?>
