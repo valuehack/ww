@@ -1413,12 +1413,12 @@ user_plz
     public function editProfile($profile)
     {  
 
-        $name = $profile[user_first_name];
-        $surname = $profile[user_surname];
-        $street = $profile[user_street];
-        $city = $profile[user_city];
-        $country = $profile[user_country];
-        $plz = $profile[user_plz];
+        echo $name = $profile[user_first_name];
+        echo $surname = $profile[user_surname];
+        echo $street = $profile[user_street];
+        echo $city = $profile[user_city];
+        echo $country = $profile[user_country];
+        echo $plz = $profile[user_plz];
 
         $name = substr(trim($name), 0, 64);
         $surname = substr(trim($surname), 0, 64);
@@ -1427,6 +1427,14 @@ user_plz
         $street = substr(trim($street), 0, 64);
         $plz = substr(trim($plz), 0, 64);
 
+        /*
+        $name = addslashes($name);
+        $surname = addslashes($surname);
+        $country = addslashes($country);
+        $city = addslashes($city);
+        $street = addslashes($street);
+        $plz = addslashes($plz);
+        */
         
         $name = htmlentities($name, ENT_QUOTES, "UTF-8");
         $surname = htmlentities($surname, ENT_QUOTES, "UTF-8");
@@ -1434,7 +1442,7 @@ user_plz
         $city = htmlentities($city, ENT_QUOTES, "UTF-8");
         $street = htmlentities($street, ENT_QUOTES, "UTF-8");
         $plz = htmlentities($plz, ENT_QUOTES, "UTF-8");
-
+        
 
         $user_email = $_SESSION['user_email'];
 
