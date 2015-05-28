@@ -94,7 +94,7 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
 <br>
         <label for="user_plz">PLZ</label>
 <br> 
-        <input id="user_plz" type="text" value="<?php echo $plz; ?>" name="profile[user_plz]" required />
+        <input id="user_plz" type="text" style="width:40px" value="<?php echo $plz; ?>" name="profile[user_plz]" required />
 <br>
         <label for="user_city">Ort</label>
 <br> 

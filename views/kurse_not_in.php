@@ -85,7 +85,7 @@ if(isset($_GET['q']))
     <br> 
         <label for="user_plz">PLZ</label>
     <br> 
-        <input id="user_plz" type="text" name="profile[user_plz]" required />
+        <input id="user_plz" type="text" style="width:40px" name="profile[user_plz]" required />
     <br>
         <label for="user_city">Ort</label>
     <br> 
@@ -99,7 +99,7 @@ if(isset($_GET['q']))
     <input type="submit" name="user_create_profile_submit" value="Anmelden"/>
     </form><hr/>
 
-
+<!--TO DO: Create account when registering for the event -->
 
   </div><br>
 
