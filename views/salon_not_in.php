@@ -4,7 +4,6 @@ $title="Salon";
 include "_header_not_in.php"; 
 ?>
 	<div class="content">
-		<div class="salon">
 <?
 if(isset($_GET['q']))
 {
@@ -24,7 +23,7 @@ if(isset($_GET['q']))
 	    $img_url = "http://test.wertewirtschaft.net/salon/default.jpg";
 	}
 ?>
-  
+  <div class="salon">
   <h1><?echo $entry3[title]?></h1>
   <p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));?></p>
   <img src="<?echo $img_url;?>" alt="<? echo $id;?>">
@@ -57,12 +56,13 @@ if(isset($_GET['q']))
          
 else { 
 ?>
+	<h1>Salon</h1>
 	<div class="salon_info">
   <p>Unser Salon erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition.</p>
 
   <p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>
     </div>
-    
+    <div class="salon">
   
 
   <?php
