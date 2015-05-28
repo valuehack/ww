@@ -1,3 +1,10 @@
+
+<?
+require_once('../classes/Login.php');
+$title="Salon";
+include "_header_in.php"; 
+?>
+
 <script>
 function changePrice(totalQuantity, price){
     document.getElementById("change").innerHTML = (totalQuantity * price) + " Credits";
@@ -5,10 +12,6 @@ function changePrice(totalQuantity, price){
 </script>
 
 <?
-require_once('../classes/Login.php');
-$title="Salon";
-include "_header_in.php"; 
-
 //print_r($_SESSION);
 
 //Inserted from catalog.php
@@ -159,8 +162,28 @@ else {
       ?>
       
 <?php echo "<h1><a href='?q=$id'><i>".$event_id."</i>".$entry[title]; ?></a></h1>
-		<div class="salon_dates"><?php echo date("d.m.Y",strtotime($entry[start])); ?> &ndash; 
-						 	 <?php echo date("H:i",strtotime($entry[start])); ?> Uhr
+		<div class="salon_dates">
+      <? if ($entry3[start] != NULL && $entry3[end] != NULL)
+        {
+        $tag=date("w",strtotime($entry3[start]));
+        $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
+        echo $tage[$tag]." ";
+        echo strftime("%d.%m.%Y %H:%M", strtotime($entry3[start]));
+        if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
+          {
+          $tag=date("w",strtotime($entry3[end]));
+          echo $tage[$tag]." ";
+          echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+          }
+        else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry3[end]));
+      }
+      elseif ($entry3[start]!= NULL)
+        {
+        $tag=date("w",strtotime($entry3[start]));
+        echo $tage[$tag]." ";
+        echo strftime("%d.%m.%Y", strtotime($entry3[start]));
+      }
+      else echo "noch offen"; ?>
 		</div>
 		<?php echo $entry[text]; ?> 
 			<div class="salon_anmeldung"><a href="<? echo "?q=$id";?>">zur Anmeldung</a></div>

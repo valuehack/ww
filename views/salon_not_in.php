@@ -25,7 +25,29 @@ if(isset($_GET['q']))
 ?>
 	<div class="salon_head">
   		<h1><?echo $entry3[title]?></h1>
-  		<p class="salon_date"><?echo strftime("%d.%m.%Y  &ndash;  %H:%M Uhr", strtotime($entry3[start]));?></p>
+  		<p class="salon_date"><?
+      if ($entry3[start] != NULL && $entry3[end] != NULL)
+        {
+        $tag=date("w",strtotime($entry3[start]));
+        $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
+        echo $tage[$tag]." ";
+        echo strftime("%d.%m.%Y %H:%M", strtotime($entry3[start]));
+        if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
+          {
+          $tag=date("w",strtotime($entry3[end]));
+          echo $tage[$tag]." ";
+          echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+          }
+        else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry3[end]));
+      }
+      elseif ($entry3[start]!= NULL)
+        {
+        $tag=date("w",strtotime($entry3[start]));
+        echo $tage[$tag]." ";
+        echo strftime("%d.%m.%Y", strtotime($entry3[start]));
+      }
+      else echo "noch offen"; ?>
+    </p>
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		<div class="centered">
 			<div class="salon_reservation">
@@ -85,8 +107,28 @@ else {
       ?>
       
 <?php echo "<h1><a href='?q=$id'><i>".$event_id."</i>".$entry[title]; ?></a></h1>
-		<div class="salon_dates"><?php echo date("d.m.Y",strtotime($entry[start])); ?> &ndash; 
-						 	 <?php echo date("H:i",strtotime($entry[start])); ?> Uhr
+		<div class="salon_dates">
+      <?php if ($entry3[start] != NULL && $entry3[end] != NULL)
+        {
+        $tag=date("w",strtotime($entry3[start]));
+        $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
+        echo $tage[$tag]." ";
+        echo strftime("%d.%m.%Y %H:%M", strtotime($entry3[start]));
+        if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
+          {
+          $tag=date("w",strtotime($entry3[end]));
+          echo $tage[$tag]." ";
+          echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+          }
+        else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry3[end]));
+      }
+      elseif ($entry3[start]!= NULL)
+        {
+        $tag=date("w",strtotime($entry3[start]));
+        echo $tage[$tag]." ";
+        echo strftime("%d.%m.%Y", strtotime($entry3[start]));
+      }
+      else echo "noch offen"; ?>
 		</div>
 		<?php echo $entry[text]; ?> 
 			<div class="salon_anmeldung"><a href="<? echo "?q=$id";?>">zur Anmeldung</a></div>
