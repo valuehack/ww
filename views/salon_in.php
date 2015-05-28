@@ -1,3 +1,9 @@
+<script>
+function changePrice(totalQuantity, price){
+    document.getElementById("salon_reservation_span_b").innerHTML = (totalQuantity * price) + " Credits";
+}
+</script>
+
 <?
 require_once('../classes/Login.php');
 $title="Salon";
@@ -34,6 +40,7 @@ if(isset($_GET['q']))
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
+  $price = $entry3[price];
   
   	//check, if there is a image in the salon folder
 	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
@@ -47,7 +54,30 @@ if(isset($_GET['q']))
   <div class="content">
   	<div class="salon_head">
   		<h1><?echo $entry3[title]?></h1>
-		<p class="salon_date"><?echo strftime("%d.%m.%Y  &ndash;  %H:%M Uhr", strtotime($entry3[start]));?></p>
+		<p class="salon_date">
+      <?
+      if ($entry3[start] != NULL && $entry3[end] != NULL)
+        {
+        $tag=date("w",strtotime($entry3[start]));
+        $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
+        echo $tage[$tag]." ";
+        echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]))." &ndash; ";
+        if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
+          {
+          $tag=date("w",strtotime($entry3[end]));
+          echo $tage[$tag]." ";
+          echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+          }
+        else echo strftime("%H:%M Uhr", strtotime($entry3[end]));
+      }
+      elseif ($entry3[start]!= NULL)
+        {
+        $tag=date("w",strtotime($entry3[start]));
+        echo $tage[$tag]." ";
+        echo strftime("%d.%m.%Y", strtotime($entry3[start]));
+      }
+      else echo "noch offen"; ?>
+      </p>
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">--> 	
   			
   		<div class="centered">
@@ -62,7 +92,7 @@ if(isset($_GET['q']))
     <span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Eintrittskarten</span><br>
     <form class="salon_reservation_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
-      <select name="quantity">
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
       	<option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -71,7 +101,7 @@ if(isset($_GET['q']))
       </select> 
       <input class="inputbutton" type="submit" value="Auswählen"><br>     
     </form>
-	<span class="salon_reservation_span_b"><?php echo $entry3[price]; ?> Credits pro Eintrittskarte</span>
+	<span class="salon_reservation_span_b"><?php echo $price; ?> Credits</span>
 <?php  
   }
 ?>		
