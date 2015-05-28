@@ -93,12 +93,13 @@ if(isset($_GET['q']))
       </select> 
       <input class="inputbutton" type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits pro Credits</i>
     </form>
-	</div>
-</div>
 
 <?php  
   }
-
+?>
+		</div>
+	</div>
+<?php
 }
 
 else {
