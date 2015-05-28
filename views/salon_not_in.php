@@ -44,7 +44,7 @@ if(isset($_GET['q']))
         {
         $tag=date("w",strtotime($entry3[start]));
         echo $tage[$tag]." ";
-        echo strftime("%d.%m.%Y", strtotime($entry3[start]));
+        echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
       }
       else echo "noch offen"; ?>
     </p>
@@ -114,7 +114,7 @@ else {
         $tag=date("w",strtotime($entry[start]));
         $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
         echo $tage[$tag]." ";
-        echo strftime("%d.%m.%Y %H:%M", strtotime($entry[start]));
+        echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry[start]));
         if (strftime("%d.%m.%Y", strtotime($entry[start]))!=strftime("%d.%m.%Y", strtotime($entry[end])))
           {
           $tag=date("w",strtotime($entry[end]));
@@ -127,7 +127,7 @@ else {
         {
         $tag=date("w",strtotime($entry[start]));
         echo $tage[$tag]." ";
-        echo strftime("%d.%m.%Y", strtotime($entry[start]));
+        echo strftime("%d.%m.%Y %H:%M", strtotime($entry[start]));
       }
       else echo "noch offen"; ?>
 		</div>
