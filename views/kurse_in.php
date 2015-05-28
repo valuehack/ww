@@ -83,6 +83,9 @@ if(isset($_GET['q']))
 			</div>
 		</div>		
 	</div>
+	<div class="salon_seperator">
+		<h1>Inhalt und Informationen</h1>
+	</div>
 	<div class="salon_content">
   <? 
   /* weekdays don't work
@@ -105,7 +108,10 @@ if(isset($_GET['q']))
     <div class="salon_info">    
     	<p>Unsere Kurse inmitten unserer einzigartigen Bibliothek bieten inhaltliche Vertiefungen abseits des Mainstream-Lehrbetriebs. Wir folgen dabei dem Beispiel der klassischen Akademie &ndash; der Bibliothek im Hain der Mu&szlig;e fern vom Wahnsinn der Zeit, in der Freundschaften durch regen Austausch und gemeinsames Nachdenken gestiftet werden. Alle unsere Lehrangebote zeichnen sich durch geb&uuml;hrende Tiefe bei gleichzeitiger Verst&auml;ndlichkeit, kleine Gruppen und gro&szlig;en Freiraum f&uuml;r Fragen und Diskussionen aus. Tauchen Sie mit uns in intellektuelle Abenteuer, wie sie unsere Zeit kaum noch zul&auml;&szlig;t.</p>
     </div> 
- 		<div class="salon_content">
+    <div class="salon_seperator">
+    	<h1>Termine</h1>
+   	</div>    
+ 	<div class="salon_content">
   <?
   } 
   
@@ -149,14 +155,14 @@ if(isset($_GET['q']))
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="myModalLabel">Mitgliedschaft 150</h2>
+        <h2 class="modal-title" id="myModalLabel">Mitgliedschaft 150 - Anmelden</h2>
       </div>
       <div class="modal-body">
         Erklärung 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-        <a href="../upgrade.php"><button type="button" class="btn btn-primary">Jetzt upgraden</button></a>
+        <a href="../upgrade.php"><button type="button" class="btn btn-primary">Anmelden</button></a>
       </div>
     </div>
   </div>
