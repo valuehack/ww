@@ -155,7 +155,7 @@ strong {
 .navi {
 	height: 40px;
 	margin: 0 auto;
-	/*border-right: 0.5px solid rgb(26,26,26);*/
+	border-right: 0.5px solid rgb(26,26,26);
 }
 
 .navi ul {
@@ -166,12 +166,12 @@ strong {
 	float: left;
 	width: 130px;
 	padding: 9px 5px 4px 5px;
-	height: 30px;
+	height: 27px;
 	margin: 0 0.5px;
 	list-style: none;
    	display: block;
    	font-size: 15px;
-   	/*border-left: 1px solid rgb(26,26,26);*/
+   	border-left: 0.5px solid rgb(26,26,26);
    	/*background: rgb(144,134,125) url(gfx/nav_bg.png) no-repeat;
    	background-size: cover;*/
 }
