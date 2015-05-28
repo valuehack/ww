@@ -61,10 +61,9 @@ if(isset($_GET['q']))
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		<div class="centered">
 			<div class="salon_reservation">
-  				<p class="salon_reservation_span_a">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r den Kurs, sondern auch Zugang zu den Scholien, unserem Salon, Schriften, Medien etc.</p>
-  				<!--<a href="#form" class="salon_linkbutton">Anmelden</a>-->  
   				<!-- Button trigger modal -->
-  				<input type="button" class="salon_reservation_inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">
+  				<input type="button" class="salon_reservation_inputbutton" value="Anmelden" data-toggle="modal" data-target="#myModal">
+  				<p class="salon_reservation_span_c">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r den Kurs, sondern auch Zugang zu unserem weiteren Angebot. (u.a. Scholien, unserem Salon, Schriften, Medien)</p>
     		</div>
     	</div>
     </div>
