@@ -796,8 +796,13 @@ a.socialimg:hover  {
 	background: rgb(30,48,64);
 }
 
-.salon_reservation span {
-	font-size: 16pt;
+.salon_reservation_span_a {
+	font-size: 18pt;
+	margin: 10px 0;
+}
+
+.salon_reservation_span_b {
+	font-size: 12pt;
 	margin: 10px 0;
 }
 
@@ -807,7 +812,8 @@ a.socialimg:hover  {
 
 .salon_reservation_form select {
 	padding: 10px;
-	font-size: 17pt;
+	font-size: 14pt;
+	height: 50px;
 }
 
 .salon_anmeldung {
