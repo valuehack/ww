@@ -201,7 +201,7 @@ strong {
 
 
 .content {
-	width: 75%;
+	width: 100%;
 	margin: 0 auto;
 	text-align: justify;
 }
@@ -679,9 +679,9 @@ a.socialimg:hover  {
 /*====================================*/
 
 .salon {
-	padding: 25px;
 	font-size: 20pt;
-	margin: 50px 0;
+	width: 75%;
+	padding: 25px 12.5%;
 }
 
 .salon img {
@@ -747,6 +747,8 @@ a.socialimg:hover  {
 	font-size: 14pt;
 	font-style: italic;
 	line-height: 1.8em;
+	width: 75%;
+	padding: 12.5%;
 	
 }
 
