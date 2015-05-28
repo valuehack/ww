@@ -163,25 +163,25 @@ else {
       
 <?php echo "<h1><a href='?q=$id'><i>".$event_id."</i>".$entry[title]; ?></a></h1>
 		<div class="salon_dates">
-      <? if ($entry3[start] != NULL && $entry3[end] != NULL)
+      <? if ($entry[start] != NULL && $entry[end] != NULL)
         {
-        $tag=date("w",strtotime($entry3[start]));
+        $tag=date("w",strtotime($entry[start]));
         $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
         echo $tage[$tag]." ";
-        echo strftime("%d.%m.%Y %H:%M", strtotime($entry3[start]));
-        if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
+        echo strftime("%d.%m.%Y %H:%M", strtotime($entry[start]));
+        if (strftime("%d.%m.%Y", strtotime($entry[start]))!=strftime("%d.%m.%Y", strtotime($entry[end])))
           {
-          $tag=date("w",strtotime($entry3[end]));
+          $tag=date("w",strtotime($entry[end]));
           echo $tage[$tag]." ";
-          echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+          echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry[end]));
           }
-        else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry3[end]));
+        else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry[end]));
       }
-      elseif ($entry3[start]!= NULL)
+      elseif ($entry[start]!= NULL)
         {
-        $tag=date("w",strtotime($entry3[start]));
+        $tag=date("w",strtotime($entry[start]));
         echo $tage[$tag]." ";
-        echo strftime("%d.%m.%Y", strtotime($entry3[start]));
+        echo strftime("%d.%m.%Y", strtotime($entry[start]));
       }
       else echo "noch offen"; ?>
 		</div>
