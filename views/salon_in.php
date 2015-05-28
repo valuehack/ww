@@ -62,7 +62,7 @@ if(isset($_GET['q']))
     <span>Anzahl gew&uuml;nschter Eintrittskarten</span><br>
     <form class="salon_reservation_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
-      <span><select name="quantity">
+      <select name="quantity">
       	<option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
