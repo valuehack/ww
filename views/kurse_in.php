@@ -156,7 +156,9 @@ if(isset($_GET['q']))
     if ($day==0) $day=7;
     echo Phrase('day'.$day).", ";
     */
-    echo date("d.m.Y",strtotime($entry[start])." %ndash; "."d.m.Y",strtotime($entry3[end]));
+    echo date("d.m.Y",strtotime($entry[start]));
+    echo " %ndash; ";
+    echo date("d.m.Y",strtotime($entry3[end]));
     echo "</div>";
     echo "<p>";
     //echo "<img src='$img_url' alt='$id'>";
