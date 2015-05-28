@@ -25,20 +25,19 @@ if(isset($_GET['q']))
 ?>
 	<div class="salon_head">
   		<h1><?echo $entry3[title]?></h1>
-  		<p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));?></p
+  		<p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));?></p>
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
-	</div>
-	<div class="salon_seperator"
-		<h1>Inhalt und Informationen</h1>
-	</div>
-	<div class="salon_content">
 		<div class="centered">
 			<div class="salon_reservation">
   				<!-- Button trigger modal -->
   				<input type="button" class="inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">  
     		</div>
     	</div>
-
+	<div class="salon_seperator">
+		<h1>Inhalt und Informationen</h1>
+	</div>
+	<div class="salon_content">
+	
   <?php
   /* weekdays don't work
     $day=date("w",strtotime($entry3[start]));
