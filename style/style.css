@@ -801,6 +801,10 @@ a.socialimg:hover  {
 	margin: 10px 0;
 }
 
+.salon_reservation_form  {
+	margin: 20px 0;
+}
+
 .salon_reservation_form select {
 	padding: 10px;
 	font-size: 17pt;
