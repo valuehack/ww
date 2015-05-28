@@ -30,9 +30,10 @@ if(isset($_GET['q']))
 		<div class="centered">
 			<div class="salon_reservation">
   				<!-- Button trigger modal -->
-  				<input type="button" class="inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">  
+  				<input type="button" class="salon_reservation_inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">  
     		</div>
     	</div>
+    </div>
 	<div class="salon_seperator">
 		<h1>Inhalt und Informationen</h1>
 	</div>
