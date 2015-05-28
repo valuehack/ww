@@ -812,6 +812,12 @@ a.socialimg:hover  {
 	line-height: 1.5em;
 }
 
+.salon_reservation_span_c {
+	font-size: 16pt;
+	margin: 40px 0 60px 0;
+	line-height: 1.5em;
+}
+
 .salon_reservation_form  {
 	margin: 20px 0;
 }

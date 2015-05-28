@@ -75,14 +75,16 @@ if(isset($_GET['q']))
 		
 		<div class="centered">
 			<div class="salon_reservation">
-				<p class="salon_reservation_span_c"><?echo $entry3[price];?>€</p>
+				<p class="salon_reservation_span_d"><?$entry3[price]?> Credits pro Teilnehmer</p>
 				<?	
   if ($_SESSION['Mitgliedschaft'] == 1) {
     echo '<input class="salon_reservation_inputbutton" type="button" value="Anmelden" data-toggle="modal" data-target="#myModal1">';
+	echo "<p class='salon_reservation_span_c'>'$entry3[price]' Credits pro Teilnehmer</p>";
     }
 
   if ($_SESSION['Mitgliedschaft'] == 2) {
-    echo '<input class="salon_reservation_inputbutton" type="button" value="Upgrade" data-toggle="modal" data-target="#myModal2">';  
+    echo '<input class="salon_reservation_inputbutton" type="button" value="Upgrade" data-toggle="modal" data-target="#myModal2">'; 
+	echo "<p class='salon_reservation_span_c'>'$entry3[price]'>Credits pro Teilnehmer</p>"; 
     } 
   
   if ($_SESSION['Mitgliedschaft'] > 2) {
