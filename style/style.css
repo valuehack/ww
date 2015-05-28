@@ -770,15 +770,6 @@ a.socialimg:hover  {
 	font-style: italic;
 }
 
-.salon_form {
-	margin: 15px 0;
-}
-
-.salon_form select {
-	padding: 5px;
-	font-size: 20pt;
-}
-
 .salon_reservation  {
 	text-align: center;
 	margin: 10px auto;
@@ -803,6 +794,16 @@ a.socialimg:hover  {
 
 .salon_reservation_inputbutton:hover {
 	background: rgb(30,48,64);
+}
+
+.salon_reservation span {
+	font-size: 22pt;
+	margin: 0 5px;
+}
+
+.salon_reservation_form select {
+	padding: 10px;
+	font-size: 22pt;
 }
 
 .salon_anmeldung {

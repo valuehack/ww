@@ -48,17 +48,35 @@ if(isset($_GET['q']))
   	<div class="salon_head">
   		<h1><?echo $entry3[title]?></h1>
 		<p class="salon_date"><?echo strftime("%d.%m.%Y  &ndash;  %H:%M Uhr", strtotime($entry3[start]));?></p>
-  		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">--> 		
+  		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">--> 	
+  			
+  		<div class="centered">
+    		<div class="salon_reservation">
 <?php
   if ($_SESSION['Mitgliedschaft'] == 1) {  
     //Button trigger modal
-    echo '<div class="centered">';
-    echo '<div class="salon_reservation">';
     echo '<input class="salon_reservation_inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';
-	echo '</div>';
-	echo '</div>';
-  }  		
-?>  				
+  }  
+  else {
+    ?>
+    <form class="salon_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />
+      <span>Anzahl gew&uuml;nschter Eintrittskarten:</span>
+      <select name="quantity">
+      	<option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>        
+      </select> 
+      <input class="inputbutton" type="submit" value="Auswählen">&nbsp;<?php echo $entry3[price]; ?> <span>Credits pro Eintrittskarte</span>
+    </form>
+
+<?php  
+  }
+?>		
+			</div>
+		</div>		
 	</div>
   	<div class="salon_seperator">
 		<h1>Inhalt und Informationen</h1>
@@ -78,25 +96,6 @@ if(isset($_GET['q']))
   <p>Unser Salon erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition.</p>
 
   <p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>
-
-<?php
-  if ($_SESSION['Mitgliedschaft'] == 4) {
-    ?>
-    <form class="salon_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      <input type="hidden" name="add" value="<?php echo $n; ?>" />
-      Menge: <select name="quantity">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>        
-      </select> 
-      <input class="inputbutton" type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits pro Credits</i>
-    </form>
-
-<?php  
-  }
-?>
 		</div>
 	</div>
 <?php
@@ -107,8 +106,9 @@ else {
 	<div class="content">
 		<?
 //für Interessenten (Mitgliedschaft 1) Erklärungstext oben
-	echo "<div class='salon_info'>";
+	
   if ($_SESSION['Mitgliedschaft'] == 1) {
+  	echo "<div class='salon_info'>";
     echo "<p>Unser Salon erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition.</p>";
 
     echo "<p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>";
