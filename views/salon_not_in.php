@@ -26,8 +26,14 @@ if(isset($_GET['q']))
   <div class="salon">
   <h1><?echo $entry3[title]?></h1>
   <p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));?></p>
-  <img src="<?echo $img_url;?>" alt="<? echo $id;?>">
+  <!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 
+	<div class="centered">
+		<div class="salon_reservation">
+  <!-- Button trigger modal -->
+  			<input type="button" class="inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">  
+    	</div>
+    </div>
 
   <?php
   /* weekdays don't work
@@ -43,13 +49,7 @@ if(isset($_GET['q']))
 
   <p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>
 
-	<div class="centered">
-	<div class="salon_reservation">
-  <!-- Button trigger modal -->
-  <input type="button" class="inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">  
-    </div>
-    </div>
-    		</div>
+    	</div>
 	</div>
 <?php
 }
