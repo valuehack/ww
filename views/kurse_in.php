@@ -75,7 +75,7 @@ if(isset($_GET['q']))
 		
 		<div class="centered">
 			<div class="salon_reservation">
-				<span class="salon_reservation_span_c"><?echo $entry3[price];?></span>
+				<p class="salon_reservation_span_c"><?echo $entry3[price];?>€</p>
 				<?	
   if ($_SESSION['Mitgliedschaft'] == 1) {
     echo '<input class="salon_reservation_inputbutton" type="button" value="Anmelden" data-toggle="modal" data-target="#myModal1">';
