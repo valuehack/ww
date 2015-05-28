@@ -155,7 +155,6 @@ strong {
 .navi {
 	height: 40px;
 	margin: 0 auto;
-	border-right: 0.5px solid rgb(26,26,26);
 }
 
 .navi ul {
@@ -171,9 +170,6 @@ strong {
 	list-style: none;
    	display: block;
    	font-size: 15px;
-   	border-left: 0.5px solid rgb(26,26,26);
-   	/*background: rgb(144,134,125) url(gfx/nav_bg.png) no-repeat;
-   	background-size: cover;*/
 }
 
 .navi li:hover {
@@ -184,10 +180,10 @@ strong {
 .navi li a {
 	display: block;
   	text-decoration: none; 
-   	color: #fff; 
+   	color: rgb(240,240,240); 
 	padding: 3px 10px;
-	text-shadow: 0 0 1px 0 rgba{0,0,0,0.6};
 	font-size: 15px;
+	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
 }
 
 /*==================================================*/
