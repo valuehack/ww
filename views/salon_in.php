@@ -1,7 +1,6 @@
 <script>
-function changePrice(price){
-    var change = document.getElementById("change").value;
-    document.getElementById("salon_reservation_span_b").innerHTML = (totalQuantity * price) + " Credits";
+function changePrice(totalQuantity, price){
+    document.getElementById("change").innerHTML = (totalQuantity * price) + " Credits";
 }
 </script>
 
@@ -93,7 +92,7 @@ if(isset($_GET['q']))
     <span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Eintrittskarten</span><br>
     <form class="salon_reservation_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
-      <select name="quantity" id="change" onchange="changePrice('<?php echo $price; ?>')">
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
       	<option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -102,7 +101,7 @@ if(isset($_GET['q']))
       </select> 
       <input class="inputbutton" type="submit" value="Auswählen"><br>     
     </form>
-	<span class="salon_reservation_span_b"><?php echo $price; ?> Credits</span>
+	<span id="change" class="salon_reservation_span_b"><?php echo $price; ?> Credits</span>
 <?php  
   }
 ?>		
