@@ -25,7 +25,7 @@ if(isset($_GET['q']))
 ?>
 	<div class="salon_head">
   		<h1><?echo $entry3[title]?></h1>
-  		<p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));?></p>
+  		<p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr &ndash; ", strtotime($entry3[start]));?></p>
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		<div class="centered">
 			<div class="salon_reservation">

@@ -707,7 +707,7 @@ a.socialimg:hover  {
 	background: rgb(250,250,250);
 }
 
-.salon_sperator h1 {
+.salon_seperator h1 {
 	font-size: 30pt;
 	color: rgba(0,0,0,0.6);
 	text-transform: uppercase;
@@ -729,7 +729,7 @@ a.socialimg:hover  {
 
 .salon_content {
 	width: 75%;
-	padding: 25px 12.5%;
+	padding: 75px 12.5%;
 }
 
 .salon_content img {
