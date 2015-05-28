@@ -37,14 +37,14 @@
         <header class="header">
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
-                <div class="dropdown"><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Ulrich M&ouml;ller">Ulrich Moeller<span class="caret"></span></button>
+                <div class="login"><div class="dropdown"><button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Ulrich M&ouml;ller">Ulrich Moeller<span class="caret"></span></button>
                 	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 		<li><a href="">Profil</a></li>
                 		<li><a href="">Upgrade</a></li>
-                		<li class="divider"></li
+                		<li class="divider"></li>
                 		<li>Warenkorb</li>         			               		
                 	</ul>
-                </div>
+                </div></div>
             </div>
             <div class="nav">
                 <div class="navi">
