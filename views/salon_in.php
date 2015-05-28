@@ -45,12 +45,25 @@ if(isset($_GET['q']))
 	}  
 ?>
   <div class="content">
-  	<div class="salon">
+  	<div class="salon_head">
   		<h1><?echo $entry3[title]?></h1>
-		<p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));?></p>
-  		<img src="<?echo $img_url;?>" alt="<? echo $id;?>">
-
-  		
+		<p class="salon_date"><?echo strftime("%d.%m.%Y  &ndash;  %H:%M Uhr", strtotime($entry3[start]));?></p>
+  		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">--> 		
+<?php
+  if ($_SESSION['Mitgliedschaft'] == 1) {  
+    //Button trigger modal
+    echo '<div class="centered">';
+    echo '<div class="salon_reservation">';
+    echo '<input class="salon_reservation_inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';
+	echo '</div>';
+	echo '</div>';
+  }  		
+?>  				
+	</div>
+  	<div class="salon_seperator">
+		<h1>Inhalt und Informationen</h1>
+	</div>
+	<div class="salon_content">
   <?php
   /* weekdays don't work
     $day=date("w",strtotime($entry3[start]));
@@ -67,17 +80,7 @@ if(isset($_GET['q']))
   <p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>
 
 <?php
-  if ($_SESSION['Mitgliedschaft'] == 1) {  
-    //Button trigger modal
-    echo '<div class="centered">';
-    echo '<div class="salon_reservation">';
-    echo '<input class="inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';
-	echo '</div>';
-	echo '</div>';
-	echo '</div>';
-	echo '</div>';
-  }
-  else {
+  if ($_SESSION['Mitgliedschaft'] == 4) {
     ?>
     <form class="salon_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />
@@ -111,7 +114,10 @@ else {
      echo "</div>";
   }
 ?>
-		<div class="salon">
+		<div class="salon_seperator">
+    		<h1>Termine</h1>
+   		</div>
+		<div class="salon_content">
 <?	
   $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND start > NOW() AND spots > spots_sold AND status = 1 order by start asc, n asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -134,7 +140,7 @@ else {
   	</div>
   </div>
   
-	<div class="location_box">  
+	<!--<div class="location_box">  
    		<table>
    			<tr>
    				<td>
@@ -153,7 +159,7 @@ else {
    				</td>
    			</tr>
    		</table>
-   </div>
+   </div>-->
 <?php
 }    
   ?> 
