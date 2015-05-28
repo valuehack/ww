@@ -678,6 +678,33 @@ a.socialimg:hover  {
 /*             Salon       			  */
 /*====================================*/
 
+.salon_info {
+	font-size: 14pt;
+	font-style: italic;
+	line-height: 1.8em;
+	width: 75%;
+	padding: 25px 12.5%;
+	background: rgb(245,245,245);
+}
+
+.salon_info p {
+	text-align: justify;
+	margin: 50px 0 15px 0;
+}
+
+.salon_termine {
+	box-shadow: 0 0 1px 0 rgba(0,0,0,0.4);
+	width: 100%;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.salon_termine h1 {
+	font-size: 30pt;
+	color: rgba(0,0,0,0.2);
+	text-transform: uppercase;
+}
+
 .salon {
 	font-size: 20pt;
 	width: 75%;
@@ -741,20 +768,6 @@ a.socialimg:hover  {
 .salon_form select {
 	padding: 5px;
 	font-size: 20pt;
-}
-
-.salon_info {
-	font-size: 14pt;
-	font-style: italic;
-	line-height: 1.8em;
-	width: 75%;
-	padding: 12.5%;
-	
-}
-
-.salon_info p {
-	text-align: justify;
-	margin: 50px 0 15px 0;
 }
 
 .salon_reservation  {
