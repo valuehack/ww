@@ -23,6 +23,10 @@ function changeView(price, price2) {
 function changePrice(totalQuantity, price2){
     document.getElementById("total").innerHTML = (totalQuantity * price2) + " Credits";
 }
+
+function changePrice2(totalQuantity, price2){
+    document.getElementById("total2").innerHTML = (totalQuantity * price2) + " Credits";
+}
 </script>
 
 
@@ -52,7 +56,17 @@ if(isset($_POST['add'])){
   $add_quantity = $_POST['quantity'];
   $add_format = $_POST['format'];
   $add_code = $add_id . $add_format;
- 	echo "<div style='text-align:center'><hr><i>You added ".$add_quantity." item(s) (ID: ".$add_id." Format: ".$add_format.") to your basket.</i> &nbsp <a href='../abo/korb.php'>Go to Basket</a><hr><br></div>";
+  $type = $_POST['type'];
+  $title = $_POST['title'];
+  switch ($add_format) {
+      case 1: $format = "PDF"; break;
+      case 2: $format = "ePub"; break;
+      case 3: $format = "Kindle"; break;
+      case 4: $format = "Druck"; break;
+      default: $format = NULL; break;
+  }
+
+ 	echo "<div style='text-align:center'><hr><i>Sie haben ".$add_quantity." Stück der ".ucfirst($type).' "'.ucfirst($title).'" ('.$format.") zu Ihrem Korb hinzugefügt.</i> &nbsp; <a href='../abo/korb.php'>Zum Korb</a><hr><br></div>";
 
  	if (isset($_SESSION['basket'][$add_id])) {
     $_SESSION['basket'][$add_code] += $add_quantity; 
@@ -72,6 +86,8 @@ if(isset($_GET['q']))
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
+  $type=$entry3[type];
+  $title=$entry3[title];
 ?>
   
   <h3 style="font-style:none;"><?echo $entry3[title]?></h3>
@@ -98,17 +114,34 @@ if(isset($_GET['q']))
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />
-      <span id="quantity"><input type="hidden" name="quantity" value="1" /></span>
-      Format: <select name="format" id="change" onchange="changeView(<?php echo $price; ?>, <?php echo $price2; ?>)">
-        <?php
+      <input type="hidden" name="type" value="<?php echo $type ?>" />
+      <input type="hidden" name="title" value="<?php echo $title ?>" />
+      
+    <?php
+      if ($entry3[format] == '0001') {
+        echo 'Menge: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
+        echo ' Format: <select name="format"><option value="4">Druck</option></select>';
+      }
+
+      else { 
+      echo '<span id="quantity"><input type="hidden" name="quantity" value="1" /></span>';
+      echo ' Format: <select name="format" id="change" onchange="changeView('.$price.','.$price2.')">';
         if ($pdf == 1) echo '<option value="1">PDF</option>';
         if ($epub == 1) echo '<option value="2">ePub</option>';
         if ($kindle == 1) echo '<option value="3">Kindle</option>';
         if ($druck == 1) echo '<option value="4">Druck</option>';   
-         ?>
-      </select>
-      
+      echo '</select>';
+      }  
+    
+      if ($entry3[format] == '0001') {
+        echo '<input type="submit" value="Auswählen">&nbsp;&nbsp;<i><span id="total2">'.$entry3[price].' Credits</span></i>';
+      }
+      else { 
+    ?>
       <input type="submit" value="Auswählen">&nbsp;&nbsp;<i><span id="price"><?echo $entry3[price]?> Credits</span></i>
+    
+    <?php
+      } ?>
     </form>
 <?php 
   }
