@@ -48,7 +48,29 @@ if(isset($_GET['q']))
 ?>
   	<div class="salon_head">
  	 	<h1><?=ucfirst($entry3[type])." ".$entry3[title]?></h1>
-  		<p class="salon_date"><?echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));?></p>
+  		<p class="salon_date">
+  			<?  if ($entry3[start] != NULL && $entry3[end] != NULL)
+    {
+    $tag=date("w",strtotime($entry3[start]));
+    $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
+    echo $tage[$tag].", ";
+    echo strftime("%d.%m.%Y, %H:%M Uhr", strtotime($entry3[start]))." &ndash; ";
+    if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
+      {
+      $tag=date("w",strtotime($entry3[end]));
+      echo $tage[$tag].", ";
+      echo strftime("%d.%m.%Y, %H:%M Uhr", strtotime($entry3[end]));
+      }
+    else echo strftime("%H:%M Uhr", strtotime($entry3[end]));
+  }
+  elseif ($entry3[start]!= NULL)
+    {
+    $tag=date("w",strtotime($entry3[start]));
+    echo $tage[$tag].", ";
+    echo strftime("%d.%m.%Y", strtotime($entry3[start]));
+  }
+  else echo "Der Termin wird in k&uuml;rze bekannt gegeben";?>
+  			</p>
 		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		
 		<div class="centered">
