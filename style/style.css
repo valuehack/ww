@@ -684,7 +684,14 @@ a.socialimg:hover  {
 	line-height: 1.8em;
 	width: 75%;
 	padding: 25px 12.5%;
-	background: rgb(245,245,245);
+}
+
+.salon_info h1 {
+	font-size: 32pt;
+	color: rgba(0,0,0,0.9);
+	box-shadow: 0 0 1px 0 rgb(20,20,20);
+	margin-bottom: 25px;
+	text-align: center;
 }
 
 .salon_info p {
@@ -697,11 +704,12 @@ a.socialimg:hover  {
 	width: 100%;
 	text-align: center;
 	padding: 15px 0;
+	background: rgb(250,250,250);
 }
 
 .salon_termine h1 {
 	font-size: 30pt;
-	color: rgba(0,0,0,0.8);
+	color: rgba(0,0,0,0.6);
 	text-transform: uppercase;
 }
 
