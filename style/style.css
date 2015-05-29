@@ -178,6 +178,17 @@ strong {
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.176);
 }
 
+.dropdown-menu > li
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857;
+    color: #333;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
 .dropdown-menu > li > a {
     display: block;
     padding: 3px 20px;
@@ -186,6 +197,7 @@ strong {
     line-height: 1.42857;
     color: #333;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
@@ -203,8 +215,8 @@ strong {
 .dropdown-header {
 	display: block;
 	padding: 3px 20px;
-	font-size: 12px;
-	line-height: 1.42857;
+	font-size: 12pt;
+	line-height: 1.5;
 	color: #777;
 	white-space: nowrap;
 }
