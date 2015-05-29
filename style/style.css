@@ -978,12 +978,14 @@ a.socialimg:hover  {
 	font-size: 16pt;
 	line-height: 1.4;
 	margin-bottom: 30px;
+	width: 330px;
 }
 
 .salon_inputfield {
 	border-top: 1px solid #dad8d8;
 	width: 328px;
-	height: 48px;	
+	height: 48px;
+	box-shadow: none;	
 }
 .salon_inputfield:first-of-type {
 	border-top: medium none;	
