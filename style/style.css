@@ -964,7 +964,12 @@ a.socialimg:hover  {
     font-size: 16pt;
     position: relative;
     text-align: center;
-    margin: 30px 15%;
+    margin: 30px 14.5% 75px 14.5%;
+}
+
+.salon_subscribe p {
+	margin: 20px 40px 40px 40px;
+	text-align: justify;
 }
 
 .salon_anmeldung {
