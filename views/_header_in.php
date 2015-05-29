@@ -43,7 +43,7 @@
                 		<li><a href="">Profil</a></li>
                 		<li><a href="">Upgrade</a></li>
                 		<li class="divider"></li>
-                		<li>Credit: 150</li>
+                		<li class="dropdown-header">Credit: 150</li>
                 		<li><a href="">Warenkorb</a></li>         			               		
                 	</ul>
                 </div></div>
