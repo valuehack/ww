@@ -91,6 +91,7 @@ if(isset($_POST['checkout'])) {
         //error message does not work, alternate message above
         echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
         $open = fopen("http://test.wertewirtschaft.net/abo/?u=1",r);
+        echo $open;
         ?>
 
         <?
