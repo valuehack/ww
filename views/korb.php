@@ -90,7 +90,7 @@ if(isset($_POST['checkout'])) {
         //$this->errors[] = "You do not have enough credits to buy the items in your basket.";
         //error message does not work, alternate message above
         echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
-        $handle = fopen("http://test.wertewirtschaft.net/abo/?u=1");
+        fopen("http://test.wertewirtschaft.net/abo/?u=1",r);
         ?>
 
         <?
