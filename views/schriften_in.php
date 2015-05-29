@@ -96,6 +96,7 @@ if(isset($_GET['q']))
     $price2 = $entry3[price2];
 
     ?>
+    <div class="centered">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />
      
@@ -126,16 +127,17 @@ if(isset($_GET['q']))
       } ?>
     </form>
     </div>
+   </div>
 <?php 
   }
 
 }
      
 else {
-  echo "<div class='medien_info'>";	
 
   if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>       
+  	<div class='medien_info'>	
     	<p>Unsere Schriften umfassen derzeit:<br>
       		<ul>
         		<li><b>B&uuml;cher</b> &ndash; teilweise eigene, eher f&uuml;r ein breiteres Publikum, teilweise &Uuml;bersetzungen, meist schwierigere Texte</li>

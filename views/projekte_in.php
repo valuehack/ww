@@ -37,7 +37,7 @@ if ($id = $_GET["q"])
   $n = $entry[n];
 ?>
 	<div class="medien_head">
- 		<h3><?echo $title?></h3>
+ 		<h1><?echo $title?></h1>
  	</div>
 	<div class="medien_seperator">
 		<h1>Inhalt und Informationen</h1>
@@ -59,12 +59,12 @@ if ($id = $_GET["q"])
       ?>
       <i><?php echo $entry[spots_sold]." von ".$entry[spots]." möglichen Credits zugewiesen"; ?></i><br>
 
-      <div>
+      <div class="centered">
       	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <i>Credits: </i>
         	<input type="hidden" name="add" value="<?php echo $n ?>" />
         	<input type="number" name="quantity" style="width:50px;" value="1" min="1" max="<?php echo $avail;?>">
-        	<input type="submit" value="Zuweisen">
+        	<input type="submit" class="inputbutton" value="Zuweisen">
       	</form>
       </div>
     <?php
@@ -73,8 +73,6 @@ if ($id = $_GET["q"])
 }
 
 else {
-	echo "<div class='medien_content'>"; 
-
   if ($_SESSION['Mitgliedschaft'] == 1) { 
     echo "<div class='medien_info'>";
     echo "<p>In der Wertewirtschaft finden Sie eine professionelle, seri&ouml;se und realistische Alternative, als B&uuml;rger in den langfristigen Bestand, die Entwicklung und das Gedeihen Ihrer Gesellschaft zu investieren. Ohne dieses b&uuml;rgerliche Engagement bliebe es bei der ewigen Polarisierung von Markt und Staat, die meist zugunsten der Gewalt entschieden wird. Wir &uuml;berlassen Ihnen aber freilich Ausma&szlig; und Verwendung Ihres Beitrages &ndash; bitte w&auml;hlen Sie jene Projekte aus, die Ihnen sinnvoll erscheinen. Je nach H&ouml;he Ihrer Investition profitieren Sie als Anerkennung Ihres Beitrages von den Angeboten der Wertewirtschaft.</p>";

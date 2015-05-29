@@ -63,6 +63,7 @@ if(isset($_GET['q']))
   }
   else {
     ?>
+    <div class="centered">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />
       <!--<select name="quantity">
@@ -74,6 +75,7 @@ if(isset($_GET['q']))
       </select> -->
       <input type="submit" class="inputbutton" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
     </form>
+    </div>
 <?php 
   }
 	echo "</div>";
