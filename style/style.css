@@ -1064,6 +1064,20 @@ a.socialimg:hover  {
 	text-transform: uppercase;
 }
 
+.medien_head {
+	width: 75%;
+	padding: 75px 12.5%;
+}
+
+.medien_head h1 {
+	text-align: center;
+	font-size: 60pt;
+	line-height: 1.2em;
+	text-transform: uppercase;
+	text-shadow: 0px 0px 1px rgb(20,20,20);	
+	margin: 30px 0 80px 0;
+}
+
 .medien_content {
 	width: 75%;
 	padding: 75px 12.5%;

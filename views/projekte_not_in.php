@@ -26,8 +26,8 @@ if ($id = $_GET["q"])
 <?php
  	if ($entry[img]) echo $entry[img];
 
-  	if ($entry[text]) echo "<p>$entry[text]</p>";
- 	if ($entry[text2]) echo "<p>$entry[text2]</p>";
+  	if ($entry[text]) echo $entry[text];
+ 	if ($entry[text2]) echo $entry[text2];
 ?>
    		<!-- Button trigger modal -->
     	<input type="button" value="Investieren" data-toggle="modal" data-target="#myModal"> 

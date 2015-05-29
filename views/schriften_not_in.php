@@ -31,8 +31,8 @@ if(isset($_GET['q']))
   		<h1><?echo $entry3[title]?></h1>
 		<!--<img src="<?echo $img;?>" alt="<?echo $id;?>">-->
 <? 
-  if ($entry3[text]) echo "<p>$entry3[text]</p>";
-  if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
+  if ($entry3[text]) echo $entry3[text];
+  if ($entry3[text2]) echo $entry3[text2];
 ?>
 
   <!-- Button trigger modal -->
