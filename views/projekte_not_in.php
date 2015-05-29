@@ -1,24 +1,10 @@
-<!-- Bootstrap -->
-<link href="../style/modal.css" rel="stylesheet">
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../tools/bootstrap.js"></script>
-
 <?php 
 require_once('../classes/Login.php');
 include ("_header_not_in.php"); 
 $title="Projekte";
 ?>
 
-
-<!--Content-->
-<div id="center">
-<div id="content">
-<a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="index.php">Projekte</a>
-<div id="tabs-wrapper-lower"></div>
-
+<div class="content">
 
 <?php
 if ($id = $_GET["q"])

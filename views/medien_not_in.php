@@ -1,25 +1,11 @@
-<!-- Bootstrap -->
-<link href="../style/modal.css" rel="stylesheet">
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../tools/bootstrap.js"></script>
-
-
 <?
 require_once('../classes/Login.php');
 include('_header_not_in.php'); 
 $title="Mitgliederbereich";
 
 ?>
-<!--Content-->
-<div id="center">
 
-  <div id="content">
-    <a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="index.php"> Medien</a>
-
-    <div id="tabs-wrapper"></div>
+<div class="content">
  
  <?php
 if(isset($_GET['q']))
@@ -30,37 +16,45 @@ if(isset($_GET['q']))
   $sql="SELECT * from produkte WHERE (type LIKE 'audio' OR type LIKE 'video') AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
-?>
   
-  <h3 style="font-style:none;"><?=$entry3[title]." (".ucfirst($entry3[type]).")";?></h3>
+      	//check, if there is a image in the salon folder
+	$img = 'http://test.wertewirtschaft.net/medien/'.$id.'.jpg';
+
+	if (@getimagesize($img)) {
+	    $img_url = $img;
+	} else {
+	    $img_url = "http://test.wertewirtschaft.net/medien/default.jpg";
+	}
+?>
+  	<div class="medien">
+  		<h1><?=$entry3[title]." (".ucfirst($entry3[type]).")";?></h1>
+		<!--<img src="<?echo $img;?>" alt="<?echo $id;?>">-->
 
 <? 
-  if ($entry3[img]) echo $entry3[img];
-
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
-
 ?>
 
-  <!-- Button trigger modal -->
-  <input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">  
-  
+  	<!-- Button trigger modal -->
+  	<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">  
+  </div>
 <?php
 }
          
 else { 
 ?>
    
-  <h2>Medien</h2>
+	<div class="medien_info">
+		<h1>Medien</h1>
 
-  <p>Da die meisten unserer G&auml;ste nicht in Wien zuhause sind und unsere Arbeit ein Publikum im gesamten deutschsprachigen Raum anspricht (hinter der Wertewirtschaft stehen deutsche, Schweizer und Liechtensteiner Unternehmer), bieten wir selbstverst&auml;ndlich digitale Medien an, die es erlauben, an unseren Erkenntnissen auch aus der Ferne teilzuhaben. Wir geben uns dabei viel M&uuml;he, den Fernzugang zu angenehm wie m&ouml;glich zu halten. Sie k&ouml;nnen also nicht bequem nachlesen, sondern meist auch nachh&ouml;ren, was sich in der Wertewirtschaft tut.</p>
+  		<p>Da die meisten unserer G&auml;ste nicht in Wien zuhause sind und unsere Arbeit ein Publikum im gesamten deutschsprachigen Raum anspricht (hinter der Wertewirtschaft stehen deutsche, Schweizer und Liechtensteiner Unternehmer), bieten wir selbstverst&auml;ndlich digitale Medien an, die es erlauben, an unseren Erkenntnissen auch aus der Ferne teilzuhaben. Wir geben uns dabei viel M&uuml;he, den Fernzugang zu angenehm wie m&ouml;glich zu halten. Sie k&ouml;nnen also nicht bequem nachlesen, sondern meist auch nachh&ouml;ren, was sich in der Wertewirtschaft tut.</p>
 
 
-  <div id="tabs-wrapper-sidebar"></div>
-
-<h5>Audio</h5>
-
-<table style="width:100%;border-collapse: collapse">
+	<div class="medien_seperator">
+    	<h1>Audio</h1>
+    </div>
+	<div class="medien_content">
+		<table style="width:100%;border-collapse: collapse">
 
 
 <?php
@@ -84,6 +78,8 @@ while($entry = mysql_fetch_array($result))
 }
 
 echo "</table><br><br>";
+
+echo "</div>";
 
 /*
 ?>
@@ -118,8 +114,9 @@ echo "</table><br><br>";
 */
 }
 ?>
-<br><br><br><br><br><br><br><br><br>
 
+	</div>
+	
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -145,12 +142,6 @@ echo "</table><br><br>";
       </div>
     </div>
   </div>
-</div>
-
-
-</div>
-
-<? include "_side_not_in.php"; ?>
 </div>
 
 <? include "_footer.php"; ?>
