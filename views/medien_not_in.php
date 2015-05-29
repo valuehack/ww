@@ -26,17 +26,22 @@ if(isset($_GET['q']))
 	    $img_url = "http://test.wertewirtschaft.net/medien/default.jpg";
 	}
 ?>
-  	<div class="medien">
+  	<div class="medien_head">
   		<h1><?=$entry3[title]." (".ucfirst($entry3[type]).")";?></h1>
 		<!--<img src="<?echo $img;?>" alt="<?echo $id;?>">-->
-
+	<div class="medien_seperator">
+		<h1>Inhalt und Informationen</h1>
+	</div>
+	<div class="medien_content">
 <? 
   if ($entry3[text]) echo $entry3[text];
   if ($entry3[text2]) echo $entry3[text2];
 ?>
 
   	<!-- Button trigger modal -->
-  	<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">  
+  	<div class="centered">
+  		<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">
+  	</div>  
   </div>
 <?php
 }
