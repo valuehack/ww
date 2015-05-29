@@ -43,17 +43,18 @@
 <!-- Modal -->
   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog-login">
-      <div class="modal-content">
+      <div class="modal-content-login">
+      	          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
           <h2 class="modal-title" id="myModalLabel">Anmelden</h2>
         </div>
         <div class="modal-body">
           <p>
           	<form method="post" action="" name="anmeldung">
-          		<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
-          		<input class="inputfield" type="password" name="user_password" placeholder=" Passwort" required><br>
-          		<input class="inputbutton" type="button" value="Anmelden">
+          		<input class="inputfield_login" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
+          		<input class="inputfield_login" type="password" name="user_password" placeholder=" Passwort" required><br>
+          		<input class="inputbutton_login" type="button" value="Anmelden">
           	</form>       	
           </p>
         </div>
