@@ -36,27 +36,26 @@ if(isset($_GET['q']))
   		<p class="salon_date">
   			  <? 
   if ($entry3[start] != NULL && $entry3[end] != NULL)
-    {
-    $tag=date("w",strtotime($entry3[start]));
-    $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
-    echo $tage[$tag].", ";
-    echo strftime("%d.%m.%Y, %H:%M Uhr", strtotime($entry3[start]))." &ndash; ";
-    if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
-      {
-      $tag=date("w",strtotime($entry3[end]));
-      echo $tage[$tag].", ";
-      echo strftime("%d.%m.%Y, %H:%M Uhr", strtotime($entry3[end]));
+        {
+        $tag=date("w",strtotime($entry3[start]));
+        $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
+        echo $tage[$tag]." ";
+        echo strftime("%d.%m.%Y %H:%M", strtotime($entry3[start]));
+        if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
+          {
+          $tag=date("w",strtotime($entry3[end]));
+          echo $tage[$tag]." ";
+          echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+          }
+        else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry3[end]));
       }
-    else echo strftime("%H:%M Uhr", strtotime($entry3[end]));
-  }
-  elseif ($entry3[start]!= NULL)
-    {
-    $tag=date("w",strtotime($entry3[start]));
-    echo $tage[$tag].", ";
-    echo strftime("%d.%m.%Y", strtotime($entry3[start]));
-  }
-  else echo "Der Termin wird in k&uuml;rze bekannt gegeben";
-?>
+      elseif ($entry3[start]!= NULL)
+        {
+        $tag=date("w",strtotime($entry3[start]));
+        echo $tage[$tag]." ";
+        echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
+      }
+      else echo "Der Termin wird in k&uuml;rze bekannt gegeben."; ?>
   		</p>
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		<div class="centered">
@@ -119,9 +118,28 @@ else {
     echo Phrase('day'.$day).", ";
     */
     echo "<div class='salon_dates'>";
-    echo date("d.m.Y",strtotime($entry[start]));
-    echo " %ndash; ";
-    echo date("d.m.Y",strtotime($entry3[end]));
+           
+    if ($entry[start] != NULL && $entry[end] != NULL)
+      {
+      $tag=date("w",strtotime($entry[start]));
+      $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
+      echo $tage[$tag]." ";
+      echo strftime("%d.%m.%Y %H:%M", strtotime($entry[start]));
+      if (strftime("%d.%m.%Y", strtotime($entry[start]))!=strftime("%d.%m.%Y", strtotime($entry[end])))
+        {
+        $tag=date("w",strtotime($entry[end]));
+        echo $tage[$tag]." ";
+        echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry[end]));
+        }
+      else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry[end]));
+    }
+    elseif ($entry[start]!= NULL)
+      {
+      $tag=date("w",strtotime($entry[start]));
+      echo $tage[$tag]." ";
+      echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry[start]));
+    }
+    else echo "Der Termin wird in k&uuml;rze bekannt gegeben.";
     echo "</div>";
     
     echo $entry[text];

@@ -46,7 +46,7 @@ if(isset($_GET['q']))
         echo $tage[$tag]." ";
         echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
       }
-      else echo "noch offen"; ?>
+      else echo "Der Termin wird in k&uuml;rze bekannt gegeben."; ?>
     </p>
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		<div class="centered">
@@ -129,7 +129,7 @@ else {
         echo $tage[$tag]." ";
         echo strftime("%d.%m.%Y %H:%M", strtotime($entry[start]));
       }
-      else echo "noch offen"; ?>
+      else echo "Der Termin wird in k&uuml;rze bekannt gegeben."; ?>
 		</div>
 		<?php echo $entry[text]; ?> 
 			<div class="salon_anmeldung"><a href="<? echo "?q=$id";?>">zur Anmeldung</a></div>
