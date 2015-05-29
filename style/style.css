@@ -220,8 +220,8 @@ strong {
 	border: 0;
 	border-radius: 2px;
 	margin: 5px;
-	width: 400px;
-	height: 60px;
+	width: 330px;
+	height: 50px;
 	font-size: 16pt;
 	font-family: "Baskerville", Georgia, Times, serif;
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
@@ -236,7 +236,7 @@ strong {
 	background-color: #fff;
 	border: 1px solid #cfcfcf;
 	margin: 5px;
-	width: 372px;
+	width: 302px;
 	height: 50px;
 	font-size: 16pt;
 	font-family: "Baskerville", Georgia, Times, serif;
