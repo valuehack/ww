@@ -983,11 +983,19 @@ a.socialimg:hover  {
 
 .salon_inputfield {
 	border-top: 1px solid #dad8d8;
-	width: 298px;
+	width: 296px;
 	height: 48px;
-	box-shadow: none;
+	box-shadow: 0 0 0 0 inset;
 	padding: 3px 15px;	
 }
+.salon_inputfield select {
+	border-top: 1px solid #dad8d8;
+	width: 330px;
+	height: 48px;
+	box-shadow: 0 0 0 0 inset;
+	padding: 3px 15px 3px 0;	
+}
+
 .salon_inputfield:first-of-type {
 	border-top: medium none;	
 }
