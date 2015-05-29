@@ -134,17 +134,14 @@ echo "</table><br><br>";
       <div class="modal-body">
          <p>Wir freuen uns, dass Sie Interesse an unseren Medien haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten der Bestellung oder des Herunterladens digitaler Dateien zu erfahren (diese k&ouml;nnen wir leider nicht offen zug&auml;nglich machen):</p>
         <div class="subscribe">
-<!--           
-  Commented out, because of the clashes between forms
           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
-          <input class="inputfield" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required />
-          <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" style="display:none"  />
-          <input class="inputbutton" id="inputbutton" type="submit" name="fancy_ajax_form_submit" value="Eintragen" />
-          </form>  -->
+          	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+          	<input class="inputbutton" type="submit" name="submit" value="Eintragen">
+          </form> 
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+        <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
       </div>
     </div>
   </div>
