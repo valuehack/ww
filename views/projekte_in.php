@@ -28,7 +28,7 @@ if(isset($_POST['add'])){
   $add_code = $add_id . "0";
   if ($add_quantity==1) $wort = "wurde";
   else $wort = "wurden";
-  echo "<div style='text-align:center'><hr><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>Zum Korb</a><hr><br></div>";
+  echo "<div style='text-align:center'><hr><i>".$add_quantity." Credits für das ausgewählte Projekt ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>Zum Korb</a><hr><br></div>";
 
   if (isset($_SESSION['basket'][$add_id])) {
     $_SESSION['basket'][$add_code] += $add_quantity; 

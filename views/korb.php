@@ -26,7 +26,7 @@ function checkMe() {
     }
 }
 
-function modal() {
+function modalShow() {
     $('#myModal').modal('show');
 }
 </script>
@@ -101,9 +101,9 @@ if(isset($_POST['checkout'])) {
         //error message does not work, alternate message above
         echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
         ?>
-        <script>
-            modal();
-        </script>
+      
+        <a onClick="modalShow()">Test</a>
+
         <?
         }
 
@@ -478,7 +478,7 @@ else {
 }
 ?>
 
-!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
