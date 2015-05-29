@@ -65,9 +65,10 @@ if(isset($_GET['q']))
         echo strftime("%d.%m.%Y %H:%M", strtotime($entry3[start]));
         if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
           {
+          echo " Uhr &ndash; ";
           $tag=date("w",strtotime($entry3[end]));
-          echo $tage[$tag]." ";
-          echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+          echo $tage[$tag];
+          echo strftime(" %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
           }
         else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry3[end]));
       }
@@ -77,7 +78,7 @@ if(isset($_GET['q']))
         echo $tage[$tag]." ";
         echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
       }
-      else echo "Der Termin wird in k&uuml;rze bekannt gegeben."; ?>
+      else echo "Der Termin wird in K&uuml;rze bekannt gegeben."; ?>
   			</p>
 		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		
@@ -107,7 +108,7 @@ if(isset($_GET['q']))
       </select> 
       <input class="inputbutton" type="submit" value="Auswählen"><br>     
     </form>
-	<span id="change" class="salon_reservation_span_b"><?php echo $entry3[price]; ?> Credits pro Teilnehmer</span>
+	<span id="change" class="salon_reservation_span_b"><?php echo $entry3[price]; ?> Credits</span>
   <?php
   }
 ?>
@@ -173,9 +174,10 @@ if(isset($_GET['q']))
       echo strftime("%d.%m.%Y %H:%M", strtotime($entry[start]));
       if (strftime("%d.%m.%Y", strtotime($entry[start]))!=strftime("%d.%m.%Y", strtotime($entry[end])))
         {
+        echo " Uhr &ndash; ";
         $tag=date("w",strtotime($entry[end]));
-        echo $tage[$tag]." ";
-        echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry[end]));
+        echo $tage[$tag];
+        echo strftime(" %d.%m.%Y %H:%M Uhr", strtotime($entry[end]));
         }
       else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry[end]));
     }
@@ -185,7 +187,7 @@ if(isset($_GET['q']))
       echo $tage[$tag]." ";
       echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry[start]));
     }
-    else echo "Der Termin wird in k&uuml;rze bekannt gegeben.";
+    else echo "Der Termin wird in K&uuml;rze bekannt gegeben.";
     echo "</div>";
     echo "<p>";
     //echo "<img src='$img_url' alt='$id'>";

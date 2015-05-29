@@ -67,9 +67,10 @@ if(isset($_GET['q']))
         echo strftime("%d.%m.%Y %H:%M", strtotime($entry3[start]));
         if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
           {
+          echo " Uhr &ndash; ";
           $tag=date("w",strtotime($entry3[end]));
-          echo $tage[$tag]." ";
-          echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
+          echo $tage[$tag];
+          echo strftime(" %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
           }
         else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry3[end]));
       }
@@ -79,7 +80,7 @@ if(isset($_GET['q']))
         echo $tage[$tag]." ";
         echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
       }
-      else echo "Der Termin wird in k&uuml;rze bekannt gegeben."; ?>
+      else echo "Der Termin wird in K&uuml;rze bekannt gegeben."; ?>
       </p>
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">--> 	
   			
@@ -171,9 +172,10 @@ else {
         echo strftime("%d.%m.%Y %H:%M", strtotime($entry[start]));
         if (strftime("%d.%m.%Y", strtotime($entry[start]))!=strftime("%d.%m.%Y", strtotime($entry[end])))
           {
+          echo " Uhr &ndash; ";
           $tag=date("w",strtotime($entry[end]));
-          echo $tage[$tag]." ";
-          echo strftime(" Uhr &ndash; %d.%m.%Y %H:%M Uhr", strtotime($entry[end]));
+          echo $tage[$tag];
+          echo strftime(" %d.%m.%Y %H:%M Uhr", strtotime($entry[end]));
           }
         else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry[end]));
       }
@@ -183,7 +185,7 @@ else {
         echo $tage[$tag]." ";
         echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry[start]));
       }
-      else echo "Der Termin wird in k&uuml;rze bekannt gegeben."; ?>
+      else echo "Der Termin wird in K&uuml;rze bekannt gegeben."; ?>
 		</div>
 		<?php echo $entry[text]; ?> 
 			<div class="salon_anmeldung"><a href="<? echo "?q=$id";?>">zur Anmeldung</a></div>
