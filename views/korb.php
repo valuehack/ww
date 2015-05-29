@@ -498,23 +498,22 @@ if($_SESSION['basket']) {
     if (!($userCredits >= $itemsPrice)) {
         $differenz = $itemsPrice - $userCredits;
         ?>
+        <!-- possibility 2a
         <td align="right">
         <input type="button" value="Checkout" data-toggle="modal" data-target="#myModal"> 
         </td>
+        -->
+
+        <!-- possibility 2b -->
+        <td align="right">
+        <a href="index.php"><input type="button" name="checkout" value="Checkout"></a></td>  
     <?
     }
     else {
-    ?>
-         <!-- possibility 2a
+    ?>  
         <td align="right">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="submit" name="checkout" value="Checkout"></form></td>
-    -->
-
-    <!-- possibility 2b -->
-        <td align="right">
-        <a href="index.php"><input type="button" name="checkout" value="Checkout"></a></td>  
-
     <?
     }
     
