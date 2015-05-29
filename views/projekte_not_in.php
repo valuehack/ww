@@ -17,12 +17,12 @@ if ($id = $_GET["q"])
   $text=$entry[text];
 ?>
 	<div class="medien_head">
-  		<h1><?$title?></h1>
+  		<h1><?echo $title?></h1>
 	</div>
 	<div class="medien_seperator">
 		<h1>Inhalt und Informationen</h1>
 	</div>
-	<div class="medien-content">
+	<div class="medien_content">
 <?php
  	if ($entry[img]) echo $entry[img];
 
@@ -30,7 +30,7 @@ if ($id = $_GET["q"])
  	if ($entry[text2]) echo $entry[text2];
 ?>
    		<!-- Button trigger modal -->
-    	<input type="button" value="Investieren" data-toggle="modal" data-target="#myModal"> 
+    	<input type="button" value="Investieren" class="inputbutton" data-toggle="modal" data-target="#myModal"> 
 	</div>
 
 <?php
