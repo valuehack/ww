@@ -26,7 +26,7 @@ function checkMe() {
     }
 }
 
-function modalShow() {
+function showModal() {
     $('#myModal').modal('show');
 }
 </script>
@@ -102,7 +102,7 @@ if(isset($_POST['checkout'])) {
         echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
         ?>
       
-        <a onClick="modalShow()">Test</a>
+        <span onload="showModal"></span>
 
         <?
         }
