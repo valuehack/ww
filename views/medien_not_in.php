@@ -85,7 +85,7 @@ while($entry = mysql_fetch_array($result))
 
 echo "</table><br><br>";
 
-
+/*
 ?>
 
 <h5>Video</h5>
@@ -115,7 +115,7 @@ while($entry = mysql_fetch_array($result))
 }
 
 echo "</table><br><br>";
-
+*/
 }
 ?>
 <br><br><br><br><br><br><br><br><br>
