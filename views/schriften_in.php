@@ -56,17 +56,10 @@ if(isset($_POST['add'])){
   $add_quantity = $_POST['quantity'];
   $add_format = $_POST['format'];
   $add_code = $add_id . $add_format;
-  $type = $_POST['type'];
-  $title = $_POST['title'];
-  switch ($add_format) {
-      case 1: $format = "PDF"; break;
-      case 2: $format = "ePub"; break;
-      case 3: $format = "Kindle"; break;
-      case 4: $format = "Druck"; break;
-      default: $format = NULL; break;
-  }
+  if ($add_quantity==1) $wort = "wurde";
+  else $wort = "wurden";
 
- 	echo "<div style='text-align:center'><hr><i>Sie haben ".$add_quantity." Stück der ".ucfirst($type).' "'.ucfirst($title).'" ('.$format.") zu Ihrem Korb hinzugefügt.</i> &nbsp; <a href='../abo/korb.php'>Zum Korb</a><hr><br></div>";
+ 	echo "<div style='text-align:center'><hr><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>Zum Korb</a><hr><br></div>";
 
  	if (isset($_SESSION['basket'][$add_id])) {
     $_SESSION['basket'][$add_code] += $add_quantity; 
@@ -114,9 +107,7 @@ if(isset($_GET['q']))
     ?>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />
-      <input type="hidden" name="type" value="<?php echo $type ?>" />
-      <input type="hidden" name="title" value="<?php echo $title ?>" />
-      
+     
     <?php
       if ($entry3[format] == '0001') {
         echo 'Menge: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
