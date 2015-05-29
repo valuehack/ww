@@ -30,7 +30,9 @@ if ($id = $_GET["q"])
  	if ($entry[text2]) echo $entry[text2];
 ?>
    		<!-- Button trigger modal -->
-    	<input type="button" value="Investieren" class="inputbutton" data-toggle="modal" data-target="#myModal"> 
+   		<div class="centered"></div>
+    		<input type="button" value="Investieren" class="inputbutton" data-toggle="modal" data-target="#myModal"> 
+    	</div>
 	</div>
 
 <?php
