@@ -15,36 +15,40 @@ if ($id = $_GET["q"])
   $title=$entry[title];
   $avail=$entry[spots]-$entry[spots_sold];
   $text=$entry[text];
-
-  echo '<h3>'.$title.'</h3>';
-
- if ($entry[img]) echo $entry[img];
-
-  if ($entry[text]) echo "<p>$entry[text]</p>";
-  if ($entry[text2]) echo "<p>$entry[text2]</p>";
-
 ?>
-  <!-- Button trigger modal -->
- <input type="button" value="Investieren" data-toggle="modal" data-target="#myModal"> 
+	<div class="medien_head">
+  		<h1><?$title?></h1>
+	</div>
+	<div class="medien_seperator">
+		<h1>Inhalt und Informationen</h1>
+	</div>
+	<div class="medien-content">
+<?php
+ 	if ($entry[img]) echo $entry[img];
 
+  	if ($entry[text]) echo "<p>$entry[text]</p>";
+ 	if ($entry[text2]) echo "<p>$entry[text2]</p>";
+?>
+   		<!-- Button trigger modal -->
+    	<input type="button" value="Investieren" data-toggle="modal" data-target="#myModal"> 
+	</div>
 
 <?php
 }
 
 else {
 ?>
+	<div class="medien_info">
+		<h1>Projekte</h1>  
 
-<h2>Projekte</h2>  
-
-<div>
-<p>In der Wertewirtschaft finden Sie eine professionelle, seri&ouml;se und realistische Alternative, als B&uuml;rger in den langfristigen Bestand, die Entwicklung und das Gedeihen Ihrer Gesellschaft zu investieren. Ohne dieses b&uuml;rgerliche Engagement bliebe es bei der ewigen Polarisierung von Markt und Staat, die meist zugunsten der Gewalt entschieden wird. Wir &uuml;berlassen Ihnen aber freilich Ausma&szlig; und Verwendung Ihres Beitrages &ndash; bitte w&auml;hlen Sie jene Projekte aus, die Ihnen sinnvoll erscheinen. Je nach H&ouml;he Ihrer Investition profitieren Sie als Anerkennung Ihres Beitrages von den Angeboten der Wertewirtschaft.</p>
-</div>
-
-<div id="tabs-wrapper-sidebar"></div>
+		<p>In der Wertewirtschaft finden Sie eine professionelle, seri&ouml;se und realistische Alternative, als B&uuml;rger in den langfristigen Bestand, die Entwicklung und das Gedeihen Ihrer Gesellschaft zu investieren. Ohne dieses b&uuml;rgerliche Engagement bliebe es bei der ewigen Polarisierung von Markt und Staat, die meist zugunsten der Gewalt entschieden wird. Wir &uuml;berlassen Ihnen aber freilich Ausma&szlig; und Verwendung Ihres Beitrages &ndash; bitte w&auml;hlen Sie jene Projekte aus, die Ihnen sinnvoll erscheinen. Je nach H&ouml;he Ihrer Investition profitieren Sie als Anerkennung Ihres Beitrages von den Angeboten der Wertewirtschaft.</p>
+	</div>
+	<div class="medien_seperator">
+		<h1>Offene Projekte</h1>
+	</div>
+	<div class="medien_content">
 
 <?php 
-
-
 $sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status > 0 order by n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
@@ -73,15 +77,13 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
     }
     ?>
 </table>
-
-
+</div>
 
 <?php 
 } 
 ?>
 
-<br><br><br><br><br><br><br><br><br>
-
+</div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -95,18 +97,11 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 
         </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+        <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
       </div>
     </div>
   </div>
 </div>
-
-
-
-</div>
-<?php include "_side_not_in.php"; ?>
-</div>
-
 
 <?php 
 include "_footer.php"; 
