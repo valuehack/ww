@@ -101,10 +101,10 @@ if(isset($_POST['checkout'])) {
         //error message does not work, alternate message above
         echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
         ?>
-      
-        <input type="button" value="Test" data-toggle="modal" data-target="#myModal"> 
-        <p href="#myModal" data-toggle="modal" data-target="#myModal"></p> 
 
+       <script>
+        $('#myModal').modal('show');
+        </script>
         <?
         }
 
