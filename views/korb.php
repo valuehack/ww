@@ -1,4 +1,20 @@
 <!--Author: Bernhard Hegyi -->
+<!-- Bootstrap -->
+<link href="../style/modal.css" rel="stylesheet">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../tools/bootstrap.js"></script>
+
+<?php 
+include_once("../down_secure/functions.php");
+dbconnect();
+
+require_once('../classes/Login.php');
+include('_header.php'); 
+$title="Korb";
+?>
 
 <script type="text/javascript">
 
@@ -9,17 +25,11 @@ function checkMe() {
         return false;
     }
 }
+
+function modal() {
+    $('#myModal').modal('show');
+}
 </script>
-
-<?php 
-include_once("../down_secure/functions.php");
-dbconnect();
-
-require_once('../classes/Login.php');
-include('_header.php'); 
-$title="Korb";
-
-?>
 
 <div id="center">  
 <div id="content">
@@ -90,6 +100,11 @@ if(isset($_POST['checkout'])) {
         //$this->errors[] = "You do not have enough credits to buy the items in your basket.";
         //error message does not work, alternate message above
         echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
+        ?>
+        <script>
+            modal();
+        </script>
+        <?
         }
 
         else 
@@ -462,6 +477,27 @@ else {
     
 }
 ?>
+
+!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title" id="myModalLabel">Ungenügendes Guthaben</h2>
+      </div>
+      <div class="modal-body">
+        <p>Leider fehlen Ihnen ... Credits um die gew&uuml;nschten Produkte zu bestellen. Wir k&ouml;nnen die Bestellung ...</p>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+        <a href="../upgrade.php"><button type="button" class="btn btn-primary">Reservieren und Upgraden</button></a>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- backlink -->
 <a href="index.php"><?php echo WORDING_BACK_TO_LOGIN; ?></a>
