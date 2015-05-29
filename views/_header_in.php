@@ -38,7 +38,7 @@
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
                 <div class="login">
-                	<div class""><button type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
+                	<div class"anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
                 	
 <!-- Modal -->
   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -51,7 +51,7 @@
         <div class="modal-body">
           <p>
           	<form method="post" action="" name="anmeldung">
-          		<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+          		<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
           		<input class="inputbutton" type="button" value="Anmelden">
           	</form>       	
           </p>
@@ -60,7 +60,7 @@
     </div>
   </div>
                 	
-                	<div class="dropdown"><button class="dropdown_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Ulrich M&ouml;ller">Ulrich Moeller<span class="caret"></span></button>
+                	<div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Ulrich M&ouml;ller">Ulrich Moeller<span class="caret"></span></button>
                 	<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
                 		<li class="dropdown-header">um@wertewirtschaft.org</li>
                 		<li><a href="">Profil</a></li>

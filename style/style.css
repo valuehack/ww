@@ -122,12 +122,7 @@ strong {
 	right: 10%;
 }
 
-.login:before {
-	content: url(../style/gfx/user_icon.png);
-	height: 5px;
-}
-
-.dropdown_button {
+.login_button {
 	background: none;
 	color: #fff;
 	border: 0;
@@ -149,7 +144,6 @@ strong {
 	position: relative;
   	content: "";
   	border-top: 0;
-  	border-bottom: 4px solid;
 	top: auto;
   	left: auto;
 }
