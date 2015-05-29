@@ -102,7 +102,8 @@ if(isset($_POST['checkout'])) {
         echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
         ?>
       
-        <span onload="showModal"></span>
+        <input type="button" value="Test" data-toggle="modal" data-target="#myModal"> 
+        <p href="#myModal" data-toggle="modal" data-target="#myModal"></p> 
 
         <?
         }
