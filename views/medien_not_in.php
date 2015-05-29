@@ -29,6 +29,7 @@ if(isset($_GET['q']))
   	<div class="medien_head">
   		<h1><?=$entry3[title]." (".ucfirst($entry3[type]).")";?></h1>
 		<!--<img src="<?echo $img;?>" alt="<?echo $id;?>">-->
+	</div>
 	<div class="medien_seperator">
 		<h1>Inhalt und Informationen</h1>
 	</div>
@@ -40,7 +41,7 @@ if(isset($_GET['q']))
 
   	<!-- Button trigger modal -->
   	<div class="centered">
-  		<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">
+  		<input type="button" class="inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">
   	</div>  
   </div>
 <?php
