@@ -118,8 +118,8 @@ strong {
 
 .login {
 	position: absolute;
-	top: 15px;
-	right: 5%;
+	top: 2px;
+	right: 10%;
 }
 
 .login:before {
@@ -189,16 +189,17 @@ strong {
     text-decoration: none;
 }
 
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+/*.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
     color: #262626;
     text-decoration: none;
     background-color: #F5F5F5;
-}
+}*/
 
 .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
-    background-color: #E8E8E8;
-    background-image: linear-gradient(to bottom, #F5F5F5 0px, #E8E8E8 100%);
-    background-repeat: repeat-x;
+    /*background-color: #E8E8E8;
+    /*background-image: linear-gradient(to bottom, #F5F5F5 0px, #E8E8E8 100%);
+    background-repeat: repeat-x;*/
+   box-shadow: 0 0 1px 0 rgba(0,0,0,0.6);
 }
 
 .dropdown-header {
