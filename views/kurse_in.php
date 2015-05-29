@@ -216,8 +216,8 @@ if(isset($_GET['q']))
         Erklärung 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-        <a href="../upgrade.php"><button type="button" class="btn btn-primary">Anmelden</button></a>
+        <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
+        <a href="../upgrade.php"><button type="button" class="inputbutton">Anmelden</button></a>
       </div>
     </div>
   </div>
@@ -235,8 +235,8 @@ if(isset($_GET['q']))
         Erklärung 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-        <a href="../upgrade.php"><button type="button" class="btn btn-primary">Jetzt upgraden</button></a>
+        <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
+        <a href="../upgrade.php"><button type="button" class="inputbutton">Jetzt upgraden</button></a>
       </div>
     </div>
   </div>

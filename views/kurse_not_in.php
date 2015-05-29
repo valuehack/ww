@@ -108,10 +108,9 @@ if(isset($_GET['q']))
 ?>
 	</div>
 
-	<div class="blog_subscribe">
+	<div class="salon_subscribe">
           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
-          	<input class="inputfield" type="password" name="user_password" placeholder=" Passwort">
           	<input class="inputbutton" type="submit" name="submit" value="Eintragen">
           </form> 
   </div>
