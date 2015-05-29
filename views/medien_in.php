@@ -55,7 +55,11 @@ if(isset($_GET['q']))
 
   if ($_SESSION['Mitgliedschaft'] == 1) {  
     //Button trigger modal
-    echo '<input type="button" class="inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">';  
+    
+    echo "<div class='centered'>";
+    echo '<input type="button" value="Reservieren" class="inputbutton" data-toggle="modal" data-target="#myModal">';  
+	echo '</div>';
+	
   }
   else {
     ?>
@@ -175,7 +179,7 @@ echo "</table><br><br>";
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="inputtbutton_white" data-dismiss="modal">Schließen</button>
+        <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
       </div>
     </div>
   </div>

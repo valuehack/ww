@@ -82,7 +82,9 @@ if(isset($_GET['q']))
 
   if ($_SESSION['Mitgliedschaft'] == 1) {  
     //Button trigger modal
+    echo "<div class='centered'>";
     echo '<input type="button" value="Reservieren" class="inputbutton" data-toggle="modal" data-target="#myModal">';  
+	echo '</div>';
   }
   else {
     $pdf = substr($entry3[format],0,1);
@@ -136,10 +138,10 @@ else {
   ?>       
     	<p>Unsere Schriften umfassen derzeit:<br>
       		<ul>
-        		<li>B&uuml;cher &ndash; teilweise eigene, eher f&uuml;r ein breiteres Publikum, teilweise &Uuml;bersetzungen, meist schwierigere Texte</li>
-        		<li>Analysen &ndash; besonders effiziente und lesbare Texte f&uuml;r einen schnellen, aber profunden &Uuml;berblick zu einem Thema</li>
-        		<li>Restexemplare der gedruckten Scholien bis 2014</li>
-        		<li>neue Druckausgaben der Scholien</li>
+        		<li><b>B&uuml;cher</b> &ndash; teilweise eigene, eher f&uuml;r ein breiteres Publikum, teilweise &Uuml;bersetzungen, meist schwierigere Texte</li>
+        		<li><b>Analysen</b> &ndash; besonders effiziente und lesbare Texte f&uuml;r einen schnellen, aber profunden &Uuml;berblick zu einem Thema</li>
+        		<li>Restexemplare der gedruckten <b>Scholien</b> bis 2014</li>
+        		<li>neue Druckausgaben der <b>Scholien</b></li>
      	  </ul>
 		</p>  
   </div>
