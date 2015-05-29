@@ -36,7 +36,9 @@ if(isset($_GET['q']))
 ?>
 
   <!-- Button trigger modal -->
-  		<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">  
+  		<div class="centered">
+  			<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">  
+  		</div>
   </div>
 <?php
 }
