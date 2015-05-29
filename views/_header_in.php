@@ -10,7 +10,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 		<!-- Bootstrap -->
-		<!--<link href="../style/modal.css" rel="stylesheet">-->
+		<link href="../style/modal.css" rel="stylesheet">
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../tools/bootstrap.js"></script>
 
@@ -37,8 +37,31 @@
         <header class="header">
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
-                <div class="login"><div class="dropdown"><button class="dropdown_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Ulrich M&ouml;ller">Ulrich Moeller<span class="caret"></span></button>
-                	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <div class="login">
+                	<div class""><button type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
+                	
+<!-- Modal -->
+  <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h2 class="modal-title" id="myModalLabel">Anmelden</h2>
+        </div>
+        <div class="modal-body">
+          <p>
+          	<form method="post" action="" name="anmeldung">
+          		<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+          		<input class="inputbutton" type="button" value="Anmelden">
+          	</form>       	
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+                	
+                	<div class="dropdown"><button class="dropdown_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Ulrich M&ouml;ller">Ulrich Moeller<span class="caret"></span></button>
+                	<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
                 		<li class="dropdown-header">um@wertewirtschaft.org</li>
                 		<li><a href="">Profil</a></li>
                 		<li><a href="">Upgrade</a></li>
