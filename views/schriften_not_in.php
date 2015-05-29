@@ -49,15 +49,15 @@ else {
 		<p>Unsere Schriften umfassen derzeit:<br>
 
 			<ul>
-				<li>B&uuml;cher &ndash; teilweise eigene, eher f&uuml;r ein breiteres Publikum, teilweise &Uuml;bersetzungen, meist schwierigere Texte</li>
-				<li>Analysen &ndash; besonders effiziente und lesbare Texte f&uuml;r einen schnellen, aber profunden &Uuml;berblick zu einem Thema</li>
-				<li>Restexemplare der gedruckten Scholien bis 2014</li>
-			<li>neue Druckausgaben der Scholien</li>
+				<li><b>B&uuml;cher</b> &ndash; teilweise eigene, eher f&uuml;r ein breiteres Publikum, teilweise &Uuml;bersetzungen, meist schwierigere Texte</li>
+				<li><b>Analysen</b> &ndash; besonders effiziente und lesbare Texte f&uuml;r einen schnellen, aber profunden &Uuml;berblick zu einem Thema</li>
+				<li>Restexemplare der gedruckten <b>Scholien</b> bis 2014</li>
+			<li>neue Druckausgaben der <b>Scholien</b></li>
 			</ul>
 		</p>
 	</div>
 	<div class="medien_seperator">
-    	<h1>Termine</h1>
+    	<h1>Schriften</h1>
     </div>
     <div class="medien_content">
     	

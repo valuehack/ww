@@ -1044,6 +1044,12 @@ a.socialimg:hover  {
 	margin: 20px 0;
 }
 
+.medien_info li {
+	font-size: 22pt;
+	line-height: 1.2;
+	margin: 15px 0;	
+}
+
 .medien_seperator {
 	box-shadow: 0 0 1px 0 rgba(0,0,0,0.6);
 	width: 100%;
