@@ -52,6 +52,7 @@
           <p>
           	<form method="post" action="" name="anmeldung">
           		<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
+          		<input class="inputfield" type="password" name="user_password" placeholder=" Passwort" required><br>
           		<input class="inputbutton" type="button" value="Anmelden">
           	</form>       	
           </p>
