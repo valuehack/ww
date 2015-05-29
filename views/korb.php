@@ -1,18 +1,10 @@
-<!--Author: Bernhard Hegyi -->
-<!-- Bootstrap -->
-<link href="../style/modal.css" rel="stylesheet">
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../tools/bootstrap.js"></script>
 
 <?php 
 include_once("../down_secure/functions.php");
 dbconnect();
 
 require_once('../classes/Login.php');
-include('_header.php'); 
+include('_header_in.php'); 
 $title="Korb";
 ?>
 
@@ -51,6 +43,7 @@ if(isset($_POST['remove'])) {
 
 //Check if checkout was made. If yes, show bought items.
 if(isset($_POST['checkout'])) {
+    
     $items = $_SESSION['basket'];
     //$login->checkout($items);   
 
@@ -456,6 +449,7 @@ if($_SESSION['basket']) {
     <input type="submit" name="delete" value="Clear Basket" onClick="return checkMe()"></form></td>
     
 <?php
+//check, if there are enough credits
     $items = $_SESSION['basket']; 
     $user_id = $_SESSION['user_id'];
    
@@ -495,8 +489,11 @@ if($_SESSION['basket']) {
     if ($versand >= 1) $itemsPrice += 5;
 
     if (!($userCredits >= $itemsPrice)) {
+        $differenz = $itemsPrice - $userCredits;
         ?>
+        <td align="right">
         <input type="button" value="Checkout" data-toggle="modal" data-target="#myModal"> 
+        </td>
     <?
     }
     else {
@@ -534,12 +531,12 @@ else {
         <h2 class="modal-title" id="myModalLabel">Ungenügendes Guthaben</h2>
       </div>
       <div class="modal-body">
-        <p>Leider fehlen Ihnen ... Credits um die gew&uuml;nschten Produkte zu bestellen. Wir k&ouml;nnen die Bestellung ...</p>
+        <p>Vielen Dank f&uuml;r Ihre Bestellung/Reservierung! F&uuml;r den Zugriff/die Teilnahme laden Sie bitte noch Ihr Guthaben auf &ndash; nach Zahlungseingang reservieren wir dann sofort die Pl&auml;tze bzw. Medien f&uuml;r Sie. W&auml;hlen Sie dazu bitte wieder die gew&uuml;nschte Stufe. Vielleicht ist das der richtige Augenblick, sich als Wertewirt zu bekennen und unser Angebot voll nutzen zu k&ouml;nnen?</p>
         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-        <a href="../upgrade.php"><button type="button" class="btn btn-primary">Reservieren und Upgraden</button></a>
+        <a href="../upgrade.php"><button type="button" class="btn btn-primary">Upgraden</button></a>
 
       </div>
     </div>
