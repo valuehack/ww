@@ -26,9 +26,6 @@ function checkMe() {
     }
 }
 
-function showModal() {
-    $('#myModal').modal('show');
-}
 </script>
 
 <div id="center">  
@@ -102,9 +99,6 @@ if(isset($_POST['checkout'])) {
         echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
         ?>
 
-       <script>
-        $('#myModal').modal('show');
-        </script>
         <?
         }
 
@@ -460,9 +454,61 @@ if($_SESSION['basket']) {
 <table style="width:100%"><tr><td style="width:80%">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <input type="submit" name="delete" value="Clear Basket" onClick="return checkMe()"></form></td>
-    <td align="right">
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-    <input type="submit" name="checkout" value="Checkout"></form></td></tr>
+    
+<?php
+    $items = $_SESSION['basket']; 
+    $user_id = $_SESSION['user_id'];
+   
+    $user_credits_query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '$user_id' ";
+    $user_credits_result = mysql_query($user_credits_query) or die("Failed Query of " . $user_credits_query. mysql_error());
+
+    $userCreditsArray = mysql_fetch_array($user_credits_result);
+    $userCredits = $userCreditsArray[credits_left];
+
+    $_SESSION['credits_left'] = $userCredits;
+
+    $itemsPrice = 0;
+    foreach ($items as $code => $quantity) 
+    {
+        $length = strlen($code) - 1;
+
+        $key = substr($code,-2,$length);
+        $format = substr($code,-1,1);
+
+        $items_price_query = "SELECT * from produkte WHERE `n` LIKE '$key'";
+        $items_price_result = mysql_query($items_price_query) or die("Failed Query of " . $items_price_query. mysql_error());
+        $itemsPriceArray = mysql_fetch_array($items_price_result);
+        
+        if ($format == 4 && $itemsPriceArray[price2]) {
+            $itemsPriceSum = $quantity * $itemsPriceArray[price2];
+        }
+        else {
+            $itemsPriceSum = $quantity * $itemsPriceArray[price];
+        }
+
+        $itemsPrice += $itemsPriceSum;
+
+        if ($format == 4) {
+            $versand += 1;
+        }
+    }
+    if ($versand >= 1) $itemsPrice += 5;
+
+    if (!($userCredits >= $itemsPrice)) {
+        ?>
+        <input type="button" value="Checkout" data-toggle="modal" data-target="#myModal"> 
+    <?
+    }
+    else {
+    ?>
+        <td align="right">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <input type="submit" name="checkout" value="Checkout"></form></td>
+    <?
+    }
+    ?>
+
+</tr>
 </table>
 
 <?php
