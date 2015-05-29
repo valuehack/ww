@@ -235,7 +235,7 @@ else {
           <p>Sind Sie gar nicht in Wien zuhause? Keine Sorge, die meisten unserer G&auml;ste kommen von au&szlig;erhalb. Wenn sich kein Wienbesuch mit einem sch&ouml;nen Abend bei uns &uuml;berschneiden sollte, erleiden Sie keine Einbu&szlig;e: Sie k&ouml;nnen stattdessen im selben Gegenwert Aufzeichnungen anh&ouml;ren, Schriften beziehen oder anderswie aus unserem umfangreichen Angebot Nutzen ziehen &ndash; ein Angebot, das insbesondere f&uuml;r Nicht-Wiener gedacht ist, denn vom Unternehmergeist und Erkenntnisdrang des alten Wiens bestehen im neuen leider nur noch letzte Reste. Inspiration findet sich hier aber noch genug, und wir bringen Leben ins Freilicht-Museum! Geben Sie uns eine Chance, auch Sie zu inspirieren und zu beleben.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="inputbutton" data-dismiss="modal">Schließen</button>
+          <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
           <a href="../abo/"><button type="button" class="inputbutton">Jetzt upgraden</button></a>
         </div>
       </div>
