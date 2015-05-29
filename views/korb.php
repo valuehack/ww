@@ -90,6 +90,7 @@ if(isset($_POST['checkout'])) {
         //$this->errors[] = "You do not have enough credits to buy the items in your basket.";
         //error message does not work, alternate message above
         echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
+        header('Location: http://test.wertewirtschaft.net/abo/?u=1');
         ?>
 
         <?
@@ -447,8 +448,12 @@ if($_SESSION['basket']) {
 <table style="width:100%"><tr><td style="width:80%">
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <input type="submit" name="delete" value="Clear Basket" onClick="return checkMe()"></form></td>
-    
+  
+  <td align="right">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <input type="submit" name="checkout" value="Checkout"></form></td>  
 <?php
+/*
 //check, if there are enough credits
     $items = $_SESSION['basket']; 
     $user_id = $_SESSION['user_id'];
@@ -503,6 +508,7 @@ if($_SESSION['basket']) {
         <input type="submit" name="checkout" value="Checkout"></form></td>
     <?
     }
+    */
     ?>
 
 </tr>
