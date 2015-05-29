@@ -10,7 +10,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 		<!-- Bootstrap -->
-		<link href="../style/modal.css" rel="stylesheet">
+		<!--<link href="../style/modal.css" rel="stylesheet">-->
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../tools/bootstrap.js"></script>
 
