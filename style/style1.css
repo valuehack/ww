@@ -52,10 +52,11 @@ table {
 
 .header {
 	width: 100%;
-	height: 380px;
+	height: 290px;
 	margin: 0;
 	top: 0;
 	left: 0;
+	background: rgb(11,19,30) url(gfx/header_neu_blau.png) no-repeat center -250px;
 	/*background: rgb(30,48,64);*/
 }
 
@@ -63,6 +64,7 @@ table {
 	height: 30px;
 	box-shadow: 0 0 1px 0 rgba(0,0,0,0.7);
 	padding: 15px 0 5px 0;
+	background: rgba(255,255,255,0.8)
 }
 
 .logo {
@@ -70,7 +72,7 @@ table {
 	height: 200px;	
 	margin: 0 auto;
 	text-align: center;
-	background: rgb(11,19,30) url(gfx/header_neu_blau.png) no-repeat center -250px;
+	
 }
 
 .logo_img {
@@ -112,6 +114,7 @@ table {
    	/*padding: 0 17%;*/
 	text-align: center;
 	box-shadow: 0 0 1px 0 rgb(20,20,20);
+	background: rgb(255,255,255);
 }
 
 .navi {
