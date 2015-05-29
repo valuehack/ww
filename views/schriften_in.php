@@ -1,10 +1,8 @@
-<!-- Bootstrap -->
-<link href="../style/modal.css" rel="stylesheet">
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../tools/bootstrap.js"></script>
+<?php 
+require_once('../classes/Login.php');
+include('_header_in.php'); 
+$title="Schriften";
+?>
 
 <script>
 function changeView(price, price2) {
@@ -29,20 +27,7 @@ function changePrice2(totalQuantity, price2){
 }
 </script>
 
-
-<?php 
-//Author: Bernhard Hegyi
-
-require_once('../classes/Login.php');
-include('_header.php'); 
-$title="Schriften";
-
-?>
-
-<div id="center">  
-<div id="content">
-<a class="content" href="../index.php">Index &raquo;</a><a class="content" href="index.php"> Schriften</a>
-<div id="tabs-wrapper-lower"></div>
+<div class="content">
 
 
 <?php 
@@ -82,18 +67,22 @@ if(isset($_GET['q']))
   $type=$entry3[type];
   $title=$entry3[title];
 ?>
-  
-  <h3 style="font-style:none;"><?echo $entry3[title]?></h3>
-
+  	<div class="medien_head">
+  		<h1><?echo $entry3[title]?></h1>
+	</div>
+	<div class="medien_seperator">
+		<h1>Inhalt und Informationen</h1>
+	</div>
+	<div class="medien_content">
 <? 
   if ($entry3[img]) echo $entry3[img];
 
-  if ($entry3[text]) echo "<p>$entry3[text]</p>";
-  if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
+  if ($entry3[text]) echo $entry3[text];
+  if ($entry3[text2]) echo $entry3[text2];
 
   if ($_SESSION['Mitgliedschaft'] == 1) {  
     //Button trigger modal
-    echo '<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';  
+    echo '<input type="button" value="Reservieren" class="inputbutton" data-toggle="modal" data-target="#myModal">';  
   }
   else {
     $pdf = substr($entry3[format],0,1);
@@ -129,35 +118,37 @@ if(isset($_GET['q']))
       }
       else { 
     ?>
-      <input type="submit" value="Auswählen">&nbsp;&nbsp;<i><span id="price"><?echo $entry3[price]?> Credits</span></i>
+      <input type="submit" class="inputbutton" value="Auswählen">&nbsp;&nbsp;<i><span id="price"><?echo $entry3[price]?> Credits</span></i>
     
     <?php
       } ?>
     </form>
+    </div>
 <?php 
   }
 
 }
      
-
 else {
-  echo "<h2>Schriften</h2>";
+  echo "<div class='medien_info'>";	
 
   if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>       
-    <p>Unsere Schriften umfassen derzeit:<br>
-      <ul>
-        <li>B&uuml;cher &ndash; teilweise eigene, eher f&uuml;r ein breiteres Publikum, teilweise &Uuml;bersetzungen, meist schwierigere Texte</li>
-        <li>Analysen &ndash; besonders effiziente und lesbare Texte f&uuml;r einen schnellen, aber profunden &Uuml;berblick zu einem Thema</li>
-        <li>Restexemplare der gedruckten Scholien bis 2014</li>
-        <li>neue Druckausgaben der Scholien</li>
-      </ul>
-</p>     
+    	<p>Unsere Schriften umfassen derzeit:<br>
+      		<ul>
+        		<li>B&uuml;cher &ndash; teilweise eigene, eher f&uuml;r ein breiteres Publikum, teilweise &Uuml;bersetzungen, meist schwierigere Texte</li>
+        		<li>Analysen &ndash; besonders effiziente und lesbare Texte f&uuml;r einen schnellen, aber profunden &Uuml;berblick zu einem Thema</li>
+        		<li>Restexemplare der gedruckten Scholien bis 2014</li>
+        		<li>neue Druckausgaben der Scholien</li>
+     	  </ul>
+		</p>  
+  </div>
   <?
   } ?>
-
-  <div id="tabs-wrapper-sidebar"></div>
-
+  	<div class="medien_seperator">
+    	<h1>Schriften</h1>
+    </div> 
+	<div class="medien_content">
 <table style="width:100%;border-collapse: collapse">
 
   <tr>
@@ -185,10 +176,11 @@ while($entry = mysql_fetch_array($result))
 }
 
 echo "</table><br><br>";
-
+echo "</div>";
 }
 ?>
 
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -202,15 +194,11 @@ echo "</table><br><br>";
         <p>Wir freuen uns, dass Sie eine unserer Schriften bestellen m&ouml;chten. Allerdings sind einige Schriften nicht f&uuml;r die &Ouml;ffentlichkeit bestimmt, andere sind im Buchhandel zu erwerben,&nbsp;da ein Vertrieb und Versand f&uuml;r uns nicht wirtschaftlich&nbsp;ist. Unser Webshop, &uuml;ber den alle Schriften entweder bestellt oder in allen digitalen Formaten f&uuml;r Leseger&auml;te heruntergeladen werden k&ouml;nnen, steht nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf unsere Schriften:&nbsp;</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-        <a href="../upgrade.php"><button type="button" class="btn btn-primary">Jetzt upgraden</button></a>
+        <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
+        <a href="../upgrade.php"><button type="button" class="inputbutton">Jetzt upgraden</button></a>
       </div>
     </div>
   </div>
 </div>
 
-
-</div>
-<?php include('_side_in.php'); ?>
-</div>
 <?php include('_footer.php'); ?>

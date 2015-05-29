@@ -1,24 +1,11 @@
-<!-- Bootstrap -->
-<link href="../style/modal.css" rel="stylesheet">
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../tools/bootstrap.js"></script>
-
 <?php 
 require_once('../classes/Login.php');
-include ("_header.php"); 
+include ("_header_in.php"); 
 $title="Projekte";
 
 ?>
 
-<!--Content-->
-<div id="center">
-<div id="content">
-<a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="index.php">Projekte</a>
-<div id="tabs-wrapper-lower"></div>
-
+<div class="content">
 
 <?php 
 if(isset($_POST['add'])){
@@ -48,16 +35,22 @@ if ($id = $_GET["q"])
   $avail=$entry[spots]-$entry[spots_sold];
   $text=$entry[text];
   $n = $entry[n];
+?>
+	<div class="media_head">
+ 		<h3><?echo $title?></h3>
+ 	</div>
+	<div class="medien_seperator">
+		<h1>Inhalt und Informationen</h1>
+	</div>
+	<div class="medien_content">
 
-  echo '<h3>'.$title.'</h3>';
-
-  echo "<p>".$text."</p>";
+<?php		
+  	echo $text;
 
   if ($_SESSION['Mitgliedschaft'] == 1) { 
     ?>
       <!-- Button trigger modal -->
-     <input type="button" value="Investieren" data-toggle="modal" data-target="#myModal"> 
-
+     <input type="button" class="inputbutton" value="Investieren" data-toggle="modal" data-target="#myModal"> 
     
     <?php
     }
@@ -65,34 +58,40 @@ if ($id = $_GET["q"])
       ?>
       <i><?php echo $entry[spots_sold]." von ".$entry[spots]." möglichen Credits zugewiesen"; ?></i><br>
 
-      <div><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      <div>
+      	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <i>Credits: </i>
-        <input type="hidden" name="add" value="<?php echo $n ?>" />
-        <input type="number" name="quantity" style="width:50px;" value="1" min="1" max="<?php echo $avail;?>">
-        <input type="submit" value="Zuweisen">
-      </form></div>
+        	<input type="hidden" name="add" value="<?php echo $n ?>" />
+        	<input type="number" name="quantity" style="width:50px;" value="1" min="1" max="<?php echo $avail;?>">
+        	<input type="submit" value="Zuweisen">
+      	</form>
+      </div>
     <?php
     }
-
+	echo "</div>";
 }
 
 else {
-
-  echo "<h2>Projekte</h2>";  
+	echo "<div class='media_content'>"; 
 
   if ($_SESSION['Mitgliedschaft'] == 1) { 
-    echo "<div>";
+    echo "<div class='media_info'>";
     echo "<p>In der Wertewirtschaft finden Sie eine professionelle, seri&ouml;se und realistische Alternative, als B&uuml;rger in den langfristigen Bestand, die Entwicklung und das Gedeihen Ihrer Gesellschaft zu investieren. Ohne dieses b&uuml;rgerliche Engagement bliebe es bei der ewigen Polarisierung von Markt und Staat, die meist zugunsten der Gewalt entschieden wird. Wir &uuml;berlassen Ihnen aber freilich Ausma&szlig; und Verwendung Ihres Beitrages &ndash; bitte w&auml;hlen Sie jene Projekte aus, die Ihnen sinnvoll erscheinen. Je nach H&ouml;he Ihrer Investition profitieren Sie als Anerkennung Ihres Beitrages von den Angeboten der Wertewirtschaft.</p>";
-    echo '</div><div id="tabs-wrapper-sidebar"></div>';
+    echo "</div>";
   }
 
   else {
 
-  echo "<div>";
+  echo "<div class='media_info'>";
   echo '<p>Wir bieten Ihnen durch unsere zahlreichen Angebote stets vollen Gegenwert f&uuml;r Ihre Unterst&uuml;tzung an. Eine wirkliche Unterst&uuml;tzung, die eine Ausweitung unserer T&auml;tigkeit erlaubt, wird es aber freilich erst, wenn Sie &ndash; so wie wir &ndash; einen gewissen Idealismus an den Tag legen und zumindest einen Teil Ihres Beitrages f&uuml;r Angebote widmen, die Ihnen nicht sofort, direkt und exklusiv zugute kommen, sondern Bausteine mit langfristiger Wirkung sind. In der Wertewirtschaft finden Sie eine professionelle, seri&ouml;se und realistische Alternative, als B&uuml;rger in den langfristigen Bestand, die Entwicklung und das Gedeihen Ihrer Gesellschaft zu investieren. Ohne dieses b&uuml;rgerliche Engagement bliebe es bei der ewigen Polarisierung von Markt und Staat, die meist zugunsten der Gewalt entschieden wird. Wir &uuml;berlassen Ihnen aber freilich Ausma&szlig; und Verwendung Ihres Beitrages &ndash; bitte w&auml;hlen Sie jene Projekte aus, die Ihnen sinnvoll erscheinen. Wenn Sie selbst einen gr&ouml;&szlig;eren Beitrag als en Restbetrag Ihres regelm&auml;&szlig;igen Guthabens investieren k&ouml;nnen und Projektvorschl&auml;ge haben, freuen wir uns &uuml;ber <a href="mailto:info@wertewirtschaft.org">Ihre Nachricht</a>. Ab einer Investition von 25.000&euro; k&ouml;nnen Sie Gesellschafter und damit Miteigent&uuml;mer unseres Unternehmens werden.</p>';
-  echo '</div><div id="tabs-wrapper-sidebar"></div>';
+  echo '</div>';
   }
-
+?>
+	<div class="medien_seperator">
+		<h1>Offene Projekte</h1>
+	</div>
+	<div class="media_content">
+<?php
 
 $sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status > 0 order by n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -122,14 +121,13 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
     }
     ?>
 </table>
-
+</div>
 
 
 <?php 
 } 
 ?>
-
-<br><br><br><br><br><br><br><br><br>
+</div>
 
 <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -144,17 +142,11 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 
             </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+            <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
           </div>
         </div>
       </div>
     </div>
-
-
-</div>
-<?php include "_side_in.php"; ?>
-</div>
-
 
 <?php 
 include "_footer.php"; 

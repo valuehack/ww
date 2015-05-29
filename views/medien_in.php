@@ -1,23 +1,11 @@
-<!-- Bootstrap -->
-<link href="../style/modal.css" rel="stylesheet">
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../tools/bootstrap.js"></script>
-
-
 <?
 require_once('../classes/Login.php');
 $title="Medien";
-include "_header.php";
+include "_header_in.php";
 
 ?>
-<!--Content-->
-<div id="center">
-        <div id="content">
-          <a class="content" href="../index.php">Index &raquo;</a> <a class="content" href="index.php"> Medien</a>
-	    <div id="tabs-wrapper"></div>
+
+<div class="content">
 
 <?php 
 if(!isset($_SESSION['basket'])){
@@ -52,18 +40,22 @@ if(isset($_GET['q']))
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
 ?>
-  
-  <h3 style="font-style:none;"><?=$entry3[title]." (".ucfirst($entry3[type]).")";?></h3>
-
+  	<div class="medien_head">
+  		<h1><?=$entry3[title]." (".ucfirst($entry3[type]).")";?></h1>
+	</div>
+	<div class="medien_seperator">
+		<h1>Inhalt und Informationen</h1>
+	</div>
+	<div class="medien_content">
 <? 
   if ($entry3[img]) echo $entry3[img];
 
-  if ($entry3[text]) echo "<p>$entry3[text]</p>";
-  if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
+  if ($entry3[text]) echo $entry3[text];
+  if ($entry3[text2]) echo $entry3[text2];
 
   if ($_SESSION['Mitgliedschaft'] == 1) {  
     //Button trigger modal
-    echo '<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';  
+    echo '<input type="button" class="inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">';  
   }
   else {
     ?>
@@ -76,26 +68,29 @@ if(isset($_GET['q']))
         <option value="4">4</option>
         <option value="5">5</option>        
       </select> -->
-      <input type="submit" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
+      <input type="submit" class="inputbutton" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
     </form>
 <?php 
   }
-
+	echo "</div>";
 }
      
 
 else {
-  echo "<h2>Medien</h2>";
+	
 
   if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>       
+  	<div class='medien_info'>
       <p>Da die meisten unserer G&auml;ste nicht in Wien zuhause sind und unsere Arbeit ein Publikum im gesamten deutschsprachigen Raum anspricht (hinter der Wertewirtschaft stehen deutsche, Schweizer und Liechtensteiner Unternehmer), bieten wir selbstverst&auml;ndlich digitale Medien an, die es erlauben, an unseren Erkenntnissen auch aus der Ferne teilzuhaben. Wir geben uns dabei viel M&uuml;he, den Fernzugang zu angenehm wie m&ouml;glich zu halten. Sie k&ouml;nnen also nicht bequem nachlesen, sondern meist auch nachh&ouml;ren, was sich in der Wertewirtschaft tut.</p>
+   </div>
   <?
   } ?>
-
-<div id="tabs-wrapper-sidebar"></div>
-
-<h5>Audio</h5>
+  
+	<div class="medien_seperator">
+    	<h1>Audio</h1>
+    </div>
+	<div class="medien_content">
 
 <table style="width:100%;border-collapse: collapse">
 
@@ -154,10 +149,12 @@ while($entry = mysql_fetch_array($result))
 echo "</table><br><br>";
 */
 
+ echo "</div>";
 }
 
 ?>
-<br><br><br><br><br><br><br><br><br>
+
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -170,24 +167,18 @@ echo "</table><br><br>";
       <div class="modal-body">
           <p>Wir freuen uns, dass Sie eine unserer Aufzeichnungen herunterladen m&ouml;chten. Allerdings sind einige Aufnahmen nicht f&uuml;r die &Ouml;ffentlichkeit bestimmt &ndash; wir und unsere G&auml;ste m&uuml;ssten uns ein allzu gro&szlig;es Blatt vor den Mund nehmen, wenn jeder mith&ouml;ren k&ouml;nnte. Das Herunterladen von Medien steht nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r die meisten Medien kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf alle unsere Medien:</p>
         <div class="subscribe">
-<!--           
-  Commented out, because of the clashes between forms
+
           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
-          <input class="inputfield" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required />
-          <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off" style="display:none"  />
-          <input class="inputbutton" id="inputbutton" type="submit" name="fancy_ajax_form_submit" value="Eintragen" />
-          </form>  -->
+          <input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+          <input class="inputbutton"  type="submit" name="submit" value="Eintragen" />
+          </form>  
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+        <button type="button" class="inputtbutton_white" data-dismiss="modal">Schließen</button>
       </div>
     </div>
   </div>
 </div>
 
-
-</div>
-<? include "_side_in.php"; ?>
-</div>
 <? include "_footer.php"; ?>

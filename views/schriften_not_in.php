@@ -27,9 +27,14 @@ if(isset($_GET['q']))
 	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
 	}
 ?>  	
-	<div class="medien">
+	<div class="medien_head">
   		<h1><?echo $entry3[title]?></h1>
 		<!--<img src="<?echo $img;?>" alt="<?echo $id;?>">-->
+	</div>
+	<div class="medien_seperator">
+		<h1>Inhalt und Informationen</h1>
+	</div>
+	<div class="medien_content">
 <? 
   if ($entry3[text]) echo $entry3[text];
   if ($entry3[text2]) echo $entry3[text2];
