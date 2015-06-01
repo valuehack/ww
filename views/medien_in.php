@@ -110,7 +110,7 @@ while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
   
-          echo "<h1><a href='?q=$id'>".$entry[title];"</a></h1>"; 
+          echo "<a class='medien_title_list' href='?q=$id'>".$entry[title];"</a>"; 
 
 ?>    
 	</div>
@@ -130,7 +130,7 @@ while($entry = mysql_fetch_array($result))
 {
   $video_id = $entry[id];
  
-          echo "<h1><a href='?q=$video_id'>".$entry[title];"</a></h1>"; 
+          echo "<a class='medien_title_list' href='?q=$id'>".$entry[title];"</a>"; 
 	}
 
 ?>
