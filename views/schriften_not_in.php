@@ -94,11 +94,11 @@ while($entry = mysql_fetch_array($result))
 			<td class="schriften_table_a">
 				<img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>">
 			</td>			
-			<td class="schriften_table_a">
+			<td class="schriften_table_b">
 				<span><? echo ucfirst($entry[type]);?></span><br>
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
 			</td>
-			<td class="schriften_table_a">	
+			<td class="schriften_table_c">	
 				<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">
 			</td>
 		</tr>
