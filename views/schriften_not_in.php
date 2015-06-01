@@ -72,7 +72,13 @@ else {
 $sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
-	      	//check, if there is a image in the salon folder
+	echo "<table class='schriften_table'>";
+
+while($entry = mysql_fetch_array($result))
+{
+	$id = $entry[id];
+	
+		      	//check, if there is a image in the salon folder
 	$img = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
@@ -80,12 +86,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 	} else {
 	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
 	}
-
-	echo "<table class='schriften_table'>";
-
-while($entry = mysql_fetch_array($result))
-{
-	$id = $entry[id];
+	
 ?>
 		<tr>
 			<td>	
@@ -95,7 +96,7 @@ while($entry = mysql_fetch_array($result))
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
 			</td>
 			<td>
-				<img src="<?echo $img;?>" alt="Cover <?echo $id;?>">
+				<img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>">
 			</td>
 		</tr>
 
