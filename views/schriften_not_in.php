@@ -36,14 +36,14 @@ if(isset($_GET['q']))
 	</div>
 	<div class="medien_content">
 <? 
-  if ($entry3[text]) echo $entry3[text];
-  if ($entry3[text2]) echo $entry3[text2];
+  if ($entry3[text]) echo "<p>".$entry3[text]."</p>";
+  if ($entry3[text2]) echo "<p>".$entry3[text2]."</p>";
 ?>
-	<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
   <!-- Button trigger modal -->
   		<div class="centered">
-  			<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">  
+  			<input type="button" class="inputbutton" value="Bestellen und Herunterladen" data-toggle="modal" data-target="#myModal">  
   		</div>
+  		<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
   </div>
 <?php
 }
@@ -72,20 +72,27 @@ else {
 $sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
+	echo "<table class='schriften_table'>";
+
 while($entry = mysql_fetch_array($result))
 {
 	$id = $entry[id];
 ?>
-
-      		<?php 
-      		echo "<a href='?q=$id'>".ucfirst($entry[type])." ".$entry[title];
-			if ($entry[format]) echo " ".$entry[format]." </a>"; 
-
-?>    
-
+		<tr>
+			<td>
+				<img src="<?echo $img?>" alt="Cover <?echo $id?>">
+			</td>
+			<td>
+      			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
+			</td>
+			<td>
+				<? echo ucfirst($entry[type]);?>
+			</td>
+		</tr>
 
 <?php
 	}
+	echo "</table>";
 }
 ?>
 
@@ -98,7 +105,7 @@ while($entry = mysql_fetch_array($result))
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="myModalLabel">Reservierung</h2>
+        <h2 class="modal-title" id="myModalLabel">Bestellen und Herunterladen</h2>
       </div>
       <div class="modal-body">
   			<p>Wir freuen uns, dass Sie Interesse an unseren Schriften haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten der Bestellung oder des Herunterladens digitaler Dateien zu erfahren (diese k&ouml;nnen wir leider nicht offen zug&auml;nglich machen):</p>

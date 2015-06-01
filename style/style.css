@@ -1137,6 +1137,33 @@ a:hover.medien_title_list {
 	text-decoration: underline;
 }
 
+/* ============ Schriften ============*/
+
+
+.schriften_table {
+	width: 100%;
+}
+
+.schriften_table tr {
+	min-height: 30px;
+	padding: 20px 0;
+}
+
+.schriften_table td {
+	font-size: 16pt;
+	vertical-align: middle;
+	min-width: 220px;
+	padding: 10px;
+}
+
+.schriften_table td a {
+	text-decoration: none;
+}
+
+.schriften_table td img {
+	
+}
+
 /* ============= Projekte ============*/
 
 .projekte {
