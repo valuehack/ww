@@ -1150,7 +1150,12 @@ a:hover.medien_title_list {
 
 .schriften_table {
 	width: 100%;
-	text-align: center;
+}
+
+.schriften_table span {
+	font-size: 12pt;
+	color: rgba(0,0,0,0.85);
+	margin-bottom: 10px;
 }
 
 .schriften_table tr {
@@ -1159,7 +1164,7 @@ a:hover.medien_title_list {
 }
 
 .schriften_table td {
-	font-size: 16pt;
+	font-size: 18pt;
 	vertical-align: middle;
 	min-width: 220px;
 	padding: 10px;

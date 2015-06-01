@@ -91,15 +91,15 @@ while($entry = mysql_fetch_array($result))
 	
 ?>
 		<tr>
-			<td>	
-				<!--<? echo ucfirst($entry[type]);?>
-			</td>-->
-			<td>
-      			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?><br>
-      			<? echo ucfirst($entry[type]);?>
-			</td>
 			<td>
 				<img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>">
+			</td>			
+			<td>
+				<span><? echo ucfirst($entry[type]);?></span>
+      			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?><br>
+			</td>
+			<td>	
+				<input type="button" class="inputbutton" value="Bestellen und Herunterladen" data-toggle="modal" data-target="#myModal">
 			</td>
 		</tr>
 
