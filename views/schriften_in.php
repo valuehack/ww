@@ -66,26 +66,34 @@ if(isset($_GET['q']))
   $n = $entry3[n];
   $type=$entry3[type];
   $title=$entry3[title];
+  
+          	//check, if there is a image in the salon folder
+	$img = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
+
+	if (@getimagesize($img)) {
+	    $img_url = $img;
+	} else {
+	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
+	}
 ?>
   	<div class="medien_head">
   		<h1><?echo $entry3[title]?></h1>
+  		  		<div class="centered">
+			<img src="<?echo $img;?>" alt="<?echo $id;?>">
+		</div>
 	</div>
 	<div class="medien_seperator">
 		<h1>Inhalt und Informationen</h1>
 	</div>
 	<div class="medien_content">
 <? 
-  if ($entry3[img]) echo $entry3[img];
-
   if ($entry3[text]) echo $entry3[text];
   if ($entry3[text2]) echo $entry3[text2];
-?>
-		<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
-<?php
+
   if ($_SESSION['Mitgliedschaft'] == 1) {  
     //Button trigger modal
     echo "<div class='centered'>";
-    echo '<input type="button" value="Reservieren" class="inputbutton" data-toggle="modal" data-target="#myModal">';  
+    echo '<input type="button" value="Bestellen und Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';  
 	echo '</div>';
   }
   else {
@@ -129,6 +137,7 @@ if(isset($_GET['q']))
       } ?>
     </form>
     </div>
+    <div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
    </div>
 <?php 
   }
@@ -155,34 +164,42 @@ else {
     	<h1>Schriften</h1>
     </div> 
 	<div class="medien_content">
-<table style="width:100%;border-collapse: collapse">
-
-  <tr>
-      <td><b>Titel</b></td>
-      
-  </tr>
-
 <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien' OR type LIKE 'analyse') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
+	echo "<table class='schriften_table'>";
+
 while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
-?>
-    <tr>
-        <td>
-          <?php 
-          echo "<a href='?q=$id'><i>".ucfirst($entry[type])."</i> ".$entry[title];
+  
+  //check, if there is a image in the salon folder
+	$img = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
 
-?>    
-    </tr>
+	if (@getimagesize($img)) {
+	    $img_url = $img;
+	} else {
+	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
+	}
+	
+?>
+		<tr>
+			<td>	
+				<? echo ucfirst($entry[type]);?>
+			</td>
+			<td>
+      			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
+			</td>
+			<td>
+				<img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>">
+			</td>
+		</tr>
 
 <?php
-}
-
-echo "</table><br><br>";
-echo "</div>";
+	}
+	echo "</table>";
+	echo "</div>";
 }
 ?>
 
@@ -194,7 +211,7 @@ echo "</div>";
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="myModalLabel">Mitgliedschaft 75</h2>
+        <h2 class="modal-title" id="myModalLabel">Bestellen und Herunterladen - Upgrade</h2>
       </div>
       <div class="modal-body">
         <p>Wir freuen uns, dass Sie eine unserer Schriften bestellen m&ouml;chten. Allerdings sind einige Schriften nicht f&uuml;r die &Ouml;ffentlichkeit bestimmt, andere sind im Buchhandel zu erwerben,&nbsp;da ein Vertrieb und Versand f&uuml;r uns nicht wirtschaftlich&nbsp;ist. Unser Webshop, &uuml;ber den alle Schriften entweder bestellt oder in allen digitalen Formaten f&uuml;r Leseger&auml;te heruntergeladen werden k&ouml;nnen, steht nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf unsere Schriften:&nbsp;</p>
