@@ -89,7 +89,7 @@ while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
 
-        echo  "<h1><a href='?q=$video_id'>".$entry[title];"</a></h1>";
+        echo  "<h1><a href='?q=$id'>".$entry[title];"</a></h1>";
 
 	}
 
