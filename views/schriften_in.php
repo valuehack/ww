@@ -185,11 +185,12 @@ while($entry = mysql_fetch_array($result))
 	
 ?>
 		<tr>
-			<td>	
+			<!--<td>	
 				<? echo ucfirst($entry[type]);?>
-			</td>
+			</td>-->
 			<td>
-      			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
+      			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?><br>
+      			<? echo ucfirst($entry[type]);?>
 			</td>
 			<td>
 				<img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>">
