@@ -43,7 +43,7 @@ if(isset($_GET['q']))
 ?>
   <!-- Button trigger modal -->
   		<div class="centered">
-  			<input type="button" class="inputbutton" value="Bestellen und Herunterladen" data-toggle="modal" data-target="#myModal">  
+  			<input type="button" class="medien_inputbutton" value="Bestellen und Herunterladen" data-toggle="modal" data-target="#myModal">  
   		</div>
   		<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
   </div>

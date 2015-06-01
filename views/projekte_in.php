@@ -51,7 +51,7 @@ if ($id = $_GET["q"])
     ?>
     <div class="centered">
       	<!-- Button trigger modal -->
-     	<input type="button" class="inputbutton" value="Investieren" data-toggle="modal" data-target="#myModal"> 
+     	<input type="button" class="medien_inputbutton" value="Investieren" data-toggle="modal" data-target="#myModal"> 
     </div>
     <?php
     }

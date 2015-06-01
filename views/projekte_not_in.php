@@ -31,7 +31,7 @@ if ($id = $_GET["q"])
 ?>
    		<!-- Button trigger modal -->
    		<div class="centered">
-    		<input type="button" value="Investieren" class="inputbutton" data-toggle="modal" data-target="#myModal"> 
+    		<input type="button" value="Investieren" class="medien_inputbutton" data-toggle="modal" data-target="#myModal"> 
     	</div>
     	<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Projekten</a></div>
 	</div>
