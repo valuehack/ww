@@ -69,9 +69,9 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
-?>   
-     	<h1><a href='?q=$id'><?echo $entry[title];?></a></h1>
-<?php 
+   
+     	echo  "<h1><a href='?q=$id'>".$entry[title];"</a></h1>";
+
 	}
 	echo "</div>";
 
@@ -88,9 +88,9 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
-?>
-          <h1><a href='?q=$id'><?echo $entry[title];?></a></h1>
-<?
+
+        echo  "<h1><a href='?q=$video_id'>".$entry[title];"</a></h1>";
+
 	}
 
 	echo "</div>";
