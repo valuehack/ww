@@ -14,7 +14,7 @@ if(isset($_GET['q']))
   $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien') AND id='$id'";
+  $sql="SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   
@@ -71,7 +71,7 @@ else {
     <div class="medien_content">
     	
 <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien' OR type LIKE 'analysen') AND status > 0 order by title asc, n asc";
+$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 	echo "<table class='schriften_table'>";
