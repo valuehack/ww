@@ -1128,9 +1128,9 @@ a.socialimg:hover  {
 
 a.medien_title_list  {
 	font-size: 28pt;
-	text-shadow: 0px 0px 1px rgb(20,20,20);
-	margin: 10px 0;
+	margin: 20px 0;
 	text-align: center;
+	text-decoration: none;
 }
 
 a:hover.medien_title_list {
