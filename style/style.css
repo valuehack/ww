@@ -1164,8 +1164,9 @@ a:hover.medien_title_list {
 }
 
 .medien_price {
-	font-size: 22pt;
-	margin: 10px 0 10px 20px;
+	font-size: 22pt !important;
+	margin: 10px 0 10px 80px;
+	display: block;
 }
 
 /* ============ Schriften ============*/

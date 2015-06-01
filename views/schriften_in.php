@@ -212,7 +212,7 @@ while($entry = mysql_fetch_array($result))
      
     			<?php
     				if ($entry[format] == '0001') {
-        				echo '<span class="medien_price" id="total2">'.$entry[price].' Credits</span><br>';
+        				echo '<span class="medien_price" id="total2">'.$entry[price].' Credits</span>';
 						echo '<input type="submit" class="inputbutton" value="Auswählen">';
       					}
       				else { 
@@ -221,7 +221,7 @@ while($entry = mysql_fetch_array($result))
       					echo '<input type="submit" class="inputbutton" value="Auswählen">';
 					}
       				if ($entry[format] == '0001') {      					
-        				echo 'Anzahl: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
+        				echo 'Anzahl: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100"><br>';
         				echo ' Format: <select name="format"><option value="4">Druck</option></select>';
       				}
 
