@@ -165,7 +165,7 @@ else {
     </div> 
 	<div class="medien_content">
 <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien' OR type LIKE 'analyse') AND status > 0 order by title asc, n asc";
+$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 	echo "<table class='schriften_table'>";
@@ -195,23 +195,23 @@ while($entry = mysql_fetch_array($result))
 			<td class="schriften_table_c">
 				<?php
 					if 	($_SESSION['Mitgliedschaft'] == 1) { 
-				echo '<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">';
+						echo '<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">';
 					}
 					else {
-						$pdf = substr($entry3[format],0,1);
-    					$epub = substr($entry3[format],1,1);
-    					$kindle = substr($entry3[format],2,1);
-    					$druck = substr($entry3[format],3,1);
+						$pdf = substr($entry[format],0,1);
+    					$epub = substr($entry[format],1,1);
+    					$kindle = substr($entry[format],2,1);
+    					$druck = substr($entry[format],3,1);
 
-    					$price = $entry3[price];
-    					$price2 = $entry3[price2];
+    					$price = $entry[price];
+    					$price2 = $entry[price2];
 					?>
 
     				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       					<input type="hidden" name="add" value="<?php echo $n; ?>">
      
     			<?php
-      				if ($entry3[format] == '0001') {
+      				if ($entry[format] == '0001') {
         				echo 'Menge: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
         				echo ' Format: <select name="format"><option value="4">Druck</option></select>';
       				}
@@ -226,12 +226,12 @@ while($entry = mysql_fetch_array($result))
       					echo '</select>';
       					}  
     
-      				if ($entry3[format] == '0001') {
-        				echo '<input type="submit" value="Auswählen">&nbsp;&nbsp;<i><span id="total2">'.$entry3[price].' Credits</span></i>';
+      				if ($entry[format] == '0001') {
+        				echo '<input type="submit" value="Auswählen">&nbsp;&nbsp;<i><span id="total2">'.$entry[price].' Credits</span></i>';
       					}
       				else { 
     					?>
-      					<input type="submit" class="inputbutton" value="Auswählen">&nbsp;&nbsp;<i><span id="price"><?echo $entry3[price]?> Credits</span></i>
+      					<input type="submit" class="inputbutton" value="Auswählen">&nbsp;&nbsp;<i><span id="price"><?echo $entry[price]?> Credits</span></i>
     
     				<?php
       					} 
