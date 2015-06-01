@@ -211,13 +211,22 @@ while($entry = mysql_fetch_array($result))
       					<input type="hidden" name="add" value="<?php echo $n; ?>">
      
     			<?php
-      				if ($entry[format] == '0001') {
+    				if ($entry[format] == '0001') {
+        				echo '<span id="total2">'.$entry[price].' Credits</span><br>';
+						echo '<input type="submit" class="inputbutton" value="Auswählen">';
+      					}
+      				else { 
+
+						echo '<span id="price"><'.$entry[price].' Credits</span>';
+      					echo '<input type="submit" class="inputbutton" value="Auswählen">';
+					}
+      				if ($entry[format] == '0001') {      					
         				echo 'Menge: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
         				echo ' Format: <select name="format"><option value="4">Druck</option></select>';
       				}
 
       				else { 
-      					echo '<span id="quantity"><input type="hidden" name="quantity" value="1" /></span>';
+      					echo '<span id="quantity"><input type="hidden" name="quantity" value="1"></span>';
       					echo ' Format: <select name="format" id="change" onchange="changeView('.$price.','.$price2.')">';
         					if ($pdf == 1) echo '<option value="1">PDF</option>';
         					if ($epub == 1) echo '<option value="2">ePub</option>';
@@ -225,16 +234,7 @@ while($entry = mysql_fetch_array($result))
         					if ($druck == 1) echo '<option value="4">Druck</option>';   
       					echo '</select>';
       					}  
-    
-      				if ($entry[format] == '0001') {
-        				echo '<input type="submit" value="Auswählen">&nbsp;&nbsp;<i><span id="total2">'.$entry[price].' Credits</span></i>';
-      					}
-      				else { 
-    					?>
-      					<input type="submit" class="inputbutton" value="Auswählen">&nbsp;&nbsp;<i><span id="price"><?echo $entry[price]?> Credits</span></i>
-    
-    				<?php
-      					} 
+     
    					echo "</form>";
 					}
 					?>
