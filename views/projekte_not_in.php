@@ -33,6 +33,7 @@ if ($id = $_GET["q"])
    		<div class="centered">
     		<input type="button" value="Investieren" class="inputbutton" data-toggle="modal" data-target="#myModal"> 
     	</div>
+    	<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Projekten</a></div>
 	</div>
 
 <?php
@@ -62,6 +63,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 		<h1><a href='?q=<?php echo $id;?>'><?php echo $entry[title];?></h1></a>
 		<?php echo $entry[text]; ?>
 		<div class="medien_anmeldung"><a href="?q=<?php echo $id;?>">weitere Informationen</a></div>
+		<div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
  	</div>   
     <?php
     }

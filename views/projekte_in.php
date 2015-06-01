@@ -67,6 +67,7 @@ if ($id = $_GET["q"])
         	<input type="submit" class="inputbutton" value="Zuweisen">
       	</form>
       </div>
+      <div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Projekten</a></div>
     <?php
     }
 	echo "</div>";
@@ -103,6 +104,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 		<h1><a href='?q=<?php echo $id;?>'><?php echo $entry[title];?></h1></a>
 		<?php echo $entry[text]; ?>
 		<div class="medien_anmeldung"><a href="?q=<?php echo $id;?>">weitere Informationen</a></div>
+		<div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
  	</div>    
     <?php
     }
