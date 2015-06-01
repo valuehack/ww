@@ -95,27 +95,15 @@ else {
 $sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status > 0 order by n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
-?>
-<br>
-
-<table style="width:100%;border-collapse: collapse">
-
-
-<?php
-
   while($entry = mysql_fetch_array($result))
   {
     $id = $entry[id];
    ?>
-
-    <tr>
-        <td class="bottomline"><a href='?q=<?php echo $id;?>'><b><?php echo $entry[title];?></b></a>
-    </tr>
-    <tr>
-        <td><?php echo $entry[text]; ?></td>
-    </tr>      
-    <tr><td>&nbsp;</td><td></td></tr>
-    
+	<div class="projekte">
+		<h1><a href='?q=<?php echo $id;?>'><?php echo $entry[title];?></h1></a>
+		<?php echo $entry[text]; ?>
+		<div class="medien_anmeldung"><a href="?q=<?php echo $id;?>">weitere Informationen</a></div>
+ 	</div>    
     <?php
     }
     ?>
