@@ -41,7 +41,7 @@ if(isset($_GET['q']))
   $n = $entry3[n];
 ?>
   	<div class="medien_head">
-  		<h1><?=$entry3[title]." (".ucfirst($entry3[type]).")";?></h1>
+  		<h1><?=$entry3[title];?></h1>
 	</div>
 	<div class="medien_seperator">
 		<h1>Inhalt und Informationen</h1>
@@ -58,7 +58,7 @@ if(isset($_GET['q']))
     	  
     <!--Button trigger modal-->
     <div class='centered'>
-    	<input type="button" value="Reservieren" class="inputbutton" data-toggle="modal" data-target="#myModal">  
+    	<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">  
 	</div>
 <?php	
   }
@@ -80,7 +80,7 @@ if(isset($_GET['q']))
 <?php 
   }
  ?>  
-    <div class="medien_anmeldung"><a href='<?echo $_SERVER['PHP_SELF'];?>'>zur&uuml;ck zu den Projekten</a></div>
+    <div class="medien_anmeldung"><a href='<?echo $_SERVER['PHP_SELF'];?>'>zur&uuml;ck zu den Medien</a></div>
 	</div>
 <?php
 }
@@ -102,9 +102,6 @@ else {
     </div>
 	<div class="medien_content">
 
-<table style="width:100%;border-collapse: collapse">
-
-
 <?php
 $sql = "SELECT * from produkte WHERE type LIKE 'audio' AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -112,29 +109,19 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
-?>
-    <tr>
-        <td>
-          <?php 
-          echo "<a href='?q=$id'><i>".$entry[title];
-      if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
+  
+          echo "<h1><a href='?q=$id'>".$entry[title];"</a></h1>"; 
 
 ?>    
-    </tr>
-
+	</div>
 <?php
 }
-
-echo "</table><br><br>";
-
-/*
 ?>
 
-<h5>Video</h5>
-
-<table style="width:100%;border-collapse: collapse">
-
-
+	<div class="medien_seperator">
+    	<h1>Video</h1>
+    </div>
+	<div class="medien_content">
 <?php
 $sql = "SELECT * from produkte WHERE type LIKE 'video' AND status > 0 order by title asc, id asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -142,24 +129,13 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
   $video_id = $entry[id];
+ 
+          echo "<h1><a href='?q=$video_id'>".$entry[title];"</a></h1>"; 
+	}
+
 ?>
-    <tr>
-        <td>
-          <?php 
-          echo "<a href='?q=$video_id'><i>".$entry[title];
-      if ($entry[author]) echo " - ".$entry[author]; 
-      if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
-
-?>    
-    </tr>
-
-<?php
-}
-
-echo "</table><br><br>";
-*/
-
- echo "</div>";
+	</div>
+<?
 }
 
 ?>
@@ -172,15 +148,14 @@ echo "</table><br><br>";
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="myModalLabel">Reservierung</h2>
+        <h2 class="modal-title" id="myModalLabel">Herunterladen</h2>
       </div>
       <div class="modal-body">
           <p>Wir freuen uns, dass Sie eine unserer Aufzeichnungen herunterladen m&ouml;chten. Allerdings sind einige Aufnahmen nicht f&uuml;r die &Ouml;ffentlichkeit bestimmt &ndash; wir und unsere G&auml;ste m&uuml;ssten uns ein allzu gro&szlig;es Blatt vor den Mund nehmen, wenn jeder mith&ouml;ren k&ouml;nnte. Das Herunterladen von Medien steht nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r die meisten Medien kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf alle unsere Medien:</p>
         <div class="subscribe">
-
           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
-          <input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
-          <input class="inputbutton"  type="submit" name="submit" value="Eintragen" />
+          	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+          	<input class="inputbutton"  type="submit" name="submit" value="Eintragen" />
           </form>  
         </div>
       </div>

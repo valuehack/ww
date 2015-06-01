@@ -27,7 +27,7 @@ if(isset($_GET['q']))
 	}
 ?>
   	<div class="medien_head">
-  		<h1><?=$entry3[title]." (".ucfirst($entry3[type]).")";?></h1>
+  		<h1><?=$entry3[title];?></h1>
 		<!--<img src="<?echo $img;?>" alt="<?echo $id;?>">-->
 	</div>
 	<div class="medien_seperator">
@@ -41,7 +41,7 @@ if(isset($_GET['q']))
 
   	<!-- Button trigger modal -->
   	<div class="centered">
-  		<input type="button" class="inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">
+  		<input type="button" class="inputbutton" value="Herunterladen" data-toggle="modal" data-target="#myModal">
   	</div>
   	<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Medien</a></div>  
   </div>
@@ -61,8 +61,6 @@ else {
     	<h1>Audio</h1>
     </div>
 	<div class="medien_content">
-		<table style="width:100%;border-collapse: collapse">
-
 
 <?php
 $sql = "SELECT * from produkte WHERE type LIKE 'audio' AND status > 0 order by title asc, n asc";
@@ -71,30 +69,19 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
-?>
-    <tr>
-        <td>
-          <?php 
-          echo "<a href='?q=$id'><i>".$entry[title];
-      if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
+
+          echo "<a href='?q=$id'><i>".$entry[title];"</a></h1>"; 
 
 ?>    
-    </tr>
+	</div>
 
 <?php
 }
-
-echo "</table><br><br>";
-
-echo "</div>";
-
-/*
 ?>
-
-<h5>Video</h5>
-
-<table style="width:100%;border-collapse: collapse">
-
+	<div class="medien_seperator">
+    	<h1>Video</h1>
+    </div>
+	<div class="medien_content">
 
 <?php
 $sql = "SELECT * from produkte WHERE type LIKE 'video' AND status > 0 order by title asc, id asc";
@@ -103,22 +90,12 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
+
+          echo "<h1><a href='?q=$id'>".$entry[title];"</a></h1>"; 
+	}
 ?>
-    <tr>
-        <td>
-          <?php 
-          echo "<a href='?q=$id'><i>".$entry[title];
-      if ($entry[author]) echo " - ".$entry[author]; 
-      if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
-
-?>    
-    </tr>
-
-<?php
-}
-
-echo "</table><br><br>";
-*/
+	</div>
+<?
 }
 ?>
 
@@ -130,10 +107,11 @@ echo "</table><br><br>";
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="myModalLabel">Reservierung</h2>
+        <h2 class="modal-title" id="myModalLabel">Herunterladen</h2>
       </div>
       <div class="modal-body">
-         <p>Wir freuen uns, dass Sie Interesse an unseren Medien haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten der Bestellung oder des Herunterladens digitaler Dateien zu erfahren (diese k&ouml;nnen wir leider nicht offen zug&auml;nglich machen):</p>
+         <p>Wir freuen uns, dass Sie Interesse an unseren Medien haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten der Bestellung oder des Herunterladens digitaler Dateien zu erfahren (diese k&ouml;nnen wir leider nicht offen zug&auml;nglich machen):
+         </p>
         <div class="subscribe">
           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
