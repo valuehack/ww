@@ -39,7 +39,7 @@ if(isset($_GET['q']))
   if ($entry3[text]) echo $entry3[text];
   if ($entry3[text2]) echo $entry3[text2];
 ?>
-
+	<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
   <!-- Button trigger modal -->
   		<div class="centered">
   			<input type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">  

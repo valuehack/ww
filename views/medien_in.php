@@ -53,13 +53,14 @@ if(isset($_GET['q']))
   if ($entry3[text]) echo $entry3[text];
   if ($entry3[text2]) echo $entry3[text2];
 
-  if ($_SESSION['Mitgliedschaft'] == 1) {  
-    //Button trigger modal
-    
-    echo "<div class='centered'>";
-    echo '<input type="button" value="Reservieren" class="inputbutton" data-toggle="modal" data-target="#myModal">';  
-	echo '</div>';
-	
+  if ($_SESSION['Mitgliedschaft'] == 1) {
+?> 		
+    	  
+    <!--Button trigger modal-->
+    <div class='centered'>
+    	<input type="button" value="Reservieren" class="inputbutton" data-toggle="modal" data-target="#myModal">  
+	</div>
+<?php	
   }
   else {
     ?>
@@ -78,7 +79,10 @@ if(isset($_GET['q']))
     </div>
 <?php 
   }
-	echo "</div>";
+ ?>  
+    <div class="medien_anmeldung"><a href='<?echo $_SERVER['PHP_SELF'];?>'>zur&uuml;ck zu den Projekten</a></div>
+	</div>
+<?php
 }
      
 

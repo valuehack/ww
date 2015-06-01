@@ -106,6 +106,7 @@ if(isset($_GET['q']))
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
 ?>
+		<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Kursen</a></div>
 	</div>
 
 	<div class="salon_subscribe">

@@ -42,7 +42,8 @@ if(isset($_GET['q']))
   	<!-- Button trigger modal -->
   	<div class="centered">
   		<input type="button" class="inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">
-  	</div>  
+  	</div>
+  	<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Medien</a></div>  
   </div>
 <?php
 }
