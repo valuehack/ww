@@ -1079,10 +1079,11 @@ a.socialimg:hover  {
 }
 
 .medien_head img {
-	padding: 15px;
+	padding: 20px;
 	box-shadow: 0 0 1px 0 rgba(0,0,0,0.6);
 	max-height: 300px;
 	max-width: 300px;
+	background: rgb(250,250,250);
 }
 
 .medien_content {
@@ -1149,6 +1150,7 @@ a:hover.medien_title_list {
 
 .schriften_table {
 	width: 100%;
+	text-align: center;
 }
 
 .schriften_table tr {
