@@ -29,7 +29,7 @@ if(isset($_GET['q']))
 ?>  	
 	<div class="medien_head">
   		<h1><?echo $entry3[title]?></h1>
-		<!--<img src="<?echo $img;?>" alt="<?echo $id;?>">-->
+		<img src="<?echo $img;?>" alt="<?echo $id;?>">
 	</div>
 	<div class="medien_seperator">
 		<h1>Inhalt und Informationen</h1>
