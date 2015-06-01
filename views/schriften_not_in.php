@@ -79,14 +79,14 @@ while($entry = mysql_fetch_array($result))
 	$id = $entry[id];
 ?>
 		<tr>
-			<td>
-				<img src="<?echo $img?>" alt="Cover <?echo $id?>">
+			<td>	
+				<? echo ucfirst($entry[type]);?>
 			</td>
 			<td>
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
 			</td>
 			<td>
-				<? echo ucfirst($entry[type]);?>
+				<img src="<?echo $img;?>" alt="Cover <?echo $id;?>">
 			</td>
 		</tr>
 

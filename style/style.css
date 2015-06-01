@@ -1158,6 +1158,12 @@ a:hover.medien_title_list {
 
 .schriften_table td a {
 	text-decoration: none;
+	color: rgb(46,74,98);
+	font-size: 20pt;
+}
+
+.schriften_table td a:hover {
+	text-decoration: underline;
 }
 
 .schriften_table td img {
