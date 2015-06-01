@@ -185,15 +185,59 @@ while($entry = mysql_fetch_array($result))
 	
 ?>
 		<tr>
-			<!--<td>	
-				<? echo ucfirst($entry[type]);?>
-			</td>-->
-			<td>
-      			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?><br>
-      			<? echo ucfirst($entry[type]);?>
-			</td>
-			<td>
+			<td class="schriften_table_a">
 				<img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>">
+			</td>			
+			<td class="schriften_table_b">
+				<span><? echo ucfirst($entry[type]);?></span><br>
+      			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
+			</td>
+			<td class="schriften_table_c">
+				<?php
+					if 	($_SESSION['Mitgliedschaft'] == 1) { 
+				echo '<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">';
+					}
+					else {
+						$pdf = substr($entry3[format],0,1);
+    					$epub = substr($entry3[format],1,1);
+    					$kindle = substr($entry3[format],2,1);
+    					$druck = substr($entry3[format],3,1);
+
+    					$price = $entry3[price];
+    					$price2 = $entry3[price2];
+					?>
+
+    				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      					<input type="hidden" name="add" value="<?php echo $n; ?>">
+     
+    			<?php
+      				if ($entry3[format] == '0001') {
+        				echo 'Menge: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
+        				echo ' Format: <select name="format"><option value="4">Druck</option></select>';
+      				}
+
+      				else { 
+      					echo '<span id="quantity"><input type="hidden" name="quantity" value="1" /></span>';
+      					echo ' Format: <select name="format" id="change" onchange="changeView('.$price.','.$price2.')">';
+        					if ($pdf == 1) echo '<option value="1">PDF</option>';
+        					if ($epub == 1) echo '<option value="2">ePub</option>';
+        					if ($kindle == 1) echo '<option value="3">Kindle</option>';
+        					if ($druck == 1) echo '<option value="4">Druck</option>';   
+      					echo '</select>';
+      					}  
+    
+      				if ($entry3[format] == '0001') {
+        				echo '<input type="submit" value="Auswählen">&nbsp;&nbsp;<i><span id="total2">'.$entry3[price].' Credits</span></i>';
+      					}
+      				else { 
+    					?>
+      					<input type="submit" class="inputbutton" value="Auswählen">&nbsp;&nbsp;<i><span id="price"><?echo $entry3[price]?> Credits</span></i>
+    
+    				<?php
+      					} 
+   					echo "</form>";
+					}
+					?>
 			</td>
 		</tr>
 
