@@ -1152,12 +1152,6 @@ a:hover.medien_title_list {
 	width: 100%;
 }
 
-.schriften_table span {
-	font-size: 12pt;
-	color: rgba(0,0,0,0.85);
-	margin-bottom: 10px;
-}
-
 .schriften_table tr {
 	min-height: 30px;
 	padding: 20px 0;
@@ -1170,19 +1164,37 @@ a:hover.medien_title_list {
 	padding: 10px;
 }
 
+.schriften_table_a {
+	text-align: center;
+}
+
+.schriften_table td img {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.schriften_table_b {
+	width: 40%;
+}
+
+.schriften_table span {
+	font-size: 12pt;
+	color: rgba(0,0,0,0.85);
+	margin-bottom: 10px;
+}
+
+
 .schriften_table td a {
 	text-decoration: none;
 	color: rgb(46,74,98);
-	font-size: 20pt;
+	font-size: 24pt;
 }
 
 .schriften_table td a:hover {
 	text-decoration: underline;
 }
 
-.schriften_table td img {
-	max-width: 200px;
-	max-height: 200px;
+.schriften_table_c  {
 }
 
 /* ============= Projekte ============*/
