@@ -225,7 +225,7 @@ while($entry = mysql_fetch_array($result))
       				}
 
       				else { 
-      					echo 'Anzahl: <span id="quantity"><input type="number" name="quantity" value="1" style="disabled"></span>';
+      					echo 'Anzahl: <span id="quantity"><input type="number" name="quantity" value="1" disabled></span>';
       					echo ' Format: <select name="format" id="change" onchange="changeView('.$price.','.$price2.')">';
         					if ($pdf == 1) echo '<option value="1">PDF</option>';
         					if ($epub == 1) echo '<option value="2">ePub</option>';
