@@ -1199,8 +1199,8 @@ a:hover.medien_title_list {
 
 .schriften_table_b {
 	width: 65%;
-	vertical-align: top;
-	padding-top: 50px;
+	vertical-align: top !important;
+	padding-top: 50px !important;
 }
 
 .schriften_table span {
