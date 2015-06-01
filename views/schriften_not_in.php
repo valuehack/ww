@@ -71,7 +71,7 @@ else {
     <div class="medien_content">
     	
 <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien') AND status > 0 order by title asc, n asc";
+$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien' OR type LIKE 'analysen') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 	echo "<table class='schriften_table'>";
@@ -130,7 +130,7 @@ while($entry = mysql_fetch_array($result))
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="inputbutton_whity" data-dismiss="modal">Schließen</button>
+        <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
       </div>
     </div>
   </div>
