@@ -68,13 +68,6 @@ else {
     </div>
     <div class="medien_content">
     	
-		<table style="width:100%;border-collapse: collapse">
-
-	<tr>
-    	<td><b>Titel</b></td>
-
-	</tr>
-
 <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -83,20 +76,16 @@ while($entry = mysql_fetch_array($result))
 {
 	$id = $entry[id];
 ?>
-   	<tr>
-      	<td>
+
       		<?php 
-      		echo "<a href='?id=$q'><i>".ucfirst($entry[type])."</i> ".$entry[title];
-			if ($entry[format]) echo " ".$entry[format]." </a></td>"; 
+      		echo "<a href='?q=$id'>".ucfirst($entry[type])." ".$entry[title];
+			if ($entry[format]) echo " ".$entry[format]." </a>"; 
 
 ?>    
-    </tr>
+
 
 <?php
-}
-
-echo "</table><br><br>";
-
+	}
 }
 ?>
 
