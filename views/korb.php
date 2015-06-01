@@ -237,6 +237,7 @@ if(isset($_POST['checkout'])) {
 
 
         //send email
+
         $mail = new PHPMailer;
 
         $user_email = $_SESSION['user_email'];
@@ -352,6 +353,14 @@ if(isset($_POST['checkout'])) {
         $mail->Body = $body;
 
         $mail->isHTML(true);
+
+        if(!$mail->Send()) {
+            $this->errors[] = "Email was not sent!" . $mail->ErrorInfo;
+            return false;
+        } else {
+            $this->messages[] = 'Please check your inbox.';
+            return true;
+        }
 
     }
 }
