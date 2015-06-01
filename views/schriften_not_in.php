@@ -18,7 +18,7 @@ if(isset($_GET['q']))
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   
-      	//check, if there is a image in the salon folder
+        	//check, if there is a image in the salon folder
 	$img = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
@@ -71,6 +71,15 @@ else {
 <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+
+	      	//check, if there is a image in the salon folder
+	$img = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
+
+	if (@getimagesize($img)) {
+	    $img_url = $img;
+	} else {
+	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
+	}
 
 	echo "<table class='schriften_table'>";
 
