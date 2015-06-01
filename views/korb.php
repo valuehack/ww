@@ -355,10 +355,10 @@ if(isset($_POST['checkout'])) {
         $mail->isHTML(true);
 
         if(!$mail->Send()) {
-            $this->errors[] = "Email was not sent!" . $mail->ErrorInfo;
+            // here come error message when not sent.
             return false;
         } else {
-            $this->messages[] = 'Please check your inbox.';
+            // email successfully sent
             return true;
         }
 
