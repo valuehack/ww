@@ -9,7 +9,7 @@ function changeView(price, price2) {
     var x = document.getElementById("change").value;
 
     if (x == 4) {    
-      document.getElementById("quantity").innerHTML = 'Menge: <input type="number" name="quantity" style="width:35px;" onchange="changePrice(this.value,' + price2 + ')" value="1" min="1" max="100">';
+      document.getElementById("quantity").innerHTML = 'Anzahl: <input type="number" name="quantity" style="width:35px;" onchange="changePrice(this.value,' + price2 + ')" value="1" min="1" max="100">';
       document.getElementById("price").innerHTML = "<span id='total'>" + price2 + " Credits</span>";
     }
     else {
@@ -112,7 +112,7 @@ if(isset($_GET['q']))
      
     <?php
       if ($entry3[format] == '0001') {
-        echo 'Menge: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
+        echo 'Anzahl: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
         echo ' Format: <select name="format"><option value="4">Druck</option></select>';
       }
 
@@ -212,16 +212,16 @@ while($entry = mysql_fetch_array($result))
      
     			<?php
     				if ($entry[format] == '0001') {
-        				echo '<span id="total2">'.$entry[price].' Credits</span><br>';
+        				echo '<span class="medien_price" id="total2">'.$entry[price].' Credits</span><br>';
 						echo '<input type="submit" class="inputbutton" value="Auswählen">';
       					}
       				else { 
 
-						echo '<span id="price"><'.$entry[price].' Credits</span>';
+						echo '<span class="medien_price" id="price"><'.$entry[price].' Credits</span>';
       					echo '<input type="submit" class="inputbutton" value="Auswählen">';
 					}
       				if ($entry[format] == '0001') {      					
-        				echo 'Menge: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
+        				echo 'Anzahl: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
         				echo ' Format: <select name="format"><option value="4">Druck</option></select>';
       				}
 

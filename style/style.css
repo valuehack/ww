@@ -1163,6 +1163,11 @@ a:hover.medien_title_list {
 	background: rgb(30,48,64);
 }
 
+.medien_price {
+	font-size: 22pt;
+	margin: 10px 0 10px 20px;
+}
+
 /* ============ Schriften ============*/
 
 
@@ -1215,6 +1220,7 @@ a:hover.medien_title_list {
 }
 
 .schriften_table_c  {
+	font-size: 12pt;
 }
 
 /* ============= Projekte ============*/
