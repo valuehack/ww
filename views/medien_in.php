@@ -52,9 +52,7 @@ if(isset($_GET['q']))
 ?>
   	<div class="medien_head">
   		<h1><?=$entry3[title];?></h1>
-	</div>
-	<div class="medien_seperator">
-		<h1>Inhalt</h1>
+	</div>	
 		<div>
   		<div class="schriften_img">
 			<img src="<?echo $img;?>" alt="<?echo $id;?>">
@@ -75,12 +73,15 @@ if(isset($_GET['q']))
         				<option value="4">4</option>
         				<option value="5">5</option>        
       				</select> -->
-      				<input type="submit" class="inputbutton" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
+      				<input type="submit" class="inputbutton" value="Auswählen">
     			</form>
     		<?
 			}
 			?>
 		</div>
+	</div>
+	<div class="medien_seperator">
+		<h1>Inhalt</h1>
 	</div>
 	<div class="medien_content">
 <? 
