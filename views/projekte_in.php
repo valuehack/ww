@@ -56,14 +56,14 @@ if ($id = $_GET["q"])
     <?php
     }
     else {
-		echo $entry[spots_sold]." von ".$entry[spots]." möglichen Credits zugewiesen"; ?>
-
-      <div class="centered">
-      	<form class="projekte_invest" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+		echo "<div class='projekte_invest'>
+		<p>Interessierte Mitglieder haben bereits <span class='projekte_credits_sold'>".$entry[spots_sold]."</span> von <span class='projekte_credits_sold'>".$entry[spots]."</span> nötigen Credits investiert.</p>"; ?>
+      	<form class="projekte_invest_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         	<input type="hidden" name="add" value="<?php echo $n ?>" />
-        	<input type="number" name="quantity" value="1" min="1" max="<?php echo $avail;?>">
-        	<span>Credits</span>
-        	<input type="submit" class="inputbutton" value="Zuweisen">
+        	<span class="projekte_invest_span">Ich m&ouml;chte mit </span>
+        	<input class="projekte_invest_select" type="number" name="quantity" value="1" min="1" max="<?php echo $avail;?>">
+        	<span class="projekte_invest_span">Credits zu diesem Projekt beitragen.</span><br>
+        	<input type="submit" class="media_inputbutton" value="Zuweisen">
       	</form>
       </div>
       <div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Projekten</a></div>
