@@ -11,10 +11,13 @@ $title="Zahlung";
 if (isset($_POST["registrationform"])) {
     $level = "Kursteilnehmer";
     $betrag = 150;
-    $id = $_POST['event_id'];
+    $event_id = $_POST['event_id'];
     $title = $_POST['title'];
     $profile = $_POST['profile'];
+    $user_email = $profile[user_email];
+    $_SESSION['user_email'] = $user_email;
 
+echo $user_email;
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="upgrade_user_account" accept-charset="UTF-8">
 
@@ -23,9 +26,10 @@ if (isset($_POST["registrationform"])) {
     <input type="hidden" name="ok" value="2">
     <input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
     <input type="hidden" name="level" value="<?php echo $level; ?>">
-    <input type="hidden" name="id" value="<?php echo $id; ?>">
+    <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
     <input type="hidden" name="title" value="<?php echo $title; ?>">
-    <input type="hidden" name="title" value="<?php echo $profile; ?>">
+    <input type="hidden" name="email" value="<?php echo $user_email; ?>">
+    <input type="hidden" name="profile" value="<?php echo $profile; ?>">
 
 <hr>
     <input type="radio" name="zahlung" value="bank" required/>Bank<br>
@@ -86,14 +90,12 @@ elseif (isset($_POST['ok']))
 	$level = $_POST['level'];
     $betrag = $_POST['betrag'];
     $zahlung = $_POST['zahlung'];
-    $user_id = $_SESSION['user_id'];
-
 
     //register for the event
     if ($_POST['ok'] == 2) { 
     
-      $user_email = $_SESSION['user_email'];
-      $id = $_POST['id'];
+      $user_email = $_POST['email'];
+      $id = $_POST['event_id'];
       $title = $_POST['title'];
 
       echo "<div>Ein Platz in \"".ucfirst($title).'" wurde für Sie reserviert.</div>';
@@ -104,7 +106,7 @@ elseif (isset($_POST['ok']))
       $userArray = mysql_fetch_array($user_result);
       $user_id = $userArray[user_id];
 
-      $registration_query = "INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
+      $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
       mysql_query($registration_query);
 
       $credits_left = 25;
@@ -112,7 +114,7 @@ elseif (isset($_POST['ok']))
       $left_credits_query = "UPDATE mitgliederExt SET credits_left='$credits_left' WHERE `user_id` LIKE '$user_id'";
       mysql_query($left_credits_query) or die("Failed Query of " . $left_credits_query. mysql_error());
 
-      $space_query = "UPDATE produkte SET spots_sold = spots_sold + 1 WHERE `n` LIKE '$key'";
+      $space_query = "UPDATE produkte SET spots_sold = spots_sold + 1 WHERE `n` LIKE '$id'";
       mysql_query($space_query);
                    
       //TO DO: send email, create user first 
