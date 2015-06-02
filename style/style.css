@@ -1157,8 +1157,8 @@ a:hover.medien_title_list {
 }
 
 .medien_price {
-	font-size: 22pt !important;
-	margin: 10px 0 10px 80px;
+	font-size: 24pt !important;
+	margin: 10px 5px;
 	display: block;
 }
 
@@ -1233,10 +1233,30 @@ a:hover.medien_title_list {
 
 .schriften_bestellen {
 	float: left;
-	width: 50%;
+	width: 35%;
 	text-align: center;
+	padding-right: 15%;
 }
 
+.schriften_format {
+	display: block;
+	margin: 10px 5px;
+}
+
+.schriften_format select {
+	width: 70px;
+	margin-left: 73px;
+}
+
+.schriften_quatity {
+	display: block;
+	margin: 10px 5px;
+}
+
+.schriften_quantity input {
+	width: 70px;
+	margin-left: 70px;
+}
 /* ============= Projekte ============*/
 
 .projekte {

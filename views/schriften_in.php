@@ -105,11 +105,11 @@ if(isset($_GET['q']))
      
     		<?php
     			if ($entry3[format] == '0001') {
-    				echo '<span id="total2" class="medien_price">'.$entry3[price].' Credits</span><br>';
+    				echo '<span id="total2" class="medien_price">'.$entry3[price].' Credits</span>';
 					echo '<input type="submit" class="inputbutton" value="Auswählen"><br>';
 				}
 				else {
-					echo '<span id="price" class="medien_price">' .$entry3[price].' Credits</span><br>';
+					echo '<span id="price" class="medien_price">' .$entry3[price].' Credits</span>';
 					echo '<input type="submit" class="inputbutton" value="Auswählen"><br>';
 				}
 				echo '<span class="schriften_format">Format: <select name="format"';
@@ -125,7 +125,7 @@ if(isset($_GET['q']))
         					if ($kindle == 1) echo '<option value="3">Kindle</option>';
         					if ($druck == 1) echo '<option value="4">Druck</option>'; 
 						}					
-				echo '</select></span><br>';
+				echo '</select></span>';
 				
 				echo '<span class="schriften_quantity">Anzahl: <input type="number" name="quatity" onchange="changePrice2(this.value,'.$price2.') value="1" min="1" max="100"';
 					if ($entry3[format] == '0001') {
