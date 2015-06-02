@@ -44,7 +44,7 @@ if(isset($_GET['q']))
   		<h1><?=$entry3[title];?></h1>
 	</div>
 	<div class="medien_seperator">
-		<h1>Inhalt und Informationen</h1>
+		<h1>Inhalt</h1>
 	</div>
 	<div class="medien_content">
 <? 
@@ -110,8 +110,7 @@ while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
   
-          echo "<a class='medien_title_list' href='?q=$id'>".$entry[title];"</a>"; 
-
+          echo "<a class='medien_title_list' href='?q=$id'>".$entry[title]."</a>"; 
 ?>    
 	</div>
 <?php

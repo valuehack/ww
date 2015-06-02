@@ -982,14 +982,15 @@ a.socialimg:hover  {
 }
 
 .salon_inputfield {
-	border-top: 1px solid #dad8d8;
-	width: 296px;
+	border: 0;
+	border-top: 1px solid #dad8d8 !important;
+	width: 300px;
 	height: 48px;
 	box-shadow: 0 0 0 0 inset;
 	padding: 3px 15px;	
 }
 .salon_inputfield select {
-	border-top: 1px solid #dad8d8;
+	border-top: 1px solid #dad8d8 !important;
 	width: 330px;
 	height: 48px;
 	box-shadow: 0 0 0 0 inset;
