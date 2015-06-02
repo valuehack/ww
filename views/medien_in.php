@@ -138,7 +138,7 @@ while($entry = mysql_fetch_array($result))
 {
   $video_id = $entry[id];
  
-          echo "<a class='medien_title_list' href='?q=$id'>".$entry[title];"</a>"; 
+          echo "<a class='medien_title_list' href='?q=$video_id'>".$entry[title];"</a>"; 
 	}
 
 ?>
