@@ -1294,30 +1294,31 @@ a:visited.medien_title_list {
 
 .projekte_invest {
 	margin-top: 40px;
-	text-align: center;
 }
 
 .projekte_invest p {
 	font-size: 16pt;
-	font-style: italic;
+	text-align: center;
 }
 
 .projekte_credits_sold {
 	color: rgb(46,74,98);
-	border-bottom: 1px dotted rgb(46,74,98);
+	font-size: 24pt !important;
+	margin: 0 12px !important;
 }
 
-.projekte_invest form {
+.projekte_invest_form {
 	margin: 50px 0;
 }
 
-.projekte_invest span {
-	margin: 0 15px 0 0;
+.projekte_invest_span {
+	margin: 0;
+	font-size: 18pt;
 }
 
 .projekte_invest_select {
 	width: 70px;
-	height: 42px;
+	height: 30px;
 	font-size: 16pt;
 	padding: 3px 15px;
 	margin: 0px 15px;
