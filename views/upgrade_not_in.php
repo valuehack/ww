@@ -41,6 +41,7 @@ $title="Upgrades";
                                 <input type="hidden" name="betrag" value="75">
                                 <input type="hidden" name="level" value="Gast">
                                 <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Gast">
+                            
                             </form>   
                        </td>
                    </tr>                   
