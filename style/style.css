@@ -1293,11 +1293,12 @@ a:visited.medien_title_list {
 }
 
 .projekte_invest {
-	margin-top: 40px;
+	margin-top: 50px;
+	text-align: center;
 }
 
 .projekte_invest p {
-	font-size: 16pt;
+	font-size: 14pt;
 	text-align: center;
 }
 
@@ -1308,12 +1309,12 @@ a:visited.medien_title_list {
 }
 
 .projekte_invest_form {
-	margin: 50px 0;
+	margin-top: 35px;
 }
 
 .projekte_invest_span {
 	margin: 0;
-	font-size: 18pt;
+	font-size: 16pt;
 }
 
 .projekte_invest_select {
