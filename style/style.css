@@ -994,8 +994,9 @@ a.socialimg:hover  {
 	width: 330px;
 	height: 48px;
 	box-shadow: 0 0 0 0 inset;
-	padding: 3px 15px 3px 0;	
+	padding: 3px 15px;	
 	border: 0;
+	color:  rgba(0,0,0,0.6);
 }
 
 .salon_inputfield:first-of-type {
@@ -1603,7 +1604,7 @@ button.close {
   	outline: 0;
   	-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
           	box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-    padding: 40px;
+    padding: 10px 40px;
 }
 
 .modal-backdrop {

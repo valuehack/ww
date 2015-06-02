@@ -88,7 +88,7 @@ if(isset($_GET['q']))
 			  if ($_SESSION['Mitgliedschaft'] == 1) {
 			  	  
    					 //Button trigger modal
-    				echo '<input type="button" value="Bestellen und Herunterladen" class="medien_inputbutton" data-toggle="modal" data-target="#myModal">';  
+    				echo '<input type="button" value="Bestellen und Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';  
   			  }
   			  else {
     				$pdf = substr($entry3[format],0,1);
