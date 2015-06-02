@@ -569,6 +569,7 @@ strong {
 }
 
 .blog_img {
+	max-width: 470px;
 	background: #000;
 	margin: 15px 0 0 50px !important;
 	float: right;
