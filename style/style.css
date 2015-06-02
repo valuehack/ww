@@ -1217,6 +1217,10 @@ a:hover.medien_title_list {
 }
 
 .schriften_img {
+	
+}
+
+.schriften_img img {
 	padding: 20px;
 	box-shadow: 0 0 1px 0 rgba(0,0,0,0.6);
 	max-height: 300px;
