@@ -1047,6 +1047,18 @@ a.socialimg:hover  {
 	margin: 20px 0;
 }
 
+.medien_info a {
+	color: rgb(46,74,98);
+	text-decoration: none;
+	border-bottom: 1px dotted rgb(46,74,98);
+}
+
+.medien_info a:hover {
+	color: rgb(46,74,98);
+	text-decoration: none;
+	border-bottom: 1px solid rgb(46,74,98);
+}
+
 .medien_info li {
 	font-size: 18pt;
 	line-height: 1.2;
