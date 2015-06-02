@@ -52,7 +52,7 @@ if(isset($_GET['q']))
 	echo "<img class='blog_img' src='$img_url' alt='$id''>";
 	echo "<div class='blog_text'>";
 	echo $public;
-	echo "</div>"
+	echo "</div>";
 
 if ($length>10) 
 	{ ?>
