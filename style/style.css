@@ -1292,6 +1292,23 @@ a:visited.medien_title_list {
 	font-size: 14pt;
 }
 
+.projekte_invest {
+	margin: 50px 0;
+}
+
+.projekte_invest span {
+	margin: 0 15px 0 0;
+}
+
+.projekte_invest_select {
+	width: 70px;
+	height: 42px;
+	font-size: 16pt;
+	padding: 3px 15px;
+	margin: 0px 15px;
+}
+
+
 /*====================================*/
 /*        Upgrade/Payment Page        */
 /*====================================*/

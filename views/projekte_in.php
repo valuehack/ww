@@ -56,14 +56,13 @@ if ($id = $_GET["q"])
     <?php
     }
     else {
-      ?>
-      <i><?php echo $entry[spots_sold]." von ".$entry[spots]." möglichen Credits zugewiesen"; ?></i><br>
+		echo $entry[spots_sold]." von ".$entry[spots]." möglichen Credits zugewiesen"; ?>
 
       <div class="centered">
-      	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <i>Credits: </i>
+      	<form class="projekte_invest" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         	<input type="hidden" name="add" value="<?php echo $n ?>" />
-        	<input type="number" name="quantity" style="width:50px;" value="1" min="1" max="<?php echo $avail;?>">
+        	<input type="number" name="quantity" value="1" min="1" max="<?php echo $avail;?>">
+        	<span>Credits</span>
         	<input type="submit" class="inputbutton" value="Zuweisen">
       	</form>
       </div>

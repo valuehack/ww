@@ -48,9 +48,10 @@ if(isset($_GET['q']))
 	} else {
 	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
 	}
+				//Change button-value according to media type
+	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
+    if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
 	
-	if ($entry3[type] == 'audio') { $type = "Herunterladen";} 
-    if ($entry3[type] == 'video') { $type = "Ansehen";}
 ?>
   	<div class="medien_head">
   		<h1><?=$entry3[title];?></h1>	
@@ -74,7 +75,7 @@ if(isset($_GET['q']))
         				<option value="4">4</option>
         				<option value="5">5</option>        
       				</select> -->
-      				<input type="submit" class="inputbutton" value="<?echo $type;?>">
+      				<input type="submit" class="inputbutton" value="<?echo $btn_value;?>">
     			</form>
     		<?
 			}
