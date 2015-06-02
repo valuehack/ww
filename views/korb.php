@@ -343,7 +343,7 @@ if(isset($_POST['checkout'])) {
             $total += 5;
         }
 
-        $body = $body. "<tr><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
+        $body = $body. "<tr><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
 
         $body = $body. "</table><hr>";
         
