@@ -39,53 +39,59 @@ if(isset($_GET['q']))
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
+  
+            	//check, if there is a image in the salon folder
+	$img = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
+
+	if (@getimagesize($img)) {
+	    $img_url = $img;
+	} else {
+	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
+	}
+?>
 ?>
   	<div class="medien_head">
   		<h1><?=$entry3[title];?></h1>
 	</div>
 	<div class="medien_seperator">
 		<h1>Inhalt</h1>
+		<div>
+  		<div class="schriften_img">
+			<img src="<?echo $img;?>" alt="<?echo $id;?>">
+		</div>
+		<div class="schriften_bestellen">
+			<?
+			if ($_SESSION['Mitgliedschaft'] == 1) {
+				echo '<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';
+			}
+			else { ?>
+				<span class="schriften_price"><?php echo $entry3[price]; ?> Credits</span>
+				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      				<input type="hidden" name="add" value="<?php echo $n; ?>" />
+     				<!--<select name="quantity">
+        				<option value="1">1</option>
+        				<option value="2">2</option>
+        				<option value="3">3</option>
+        				<option value="4">4</option>
+        				<option value="5">5</option>        
+      				</select> -->
+      				<input type="submit" class="inputbutton" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
+    			</form>
+    		<?
+			}
+			?>
+		</div>
 	</div>
 	<div class="medien_content">
 <? 
-  if ($entry3[img]) echo $entry3[img];
-
   if ($entry3[text]) echo $entry3[text];
   if ($entry3[text2]) echo $entry3[text2];
-
-  if ($_SESSION['Mitgliedschaft'] == 1) {
-?> 		
-    	  
-    <!--Button trigger modal-->
-    <div class='centered'>
-    	<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">  
-	</div>
-<?php	
-  }
-  else {
-    ?>
-    <div class="centered">
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      <input type="hidden" name="add" value="<?php echo $n; ?>" />
-      <!--<select name="quantity">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>        
-      </select> -->
-      <input type="submit" class="inputbutton" value="Auswählen">&nbsp;<i><?php echo $entry3[price]; ?> Credits</i>
-    </form>
-    </div>
-<?php 
-  }
- ?>  
-    <div class="medien_anmeldung"><a href='<?echo $_SERVER['PHP_SELF'];?>'>zur&uuml;ck zu den Medien</a></div>
+?>
+  	<div class="medien_anmeldung"><a href='<?echo $_SERVER['PHP_SELF'];?>'>zur&uuml;ck zu den Medien</a></div>
 	</div>
 <?php
 }
      
-
 else {
 	
 
