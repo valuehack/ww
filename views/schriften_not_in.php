@@ -29,8 +29,13 @@ if(isset($_GET['q']))
 ?>  	
 	<div class="medien_head">
   		<h1><?echo $entry3[title]?></h1>
-  		<div class="centered">
+  		<div class="schriften_img">
 			<img src="<?echo $img;?>" alt="<?echo $id;?>">
+		</div>
+		<div class="schriften_bestellen">
+			<span class="schriften_type"><? echo ucfirst($entry3[type]);?></span>
+			 <!-- Button trigger modal -->
+			<input type="button" class="medien_inputbutton" value="Bestellen und Herunterladen" data-toggle="modal" data-target="#myModal">
 		</div>
 	</div>
 	<div class="medien_seperator">
@@ -41,10 +46,6 @@ if(isset($_GET['q']))
   if ($entry3[text]) echo $entry3[text];
   if ($entry3[text2]) echo $entry3[text2];
 ?>
-  <!-- Button trigger modal -->
-  		<div class="centered">
-  			<input type="button" class="medien_inputbutton" value="Bestellen und Herunterladen" data-toggle="modal" data-target="#myModal">  
-  		</div>
   		<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
   </div>
 <?php
