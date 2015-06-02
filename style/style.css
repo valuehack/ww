@@ -1067,6 +1067,7 @@ a.socialimg:hover  {
 .medien_head {
 	width: 75%;
 	padding: 75px 12.5%;
+	display: inline-block;
 }
 
 .medien_head h1 {
@@ -1217,7 +1218,7 @@ a:hover.medien_title_list {
 }
 
 .schriften_img {
-	
+	float: left;
 }
 
 .schriften_img img {

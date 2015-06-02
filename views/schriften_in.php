@@ -106,7 +106,7 @@ if(isset($_GET['q']))
     		<?php
     			if ($entry3[format] == '0001') {
     				echo '<span id="total2" class="medien_price">'.$entry3[price].' Credits</span><br>';
-					echo '<input type="submit" class="medien_price" value="Auswählen">';
+					echo '<input type="submit" class="inputbutton" value="Auswählen">';
 				}
 				else {
 					echo '<span id="price">' .$entry3[price]. 'Credits</span><br>';
