@@ -1135,10 +1135,15 @@ a.medien_title_list  {
 	margin: 20px 0;
 	text-align: center;
 	text-decoration: none;
+	color: rgb(46,74,98);
 }
 
 a:hover.medien_title_list {
 	text-decoration: underline;
+}
+
+a:visited.medien_title_list {
+	color: rgb(46,74,98);
 }
 
 .medien_inputbutton {
