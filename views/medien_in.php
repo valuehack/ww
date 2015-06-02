@@ -51,8 +51,7 @@ if(isset($_GET['q']))
 ?>
 ?>
   	<div class="medien_head">
-  		<h1><?=$entry3[title];?></h1>
-	</div>	
+  		<h1><?=$entry3[title];?></h1>	
 		<div>
   		<div class="schriften_img">
 			<img src="<?echo $img;?>" alt="<?echo $id;?>">
@@ -78,6 +77,7 @@ if(isset($_GET['q']))
     		<?
 			}
 			?>
+		</div>
 		</div>
 	</div>
 	<div class="medien_seperator">
