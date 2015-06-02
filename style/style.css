@@ -990,11 +990,12 @@ a.socialimg:hover  {
 	padding: 3px 15px;	
 }
 .salon_inputfield_select {
-	border-top: 1px solid #dad8d8;
+	border-top: 1px solid #dad8d8 !important;
 	width: 330px;
 	height: 48px;
 	box-shadow: 0 0 0 0 inset;
 	padding: 3px 15px 3px 0;	
+	border: 0;
 }
 
 .salon_inputfield:first-of-type {
