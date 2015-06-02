@@ -1054,11 +1054,15 @@ public function sendEventRegMail($events)
 #the actual details should be added through edit user details 
 public function upgradeUserAccount($betrag, $zahlung, $level, $profile)
 {
+   /*
    if ($login->isUserLoggedIn() == false) {
         //create new user
    }
-
-   $user_email = $_SESSION['user_email'];
+    */
+    
+    if ($_SESSION['user_email']) $user_email = $_SESSION['user_email'];
+    else $user_email = $profile[user_email];
+   
 
    switch ($betrag) {
         case 75:
