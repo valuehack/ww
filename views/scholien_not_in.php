@@ -20,7 +20,7 @@ if(isset($_GET['q']))
 	$public = $entry[public_text];
 	$private = $entry[private_text];
 	$publ_date = $entry[publ_date];
-	$length = str_word_count($private, 0, 'äüöÄÜÖß') - str_word_count($public, 0, 'äüöÄÜÖß');
+	$length = str_word_count($private, 0, 'äüöÄÜÖß');
 
 	//check, if there is a image in the blog/gfx folder
 	$img = 'http://test.wertewirtschaft.net/scholien/'.$id.'.jpg';
@@ -53,7 +53,9 @@ if(isset($_GET['q']))
 	echo "<div class='blog_text'>";
 	echo $public;
 	echo "</div>"
-?>
+
+if ($length>10) 
+	{ ?>
 	<div class="blog_upgrade">
 		<p>Weitere <? echo $length;?> W&ouml;rter Kontext nur f&uuml;r G&auml;ste. Bitte um Verzeihung, dieser Text ist f&uuml;r Fremde nicht sichtbar. 
 		Er k&ouml;nnte allzu pers&ouml;nliche Gedanken, Hintergrundinformationen, intimes Wissen enthalten, aus gesetzlichen Gr&uuml;nden nicht teilbar, oder sonstwie heikel sein. 
@@ -65,6 +67,20 @@ if(isset($_GET['q']))
   			<input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
 		</form>
 	</div>
+	<? } 
+else 
+	{ ?>
+<div class="blog_upgrade">
+		<p>Wie Sie alle Scholien in voller L&auml;nge lesen k&ouml;nnen, indem Sie eine der letzten v&ouml;llig unabh&auml;ngigen Bildungs- und&nbsp;Forschungseinrichtungen als Gast beehren, 
+		erfahren Sie, wenn Sie zun&auml;chst einen Schritt weit aus der Anonymit&auml;t treten und hier Ihre E-Mail-Adresse eintragen:</p>
+
+		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform" style="text-aligna:center; paddinga: 10px ">
+  			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required />
+  			<input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
+		</form>
+	</div>
+	<? } ?>
+	
 	<footer class="blog_footer">
 		<p><a href='index.php'>Alle Scholien</a></p>
 		<div class="socialimg">
