@@ -60,7 +60,7 @@ if(isset($_GET['q']))
   $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholien' OR type LIKE 'analyse') AND id='$id'";
+  $sql="SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
@@ -78,72 +78,73 @@ if(isset($_GET['q']))
 ?>
   	<div class="medien_head">
   		<h1><?echo $entry3[title]?></h1>
-  		  		<div class="centered">
+  		<div class="schriften_img">
 			<img src="<?echo $img;?>" alt="<?echo $id;?>">
+		</div>
+		<div class="schriften_bestellen">
+			<?php
+			  if ($_SESSION['Mitgliedschaft'] == 1) {
+			  	  
+   					 //Button trigger modal
+    				echo "<div class='centered'>";
+    				echo '<input type="button" value="Bestellen und Herunterladen" class="medien_inputbutton" data-toggle="modal" data-target="#myModal">';  
+					echo '</div>';
+  			  }
+  			  else {
+    				$pdf = substr($entry3[format],0,1);
+    				$epub = substr($entry3[format],1,1);
+    				$kindle = substr($entry3[format],2,1);
+    				$druck = substr($entry3[format],3,1);
+
+    				$price = $entry3[price];
+    				$price2 = $entry3[price2];
+    			?>
+    		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      			<input type="hidden" name="add" value="<?php echo $n; ?>" />
+     
+    		<?php
+    			if ($entry3[format] == '0001') {
+    				echo '<span id="total2" class="medien_price">'.$entry3[price].' Credits</span><br>';
+					echo '<input type="submit" class="medien_price" value="Auswählen">';
+				}
+				else {
+					echo '<span id="price">' .$entry3[price]. 'Credits</span><br>';
+					echo '<input type="submit" class="inputbutton" value="Auswählen">';
+				}
+      			if ($entry3[format] == '0001') {
+        			echo 'Anzahl: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
+        			echo ' Format: <select name="format"><option value="4">Druck</option></select>';
+      			}
+
+      			else { 
+      				echo '<span id="quantity"><input type="hidden" name="quantity" value="1" /></span>';
+      				echo ' Format: <select name="format" id="change" onchange="changeView('.$price.','.$price2.')">';
+        				if ($pdf == 1) echo '<option value="1">PDF</option>';
+        				if ($epub == 1) echo '<option value="2">ePub</option>';
+        				if ($kindle == 1) echo '<option value="3">Kindle</option>';
+        				if ($druck == 1) echo '<option value="4">Druck</option>';   
+      				echo '</select>';
+      			}  
+    
+      } ?>
+    		</form>
 		</div>
 	</div>
 	<div class="medien_seperator">
-		<h1>Inhalt und Informationen</h1>
+		<h1>Inhalt</h1>
 	</div>
 	<div class="medien_content">
 <? 
   if ($entry3[text]) echo $entry3[text];
   if ($entry3[text2]) echo $entry3[text2];
 
-  if ($_SESSION['Mitgliedschaft'] == 1) {  
-    //Button trigger modal
-    echo "<div class='centered'>";
-    echo '<input type="button" value="Bestellen und Herunterladen" class="medien_inputbutton" data-toggle="modal" data-target="#myModal">';  
-	echo '</div>';
-  }
-  else {
-    $pdf = substr($entry3[format],0,1);
-    $epub = substr($entry3[format],1,1);
-    $kindle = substr($entry3[format],2,1);
-    $druck = substr($entry3[format],3,1);
-
-    $price = $entry3[price];
-    $price2 = $entry3[price2];
-
-    ?>
-    <div class="centered">
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      <input type="hidden" name="add" value="<?php echo $n; ?>" />
-     
-    <?php
-      if ($entry3[format] == '0001') {
-        echo 'Anzahl: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
-        echo ' Format: <select name="format"><option value="4">Druck</option></select>';
-      }
-
-      else { 
-      echo '<span id="quantity"><input type="hidden" name="quantity" value="1" /></span>';
-      echo ' Format: <select name="format" id="change" onchange="changeView('.$price.','.$price2.')">';
-        if ($pdf == 1) echo '<option value="1">PDF</option>';
-        if ($epub == 1) echo '<option value="2">ePub</option>';
-        if ($kindle == 1) echo '<option value="3">Kindle</option>';
-        if ($druck == 1) echo '<option value="4">Druck</option>';   
-      echo '</select>';
-      }  
-    
-      if ($entry3[format] == '0001') {
-        echo '<input type="submit" value="Auswählen">&nbsp;&nbsp;<i><span id="total2">'.$entry3[price].' Credits</span></i>';
-      }
-      else { 
-    ?>
-      <input type="submit" class="inputbutton" value="Auswählen">&nbsp;&nbsp;<i><span id="price"><?echo $entry3[price]?> Credits</span></i>
-    
-    <?php
-      } ?>
-    </form>
+?>
     </div>
     <div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
    </div>
 <?php 
-  }
-
 }
-     
+  
 else {
 
   if ($_SESSION['Mitgliedschaft'] == 1) {

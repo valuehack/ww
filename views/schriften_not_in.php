@@ -34,7 +34,7 @@ if(isset($_GET['q']))
 		</div>
 	</div>
 	<div class="medien_seperator">
-		<h1>Inhalt und Informationen</h1>
+		<h1>Inhalt</h1>
 	</div>
 	<div class="medien_content">
 <? 
