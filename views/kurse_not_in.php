@@ -18,6 +18,7 @@ $title="Kurse";
 <div class="content">
 
 <?php 
+/* moved to zahlungen_not_in
 if (isset($_POST["registrationform"])) {
   
   $profile = $_POST['profile'];
@@ -46,7 +47,7 @@ if (isset($_POST["registrationform"])) {
                
   //TO DO: email versenden 
 }
-
+*/
 
 if(isset($_GET['q']))
 {
@@ -197,7 +198,7 @@ else {
         <h2 class="modal-title" id="myModalLabel">Anmeldung</h2>
       </div>
       <div class="modal-body">
-    		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="user_create_profile_form">
+    		<form method="post" action="../abo/zahlung.php" name="user_create_profile_form">
         		<input type="hidden" name="event_id" value="<?php echo $n ?>" />
         		<input type="hidden" name="title" value="<?php echo $title ?>" />
 				
