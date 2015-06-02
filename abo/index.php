@@ -29,7 +29,7 @@ if ($login->isUserLoggedIn() == true) {
     // the user is logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are logged in" view.
     #echo "this works";
-    include("../views/upgradeView.php");
+    include("../views/upgrade_in.php");
 
 } else {
     // the user is not logged in. you can do whatever you want here.
