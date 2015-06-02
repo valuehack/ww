@@ -104,7 +104,7 @@ if(isset($_GET['q']))
       			<input type="hidden" name="add" value="<?php echo $n; ?>" />
      
     		<?php
-    			echo '<span class="schriften_type"><'.ucfirst($entry[type]).'></span>';
+    			echo '<span class="schriften_type"><'.ucfirst($entry3[type]).'></span>';
     			if ($entry3[format] == '0001') {
     				echo '<span id="total2" class="schriften_price">'.$entry3[price].' Credits</span>';
 					echo '<input type="submit" class="inputbutton" value="Auswählen"><br>';
