@@ -127,10 +127,10 @@ if(isset($_GET['q']))
 				echo '</select></span>';
 				
 				echo '<span class="schriften_quantity">Anzahl: <input type="number" name="quantity" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100"';
-					if ($entry3[format] == '0001') {
+					if ($entry3[format] != '0001') {
 						echo "disabled";
 					}
-				echo '></span>';				   
+				echo '></span>';
       		} ?>
     		</form>
 		</div>

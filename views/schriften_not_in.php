@@ -35,7 +35,7 @@ if(isset($_GET['q']))
 		<div class="schriften_bestellen">
 			<span class="schriften_type"><? echo ucfirst($entry3[type]);?></span>
 			 <!-- Button trigger modal -->
-			<input type="button" class="medien_inputbutton" value="Bestellen und Herunterladen" data-toggle="modal" data-target="#myModal">
+			<input type="button" class="inputbutton" value="Bestellen und Herunterladen" data-toggle="modal" data-target="#myModal">
 		</div>
 	</div>
 	<div class="medien_seperator">

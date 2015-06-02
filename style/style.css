@@ -1240,7 +1240,8 @@ a:hover.medien_title_list {
 
 .schriften_type {
 	font-size: 12pt;
-	color: rgba(0,0,0,0.85);
+	font-style: italic;
+	color: rgba(0,0,0,0.65);
 	margin: 0 5px 10px 0;
 	display: block;
 }
