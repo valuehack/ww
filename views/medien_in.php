@@ -71,12 +71,10 @@ if(isset($_GET['q']))
         				<option value="4">4</option>
         				<option value="5">5</option>        
       				</select> -->
-      				<input type="submit" class="inputbutton" value="<?if ($entry3[type] == 'audio') {
-      					echo "Herunterladen";
-      					}
-      					else {
-      						echo "Ansehen";
-      						}
+      				<input type="submit" class="inputbutton" value="
+      					<?
+      					if ($entry3[type] == 'audio') { echo "Herunterladen";}
+						if ($entry3[type] == 'video') { echo "Ansehen";}
       					echo '">';
 						?>
     			</form>
