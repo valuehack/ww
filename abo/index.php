@@ -35,4 +35,5 @@ if ($login->isUserLoggedIn() == true) {
     // the user is not logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are not logged in" view.
     include("../views/upgrade_not_in.php");
+    
 }
