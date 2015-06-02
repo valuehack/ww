@@ -106,28 +106,33 @@ if(isset($_GET['q']))
     		<?php
     			if ($entry3[format] == '0001') {
     				echo '<span id="total2" class="medien_price">'.$entry3[price].' Credits</span><br>';
-					echo '<input type="submit" class="inputbutton" value="Auswählen">';
+					echo '<input type="submit" class="inputbutton" value="Auswählen"><br>';
 				}
 				else {
-					echo '<span id="price">' .$entry3[price]. 'Credits</span><br>';
-					echo '<input type="submit" class="inputbutton" value="Auswählen">';
+					echo '<span id="price" class="medien_price">' .$entry3[price].' Credits</span><br>';
+					echo '<input type="submit" class="inputbutton" value="Auswählen"><br>';
 				}
-      			if ($entry3[format] == '0001') {
-        			echo 'Anzahl: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
-        			echo ' Format: <select name="format"><option value="4">Druck</option></select>';
-      			}
-
-      			else { 
-      				echo '<span id="quantity"><input type="hidden" name="quantity" value="1" /></span>';
-      				echo ' Format: <select name="format" id="change" onchange="changeView('.$price.','.$price2.')">';
-        				if ($pdf == 1) echo '<option value="1">PDF</option>';
-        				if ($epub == 1) echo '<option value="2">ePub</option>';
-        				if ($kindle == 1) echo '<option value="3">Kindle</option>';
-        				if ($druck == 1) echo '<option value="4">Druck</option>';   
-      				echo '</select>';
-      			}  
-    
-      } ?>
+				echo '<span class="schriften_format">Format: <select name="format"';
+				
+					if ($entry3[format] == '0001') {
+						echo '>';
+						echo '<option value="4">Druck</option>';
+					}
+					else {
+						echo 'id="change" onchange="changeView('.$price.','.$price2.')';
+							if ($pdf == 1) echo '<option value="1">PDF</option>';
+        					if ($epub == 1) echo '<option value="2">ePub</option>';
+        					if ($kindle == 1) echo '<option value="3">Kindle</option>';
+        					if ($druck == 1) echo '<option value="4">Druck</option>'; 
+						}
+					
+				echo '</select></span>';
+				echo '<span class="schriften_quantity">Anzahl: <input type="number" name="quatity" onchange="changePrice2(this.value,'.$price2.') value="1" min="1" max="100"';
+					if ($entry3[format] == '0001') {
+						echo "disabled";
+					}
+				echo '></span>';				   
+      		} ?>
     		</form>
 		</div>
 		</div>
@@ -141,8 +146,8 @@ if(isset($_GET['q']))
   if ($entry3[text2]) echo $entry3[text2];
 
 ?>
+    	<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
     </div>
-    <div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
    </div>
 <?php 
 }
