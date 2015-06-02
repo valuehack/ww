@@ -262,7 +262,7 @@ strong {
 .navi {
 	height: 40px;
 	margin: 0 auto;
-	width: 847px ;/*987px with Bibliothek*/
+	width: 987px ;/*847px without Bibliothek*/
 }
 
 .navi ul {
