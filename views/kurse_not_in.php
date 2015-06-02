@@ -91,7 +91,7 @@ if(isset($_GET['q']))
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		<div class="centered">
 			<div class="salon_reservation">
-				<p class="salon_reservation_span_d"><?echo $entry3[price]?> &euro; pro Teilnehmer</p>
+				<p class="salon_reservation_span_d">150 &euro; pro Teilnehmer</p>
   				<!-- Button trigger modal -->
   				<input type="button" class="salon_reservation_inputbutton" value="Anmelden" data-toggle="modal" data-target="#myModal">
   				<p class="salon_reservation_span_c">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r den Kurs, sondern auch Zugang zu unserem weiteren Angebot. (u.a. Scholien, unserem Salon, Schriften, Medien)</p>
@@ -216,9 +216,7 @@ else {
     </form>
     <!--TO DO: Create account when registering for the event -->
         </div>
-      <div class="modal-footer">
-        <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
-      </div>
+    
     </div>
   </div>
 </div>

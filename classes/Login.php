@@ -1054,6 +1054,12 @@ public function sendEventRegMail($events)
 #the actual details should be added through edit user details 
 public function upgradeUserAccount($betrag, $zahlung, $level, $profile)
 {
+   if ($login->isUserLoggedIn() == false) {
+        //create new user
+   }
+
+   $user_email = $_SESSION['user_email'];
+
    switch ($betrag) {
         case 75:
             $Mitgliedschaft = 2;
@@ -1077,8 +1083,7 @@ public function upgradeUserAccount($betrag, $zahlung, $level, $profile)
             $Mitgliedschaft = 1;
             break;
         }
-
-        $user_email = $_SESSION['user_email'];
+        
         $editProfile = 0;
         if ($_SESSION['Mitgliedschaft'] == 1) $editProfile = 1;
 
