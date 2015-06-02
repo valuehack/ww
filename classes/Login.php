@@ -106,7 +106,7 @@ class Login
 
                 // function below uses $_SESSION['user_name'] and $_SESSION['user_id']
                 #$this->errors[] = "this is working now";
-                $this->upgradeUserAccount($_POST['payment_amount'], $_POST['payment_type']);       
+                $this->upgradeUserAccount($_POST['betrag'], $_POST['zahlung'], $_POST['level'], $_POST['profile']);       
             }elseif (isset($_POST["select_events"])) {
                 #check the differences in arrays  
                 $this->doEventStuff($_POST['events']);
@@ -1052,16 +1052,26 @@ public function sendEventRegMail($events)
 #upgrade only will send an email just like before after things were made 
 #and it will be upgraded manualy for the level of membership and credits
 #the actual details should be added through edit user details 
-public function upgradeUserAccount($payment_amount, $payment_type)
+public function upgradeUserAccount($betrag, $zahlung, $level, $profile)
 {
-
-/*    switch ($payment_amount) {
-        case 90:
+   switch ($betrag) {
+        case 75:
+            $Mitgliedschaft = 2;
+            break;
+        case 150:
+            $Mitgliedschaft = 3;
+            break;
+        case 300:
             $Mitgliedschaft = 4;
             break;
-        case 1:
+        case 600:
+            $Mitgliedschaft = 5;
             break;
-        case 4:
+        case 1200:
+            $Mitgliedschaft = 6;
+            break;
+        case 2400:
+            $Mitgliedschaft = 7;
             break;
         default: 
             $Mitgliedschaft = 1;
@@ -1069,24 +1079,38 @@ public function upgradeUserAccount($payment_amount, $payment_type)
         }
 
         $user_email = $_SESSION['user_email'];
+        $editProfile = 0;
+        if ($_SESSION['Mitgliedschaft'] == 1) $editProfile = 1;
 
-        $upgrade_query = "UPDATE mitgliederExt SET Mitgliedschaft='$Mitgliedschaft'  WHERE `user_email` LIKE '$user_email'";
+        $upgrade_query = "UPDATE mitgliederExt SET Mitgliedschaft = '$Mitgliedschaft'  WHERE `user_email` LIKE '$user_email'";
         $upgrade_result = mysql_query($upgrade_query) or die("Failed Query of " . $upgrade_query. mysql_error());
         $_SESSION['Mitgliedschaft'] = $Mitgliedschaft;
-*/
 
+        $user_credits_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
+        $user_credits_result = mysql_query($user_credits_query) or die("Failed Query of " . $user_credits_query. mysql_error());
 
+        $userCreditsArray = mysql_fetch_array($user_credits_result);
+        $userCredits = $userCreditsArray[credits_left];
+        $newCredits = $userCredits + $betrag;
 
-        $this->sendUpgradeMailToUser($payment_amount, $payment_type);
-        $this->sendUpgradeMailToInstitute();
+        $upgrade_query = "UPDATE mitgliederExt SET credits_left = '$newCredits'  WHERE `user_email` LIKE '$user_email'";
+        $upgrade_result = mysql_query($upgrade_query) or die("Failed Query of " . $upgrade_query. mysql_error());
 
-        $this->messages[] = 'Upgrade successful! Please check your email - '. $_SESSION['user_email'] .' - for further instructions.';
+        $this->sendUpgradeMailToUser($betrag, $zahlung, $level);
+        $this->sendUpgradeMailToInstitute($betrag, $zahlung, $level);
+
+        if ($editProfile == 1) {
+            $this->editProfile($profile);
+        }
+        
+        $this->messages[] = 'Upgrade erfolgreich durchgeführt! Bitte prüfen Sie Ihren Posteingang - '. $_SESSION['user_email'];
 
 }
 
 /**/
-public function sendUpgradeMailToUser($payment_amount, $payment_type)
+public function sendUpgradeMailToUser($betrag, $zahlung, $level)
     {
+        $level_html = htmlentities($level, ENT_QUOTES, "UTF-8");
         $mail = new PHPMailer;
 
         // please look into the config/config.php for much more info on how to use this!
@@ -1145,36 +1169,22 @@ public function sendUpgradeMailToUser($payment_amount, $payment_type)
             <!--#/html#-->
             <br>            
             Dear economist,
+            <br><br>
+            Vielen Dank f&uuml;r Ihr Upgrade! Sie sind nun <b>'.$level_html.'</b>.<br>
+            Sie werden ein weiteres Email von uns erhalten, wenn Ihre Zahlung best&auml;tigt wurde. 
             <br>
-            Thanks for upgrading your account. <br>
-            You will receive another email once your payment is confirmed. 
-            <br>
-            <p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p>
+         
             <p><b>Laufzeit und K&uuml;ndigung:</b></p>   
 
-            <p>Die Mitgliedschaft l&auml;uft ein Jahr und verl&auml;ngernt sich automatisch um ein weiteres Jahr wenn Sie nicht zwei Wochen vor Ablauf k&uuml;ndigen. Eine K&uuml;ndigung ist jederzeit m&ouml;glich, E-Mail oder Fax gen&uuml;gt.</p>
+            <p>Die Mitgliedschaft l&auml;uft ein Jahr. ...</p>
                         ';
 
 
-        switch ($payment_amount) {
-        case 90: 
-            $body .="<li>Standardmitgliedschaft</li>";           
-            break;
-        case 150:
-            $body .="<li>F&ouml;rdermitgliedschaft (150 &euro;)</li>";
-            break;
-        case 300:
-            $body .="<li>F&ouml;rdermitgliedschaft (300 &euro;)</li>";
-            break;
-        default: 
-            #some text in here if all above fails
-            break;
-        }
 
-        switch ($payment_type) {
+        switch ($zahlung) {
 
         case "bar":   
-        $body .="<p>Bitte schicken Sie uns den gew&auml;hlten Betrag von ".$payment_amount."  &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das Institut f&uuml;r Wertewirtschaft, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich im Institut (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>";
+        $body .="<p>Bitte schicken Sie uns den gew&auml;hlten Betrag von ".$betrag."  &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das Institut f&uuml;r Wertewirtschaft, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich im Institut (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>";
             break;
 
         case "kredit":
@@ -1205,7 +1215,7 @@ public function sendUpgradeMailToUser($payment_amount, $payment_type)
         case "bank":
 
         $body .= "
-        <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR ".$payment_amount." an:</p>
+        <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR ".$betrag." an:</p>
         <p><i>International</i>
         <ul>
         <li>Institut f&uuml;r Wertewirtschaft</li>
@@ -1263,7 +1273,7 @@ public function sendUpgradeMailToUser($payment_amount, $payment_type)
     }
 
 /**/
-public function sendUpgradeMailToInstitute()
+public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
     {
         $mail = new PHPMailer;
 
@@ -1297,10 +1307,8 @@ public function sendUpgradeMailToInstitute()
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         // $link    = 'http://test.wertewirtschaft.net/'.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         
-        $body = 'There is a user who wants to upgrade!
+        $body = 'User '.$_SESSION['user_email'].'möchte auf die Stufe '.$level.' upgraden!
             ';
-
-        $body = $body.'Here is the email of this user: '.$_SESSION['user_email'];
 
         $mail->Body = $body;
 
@@ -1413,12 +1421,12 @@ user_plz
     public function editProfile($profile)
     {  
 
-        echo $name = $profile[user_first_name];
-        echo $surname = $profile[user_surname];
-        echo $street = $profile[user_street];
-        echo $city = $profile[user_city];
-        echo $country = $profile[user_country];
-        echo $plz = $profile[user_plz];
+        $name = $profile[user_first_name];
+        $surname = $profile[user_surname];
+        $street = $profile[user_street];
+        $city = $profile[user_city];
+        $country = $profile[user_country];
+        $plz = $profile[user_plz];
 
         $name = substr(trim($name), 0, 64);
         $surname = substr(trim($surname), 0, 64);

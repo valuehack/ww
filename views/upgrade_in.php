@@ -6,6 +6,7 @@ include('_header_in.php');
 
 $title="Upgrades";
 
+
 ?>
 
 <div class="payment">
@@ -36,8 +37,10 @@ $title="Upgrades";
                    </td>
                    </tr><tr>
                        <td class="pay_option_form" colspan="2">
-                            <form method="post" action="">
-                                <input type="button" class="pay_option_box_inputbutton" name="gast" value="Werden Sie jetzt Gast">
+                            <form method="post" action="zahlung.php">
+                                <input type="hidden" name="betrag" value="75">
+                                <input type="hidden" name="level" value="Gast">
+                                <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Gast">
                             </form>   
                        </td>
                    </tr>                   
@@ -64,8 +67,10 @@ $title="Upgrades";
                     </td>
                     </tr><tr>
                     <td class="pay_option_form" colspan="2">
-                        <form method="post" action="">
-                            <input type="button" class="pay_option_box_inputbutton" name="kursteilnehmer" value="Werden Sie jetzt Kursteilnehmer">
+                        <form method="post" action="zahlung.php">
+                            <input type="hidden" name="betrag" value="150">
+                            <input type="hidden" name="level" value="Kursteilnehmer">
+                            <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Kursteilnehmer">
                         </form>   
                     </td>
                     </tr>
@@ -93,8 +98,10 @@ $title="Upgrades";
                 </td>
                 </tr><tr>
                 <td class="pay_option_form" colspan="2">
-                    <form method="post" action="">
-                        <input type="button" class="pay_option_box_inputbutton" name="wertewirt" value="Werden Sie jetzt Wertewirt">
+                    <form method="post" action="zahlung.php">
+                        <input type="hidden" name="betrag" value="300">
+                        <input type="hidden" name="level" value="Wertewirt">
+                        <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Wertewirt">
                     </form>   
                 </td>
                 </tr>
@@ -121,8 +128,10 @@ $title="Upgrades";
                 </td>
                 </tr><tr>
                 <td class="pay_option_form" colspan="2">
-                    <form method="post" action="">
-                        <input type="button" class="pay_option_box_inputbutton" name="partner" value="Werden Sie jetzt Partner">
+                    <form method="post" action="zahlung.php">
+                        <input type="hidden" name="betrag" value="600">
+                        <input type="hidden" name="level" value="Partner">
+                        <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Partner">
                     </form>   
                 </td>
                 </tr>
@@ -148,8 +157,10 @@ $title="Upgrades";
                 </td>
                 </tr><tr>
                 <td class="pay_option_form" colspan="2">
-                    <form method="post" action="">
-                        <input type="button" class="pay_option_box_inputbutton" name="beirat" value="Werden Sie jetzt Beirat">
+                    <form method="post" action="zahlung.php">
+                        <input type="hidden" name="betrag" value="1200">
+                        <input type="hidden" name="level" value="Beirat">
+                        <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Beirat">
                     </form>   
                 </td>
                 </tr>
@@ -174,8 +185,10 @@ $title="Upgrades";
                 </td>
                 </tr><tr>
                 <td class="pay_option_form" colspan="2">
-                    <form method="post" action="">
-                        <input type="button" class="pay_option_box_inputbutton" name="ehreprasident" value="Werden Sie jetzt Ehrenpr&auml;sident">
+                    <form method="post" action="zahlung.php">
+                        <input type="hidden" name="betrag" value="2400">
+                        <input type="hidden" name="level" value="Ehrenpräsident">
+                        <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Ehrenpr&auml;sident">
                     </form>   
                 </td>
                 </tr>
