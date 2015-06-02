@@ -569,10 +569,8 @@ strong {
 }
 
 .blog_img {
-	width: 300px;
 	background: #000;
-	text-align: center;
-	margin: 0 5px 5px 5px;
+	margin: 15px 0 0 50px !important;
 	float: right;
 }
 
