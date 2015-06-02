@@ -15,9 +15,7 @@ if (isset($_POST["registrationform"])) {
     $title = $_POST['title'];
     $profile = $_POST['profile'];
     $user_email = $profile[user_email];
-    $_SESSION['user_email'] = $user_email;
 
-echo $user_email;
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="upgrade_user_account" accept-charset="UTF-8">
 
@@ -90,6 +88,9 @@ elseif (isset($_POST['ok']))
 	$level = $_POST['level'];
     $betrag = $_POST['betrag'];
     $zahlung = $_POST['zahlung'];
+    
+    //after user is created, SESSION variables should be set in Login.php
+    $user_id = $_SESSION['user_id'];
 
     //register for the event
     if ($_POST['ok'] == 2) { 
@@ -98,13 +99,17 @@ elseif (isset($_POST['ok']))
       $id = $_POST['event_id'];
       $title = $_POST['title'];
 
-      echo "<div>Ein Platz in \"".ucfirst($title).'" wurde für Sie reserviert.</div>';
+      echo $user_email."<br>";
+      echo $id."<br>";
+
+      echo "<div>Vielen Dank, ein Platz in \"".ucfirst($title).'" wurde für Sie reserviert. Außerdem haben wir für Sie die einj&auml;hrige Mitgliedschaft &quot;Kursteilnehmer&quot; freigeschalten und Ihrem Konto 25 Credits hinzugef&uuml;gt.</div><br>';
 
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
       $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
 
       $userArray = mysql_fetch_array($user_result);
       $user_id = $userArray[user_id];
+      echo $user_id;
 
       $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
       mysql_query($registration_query);
@@ -120,20 +125,21 @@ elseif (isset($_POST['ok']))
       //TO DO: send email, create user first 
     }
 
+    else {
+      echo '<br><p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p><br>';
 
-?>
+      echo '<p><b>Laufzeit und K&uuml;ndigung:</b></p>';
+
+      echo '<p>Die Mitgliedschaft l&auml;uft ein Jahr und verl&auml;ngernt sich automatisch um ein weiteres Jahr wenn Sie nicht zwei Wochen vor Ablauf k&uuml;ndigen. Eine K&uuml;ndigung ist jederzeit m&ouml;glich, E-Mail oder Fax gen&uuml;gt.</p>';
+
+      echo "<br><p>Sie haben das Abo ".$level." bestellt.<br>";
+
+    }
 
 
 
-    <br><p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p><br>
 
-    <p><b>Laufzeit und K&uuml;ndigung:</b></p>
-
-    <p>Die Mitgliedschaft l&auml;uft ein Jahr und verl&auml;ngernt sich automatisch um ein weiteres Jahr wenn Sie nicht zwei Wochen vor Ablauf k&uuml;ndigen. Eine K&uuml;ndigung ist jederzeit m&ouml;glich, E-Mail oder Fax gen&uuml;gt.</p>
-
-    <? 
-    echo "<br><p>Sie haben das Abo ".$level." bestellt.<br>";
-
+   
     if ($zahlung=="bank")
     {
     ?>
