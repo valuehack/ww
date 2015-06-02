@@ -569,7 +569,7 @@ strong {
 }
 
 .blog_img {
-	max-width: 470px;
+	max-width: 470px !important;
 	background: #000;
 	margin: 15px 0 0 50px !important;
 	float: right;
@@ -1221,7 +1221,7 @@ a:hover.medien_title_list {
 }
 
 .schriften_table_c  {
-	font-size: 12pt;
+	font-size: 12pt !important;
 }
 
 /* ============= Projekte ============*/

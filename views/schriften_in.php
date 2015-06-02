@@ -198,44 +198,9 @@ while($entry = mysql_fetch_array($result))
 						echo '<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">';
 					}
 					else {
-						$pdf = substr($entry[format],0,1);
-    					$epub = substr($entry[format],1,1);
-    					$kindle = substr($entry[format],2,1);
-    					$druck = substr($entry[format],3,1);
-
-    					$price = $entry[price];
-    					$price2 = $entry[price2];
-					?>
-
-    				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      					<input type="hidden" name="add" value="<?php echo $n; ?>">
-     
-    			<?php
-    				if ($entry[format] == '0001') {
-        				echo '<span class="medien_price" id="total2">'.$entry[price].' Credits</span>';
-						echo '<input type="submit" class="inputbutton" value="Auswählen">';
-      					}
-      				else { 
-						echo '<span class="medien_price" id="price"><'.$entry[price].' Credits</span>';
-      					echo '<input type="submit" class="inputbutton" value="Auswählen">';
-					}
-      				if ($entry[format] == '0001') {      					
-        				echo 'Anzahl: <input type="number" name="quantity" style="width:35px;" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100"><br>';
-        				echo ' Format: <select name="format"><option value="4">Druck</option></select>';
-      				}
-
-      				else { 
-      					echo 'Anzahl: <span id="quantity"><input type="number" name="quantity" value="1" disabled></span>';
-      					echo ' Format: <select name="format" id="change" onchange="changeView('.$price.','.$price2.')">';
-        					if ($pdf == 1) echo '<option value="1">PDF</option>';
-        					if ($epub == 1) echo '<option value="2">ePub</option>';
-        					if ($kindle == 1) echo '<option value="3">Kindle</option>';
-        					if ($druck == 1) echo '<option value="4">Druck</option>';   
-      					echo '</select>';
-      					}  
-     
-   					echo "</form>";
-					}
+						
+						echo "<a href='?q=$id'><button class='inputbutton' type='button'>Bestellen</button></a>";
+      					}     									
 					?>
 			</td>
 		</tr>
