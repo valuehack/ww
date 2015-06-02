@@ -1156,12 +1156,6 @@ a:hover.medien_title_list {
 	background: rgb(30,48,64);
 }
 
-.medien_price {
-	font-size: 24pt !important;
-	margin: 10px 5px;
-	display: block;
-}
-
 /* ============ Schriften ============*/
 
 
@@ -1234,13 +1228,26 @@ a:hover.medien_title_list {
 .schriften_bestellen {
 	float: left;
 	width: 35%;
-	text-align: center;
+	text-align: right;
 	padding-right: 15%;
+}
+
+.schriften_price {
+	font-size: 24pt !important;
+	margin: 0 0 25px 0;
+	display: block;
+}
+
+.schriften_type {
+	font-size: 12pt;
+	color: rgba(0,0,0,0.85);
+	margin: 0 5px 10px 0;
+	display: block;
 }
 
 .schriften_format {
 	display: block;
-	margin: 10px 5px;
+	margin: 20px 5px 10px 5px;
 }
 
 .schriften_format select {
@@ -1248,14 +1255,14 @@ a:hover.medien_title_list {
 	margin-left: 73px;
 }
 
-.schriften_quatity {
+.schriften_quantity {
 	display: block;
 	margin: 10px 5px;
 }
 
 .schriften_quantity input {
-	width: 70px;
-	margin-left: 70px;
+	width: 65px;
+	margin-left: 74px;
 }
 /* ============= Projekte ============*/
 
