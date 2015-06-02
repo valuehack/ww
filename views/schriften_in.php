@@ -104,7 +104,7 @@ if(isset($_GET['q']))
       			<input type="hidden" name="add" value="<?php echo $n; ?>" />
      
     		<?php
-    			echo '<span class="schriften_type"><'.ucfirst($entry3[type]).'></span>';
+    			echo '<span class="schriften_type">'.ucfirst($entry3[type]).'</span>';
     			if ($entry3[format] == '0001') {
     				echo '<span id="total2" class="schriften_price">'.$entry3[price].' Credits</span>';
 					echo '<input type="submit" class="inputbutton" value="Auswählen"><br>';
@@ -128,7 +128,7 @@ if(isset($_GET['q']))
 						}					
 				echo '</select></span>';
 				
-				echo '<span class="schriften_quantity">Anzahl: <input type="number" name="quatity" onchange="changePrice2(this.value,'.$price2.') value="1" min="1" max="100"';
+				echo '<span class="schriften_quantity">Anzahl: <input type="number" name="quantity" onchange="changePrice2(this.value,'.$price2.') value="1" min="1" max="100"';
 					if ($entry3[format] == '0001') {
 						echo "disabled";
 					}
