@@ -1219,6 +1219,8 @@ a:hover.medien_title_list {
 
 .schriften_img {
 	float: left;
+	text-align: center;
+	width: 50%;
 }
 
 .schriften_img img {
@@ -1227,11 +1229,12 @@ a:hover.medien_title_list {
 	max-height: 300px;
 	max-width: 300px;
 	background: rgb(250,250,250);
-	margin: 0 50px;
 }
 
 .schriften_bestellen {
 	float: left;
+	width: 50%;
+	text-align: center;
 }
 
 /* ============= Projekte ============*/

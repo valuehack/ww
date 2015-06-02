@@ -124,9 +124,9 @@ if(isset($_GET['q']))
         					if ($epub == 1) echo '<option value="2">ePub</option>';
         					if ($kindle == 1) echo '<option value="3">Kindle</option>';
         					if ($druck == 1) echo '<option value="4">Druck</option>'; 
-						}
-					
-				echo '</select></span>';
+						}					
+				echo '</select></span><br>';
+				
 				echo '<span class="schriften_quantity">Anzahl: <input type="number" name="quatity" onchange="changePrice2(this.value,'.$price2.') value="1" min="1" max="100"';
 					if ($entry3[format] == '0001') {
 						echo "disabled";
