@@ -128,7 +128,7 @@ if(isset($_GET['q']))
 				
         echo '<span class="schriften_quantity">Anzahl: ';
         if ($entry3[format] == '0001') {
-				echo '<input type="number" style="width=65px" name="quantity" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
+				echo '<input type="number" name="quantity" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
 					}
         else {
 						echo '<span id="quantity"><input type="number" name="quantity" value="1" disabled></span>';
