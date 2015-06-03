@@ -13,7 +13,7 @@ function changeView(price, price2) {
       document.getElementById("price").innerHTML = "<span id='total'>" + price2 + " Credits</span>";
     }
     else {
-      document.getElementById("quantity").innerHTML = '<input type="number" name="quantity" value="1" disabled>';
+      document.getElementById("quantity").innerHTML = '<input type="hidden" name="quantity" value="1"><input type="number" name="quantity2" value="1" disabled>';
       document.getElementById("price").innerHTML = price + " Credits";
     }
 }
@@ -131,7 +131,7 @@ if(isset($_GET['q']))
 				echo '<input type="number" name="quantity" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
 					}
         else {
-						echo '<span id="quantity"><input type="number" name="quantity" value="1" disabled></span>';
+						echo '<span id="quantity"><input type="hidden" name="quantity" value="1"><input type="number" name="quantity2" value="1" disabled></span>';
 					}
 				echo '</span>';
       		} ?>

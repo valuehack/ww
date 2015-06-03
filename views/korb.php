@@ -97,8 +97,8 @@ if(isset($_POST['checkout'])) {
     $heute = date_create(date("Y-m-d"));
 
     $differenz = date_diff($zahlung,$heute);
-    echo $differenz->format("%R%a days");
-    if ($differenz > 365) {
+    echo $differenz->format("%a");
+    if ($differenz->format("%a") > 365) {
         $error = 2;
     }
 
@@ -206,7 +206,7 @@ if(isset($_POST['checkout'])) {
                 //echo '<td><a href="'.$download$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'/.pdf';_link.'" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>';
            
 
-                if (($type == 'scholien' || $type == 'analyse' || $type == 'buch' || $type == 'audio') && $format != 4) {
+                if (($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'audio') && $format != 4) {
 
                 ?>
                 <td><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href);">Download</a></td>
