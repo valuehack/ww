@@ -8,6 +8,7 @@ mysql_select_db("newBig");
 //mysql_query("SET NAMES 'utf8'");
 
 //checks if there are published entries from today or yesterday; every 2 days there should be a new post
+//TO DO: Check publication plan, wenn 2 geplante Posts 3 Tage auseinander sind
 $publ_query = "SELECT * FROM blog WHERE publ_date <= CURDATE() AND DATEDIFF(CURDATE(),publ_date) < 2";
 $publ_result = mysql_query($publ_query) or die("Failed Query of " .$publ_query. mysql_error());
 $publ_rows = mysql_num_rows($publ_result); 

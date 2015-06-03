@@ -1112,7 +1112,7 @@ public function upgradeUserAccount($betrag, $zahlung, $level, $profile)
             $this->editProfile($profile);
         }
         
-        $this->messages[] = 'Upgrade erfolgreich durchgeführt! Bitte prüfen Sie Ihren Posteingang - '. $_SESSION['user_email'];
+        $this->messages[] = 'Upgrade erfolgreich durchgeführt! Bitte prüfen Sie Ihren Posteingang - '. $user_email;
 
 }
 

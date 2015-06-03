@@ -99,9 +99,6 @@ elseif (isset($_POST['ok']))
       $id = $_POST['event_id'];
       $title = $_POST['title'];
 
-      echo $user_email."<br>";
-      echo $id."<br>";
-
       echo "<div>Vielen Dank, ein Platz in \"".ucfirst($title).'" wurde für Sie reserviert. Außerdem haben wir für Sie die einj&auml;hrige Mitgliedschaft &quot;Kursteilnehmer&quot; freigeschalten und Ihrem Konto 25 Credits hinzugef&uuml;gt.</div><br>';
 
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
@@ -109,7 +106,6 @@ elseif (isset($_POST['ok']))
 
       $userArray = mysql_fetch_array($user_result);
       $user_id = $userArray[user_id];
-      echo $user_id;
 
       $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
       mysql_query($registration_query);

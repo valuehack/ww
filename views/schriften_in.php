@@ -118,7 +118,7 @@ if(isset($_GET['q']))
 						echo '<option value="4">Druck</option>';
 					}
 					else {
-						echo 'id="change" onchange="changeView('.$price.','.$price2.')';
+						echo ' id="change" onchange="changeView('.$price.','.$price2.')">';
 							if ($pdf == 1) echo '<option value="1">PDF</option>';
         					if ($epub == 1) echo '<option value="2">ePub</option>';
         					if ($kindle == 1) echo '<option value="3">Kindle</option>';
@@ -126,9 +126,11 @@ if(isset($_GET['q']))
 						}					
 				echo '</select></span>';
 				
+        if ($entry3[format] == '0001') {
 				echo '<span class="schriften_quantity">Anzahl: <input type="number" name="quantity" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100"';
-					if ($entry3[format] != '0001') {
-						echo "disabled";
+					}
+        else {
+						echo '<span class="schriften_quantity">Anzahl: <span id="quantity"><input type="hidden" name="quantity" value="1" /></span>';
 					}
 				echo '></span>';
       		} ?>
