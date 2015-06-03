@@ -93,9 +93,15 @@ if(isset($_POST['checkout'])) {
     }
 
     //check, if membership still valid
-    $userCredits = $userCreditsArray[Zahlung];
+    $zahlung = $userCreditsArray[Zahlung];
+    $heute = time();
 
-    
+    $differenz = date_diff($zahlung,$heute);
+    echo $differenz->format("%R%a days");
+    if ($differenz > 365) {
+        $error = 2;
+    }
+
 
     if ($error == 1) {
         //$this->errors[] = "You do not have enough credits to buy the items in your basket.";
@@ -105,7 +111,7 @@ if(isset($_POST['checkout'])) {
 
 
     elseif ($error == 2) {
-        echo 'Text für Warenkorb-Checkout nach Ablauf Mitgliedschaft'
+        echo 'Text für Warenkorb-Checkout nach Ablauf Mitgliedschaft';
     }
 
         else 
