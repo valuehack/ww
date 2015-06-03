@@ -53,6 +53,8 @@ if(isset($_POST['checkout'])) {
     $user_credits_result = mysql_query($user_credits_query) or die("Failed Query of " . $user_credits_query. mysql_error());
 
     $userCreditsArray = mysql_fetch_array($user_credits_result);
+    
+    //check, if enough credits
     $userCredits = $userCreditsArray[credits_left];
 
     $_SESSION['credits_left'] = $userCredits;
@@ -87,13 +89,24 @@ if(isset($_POST['checkout'])) {
     if ($versand >= 1) $itemsPrice += 5;
 
     if (!($userCredits >= $itemsPrice)) {
+        $error = 1;
+    }
+
+    //check, if membership still valid
+    $userCredits = $userCreditsArray[Zahlung];
+
+    
+
+    if ($error == 1) {
         //$this->errors[] = "You do not have enough credits to buy the items in your basket.";
         //error message does not work, alternate message above
-        echo "<div><p>Ihre Bestellung &uuml;bersteigt Ihr derzeit noch freies Guthaben. Wir freuen uns sehr &uuml;ber Ihr Interesse. Um die Bestellung abzuschlie&szlig;en, f&uuml;llen Sie bitte Ihr Guthaben auf. Bitte w&auml;hlen Sie dazu eine der m&ouml;glichen Unterst&uuml;tzungsstufen &ndash; Sie k&ouml;nnen Ihr Guthaben im jeweiligen Ausma&szlig; erneut auff&uuml;llen. Sie k&ouml;nnen auch wieder denselben Betrag w&auml;hlen, so bleibt Ihr Guthaben wieder ein volles Jahr von nun an aktiv. Das bedeutet, Sie ziehen Ihre Guthabenauff&uuml;llung, die sonst nach Ablauf eines Jahres und erneuter Unterst&uuml;tzung erfolgen w&uuml;rde, einfach vor, um dieses Guthaben schon jetzt zu nutzen. Oder Sie nutzen die Gelegenheit, uns auf einer h&ouml;heren Stufe zu unterst&uuml;tzen und so innerhalb eines Jahres &uuml;ber noch mehr Guthaben verf&uuml;gen zu k&ouml;nnen. Es ehrt uns sehr, dass Sie unser Angebot in gr&ouml;&szlig;erem Ma&szlig;e nutzen wollen! Vielen Dank f&uuml;r Ihr Vertrauen.</p></div>";
-        ?>
+        echo "<div><p>Ihre Bestellung &uuml;bersteigt Ihr derzeit noch freies Guthaben. Wir freuen uns sehr &uuml;ber Ihr Interesse. Um die Bestellung abzuschlie&szlig;en, f&uuml;llen Sie bitte Ihr Guthaben auf. Bitte w&auml;hlen Sie dazu eine der m&ouml;glichen Unterst&uuml;tzungsstufen &ndash; Sie k&ouml;nnen Ihr Guthaben im jeweiligen Ausma&szlig; erneut auff&uuml;llen. Sie k&ouml;nnen auch wieder denselben Betrag w&auml;hlen, so bleibt Ihr Guthaben wieder ein volles Jahr von nun an aktiv. Das bedeutet, Sie ziehen Ihre Guthabenauff&uuml;llung, die sonst nach Ablauf eines Jahres und erneuter Unterst&uuml;tzung erfolgen w&uuml;rde, einfach vor, um dieses Guthaben schon jetzt zu nutzen. Oder Sie nutzen die Gelegenheit, uns auf einer h&ouml;heren Stufe zu unterst&uuml;tzen und so innerhalb eines Jahres &uuml;ber noch mehr Guthaben verf&uuml;gen zu k&ouml;nnen. Es ehrt uns sehr, dass Sie unser Angebot in gr&ouml;&szlig;erem Ma&szlig;e nutzen wollen! Vielen Dank f&uuml;r Ihr Vertrauen.</p><hr></div>";
+    }
 
-        <?
-        }
+
+    elseif ($error == 2) {
+        echo 'Text für Warenkorb-Checkout nach Ablauf Mitgliedschaft'
+    }
 
         else 
         {
@@ -457,14 +470,14 @@ if($_SESSION['basket']) {
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <input type="submit" name="delete" value="Clear Basket" onClick="return checkMe()"></form></td>
  
- <!-- possibility 1 
+ <!-- possibility 1 -->
   <td align="right">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <input type="submit" name="checkout" value="Checkout"></form></td>  
--->
+
 
 <?php
-// possibility 2
+/* possibility 2
 //check, if there are enough credits
     $items = $_SESSION['basket']; 
     $user_id = $_SESSION['user_id'];
@@ -526,8 +539,9 @@ if($_SESSION['basket']) {
     <?
     }
     
+    
+*/
     ?>
-
 </tr>
 </table>
 
@@ -545,7 +559,7 @@ else {
 }
 ?>
 
-<!-- Modal -->
+<!-- Modal - zurzeit nicht verwendet
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -565,6 +579,7 @@ else {
     </div>
   </div>
 </div>
+-->
 
 <!-- backlink -->
 <a href="index.php"><?php echo WORDING_BACK_TO_LOGIN; ?></a>
