@@ -32,6 +32,7 @@ include ("_header_in.php");
             </div>
             
             <div class="startpage_section_b">
+            	<h1>Neue Inhalte</h1>
                 <div class="startpage_box white">
                     <h1>Schriften</h1>
                 </div>
@@ -44,6 +45,7 @@ include ("_header_in.php");
             </div>
             
             <div class="startpage_section_c">
+            	<h1>Aktuelle Veranstaltungen</h1>
                 <div class="startpage_box black">
                     <h1>Salons</h1>
                 </div>       
