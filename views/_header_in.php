@@ -2,7 +2,7 @@
 <html lang="de">
 	<head>  
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title><?=$title?> | Institut f&uuml;r Wertewirtschaft</title>
+		<title><?=$title?> | Wertewirtschaft</title>
     
     	<link rel="shortcut icon" href="/favicon.ico">
     	<link rel="stylesheet" type="text/css" href="../style/style.css">

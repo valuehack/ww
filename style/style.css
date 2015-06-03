@@ -257,7 +257,7 @@ strong {
    	margin: 0 auto;
    	/*padding: 0 17%;*/
 	text-align: center;
-	box-shadow: 0 0 2px 0 rgb(20,20,20);
+	box-shadow: 0 0 10px 0 rgb(20,20,20);
 }
 
 .navi {
@@ -457,6 +457,69 @@ strong {
 	color: rgba(46,74,140,0.6);
 }
 
+/*==================================================*/
+/*              Start/ Welcome Page	                */
+/*==================================================*/
+
+.startpage {
+	
+}
+
+.startpage_section_a, .startpage_section_b, .startpage_section_c {
+	width: 70%;
+	height: 300px;
+	padding: 50px 15%;
+}
+
+.startpage_section_a {
+	background: rgb(245,245,245);
+}
+
+.startpage_section_b {
+	background: rgb(7,16,24) url(../style/gfx/ww_landing_dark.png) no-repeat center;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.6);
+}
+
+.startpage_section_c {
+	background: rgb(245,245,245);
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.6) inset;
+}
+
+.startpage_info {
+	width: 57%;
+	height: 185px;
+	background: rgb(192,183,175);
+	padding: 15px 25px;
+	font-size: 15pt;
+	line-height: 1.8;
+	font-style: italic;
+	float: left;
+	margin: 0 15px;
+}
+
+.startpage_box {
+	width: 24%;
+	height: 270px;
+	padding: 15px 25px;
+	float: left; 
+	margin: 0 15px;
+}
+
+.startpage_box h1 {
+	font-size: 22pt;
+	text-align: center;
+	margin: 10px 0;
+}
+
+.white {
+	background: rgba(255,255,255,0.2);
+	color: rgb(255,255,255);
+	box-shadow: 0 0 4px 0 rgba(0,0,0,0.6);
+}
+
+.black {
+	background: rgb(192,183,175); 
+}
 /*==================================================*/
 /*                 Scholien/ Blog	                */
 /*==================================================*/
@@ -1486,7 +1549,8 @@ a:visited.medien_title_list {
 .footer {
 	min-height: 35px;
 	width: 100%;
-	background: rgb(46,74,98);
+	/*background: rgb(46,74,98);*/
+	background: rgb(7,16,24);
 	margin: 0;
 	padding-top: 15px;
 }

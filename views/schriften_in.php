@@ -9,7 +9,7 @@ function changeView(price, price2) {
     var x = document.getElementById("change").value;
 
     if (x == 4) {    
-      document.getElementById("quantity").innerHTML = '<input type="number" name="quantity" style="width:35px;" onchange="changePrice(this.value,' + price2 + ')" value="1" min="1" max="100">';
+      document.getElementById("quantity").innerHTML = '<input type="number" name="quantity" onchange="changePrice(this.value,' + price2 + ')" value="1" min="1" max="100">';
       document.getElementById("price").innerHTML = "<span id='total'>" + price2 + " Credits</span>";
     }
     else {
