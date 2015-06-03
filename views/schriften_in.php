@@ -9,11 +9,11 @@ function changeView(price, price2) {
     var x = document.getElementById("change").value;
 
     if (x == 4) {    
-      document.getElementById("quantity").innerHTML = 'Anzahl: <input type="number" name="quantity" style="width:35px;" onchange="changePrice(this.value,' + price2 + ')" value="1" min="1" max="100">';
+      document.getElementById("quantity").innerHTML = '<input type="number" name="quantity" style="width:35px;" onchange="changePrice(this.value,' + price2 + ')" value="1" min="1" max="100">';
       document.getElementById("price").innerHTML = "<span id='total'>" + price2 + " Credits</span>";
     }
     else {
-      document.getElementById("quantity").innerHTML = '<input type="hidden" name="quantity" value="1" />';
+      document.getElementById("quantity").innerHTML = '<input type="number" name="quantity" value="1" disabled>';
       document.getElementById("price").innerHTML = price + " Credits";
     }
 }
@@ -128,7 +128,7 @@ if(isset($_GET['q']))
 				
         echo '<span class="schriften_quantity">Anzahl: ';
         if ($entry3[format] == '0001') {
-				echo '<input type="number" name="quantity" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
+				echo '<input type="number" style="width=65px" name="quantity" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
 					}
         else {
 						echo '<span id="quantity"><input type="number" name="quantity" value="1" disabled></span>';
