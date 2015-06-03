@@ -94,7 +94,7 @@ if(isset($_POST['checkout'])) {
 
     //check, if membership still valid
     $zahlung = date_create($userCreditsArray[Zahlung]);
-    $heute = date_create(time());
+    $heute = date_create(date("Y-m-d"));
 
     $differenz = date_diff($zahlung,$heute);
     echo $differenz->format("%R%a days");
