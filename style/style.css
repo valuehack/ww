@@ -420,12 +420,14 @@ strong {
 
 .location_box {
 	width: 100%;
-	padding: 30px 0;
+	padding: 30px 0 0 0;
 	text-align: center;
 }
 
 .location_box table {
-	margin: 0 auto;
+	margin: 0 auto 75px auto;
+	width: 100%;
+	padding: 0 12.5%
 }
 
 .location_box td {
