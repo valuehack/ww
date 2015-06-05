@@ -16,9 +16,9 @@ $title="AGB";
    		<table>
    			<tr>
    				<td>
-   					<h1>Wertewirtschaft</h1>
-
-					<p>Schl&ouml;sselgasse 19/2/18, A 1080 Wien, &Ouml;sterreich</p>
+   					<p>Wertewirtschaft<br>
+					<p>Schl&ouml;sselgasse 19/2/18<br>
+					   A 1080 Wien, &Ouml;sterreich</p>
 				</td>
 				<td>
     				<p>Fax: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+43 1 2533033 4733<br>

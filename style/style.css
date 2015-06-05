@@ -436,25 +436,19 @@ strong {
 	vertical-align: top;
 }
 
-.location_box h1 {
-	font-size: 28pt !important;
+.location_box p {
 	line-height: 1.6em;
-	font-weight: bold;
-	text-align: center;
-}
-
-.location_box ul {
-	line-height: 1.9em;
 	font-size: 16pt;
-	text-align: justify;
+	text-align: left;
+	margin: 0 0 30px 0;
 }
 
-.loaction_box li a {
+.loaction_box a {
 	color: rgb(46,74,98);
 	text-decoration: none;
 }
 
-.loaction_box li a:hover {
+.loaction_box a:hover {
 	color: rgba(46,74,140,0.6);
 }
 
