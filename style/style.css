@@ -436,7 +436,7 @@ strong {
 }
 
 .location_box h1 {
-	font-size: 28pt;
+	font-size: 28pt !important;
 	line-height: 1.6em;
 	font-weight: bold;
 	text-align: right;
@@ -448,12 +448,12 @@ strong {
 	text-align: right;
 }
 
-.loaction_box ul a {
+.loaction_box li a {
 	color: rgb(46,74,98);
 	text-decoration: none;
 }
 
-.loaction_box ul a:hover {
+.loaction_box li a:hover {
 	color: rgba(46,74,140,0.6);
 }
 
