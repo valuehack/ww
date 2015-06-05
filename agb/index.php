@@ -1,6 +1,6 @@
 <? 
 require_once('../classes/Login.php');
-include "../views/_header_not_in.php";
+include ("../views/_header_not_in.php");
 $title="AGB";
 ?>
 <!--Content-->
