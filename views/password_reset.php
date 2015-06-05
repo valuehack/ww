@@ -29,7 +29,7 @@
 		</form>
 <?php } ?>
 
-		<a href="index.php"><?php echo WORDING_BACK_TO_LOGIN; ?></a>
+		<div class="medien_anmeldung"><a href="index.php"><?php echo WORDING_BACK_TO_LOGIN; ?></a></div>
 	</div>
 </div>
 
