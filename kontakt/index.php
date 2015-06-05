@@ -11,7 +11,7 @@ $title="AGB";
 		<h2>Disclaimer</h2>
 			<p>Disclaimer</p>
 			
-		<h2>Kontakt</h2>
+		<h1>Kontakt</h1>
 	</div>
 	<div class="location_box">  
    		<table>
