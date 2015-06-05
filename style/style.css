@@ -1593,13 +1593,19 @@ a:visited.medien_title_list {
 	font-size: 40pt;
 	color: rgba(0,0,0,0.9);
 	text-shadow: 0 0 1px 0 rgb(20,20,20);
-	margin: 30px 0;
+	margin: 0 0 40px 0;
 	text-align: center;
+}
+
+.password form {
+	margin: 50px 0;
 }
 
 .password label {
 	font-size: 16pt;
 	line-height: 1.6;
+	display: block;
+	margin-bottom: 20px;
 }
 
 /*==================================================*/
