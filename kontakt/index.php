@@ -17,7 +17,7 @@ $title="AGB";
    			<tr>
    				<td>
    					<p>Wertewirtschaft<br>
-					<p>Schl&ouml;sselgasse 19/2/18<br>
+					   Schl&ouml;sselgasse 19/2/18<br>
 					   A 1080 Wien, &Ouml;sterreich</p>
 				</td>
 				<td>
