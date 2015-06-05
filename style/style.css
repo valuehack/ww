@@ -879,9 +879,9 @@ a.socialimg:hover  {
 	text-decoration: none;
 }
 
-/*====================================*/
-/*           Salon - Kurse      	  */
-/*====================================*/
+/*==================================================*/
+/*                 Salon - Kurse 	                */
+/*==================================================*/
 
 .salon_info {
 	width: 75%;
@@ -1102,9 +1102,9 @@ a.socialimg:hover  {
 	border-bottom: 1px solid rgb(46,74,98);
 }
 
-/*====================================*/
-/*        	Schriften/ Medien         */
-/*====================================*/
+/*==================================================*/
+/*               Schriften - Medien 	            */
+/*==================================================*/
 
 .medien_info {
 	width: 75%;
@@ -1417,10 +1417,9 @@ a:visited.medien_title_list {
 	margin: 0px 15px;
 }
 
-
-/*====================================*/
-/*        Upgrade/Payment Page        */
-/*====================================*/
+/*==================================================*/
+/*                Upgrade - Payment	                */
+/*==================================================*/
 
 .payment {
 	width: 75%;
@@ -1557,6 +1556,36 @@ a:visited.medien_title_list {
 .pay_option_box_inputbutton:hover {
 	/*background: rgb(111,153,17);*/
 	background: rgb(230,103,2);
+}
+
+/*==================================================*/
+/*                 AGB - Impressum 	                */
+/*==================================================*/
+
+.agb {
+	width: 75%;
+	padding: 75px 12.5%;
+}
+
+.agb h1 {
+	font-size: 80pt;
+	color: rgba(0,0,0,0.9);
+	text-shadow: 0 0 1px 0 rgb(20,20,20);
+	margin: 30px 0 50px 0;
+	text-align: center;
+}
+
+.agb h2 {
+	font-size: 24pt;
+	text-align: center;
+	margin: 10px 0;
+}
+
+.agb p {
+	line-height: 1.8em;
+	font-size: 15pt;
+	text-align: justify;
+	margin: 20px 0;
 }
 
 /*==================================================*/
