@@ -1558,7 +1558,6 @@ a:visited.medien_title_list {
 .location_box table {
 	margin: -100px auto 0 auto;
 	width: 60%;
-
 }
 
 .location_box td {
@@ -1584,11 +1583,21 @@ a:visited.medien_title_list {
 
 /*================= Passwort Reset =================*/
 
-.passwort {
+.password {
+	width: 75%;
+	padding: 75px 12.5%;
 	text-align: center;
 }
 
-.passwort_label {
+.password h1 {
+	font-size: 40pt;
+	color: rgba(0,0,0,0.9);
+	text-shadow: 0 0 1px 0 rgb(20,20,20);
+	margin: 30px 0;
+	text-align: center;
+}
+
+.password label {
 	font-size: 16pt;
 	line-height: 1.6;
 }
