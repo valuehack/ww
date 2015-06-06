@@ -85,6 +85,7 @@ class Registration
     }   
 
     //main function to deal with registration of new users
+    //initiated when only email is provided
     private function subscribeNewUser($user_email)
     {
         // we just remove extra space on email
@@ -136,9 +137,13 @@ class Registration
                 // generate random hash for email verification (40 char string)
                 $user_activation_hash = sha1(uniqid(mt_rand(), true));
 
-                // write new users data into database
-                
-                $query_new_user_insert = $this->db_connection->prepare('INSERT INTO mitgliederExt (user_email, Mitgliedschaft, user_password_hash, user_activation_hash, user_registration_ip, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :user_password_hash, :user_activation_hash, :user_registration_ip, now())');
+                //in case user has lost email with verification, this will allow to attempt registration
+                $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
+                $query_delete_user->bindValue(':user_email', $user_email, PDO::PARAM_INT);
+                $query_delete_user->execute();
+
+                // write new users data into database                
+                $query_new_user_insert = $this->db_connection->prepare('INSERT INTO grey_user (user_email, Mitgliedschaft, user_password_hash, user_activation_hash, user_registration_ip, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :user_password_hash, :user_activation_hash, :user_registration_ip, now())');
                 #$query_new_user_insert->bindValue(':user_name', $user_name, PDO::PARAM_STR);
 
                 $query_new_user_insert->bindValue(':user_email', $user_email, PDO::PARAM_STR);
@@ -151,19 +156,19 @@ class Registration
                 $_SESSION['Mitgliedschaft'] = 1;
 
                 // id of new user
-                $user_id = $this->db_connection->lastInsertId();
-                $_SESSION['user_id'] = $user_id;
+                $grey_user_id = $this->db_connection->lastInsertId();
+                $_SESSION['grey_user_id'] = $grey_user_id;
 
                if ($query_new_user_insert) {
                    // send a verification email
-                   if ($this->sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password)) {
+                   if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password)) {
                        // when mail has been send successfully
                        $this->messages[] = MESSAGE_VERIFICATION_MAIL_SENT;
                        $this->registration_successful = true;
 
                    } else {
                        // delete this users account immediately, as we could not send a verification email
-                       $query_delete_user = $this->db_connection->prepare('DELETE FROM mitgliederExt WHERE user_email=:user_email');
+                       $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
                        $query_delete_user->bindValue(':user_email', $user_email, PDO::PARAM_INT);
                        $query_delete_user->execute();
 
@@ -335,18 +340,52 @@ class Registration
     {
         // if database connection opened
         if ($this->databaseConnection()) {
-            // try to update user with specified information
+
+            //verify user - get data that will be inserted in the main database
+            $verify_user = $this->db_connection->prepare('SELECT * FROM grey_user WHERE user_id = :user_id AND user_activation_hash = :user_activation_hash');
+            $verify_user->bindValue(':user_id', intval(trim($user_id)), PDO::PARAM_INT);
+            $verify_user->bindValue(':user_activation_hash', $user_activation_hash, PDO::PARAM_STR);
+            $verify_user->execute();
+
+            // get result row (as an object)
+            $the_row = $verify_user->fetchObject();
+
+            print_r($the_row);
+
+            //copy data to the main database
+
+            $query_move_to_main = $this->db_connection->prepare('INSERT INTO mitgliederExt (user_email, Mitgliedschaft, user_password_hash, user_registration_ip, user_active, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :user_password_hash, :user_registration_ip, :user_active, now())');
+
+            $query_move_to_main->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':Mitgliedschaft', $the_row->Mitgliedschaft, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':user_password_hash', $the_row->user_password_hash, PDO::PARAM_STR);
+            //$query_move_to_main->bindValue(':user_activation_hash', $the_row->user_activation_hash, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':user_active', '1', PDO::PARAM_STR);
+            $query_move_to_main->execute();
+
+
+            /*
             $query_update_user = $this->db_connection->prepare('UPDATE mitgliederExt SET user_active = 1, user_activation_hash = NULL WHERE user_id = :user_id AND user_activation_hash = :user_activation_hash');
             $query_update_user->bindValue(':user_id', intval(trim($user_id)), PDO::PARAM_INT);
             $query_update_user->bindValue(':user_activation_hash', $user_activation_hash, PDO::PARAM_STR);
             $query_update_user->execute();
+            */
 
-            if ($query_update_user->rowCount() > 0) {
+            $user_id = $this->db_connection->lastInsertId();
+            $_SESSION['user_id'] = $user_id;
+
+            $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
+            $query_delete_user->bindValue(':user_email', $the_row->user_email, PDO::PARAM_INT);
+            $query_delete_user->execute();
+
+
+            if ($verify_user->rowCount() > 0) {
                 $this->verification_successful = true;
                 $this->messages[] = MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL;
                 
                 $_POST['user_rememberme'] = 1;
-                #$_SESSION['user_id'] = $user_id;
+                $_SESSION['user_id'] = $user_id;
 
             } else {
                 $this->errors[] = MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL;
