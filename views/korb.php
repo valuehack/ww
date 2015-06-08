@@ -416,11 +416,25 @@ if($_SESSION['basket']) {
         else {
             $sum = $quantity*$itemsExtraArray[price];
         }
+        
+		if ($itemsExtraArray[type] == 'buch' OR 'analyse' OR 'scholie') {
+			$url = '../schriften/index.php?q=';
+			}
+		if ($itemsExtraArray[type] == 'kurse') {
+			$url = '../kurse/index.php?q=';
+			}
+		if ($itemsExtraArray[type] == 'salon') {
+			$url = '../salon/index.php?q=';
+			}
 ?>        
 		<div class="basket_body">
-			<div class="basket_body_col_a">				
-<?php
-		echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span><br>";
+			<div class="basket_body_col_a">
+				<div class="basket_body_col_a_1">
+					<img src="<?echo $url.$id;?>" alt="">
+				</div>		
+				<div class="basket_body_col_a_2">		
+<?php			
+		echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span>";
 		echo "<span class='basket_body_title'>";
 		echo "<a href='../".$itemsExtraArray[type]."/index.php?q=".$itemsExtraArray[id]."n'>".$itemsExtraArray[title]."</a></span>";
 		echo "<span class='basket_body_format'>";
@@ -444,6 +458,7 @@ if($_SESSION['basket']) {
                 	<input type="hidden" name="remove" value="<?php echo $code ?>" />
                 	<input class="basket_body_remove_button" type="submit" value="Entfernen" onClick="return checkMe()">
             	</form>
+        	</div>
         	</div>	
 			<div class="basket_body_col_b">
 				<span>

@@ -1728,6 +1728,22 @@ a:visited.medien_title_list {
 	padding-right: 2.5%;
 }
 
+.basket_body_col_a_1 {
+	float: left;
+	width: 200px;
+	padding-right: 10px;
+}
+
+.basket_body_col_a_1 img {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.basket_body_col_a_2 {
+	width: 65%-210px;
+	float: left;
+}
+
 .basket_body_title {
 	display: block;
 	font-size: 26pt;
