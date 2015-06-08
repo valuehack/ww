@@ -40,13 +40,13 @@ if(isset($_GET['q']))
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
   
-            	//check, if there is a image in the salon folder
-	$img = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
+            	//check, if there is a image in the medien folder
+	$img = 'http://test.wertewirtschaft.net/medien/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
+	    $img_url = "http://test.wertewirtschaft.net/medien/default.jpg";
 	}
 				//Change button-value according to media type
 	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
@@ -107,31 +107,55 @@ else {
   <?
   } ?>
   
-	<div class="medien_seperator">
+<!--	<div class="medien_seperator">
     	<h1>Audio</h1>
     </div>
-	<div class="medien_content">
+	<div class="medien_content"> -->
 
 <?php
-$sql = "SELECT * from produkte WHERE type LIKE 'audio' AND status > 0 order by title asc, n asc";
+$sql = "SELECT * from produkte WHERE type LIKE 'audio' or type LIKE 'video' AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
   
-          echo "<a class='medien_title_list' href='?q=$id'>".$entry[title]."</a>"; 
+          echo "<a class='medien_title_list' href='?q=$id'>".$entry[title]."</a><br>".$entry[text];
 ?>    
+
+<div class="schriften_bestellen">
+			<?
+			if ($_SESSION['Mitgliedschaft'] == 1) {
+				echo '<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';
+			}
+			else { ?>
+				<span class="schriften_price"><?php echo $entry3[price]; ?> Credits</span>
+				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      				<input type="hidden" name="add" value="<?php echo $n; ?>" />
+     				<!--<select name="quantity">
+        				<option value="1">1</option>
+        				<option value="2">2</option>
+        				<option value="3">3</option>
+        				<option value="4">4</option>
+        				<option value="5">5</option>        
+      				</select> -->
+      				<input type="submit" class="inputbutton" value="<?echo $type;?>">
+    			</form>
+    		<?
+			}
+			?>
+		</div>
 	</div>
 <?php
 }
 ?>
 
-	<div class="medien_seperator">
+<!--	<div class="medien_seperator">
     	<h1>Video</h1>
     </div>
-	<div class="medien_content">
+	<div class="medien_content"> -->
 <?php
+/*
 $sql = "SELECT * from produkte WHERE type LIKE 'video' AND status > 0 order by title asc, id asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
@@ -146,10 +170,10 @@ while($entry = mysql_fetch_array($result))
 	</div>
 <?
 }
-
+*/
 ?>
 
-</div>
+<!-- </div> -->
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
