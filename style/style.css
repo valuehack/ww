@@ -1917,11 +1917,11 @@ a:visited.medien_title_list {
 
 .basket_summary table {
 	width: 100%;
+	font-size: 16pt !important;
 }
 
 .basket_summary td {
 	padding: 10px 0;
-	font-size: 16pt !important;
 }
 
 .basket_summary td a {
