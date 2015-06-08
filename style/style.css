@@ -1719,6 +1719,7 @@ a:visited.medien_title_list {
 	color: rgb(0,0,0);
 	width: 100%;
 	display: inline-block;
+	border-bottom: 1px solid rgb(235,235,235);
 }
 
 .basket_body_col_a {
@@ -1795,7 +1796,7 @@ a:visited.medien_title_list {
 }
 
 .basket_shipping {
-	padding: 50px 0;
+	padding: 50px 0 70px 0;
 }
 
 .basket_shipping_col_a {
@@ -1830,7 +1831,6 @@ a:visited.medien_title_list {
 
 .basket_footer_col_a {
 	width: 65%;
-	float: right
 	padding-right: 2.5%;
 	text-align: right:
 	float: left;

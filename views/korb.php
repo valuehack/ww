@@ -418,10 +418,10 @@ if($_SESSION['basket']) {
         }
 ?>        
 		<div class="basket_body">
-			<div class="basket_body_col_a">
-				<span class='basket_body_title'>
+			<div class="basket_body_col_a">				
 <?php
 		echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span><br>";
+		echo "<span class='basket_body_title'>";
 		echo "<a href='../".$itemsExtraArray[type]."/index.php?q=".$itemsExtraArray[id]."n'>".$itemsExtraArray[title]."</a></span>";
 		echo "<span class='basket_body_format'>";
         switch ($format) {
@@ -482,7 +482,7 @@ if($_SESSION['basket']) {
 	?>
 		<div class="basket_footer">
 			<div class="basket_footer_col_a">Summe:</div>
-			<div class="basket_footer_col_c"></div>		
+			<div class="basket_footer_col_c">&nbsp;</div>		
 			<div class="basket_footer_col_b"><?echo $total;?> Credits</div>	
 		</div>	
 		<div class="basket_pay">
@@ -599,8 +599,8 @@ else {
 </div>
 -->
 
-<!-- backlink -->
-		<a href="index.php"><?php echo WORDING_BACK_TO_LOGIN; ?></a>
+<!-- backlink
+		<a href="index.php"><?php echo WORDING_BACK_TO_LOGIN; ?></a>-->
 		</div>
 	</div>
 <?php include('_footer.php'); ?>
