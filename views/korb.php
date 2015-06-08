@@ -473,17 +473,17 @@ if($_SESSION['basket']) {
 	?>
 		<div class="basket_shipping">
 			<div class="basket_shipping_col_a">Versandkostenpauschale</div>
-			<div class="basket_shipping_col_b">5 Credits</div>
 			<div class="basket_shipping_col_c">&nbsp;</div>
+			<div class="basket_shipping_col_b">5 Credits</div>
 		</div>
 	<?php
 		$total += 5;
 		}
 	?>
 		<div class="basket_footer">
-			<div class="basket_footer_col_a"><span>Summe: </span></div>
-			<div class="basket_footer_col_b"><span><?echo $total;?> Credits</span></div>
-			<div class="basket_footer_col_c"></div>			
+			<div class="basket_footer_col_a">Summe:</div>
+			<div class="basket_footer_col_c"></div>		
+			<div class="basket_footer_col_b"><?echo $total;?> Credits</div>	
 		</div>	
 		<div class="basket_pay">
 		    <!-- possibility 1 -->
