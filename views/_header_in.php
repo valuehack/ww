@@ -32,22 +32,50 @@
 		</script>
 	</head>
 
+<?php
+
+@$con=mysql_connect(DB_HOST,DB_USER,DB_PASS) or die ("cannot connect to MySQL");
+mysql_select_db(DB_NAME);
+
+$user_id = $_SESSION['user_id'];
+$user_email = $_SESSION['user_email'];
+
+#echo $user_email;
+
+if (!isset($user_id)) echo ""; 
+else
+{
+$query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '%$user_id%' AND `user_email` LIKE '%$user_email%' ";
+
+$result = mysql_query($query) or die("Failed Query of " . $query. mysql_error());
+
+while ($entry = mysql_fetch_array($result))
+{
+?>
+
 <body>
 <!-- Layout-->
         <header class="header">
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
-                <div class="login">          	
-                	<div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Ulrich M&ouml;ller">Ulrich Moeller<span class="caret"></span></button>
+                <div class="login"> 
+                	<div><a href="/abo/korb.php">Korb</a></div>         	
+                	<div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
                 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
-                			<li class="dropdown-header">um@wertewirtschaft.org</li>
-                			<li><a href="">Profil</a></li>
-                			<li><a href="">Upgrade</a></li>
+                			<li class="dropdown-header"><? echo $entry[user_email];?></li>
+                			<li><a href="/abo/profil.php">Profil</a></li>
+                			<li><a href="upgrade.php">Upgrade</a></li>
                 			<li class="divider"></li>
-                			<li class="dropdown-header">Credit: 150</li>
-                			<li><a href="">Warenkorb</a></li>         			               		
+                			<li class="dropdown-header">Credit: <?echo $entry[credits_left];?></li>
+                			<li><a href="/abo/korb.php">Warenkorb</a></li> 
+                			<li class="divider"></li>
+                			<li><a href="/index.php?logout">Abmelden</a></li>        			               		
                 		</ul>
                 	</div>
+<?
+		}
+	}
+?>
                 </div>
             </div>
             <div class="nav">
@@ -104,4 +132,3 @@ if (isset($registration)) {
     }
 }
 ?>
-   

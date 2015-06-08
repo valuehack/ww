@@ -49,11 +49,12 @@
         </div>
         <div class="modal-body">
           <p>
-          	<form method="post" action="" name="anmeldung">
+          	<form method="post" action="index.php" name="anmeldung">
           		<input class="inputfield_login" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
           		<input class="inputfield_login" type="password" name="user_password" placeholder=" Passwort" required><br>
           		<input class="inputbutton_login" type="button" value="Anmelden">
-          	</form>       	
+          	</form>     
+          	<p><a href="/password_reset.php">Passwort vergessen?</a></p>  	
           </p>
         </div>
       </div>
