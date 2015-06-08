@@ -70,7 +70,6 @@ if (isset($registration)) {
         }
     }
 }
-?>
 
     $ok2 = $_POST['ok2'];
 ?>	
