@@ -142,6 +142,7 @@ if(isset($_POST['checkout'])) {
                 }
         
         echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als eMail zugesand.</p></div>";
+		echo "<div class='basket_summary'>";
         echo "<table class='basket_summary'><tr>";
 		echo "<td style='width:10%'>&nbsp;</td>";
         echo "<td style='width:50%'><b>Name</b></td>";
@@ -177,10 +178,6 @@ if(isset($_POST['checkout'])) {
                 default: NULL; break;
             }
             echo "</i><br>";
-             // TO DO: Find better solution to display the relevant information for different product categories  
-            if (!(is_null($itemsExtraArray[start]))) {
-                echo date("d.m.Y",strtotime($itemsExtraArray[start]))."</td>";
-			}
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
             echo "<td><i>".$sum." Credits</i></td>";
 
@@ -252,6 +249,7 @@ if(isset($_POST['checkout'])) {
         echo "<tr><td></td><td></td><td><b>Summe</b></td><td><b>".$total." Credits</b></td></tr>";
 
         echo "</table>";
+		echo "</div>";
 ?>
 			<div class="centered"><p class="linie"><img src="../style/gfx/linie.png" alt=""></p></div>
 		</div>
