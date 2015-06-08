@@ -20,11 +20,10 @@ function checkMe() {
 
 </script>
  
-<div class="content">
-	<div class="basket_header">
-		<h1>Warenkorb</h1>
-	</div>
-	<div class="basket">
+<div id="content">
+
+	<h1>Warenkorb</h1>
+
 <?php 
 //print_r($_SESSION);
 
@@ -390,15 +389,14 @@ if($_SESSION['basket']) {
     /*echo "Items: ";
     print_r($items);
     echo "<br><br>";*/
-?>
-		<div class="basket_head">
-			<div class="basket_head_col_a"></div>
-			<div class="basket_head_col_b">Preis</div>
-			<div class="basket_head_col_c">Menge</div>
-		</div>
-		<div class="basket_body">
-			<div class="basket_body_col_a">
-<?php
+
+    echo "You have the following items in your basket:";
+    echo "<hr><table><tr><td style='width:5%'><b>ID</b></td>";
+    echo "<td style='width:45%'><b>Name</b></td>";
+    echo "<td style='width:10%'></td>";
+    echo "<td style='width:10%'><b>Quantity</b></td>";
+    echo "<td style='width:15%'><b>Price</b></td>";
+    echo "<td><b>Sum</b></td></tr>";
 
     $total = 0;
 
@@ -418,10 +416,9 @@ if($_SESSION['basket']) {
         else {
             $sum = $quantity*$itemsExtraArray[price];
         }
-		
-		echo "<span class='basket_body_title'><a href='../".$itemsExtraArray[type]."/index.php?q".$itemsExtraArray[id]."'>".$itemsExtraArray[title]."</a></span>";
-        echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type]);
-		echo "<span class='basket_body_format'>";
+
+        echo "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
+        echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>";
         switch ($format) {
             case 1: echo "PDF"; break;
             case 2: echo "ePub"; break;
@@ -429,65 +426,59 @@ if($_SESSION['basket']) {
             case 4: echo "Druck"; break;
             default: NULL; break;
         }
-		echo "</span><br>";
-		
-		       // TO DO: Find better solution to display the relevant information for different product categories  
+
+        echo "</i></td>";
+        ?>
+        <td><form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <input type="hidden" name="remove" value="<?php echo $code ?>" />
+                <input type="submit" value="Remove" onClick="return checkMe()"></form></td>
+        <?php
+        echo "<td>&nbsp &nbsp".$quantity."</td><td><i>";
+        
+        if ($format == 4 && $itemsExtraArray[price2]) {
+            echo $itemsExtraArray[price2];
+        }
+        else {
+            echo $itemsExtraArray[price];
+        }
+        
+        echo " Credits</i></td><td>".$sum." Credits</td></tr>";
+       
+       // TO DO: Find better solution to display the relevant information for different product categories  
        if (!(is_null($itemsExtraArray[start]))) {
             echo "<tr><td></td><td>".date("d.m.Y",strtotime($itemsExtraArray[start]));
             if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
         }
-		
-        ?>
-        		<form class="basket_body_remove" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                	<input type="hidden" name="remove" value="<?php echo $code ?>" />
-                	<input class="basket_body_remove_button" type="submit" value="Entfernen" onClick="return checkMe()">
-            	</form>
-        	</div>	
-			<div class="basket_body_col_b">
-				<span>
-					<?php
-	        			if ($format == 4 && $itemsExtraArray[price2]) {
-            				echo $itemsExtraArray[price2];
-        				}
-       					else {
-           		 			echo $itemsExtraArray[price];
-        				}
-					?>				
-				Credits</span>
-				<?echo $sum;?>
-			</div>
-			<div class="basket_body_col_c">
-				<span><?echo $quantity;?></span>
-			</div>
-		</div>
-	<?php
-		if ($format == 4) {
+        
+        $total += $sum;
+
+        if ($format == 4) {
             $versand += 1;
         }
-		
+
     }
-		if ($versand >= 1) { 
-	?>
-		<div class="basket_shipping">
-			<span>Versandkostenpauschale 5 Credits</span>
-		</div>
-	<?php
-		$total += 5;
-		}
-	?>
-		<div class="basket_footer">
-			<span>Summe: <?echo $total;?> Credits</span>
-		</div>	
-		<!-- Clear Basket + Checkout Buttons-->		
-		<div class="basket_pay">
-			<form class="basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-    			<input class="basket_pay_button_clear" "type="submit" name="delete" value="Warenkorb leeren" onClick="return checkMe()">
-    		</form>
-    		 <!-- possibility 1 -->
-    		<form "basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        		<input class="basket_pay_button_check" type="submit" name="checkout" value="Zur Kasse gehen">
-        	</form>   		
-		</div>      
+    if ($versand >= 1) {
+        echo "<tr><td></td><td>Versandkostenpauschale</td><td></td><td></td><td>5 Credits</td><td>5 Credits</td></tr>";
+        $total += 5;
+    }
+
+    echo "<tr><td></td><td></td><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
+    echo "</table><hr>";  
+
+?>
+
+<!-- Clear Basket + Checkout Buttons-->
+
+<table style="width:100%"><tr><td style="width:80%">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <input type="submit" name="delete" value="Clear Basket" onClick="return checkMe()"></form></td>
+ 
+ <!-- possibility 1 -->
+  <td align="right">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <input type="submit" name="checkout" value="Checkout"></form></td>  
+
+
 <?php
 /* possibility 2
 //check, if there are enough credits
@@ -554,6 +545,8 @@ if($_SESSION['basket']) {
     
 */
     ?>
+</tr>
+</table>
 
 <?php
 }
@@ -563,7 +556,7 @@ else {
         echo "";
     }
     else {
-        echo "Keine Waren im Warenkorb"; 
+        echo "You have no items in your basket.<br><br>"; 
     }
     
 }
@@ -593,6 +586,5 @@ else {
 
 <!-- backlink -->
 		<a href="index.php"><?php echo WORDING_BACK_TO_LOGIN; ?></a>
-		</div>
 	</div>
 <?php include('_footer.php'); ?>

@@ -1667,6 +1667,163 @@ a:visited.medien_title_list {
 }
 
 /*==================================================*/
+/*                   Basket                    		*/
+/*==================================================*/
+
+.basket_header {
+	padding: 40px 12.5% 20px 12.5%;
+	width: 75%;
+}
+
+.basket_header h1 {
+	font-size: 36pt;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.basket {
+	padding: 40px 12.5%;
+	width: 75%;
+}
+
+.basket_head {
+	border-bottom: 1px solid rgb(245,245,245);
+	padding: 10px 0;
+	font-size: 12pt;
+	color: rgb(220,220,220);
+	width: 100%;
+}
+
+.basket_head_col_a {
+	width: 65%;
+	float: left;
+	padding-right: 2.5%;
+}
+
+.basket_head_col_b {
+	width: 15%;
+	float: left;
+	padding: 0 1.25%;
+}
+
+.basket_head_col_c {
+	width: 15%;
+	float: left;
+}
+
+.basket_body {
+	padding: 10px 0;
+	font-size: 12pt;
+	color: rgb(0,0,0);
+	width: 100%;
+}
+
+.basket_body_col_a {
+	width: 65%;
+	float: left;
+	padding-right: 2.5%;
+}
+
+.basket_body_title {
+	display: block;
+	font-size: 26pt;
+}
+
+.basket_body_title a {
+	color: rgb(46,74,98);
+	text-decoration: none;
+}
+
+.basket_body_type {
+	font-size: 16pt;
+}
+
+.basket_body_format {
+	font-size: 16pt;
+	font-style: italic;
+}
+
+.basket_body_remove {
+	margin: 30px 0;
+}
+
+.basket_body_remove_button {
+	text-decoration: none;
+	background: transparent;
+	color: rgba(0,0,0,0.6);
+	margin: 5px;
+	font-size: 12pt;
+	font-family: "Baskerville", Georgia, Times, serif;
+}
+
+.basket_body_col_b {
+	width: 15%;
+	float: left;
+	padding: 0 1.25%;
+}
+
+.basket_body_col_b span {
+	font-size: 16pt;
+}
+
+.basket_body_col_c {
+	width: 15%;
+	float: left;
+}
+
+.basket_body_col_c span {
+	font-size: 16pt;
+}
+
+.basket_shipping {
+	
+}
+
+.basket_footer {
+	border-top: 1px solid rgb(245,245,245);
+	padding: 10px 0;
+	font-size: 12pt;
+	color: rgb(0,0,0);
+	width: 100%;
+	text-align: right;
+}
+
+.basket_footer span {
+	font-size: 20pt;
+}
+
+.basket_pay {
+	text-align: right;
+}
+
+.basket_pay_button_clear {
+	text-decoration: none;
+	background: rgb(255,255,255);
+	color: rgba(0,0,0,0.6);
+	border: 1px solid rgba(0,0,0,0.6);
+	border-radius: 3px;
+	margin: 5px;
+	width: 200px;
+	height: 50px;
+	font-size: 16pt;
+	font-family: "Baskerville", Georgia, Times, serif;
+}
+
+.basket_pay_button_check {
+	text-decoration: none;
+	background: rgb(46,74,98);
+	color: #fff;
+	border: 0;
+	border-radius: 2px;
+	margin: 5px;
+	min-width: 200px;
+	height: 50px;
+	font-size: 16pt;
+	font-family: "Baskerville", Georgia, Times, serif;
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
+}
+
+/*==================================================*/
 /*                   Footer                    		*/
 /*==================================================*/
 
