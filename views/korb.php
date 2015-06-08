@@ -180,6 +180,7 @@ if(isset($_POST['checkout'])) {
              // TO DO: Find better solution to display the relevant information for different product categories  
             if (!(is_null($itemsExtraArray[start]))) {
                 echo date("d.m.Y",strtotime($itemsExtraArray[start]))."</td>";
+			}
             echo "<td>&nbsp; &nbsp;".$quantity."</td>";
             echo "<td><i>".$sum." Credits</i></td>";
 
