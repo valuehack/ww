@@ -123,7 +123,7 @@ while($entry = mysql_fetch_array($result))
           echo "<a class='medien_title_list' href='?q=$id'>".$entry[title]."</a><br>".$entry[text];
 ?>    
 
-<div class="schriften_bestellen">
+	<div class="schriften_bestellen">
 			<?
 			if ($_SESSION['Mitgliedschaft'] == 1) {
 				echo '<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';
@@ -147,7 +147,7 @@ while($entry = mysql_fetch_array($result))
 		</div>
 	</div>
 <?php
-}
+} }
 ?>
 
 <!--	<div class="medien_seperator">
