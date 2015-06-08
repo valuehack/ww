@@ -109,8 +109,8 @@ else {
   
 <!--	<div class="medien_seperator">
     	<h1>Audio</h1>
-    </div>
-	<div class="medien_content"> -->
+    </div> -->
+	<div class="medien_content">
 
 <?php
 $sql = "SELECT * from produkte WHERE type LIKE 'audio' or type LIKE 'video' AND status > 0 order by title asc, n asc";
