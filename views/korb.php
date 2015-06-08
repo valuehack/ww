@@ -146,8 +146,8 @@ if(isset($_POST['checkout'])) {
 		echo "<td style='width:5%>'&nbsp;</td>";
         echo "<td style='width:55%'><b>Name</b></td>";
         echo "<td style='width:10%'><b>Menge</b></td>";
-        echo "<td style='width:10%'><b>Preis</b></td>";
-        echo "<td style='width:10%'>&nbsp;</td></tr>";
+        echo "<td style='width:15%'><b>Preis</b></td>";
+        echo "<td style='width:15%'>&nbsp;</td></tr>";
 
         foreach ($items as $code => $quantity) {
             $length = strlen($code) - 1;
@@ -248,7 +248,10 @@ if(isset($_POST['checkout'])) {
         echo "<tr><td></td><td></td><td><b>Summe</b></td><td><b>".$total." Credits</b></td></tr>";
 
         echo "</table>";
-
+?>
+		</div>
+	</div>
+<?php include('_footer.php'); 
 
         //delete bought items from session variable
         unset($_SESSION['basket']);
