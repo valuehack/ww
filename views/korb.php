@@ -418,19 +418,19 @@ if($_SESSION['basket']) {
         }
         
 		if ($itemsExtraArray[type] == 'buch' OR 'analyse' OR 'scholie') {
-			$url = 'http://test.wertewirtschaft.net/schriften/';
+			$url = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
 			}
 		if ($itemsExtraArray[type] == 'kurse') {
-			$url = 'http://test.wertewirtschaft.net/kurse/';
+			$url = 'http://test.wertewirtschaft.net/kurse/'.$id.'.jpg';
 			}
 		if ($itemsExtraArray[type] == 'salon') {
-			$url = 'http://test.wertewirtschaft.net/salon/';
+			$url = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
 			}
 ?>        
 		<div class="basket_body">
 			<div class="basket_body_col_a">
 				<div class="basket_body_col_a_1">
-					<img src="<?echo $url.$id;?>.jpg" alt="">
+					<img src="<?echo $url;?>" alt="">
 				</div>		
 				<div class="basket_body_col_a_2">		
 <?php			
@@ -445,7 +445,7 @@ if($_SESSION['basket']) {
             case 4: echo "druck"; break;
             default: NULL; break;
         }
-		echo "</span><br>";
+		echo "</span>";
 				       // TO DO: Find better solution to display the relevant information for different product categories  
        if (!(is_null($itemsExtraArray[start]))) {
             echo "<span class='basket_body_date'>".date("d.m.Y",strtotime($itemsExtraArray[start]));

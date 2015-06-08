@@ -1756,8 +1756,9 @@ a:visited.medien_title_list {
 }
 
 .basket_body_type {
-	font-size: 16pt;
+	font-size: 14pt;
 	margin-bottom: 10px;
+	display: block;
 }
 
 .basket_body_format {
@@ -1883,7 +1884,7 @@ a:visited.medien_title_list {
 .basket_pay_button_clear {
 	text-decoration: none;
 	background: rgb(255,255,255);
-	color: rgb(180,180,180) !important;
+	color: rgb(150,150,150) !important;
 	border: 1px solid rgb(245,245,245);
 	border-radius: 3px;
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.02), 0px 0px 1px 0px rgba(0, 0, 0, 0.04);
