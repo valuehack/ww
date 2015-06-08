@@ -393,11 +393,9 @@ if($_SESSION['basket']) {
 ?>
 		<div class="basket_head">
 			<div class="basket_head_col_a"></div>
-			<div class="basket_head_col_b">Preis</div>
-			<div class="basket_head_col_c">Menge</div>
+			<div class="basket_head_col_b">Menge</div>
+			<div class="basket_head_col_c">Preis</div>
 		</div>
-		<div class="basket_body">
-			<div class="basket_body_col_a">
 <?php
 
     $total = 0;
@@ -418,9 +416,13 @@ if($_SESSION['basket']) {
         else {
             $sum = $quantity*$itemsExtraArray[price];
         }
-		
-		echo "<span class='basket_body_title'><a href='../".$itemsExtraArray[type]."/index.php?q".$itemsExtraArray[id]."'>".$itemsExtraArray[title]."</a></span>";
-        echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type]);
+?>        
+		<div class="basket_body">
+			<div class="basket_body_col_a">
+				<span class='basket_body_title'>
+<?php
+		echo "<a href='../".$itemsExtraArray[type]."/index.php?q=".$itemsExtraArray[id]."n'>".$itemsExtraArray[title]."</a></span>";
+        echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span>";
 		echo "<span class='basket_body_format'>";
         switch ($format) {
             case 1: echo "PDF"; break;
@@ -478,16 +480,17 @@ if($_SESSION['basket']) {
 		<div class="basket_footer">
 			<span>Summe: <?echo $total;?> Credits</span>
 		</div>	
-		<!-- Clear Basket + Checkout Buttons-->		
 		<div class="basket_pay">
+		    <!-- possibility 1 -->
+    		<form "basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        		<input class="basket_pay_button_check" type="submit" name="checkout" value="Zur Kasse gehen">
+        	</form>   		 
+			<!-- Clear Basket + Checkout Buttons-->	
 			<form class="basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     			<input class="basket_pay_button_clear" "type="submit" name="delete" value="Warenkorb leeren" onClick="return checkMe()">
     		</form>
-    		 <!-- possibility 1 -->
-    		<form "basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        		<input class="basket_pay_button_check" type="submit" name="checkout" value="Zur Kasse gehen">
-        	</form>   		
-		</div>      
+    	</div>
+
 <?php
 /* possibility 2
 //check, if there are enough credits
