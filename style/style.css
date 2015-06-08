@@ -1921,16 +1921,18 @@ a:visited.medien_title_list {
 
 .basket_summary td {
 	padding: 10px 0;
-	font-size: 16pt;
+	font-size: 16pt !important;
 }
 
 .basket_summary td a {
 	color: rgb(46,74,98);
 	border-bottom: 1px dotted rgb(46,74,98)
+	text-decoration: none;
 }
 
 .basket_summary td a:hover {
-	border-bottom: 1px solid rgb(46,74,98)
+	border-bottom: 1px solid rgb(46,74,98);
+	text-decoration: none;
 }
 
 .basket_success {
