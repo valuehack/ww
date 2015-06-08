@@ -1,7 +1,7 @@
 <?
 require_once('../classes/Login.php');
 include('_header_not_in.php'); 
-$title="Mitgliederbereich";
+$title="Medien";
 
 ?>
 
@@ -58,18 +58,18 @@ else {
 	</div>
 
 <?php
-$sql = "SELECT * from produkte WHERE type LIKE 'audio' or type LIKE 'video' AND status > 0 order by title asc, n asc";
+$sql = "SELECT * from produkte WHERE (type LIKE 'audio' OR type LIKE 'video') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
    
-//     echo "<a class='medien_title_list' href='?q=$id'>".$entry[title]."</a><br>".$entry[text];
+     echo "<a class='medien_title_list' href='?q=$id'>".$entry[title]."</a><br>".$entry[text];
 
 	}
 	echo "</div>";
-
+}
 ?>
 
 	</div>
