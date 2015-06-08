@@ -147,7 +147,8 @@ while($entry = mysql_fetch_array($result))
 		</div>
 	</div>
 <?php
-} }
+	} 
+}
 ?>
 
 <!--	<div class="medien_seperator">
