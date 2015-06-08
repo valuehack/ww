@@ -418,13 +418,13 @@ if($_SESSION['basket']) {
         }
         
 		if ($itemsExtraArray[type] == 'buch' OR 'analyse' OR 'scholie') {
-			$url = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
+			$url = 'http://test.wertewirtschaft.net/schriften/'.$itemsExtraArray[id].'.jpg';
 			}
 		if ($itemsExtraArray[type] == 'kurse') {
-			$url = 'http://test.wertewirtschaft.net/kurse/'.$id.'.jpg';
+			$url = 'http://test.wertewirtschaft.net/kurse/'.$itemsExtraArray[id].'.jpg';
 			}
 		if ($itemsExtraArray[type] == 'salon') {
-			$url = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
+			$url = 'http://test.wertewirtschaft.net/salon/'.$itemsExtraArray[id].'.jpg';
 			}
 ?>        
 		<div class="basket_body">
