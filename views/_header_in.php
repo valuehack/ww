@@ -59,7 +59,7 @@ while ($entry = mysql_fetch_array($result))
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
                 <div class="login"> 
-                	<div><a href="/abo/korb.php">Korb</a></div>         	
+                	<div class="login_basket"><a href="/abo/korb.php">Warenkorb</a></div>         	
                 	<div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
                 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
                 			<li class="dropdown-header"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>

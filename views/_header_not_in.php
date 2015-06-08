@@ -31,6 +31,11 @@
   			})();
 		</script>
 	</head>
+	
+<?
+    $ok2 = $_POST['ok2'];
+?>	
+	
 	<body>
         <header class="header">
             <div class="logo">
