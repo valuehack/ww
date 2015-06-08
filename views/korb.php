@@ -422,21 +422,21 @@ if($_SESSION['basket']) {
 				<span class='basket_body_title'>
 <?php
 		echo "<a href='../".$itemsExtraArray[type]."/index.php?q=".$itemsExtraArray[id]."n'>".$itemsExtraArray[title]."</a></span>";
-        echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span>";
+        echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span><br>";
 		echo "<span class='basket_body_format'>";
         switch ($format) {
-            case 1: echo "PDF"; break;
+            case 1: echo "pdf"; break;
             case 2: echo "ePub"; break;
-            case 3: echo "Kindle"; break;
-            case 4: echo "Druck"; break;
+            case 3: echo "kindle"; break;
+            case 4: echo "druck"; break;
             default: NULL; break;
         }
 		echo "</span><br>";
-		
-		       // TO DO: Find better solution to display the relevant information for different product categories  
+				       // TO DO: Find better solution to display the relevant information for different product categories  
        if (!(is_null($itemsExtraArray[start]))) {
-            echo "<tr><td></td><td>".date("d.m.Y",strtotime($itemsExtraArray[start]));
-            if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
+            echo "<span class='basket_body_date'>".date("d.m.Y",strtotime($itemsExtraArray[start]));
+            if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end])).
+			"</span>";
         }
 		
         ?>
@@ -455,14 +455,16 @@ if($_SESSION['basket']) {
            		 			echo $itemsExtraArray[price];
         				}
 					?>				
-				Credits</span>
-				<?echo $sum;?>
+				Credits</span><br>
+				<span class="basket_body_sum"><?echo $sum;?></span>
 			</div>
 			<div class="basket_body_col_c">
 				<span><?echo $quantity;?></span>
 			</div>
 		</div>
 	<?php
+		$total += $sum;
+		
 		if ($format == 4) {
             $versand += 1;
         }
@@ -471,7 +473,17 @@ if($_SESSION['basket']) {
 		if ($versand >= 1) { 
 	?>
 		<div class="basket_shipping">
-			<span>Versandkostenpauschale 5 Credits</span>
+			<div class="basket_shipping_col_a">
+				<span>
+					Versandkostenpauschale
+				</span>
+			</div>
+			<div class="basket_shipping_col_b">
+				<span>5 Credits</span>
+			</div>
+			<div class="basket_shipping_col_c">
+				&nbsp;
+			</div>
 		</div>
 	<?php
 		$total += 5;
@@ -487,7 +499,7 @@ if($_SESSION['basket']) {
         	</form>   		 
 			<!-- Clear Basket + Checkout Buttons-->	
 			<form class="basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-    			<input class="basket_pay_button_clear" "type="submit" name="delete" value="Warenkorb leeren" onClick="return checkMe()">
+    			<input class="basket_pay_button_clear" type="submit" name="delete" value="Warenkorb leeren" onClick="return checkMe()">
     		</form>
     	</div>
 
