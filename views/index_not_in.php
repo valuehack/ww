@@ -1,7 +1,7 @@
 <?php
 include ("_db.php");
 $title="Willkommen";
-include ("_header_in.php"); 
+include ("_header_not_in.php"); 
 ?>
 
 <!-- show registration form, but only if we didn't submit already -->

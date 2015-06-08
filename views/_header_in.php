@@ -62,11 +62,11 @@ while ($entry = mysql_fetch_array($result))
                 	<div><a href="/abo/korb.php">Korb</a></div>         	
                 	<div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
                 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
-                			<li class="dropdown-header"><? echo $entry[user_email];?></li>
+                			<li class="dropdown-header"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
                 			<li><a href="/abo/profil.php">Profil</a></li>
                 			<li><a href="upgrade.php">Upgrade</a></li>
                 			<li class="divider"></li>
-                			<li class="dropdown-header">Credit: <?echo $entry[credits_left];?></li>
+                			<li class="dropdown-header">Credits: <?echo $entry[credits_left];?></li>
                 			<li><a href="/abo/korb.php">Warenkorb</a></li> 
                 			<li class="divider"></li>
                 			<li><a href="/index.php?logout">Abmelden</a></li>        			               		
