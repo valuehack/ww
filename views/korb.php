@@ -418,19 +418,19 @@ if($_SESSION['basket']) {
         }
         
 		if ($itemsExtraArray[type] == 'buch' OR 'analyse' OR 'scholie') {
-			$url = '../schriften/index.php?q=';
+			$url = 'http://test.wertewirtschaft.net/schriften/';
 			}
 		if ($itemsExtraArray[type] == 'kurse') {
-			$url = '../kurse/index.php?q=';
+			$url = 'http://test.wertewirtschaft.net/kurse/';
 			}
 		if ($itemsExtraArray[type] == 'salon') {
-			$url = '../salon/index.php?q=';
+			$url = 'http://test.wertewirtschaft.net/salon/';
 			}
 ?>        
 		<div class="basket_body">
 			<div class="basket_body_col_a">
 				<div class="basket_body_col_a_1">
-					<img src="<?echo $url.$id;?>" alt="">
+					<img src="<?echo $url.$id;?>.jpg" alt="">
 				</div>		
 				<div class="basket_body_col_a_2">		
 <?php			

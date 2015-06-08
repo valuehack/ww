@@ -1740,7 +1740,7 @@ a:visited.medien_title_list {
 }
 
 .basket_body_col_a_2 {
-	width: 65%-210px;
+	width: calc(65%-210px);
 	float: left;
 }
 
