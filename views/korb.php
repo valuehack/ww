@@ -168,7 +168,7 @@ if(isset($_POST['checkout'])) {
             //$download_link = downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf\','.$key);
 
             echo "<td>".ucfirst($itemsExtraArray[type])."</td>";
-            echo $itemsExtraArray[title]."<br><i>";
+            echo "<td>".$itemsExtraArray[title]."<br><i>";
             switch ($format) {
                 case 1: echo "pdf"; break;
                 case 2: echo "ePub"; break;
@@ -587,7 +587,7 @@ else {
         echo "";
     }
     else {
-        echo "Keine Waren im Warenkorb"; 
+        echo "<div class='basket_no_items'><p>Keine Waren im Warenkorb.</p></div>"; 
     }
     
 }
