@@ -104,12 +104,12 @@ if(isset($_POST['checkout'])) {
     if ($error == 1) {
         //$this->errors[] = "You do not have enough credits to buy the items in your basket.";
         //error message does not work, alternate message above
-        echo "<div><p>Ihre Bestellung &uuml;bersteigt Ihr derzeit noch freies Guthaben. Wir freuen uns sehr &uuml;ber Ihr Interesse. Um die Bestellung abzuschlie&szlig;en, f&uuml;llen Sie bitte Ihr Guthaben auf. Bitte w&auml;hlen Sie dazu eine der m&ouml;glichen Unterst&uuml;tzungsstufen &ndash; Sie k&ouml;nnen Ihr Guthaben im jeweiligen Ausma&szlig; erneut auff&uuml;llen. Sie k&ouml;nnen auch wieder denselben Betrag w&auml;hlen, so bleibt Ihr Guthaben wieder ein volles Jahr von nun an aktiv. Das bedeutet, Sie ziehen Ihre Guthabenauff&uuml;llung, die sonst nach Ablauf eines Jahres und erneuter Unterst&uuml;tzung erfolgen w&uuml;rde, einfach vor, um dieses Guthaben schon jetzt zu nutzen. Oder Sie nutzen die Gelegenheit, uns auf einer h&ouml;heren Stufe zu unterst&uuml;tzen und so innerhalb eines Jahres &uuml;ber noch mehr Guthaben verf&uuml;gen zu k&ouml;nnen. Es ehrt uns sehr, dass Sie unser Angebot in gr&ouml;&szlig;erem Ma&szlig;e nutzen wollen! Vielen Dank f&uuml;r Ihr Vertrauen.<a href='../abo/'>Zur Aboseite</a></p><hr></div>";
+        echo '<div class="basket_error"><p>Ihre Bestellung &uuml;bersteigt Ihr derzeit noch freies Guthaben. Wir freuen uns sehr &uuml;ber Ihr Interesse. Um die Bestellung abzuschlie&szlig;en, f&uuml;llen Sie bitte Ihr Guthaben auf. Bitte w&auml;hlen Sie dazu eine der m&ouml;glichen Unterst&uuml;tzungsstufen &ndash; Sie k&ouml;nnen Ihr Guthaben im jeweiligen Ausma&szlig; erneut auff&uuml;llen. Sie k&ouml;nnen auch wieder denselben Betrag w&auml;hlen, so bleibt Ihr Guthaben wieder ein volles Jahr von nun an aktiv. Das bedeutet, Sie ziehen Ihre Guthabenauff&uuml;llung, die sonst nach Ablauf eines Jahres und erneuter Unterst&uuml;tzung erfolgen w&uuml;rde, einfach vor, um dieses Guthaben schon jetzt zu nutzen. Oder Sie nutzen die Gelegenheit, uns auf einer h&ouml;heren Stufe zu unterst&uuml;tzen und so innerhalb eines Jahres &uuml;ber noch mehr Guthaben verf&uuml;gen zu k&ouml;nnen. Es ehrt uns sehr, dass Sie unser Angebot in gr&ouml;&szlig;erem Ma&szlig;e nutzen wollen! Vielen Dank f&uuml;r Ihr Vertrauen.<a href="../abo/">Zur Aboseite</a></p></div>';
     }
 
 
     elseif ($error == 2) {
-        echo '<div><p>Text für Warenkorb-Checkout nach Ablauf Mitgliedschaft. <a href="../abo/">Zur Aboseite</a></p><hr></div>';
+        echo '<div class="basket_error"><p>Text für Warenkorb-Checkout nach Ablauf Mitgliedschaft. <a href="../abo/">Zur Aboseite</a></p></div>';
     }
 
         else 
@@ -141,11 +141,12 @@ if(isset($_POST['checkout'])) {
                 
                 }
         
-        echo "Folgende Produkte haben Sie erworben. Bitte laden Sie die Dateien gleich auf Ihren PC herunter. Es wurde ein eMail an Sie verschickt. <br>";
-        echo "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>";
+        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen nochmals eine Zusammenfassung Ihrer Bestellung. Diese wurde Ihnen auch als eMail zugesand.</p></div>";
+        echo "<table class='basket_summary'><tr>";
+		echo "<td style='width:5%>&nbsp;</td>";
         echo "<td style='width:55%'><b>Name</b></td>";
-        echo "<td style='width:10%'><b>Quantity</b></td>";
-        echo "<td style='width:10%'><b>Total</b></td>";
+        echo "<td style='width:10%'><b>Menge</b></td>";
+        echo "<td style='width:10%'><b>Preis</b></td>";
         echo "<td style='width:10%'>&nbsp;</td></tr>";
 
         foreach ($items as $code => $quantity) {
@@ -166,13 +167,13 @@ if(isset($_POST['checkout'])) {
             }
             //$download_link = downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf\','.$key);
 
-            echo "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
-            echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>";
+            echo "<td>".ucfirst($itemsExtraArray[type])."</td>";
+            echo $itemsExtraArray[title]."<br><i>";
             switch ($format) {
-                case 1: echo "PDF"; break;
+                case 1: echo "pdf"; break;
                 case 2: echo "ePub"; break;
-                case 3: echo "Kindle"; break;
-                case 4: echo "Druck"; break;
+                case 3: echo "kindle"; break;
+                case 4: echo "druck"; break;
                 default: NULL; break;
             }
             echo "</i></td>";
@@ -243,10 +244,10 @@ if(isset($_POST['checkout'])) {
             echo "<tr><td></td><td>Versandkostenpauschale</td><td></td><td>5 Credits</td><td></td></tr>";
             $total += 5;
         }
+		echo "<tr><td></td><td></td><td></td><td></td><td></td></tr>";
+        echo "<tr><td></td><td></td><td><b>Summe</b></td><td><b>".$total." Credits</b></td></tr>";
 
-        echo "<tr><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
-
-        echo "</table><hr>";
+        echo "</table>";
 
 
         //delete bought items from session variable
@@ -503,7 +504,7 @@ if($_SESSION['basket']) {
 		<div class="basket_pay">
 		    <!-- possibility 1 -->
     		<form class="basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        		<input class="basket_pay_button_check" type="submit" name="checkout" value="Zur Kasse gehen">
+        		<input class="basket_pay_button_check" type="submit" name="checkout" value="Jetzt bestellen">
         	</form>   		 
 			<!-- Clear Basket + Checkout Buttons-->	
 			<form class="basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

@@ -1731,16 +1731,17 @@ a:visited.medien_title_list {
 .basket_body_col_a_1 {
 	float: left;
 	width: 200px;
-	padding-right: 10px;
+	padding-right: 40px;
 }
 
 .basket_body_col_a_1 img {
 	max-width: 200px;
 	max-height: 200px;
+	text-align: center;
 }
 
 .basket_body_col_a_2 {
-	width: calc(65%-210px);
+	width: calc(65%-240px);
 	float: left;
 }
 
@@ -1913,6 +1914,40 @@ a:visited.medien_title_list {
 .basket_pay_button_check:hover {
 	background: rgb(30,48,64);
 } 
+
+.basket_summary table{
+	width: 100%;
+}
+
+.basket_summary td {
+	padding: 10px 0;
+}
+
+.basket_summary td a {
+	color: rgb(46,74,98);
+	border-bottom: 1px dotted rgb(46,74,98)
+}
+
+.basket_summary td a:hover {
+	border-bottom: 1px solid rgb(46,74,98)
+}
+
+.basket_success {
+	font-size: 14pt;
+	margin: 30px 0;
+}
+
+.basket_error {
+	width: 80%;
+	padding: 20px;
+	border: 1px solid #EBCCD1;
+	border-radius: 4px;
+	box-shadow: 0 0 1px 0 transparent;
+	margin: 40px 10%;
+	color: #A94442;
+	background-color: #F2DEDE;
+	font-size: 16pt;
+}
 /*==================================================*/
 /*                   Footer                    		*/
 /*==================================================*/
