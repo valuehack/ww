@@ -33,9 +33,43 @@
 	</head>
 
 <?php
+//set timezone
+mysql_query("SET time_zone = 'Europe/Vienna'");
 
-@$con=mysql_connect(DB_HOST,DB_USER,DB_PASS) or die ("cannot connect to MySQL");
-mysql_select_db(DB_NAME);
+// show potential errors / feedback (from login object)
+if (isset($login)) {
+    if ($login->errors) {
+        foreach ($login->errors as $error) {
+            #add some html to make it look nicer
+            
+          ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
+        }
+    }
+    if ($login->messages) {
+        foreach ($login->messages as $message) {
+            #echo $message;
+            ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
+        }
+    }
+}
+?>
+
+<?php
+// show potential errors / feedback (from registration object)
+if (isset($registration)) {
+    if ($registration->errors) {
+        foreach ($registration->errors as $error) {
+            #echo $error;
+            ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
+        }
+    }
+    if ($registration->messages) {
+        foreach ($registration->messages as $message) {
+            #echo $message;
+            ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
+        }
+    }
+}
 
 $user_id = $_SESSION['user_id'];
 $user_email = $_SESSION['user_email'];
@@ -92,43 +126,3 @@ while ($entry = mysql_fetch_array($result))
                 </div>
            </div>
         </header>
-
-<?php
-//set timezone
-mysql_query("SET time_zone = 'Europe/Vienna'");
-
-// show potential errors / feedback (from login object)
-if (isset($login)) {
-    if ($login->errors) {
-        foreach ($login->errors as $error) {
-            #add some html to make it look nicer
-            
-          ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
-        }
-    }
-    if ($login->messages) {
-        foreach ($login->messages as $message) {
-            #echo $message;
-            ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
-        }
-    }
-}
-?>
-
-<?php
-// show potential errors / feedback (from registration object)
-if (isset($registration)) {
-    if ($registration->errors) {
-        foreach ($registration->errors as $error) {
-            #echo $error;
-            ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
-        }
-    }
-    if ($registration->messages) {
-        foreach ($registration->messages as $message) {
-            #echo $message;
-            ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
-        }
-    }
-}
-?>

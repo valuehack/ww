@@ -133,13 +133,13 @@ strong {
 }
 
 .login_basket a {
-	color: rgb(255,255,255);
+	color: rgb(255,255,255) !important;
 	text-decoration: none;
 }
 
 .login_button {
 	background: none;
-	color: #fff;
+	color: rgb(255,255,255);
 	border: 0;
 	font-size: 12pt;
 }
