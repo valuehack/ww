@@ -141,9 +141,9 @@ if(isset($_POST['checkout'])) {
                 
                 }
         
-        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen nochmals eine Zusammenfassung Ihrer Bestellung. Diese wurde Ihnen auch als eMail zugesand.</p></div>";
+        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als eMail zugesand.</p></div>";
         echo "<table class='basket_summary'><tr>";
-		echo "<td style='width:5%>&nbsp;</td>";
+		echo "<td style='width:5%>'&nbsp;</td>";
         echo "<td style='width:55%'><b>Name</b></td>";
         echo "<td style='width:10%'><b>Menge</b></td>";
         echo "<td style='width:10%'><b>Preis</b></td>";
