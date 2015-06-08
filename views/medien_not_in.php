@@ -65,7 +65,7 @@ while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
    
-     	echo  "<a class='medien_title_list' href='?q=$id'>".$entry[title]."</a><br>".$entry[text];
+//     echo "<a class='medien_title_list' href='?q=$id'>".$entry[title]."</a><br>".$entry[text];
 
 	}
 	echo "</div>";
