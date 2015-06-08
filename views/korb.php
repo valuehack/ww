@@ -421,8 +421,8 @@ if($_SESSION['basket']) {
 			<div class="basket_body_col_a">
 				<span class='basket_body_title'>
 <?php
+		echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span><br>";
 		echo "<a href='../".$itemsExtraArray[type]."/index.php?q=".$itemsExtraArray[id]."n'>".$itemsExtraArray[title]."</a></span>";
-        echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span><br>";
 		echo "<span class='basket_body_format'>";
         switch ($format) {
             case 1: echo "pdf"; break;
@@ -435,8 +435,8 @@ if($_SESSION['basket']) {
 				       // TO DO: Find better solution to display the relevant information for different product categories  
        if (!(is_null($itemsExtraArray[start]))) {
             echo "<span class='basket_body_date'>".date("d.m.Y",strtotime($itemsExtraArray[start]));
-            if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end])).
-			"</span>";
+            if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
+			echo "</span>";
         }
 		
         ?>
@@ -455,8 +455,7 @@ if($_SESSION['basket']) {
            		 			echo $itemsExtraArray[price];
         				}
 					?>				
-				Credits</span><br>
-				<span class="basket_body_sum"><?echo $sum;?></span>
+				Credits</span>
 			</div>
 			<div class="basket_body_col_c">
 				<span><?echo $quantity;?></span>
@@ -473,28 +472,22 @@ if($_SESSION['basket']) {
 		if ($versand >= 1) { 
 	?>
 		<div class="basket_shipping">
-			<div class="basket_shipping_col_a">
-				<span>
-					Versandkostenpauschale
-				</span>
-			</div>
-			<div class="basket_shipping_col_b">
-				<span>5 Credits</span>
-			</div>
-			<div class="basket_shipping_col_c">
-				&nbsp;
-			</div>
+			<div class="basket_shipping_col_a">Versandkostenpauschale</div>
+			<div class="basket_shipping_col_b">5 Credits</div>
+			<div class="basket_shipping_col_c">&nbsp;</div>
 		</div>
 	<?php
 		$total += 5;
 		}
 	?>
 		<div class="basket_footer">
-			<span>Summe: <?echo $total;?> Credits</span>
+			<div class="basket_footer_col_a"><span>Summe: </span></div>
+			<div class="basket_footer_col_b"><span><?echo $total;?> Credits</span></div>
+			<div class="basket_footer_col_c"></div>			
 		</div>	
 		<div class="basket_pay">
 		    <!-- possibility 1 -->
-    		<form "basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    		<form class="basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         		<input class="basket_pay_button_check" type="submit" name="checkout" value="Zur Kasse gehen">
         	</form>   		 
 			<!-- Clear Basket + Checkout Buttons-->	
