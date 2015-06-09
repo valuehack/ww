@@ -29,6 +29,9 @@ if(isset($_POST['add'])){
   }
 }
 
+				//Change button-value according to media type
+	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
+    if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
 
 if(isset($_GET['q']))
 {
@@ -48,9 +51,6 @@ if(isset($_GET['q']))
 	} else {
 	    $img_url = "http://test.wertewirtschaft.net/medien/default.jpg";
 	}
-				//Change button-value according to media type
-	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
-    if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
 	
 ?>
   	<div class="medien_head">
@@ -67,7 +67,7 @@ if(isset($_GET['q']))
 			else { ?>
 				<span class="schriften_price"><?php echo $entry3[price]; ?> Credits</span>
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      				<input type="hidden" name="add" value="<?php echo $n; ?>" />
+      				<input type="hidden" name="add" value="<?php echo $n; ?>">
      				<!--<select name="quantity">
         				<option value="1">1</option>
         				<option value="2">2</option>
@@ -122,16 +122,17 @@ while($entry = mysql_fetch_array($result))
             
 ?>    
 	 <a class="medien_title_list" href='?q=<?echo $id;?>'><?echo $entry[title];?></a>
-     <p><?echo $entry[text];?></p>
+     <?echo $entry[text];?>
      
      <?
 			if ($_SESSION['Mitgliedschaft'] == 1) {
 				echo '<div class="centered"><input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal"></div>';
 			}
 			else { ?>
-				<span class="medien_price"><?php echo $entry3[price]; ?> Credits</span>
+				<div class='centered'>			
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      				<input type="hidden" name="add" value="<?php echo $n; ?>" />
+					<span class="medien_price"><?php echo $entry[price]; ?> Credits</span>
+      				<input type="hidden" name="add" value="<?php echo $n; ?>">
      				<!--<select name="quantity">
         				<option value="1">1</option>
         				<option value="2">2</option>
@@ -141,6 +142,7 @@ while($entry = mysql_fetch_array($result))
       				</select> -->
       				<input type="submit" class="inputbutton" value="<?echo $btn_value;?>">
     			</form>
+    			</div>
     		<?
 			}
 			?>

@@ -1227,6 +1227,11 @@ a:visited.medien_title_list {
 	color: rgb(46,74,98);
 }
 
+.medien_price {
+	font-size: 24pt !important;
+	margin: 0 25px;
+}
+
 .medien_inputbutton {
 	text-decoration: none;
 	background: rgb(46,74,98);
