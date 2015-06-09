@@ -29,9 +29,6 @@ if(isset($_POST['add'])){
   }
 }
 
-				//Change button-value according to media type
-	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
-    if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
 
 if(isset($_GET['q']))
 {
@@ -42,6 +39,10 @@ if(isset($_GET['q']))
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
+  
+  				//Change button-value according to media type
+	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
+    if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
   
             	//check, if there is a image in the medien folder
 	$img = 'http://test.wertewirtschaft.net/medien/'.$id.'.jpg';
@@ -98,7 +99,6 @@ if(isset($_GET['q']))
      
 else {
 	
-
   if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>       
   	<div class='medien_info'>
@@ -118,6 +118,10 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 
 while($entry = mysql_fetch_array($result))
 {
+						//Change button-value according to media type
+	if ($entry[type] == 'audio') { $btn_value = "Herunterladen";} 
+    if ($entry[type] == 'video') { $btn_value = "Ansehen";}
+	
   $id = $entry[id];
             
 ?>    
