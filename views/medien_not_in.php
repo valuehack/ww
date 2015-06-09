@@ -67,8 +67,8 @@ while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
 ?>   
-     <a class="medien_title_list" href='?q=<?$id?>'><?$entry[title]?></a>
-     <p><?$entry[text]?></p>
+     <a class="medien_title_list" href='?q=<?echo $id;?>'><?echo $entry[title];?></a>
+     <p><?echo $entry[text];?></p>
 	 <div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
 <?php
 	}	
