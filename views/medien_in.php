@@ -148,10 +148,10 @@ while($entry = mysql_fetch_array($result))
 			?>
      
 	 <div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
-
-	</div>
+	
 <?php
 	} 
+	echo "</div>";
 }
 ?>
 
