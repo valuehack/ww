@@ -107,9 +107,9 @@ else {
   <?
   } ?>
   
-<!--	<div class="medien_seperator">
-    	<h1>Audio</h1>
-    </div> -->
+	<div class="medien_seperator">
+    	<h1>Audio und Video</h1>
+    </div>
 	<div class="medien_content">
 
 <?php
@@ -119,9 +119,12 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
-  
-          echo "<a class='medien_title_list' href='?q=$id'>".$entry[title]."</a><br>".$entry[text];
+            
 ?>    
+	 <a class="medien_title_list" href='?q=<?echo $id;?>'><?echo $entry[title];?></a>
+     <p><?echo $entry[text];?></p>
+     <div class="salon_anmeldung"><a href="?q=<?echo $id;?>">Herunterladen</div>
+	 <div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
 
 	<div class="schriften_bestellen">
 			<?
@@ -139,7 +142,7 @@ while($entry = mysql_fetch_array($result))
         				<option value="4">4</option>
         				<option value="5">5</option>        
       				</select> -->
-      				<input type="submit" class="inputbutton" value="<?echo $type;?>">
+      				<input type="submit" class="inputbutton" value="<?echo $btn_value;?>">
     			</form>
     		<?
 			}

@@ -1174,7 +1174,7 @@ a.socialimg:hover  {
 
 .medien_content p {
 	font-size: 16pt;
-	margin: 15px 0;
+	margin: 15px 0 30px 0;
 	text-align: justify;
 	line-height: 1.6em;
 }
@@ -1211,15 +1211,16 @@ a.socialimg:hover  {
 }
 
 a.medien_title_list  {
-	font-size: 20pt;
-	margin: 20px 0;
+	font-size: 26pt;
+	margin: 30px 0;
 	text-align: center;
 	text-decoration: none;
 	color: rgb(46,74,98);
+	display: block;
 }
 
 a:hover.medien_title_list {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 a:visited.medien_title_list {
