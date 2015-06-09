@@ -123,16 +123,13 @@ while($entry = mysql_fetch_array($result))
 ?>    
 	 <a class="medien_title_list" href='?q=<?echo $id;?>'><?echo $entry[title];?></a>
      <p><?echo $entry[text];?></p>
-     <div class="salon_anmeldung"><a href="?q=<?echo $id;?>">Herunterladen</div>
-	 <div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
-
-	<div class="schriften_bestellen">
-			<?
+     
+     <?
 			if ($_SESSION['Mitgliedschaft'] == 1) {
-				echo '<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';
+				echo '<div class="centered"><input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal"></div>';
 			}
 			else { ?>
-				<span class="schriften_price"><?php echo $entry3[price]; ?> Credits</span>
+				<span class="medien_price"><?php echo $entry3[price]; ?> Credits</span>
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       				<input type="hidden" name="add" value="<?php echo $n; ?>" />
      				<!--<select name="quantity">
@@ -147,7 +144,9 @@ while($entry = mysql_fetch_array($result))
     		<?
 			}
 			?>
-		</div>
+     
+	 <div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
+
 	</div>
 <?php
 	} 
