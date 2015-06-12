@@ -68,17 +68,17 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
 			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="user_edit_profile_form" accept-charset="UTF-8">
 
         		<label for="user_email">Email</label>
-        		<input id="user_email" type="email" class="inputfield" value="<?php echo $_SESSION['user_email']; ?>"  name="profile[user_email]" required>
+        		<input id="user_email" type="email" class="inputfield" value="<?php echo $_SESSION['user_email']; ?>"  name="profile[user_email]" required><br>
         		<label for="user_first_name">Vorname</label>
-        		<input id="user_first_name" type="text" class="inputfield" value="<?php echo $vorname; ?>" name="profile[user_first_name]" required>
+        		<input id="user_first_name" type="text" class="inputfield" value="<?php echo $vorname; ?>" name="profile[user_first_name]" required><br>
        			<label for="user_surname">Nachname</label>
-        		<input id="user_surname" type="text" class="inputfield" value="<?php echo $nachname; ?>" name="profile[user_surname]" required>
+        		<input id="user_surname" type="text" class="inputfield" value="<?php echo $nachname; ?>" name="profile[user_surname]" required><br>
         		<label for="user_street">Straße</label>
-        		<input id="user_street" type="text" class="inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]">
+        		<input id="user_street" type="text" class="inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]"><br>
         		<label for="user_plz">PLZ</label>
         		<input id="user_plz" type="text" class="inputfield" style="width:40px" value="<?php echo $plz; ?>" name="profile[user_plz]">
         		<label for="user_city">Ort</label>
-        		<input id="user_city" type="text" class="inputfield" value="<?php echo $ort; ?>" name="profile[user_city]">
+        		<input id="user_city" type="text" class="inputfield" value="<?php echo $ort; ?>" name="profile[user_city]"><br>
         		<label for="user_country">Land</label>
     <!--    <input id="user_country" type="text" value="<?php echo $result_row->Land; ?>" name="profile[user_country]" required />-->
 
@@ -144,15 +144,15 @@ user_plz -->
 	<div class="profil">
 		
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="user_edit_form_password">
-    		<label for="user_password_old"><?php echo WORDING_OLD_PASSWORD; ?></label>
-    		<input id="user_password_old" class="inputfieled" type="password" name="user_password_old" autocomplete="off">
-    		<label for="user_password_new"><?php echo WORDING_NEW_PASSWORD; ?></label>
-    		<input id="user_password_new" class="inputfieled" type="password" name="user_password_new" autocomplete="off">
-    		<label for="user_password_repeat"><?php echo WORDING_NEW_PASSWORD_REPEAT; ?></label>
-    		<input id="user_password_repeat" class="inputfieled" type="password" name="user_password_repeat" autocomplete="off">
-    		<input type="submit" class="inputbutton" name="user_edit_submit_password" value="<?php echo WORDING_CHANGE_PASSWORD; ?>">
+    		<label for="user_password_old">Altes Passwort</label>
+    		<input id="user_password_old" class="inputfield" type="password" name="user_password_old" autocomplete="off"><br>
+    		<label for="user_password_new">Neues Passwort</label>
+    		<input id="user_password_new" class="inputfield" type="password" name="user_password_new" autocomplete="off"><br>
+    		<label for="user_password_repeat">Neues Passwort Wiederholen</label>
+    		<input id="user_password_repeat" class="inputfield" type="password" name="user_password_repeat" autocomplete="off"><br>
+    		<input type="submit" class="inputbutton" name="user_edit_submit_password" value="Passwort &auml;ndern">
 		</form>
-
+	</div>
 This is only used to test views of different memberships:
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="user_edit_form_level">
     <label for="user_level"></label>
@@ -162,6 +162,6 @@ This is only used to test views of different memberships:
 </form>
 
 	
-	</div>
+
 </div>
 <?php include('_footer.php'); ?>
