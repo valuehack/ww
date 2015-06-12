@@ -1989,6 +1989,23 @@ a:visited.medien_title_list {
 	text-align: center;
 }
 
+.profil label {
+	font-size: 12pt;
+	color: #969696;
+	display: block;
+	float: left;
+	width: 200px;
+	margin: 5px 30% 5px 0;
+	height: 30px;
+	padding-top: 20px;
+}
+
+.profil select {
+	padding: 10px;
+	font-size: 14pt;
+	height: 50px;
+}
+
 /*==================================================*/
 /*                   Footer                    		*/
 /*==================================================*/
