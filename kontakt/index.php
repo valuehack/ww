@@ -1,16 +1,21 @@
 <? 
 require_once('../classes/Login.php');
+$title="Impressum";
 include ("../views/_header_not_in.php");
-$title="AGB";
+
 ?>
 
 <div class="content">
 	<div class="agb">
 		<h1>Impressum</h1>
-		
-		<h2>Disclaimer</h2>
-			<p>Disclaimer</p>
-			
+	</div>
+	<div class="medien-seperator">
+		<h1>Disclaimer</h1>
+	</div>
+	<div class="agb>"
+		<p>Disclaimer</p>
+	</div>
+	<div class="medien-sperator">	
 		<h1>Kontakt</h1>
 	</div>
 	<div class="location_box">  
