@@ -92,6 +92,7 @@ foreach ($basket as $code => $quantity) {
     else {
         $total_quantity += $quantity;
     }
+}
 
 if(isset($_POST['add'])){
     $add_quantity = $_POST['quantity'];
