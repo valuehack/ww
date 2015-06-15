@@ -1438,6 +1438,18 @@ a:visited.medien_title_list {
 	text-align: justify;
 }
 
+.pay_form {
+	margin: 0 auto;
+}
+
+.pay_form form {
+	margin: 50px;
+}
+
+.payment_radio {
+	margin: 10px;
+}
+
 .payment_success {
 	font-size: 14pt;
 	line-height: 1.4;
