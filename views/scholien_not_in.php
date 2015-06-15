@@ -1,8 +1,8 @@
 <?php 
 
 require_once('../classes/Login.php');
-include('_header_not_in.php'); 
 $title="Scholien";
+include('_header_not_in.php'); 
 
 if(isset($_GET['q']))
 {

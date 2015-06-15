@@ -1,10 +1,9 @@
 <?php 
 
 require_once('../classes/Login.php');
-
+$title="Scholien";
 include('_header_in.php'); 
 
-$title="Scholien";
 
 if(isset($_GET['q']))
 {
