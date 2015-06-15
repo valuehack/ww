@@ -103,7 +103,7 @@ elseif(isset($_POST['remove'])) {
   $total_quantity = $total_quantity - $remove_quantity; 
 }
 
-else {
+elseif(isset($_SESSION['basket'])) {
     $basket = $_SESSION['basket'];
 
     foreach ($basket as $code => $quantity) {
@@ -112,7 +112,9 @@ else {
     //$basket_quantity = count($basket);  
 }
 
-#echo $user_email;
+else {
+    $total_quantity = 0;
+}
 
 if (!isset($user_id)) echo ""; 
 else
@@ -136,12 +138,12 @@ while ($entry = mysql_fetch_array($result))
                 			<li><a href="/abo/upgrade.php">Upgrade</a></li>
                 			<li class="divider"></li>
                 			<li class="dropdown-header">Credits: <?echo $entry[credits_left];?></li>
-                			<li><a href="/abo/korb.php">Warenkorb (<?echo $total_quantity;?>)</a></li> 
+                			<li><a href="/abo/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></li> 
                 			<li class="divider"></li>
                 			<li><a href="/index.php?logout">Abmelden</a></li>        			               		
                 		</ul>
                 	</div>
-                	<div class="login_basket"><a href="../abo/korb.php">Warenkorb (<?echo $total_quantity;?>)</a></div>
+                	<div class="login_basket"><a href="../abo/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></div>
 <?
 		}
 	}
