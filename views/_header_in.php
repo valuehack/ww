@@ -101,7 +101,7 @@ while ($entry = mysql_fetch_array($result))
                 			<li><a href="/abo/upgrade.php">Upgrade</a></li>
                 			<li class="divider"></li>
                 			<li class="dropdown-header">Credits: <?echo $entry[credits_left];?></li>
-                			<li><a href="/abo/korb.php">Warenkorb (<?echo $basket_quantity;?>)</a></li> 
+                			<li><a href="/abo/korb.php">Warenkorb (<span id='basket_quantity'><?echo $basket_quantity;?></span>)</a></li> 
                 			<li class="divider"></li>
                 			<li><a href="/index.php?logout">Abmelden</a></li>        			               		
                 		</ul>

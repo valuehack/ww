@@ -9,6 +9,10 @@ include "_header_in.php";
 function changePrice(totalQuantity, price){
     document.getElementById("change").innerHTML = (totalQuantity * price) + " Credits";
 }
+
+function changePrice(basketQuantity){
+    document.getElementById("basket_quantity").innerHTML = basketQuantity;
+}
 </script>
 
 <?
@@ -34,6 +38,14 @@ if(isset($_POST['add'])){
   else {
     $_SESSION['basket'][$add_code] = $add_quantity; 
   }
+
+  $basket = $_SESSION['basket'];
+  $basket_quantity = count($basket);
+  ?>
+
+  <span onload="basketQuantity(<?php echo $basket_quantity; ?>)"><span>
+
+<?
 }
 
 if(isset($_GET['q']))
