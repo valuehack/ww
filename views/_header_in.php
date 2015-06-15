@@ -91,7 +91,7 @@ while ($entry = mysql_fetch_array($result))
 <!-- Layout-->
         <header class="header">
             <div class="logo">
-                <a href="/"><img class="logo_img" src="../style/gfx/ww_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
+                <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
                 <div class="login"> 
                 	<div class="login_basket"><a href="/abo/korb.php">Warenkorb</a></div>         	
                 	<div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
