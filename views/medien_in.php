@@ -15,7 +15,7 @@ if(!isset($_SESSION['basket'])){
 if(isset($_POST['add'])){
 
   $add_id = $_POST['add'];
-  $add_quantity = 1;
+  $add_quantity = $_POST['quantity'];
   $add_code = $add_id . "0";
   if ($add_quantity==1) $wort = "wurde";
   else $wort = "wurden";
@@ -77,7 +77,8 @@ if(isset($_GET['q']))
         				<option value="4">4</option>
         				<option value="5">5</option>        
       				</select> -->
-      				<input type="submit" class="inputbutton" value="<?echo $btn_value;?>">
+      				<input type="hidden" name="quantity" value="1">
+              <input type="submit" class="inputbutton" value="<?echo $btn_value;?>">
     			</form>
     		<?
 			}
