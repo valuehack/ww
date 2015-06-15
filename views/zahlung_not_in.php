@@ -23,25 +23,26 @@ if (isset($_POST["registrationform"])) {
     $user_email = $profile[user_email];
 
 ?>		
-		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="upgrade_user_account" accept-charset="UTF-8">
-
-			<p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>
+		<p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>
+		
+		<div pay_form>
+			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="upgrade_user_account" accept-charset="UTF-8">
                 
-    		<input type="hidden" name="ok" value="2">
-    		<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
-    		<input type="hidden" name="level" value="<?php echo $level; ?>">
-    		<input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
-    		<input type="hidden" name="title" value="<?php echo $title; ?>">
-    		<input type="hidden" name="email" value="<?php echo $user_email; ?>">
-    		<input type="hidden" name="profile" value="<?php echo $profile; ?>">
+    			<input type="hidden" name="ok" value="2">
+    			<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
+    			<input type="hidden" name="level" value="<?php echo $level; ?>">
+    			<input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
+    			<input type="hidden" name="title" value="<?php echo $title; ?>">
+    			<input type="hidden" name="email" value="<?php echo $user_email; ?>">
+    			<input type="hidden" name="profile" value="<?php echo $profile; ?>">
 
-    		<input type="radio" class="" name="zahlung" value="bank" required>&Uuml;berweisung<br>
-    		<input type="radio" class="" name="zahlung" value="kredit">Paypal<br>
-    		<input type="radio" class="" name="zahlung" value="bar">BAR<br>
+    			<input type="radio" class="payment_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
+    			input type="radio" class="payment_radio" name="zahlung" value="kredit">Paypal<br>
+    			<input type="radio" class="payment_radio" name="zahlung" value="bar">BAR<br>
 
-    		<input type="submit" class="inputbutton" name="upgrade_user_account" value="Weiter">
-		</form>
-
+    			<input type="submit" class="inputbutton" name="upgrade_user_account" value="Weiter">
+			</form>
+		</div>
 <?php
 
 }
@@ -70,9 +71,9 @@ if(isset($_POST['pay'])) {
     		<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
     		<input type="hidden" name="level" value="<?php echo $level; ?>">
 
-    		<input type="radio" class="" name="zahlung" value="bank" required>&Uuml;berweisung<br>
-    		<input type="radio" class="" name="zahlung" value="kredit">Paypal<br>
-    		<input type="radio" class="" name="zahlung" value="bar">BAR<br>
+    		<input type="radio" class="payment_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
+    		<input type="radio" class="payment_radio" name="zahlung" value="kredit">Paypal<br>
+    		<input type="radio" class="payment_radio" name="zahlung" value="bar">BAR<br>
 
     		<input type="submit" class="inputbutton" name="upgrade_user_account" value="Weiter">
 		</form>
