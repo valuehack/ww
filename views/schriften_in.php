@@ -106,11 +106,11 @@ if(isset($_GET['q']))
     		<?php
     			if ($entry3[format] == '0001') {
     				echo '<span id="total2" class="schriften_price">'.$entry3[price].' Credits</span>';
-					echo '<input type="submit" class="inputbutton" value="Auswählen"><br>';
+					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				else {
 					echo '<span id="price" class="schriften_price">' .$entry3[price].' Credits</span>';
-					echo '<input type="submit" class="inputbutton" value="Auswählen"><br>';
+					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				echo '<span class="schriften_format">Format: <select name="format"';
 				
@@ -202,7 +202,11 @@ while($entry = mysql_fetch_array($result))
 			<td class="schriften_table_b">
 				<span><? echo ucfirst($entry[type]);?></span><br>
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
-      			<p><? echo $entry[text]; ?></p>
+      			<p>
+      				<? if (strlen($entry[text]) > 500) {
+						echo substr ($entry[text], 0, 500);
+					}?>
+				</p>
 			</td>
 			<td class="schriften_table_c">
 				<?php

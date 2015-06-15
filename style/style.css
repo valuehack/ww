@@ -1268,9 +1268,9 @@ a:visited.medien_title_list {
 
 .schriften_table td {
 	font-size: 18pt;
-	vertical-align: middle;
+	vertical-align: top;
 	min-width: 220px;
-	padding: 10px;
+	padding: 30px 10px 10px 10px;
 }
 
 .schriften_table_a {

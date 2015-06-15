@@ -99,7 +99,11 @@ while($entry = mysql_fetch_array($result))
 			<td class="schriften_table_b">
 				<span><? echo ucfirst($entry[type]);?></span><br>
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
-      			<p><? echo $entry[text]; ?></p>
+      			<p>
+      				<? if (strlen($entry[text]) > 500) {
+						echo substr ($entry[text], 0, 500);
+					}?>
+				</p>
 			</td>
 			<td class="schriften_table_c">	
 				<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">
