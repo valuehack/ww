@@ -1436,6 +1436,13 @@ a:visited.medien_title_list {
 	font-size: 14pt;
 	line-height: 1.4;
 	text-align: justify;
+	margin: 20px 0;
+}
+
+.payment ul {
+	margin-left: 50px;
+	line-height: 1.6;
+	font-size: 14pt;
 }
 
 .payment_form {
@@ -1444,10 +1451,15 @@ a:visited.medien_title_list {
 
 .payment_form form {
 	margin: 50px;
+	font-size: 14pt;
 }
 
 .payment_form_radio {
 	margin: 10px;
+}
+
+.payment_form_radio:last-of-type {
+	margin-bottom: 50px;
 }
 
 .payment_success {

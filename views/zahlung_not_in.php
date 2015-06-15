@@ -97,7 +97,7 @@ elseif (isset($_POST['ok']))
       $id = $_POST['event_id'];
       $title = $_POST['title'];
 
-      echo "<div class='payment_sucess'><p>Vielen Dank, ein Platz in \"".ucfirst($title).'" wurde für Sie reserviert. Außerdem haben wir für Sie die einj&auml;hrige Mitgliedschaft &quot;Kursteilnehmer&quot; freigeschalten und Ihrem Konto 25 Credits hinzugef&uuml;gt.</p></div>';
+      echo "<div class='payment_sucess'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde für Sie reserviert. Außerdem haben wir für Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Kursteilnehmer&quot;</b> freigeschalten und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
 
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
       $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
@@ -129,15 +129,11 @@ elseif (isset($_POST['ok']))
       echo "<p>Sie haben das Abo ".$level." bestellt.</p></div>";
 
     }
-
-
-
-
    
     if ($zahlung=="bank")
     {
     ?>
-    <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <?php echo $betrag?> an:</p>
+    <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <b><?php echo $betrag?></b> an:</p>
     <p><i>International</i>
     <ul>
     <li>Institut f&uuml;r Wertewirtschaft</li>
