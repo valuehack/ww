@@ -97,7 +97,7 @@ elseif (isset($_POST['ok']))
       $id = $_POST['event_id'];
       $title = $_POST['title'];
 
-      echo "<div class='payment_sucess'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde für Sie reserviert. Außerdem haben wir für Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Kursteilnehmer&quot;</b> freigeschalten und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
+      echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Kursteilnehmer&quot;</b> freigeschalten und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
 
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
       $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
@@ -120,7 +120,7 @@ elseif (isset($_POST['ok']))
     }
 
     else {
-      echo '<div class="payment_sucess>"<p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p>';
+      echo '<div class="payment_success>"<p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p>';
 
       echo '<p><b>Laufzeit und K&uuml;ndigung:</b></p>';
 
@@ -157,7 +157,7 @@ elseif (isset($_POST['ok']))
     </ul>
     </p>
 
-    <p><b>Bitte verwenden Sie als Sie als Zahlungsreferenz/Betreff unbedingt &quot;Mitglied Nr. <?php echo $user_id ?>&quot;</b></p>
+    <p><b>Bitte verwenden Sie als Sie als Zahlungsreferenz/Betreff unbedingt &quot;Mitglied Nr.<?php echo $user_id ?>&quot;</b></p>
     
     <?php
     }
@@ -168,32 +168,32 @@ elseif (isset($_POST['ok']))
     $result_row = $login->getUserData(trim($_SESSION['user_email']));
 
     ?>
-    <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <?=$betrag?> per Paypal: Einfach auf das Symbol unterhalb klicken, Ihre Kreditkartennummer eingeben, fertig. Unser Partner PayPal garantiert eine schnelle, einfache und sichere Zahlung (an Geb&uuml;hren fallen 2-3% vom Betrag an). Sie m&uuml;ssen kein eigenes Konto bei PayPal einrichten, die Eingabe Ihrer Kreditkartendaten reicht.</p><br>
+    <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <b><?=$betrag?></b> per Paypal: Einfach auf das Symbol unterhalb klicken, Ihre Kreditkartennummer eingeben, fertig. Unser Partner PayPal garantiert eine schnelle, einfache und sichere Zahlung (an Geb&uuml;hren fallen 2-3% vom Betrag an). Sie m&uuml;ssen kein eigenes Konto bei PayPal einrichten, die Eingabe Ihrer Kreditkartendaten reicht.</p>
 
-    <div align="center">
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" name="paypal">
-    <input type="hidden" name="cmd" value="_xclick">
-    <input type="hidden" name="business" value="info@wertewirtschaft.org">
-    <input type="hidden" name="item_name" value="Mitglied Nr.<?php echo $user_id ?>">
-    <input type="hidden" name="amount" value="<?=$betrag?>">
-    <input type="hidden" name="shipping" value="0">
-    <input type="hidden" name="no_shipping" value="1">
-    <input type="hidden" name="no_note" value="1">
-    <input type="hidden" name="currency_code" value="EUR">
-    <input type="hidden" name="tax" value="0">
+    <div class="centered">
+    	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" name="paypal">
+    		<input type="hidden" name="cmd" value="_xclick">
+    		<input type="hidden" name="business" value="info@wertewirtschaft.org">
+    		<input type="hidden" name="item_name" value="Mitglied Nr.<?php echo $user_id ?>">
+    		<input type="hidden" name="amount" value="<?=$betrag?>">
+    		<input type="hidden" name="shipping" value="0">
+    		<input type="hidden" name="no_shipping" value="1">
+    		<input type="hidden" name="no_note" value="1">
+    		<input type="hidden" name="currency_code" value="EUR">
+    		<input type="hidden" name="tax" value="0">
 
-    <!-- prepopulate paypal -->
-    <INPUT TYPE="hidden" NAME="first_name" VALUE="<?php echo $result_row->Vorname ?>">
-    <INPUT TYPE="hidden" NAME="last_name" VALUE="<?php echo $result_row->Nachname ?>">
-    <INPUT TYPE="hidden" NAME="address1" VALUE="<?php echo $result_row->Strasse ?>">
-    <INPUT TYPE="hidden" NAME="city" VALUE="<?php echo $result_row->Ort ?>">
-    <INPUT TYPE="hidden" NAME="zip" VALUE="<?php echo "" ?>">
-    <INPUT TYPE="hidden" NAME="lc" VALUE="AT">
+    		<!-- prepopulate paypal -->
+    		<INPUT TYPE="hidden" NAME="first_name" VALUE="<?php echo $result_row->Vorname ?>">
+    		<INPUT TYPE="hidden" NAME="last_name" VALUE="<?php echo $result_row->Nachname ?>">
+    		<INPUT TYPE="hidden" NAME="address1" VALUE="<?php echo $result_row->Strasse ?>">
+    		<INPUT TYPE="hidden" NAME="city" VALUE="<?php echo $result_row->Ort ?>">
+    		<INPUT TYPE="hidden" NAME="zip" VALUE="<?php echo "" ?>">
+   			<INPUT TYPE="hidden" NAME="lc" VALUE="AT">
 
-    <input type="hidden" name="bn" value="PP-BuyNowBF">
-    <input type="image" src="https://www.paypal.com/de_DE/i/btn/x-click-but6.gif" border="0" name="submit" alt="" style="border:none">
-    <img alt="" border="0" src="https://www.paypal.com/de_DE/i/scr/pixel.gif" width="1" height="1">
-    </form>
+    		<input type="hidden" name="bn" value="PP-BuyNowBF">
+    		<input type="image" src="https://www.paypal.com/de_DE/i/btn/x-click-but6.gif" border="0" name="submit" alt="" style="border:none">
+   			<img alt="" border="0" src="https://www.paypal.com/de_DE/i/scr/pixel.gif" width="1" height="1">
+    	</form>
     </div>
 
 
@@ -202,7 +202,7 @@ elseif (isset($_POST['ok']))
 
     elseif ($zahlung=="bar")
     {
-    echo "<p>Bitte schicken Sie uns den gew&auml;hlten Betrag von $betrag &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das Institut f&uuml;r Wertewirtschaft, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich im Institut (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>";
+    echo "<div class='payment_success'><p>Bitte schicken Sie uns den gew&auml;hlten Betrag von $betrag &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das Institut f&uuml;r Wertewirtschaft, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich im Institut (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>/div>";
     }
 
 }
