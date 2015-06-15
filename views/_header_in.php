@@ -92,8 +92,7 @@ while ($entry = mysql_fetch_array($result))
 <body>
 <!-- Layout-->
         <header class="header">
-        	<div class="login">
-        		<div class="login_basket"><a href="../abo/korb.php">Warenkorb (<?echo $basket_quantity;?>)</a></div>         	
+        	<div class="login">         	
                 <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
                 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
                 			<li class="dropdown-header"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
@@ -106,6 +105,7 @@ while ($entry = mysql_fetch_array($result))
                 			<li><a href="/index.php?logout">Abmelden</a></li>        			               		
                 		</ul>
                 	</div>
+                	<div class="login_basket"><a href="../abo/korb.php">Warenkorb (<?echo $basket_quantity;?>)</a></div>
 <?
 		}
 	}

@@ -123,14 +123,16 @@ strong {
 .login {
 	position: fixed;
 	top: 0px;
-	width: 100%;
+	width: 90%;
 	height: 35px;
 	background: rgba(255,255,255,0.8);
+	padding: 4px 10% 4px 0;
+	text-align: right;
 }
 
 .login_basket {
-	float: left;
-	padding-top: 2px;
+	float: right;
+	padding-top: 3px;
 }
 
 .login_basket a {
@@ -143,6 +145,7 @@ strong {
 	color: rgb(0,0,0);
 	border: 0;
 	font-size: 12pt;
+	float: right;
 }
 
 .login_button a {
