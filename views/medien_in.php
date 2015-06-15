@@ -125,6 +125,7 @@ while($entry = mysql_fetch_array($result))
     if ($entry[type] == 'video') { $btn_value = "Ansehen";}
 	
   $id = $entry[id];
+  $n = $entry[n];
             
 ?>    
 	 <a class="medien_title_list" href='?q=<?echo $id;?>'><?echo $entry[title];?></a>
