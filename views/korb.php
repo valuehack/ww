@@ -197,7 +197,7 @@ if(isset($_POST['checkout'])) {
             $type = $itemsExtraArray[type];
 
             switch ($format) {
-                case 0: if ($type == 'audio') $extension = '.mp3'; break;
+                case 0: if ($type == 'audio' OR 'media') $extension = '.mp3'; break;
                 case 1: $extension = '.pdf'; break;
                 case 2: $extension = '.epub'; break;
                 case 3: $extension = '.mobi'; break;
@@ -218,7 +218,7 @@ if(isset($_POST['checkout'])) {
                 //echo '<td><a href="'.$download$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'/.pdf';_link.'" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>';
            
 
-                if (($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'audio') && $format != 4) {
+                if (($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'media' || $type == 'audio') && $format != 4) {
 
                 ?>
                 <td><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href);">Download</a></td>
@@ -226,7 +226,9 @@ if(isset($_POST['checkout'])) {
 
                 <?php
                  }
-
+                elseif ($type == 'projekt') {
+                    echo '';
+                }
                 else {
                     echo "<td>Reserviert</td></tr>";
                 }
