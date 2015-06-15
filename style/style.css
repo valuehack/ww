@@ -114,8 +114,8 @@ strong {
 }
 
 .logo_img {
-	margin: 25px 237px;
-	width: 425px;
+	margin: 25px auto;
+	width: 500px;
 }
 
 /*================= Login/Profil ===================*/
@@ -1286,6 +1286,12 @@ a:visited.medien_title_list {
 	width: 65%;
 	vertical-align: top !important;
 	padding-top: 50px !important;
+}
+
+
+.schriften_table_b p {
+	font-size: 14pt;
+	margin: 10px 0;
 }
 
 .schriften_table span {

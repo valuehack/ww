@@ -202,6 +202,7 @@ while($entry = mysql_fetch_array($result))
 			<td class="schriften_table_b">
 				<span><? echo ucfirst($entry[type]);?></span><br>
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
+      			<p><? echo $entry[text]; ?></p>
 			</td>
 			<td class="schriften_table_c">
 				<?php
