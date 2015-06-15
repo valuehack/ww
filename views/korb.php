@@ -510,8 +510,8 @@ if($_SESSION['basket']) {
                             echo '1';
                         }
                         else {
-                            echo $quantity;?>
-                        }
+                            echo $quantity;
+                        } ?>
                 </span>
 			</div>
 		</div>

@@ -75,22 +75,25 @@ $user_id = $_SESSION['user_id'];
 $user_email = $_SESSION['user_email'];
 
 //getting the number of items in the basket
-$basket = $_SESSION['basket'];
 $total_quantity = 0;
 
-foreach ($basket as $code => $quantity) {
-    $length = strlen($code) - 1;
-    $key = substr($code,0,$length);
+if(isset($_SESSION['basket']){
+    $basket = $_SESSION['basket'];
 
-    $project_query = "SELECT * from produkte WHERE `n` LIKE '$key'";
-    $project_result = mysql_query($project_query) or die("Failed Query of " . $project_query. mysql_error());
-    $itemsPriceArray = mysql_fetch_array($project_result);
-    
-    if ($itemsPriceArray[type] == 'projekt') {
-        $total_quantity += 1;
-    }
-    else {
-        $total_quantity += $quantity;
+    foreach ($basket as $code => $quantity) {
+        $length = strlen($code) - 1;
+        $key = substr($code,0,$length);
+
+        $project_query = "SELECT * from produkte WHERE `n` LIKE '$key'";
+        $project_result = mysql_query($project_query) or die("Failed Query of " . $project_query. mysql_error());
+        $itemsPriceArray = mysql_fetch_array($project_result);
+        
+        if ($itemsPriceArray[type] == 'projekt') {
+            $total_quantity += 1;
+        }
+        else {
+            $total_quantity += $quantity;
+        }
     }
 }
 
