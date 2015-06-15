@@ -29,8 +29,17 @@ if ($login->isUserLoggedIn() == true) {
     // the user is logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are logged in" view.
     #echo "this works";
-    include("../views/upgradeView.php");
-
+       switch ($_SESSION['Mitgliedschaft']) {
+        case 0:
+            include("../views/upgrade_not_in.php");
+            break;
+        case ($_SESSION['Mitgliedschaft'] >= 1):
+            include("../views/upgrade_in.php");
+            break;
+        default: 
+            include("../views/upgrade_not_in.php"); 
+            break;
+	   }
 } else {
     // the user is not logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are not logged in" view.
