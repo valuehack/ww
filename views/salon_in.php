@@ -10,9 +10,6 @@ function changePrice(totalQuantity, price){
     document.getElementById("change").innerHTML = (totalQuantity * price) + " Credits";
 }
 
-function basketQuantity(basketQuantity){
-    document.getElementById("basket_quantity").innerHTML = basketQuantity;
-}
 </script>
 
 <?
@@ -41,11 +38,7 @@ if(isset($_POST['add'])){
 
   $basket = $_SESSION['basket'];
   $basket_quantity = count($basket);
-  ?>
-
-  <span onload="basketQuantity(<?php echo $basket_quantity; ?>)"><span>
-
-<?
+  
 }
 
 if(isset($_GET['q']))

@@ -79,11 +79,27 @@ if(isset($_POST['add'])){
   $add_quantity = $_POST['quantity'];
 
   $basket = $_SESSION['basket'];
-  $basket_quantity = count($basket) + $add_quantity;
+  foreach ($basket as $code => $quantity) {
+        $total_quantity += $quantity;
+    }
+
+  $total_quantity = $total_quantity + $add_quantity;
+}
+
+elseif(isset($_POST['delete'])) {
+
+}
+
+elseif(isset($_POST['remove'])) {
+    
 }
 else {
-  $basket = $_SESSION['basket'];
-  $basket_quantity = count($basket);  
+    $basket = $_SESSION['basket'];
+
+    foreach ($basket as $code => $quantity) {
+        $total_quantity += $quantity;
+    }
+    //$basket_quantity = count($basket);  
 }
 
 #echo $user_email;
@@ -110,7 +126,7 @@ while ($entry = mysql_fetch_array($result))
                 			<li><a href="/abo/upgrade.php">Upgrade</a></li>
                 			<li class="divider"></li>
                 			<li class="dropdown-header">Credits: <?echo $entry[credits_left];?></li>
-                			<li><a href="/abo/korb.php">Warenkorb (<span id='basket_quantity'><?echo $basket_quantity;?></span>)</a></li> 
+                			<li><a href="/abo/korb.php">Warenkorb (<span id='basket_quantity'><?echo $total_quantity;?></span>)</a></li> 
                 			<li class="divider"></li>
                 			<li><a href="/index.php?logout">Abmelden</a></li>        			               		
                 		</ul>
