@@ -2379,9 +2379,8 @@ button.close {
 
 .badge {
   display: inline-block;
-  min-width: 10px;
-  padding: 3px 7px;
-  font-size: 16px;
+  padding: 3px 3px;
+  font-size: 12pt;
   font-weight: bold;
   line-height: 1;
   color: #fff;
