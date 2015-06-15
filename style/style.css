@@ -500,13 +500,14 @@ strong {
 .startpage_info {
 	width: 57%;
 	height: 185px;
-	background: rgb(192,183,175);
+	background: rgb(46,74,98); 
 	padding: 15px 25px;
 	font-size: 15pt;
 	line-height: 1.8;
 	font-style: italic;
 	float: left;
 	margin: 0 15px;
+	color: rgb(255,255,255);
 }
 
 .startpage_box {
@@ -536,6 +537,11 @@ strong {
 .startpage_box a:hover {
 	border-bottom: 1px solid rgb(255,255,255);
 }
+
+.startpage_box a:visited {
+	border-bottom: 1px solid rgb(255,255,255);
+}
+
 
 .white {
 	background: rgba(255,255,255,0.2);
