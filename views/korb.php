@@ -4,8 +4,9 @@ include_once("../down_secure/functions.php");
 dbconnect();
 
 require_once('../classes/Login.php');
-include('_header_in.php'); 
 $title="Korb";
+include('_header_in.php'); 
+
 ?>
 
 <script type="text/javascript">
@@ -26,7 +27,7 @@ function checkMe() {
 	</div>
 	<div class="basket">
 <?php 
-//print_r($_SESSION);
+print_r($_SESSION);
 
 //Check if basket was cleared
 if(isset($_POST['delete'])) {

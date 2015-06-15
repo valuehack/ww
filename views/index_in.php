@@ -1,6 +1,6 @@
 <?php
 include ("_db.php");
-$title="Willkommen!";
+$title="Willkommen";
 include ("_header_in.php"); 
 ?>
 

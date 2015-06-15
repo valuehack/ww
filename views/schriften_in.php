@@ -1,16 +1,17 @@
 <?php 
 require_once('../classes/Login.php');
-include('_header_in.php'); 
 $title="Schriften";
+include('_header_in.php'); 
+
 ?>
 
 <script>
-function changeView(price, price2) {
+function changeView(price, price_book) {
     var x = document.getElementById("change").value;
 
     if (x == 4) {    
-      document.getElementById("quantity").innerHTML = '<input type="number" name="quantity" onchange="changePrice(this.value,' + price2 + ')" value="1" min="1" max="100">';
-      document.getElementById("price").innerHTML = "<span id='total'>" + price2 + " Credits</span>";
+      document.getElementById("quantity").innerHTML = '<input type="number" name="quantity" onchange="changePrice(this.value,' + price_book + ')" value="1" min="1" max="100">';
+      document.getElementById("price").innerHTML = "<span id='total'>" + price_book + " Credits</span>";
     }
     else {
       document.getElementById("quantity").innerHTML = '<input type="hidden" name="quantity" value="1"><input type="number" name="quantity2" value="1" disabled>';
@@ -18,12 +19,12 @@ function changeView(price, price2) {
     }
 }
 
-function changePrice(totalQuantity, price2){
-    document.getElementById("total").innerHTML = (totalQuantity * price2) + " Credits";
+function changePrice(totalQuantity, price_book){
+    document.getElementById("total").innerHTML = (totalQuantity * price_book) + " Credits";
 }
 
-function changePrice2(totalQuantity, price2){
-    document.getElementById("total2").innerHTML = (totalQuantity * price2) + " Credits";
+function changeprice_book(totalQuantity, price_book){
+    document.getElementById("total2").innerHTML = (totalQuantity * price_book) + " Credits";
 }
 </script>
 
@@ -97,7 +98,7 @@ if(isset($_GET['q']))
     				$druck = substr($entry3[format],3,1);
 
     				$price = $entry3[price];
-    				$price2 = $entry3[price2];
+    				$price_book = $entry3[price_book];
     			?>
     		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       			<input type="hidden" name="add" value="<?php echo $n; ?>" />
@@ -118,7 +119,7 @@ if(isset($_GET['q']))
 						echo '<option value="4">Druck</option>';
 					}
 					else {
-						echo ' id="change" onchange="changeView('.$price.','.$price2.')">';
+						echo ' id="change" onchange="changeView('.$price.','.$price_book.')">';
 							if ($pdf == 1) echo '<option value="1">PDF</option>';
         					if ($epub == 1) echo '<option value="2">ePub</option>';
         					if ($kindle == 1) echo '<option value="3">Kindle</option>';
@@ -128,7 +129,7 @@ if(isset($_GET['q']))
 				
         echo '<span class="schriften_quantity">Anzahl: ';
         if ($entry3[format] == '0001') {
-				echo '<input type="number" name="quantity" onchange="changePrice2(this.value,'.$price2.')" value="1" min="1" max="100">';
+				echo '<input type="number" name="quantity" onchange="changeprice_book(this.value,'.$price_book.')" value="1" min="1" max="100">';
 					}
         else {
 						echo '<span id="quantity"><input type="hidden" name="quantity" value="1"><input type="number" name="quantity2" value="1" disabled></span>';
@@ -236,7 +237,7 @@ while($entry = mysql_fetch_array($result))
         <p>Wir freuen uns, dass Sie eine unserer Schriften bestellen m&ouml;chten. Allerdings sind einige Schriften nicht f&uuml;r die &Ouml;ffentlichkeit bestimmt, andere sind im Buchhandel zu erwerben,&nbsp;da ein Vertrieb und Versand f&uuml;r uns nicht wirtschaftlich&nbsp;ist. Unser Webshop, &uuml;ber den alle Schriften entweder bestellt oder in allen digitalen Formaten f&uuml;r Leseger&auml;te heruntergeladen werden k&ouml;nnen, steht nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf unsere Schriften:&nbsp;</p>
       </div>
       <div class="modal-footer">
-        <a href="../upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
+        <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
       </div>
     </div>
   </div>

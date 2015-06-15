@@ -1,7 +1,7 @@
 <?php 
 require_once('../classes/Login.php');
-include('_header_in.php'); 
 $title="Kurse";
+include('_header_in.php'); 
 
 ?>
 
@@ -217,7 +217,7 @@ if(isset($_GET['q']))
         Erklärung 
       </div>
       <div class="modal-footer">
-        <a href="../upgrade.php"><button type="button" class="inputbutton">Anmelden</button></a>
+        <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Anmelden</button></a>
       </div>
     </div>
   </div>
@@ -235,7 +235,7 @@ if(isset($_GET['q']))
         Erklärung 
       </div>
       <div class="modal-footer">
-        <a href="../upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
+        <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
       </div>
     </div>
   </div>

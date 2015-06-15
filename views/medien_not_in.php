@@ -1,7 +1,7 @@
 <?
 require_once('../classes/Login.php');
-include('_header_not_in.php'); 
 $title="Medien";
+include('_header_not_in.php'); 
 
 ?>
 

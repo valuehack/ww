@@ -1,10 +1,8 @@
 <?php 
 
 require_once('../classes/Login.php');
-
-include('_header_in.php'); 
-
 $title="Upgrades";
+include('_header_in.php'); 
 
 
 ?>

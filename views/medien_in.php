@@ -35,13 +35,14 @@ if(isset($_GET['q']))
   $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE (type LIKE 'audio' OR type LIKE 'video') AND id = '$id'";
+  $sql="SELECT * from produkte WHERE (type LIKE 'media' or type LIKE 'audio' or type LIKE 'video') AND id = '$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
   
   				//Change button-value according to media type
-	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
+	 if ($entry[type] == 'media') { $btn_value = "Herunterladen";} 
+  if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
     if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
   
             	//check, if there is a image in the medien folder
@@ -113,13 +114,14 @@ else {
 	<div class="medien_content">
 
 <?php
-$sql = "SELECT * from produkte WHERE type LIKE 'audio' or type LIKE 'video' AND status > 0 order by title asc, n asc";
+$sql = "SELECT * from produkte WHERE (type LIKE 'media' or type LIKE 'audio' or type LIKE 'video') AND status > 0 order by title asc, n asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
 						//Change button-value according to media type
-	if ($entry[type] == 'audio') { $btn_value = "Herunterladen";} 
+	if ($entry[type] == 'media') { $btn_value = "Herunterladen";} 
+  if ($entry[type] == 'audio') { $btn_value = "Herunterladen";} 
     if ($entry[type] == 'video') { $btn_value = "Ansehen";}
 	
   $id = $entry[id];

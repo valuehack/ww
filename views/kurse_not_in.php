@@ -2,8 +2,9 @@
 
 require_once('../classes/Registration.php');
 require_once('../classes/Login.php');
-include('_header_not_in.php'); 
 $title="Kurse";
+include('_header_not_in.php'); 
+
 
     	//check, if there is a image in the salon folder
 	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
