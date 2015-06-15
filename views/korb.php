@@ -110,7 +110,7 @@ if(isset($_POST['checkout'])) {
 
 
     elseif ($error == 2) {
-        echo '<div class="basket_error"><p>Text für Warenkorb-Checkout nach Ablauf Mitgliedschaft. <a href="../abo/">Zur Aboseite</a></p></div>';
+        echo '<div class="basket_error"><p>Text f&uuml;r Warenkorb-Checkout nach Ablauf Mitgliedschaft. <a href="../abo/">Zur Aboseite</a></p></div>';
     }
 
         else 

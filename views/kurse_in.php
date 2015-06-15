@@ -108,7 +108,7 @@ if(isset($_GET['q']))
         <option value="4">4</option>
         <option value="5">5</option>        
       </select> 
-      <input class="inputbutton" type="submit" value="Auswählen"><br>     
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
     </form>
 	<span id="change" class="salon_reservation_span_b"><?php echo $entry3[price]; ?> Credits</span>
   <?php
@@ -214,7 +214,7 @@ if(isset($_GET['q']))
         <h2 class="modal-title" id="myModalLabel">Mitgliedschaft 150 - Anmelden</h2>
       </div>
       <div class="modal-body">
-        Erklärung 
+        Erkl&auml;rung 
       </div>
       <div class="modal-footer">
         <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Anmelden</button></a>
@@ -232,7 +232,7 @@ if(isset($_GET['q']))
         <h2 class="modal-title" id="myModalLabel">Mitgliedschaft 150</h2>
       </div>
       <div class="modal-body">
-        Erklärung 
+        Erkl&auml;rung 
       </div>
       <div class="modal-footer">
         <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>

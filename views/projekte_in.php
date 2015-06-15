@@ -15,7 +15,7 @@ if(isset($_POST['add'])){
   $add_code = $add_id . "0";
   if ($add_quantity==1) $wort = "wurde";
   else $wort = "wurden";
-  echo "<div style='text-align:center'><hr><i>".$add_quantity." Credits für das ausgewählte Projekt ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>Zum Korb</a><hr><br></div>";
+  echo "<div style='text-align:center'><hr><i>".$add_quantity." Credits f&uuml;r das ausgew&auml;hlte Projekt ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>Zum Korb</a><hr><br></div>";
 
   if (isset($_SESSION['basket'][$add_id])) {
     $_SESSION['basket'][$add_code] += $add_quantity; 
@@ -57,7 +57,7 @@ if ($id = $_GET["q"])
     }
     else {
 		echo "<div class='projekte_invest'>
-		<p>Interessierte Mitglieder haben bereits <span class='projekte_credits_sold'>".$entry[spots_sold]."</span> von <span class='projekte_credits_sold'>".$entry[spots]."</span> nötigen Credits investiert.</p>"; ?>
+		<p>Interessierte Mitglieder haben bereits <span class='projekte_credits_sold'>".$entry[spots_sold]."</span> von <span class='projekte_credits_sold'>".$entry[spots]."</span> n&ouml;tigen Credits investiert.</p>"; ?>
       	<form class="projekte_invest_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         	<input type="hidden" name="add" value="<?php echo $n ?>" />
         	<span class="projekte_invest_span">Ich m&ouml;chte mit </span>
@@ -130,7 +130,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 
             </div>
           <div class="modal-footer">
-            <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
+            <button type="button" class="inputbutton_white" data-dismiss="modal">Schlie&szlig;en</button>
           </div>
         </div>
       </div>

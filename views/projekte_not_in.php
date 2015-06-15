@@ -89,7 +89,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 
         </div>
       <div class="modal-footer">
-        <button type="button" class="inputbutton_white" data-dismiss="modal">Schließen</button>
+        <button type="button" class="inputbutton_white" data-dismiss="modal">Schlie&szlig;en</button>
       </div>
     </div>
   </div>
