@@ -72,8 +72,8 @@ if(isset($_POST['checkout'])) {
         $items_price_result = mysql_query($items_price_query) or die("Failed Query of " . $items_price_query. mysql_error());
         $itemsPriceArray = mysql_fetch_array($items_price_result);
         
-        if ($format == 4 && $itemsPriceArray[price2]) {
-            $itemsPriceSum = $quantity * $itemsPriceArray[price2];
+        if ($format == 4 && $itemsPriceArray[price_book]) {
+            $itemsPriceSum = $quantity * $itemsPriceArray[price_book];
         }
         else {
             $itemsPriceSum = $quantity * $itemsPriceArray[price];
@@ -161,8 +161,8 @@ if(isset($_POST['checkout'])) {
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
 
-            if ($format == 4 && $itemsExtraArray[price2]) {
-                $sum = $quantity*$itemsExtraArray[price2];
+            if ($format == 4 && $itemsExtraArray[price_book]) {
+                $sum = $quantity*$itemsExtraArray[price_book];
             }
             else {
                 $sum = $quantity*$itemsExtraArray[price];
@@ -332,8 +332,8 @@ if(isset($_POST['checkout'])) {
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
 
-            if ($format == 4 && $itemsExtraArray[price2]) {
-                $sum = $quantity*$itemsExtraArray[price2];
+            if ($format == 4 && $itemsExtraArray[price_book]) {
+                $sum = $quantity*$itemsExtraArray[price_book];
             }
             else {
                 $sum = $quantity*$itemsExtraArray[price];
@@ -418,8 +418,8 @@ if($_SESSION['basket']) {
         $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
         $itemsExtraArray = mysql_fetch_array($items_extra_result);
         
-        if ($format == 4 && $itemsExtraArray[price2]) {
-            $sum = $quantity*$itemsExtraArray[price2];
+        if ($format == 4 && $itemsExtraArray[price_book]) {
+            $sum = $quantity*$itemsExtraArray[price_book];
         }
         else {
             $sum = $quantity*$itemsExtraArray[price];
@@ -471,8 +471,8 @@ if($_SESSION['basket']) {
 			<div class="basket_body_col_b">
 				<span>
 					<?php
-	        			if ($format == 4 && $itemsExtraArray[price2]) {
-            				echo $itemsExtraArray[price2];
+	        			if ($format == 4 && $itemsExtraArray[price_book]) {
+            				echo $itemsExtraArray[price_book];
         				}
        					else {
            		 			echo $itemsExtraArray[price];
@@ -545,8 +545,8 @@ if($_SESSION['basket']) {
         $items_price_result = mysql_query($items_price_query) or die("Failed Query of " . $items_price_query. mysql_error());
         $itemsPriceArray = mysql_fetch_array($items_price_result);
         
-        if ($format == 4 && $itemsPriceArray[price2]) {
-            $itemsPriceSum = $quantity * $itemsPriceArray[price2];
+        if ($format == 4 && $itemsPriceArray[price_book]) {
+            $itemsPriceSum = $quantity * $itemsPriceArray[price_book];
         }
         else {
             $itemsPriceSum = $quantity * $itemsPriceArray[price];

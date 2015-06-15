@@ -69,7 +69,7 @@ if(isset($_GET['q']))
 			else { ?>
 				<span class="schriften_price"><?php echo $entry3[price]; ?> Credits</span>
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      				<input type="hidden" name="add" value="<?php echo $n; ?>">
+      				<input type="hidden" name="add" value="<?php echo $n; ?>" />
      				<!--<select name="quantity">
         				<option value="1">1</option>
         				<option value="2">2</option>
