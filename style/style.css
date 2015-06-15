@@ -2380,8 +2380,9 @@ button.close {
 
 .badge {
   display: inline-block;
+  min-width: 10px;
   padding: 3px 3px;
-  font-size: 12pt;
+  font-size: 14pt;
   font-weight: bold;
   line-height: 1;
   color: #fff;
