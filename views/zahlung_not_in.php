@@ -38,7 +38,7 @@ if (isset($_POST["registrationform"])) {
 
     			<input type="radio" class="payment_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
     			<input type="radio" class="payment_radio" name="zahlung" value="kredit">Paypal<br>
-    			<input type="radio" class="payment_radio" name="zahlung" value="bar">BAR<br>
+    			<input type="radio" class="payment_radio" name="zahlung" value="bar">Bar<br>
 
     			<input type="submit" class="inputbutton" name="upgrade_user_account" value="Weiter">
 			</form>
@@ -73,7 +73,7 @@ if(isset($_POST['pay'])) {
 
     		<input type="radio" class="payment_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
     		<input type="radio" class="payment_radio" name="zahlung" value="kredit">Paypal<br>
-    		<input type="radio" class="payment_radio" name="zahlung" value="bar">BAR<br>
+    		<input type="radio" class="payment_radio" name="zahlung" value="bar">Bar<br>
 
     		<input type="submit" class="inputbutton" name="upgrade_user_account" value="Weiter">
 		</form>
