@@ -498,24 +498,21 @@ strong {
 }
 
 .startpage_info {
-	width: 57%;
-	height: 185px;
-	background: rgb(46,74,98); 
+	width: 100%;
+	color: rgb(20,20,20);
 	padding: 15px 25px;
 	font-size: 15pt;
 	line-height: 1.8;
 	font-style: italic;
-	float: left;
-	margin: 0 15px;
-	color: rgb(255,255,255);
+	margin: 0 15px 20px 0;
 }
 
 .startpage_box {
-	width: 24%;
-	height: 270px;
+	width: 100%;
 	padding: 15px 25px;
 	float: left; 
 	margin: 0 15px;
+	margin: 20px 0;
 }
 
 .startpage_box h1 {
