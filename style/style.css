@@ -109,7 +109,7 @@ strong {
 	background: transparent;
 	width: 900px;
 	height: 160px;	
-	margin: 0 auto;
+	margin: 35px auto 0px auto;
 	text-align: center;
 }
 
@@ -121,10 +121,11 @@ strong {
 /*================= Login/Profil ===================*/
 
 .login {
-	position: absolute;
-	top: 2px;
-	right: 10%;
-	width: 300px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 35px;
+	background: rgba(255,255,255,0.8);
 }
 
 .login_basket {
@@ -133,13 +134,13 @@ strong {
 }
 
 .login_basket a {
-	color: rgb(255,255,255) !important;
+	color: rgb(0,0,0) !important;
 	text-decoration: none;
 }
 
 .login_button {
 	background: none;
-	color: rgb(255,255,255);
+	color: rgb(0,0,0);
 	border: 0;
 	font-size: 12pt;
 }
