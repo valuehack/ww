@@ -25,7 +25,7 @@ if (isset($_POST["registrationform"])) {
 ?>		
 		<p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>
 		
-		<div pay_form>
+		<div class="pay_form">
 			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="upgrade_user_account" accept-charset="UTF-8">
                 
     			<input type="hidden" name="ok" value="2">
@@ -37,7 +37,7 @@ if (isset($_POST["registrationform"])) {
     			<input type="hidden" name="profile" value="<?php echo $profile; ?>">
 
     			<input type="radio" class="payment_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
-    			input type="radio" class="payment_radio" name="zahlung" value="kredit">Paypal<br>
+    			<input type="radio" class="payment_radio" name="zahlung" value="kredit">Paypal<br>
     			<input type="radio" class="payment_radio" name="zahlung" value="bar">BAR<br>
 
     			<input type="submit" class="inputbutton" name="upgrade_user_account" value="Weiter">
