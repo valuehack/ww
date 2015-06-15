@@ -27,7 +27,7 @@ function checkMe() {
 	</div>
 	<div class="basket">
 <?php 
-print_r($_SESSION);
+//print_r($_SESSION);
 
 //Check if basket was cleared
 if(isset($_POST['delete'])) {
@@ -65,7 +65,7 @@ if(isset($_POST['checkout'])) {
     {
         $length = strlen($code) - 1;
 
-        $key = substr($code,-2,$length);
+        $key = substr($code,0,$length);
         $format = substr($code,-1,1);
 
         $items_price_query = "SELECT * from produkte WHERE `n` LIKE '$key'";
@@ -119,7 +119,7 @@ if(isset($_POST['checkout'])) {
                 {    
                     $length = strlen($code) - 1;
 
-                    $key = substr($code,-2,$length);
+                    $key = substr($code,0,$length);
                     $format = substr($code,-1,1);
                     switch ($format) {
                         case 1: $format = "PDF"; break;
@@ -154,7 +154,7 @@ if(isset($_POST['checkout'])) {
         foreach ($items as $code => $quantity) {
             $length = strlen($code) - 1;
 
-            $key = substr($code,-2,$length);
+            $key = substr($code,0,$length);
             $format = substr($code,-1,1);
 
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
@@ -325,7 +325,7 @@ if(isset($_POST['checkout'])) {
         foreach ($items as $code => $quantity) {
             $length = strlen($code) - 1;
 
-            $key = substr($code,-2,$length);
+            $key = substr($code,0,$length);
             $format = substr($code,-1,1);
 
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
@@ -427,13 +427,20 @@ if($_SESSION['basket']) {
         
 		if ($itemsExtraArray[type] == 'buch' OR 'analyse' OR 'scholie') {
 			$url = 'http://test.wertewirtschaft.net/schriften/'.$itemsExtraArray[id].'.jpg';
+            $url2 = 'schriften';
 			}
 		if ($itemsExtraArray[type] == 'kurse') {
 			$url = 'http://test.wertewirtschaft.net/kurse/'.$itemsExtraArray[id].'.jpg';
+            $url2 = 'kurse';
 			}
 		if ($itemsExtraArray[type] == 'salon') {
 			$url = 'http://test.wertewirtschaft.net/salon/'.$itemsExtraArray[id].'.jpg';
+            $url2 = 'salon';
 			}
+        if ($itemsExtraArray[type] == 'media' OR 'audio' OR 'video') {
+            $url = 'http://test.wertewirtschaft.net/medien/'.$itemsExtraArray[id].'.jpg';
+            $url2 = 'medien';
+            }
 ?>        
 		<div class="basket_body">
 			<div class="basket_body_col_a">
@@ -444,7 +451,7 @@ if($_SESSION['basket']) {
 <?php			
 		echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span>";
 		echo "<span class='basket_body_title'>";
-		echo "<a href='../".$itemsExtraArray[type]."/index.php?q=".$itemsExtraArray[id]."n'>".$itemsExtraArray[title]."</a></span>";
+		echo "<a href='../".$url2."/index.php?q=".$itemsExtraArray[id]."'>".$itemsExtraArray[title]."</a></span>";
 		echo "<span class='basket_body_format'>";
         switch ($format) {
             case 1: echo "pdf"; break;
