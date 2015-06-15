@@ -74,6 +74,7 @@ if (isset($registration)) {
 $user_id = $_SESSION['user_id'];
 $user_email = $_SESSION['user_email'];
 
+//getting the number of items in the basket
 if(isset($_POST['add'])){
 
   $add_quantity = $_POST['quantity'];
