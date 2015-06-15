@@ -9,13 +9,13 @@ include ("../views/_header_not_in.php");
 	<div class="agb">
 		<h1>Impressum</h1>
 	</div>
-	<div class="medien-seperator">
+	<div class="medien_seperator">
 		<h1>Disclaimer</h1>
 	</div>
 	<div class="agb">
 		<p>Disclaimer</p>
 	</div>
-	<div class="medien-sperator">	
+	<div class="medien_seperator">	
 		<h1>Kontakt</h1>
 	</div>
 	<div class="location_box">  
