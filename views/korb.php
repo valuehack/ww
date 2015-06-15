@@ -352,7 +352,7 @@ if(isset($_POST['checkout'])) {
             $body = $body. "<td>&nbsp; &nbsp;".$quantity."</td>";
             $body = $body. "<td><i>".$sum." Credits</i></td></tr>";
 
-            $total += $sum;
+            $total2 += $sum;
 
             if ($format == 4) {
                 $versand += 1;
@@ -365,10 +365,10 @@ if(isset($_POST['checkout'])) {
         
         if ($versand >= 1) {
             $body = $body. "<tr><td></td><td>Versandkostenpauschale</td><td></td><td>5 Credits</td></tr>";
-            $total += 5;
+            $total2 += 5;
         }
 
-        $body = $body. "<tr><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total." Credits</b></td></tr>";
+        $body = $body. "<tr><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total2." Credits</b></td></tr>";
 
         $body = $body. "</table><hr>";
         
