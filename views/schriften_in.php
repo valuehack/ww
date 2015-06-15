@@ -204,8 +204,11 @@ while($entry = mysql_fetch_array($result))
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
       			<p>
       				<? if (strlen($entry[text]) > 500) {
-						echo substr ($entry[text], 0, 500);
-					}?>
+							echo substr ($entry[text], 0, 500);
+						}
+						else {
+							echo $entry[text];
+						}?>
 				</p>
 			</td>
 			<td class="schriften_table_c">
