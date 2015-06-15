@@ -73,6 +73,8 @@ if (isset($registration)) {
 
 $user_id = $_SESSION['user_id'];
 $user_email = $_SESSION['user_email'];
+$basket = $_SESSION['basket'];
+$basket_quantity = count($basket);
 
 #echo $user_email;
 
@@ -93,7 +95,7 @@ while ($entry = mysql_fetch_array($result))
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
                 <div class="login"> 
-                	<div class="login_basket"><a href="/abo/korb.php">Warenkorb</a></div>         	
+                	<div class="login_basket"><a href="../abo/korb.php">Warenkorb (<?echo $basket_quantity;?>)</a></div>         	
                 	<div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
                 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
                 			<li class="dropdown-header"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
@@ -101,7 +103,7 @@ while ($entry = mysql_fetch_array($result))
                 			<li><a href="/abo/upgrade.php">Upgrade</a></li>
                 			<li class="divider"></li>
                 			<li class="dropdown-header">Credits: <?echo $entry[credits_left];?></li>
-                			<li><a href="/abo/korb.php">Warenkorb</a></li> 
+                			<li><a href="/abo/korb.php">Warenkorb (<?echo $basket_quantity;?>)</a></li> 
                 			<li class="divider"></li>
                 			<li><a href="/index.php?logout">Abmelden</a></li>        			               		
                 		</ul>
