@@ -76,10 +76,10 @@ if (isset($registration)) {
 	
 	<body>
         <header class="header">
+        	<div class="login">
+                	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
-                 <div class="login">
-                	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
                 	
 <!-- Login Modal -->
   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

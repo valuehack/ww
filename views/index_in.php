@@ -15,7 +15,6 @@ include ("_header_in.php");
 
 <!-- END Subscription -->
 
-
 	<div class="content">
 		
 		    <div class="startpage_section_a">
@@ -30,6 +29,16 @@ include ("_header_in.php");
             <div class="startpage_section_b">
                 <div class="startpage_box white">
                     <h1>Schriften</h1>
+                    <?php
+$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status > 0 order by title asc, n asc";
+$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+
+while($entry = mysql_fetch_array($result))
+{
+				$id = $entry[id]; 
+				echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";					
+}
+                    ?>
                 </div>
                 <div class="startpage_box white">
                     <h1>Medien</h1>
