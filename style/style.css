@@ -1438,15 +1438,15 @@ a:visited.medien_title_list {
 	text-align: justify;
 }
 
-.pay_form {
+.payment_form {
 	margin: 0 auto;
 }
 
-.pay_form form {
+.payment_form form {
 	margin: 50px;
 }
 
-.payment_radio {
+.payment_form_radio {
 	margin: 10px;
 }
 

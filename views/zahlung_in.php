@@ -2,10 +2,10 @@
 
 require_once('../classes/Login.php');
 
-include('_header_in.php'); 
-
 $title="Zahlung";
 
+
+include('_header_in.php'); 
 
 if(isset($_POST['pay'])) {
     $level = $_POST['level'];
@@ -147,6 +147,6 @@ elseif (isset($_POST['ok']))
 }
 
 
-include('_footer_blog.php');
+include('_footer.php');
 
 ?>
