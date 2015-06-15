@@ -1313,6 +1313,25 @@ a:visited.medien_title_list {
 
 .schriften_table_c  {
 	font-size: 12pt !important;
+	padding-top: 55px !important;
+}
+
+.schriften_inputbutton {
+	text-decoration: none;
+	background: #2E4A62 none repeat scroll 0% 0%;
+	color: rgb(255,255,255);
+	border: 0px none;
+	border-radius: 2px;
+	min-width: 200px;
+	height: 50px;
+	font-family: "Baskerville",Georgia,Times,serif;
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
+	font-size: 14pt !important;
+	margin: 5px 5px 5px 20px;
+}
+
+.schriften_inputbutton:hover {
+	background: rgb(30,48,64);
 }
 
 .schriften_img {
