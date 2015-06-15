@@ -471,6 +471,7 @@ if($_SESSION['basket']) {
         ?>
         		<form class="basket_body_remove" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 	<input type="hidden" name="remove" value="<?php echo $code ?>" />
+                    <? if ($itemsExtraArray[type] == 'projekt') {echo '<input type="hidden" name="projekt" value="1" />';} ?>
                 	<input class="basket_body_remove_button" type="submit" value="Entfernen" onClick="return checkMe()">
             	</form>
         	</div>

@@ -63,7 +63,8 @@ if ($id = $_GET["q"])
         	<span class="projekte_invest_span">Ich m&ouml;chte mit </span>
         	<input class="projekte_invest_select" type="number" name="quantity" value="1" min="1" max="<?php echo $avail;?>">
         	<span class="projekte_invest_span">Credit(s) zu diesem Projekt beitragen.</span><br>
-        	<input type="submit" class="medien_inputbutton" value="Jetzt beitragen">
+        	<input type="hidden" name="project" value="1" />
+          <input type="submit" class="medien_inputbutton" value="Jetzt beitragen">
       	</form>
       </div>
       <div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Projekten</a></div>
