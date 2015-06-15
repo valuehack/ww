@@ -10,7 +10,7 @@ function changePrice(totalQuantity, price){
     document.getElementById("change").innerHTML = (totalQuantity * price) + " Credits";
 }
 
-function changePrice(basketQuantity){
+function basketQuantity(basketQuantity){
     document.getElementById("basket_quantity").innerHTML = basketQuantity;
 }
 </script>
