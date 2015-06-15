@@ -77,7 +77,7 @@ $user_email = $_SESSION['user_email'];
 //getting the number of items in the basket
 $total_quantity = 0;
 
-if(isset($_SESSION['basket']){
+if(isset($_SESSION['basket'])){
     $basket = $_SESSION['basket'];
 
     foreach ($basket as $code => $quantity) {

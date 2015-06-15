@@ -264,6 +264,7 @@ while($entry = mysql_fetch_array($result))
         				<option value="4">4</option>
         				<option value="5">5</option>        
       				</select> -->
+      				<input type="hidden" name="quantity" value="1">
       				<input type="submit" class="inputbutton" value="<?echo $btn_value;?>">
     			</form>
     			</div>
