@@ -125,9 +125,10 @@ else {
 	   If you have a WHERE clause in your query, make sure you mirror it here.
 	*/
 	$sql0 = "SELECT * from produkte WHERE (type LIKE 'media' or type LIKE 'audio' or type LIKE 'video') AND status > 0";
-	$query = mysql_num_rows($sql0);
-	$total_pages = mysql_fetch_array(mysql_query($query));
-	$total_pages = $total_pages[num];
+	$result0 = mysql_query($sql0) or die("Failed Query ".$sql." - ".mysql_error());
+	$total_pages= mysql_num_rows($result0);
+	//$total_pages = mysql_fetch_array(mysql_query($query));
+	//$total_pages = $total_pages[num];
 	
 	/* Setup vars for query. */
 	$targetpage = "index.php"; 	//your file name  (the name of this file)
