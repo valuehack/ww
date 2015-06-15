@@ -27,7 +27,7 @@ function checkMe() {
 	</div>
 	<div class="basket">
 <?php 
-//print_r($_SESSION);
+print_r($_SESSION);
 
 //Check if basket was cleared
 if(isset($_POST['delete'])) {
