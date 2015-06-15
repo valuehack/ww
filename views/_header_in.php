@@ -73,8 +73,18 @@ if (isset($registration)) {
 
 $user_id = $_SESSION['user_id'];
 $user_email = $_SESSION['user_email'];
-$basket = $_SESSION['basket'];
-$basket_quantity = count($basket);
+
+if(isset($_POST['add'])){
+
+  $add_quantity = $_POST['quantity'];
+
+  $basket = $_SESSION['basket'];
+  $basket_quantity = count($basket) + $add_quantity;
+}
+else {
+  $basket = $_SESSION['basket'];
+  $basket_quantity = count($basket);  
+}
 
 #echo $user_email;
 
