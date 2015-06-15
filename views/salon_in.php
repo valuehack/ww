@@ -105,7 +105,7 @@ if(isset($_GET['q']))
         <option value="4">4</option>
         <option value="5">5</option>        
       </select> 
-      <input class="inputbutton" type="submit" value="Auswählen"><br>     
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
     </form>
 	<span id="change" class="salon_reservation_span_b"><?php echo $price; ?> Credits</span>
 <?php  

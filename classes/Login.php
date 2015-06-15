@@ -196,7 +196,7 @@ class Login
                 // @see http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers#Connecting_to_MySQL says:
                 // "Adding the charset to the DSN is very important for security reasons,
                 // most examples you'll see around leave it out. MAKE SURE TO INCLUDE THE CHARSET!"
-                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
+                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=ISO-8859-1', DB_USER, DB_PASS);
                 return true;
             } catch (PDOException $e) {
                 $this->errors[] = MESSAGE_DATABASE_ERROR . $e->getMessage();
@@ -1119,7 +1119,7 @@ public function upgradeUserAccount($betrag, $zahlung, $level, $profile)
 /**/
 public function sendUpgradeMailToUser($betrag, $zahlung, $level)
     {
-        $level_html = htmlentities($level, ENT_QUOTES, "UTF-8");
+        $level_html = htmlentities($level, ENT_QUOTES, "ISO-8859-1");
         $mail = new PHPMailer;
 
         // please look into the config/config.php for much more info on how to use this!
@@ -1444,22 +1444,21 @@ user_plz
         $street = substr(trim($street), 0, 64);
         $plz = substr(trim($plz), 0, 64);
 
-        /*
         $name = addslashes($name);
         $surname = addslashes($surname);
         $country = addslashes($country);
         $city = addslashes($city);
         $street = addslashes($street);
         $plz = addslashes($plz);
+        
+        /*
+        $name = htmlentities($name, ENT_QUOTES, "ISO-8859-1");
+        $surname = htmlentities($surname, ENT_QUOTES, "ISO-8859-1");
+        $country = htmlentities($country, ENT_QUOTES, "ISO-8859-1");
+        $city = htmlentities($city, ENT_QUOTES, "ISO-8859-1");
+        $street = htmlentities($street, ENT_QUOTES, "ISO-8859-1");
+        $plz = htmlentities($plz, ENT_QUOTES, "ISO-8859-1");
         */
-        
-        $name = htmlentities($name, ENT_QUOTES, "UTF-8");
-        $surname = htmlentities($surname, ENT_QUOTES, "UTF-8");
-        $country = htmlentities($country, ENT_QUOTES, "UTF-8");
-        $city = htmlentities($city, ENT_QUOTES, "UTF-8");
-        $street = htmlentities($street, ENT_QUOTES, "UTF-8");
-        $plz = htmlentities($plz, ENT_QUOTES, "UTF-8");
-        
 
         $user_email = $_SESSION['user_email'];
 
