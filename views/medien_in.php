@@ -125,7 +125,7 @@ else {
 	   If you have a WHERE clause in your query, make sure you mirror it here.
 	*/
 	$sql0 = "SELECT * from produkte WHERE (type LIKE 'media' or type LIKE 'audio' or type LIKE 'video') AND status > 0";
-	$query = mysql_num_row($sql0);
+	$query = mysql_num_rows($sql0);
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
