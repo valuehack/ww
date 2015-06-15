@@ -1451,7 +1451,8 @@ a:visited.medien_title_list {
 }
 
 .payment_success {
-	
+	font-size: 14pt;
+	line-height: 1.4;
 } 
 
 .payment_success p {
