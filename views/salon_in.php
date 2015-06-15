@@ -29,15 +29,12 @@ if(isset($_POST['add'])){
   else $wort = "wurden";
   echo "<div style='text-align:center'><hr><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>Zum Korb</a><hr><br></div>";
 
-  if (isset($_SESSION['basket'][$add_id])) {
+  if (isset($_SESSION['basket'][$add_code])) {
     $_SESSION['basket'][$add_code] += $add_quantity; 
   }
   else {
     $_SESSION['basket'][$add_code] = $add_quantity; 
   }
-
-  $basket = $_SESSION['basket'];
-  $basket_quantity = count($basket);
   
 }
 
