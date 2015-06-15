@@ -41,10 +41,10 @@ if(isset($_GET['q']))
   $n = $entry3[n];
   
   				//Change button-value according to media type
-	 if ($entry[type] == 'media') { $btn_value = "Herunterladen";} 
+   if ($entry3[type] == 'media') { $btn_value = "Herunterladen";} 
   if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
     if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
-  
+
             	//check, if there is a image in the medien folder
 	$img = 'http://test.wertewirtschaft.net/medien/'.$id.'.jpg';
 
