@@ -87,12 +87,22 @@ if(isset($_POST['add'])){
 }
 
 elseif(isset($_POST['delete'])) {
-
+    $total_quantity = 0;
 }
 
 elseif(isset($_POST['remove'])) {
-    
+    $remove_id = $_POST['remove'];
+
+    $remove_quantity = $_SESSION['basket'][$remove_id];
+
+    $basket = $_SESSION['basket'];
+    foreach ($basket as $code => $quantity) {
+        $total_quantity += $quantity;
+    }
+
+  $total_quantity = $total_quantity - $remove_quantity; 
 }
+
 else {
     $basket = $_SESSION['basket'];
 
