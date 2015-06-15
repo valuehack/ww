@@ -411,7 +411,7 @@ if($_SESSION['basket']) {
     foreach ($items as $code => $quantity) {
         $length = strlen($code) - 1;
 
-        $key = substr($code,-2,$length);
+        $key = substr($code,0,$length);
         $format = substr($code,-1,1);
 
         $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
