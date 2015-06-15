@@ -12,7 +12,7 @@ include ("../views/_header_not_in.php");
 	<div class="medien-seperator">
 		<h1>Disclaimer</h1>
 	</div>
-	<div class="agb>"
+	<div class="agb">
 		<p>Disclaimer</p>
 	</div>
 	<div class="medien-sperator">	
