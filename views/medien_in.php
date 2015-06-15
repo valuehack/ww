@@ -90,8 +90,8 @@ if(isset($_GET['q']))
 	</div>
 	<div class="medien_content">
 <? 
-  if ($entry3[text]) echo $entry3[text];
-  if ($entry3[text2]) echo $entry3[text2];
+  if ($entry3[text]) echo "<p>".$entry3[text]."</p>";
+  if ($entry3[text2]) echo "<p>".$entry3[text2]."</p>";
 ?>
   	<div class="medien_anmeldung"><a href='<?echo $_SERVER['PHP_SELF'];?>'>zur&uuml;ck zu den Medien</a></div>
 	</div>
@@ -129,7 +129,7 @@ while($entry = mysql_fetch_array($result))
             
 ?>    
 	 <a class="medien_title_list" href='?q=<?echo $id;?>'><?echo $entry[title];?></a>
-     <?echo $entry[text];?>
+     <p><?echo $entry[text];?></p>
      
      <?
 			if ($_SESSION['Mitgliedschaft'] == 1) {
