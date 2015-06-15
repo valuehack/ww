@@ -183,7 +183,14 @@ if(isset($_POST['checkout'])) {
             if (!(is_null($itemsExtraArray[start]))) {
                 echo date("d.m.Y",strtotime($itemsExtraArray[start]))."</td>";
             }       
-            echo "<td>&nbsp; &nbsp;".$quantity."</td>";
+            echo "<td>&nbsp; &nbsp;";
+            if ($itemsExtraArray[type] == 'projekt') {
+                            echo '1';
+                        }
+                        else {
+                            echo $quantity;
+                        }
+            echo "</td>";
             echo "<td><i>".$sum." Credits</i></td>";
 
             $id = $itemsExtraArray[id];
@@ -350,6 +357,12 @@ if(isset($_POST['checkout'])) {
             }
             $body = $body. "</i></td>";
             $body = $body. "<td>&nbsp; &nbsp;".$quantity."</td>";
+            if ($itemsExtraArray[type] == 'projekt') {
+                            $body = $body. "<td>&nbsp; &nbsp; 1</td>";
+                        }
+                        else {
+                            $body = $body. "<td>&nbsp; &nbsp;".$quantity."</td>";
+                        }
             $body = $body. "<td><i>".$sum." Credits</i></td></tr>";
 
             $total2 += $sum;
@@ -482,6 +495,9 @@ if($_SESSION['basket']) {
 	        			if ($format == 4 && $itemsExtraArray[price_book]) {
             				echo $itemsExtraArray[price_book];
         				}
+                        elseif ($itemsExtraArray[type] == 'projekt') {
+                            echo $quantity;
+                        }
        					else {
            		 			echo $itemsExtraArray[price];
         				}
@@ -489,7 +505,14 @@ if($_SESSION['basket']) {
 				Credits</span>
 			</div>
 			<div class="basket_body_col_c">
-				<span><?echo $quantity;?></span>
+				<span>
+                    <? if ($itemsExtraArray[type] == 'projekt') {
+                            echo '1';
+                        }
+                        else {
+                            echo $quantity;?>
+                        }
+                </span>
 			</div>
 		</div>
 	<?php

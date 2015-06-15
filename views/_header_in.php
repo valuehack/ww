@@ -97,7 +97,7 @@ foreach ($basket as $code => $quantity) {
 if(isset($_POST['add'])){
     $add_quantity = $_POST['quantity'];
 
-    if(isset($_POST['project'])) {
+    if(isset($_POST['projekt'])) {
         $total_quantity = $total_quantity + 1;  
     }
     else {
@@ -110,9 +110,10 @@ elseif(isset($_POST['delete'])) {
 }
 
 elseif(isset($_POST['remove'])) {
+    $remove_id = $_POST['remove'];
     $remove_quantity = $_SESSION['basket'][$remove_id];
 
-    if(isset($_POST['project'])) {
+    if(isset($_POST['projekt'])) {
         $total_quantity = $total_quantity - 1;  
     }
     else {
