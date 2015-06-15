@@ -2380,7 +2380,7 @@ button.close {
 
 .badge {
   display: inline-block;
-  min-width: 10px;
+  min-width: 12px;
   padding: 3px 3px;
   font-size: 14pt;
   font-weight: bold;

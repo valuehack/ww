@@ -106,6 +106,7 @@ elseif(isset($_POST['remove'])) {
 
 elseif(isset($_SESSION['basket'])) {
     $basket = $_SESSION['basket'];
+    $total_quantity = 0;
 
     foreach ($basket as $code => $quantity) {
         $total_quantity += $quantity;
