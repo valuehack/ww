@@ -107,7 +107,7 @@ while($entry = mysql_fetch_array($result))
 							echo $entry[text];
 						}
 					?>
-				</p>
+				...</p>
 			</td>
 			<td class="schriften_table_c">	
 				<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">

@@ -209,7 +209,7 @@ while($entry = mysql_fetch_array($result))
 						else {
 							echo $entry[text];
 						}?>
-				</p>
+				...</p>
 			</td>
 			<td class="schriften_table_c">
 				<?php
