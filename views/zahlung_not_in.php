@@ -10,6 +10,7 @@ include('_header_not_in.php');
 
 <div class="content">
 	<div class="payment">
+		<h1>Zahlung</h1>
 		
 <?php
 //payments coming from kurse_not_in

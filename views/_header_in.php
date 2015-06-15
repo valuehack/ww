@@ -98,7 +98,7 @@ while ($entry = mysql_fetch_array($result))
                 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
                 			<li class="dropdown-header"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
                 			<li><a href="/abo/profil.php">Profil</a></li>
-                			<li><a href="upgrade.php">Upgrade</a></li>
+                			<li><a href="/abo/upgrade.php">Upgrade</a></li>
                 			<li class="divider"></li>
                 			<li class="dropdown-header">Credits: <?echo $entry[credits_left];?></li>
                 			<li><a href="/abo/korb.php">Warenkorb</a></li> 
