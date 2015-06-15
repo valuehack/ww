@@ -153,6 +153,7 @@ strong {
 .login_button a {
 	color: rgb(0,0,0);
 	text-decoration: none;
+	font-family: "Baskerville", Georgia, Times, serif;
 }
 
 .caret {
