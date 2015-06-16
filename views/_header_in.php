@@ -29,6 +29,17 @@
     			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   			})();
+
+            function setActive() {
+              aObj = document.getElementById('nav').getElementsByTagName('a');
+              for(i=0;i<aObj.length;i++) { 
+                if(document.location.href.indexOf(aObj[i].href)>=0) {
+                  aObj[i].className='active';
+                }
+              }
+            }
+
+            window.onload = setActive;
 		</script>
 	</head>
 

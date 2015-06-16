@@ -303,11 +303,11 @@ strong {
 	width: 987px ;/*847px without Bibliothek*/
 }
 
-.navi ul {
+#nav ul {
 	text-align: center;
 }
 
-.navi li {
+#nav li {
 	float: left;
 	width: 130px;
 	padding: 9px 5px 4px 5px;
@@ -318,12 +318,12 @@ strong {
    	font-size: 15px;
 }
 
-.navi li:hover {
+#nav li:hover {
 	/*background: #827d77;*/
 	background: rgb(11,19,30);
 }
 
-.navi li a {
+#nav li a {
 	display: block;
   	text-decoration: none; 
    	color: rgb(245,245,245); 
@@ -332,8 +332,16 @@ strong {
 	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
 }
 
-.navi li a:hover {
+#nav li a:hover {
   	text-decoration: none; 
+   	color: rgb(250,250,250); 
+	padding: 2px 10px;
+	font-size: 17px;
+	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
+}
+
+#nav li a.active {
+	text-decoration: none; 
    	color: rgb(250,250,250); 
 	padding: 2px 10px;
 	font-size: 17px;
@@ -1602,7 +1610,7 @@ a:visited.medien_title_list {
 	box-shadow: 2px 2px 15px 0 rgba(237,120,2,0.5), -2px 2px 15px 0 rgba(237,120,2,0.5), 2px -2px 15px 0 rgba(237,120,2,0.5), -2px -2px 15px 0 rgba(237,120,2,0.5);	
 }
 
-#selected .selected {
+.selected {
 	opacity: 1;
 	box-shadow: 2px 2px 15px 0 rgba(237,120,2,0.5), -2px 2px 15px 0 rgba(237,120,2,0.5), 2px -2px 15px 0 rgba(237,120,2,0.5), -2px -2px 15px 0 rgba(237,120,2,0.5);	
 }
