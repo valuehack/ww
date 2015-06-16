@@ -461,13 +461,10 @@ strong {
 	
 }
 
-.startpage_section_a, .startpage_section_b {
-	width: 70%;
-	padding: 50px 15%;
-}
-
 .startpage_section_a {
 	height: 300px;
+	padding: 50px 15%;
+	width: 70%;
 }
 
 .startpage_section_b {
@@ -475,6 +472,8 @@ strong {
 	box-shadow: 0 0 10px 0 rgba(0,0,0,0.6);
 	color: rgb(255,255,255);
 	height: 550px;
+	padding: 50px 15% 0 15%;
+	width: 70%;
 }
 
 .startpage_section_b h1 {
@@ -488,13 +487,13 @@ strong {
 .startpage_section_c {
 	background: rgb(7,16,24);
 	height: 100px;
-	padding: 50px 15%;
+	padding: 0 15% 50px 15%;
 	width: 100%;
 }
+
 .startpage_info {
 	width: 100%;
 	color: rgb(255,255,255);
-	padding: 15px 0;
 	font-size: 15pt;
 	line-height: 1.8;
 	font-style: italic;
