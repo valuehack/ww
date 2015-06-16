@@ -1544,7 +1544,9 @@ a:visited.medien_title_list {
 }
 
 .projekte_investment {
-	
+	font-size: 12pt;
+	line-height: 1.5;
+	margin-bottom: 40px;
 }
 
 .projekte_investment_radio {

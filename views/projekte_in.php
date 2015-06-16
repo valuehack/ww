@@ -266,8 +266,9 @@ else {
               <input type="radio" class="projekte_investment_radio" name="betrag" value="2400">2400&euro;: Ab diesem Beitrag werden Sie Ehrenpr&auml;sident und wir laden Sie zu einer privaten Campusf&uuml;hrung mit einem exklusiven Mittagessen ein.<br>
         	</div>
            <input type="hidden" name="pay">
-           <input type="submit" class="inputbutton_login" name="donationform" value="Investieren">
-
+           <div class="centered">
+           		<input type="submit" class="inputbutton_login" name="donationform" value="Investieren">
+			</div>
     </form>
 
         </div>
