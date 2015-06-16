@@ -6,6 +6,16 @@ include('_header_not_in.php');
 
 
 ?>
+<script>
+$(document).ready(function(){
+    // event hover add / remove open class
+    $("#selected").on("mouseenter", function(e){
+        $(e.currentTaget).addClass('selected');
+    }).on("mouseleave", function(){
+        $(e.currentTaget).removeClass('selected');
+    });
+});
+</script>
 
 <div class="payment">
            <div class="payment_info">
