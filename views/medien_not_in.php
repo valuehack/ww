@@ -186,7 +186,7 @@ while($entry = mysql_fetch_array($result))
   $id = $entry[id];
 ?>   
      <a class="medien_title_list" href='?q=<?echo $id;?>'><?echo $entry[title];?></a>
-     <p><?echo $entry3[text];?></p>
+     <p><?echo $entry[text];?></p>
      <div class="salon_anmeldung"><a href="?q=<?echo $id;?>">Herunterladen</div>
 	 <div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
 <?php
