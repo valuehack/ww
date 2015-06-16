@@ -171,6 +171,7 @@ while ($entry = mysql_fetch_array($result))
             $Mitgliedschaft = 'Ehrenpr&auml;sident';
             break;
         }
+	$mitgliedschaft = $entry[Mitgliedschaft];
 ?>
 
 <body>

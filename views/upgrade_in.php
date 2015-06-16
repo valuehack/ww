@@ -204,37 +204,37 @@ include('_header_in.php');
 		echo $Mitgliedschaft;
 		echo $entry[Mitgliedschaft];
 		
-		if ($Mitgliedschaft == 1) {
+		if ($mitgliedschaft == 1) {
 			echo $op1;
 			echo $op2;
 			echo $op3;
 			echo $op4;
 		}
-		if ($Mitgliedschaft == 2) {
+		if ($mitgliedschaft == 2) {
 			echo $op1;
 			echo $op2;
 			echo $op3;
 			echo $op4;
 		}
-		if ($Mitgliedschaft == 3) {
+		if ($mitgliedschaft == 3) {
 			echo $op1;
 			echo $op2;
 			echo $op3;
 			echo $op4;
 		}
-		if ($Mitgliedschaft == 4) {
+		if ($mitgliedschaft == 4) {
 			echo $op1;
 			echo $op2;
 			echo $op3;
 			echo $op4;
 		}
-		if ($Mitgliedschaft == 5) {
+		if ($mitgliedschaft == 5) {
 			echo $op2;
 			echo $op3;
 			echo $op4;
 			echo $op5;
 		}
-		if ($Mitgliedschaft == 6) {
+		if ($mitgliedschaft == 6) {
 			echo $op3;
 			echo $op4;
 			echo $op5;
