@@ -7,8 +7,33 @@ $title="Zahlung";
 include('_header_in.php'); 
 
 if(isset($_POST['pay'])) {
-    $level = $_POST['level'];
     $betrag = $_POST['betrag'];
+
+    if (isset($_POST["donationform"])) {
+        
+        switch ($betrag) {
+            case 75:
+                $level = 'Gast';
+                break;
+            case 150:
+                $level = 'Teilnehmer';
+                break;
+            case 300:
+                $level = 'Wertewirt';
+                break;
+            case 600:
+                $level = 'Partner';
+                break;
+            case 1200:
+                $level = 'Beirat';
+                break;
+            case 2400:
+                $level = 'Ehrenpr&auml;sident';
+                break;
+            }
+    else {
+        $level = $_POST['level'];
+    }
 
 ?>
 <div class="content">
