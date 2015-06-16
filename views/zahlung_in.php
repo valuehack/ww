@@ -58,8 +58,9 @@ elseif (isset($_POST['ok']))
     $zahlung = $_POST['zahlung'];
     $user_id = $_SESSION['user_id'];
 ?>
-
-    <div class="payment_success"><p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p>
+<div class="content">
+	<div class="payment">
+    	<div class="payment_success"><p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p>
 
     <p><b>Laufzeit und K&uuml;ndigung:</b></p>
 
