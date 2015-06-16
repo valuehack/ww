@@ -31,6 +31,7 @@ if(isset($_POST['pay'])) {
                 $level = 'Ehrenpr&auml;sident';
                 break;
             }
+    }
     else {
         $level = $_POST['level'];
     }
