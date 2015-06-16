@@ -148,6 +148,29 @@ $result = mysql_query($query) or die("Failed Query of " . $query. mysql_error())
 
 while ($entry = mysql_fetch_array($result))
 {
+    switch ($entry[Mitgliedschaft]) {
+        case 1:
+            $Mitgliedschaft = 'Interessent';
+            break;
+        case 2:
+            $Mitgliedschaft = 'Gast';
+            break;
+        case 3:
+            $Mitgliedschaft = 'Teilnehmer';
+            break;
+        case 4:
+            $Mitgliedschaft = 'Wertewirt';
+            break;
+        case 5:
+            $Mitgliedschaft = 'Partner';
+            break;
+        case 6:
+            $Mitgliedschaft = 'Beirat';
+            break;
+        default: 
+            $Mitgliedschaft = 'Ehrenpräsident';
+            break;
+        }
 ?>
 
 <body>
@@ -157,10 +180,11 @@ while ($entry = mysql_fetch_array($result))
                 <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
                 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
                 			<li class="dropdown-header"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
+                            <li class="dropdown-header"><? echo $Mitgliedschaft;?></li>
                 			<li><a href="/abo/profil.php">Profil</a></li>
                 			<li><a href="/abo/upgrade.php">Upgrade</a></li>
                 			<li class="divider"></li>
-                			<li class="dropdown-header">Credits: <?echo $entry[credits_left];?></li>
+                			<li class="dropdown-header">Guthaben: <?echo $entry[credits_left];?></li>
                 			<li><a href="/abo/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></li> 
                 			<li class="divider"></li>
                 			<li><a href="/index.php?logout">Abmelden</a></li>        			               		
