@@ -209,7 +209,7 @@ else {
             <input type="hidden" name="title" value="<?php echo $title ?>" />
         
         <div class="salon_input">
-              <input class="salon_inputfield" id="user_email" type="email" name="profile[user_email]" value="<?php echo $_SESSION['user_email']; ?>" required><br> 
+              <input class="salon_inputfield" id="user_email" type="email" name="profile[user_email]" placeholder=" eMail" required><br> 
               <input class="salon_inputfield" id="user_first_name" type="text" name="profile[user_first_name]" placeholder=" Vorname" required><br>
               <input class="salon_inputfield" id="user_surname" type="text" name="profile[user_surname]" placeholder=" Nachname" required><br>
               <input class="salon_inputfield" id="user_street" type="text" name="profile[user_street]" placeholder=" Stra&szlig;e und Hausnummer" required><br> 
