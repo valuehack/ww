@@ -106,10 +106,12 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
                 </div>
-                <div class="startpage_info">
+            </div>  
+            <div class="startpage_section_c">
+            	 <div class="startpage_info">
                     <p>Die Wertewirtschaft ist ein lernendes Unternehmen, in dem Wege werte- und sinnorientierten Unternehmertums praktisch erkundet und theoretisch reflektiert werden. Wir bieten eine Orientierungshilfe f&uuml;r kritische B&uuml;rger und eine Bildungsalternative f&uuml;r junge Menschen, die der heutigen Blasenwirtschaft, aber auch ideologischen Versprechen misstrauen.</p>
                 </div>
-            </div>                     
+            </div>            
      
      <?php 
      #include ("views/sidebar.inc.php"); 
