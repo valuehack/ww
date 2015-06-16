@@ -93,9 +93,9 @@ if (isset($registration)) {
         <div class="modal-body">
           <p>
           	<form method="post" action="index.php" name="registerform">
-          		<input class="inputfield_login" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
-          		<input class="inputfield_login" type="password" name="user_password" placeholder=" Passwort" required><br>
-          		<input class="inputbutton_login" type="submit" value="Anmelden">
+          		<input class="inputfield_login" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
+          		<input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Passwort" required><br>
+          		<input class="inputbutton_login" id="inputbutton" type="submit" value="Anmelden">
           	</form>     
           	<p class="password_login"><a href="/password_reset.php">Passwort vergessen?</a></p>  	
           </p>
