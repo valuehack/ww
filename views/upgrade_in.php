@@ -22,8 +22,8 @@ include('_header_in.php');
             Wir sind aber auch stolz darauf, ein Unternehmen zu sein, und eben keine Beh&ouml;rde, kein Komitee, keine Partei, kein Hobbyverein, keine ideologische Bewegung. Professionalit&auml;t, Effizienz, reale Wertsch&ouml;pfung und &ouml;konomische N&uuml;chternheit sind zentral f&uuml;r uns. Wir bieten Ihnen daher realen Gegenwert und nicht blo&szlig; allgemeine Versprechen.<br><br>
             Auch wenn Ihre finanziellen Mittel beschr&auml;nkt sind, k&ouml;nnen Sie schon mit einem kleinen Beitrag an unseren Erkenntnissen und Werten teilhaben, Teil eines au&szlig;ergew&ouml;hnlichen Netzwerkes von Wertewirten werden und eine gewichtige L&uuml;cke f&uuml;llen.</p>
            </div>
-    
-            <div id="op1" class="pay_option_box pay_option_box1">
+<?php    
+        $op1 = $op1.'<div id="op1" class="pay_option_box pay_option_box1">
                 <table>
                     <tr><th rowspan="3">
                         <h1>Gast</h1>
@@ -51,10 +51,10 @@ include('_header_in.php');
                        </td>
                    </tr>                   
                 </table>             
-            </div>
+            </div>';
 
             
-            <div id="op2" class="pay_option_box pay_option_box2">
+            $op2 = $op2.'<div id="op2" class="pay_option_box pay_option_box2">
                <table>
                     <tr><th rowspan="3">
                         <h1>Kursteilnehmer</h1>
@@ -81,9 +81,9 @@ include('_header_in.php');
                     </td>
                     </tr>
                 </table>
-        </div>
+        </div>';
         
-        <div id="op3" class="pay_option_box pay_option_box3">
+        $op3 = $op3.'<div id="op3" class="pay_option_box pay_option_box3">
             <table>
                 <tr><th th rowspan="3">
                     <h1>Wertewirt</h1>
@@ -112,9 +112,9 @@ include('_header_in.php');
                 </td>
                 </tr>
             </table>
-        </div>
+        </div>';
         
-        <div id="op4" class="pay_option_box pay_option_box4">
+        $op4 = $op4.'<div id="op4" class="pay_option_box pay_option_box4">
             <table>
                 <tr><th rowspan="3">
                     <h1>Partner</h1>
@@ -142,9 +142,9 @@ include('_header_in.php');
                 </td>
                 </tr>
             </table>
-        </div>
+        </div>';
 
-        <div id="op5" class="pay_option_box pay_option_box5">
+        $op2 = $op2.'<div id="op5" class="pay_option_box pay_option_box5">
             <table>
                 <tr><th rowspan="3">
                     <h1>Beirat</h1>
@@ -171,9 +171,9 @@ include('_header_in.php');
                 </td>
                 </tr>
             </table>
-        </div>
+        </div>';
 
-        <div id="op6" class="pay_option_box pay_option_box6">
+        $op2 = $op2.'<div id="op6" class="pay_option_box pay_option_box6">
             <table>
                 <tr><th rowspan="3">
                     <h1>Ehrenpr&auml;sident</h1>
@@ -199,7 +199,45 @@ include('_header_in.php');
                 </td>
                 </tr>
             </table>
-        </div>
+        </div>';
+		
+		if ($mitgliedschaft = 1) {
+			echo $op1;
+			echo $op2;
+			echo $op3;
+			echo $op4;
+		}
+		if ($mitgliedschaft = 2) {
+			echo $op1;
+			echo $op2;
+			echo $op3;
+			echo $op4;
+		}
+		if ($mitgliedschaft = 3) {
+			echo $op1;
+			echo $op2;
+			echo $op3;
+			echo $op4;
+		}
+		if ($mitgliedschaft = 4) {
+			echo $op1;
+			echo $op2;
+			echo $op3;
+			echo $op4;
+		}
+		if ($mitgliedschaft = 5) {
+			echo $op2;
+			echo $op3;
+			echo $op4;
+			echo $op5;
+		}
+		if ($mitgliedschaft = 6) {
+			echo $op3;
+			echo $op4;
+			echo $op5;
+			echo $op6;
+		}
+?>		
         </div>
 
 <?php include('_footer_blog.php'); ?>
