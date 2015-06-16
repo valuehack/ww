@@ -168,7 +168,7 @@ while ($entry = mysql_fetch_array($result))
             </div>
             <div class="nav">
                 <div class="navi">
-                <ul class="navi">
+                <ul id="nav">
                     <li><a href="/scholien/">Scholien</a></li>
                     <li><a href="/salon/">Salon</a></li>
                     <li><a href="/kurse/">Kurse</a></li>
