@@ -325,6 +325,7 @@ strong {
 
 #nav li a {
 	display: block;
+	height: 36px;
   	text-decoration: none; 
    	color: rgb(245,245,245); 
 	padding: 3px 10px;
