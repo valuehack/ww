@@ -31,7 +31,10 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
+				echo "<a href='/salon/index.php?q=$id'>";
+				echo date("d.m.Y",strtotime($entry[start]));
+              	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
+              	echo ": $entry[title]</a><br><br>";                  
 }
                     ?>
                     <h2>Kurse</h2>
@@ -41,8 +44,11 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 
 while($entry = mysql_fetch_array($result))
 {
-                $id = $entry[id]; 
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
+                $id = $entry[id];
+				echo "<a href='/kurse/index.php?q=$id'>";
+				echo date("d.m.Y",strtotime($entry[start]));
+              	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
+              	echo ": $entry[title]</a><br><br>";                  
 }
                     ?>
                 </div>  
