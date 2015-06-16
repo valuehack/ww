@@ -76,7 +76,7 @@ include('_header_not_in.php');
                 </table>
         </div>
         
-        <div class="pay_option_box pay_option_box3">
+        <div id="selected" class="pay_option_box pay_option_box3">
             <table>
                 <tr><th th rowspan="3">
                     <h1>Wertewirt</h1>
@@ -137,7 +137,7 @@ include('_header_not_in.php');
             </table>
         </div>
 
-        <div class="pay_option_box pay_option_box5">
+        <!--<div class="pay_option_box pay_option_box5">
             <table>
                 <tr><th rowspan="3">
                     <h1>Beirat</h1>
@@ -192,7 +192,7 @@ include('_header_not_in.php');
                 </td>
                 </tr>
             </table>
-        </div>
+        </div>-->
         </div>
 
 <?php include('_footer_blog.php'); ?>

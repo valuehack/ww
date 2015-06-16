@@ -144,7 +144,7 @@ elseif (isset($_POST['ok']))
 
 }
 
-
+echo "</div>";
 include('_footer.php');
 
 ?>

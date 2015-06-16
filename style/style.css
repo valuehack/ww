@@ -1599,8 +1599,12 @@ a:visited.medien_title_list {
 .pay_option_box:hover {
 	/*box-shadow: 2px 2px 15px 0 rgb(153,210,23), -2px 2px 15px 0 rgb(153,210,23), 2px -2px 15px 0 rgb(153,210,23), -2px -2px 15px 0 rgb(153,210,23);*/
 	opacity: 1;
-	box-shadow: 2px 2px 15px 0 rgba(237,120,2,0.5), -2px 2px 15px 0 rgba(237,120,2,0.5), 2px -2px 15px 0 rgba(237,120,2,0.5), -2px -2px 15px 0 rgba(237,120,2,0.5);
-	
+	box-shadow: 2px 2px 15px 0 rgba(237,120,2,0.5), -2px 2px 15px 0 rgba(237,120,2,0.5), 2px -2px 15px 0 rgba(237,120,2,0.5), -2px -2px 15px 0 rgba(237,120,2,0.5);	
+}
+
+.selected {
+	opacity: 1;
+	box-shadow: 2px 2px 15px 0 rgba(237,120,2,0.5), -2px 2px 15px 0 rgba(237,120,2,0.5), 2px -2px 15px 0 rgba(237,120,2,0.5), -2px -2px 15px 0 rgba(237,120,2,0.5);	
 }
 
 .pay_option_box1 {
