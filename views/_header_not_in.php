@@ -78,6 +78,7 @@ if (isset($registration)) {
         <header class="header">
         	<div class="login">
                 	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
+            </div>
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
                 	
@@ -104,7 +105,6 @@ if (isset($registration)) {
     </div>
   </div>
             	</div>
-            </div>
             <div class="nav">
                 <div class="navi"></div>
            </div>
