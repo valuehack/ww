@@ -534,6 +534,7 @@ strong {
 	text-decoration: none;
 	color: rgb(20,20,20) !important;
 	line-height: 1.5;
+	margin-left: 30px;
 }
 
 .startpage_box_events a:hover {
@@ -548,12 +549,13 @@ strong {
 	margin: 20px 0;
 	border-radius: 2px;
 	background: rgb(46,74,98); 
+	text-align: left;
 }
 
 
 .startpage_box_scholien h1 {
 	font-size: 24pt;
-	margin: 10px 0px;
+	margin: 10px 0px 30px 0;
 	color: rgb(255,255,255);
 	text-shadow: 0 0 1px rgb(255,255,255);
 }
@@ -563,6 +565,8 @@ strong {
 	text-decoration: none;
 	color: rgb(255,255,255) !important;
 	line-height: 1.5;
+	display: block;
+	margin: -3px 0;
 }
 
 .startpage_box_scholien a:hover {
@@ -577,6 +581,8 @@ strong {
 	background: rgba(255,255,255,0.2);
 	color: rgb(255,255,255);
 	box-shadow: 0 0 4px 0 rgba(0,0,0,0.6);
+	float: left;
+	text-align: left;
 }
 
 .startpage_box_contents_middle {
@@ -586,7 +592,7 @@ strong {
 .startpage_box_contents h1 {
 	font-size: 18pt;
 	color: rgb(255,255,255);
-	margin: 10px 0;
+	margin: 10px 0 30px 0;
 	text-align: left;
 }
 
@@ -595,6 +601,8 @@ strong {
 	font-size: 14pt;
 	text-decoration: none;	
 	line-height: 1.5;
+	display: block;
+	margin: -2px 0;
 }
 
 .startpage_box_contents a:hover {

@@ -56,13 +56,13 @@ while($entry = mysql_fetch_array($result))
                 <div class="startpage_box_scholien black">
                     <h1>Neue Scholien</h1>
                     <?php
-$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 3";
+$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 2";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
+                echo "<a href='/schriften/index.php?q=$id'><i>".date('d.m.Y', strtotime($publ_date))."</i> ".$entry[title]."</a><br>";                  
 }
                     ?>
                 </div>
@@ -79,7 +79,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]." <i>(".$entry[type].")</i></a><br>";                  
 }
                     ?>
                 </div>
@@ -92,7 +92,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]." <i>(".$entry[type].")</i></a><br>";                  
 }
                     ?>
                 </div>
@@ -105,7 +105,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]." <i>(".$entry[type].")</i></a><br>";                  
 }
                     ?>
                 </div>
