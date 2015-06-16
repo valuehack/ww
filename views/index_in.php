@@ -39,7 +39,7 @@ while($entry = mysql_fetch_array($result))
                     ?>
                     <h2>Kurse</h2>
                         <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'kurse') AND status > 0 order by id asc, n asc LIMIT 0, 3";
+$sql = "SELECT * from produkte WHERE (type LIKE 'kurs') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
