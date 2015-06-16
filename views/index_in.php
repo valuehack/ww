@@ -59,7 +59,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/scholien/index.php?q=$id'><i>".date('d.m.Y', strtotime($publ_date))."</i> ".$entry[title]."</a><br>";                  
+                echo "<a href='/scholien/index.php?q=$id'><i>".date('d.m.Y', strtotime($entry[publ_date]))."</i> ".$entry[title]."</a><br>";                  
 }
                     ?>
                 </div>
