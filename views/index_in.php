@@ -115,7 +115,7 @@ while($entry = mysql_fetch_array($result))
      
      <?php 
      #include ("views/sidebar.inc.php"); 
-     #include ("_side_in.php");       
+     include ("_side_in.php");       
      ?>
         	
 	</div>
