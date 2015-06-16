@@ -472,10 +472,10 @@ strong {
 }
 
 .startpage_section_b {
-	background: rgb(7,16,24) url(../style/gfx/ww_landing_dark.png) no-repeat center;
+	background: rgb(7,16,24) url(../style/gfx/ww_landing_dark.png) no-repeat center top;
 	box-shadow: 0 0 10px 0 rgba(0,0,0,0.6);
 	color: rgb(255,255,255);
-	height: 450px;
+	height: 550px;
 }
 
 .startpage_section_b h1 {
@@ -488,13 +488,14 @@ strong {
 
 .startpage_info {
 	width: 100%;
-	color: rgb(20,20,20);
+	color: rgb(255,255,255);
 	padding: 15px 0;
 	font-size: 15pt;
 	line-height: 1.8;
 	font-style: italic;
-	margin: 20px 0 80px 0;
+	margin: 70px 0 40px 0;
 	clear: both;
+	display: inline-block;
 }
 
 .startpage_box_events {
@@ -507,7 +508,7 @@ strong {
 
 .startpage_box_events h1 {
 	font-size: 34pt;
-	margin: 0 0 20px 0;
+	margin: 0 0 40px 0;
 	text-shadow: 0 0 1px rgb(20,20,20);
 	color: rgb(20,20,20);
 }
