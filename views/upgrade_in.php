@@ -4,8 +4,16 @@ require_once('../classes/Login.php');
 $title="Upgrades";
 include('_header_in.php'); 
 
-
 ?>
+
+<script type="text/javascript">
+  function unhide(divID) {
+    var item = document.getElementById(divID);
+    if (item) {
+      item.className=(item.className=='hidden')?'unhidden':'hidden';
+    }
+  }
+</script> 
 
 <div class="payment">
            <div class="payment_info">
@@ -15,7 +23,7 @@ include('_header_in.php');
             Auch wenn Ihre finanziellen Mittel beschr&auml;nkt sind, k&ouml;nnen Sie schon mit einem kleinen Beitrag an unseren Erkenntnissen und Werten teilhaben, Teil eines au&szlig;ergew&ouml;hnlichen Netzwerkes von Wertewirten werden und eine gewichtige L&uuml;cke f&uuml;llen.</p>
            </div>
     
-            <div class="pay_option_box pay_option_box1">
+            <div id="op1" class="pay_option_box pay_option_box1">
                 <table>
                     <tr><th rowspan="3">
                         <h1>Gast</h1>
@@ -46,7 +54,7 @@ include('_header_in.php');
             </div>
 
             
-            <div class="pay_option_box pay_option_box2">
+            <div id="op2" class="pay_option_box pay_option_box2">
                <table>
                     <tr><th rowspan="3">
                         <h1>Kursteilnehmer</h1>
@@ -75,7 +83,7 @@ include('_header_in.php');
                 </table>
         </div>
         
-        <div class="pay_option_box pay_option_box3">
+        <div id="op3" class="pay_option_box pay_option_box3">
             <table>
                 <tr><th th rowspan="3">
                     <h1>Wertewirt</h1>
@@ -106,7 +114,7 @@ include('_header_in.php');
             </table>
         </div>
         
-        <div class="pay_option_box pay_option_box4">
+        <div id="op4" class="pay_option_box pay_option_box4">
             <table>
                 <tr><th rowspan="3">
                     <h1>Partner</h1>
@@ -136,7 +144,7 @@ include('_header_in.php');
             </table>
         </div>
 
-        <div class="pay_option_box pay_option_box5">
+        <div id="op5" class="pay_option_box pay_option_box5">
             <table>
                 <tr><th rowspan="3">
                     <h1>Beirat</h1>
@@ -165,7 +173,7 @@ include('_header_in.php');
             </table>
         </div>
 
-        <div class="pay_option_box pay_option_box6">
+        <div id="op6" class="pay_option_box pay_option_box6">
             <table>
                 <tr><th rowspan="3">
                     <h1>Ehrenpr&auml;sident</h1>
@@ -185,7 +193,7 @@ include('_header_in.php');
                 <td class="pay_option_form" colspan="2">
                     <form method="post" action="zahlung.php">
                         <input type="hidden" name="betrag" value="2400">
-                        <input type="hidden" name="level" value="Ehrenpräsident">
+                        <input type="hidden" name="level" value="Ehrenpr&auml;sident">
                         <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Ehrenpr&auml;sident">
                     </form>   
                 </td>
