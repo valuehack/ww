@@ -25,10 +25,9 @@
       <form method="post" action="index.php" name="registerform" style="text-aligna:center; paddinga: 10px ">
         <input class="inputfield" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required /><br>
         <input class="inputfield" id="user_password" type="password" name="user_password" placeholder=" Passwort" autocomplete="off"/><br>
-        <input class="inputbutton" id="inputbutton" type="submit" name="submit" value="Eintragen" />
+        <input class="inputbutton" id="inputbutton" type="submit" name="fancy_ajax_form_submit" value="Eintragen" />
       </form>
 
-<!--fancy_ajax_form_-->
 <!--       <form method="post" action="index.php" name="registerform" style="text-aligna:center; paddinga: 10px ">
         <input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required /><br>
         <input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
