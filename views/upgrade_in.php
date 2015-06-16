@@ -200,10 +200,7 @@ include('_header_in.php');
                 </tr>
             </table>
         </div>';
-		
-		echo $Mitgliedschaft;
-		echo $entry[Mitgliedschaft];
-		
+				
 		if ($mitgliedschaft == 1) {
 			echo $op1;
 			echo $op2;
