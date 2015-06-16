@@ -303,11 +303,11 @@ strong {
 	width: 987px ;/*847px without Bibliothek*/
 }
 
-#navi ul {
+.navi ul {
 	text-align: center;
 }
 
-#navi li {
+.navi li {
 	float: left;
 	width: 130px;
 	padding: 9px 5px 4px 5px;
@@ -318,12 +318,12 @@ strong {
    	font-size: 15px;
 }
 
-#navi li:hover {
+.navi li:hover {
 	/*background: #827d77;*/
 	background: rgb(11,19,30);
 }
 
-#navi li a {
+.navi li a {
 	display: block;
   	text-decoration: none; 
    	color: rgb(245,245,245); 
@@ -332,7 +332,7 @@ strong {
 	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
 }
 
-#navi li a:hover {
+.navi li a:hover {
   	text-decoration: none; 
    	color: rgb(250,250,250); 
 	padding: 2px 10px;
