@@ -15,99 +15,95 @@ include ("_header_in.php");
 
 <!-- END Subscription -->
 
-	<div class="content">
-		
-		    <div class="startpage_section_a">
+        <div class="content">
+            
+            <div class="startpage_section_a">
                 <div class="startpage_info">
                     <p>Die Wertewirtschaft ist ein lernendes Unternehmen, in dem Wege werte- und sinnorientierten Unternehmertums praktisch erkundet und theoretisch reflektiert werden. Wir bieten eine Orientierungshilfe f&uuml;r kritische B&uuml;rger und eine Bildungsalternative f&uuml;r junge Menschen, die der heutigen Blasenwirtschaft, aber auch ideologischen Versprechen misstrauen.</p>
                 </div>
-                <div class="startpage_box black">
+                <div class="startpage_box_events">
+                    <h1>Aktuelle Veranstaltungen</h1>
+                    <h2>Salons</h2>
+                        <?php
+$sql = "SELECT * from produkte WHERE (type LIKE 'salon') AND status > 0 order by id asc, n asc LIMIT 0, 3";
+$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+
+while($entry = mysql_fetch_array($result))
+{
+                $id = $entry[id]; 
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
+}
+                    ?>
+                    <h2>Kurse</h2>
+                        <?php
+$sql = "SELECT * from produkte WHERE (type LIKE 'kurse') AND status > 0 order by id asc, n asc LIMIT 0, 3";
+$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+
+while($entry = mysql_fetch_array($result))
+{
+                $id = $entry[id]; 
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
+}
+                    ?>
+                </div>  
+                
+                <div class="startpage_box_scholien black">
                     <h1>Neue Scholien</h1>
-                <?php
+                    <?php
 $sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
-				$id = $entry[id]; 
-				echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";					
+                $id = $entry[id]; 
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
 }
                     ?>
                 </div>
             </div>
             
             <div class="startpage_section_b">
-                <div class="startpage_box white">
+                <h1>Neue Inhalte</h1>
+                <div class="startpage_box_contents white">
                     <h1>Schriften</h1>
-                    <?php
+                     <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
-				$id = $entry[id]; 
-				echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";					
+                $id = $entry[id]; 
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
 }
                     ?>
                 </div>
-                <div class="startpage_box white">
+                <div class="startpage_box_contents white">
                     <h1>Medien</h1>
-                <?php
+                    <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'media' OR type LIKE 'audio' OR type LIKE 'video') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
-				$id = $entry[id]; 
-				echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";					
+                $id = $entry[id]; 
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
 }
                     ?>
                 </div>
-                <div class="startpage_box white">
+                <div class="startpage_box_contents white">
                     <h1>Projekte</h1>
-               <?php
+                    <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'projekt') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
-				$id = $entry[id]; 
-				echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";					
+                $id = $entry[id]; 
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
 }
                     ?>
                 </div>
-            </div>
-            
-            <div class="startpage_section_c">
-                <div class="startpage_box black">
-                    <h1>Salons</h1>
-                <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'salon') AND status > 0 order by id asc, n asc LIMIT 0, 3";
-$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-
-while($entry = mysql_fetch_array($result))
-{
-				$id = $entry[id]; 
-				echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";					
-}
-                    ?>
-                </div>       
-                <div class="startpage_box black">
-                    <h1>Kurse</h1>
-                <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'kurse') AND status > 0 order by id asc, n asc LIMIT 0, 3";
-$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-
-while($entry = mysql_fetch_array($result))
-{
-				$id = $entry[id]; 
-				echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";					
-}
-                    ?>
-                </div>         
-            </div>
-            
-        </div>
+            </div>                     
      
      <?php 
      #include ("views/sidebar.inc.php"); 
