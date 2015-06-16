@@ -34,7 +34,7 @@ while($entry = mysql_fetch_array($result))
 				echo "<a href='/salon/index.php?q=$id'>";
 				echo date("d.m.Y",strtotime($entry[start]));
               	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
-              	echo ": $entry[title]</a><br><br>";                  
+              	echo ": $entry[title]</a><br>";                  
 }
                     ?>
                     <h2>Kurse</h2>
@@ -48,7 +48,7 @@ while($entry = mysql_fetch_array($result))
 				echo "<a href='/kurse/index.php?q=$id'>";
 				echo date("d.m.Y",strtotime($entry[start]));
               	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
-              	echo ": $entry[title]</a><br><br>";                  
+              	echo ": $entry[title]</a><br>";                  
 }
                     ?>
                 </div>  
@@ -83,7 +83,7 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
                 </div>
-                <div class="startpage_box_contents white">
+                <div class="startpage_box_contents white startpage_box_contents_middle">
                     <h1>Medien</h1>
                     <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'media' OR type LIKE 'audio' OR type LIKE 'video') AND status > 0 order by id asc, n asc LIMIT 0, 3";
