@@ -316,15 +316,9 @@ while($entry = mysql_fetch_array($result))
       </div>
       <div class="modal-body">
           <p>Wir freuen uns, dass Sie eine unserer Aufzeichnungen herunterladen m&ouml;chten. Allerdings sind einige Aufnahmen nicht f&uuml;r die &Ouml;ffentlichkeit bestimmt &ndash; wir und unsere G&auml;ste m&uuml;ssten uns ein allzu gro&szlig;es Blatt vor den Mund nehmen, wenn jeder mith&ouml;ren k&ouml;nnte. Das Herunterladen von Medien steht nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r die meisten Medien kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf alle unsere Medien:</p>
-        <div class="subscribe">
-          <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
-          	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
-          	<input class="inputbutton"  type="submit" name="submit" value="Eintragen" />
-          </form>  
-        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="inputbutton_white" data-dismiss="modal">Schlie&szlig;en</button>
+         <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
       </div>
     </div>
   </div>
