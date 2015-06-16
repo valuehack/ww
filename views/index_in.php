@@ -59,7 +59,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/schriften/index.php?q=$id'><i>".date('d.m.Y', strtotime($publ_date))."</i> ".$entry[title]."</a><br>";                  
+                echo "<a href='/scholien/index.php?q=$id'><i>".date('d.m.Y', strtotime($publ_date))."</i> ".$entry[title]."</a><br>";                  
 }
                     ?>
                 </div>
@@ -76,7 +76,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]." <i>(".$entry[type].")</i></a><br>";                  
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]." <i>(".ucfirst($entry[type]).")</i></a><br>";                  
 }
                     ?>
                 </div>
@@ -89,7 +89,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]." <i>(".$entry[type].")</i></a><br>";                  
+                echo "<a href='/medien/index.php?q=$id'>".$entry[title]." <i>(".ucfirst($entry[type]).")</i></a><br>";                  
 }
                     ?>
                 </div>
@@ -102,7 +102,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";                  
+                echo "<a href='/projekte/index.php?q=$id'>".$entry[title]."</a><br>";                  
 }
                     ?>
                 </div>
