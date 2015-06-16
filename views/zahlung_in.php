@@ -8,7 +8,9 @@ include('_header_in.php');
 
 if(isset($_POST['pay'])) {
     $betrag = $_POST['betrag'];
-    
+    $source = $_POST['pay'];
+
+
     switch ($betrag) {
         case 75:
             $level = 'Gast';
@@ -60,6 +62,7 @@ if ($_SESSION['Mitgliedschaft'] == 1) {
     		<input type="hidden" name="ok" value="1">
     		<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
     		<input type="hidden" name="level" value="<?php echo $level; ?>">
+            <input type="hidden" name="source" value="<?php echo $source; ?>">
 
     		<input type="radio" class="payment_form_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
     		<input type="radio" class="payment_form_radio" name="zahlung" value="kredit">Paypal<br>
@@ -77,11 +80,27 @@ elseif (isset($_POST['ok']))
     $betrag = $_POST['betrag'];
     $zahlung = $_POST['zahlung'];
     $user_id = $_SESSION['user_id'];
-?>
+    $source = $_POST['source'];
+
+    
+?>    
+
 <div class="content">
 	<div class="payment">
-    	<div class="payment_success"><p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p>
+    	
+        <?
+        if ($source == 2) {
+      echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Kursteilnehmer&quot;</b> freigeschalten und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
+    }
+    elseif ($source == 3) {
+      echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschalten und Ihrem Konto ein Guthaben von <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
+    }
+        else {
+    
+        echo '<div class="payment_success"><p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p>';
 
+            }
+            ?>
     <p><b>Laufzeit und K&uuml;ndigung:</b></p>
 
     <p>Die Mitgliedschaft l&auml;uft ein Jahr und verl&auml;ngernt sich automatisch um ein weiteres Jahr wenn Sie nicht zwei Wochen vor Ablauf k&uuml;ndigen. Eine K&uuml;ndigung ist jederzeit m&ouml;glich, E-Mail oder Fax gen&uuml;gt.</p></div>

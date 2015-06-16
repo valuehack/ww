@@ -96,7 +96,7 @@ if(isset($_GET['q']))
     <form method="post" action="../abo/zahlung.php" name="user_create_profile_form">
       <input type="hidden" name="event_id" value="<?php echo $n ?>" />
       <input type="hidden" name="title" value="<?php echo $title ?>" />
-      <input type="hidden" name="pay" />
+      <input type="hidden" name="pay" value="2" />
       <input type="hidden" name="betrag" value='150' />
       <input class="inputbutton" type="submit" value="Anmelden"><br>
     </form>
