@@ -144,7 +144,7 @@ include('_header_in.php');
             </table>
         </div>';
 
-        $op2 = $op2.'<div id="op5" class="pay_option_box pay_option_box5">
+        $op5 = $op5.'<div id="op5" class="pay_option_box pay_option_box5">
             <table>
                 <tr><th rowspan="3">
                     <h1>Beirat</h1>
@@ -173,7 +173,7 @@ include('_header_in.php');
             </table>
         </div>';
 
-        $op2 = $op2.'<div id="op6" class="pay_option_box pay_option_box6">
+        $op6 = $op6.'<div id="op6" class="pay_option_box pay_option_box6">
             <table>
                 <tr><th rowspan="3">
                     <h1>Ehrenpr&auml;sident</h1>
@@ -201,37 +201,37 @@ include('_header_in.php');
             </table>
         </div>';
 		
-		if ($mitgliedschaft = 1) {
+		if ($mitgliedschaft == 1) {
 			echo $op1;
 			echo $op2;
 			echo $op3;
 			echo $op4;
 		}
-		if ($mitgliedschaft = 2) {
+		if ($mitgliedschaft == 2) {
 			echo $op1;
 			echo $op2;
 			echo $op3;
 			echo $op4;
 		}
-		if ($mitgliedschaft = 3) {
+		if ($mitgliedschaft == 3) {
 			echo $op1;
 			echo $op2;
 			echo $op3;
 			echo $op4;
 		}
-		if ($mitgliedschaft = 4) {
+		if ($mitgliedschaft == 4) {
 			echo $op1;
 			echo $op2;
 			echo $op3;
 			echo $op4;
 		}
-		if ($mitgliedschaft = 5) {
+		if ($mitgliedschaft == 5) {
 			echo $op2;
 			echo $op3;
 			echo $op4;
 			echo $op5;
 		}
-		if ($mitgliedschaft = 6) {
+		if ($mitgliedschaft == 6) {
 			echo $op3;
 			echo $op4;
 			echo $op5;
