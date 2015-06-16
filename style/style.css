@@ -230,6 +230,16 @@ strong {
 	line-height: 1.5;
 	color: #777;
 	white-space: nowrap;
+	text-align: center;
+}
+
+.dropdown_level {
+	font-size: 10pt;
+	margin-top: -8px;
+}
+
+.dropdown_credits {
+	text-align: left;
 }
 
 .dropdown-menu .divider {
