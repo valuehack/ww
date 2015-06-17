@@ -106,7 +106,7 @@ class Login
 
                 // function below uses $_SESSION['user_name'] and $_SESSION['user_id']
                 #$this->errors[] = "this is working now";
-                $this->upgradeUserAccount($_POST['betrag'], $_POST['zahlung'], $_POST['level'], $_POST['profile']);       
+                $this->upgradeUserAccount($_POST['betrag'], $_POST['zahlung'], $_POST['level'], $_POST['profile'], $_POST['ok']);       
             }elseif (isset($_POST["select_events"])) {
                 #check the differences in arrays  
                 $this->doEventStuff($_POST['events']);
@@ -1052,7 +1052,7 @@ public function sendEventRegMail($events)
 #upgrade only will send an email just like before after things were made 
 #and it will be upgraded manualy for the level of membership and credits
 #the actual details should be added through edit user details 
-public function upgradeUserAccount($betrag, $zahlung, $level, $profile)
+public function upgradeUserAccount($betrag, $zahlung, $level, $profile, $source)
 {
    /*
    if ($login->isUserLoggedIn() == false) {
@@ -1095,13 +1095,23 @@ public function upgradeUserAccount($betrag, $zahlung, $level, $profile)
         $upgrade_result = mysql_query($upgrade_query) or die("Failed Query of " . $upgrade_query. mysql_error());
         $_SESSION['Mitgliedschaft'] = $Mitgliedschaft;
 
-        $user_credits_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
-        $user_credits_result = mysql_query($user_credits_query) or die("Failed Query of " . $user_credits_query. mysql_error());
+        if ($source == 2) {
+            $newCredits = 25;
+        }
 
-        $userCreditsArray = mysql_fetch_array($user_credits_result);
-        $userCredits = $userCreditsArray[credits_left];
-        $newCredits = $userCredits + $betrag;
+        elseif ($source == 3) {
+            $newCredits = 0;
+        }
 
+        else {
+            $user_credits_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
+            $user_credits_result = mysql_query($user_credits_query) or die("Failed Query of " . $user_credits_query. mysql_error());
+
+            $userCreditsArray = mysql_fetch_array($user_credits_result);
+            $userCredits = $userCreditsArray[credits_left];
+            $newCredits = $userCredits + $betrag;  
+        }
+        
         $upgrade_query = "UPDATE mitgliederExt SET credits_left = '$newCredits'  WHERE `user_email` LIKE '$user_email'";
         $upgrade_result = mysql_query($upgrade_query) or die("Failed Query of " . $upgrade_query. mysql_error());
 

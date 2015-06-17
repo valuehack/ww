@@ -111,11 +111,13 @@ elseif (isset($_POST['ok']))
       $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
       mysql_query($registration_query);
 
+      /* moved to Login.php - upgradeUserAccount
       $credits_left = 25;
 
       $left_credits_query = "UPDATE mitgliederExt SET credits_left='$credits_left' WHERE `user_id` LIKE '$user_id'";
       mysql_query($left_credits_query) or die("Failed Query of " . $left_credits_query. mysql_error());
-
+      */
+      
       $space_query = "UPDATE produkte SET spots_sold = spots_sold + 1 WHERE `n` LIKE '$id'";
       mysql_query($space_query);
                    
@@ -125,7 +127,7 @@ elseif (isset($_POST['ok']))
         // payments coming from projekte_in (Membership 1)
     elseif ($source == 3) { 
 
-      echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschalten und Ihrem Konto ein Guthaben von <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
+      echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschalten.</p></div>';
 
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
       $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
@@ -136,10 +138,12 @@ elseif (isset($_POST['ok']))
       $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
       mysql_query($registration_query);
 
+      /*
       $credits_left = 0;
 
       $left_credits_query = "UPDATE mitgliederExt SET credits_left='$credits_left' WHERE `user_id` LIKE '$user_id'";
       mysql_query($left_credits_query) or die("Failed Query of " . $left_credits_query. mysql_error());
+      */
 
       $space_query = "UPDATE produkte SET spots_sold = spots_sold + '$betrag' WHERE `n` LIKE '$id'";
       mysql_query($space_query);
