@@ -16,7 +16,7 @@
 <!--Header-->
   <header class="header">
   	<div class="logo">
-  		<span><img src="http://test.wertewirtschaft.net/misesat/style/ma_logo.svg"></span><h1>Mises Austria</h1>
+  		<span>&nbsp;</span><h1>Mises Austria</h1>
 	</div>
   	<div class="nav">
     	<div class="navi">
