@@ -91,7 +91,7 @@ strong {
 	text-align: center;
 }
 
-.disc_w_space ul {
+.disc_w_space {
 	margin: 40px 0px 40px 60px;
 	list-style-position: outside;
 	list-style-type: disc !important;
