@@ -1698,6 +1698,7 @@ a:visited.medien_title_list {
 	text-align: center;
 	color: #fff;
 	margin-bottom: 15px;
+	text-shadow: 0 0 0;
 }
 
 .pay_option_box h2 {
@@ -1722,6 +1723,7 @@ a:visited.medien_title_list {
 	font-size: 14pt;
 	padding-left: 12px;
 	color: #fff;
+	margin-left: 0px;
 }
 
 .pay_option_box li {
