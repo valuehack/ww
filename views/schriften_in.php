@@ -345,7 +345,8 @@ while($entry = mysql_fetch_array($result))
 <?php
 	}
 	echo "</table>";
-	echo "</div>";
+  	echo $pagination;
+  
 }
 ?>
 

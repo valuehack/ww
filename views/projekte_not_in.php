@@ -186,6 +186,7 @@ else {
  	</div>   
     <?php
     }
+  echo $pagination;
     ?>
 
 </div>

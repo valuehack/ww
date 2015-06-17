@@ -226,8 +226,8 @@ else {
  	</div>    
     <?php
     }
+  echo $pagination;
     ?>
-</table>
 </div>
 
 

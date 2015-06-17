@@ -236,6 +236,8 @@ while($entry = mysql_fetch_array($result))
 <?php
 	}
 	echo "</table>";
+  	echo $pagination;
+  
 }
 ?>
 
