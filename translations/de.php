@@ -7,15 +7,15 @@
  */
 
 // login & registration classes
-define("MESSAGE_ACCOUNT_NOT_ACTIVATED", "Ihr Account wurde noch nicht aktiviert. Bitte klicken Sie auf den Bestätigungslink in der E-Mail.");
+define("MESSAGE_ACCOUNT_NOT_ACTIVATED", "Ihr Account wurde noch nicht aktiviert. Bitte klicken Sie auf den Best&auml;tigungslink in der E-Mail.");
 define("MESSAGE_CAPTCHA_WRONG", "Captcha falsch!");
-define("MESSAGE_COOKIE_INVALID", "Ungültiger Cookie");
+define("MESSAGE_COOKIE_INVALID", "Ung&uuml;ltiger Cookie");
 define("MESSAGE_DATABASE_ERROR", "Verbindung zur Datenbank fehlgeschlagen!");
 define("MESSAGE_EMAIL_ALREADY_EXISTS", "Diese E-Mail-Adresse ist bereits registriert. Bitte verwenden Sie den \"Passwort vergessen\"-Link.");
-define("MESSAGE_EMAIL_CHANGE_FAILED", "Änderung der E-Mail-Adresse fehlgeschlagen");
-define("MESSAGE_EMAIL_CHANGED_SUCCESSFULLY", "Die Änderung der E-Mail-Adresse war erfolgreich. Die neue Adresse lautet ");
+define("MESSAGE_EMAIL_CHANGE_FAILED", "&Auml;nderung der E-Mail-Adresse fehlgeschlagen");
+define("MESSAGE_EMAIL_CHANGED_SUCCESSFULLY", "Die &Auml;nderung der E-Mail-Adresse war erfolgreich. Die neue Adresse lautet ");
 define("MESSAGE_EMAIL_EMPTY", "E-Mail-Feld leer");
-define("MESSAGE_EMAIL_INVALID", "E-Mail-Adresse ungültig");
+define("MESSAGE_EMAIL_INVALID", "E-Mail-Adresse ung&uuml;ltig");
 define("MESSAGE_EMAIL_SAME_LIKE_OLD_ONE", "Diese E-Mail-Adresse ist ident mit der alten. Bitte verwenden Sie eine andere.");
 define("MESSAGE_EMAIL_TOO_LONG", "Email cannot be longer than 64 characters");
 define("MESSAGE_LINK_PARAMETER_EMPTY", "Empty link parameter data.");
@@ -25,7 +25,7 @@ define("MESSAGE_LOGIN_FAILED", "Login fehlgeschlagen.");
 define("MESSAGE_OLD_PASSWORD_WRONG", "Das ALTE Passwort war falsch.");
 define("MESSAGE_PASSWORD_BAD_CONFIRM", "Password and password repeat are not the same");
 define("MESSAGE_PASSWORD_CHANGE_FAILED", "Sorry, your password changing failed.");
-define("MESSAGE_PASSWORD_CHANGED_SUCCESSFULLY", "Passwort erfolgreich geändert!");
+define("MESSAGE_PASSWORD_CHANGED_SUCCESSFULLY", "Passwort erfolgreich ge&auml;ndert!");
 define("MESSAGE_PASSWORD_EMPTY", "Passwort-Feld ist leer");
 define("MESSAGE_PASSWORD_RESET_MAIL_FAILED", "Password reset mail NOT successfully sent! Error: ");
 define("MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT", "\"Passwort zurücksetzen\"-E-Mail wurde erfolgreich versendet");
@@ -38,7 +38,7 @@ define("MESSAGE_REGISTRATION_FAILED", "Sorry, your registration failed. Please g
 define("MESSAGE_RESET_LINK_HAS_EXPIRED", "Your reset link has expired. Please use the reset link within one hour.");
 define("MESSAGE_VERIFICATION_MAIL_ERROR", "Sorry, we could not send you an verification mail. Your account has NOT been created.");
 define("MESSAGE_VERIFICATION_MAIL_NOT_SENT", "Verification Mail NOT successfully sent! Error: ");
-define("MESSAGE_VERIFICATION_MAIL_SENT", "Ihr Account wurde erfolgreich erstellt und eine E-Mail versandt. Bitte prüfen Sie Ihren Posteingang und klicken Sie auf den Bestätigungslink.");
+define("MESSAGE_VERIFICATION_MAIL_SENT", "Ihr Account wurde erfolgreich erstellt und eine E-Mail versandt. Bitte prüfen Sie Ihren Posteingang und klicken Sie auf den Best&auml;tigungslink.");
 define("MESSAGE_USER_DOES_NOT_EXIST", "Der Nutzer existiert nicht.");
 define("MESSAGE_USERNAME_BAD_LENGTH", "Username cannot be shorter than 2 or longer than 64 characters");
 define("MESSAGE_USERNAME_CHANGE_FAILED", "Sorry, your chosen username renaming failed");
@@ -49,7 +49,7 @@ define("MESSAGE_USERNAME_INVALID", "Username does not fit the name scheme: only 
 define("MESSAGE_USERNAME_SAME_LIKE_OLD_ONE", "Sorry, that username is the same as your current one. Please choose another one.");
 
 // views
-define("WORDING_BACK_TO_LOGIN", "Zurück zum Login");
+define("WORDING_BACK_TO_LOGIN", "Zur&uuml;ck zum Login");
 define("WORDING_CHANGE_EMAIL", "Change email");
 define("WORDING_CHANGE_PASSWORD", "Change password");
 define("WORDING_CHANGE_USERNAME", "Change username");
