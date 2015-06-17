@@ -126,9 +126,9 @@ if (isset($registration)) {
         
         <div class="landing_links">
             <div class="landing_links_box">
-            <div class="link_1"><p><a class="button_1" href="#" onclick=""><span>f&uuml;r</span>Eltern</a></p></div>
-            <div class="link_2"><p><a class="button_2" href="#" onclick="">B&uuml;rger</a></p></div>
-            <div class="link_3"><p><a class="button_3" href="#" onclick=""><span>f&uuml;r</span>Studenten</a></p></div>
+            <div class="link_1"><p><a class="button_1" href="eltern.php"><span>f&uuml;r</span>Eltern</a></p></div>
+            <div class="link_2"><p><a class="button_2" href="buerger.php">B&uuml;rger</a></p></div>
+            <div class="link_3"><p><a class="button_3" href="http://www.craftprobe.com"><span>f&uuml;r</span>Studenten</a></p></div>
             </div>
         </div>
     </body>
