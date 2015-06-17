@@ -13,7 +13,7 @@ if(isset($_GET['q']))
   $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE (type LIKE 'audio' OR type LIKE 'video') AND id='$id'";
+  $sql="SELECT * from produkte WHERE (type LIKE 'media' or type LIKE 'audio' or type LIKE 'video') AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   
