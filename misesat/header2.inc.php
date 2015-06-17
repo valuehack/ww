@@ -16,7 +16,7 @@
 <!--Header-->
   <header class="header">
   	<div class="logo">
-  		<span></span><h1>Mises Austria</h1>
+  		<span><img src="style/ma_logo.svg"></span><h1>Mises Austria</h1>
 	</div>
   	<div class="nav">
     	<div class="navi">
