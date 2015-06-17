@@ -10,7 +10,7 @@
 
   <article class="content">
   	
-  	  <p class="index"><a class="index" href="">Wiener Schule</a> &nbsp; &rarr; &nbsp; <a class="index" href="">Orte</a></p>
+  	  <p class="index"><a class="index" href="">Wiener Schule</a> / <a class="index" href="">Orte</a></p>
       
       <h2>Das Wien der Wiener Schule</h2>
       

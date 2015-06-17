@@ -10,7 +10,7 @@
 
   <article class="content">
   	
-  	  <p class="index"><a class="index" href="">Wiener Schule</a> &nbsp; &rarr; &nbsp; <a class="index" href="">Menschen</a></p>
+  	  <p class="index"><a class="index" href="">Wiener Schule</a> / <a class="index" href="">Denker</a></p>
       
       <h2>Autoren&uuml;bersicht</h2>
       
