@@ -16,14 +16,14 @@
 <!--Header-->
   <header class="header">
   	<div class="logo">
-  		<h1>Mises Austria</h1>
+  		<span></span><h1>Mises Austria</h1>
 	</div>
   	<div class="nav">
     	<div class="navi">
       		<ul>
         		<li><a href="#">Begriffe</a></li>
         		<li><a href="autoren/index.php">Denker</a></li>
-        		<li><a href="#">B&uuml;echer</a></li>
+        		<li><a href="#">B&uuml;cher</a></li>
         		<li><a href="#">Dokumente</a></li>
         		<li><a href="orte/index.php">Orte</a></li>
       		</ul>
