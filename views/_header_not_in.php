@@ -36,40 +36,9 @@
 //set timezone
 mysql_query("SET time_zone = 'Europe/Vienna'");
 
-// show potential errors / feedback (from login object)
-if (isset($login)) {
-    if ($login->errors) {
-        foreach ($login->errors as $error) {
-            #add some html to make it look nicer
-            
-          ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
-        }
-    }
-    if ($login->messages) {
-        foreach ($login->messages as $message) {
-            #echo $message;
-            ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
-        }
-    }
-}
 ?>
 
 <?php
-// show potential errors / feedback (from registration object)
-if (isset($registration)) {
-    if ($registration->errors) {
-        foreach ($registration->errors as $error) {
-            #echo $error;
-            ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
-        }
-    }
-    if ($registration->messages) {
-        foreach ($registration->messages as $message) {
-            #echo $message;
-            ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
-        }
-    }
-}
 
     $ok2 = $_POST['ok2'];
 ?>	
@@ -77,6 +46,42 @@ if (isset($registration)) {
 	<body>
         <header class="header">
         	<div class="login">
+
+                  <?php
+
+                  // show potential errors / feedback (from login object)
+              if (isset($login)) {
+                  if ($login->errors) {
+                      foreach ($login->errors as $error) {
+                          #add some html to make it look nicer
+                          
+                        ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
+                      }
+                  }
+                  if ($login->messages) {
+                      foreach ($login->messages as $message) {
+                          #echo $message;
+                          ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
+                      }
+                  }
+              }
+              // show potential errors / feedback (from registration object)
+              if (isset($registration)) {
+                  if ($registration->errors) {
+                      foreach ($registration->errors as $error) {
+                          #echo $error;
+                      ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
+                      }
+                  }
+                  if ($registration->messages) {
+                      foreach ($registration->messages as $message) {
+                          #echo $message;
+                          ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
+                      }
+                  }
+              }
+              ?>
+
                 	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
             </div>
             <div class="logo">

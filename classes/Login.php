@@ -577,6 +577,7 @@ public function getUserEvents()
 }
 
 # adjustment of function registerForEvents for the new checkout process by Bernhard Hegyi
+//function not used at the moment, the script is inside korb.php
 public function checkout ($items)
 {
     $user_id = $_SESSION['user_id'];
@@ -602,9 +603,10 @@ public function checkout ($items)
     }
 
     if (!($userCredits >= $itemsPrice)) {
-        $this->errors[] = "You do not have enough credits to buy the items in your basket.";
+        //$this->errors[] = "You do not have enough credits to buy the items in your basket.";
         //error message does not work, alternate message above
-        echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
+        //echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
+        echo '';
         }
 
         else 
@@ -1041,7 +1043,7 @@ public function sendEventRegMail($events)
             $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED . $mail->ErrorInfo;
             return false;
         } else {
-            $this->messages[] = 'Email was sent to confirm registration.';
+            $this->messages[] = 'Eine Email wurde an Sie versandt.';
             return true;
         }
     }
@@ -1648,7 +1650,7 @@ user_plz
 
             // if this email exists
             if (isset($result_row->user_id) and ($_SESSION['user_id'] !== ($result_row->user_id)) ) {
-                $this->errors[] = "Another user has already registered this email address";
+                $this->errors[] = "Diese Email-Adresse wird bereits verwendet.";
             } else {
                 // write users new data into database
                 $query_edit_user_email = $this->db_connection->prepare('UPDATE mitgliederExt SET user_email = :user_email WHERE user_id = :user_id');

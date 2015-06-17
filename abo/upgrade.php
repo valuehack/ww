@@ -12,7 +12,7 @@ if (version_compare(PHP_VERSION, '5.3.7', '<')) {
 require_once('../config/config.php');
 
 // include the to-be-used language, english by default. feel free to translate your project and include something else
-require_once('../translations/en.php');
+require_once('../translations/de.php');
 
 // include the PHPMailer library
 require_once('../libraries/PHPMailer.php');
