@@ -107,6 +107,12 @@ a:visited {
 	color: rgb(255,255,255);
 }
 
+.logo h1:before {
+	background: url(ma_logo.svg) no-repeat;
+	max-height: 50px;
+	margin-right: 10px;
+} 
+
 .nav {
 	position: relative;
    	right: 0;
