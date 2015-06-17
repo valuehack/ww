@@ -91,13 +91,13 @@ strong {
 	text-align: center;
 }
 
-.disk_w_space ul {
+.disc_w_space ul {
 	margin: 40px 0px 40px 60px;
 	list-style-position: outside;
-	list-style-type: disc;
+	list-style-type: disc !important;
 }
 
-.disk_w_space li {
+.disc_w_space li {
 	padding-bottom: 0.75em;
 	line-height: 1.6;
 }

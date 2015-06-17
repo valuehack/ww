@@ -57,7 +57,7 @@ if ($login->isUserLoggedIn() == true) {
 
 			<p>Die Kosten f&uuml;r einen Ausbildungsplatz betragen 1.000&euro; pro Monat. Wir k&ouml;nnen Ihnen allerdings drei verg&uuml;nstigte Pakete anbieten:</p>
 
-			<ul class="disk_w_space">
+			<ul class="disc_w_space">
 				<li>Bei Teilnahme am gesamten Jahresprogramm, dass insgesamt vier Monate freie Zeiten f&uuml;r andere Praktika, Studien, Projekte oder Reisen l&auml;sst (bei begleitendem Coaching), betr&auml;gt die Gesamtgeb&uuml;hr nur 7.000&euro;.</li>
 				<li>Bei Teilnahme w&auml;hrend eines Semesters betr&auml;gt die Semestergeb&uuml;hr nur 3.500&euro;.</li>
 				<li>Die Mindestteilnahmedauer betr&auml;gt zwei Monate, daf&uuml;r fallen 1.900&euro; an.</li>
@@ -67,7 +67,7 @@ if ($login->isUserLoggedIn() == true) {
 
 			<p>Das erh&auml;lt Ihr Sohn/Ihre Tochter daf&uuml;r:</p>
 
-			<ul class="disk_w_space">
+			<ul class="disc_w_space">
 				<li>T&auml;gliche Ausbildung in f&uuml;nf Kernbereichen: Nutzung digitaler Werkzeuge, Nutzung analoger Werkzeuge, Kultur (insbesondere Geistes- und Sozialwissenschaft, Perfektionierung von sprachlichem Ausdruck und Argumentationsf&auml;higkeit), Natur (Gesundheit, K&ouml;rperbeherrschung, Lernen aus und von der Natur) und Zukunftsf&auml;higkeit (Trends erkennen und analysieren, unternehmerische Grundfertigkeiten).</li>
 				<li>Pers&ouml;nliche Betreuung und Hilfestellungen beim Finden des eigenen Weges. Durchf&uuml;hrung eigener Projekte, um St&auml;rken zu erkennen und optimal zu f&ouml;rdern.</li>
 				<li>Zugang zu einer der au&szlig;ergew&ouml;hnlichsten Privatbibliotheken Wiens.</li>
