@@ -1059,6 +1059,11 @@ public function upgradeUserAccount($betrag, $zahlung, $level, $profile, $source)
         //create new user
    }
     */
+
+//set cookie to see if the credits were already given (problem: if upgrade form gets refreshed, more credits are added)
+if (!isset($_COOKIE("gaveCredits"))) {
+    setcookie("gaveCredits", true, time()+3600*24*2);  /* expire in 2 Days */
+
     
     if ($_SESSION['user_email']) $user_email = $_SESSION['user_email'];
     else $user_email = $profile[user_email];
@@ -1123,6 +1128,11 @@ public function upgradeUserAccount($betrag, $zahlung, $level, $profile, $source)
         }
         
         $this->messages[] = 'Upgrade erfolgreich durchgeführt! Bitte prüfen Sie Ihren Posteingang - '. $user_email;
+
+} 
+else {
+    $this->messages[] = 'Das Upgrade-Formular wurde bereits gesendet.';
+}
 
 }
 
