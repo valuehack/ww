@@ -22,10 +22,10 @@
     	<div class="navi">
       		<ul>
         		<li><a href="#">Begriffe</a></li>
-        		<li><a href="autoren/index.php">Autoren</a></li>
+        		<li><a href="autoren/index.php">Denker</a></li>
+        		<li><a href="#">B&uuml;echer</a></li>
+        		<li><a href="#">Dokumente</a></li>
         		<li><a href="orte/index.php">Orte</a></li>
-        		<li><a href="#">Dinge</a></li>
-        		<li><a href="#">Dinge</a></li>
       		</ul>
    		</div>
   	</div>
