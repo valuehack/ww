@@ -160,7 +160,7 @@ a:visited {
 /*==================================================*/
 
 .content {
-	margin: 40px 10%;
+	margin: 60px 10%;
 	padding: 15px 2.5% 50px 2.5%;
 	width: 75%;
 	background: rgb(255,255,255);
@@ -320,6 +320,31 @@ a:visited {
 
 /*=================== Denker ======================*/
 
+.denker {
+	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+}
+
+.denker h1 {	
+	font-size: 28pt;
+	line-height: 1.2;
+	color: rgb(46,74,98);
+	margin: 20px 0px 40px;
+}
+
+.denker h2 {
+	font-size: 24pt;
+	line-height: 1.1;
+	color: rgb(46,74,98);
+	margin: 10px 0px 40px;
+}
+
+.denker p {
+	text-align: justify;
+	font-size: 14pt;
+	line-height: 1.4;
+	margin: 40px 0;
+}
+
 img.autor {
 	width: 100%;
 	margin-bottom: 20px;
@@ -331,10 +356,11 @@ img.autor {
 
 .booksource {
 	background: rgb(240,240,240);
-	width: 860px;
 	min-height: 180px;
-	padding: 20px;
-	margin: 20px 0;
+	margin: 20px 0px;
+	padding: 2.5%;
+	width: 95%;
+	border-bottom: 10px solid rgb(120,120,120);
 }
 
 .booksource p {
@@ -361,16 +387,23 @@ img.autor {
 }
 
 .works {
-	margin: 30px 0 10px 0;
-	padding: 10px 0 20px 0;
-	border-bottom: 4px solid rgb(240, 240, 240); 
+	margin: 30px 0px 10px;
+	background: rgb(46,74,98) none repeat scroll 0% 0%;
+	border-bottom: 10px solid rgb(120,120,120);
+	padding: 30px;
+}
+
+.works h1 {
+	font-size: 24pt;
+	line-height: 1.1;
+	color: rgb(255,255,255);
+	margin: 10px 0px 40px;
 }
 
 .works_sub {
 	float: left;
 	width: 274px;
 	padding: 10px;
-	background: rgb(46,74,98);
 }
 
 .works_sub_m {
@@ -378,7 +411,6 @@ img.autor {
 	width: 272px;
 	padding: 10px;
 	margin: 0 10px;
-	background: rgb(46,74,98);
 }
 
 .works ul {
