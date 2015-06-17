@@ -177,7 +177,7 @@ else {
       $pagination.= "<span class=\"disabled\">vor &raquo;</span>";
     $pagination.= "</div>\n";   
   }
-
+  
 //$sql = "SELECT * from produkte WHERE (type LIKE 'audio' OR type LIKE 'video') AND status > 0 order by title asc, n asc";
 //$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
@@ -190,11 +190,12 @@ while($entry = mysql_fetch_array($result))
      <div class="salon_anmeldung"><a href="?q=<?echo $id;?>">Herunterladen</div>
 	 <div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
 <?php
-	}	
+  }
+  echo $pagination;
+  echo "</div>";
 }
 ?>
 
-	</div>
 	
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -213,9 +214,6 @@ while($entry = mysql_fetch_array($result))
           	<input class="inputbutton" type="submit" name="submit" value="Eintragen">
           </form> 
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="inputbutton_white" data-dismiss="modal">Schlie&szlig;en</button>
       </div>
     </div>
   </div>
