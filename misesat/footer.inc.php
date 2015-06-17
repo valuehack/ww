@@ -28,7 +28,7 @@
   	  </nav>
     </section>
     <div class="nav_footer_copy">
-  	  <p>&copy; Wiener Schule, Institut f&uuml;r Wertewirtschaft 2013</p>
+  	  <p>&copy; Mises Austria, Scholarium 2015</p>
   	</div>
   </footer>
 <!--End Footer-->  
