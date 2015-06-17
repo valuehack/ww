@@ -1,10 +1,10 @@
 config/
 config/config.php
 rahim/header1.inc.php
-misesat/
 misesat/wienerschule.org.webprj
 misesat/wienerschule.org.txt
 misesat/wienerschule.org.session
+misesat/index.html
 
 ._db.php
 .werte_db.php
