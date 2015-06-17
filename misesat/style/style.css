@@ -98,8 +98,8 @@ a:visited {
 
 .logo {
 	float: left;
-	width: 30%;
-	margin-left: 150px;
+	width: 35%;
+	margin-left: 125px;
 	padding: 20px 0;
 }
 
@@ -112,8 +112,11 @@ a:visited {
 .logo span {
 	background: url(ma_logo.svg) no-repeat center center;
 	margin-right: 10px;
-	width: 40px;
-	height: 60px;
+	width: 70px;
+	height: 100px;
+	display: block;
+	background-size: cover;
+	float: left;
 } 
 
 .nav {
