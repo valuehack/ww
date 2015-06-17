@@ -156,7 +156,7 @@ elseif (isset($_POST['ok']))
 
       echo '<p><b>Laufzeit und K&uuml;ndigung:</b></p>';
 
-      echo '<p>Die Mitgliedschaft l&auml;uft ein Jahr und verl&auml;ngernt sich automatisch um ein weiteres Jahr wenn Sie nicht zwei Wochen vor Ablauf k&uuml;ndigen. Eine K&uuml;ndigung ist jederzeit m&ouml;glich, E-Mail oder Fax gen&uuml;gt.</p>';
+      echo '<p>Die Mitgliedschaft l&auml;uft ein Jahr und verl&auml;ngert sich automatisch um ein weiteres Jahr wenn Sie nicht zwei Wochen vor Ablauf k&uuml;ndigen. Eine K&uuml;ndigung ist jederzeit m&ouml;glich, E-Mail oder Fax gen&uuml;gt.</p>';
 
       echo "<p>Sie haben das Abo ".$level." bestellt.</p></div>";
 
