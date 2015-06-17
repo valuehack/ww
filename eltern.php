@@ -1,8 +1,42 @@
-<?php 
+<?php
 
-//require_once('classes/Login.php');
-include('views/_header_not_in.php'); 
-$title="B&uuml;rger | Wertewirtschaft";
+// check for minimum PHP version
+if (version_compare(PHP_VERSION, '5.3.7', '<')) {
+    exit('Sorry, this script does not run on a PHP version smaller than 5.3.7 !');
+} else if (version_compare(PHP_VERSION, '5.5.0', '<')) {
+    // if you are using PHP 5.3 or PHP 5.4 you have to include the password_api_compatibility_library.php
+    // (this library adds the PHP 5.5 password hashing functions to older versions of PHP)
+    require_once('../libraries/password_compatibility_library.php');
+}
+// include the config
+require_once('../config/config.php');
+
+// include the to-be-used language, english by default. feel free to translate your project and include something else
+require_once('../translations/en.php');
+
+// include the PHPMailer library
+require_once('../libraries/PHPMailer.php');
+
+// load the login class
+require_once('../classes/Login.php');
+require_once('../classes/Registration.php');
+
+// create a login object. when this object is created, it will do all login/logout stuff automatically
+// so this single line handles the entire login process.
+$login = new Login();
+$registration = new Registration();
+$title="Eltern";
+
+// ... ask if we are logged in here:
+if ($login->isUserLoggedIn() == true) {
+    // the user is logged in. you can do whatever you want here.
+    include("../views/_header_in.php");
+
+} else {
+    // the user is not logged in. you can do whatever you want here.
+    include("../views/_header_not_in.php");
+    
+}
 
 ?>
 
@@ -13,36 +47,41 @@ $title="B&uuml;rger | Wertewirtschaft";
 		</header>
 		<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>
 		<div class="blog_text">
-			<p>
-				Text von Bürger: Sind Sie ein Wertewirt? Die meisten Menschen sind Wertekonsumenten und allenfalls Blasenwirte. Wertewirte schaffen mehr reale Werte als sie aufbrauchen und stiften dadurch Sinn. Das ist heute gar nicht leicht, oft schier unm&ouml;glich. Die Voraussetzung daf&uuml;r ist, sich der Realit&auml;t zu stellen. Das bedeutet f&uuml;r die meisten zun&auml;chst eine gro&szlig;e Ent&ndash;T&auml;uschung, die sich anfangs nicht sehr gut anf&uuml;hlt. Doch Sie suchen gewiss mehr als bequeme Gef&uuml;hle, sonst w&auml;ren Sie gar nicht hier.
-			</p>
-			<p>
-				Was k&ouml;nnen wir f&uuml;r Sie tun? Sie w&uuml;nschen sich Alternativen, m&ouml;chten selbst nachdenken und sich f&uuml;r bessere Wege engagieren, doch es fehlen Ihnen Zeit, Mittel und Mu&szlig;e. Sie wissen, dass viele Spinner und Ideologen das Feld der Systemkritik beackern und sehen den Bedarf f&uuml;r ein seri&ouml;ses, professionelles und unabh&auml;ngiges Forschungsprogramm, das nicht im Expertenjargon, sondern in allgemein verst&auml;ndlicher Form Probleme und Dynamiken analysiert, Alternativen n&uuml;chtern pr&uuml;ft, andere B&uuml;rger sensibilisiert und Inspiration und Ermutigung f&uuml;r neue Wege werte&ndash; und sinnorientierten Wirtschaftens abseits der verzerrten Blasenwirtschaft unserer Zeit bietet.
-			</p>
-			<p>
-				Wer sind wir? Unsere Unabh&auml;ngigkeit und Professionalit&auml;t wird durch eine rein private Finanzierung gew&auml;hrleistet. Erfolgreiche Unternehmer aus &ouml;sterreich, Deutschland, Schweiz und Liechtenstein waren die ersten, die einen Bedarf nach realer Wertewirtschaft abseits der T&auml;uschungen und Blasen erkannten und auf Einladung und Initiative von Rahim Taghizadegan das gemeinn&uuml;tzige Unternehmen SCHOLARIUM gr&uuml;ndeten, das unter anderem die langj&auml;hrige Arbeit des Instituts f&uuml;r Wertewirtschaft professionalisiert und als Forschungsprogramm auf nachhaltiger Grundlage nun noch mehr Menschen zug&auml;nglich macht. Wenn Sie zu uns geh&ouml;ren, dann laden wir Sie ein, uns auf diesem schwierigen, aber unglaublich lehrreichen Weg zu begleiten, auf dem wir herausfinden wollen, wie sich heute noch die Realit&auml;t erkennen, Werte schaffen und Sinn finden lassen.
-			</p>
-			<p>
-				Warum braucht es ein solches Unternehmen &uuml;berhaupt? Institute und Initiativen mit guten Intentionen gibt es zur Gen&uuml;ge. Die meisten sind allerdings ideologisch motiviert, das hei&szlig;t, sie wissen schon, was gut f&uuml;r uns ist, haben fertige Schlussfolgerungen und entwickeln erst danach Argumente, um andere zu bekehren. In aller Regel sind solche Initiativen subventioniert, das hei&szlig;t, Interessengruppen zahlen f&uuml;r diese (letztlich nicht zielf&uuml;hrende) Missionierungsarbeit, oder es flie&szlig;t gar Steuergeld hinein, das hei&szlig;t wir zahlen alle mit, egal ob wir die Werte teilen und die Arbeit sch&auml;tzen. Das ist nat&uuml;rlich die ideale Voraussetzung f&uuml;r Unprofessionalit&auml;t, Verschwendung, Selbstbeweihr&auml;ucherung, Anpassung und Denkverbote. Sind sie nicht subventioniert, so sind es meist Hobby&ndash;Projekte mit der typischen Vereinsmeierei (je drei Engagierte werden vier Vereine gegr&uuml;ndet, die ihren jeweiligen Anspruch auf Wichtigkeit durch ausgefeilte Strukturen und Versprechen zelebrieren).
-			</p>
-			<p>
-				Wir sch&auml;tzen das vielf&auml;ltige, zivilgesellschaftliche Engagement sehr und wollen es nicht schlechtreden. Auf diesem Engagement bauen wir auf und wollen es professionell begleiten und erg&auml;nzen. SCHOLARIUM spricht die Menschen nicht nur als Konsumenten an, sondern als engagierte, vernunftbegabte B&uuml;rger und ist dadurch einmalig, die Spannung zwischen zwei Versuchungen halten zu  k&ouml;nnen, die unsere Zeit und damit auch die meisten B&uuml;rgerinitiativen kennzeichnen:
-			</p>
-			<p>
-				Auf der einen Seite steht das Gutreden der Verh&auml;ltnisse: Wir w&uuml;rden auf hohem Niveau jammern, lebten in unvergleichlichem Wohlstand, noch nie w&auml;re es uns so gut gegangen. Dieses nachvollziehbare Gutreden, das dem notwendigen Grundoptimismus gerade unternehmerischer und eigenverantwortlicher Menschen entspringt, f&uuml;hrt zu einem Grundvertrauen in die Institutionen: Klar k&ouml;nnten die Politiker besser sein, die Wissenschaftler und K&uuml;nstler renommierter, die Unternehmer erfolgreicher. Wir m&uuml;ssten uns alle nur ein bisschen zusammenrei&szlig;en, um das Bestehende zu bewahren, und dann w&auml;re eigentlich alles gut, zumindest akzeptabel.
-			</p>
-			<p>
-				Auf der anderen Seite steht das Schlechtreden der Verh&auml;ltnisse: Es h&auml;tte ohnehin alles keinen Sinn, die politischen Verh&auml;ltnissen w&auml;ren nicht zu &auml;ndern, das Unternehmertum immer schwieriger bis unm&ouml;glich, die verbliebenen B&uuml;rger, die zur Eigenverantwortung noch f&auml;hig w&auml;ren, sollten eher den Exodus suchen, um dem Wahnsinn zu entkommen.  Dieses nachvollziehbare Schlechtreden, das der notwendigen N&uuml;chternheit gerade unternehmerischer und eigenverantwortlicher Menschen entspringt, f&uuml;hrt zu einem absoluten Vertrauensverlust: Wenn Experten und Medien etwas verlautbaren, w&auml;re wahrscheinlich das Gegenteil richtig – und dieses Richtige wird dann im Internet, in Foren und Weblogs gesucht, die immer neue Theorien parat haben, wer an den Verh&auml;ltnissen Schuld w&auml;re und welche Endl&ouml;sung aller Probleme durch wen und warum verhindert w&uuml;rde.
-			</p>
-			<p>
-				So entstehen zwei Welten, die sich immer mehr von einander entfernen. Das Lager der verantwortungsbereiten B&uuml;rger reibt sich vollkommen auf im Konflikt zwischen Gutrednern und Schlechtrednern (links und rechts, elit&auml;r und anti&ndash;elit&auml;r, strukturkonservativ und revolution&auml;r, Mutb&uuml;rger und Wutb&uuml;rger – all das entz&uuml;ndet sich dann noch an jener Bruchlinie).
-			</p>
-			<p>
-				Wem kann man denn noch vertrauen? Dem eigenen Verstand und der eigenen Erfahrung, im &uuml;berschaubaren Bereich eigener Versuche der Wertsch&ouml;pfung und Sinnfindung. Wir haben keine fertigen Antworten, keine Programmatik, keine L&ouml;sungsformel anzubieten. Nur absolut unabh&auml;ngiges Streben nach Erkenntnis, und zwar nicht rein theoretischer anhand von Weltmodellen, sondern praktischer anhand der tiefgehenden Reflexion realer Herausforderungen und M&ouml;glichkeiten.
-			</p>
-			<p>
-				Wir laden die letzten eigenverantwortlichen B&uuml;rger im deutschsprachigen Raum (und auch jene, die bereits den Exodus angetreten haben) ein, uns bei unserer unbequemen Suche nach Erkenntnis, Wertsch&ouml;pfung und Sinnfindung zu begleiten und daraus Nutzen, Inspiration und Ermutigung zu ziehen.
-			</p>
+			<p>Haben Sie Kinder zwischen 18 und 28 Jahren? Dann ist die Chance relativ gro&szlig;, dass Sie voll der Sorge um deren Zukunft sind. Zun&auml;chst die gute Nachricht: Wenn Ihre Kinder noch nicht den richtigen Weg gefunden haben, von den Bildungsm&ouml;glichkeiten etwas erdr&uuml;ckt scheinen und ihre Interessen und Talente noch nicht in einen plausiblen Berufsweg &uuml;bersetzen k&ouml;nnen, ist mit ihnen alles in Ordnung. Sie sind keine Ausnahmen, die Schwierigkeit, in dieser Welt Fu&szlig; zu fassen ist nicht ihre Schuld, und Ihre schon gar nicht. Wir wollen uns an dieser Stelle aber nicht mit einer l&auml;ngeren Erkl&auml;rung aufhalten, warum es heute f&uuml;r junge Menschen so unglaublich schwierig ist, gute Bildungs- und Berufsentscheidungen zu f&auml;llen, obwohl die Auswahl so gro&szlig; zu sein scheint. Gemeinsam mit besorgten Eltern haben wir eine Alternative entwickelt, die Ihren Kindern die bestm&ouml;gliche Hilfestellung bei einer&nbsp; Orientierung an den mittelfristigen realen M&ouml;glichkeiten bietet.</p>
+
+			<p>Es&nbsp;handelt&nbsp;sich&nbsp;um&nbsp;ein&nbsp;pers&ouml;nlich&nbsp;zugeschnittenes&nbsp;Ausbildungsprogramm,&nbsp;bei&nbsp;dem&nbsp;pers&ouml;nliche&nbsp;Entwicklung,&nbsp;praktisches&nbsp;Hineinschnuppern&nbsp;in&nbsp;zahlreiche&nbsp;Berufsfelder,&nbsp;unternehmerische&nbsp;Grundausbildung,&nbsp;sowie&nbsp;Natur-&nbsp;und&nbsp;Kulturerfahrung&nbsp;im&nbsp;Mittelpunkt&nbsp;stehen.&nbsp;Es&nbsp;findet&nbsp;Vollzeit&nbsp;in&nbsp;Wien&nbsp;statt&nbsp;und&nbsp;dauert&nbsp;bis&nbsp;zu&nbsp;einem&nbsp;Jahr.&nbsp;Es&nbsp;ist&nbsp;daf&uuml;r&nbsp;gedacht,&nbsp;junge&nbsp;Menschen&nbsp;optimal&nbsp;auf&nbsp;weitere&nbsp;Bildungs-&nbsp;und&nbsp;Karrierewege&nbsp;vorzubereiten,&nbsp;ihnen&nbsp;das&nbsp;notwendige&nbsp;Fundament&nbsp;f&uuml;r&nbsp;gute&nbsp;Entscheidungen&nbsp;mitzugeben&nbsp;und&nbsp;ihre&nbsp;wirtschaftliche&nbsp;Selbst&auml;ndigkeit&nbsp;zu&nbsp;f&ouml;rdern.&nbsp;Es&nbsp;handelt&nbsp;sich&nbsp;um&nbsp;ein&nbsp;ideales&nbsp;Erg&auml;nzungsprogramm&nbsp;vor,&nbsp;zwischen&nbsp;oder&nbsp;nach&nbsp;weiteren&nbsp;universit&auml;ren&nbsp;Studien.</p>
+
+			<p>Das&nbsp;Programm&nbsp;tr&auml;gt&nbsp;den&nbsp;Namen&nbsp;CRAFTprobe,&nbsp;was&nbsp;im&nbsp;Englischen&nbsp;grob&nbsp;&uuml;bersetzt&nbsp;&bdquo;Sondieren&nbsp;beruflicher&nbsp;Fertigkeiten&ldquo;&nbsp;bedeutet&nbsp;und&nbsp;im&nbsp;Deutschen&nbsp;auf&nbsp;die&nbsp;Kraftproben&nbsp;Bezug&nbsp;nimmt,&nbsp;die&nbsp;in&nbsp;traditionellen&nbsp;Gesellschaften&nbsp;den&nbsp;&Uuml;bergang&nbsp;von&nbsp;der&nbsp;Jugend&nbsp;ins&nbsp;Erwachsenenalter&nbsp;markieren.&nbsp;Fehlen&nbsp;solche&nbsp;selbst&auml;ndigen&nbsp;Kraftproben,&nbsp;werden&nbsp;sie&nbsp;durch&nbsp;leichtsinnige&nbsp;Mutproben&nbsp;kompensiert&nbsp;oder&nbsp;die&nbsp;Selbst&auml;ndigkeit&nbsp;misslingt&nbsp;zum&nbsp;Preis&nbsp;ewiger&nbsp;Abh&auml;ngigkeiten.</p>
+
+			<p>Das Tr&auml;gerunternehmen des Programms ist gemeinn&uuml;tzig und wurde von einer Gruppe erfolgreicher Unternehmer aus &Ouml;sterreich, Deutschland, Schweiz und Liechtenstein gegr&uuml;ndet, aus dem Antrieb heraus, der n&auml;chsten Generation Wertvolles mitzugeben und ihr Mut zur Eigenverantwortung zu machen. Das ist in unserer Zeit besonders schwierig und ben&ouml;tigt daher besondere Unterst&uuml;tzung. Diese wollen wir Ihrem Sohn/Ihrer Tochter bieten.</p>
+
+			<p>Die Kosten f&uuml;r einen Ausbildungsplatz betragen 1.000&euro; pro Monat. Wir k&ouml;nnen Ihnen allerdings drei verg&uuml;nstigte Pakete anbieten:</p>
+
+			<ul>
+				<li>Bei Teilnahme am gesamten Jahresprogramm, dass insgesamt vier Monate freie Zeiten f&uuml;r andere Praktika, Studien, Projekte oder Reisen l&auml;sst (bei begleitendem Coaching), betr&auml;gt die Gesamtgeb&uuml;hr nur 7.000&euro;.</li>
+				<li>Bei Teilnahme w&auml;hrend eines Semesters betr&auml;gt die Semestergeb&uuml;hr nur 3.500&euro;.</li>
+				<li>Die Mindestteilnahmedauer betr&auml;gt zwei Monate, daf&uuml;r fallen 1.900&euro; an.</li>
+			</ul>
+
+			<p>Zus&auml;tzlich sind wom&ouml;glich Wohnkosten in Wien zu &uuml;bernehmen, wobei wir aber bei der Suche nach einer g&uuml;nstigen Unterkunft helfen. Wir empfehlen die Teilnahme w&auml;hrend des gesamten Jahres. Sollte Ihnen dieser Aufwand finanziell nicht m&ouml;glich sein, sind auch k&uuml;rzere Zeiten ein Gewinn f&uuml;r Ihren Sohn/Ihre Tochter. Eine ratenweise Zahlung ist bei Teilnahme am Jahresprogramm m&ouml;glich.</p>
+
+			<p>Das erh&auml;lt Ihr Sohn/Ihre Tochter daf&uuml;r:</p>
+
+			<ul>
+				<li>T&auml;gliche Ausbildung in f&uuml;nf Kernbereichen: Nutzung digitaler Werkzeuge, Nutzung analoger Werkzeuge, Kultur (insbesondere Geistes- und Sozialwissenschaft, Perfektionierung von sprachlichem Ausdruck und Argumentationsf&auml;higkeit), Natur (Gesundheit, K&ouml;rperbeherrschung, Lernen aus und von der Natur) und Zukunftsf&auml;higkeit (Trends erkennen und analysieren, unternehmerische Grundfertigkeiten).</li>
+				<li>Pers&ouml;nliche Betreuung und Hilfestellungen beim Finden des eigenen Weges. Durchf&uuml;hrung eigener Projekte, um St&auml;rken zu erkennen und optimal zu f&ouml;rdern.</li>
+				<li>Zugang zu einer der au&szlig;ergew&ouml;hnlichsten Privatbibliotheken Wiens.</li>
+				<li>Teilhabe an einem Netzwerk f&uuml;r sp&auml;teren beruflichen Erfolg.</li>
+				<li>Pers&ouml;nlicher Arbeitsplatz mit allen n&ouml;tigen Ger&auml;ten und Werkzeugen.</li>
+				<li>Wertvolle Kontakte zu Unternehmern, Fachleuten, K&uuml;nstlern.</li>
+				<li>Alle Spesen f&uuml;r Ausfl&uuml;ge (Betriebsbesuche, Naturerfahrung, externe Kurse &hellip;).</li>
+				<li>Aufnahme in eine Gemeinschaft au&szlig;ergew&ouml;hnlicher junger Menschen mit besonders hohem Potential.</li>
+			</ul>
+
+			<p>Exklusive Bildungsprogramme mit pers&ouml;nlicher Betreuung, hochwertiger Infrastruktur und moderner Ausr&uuml;stung sind teuer. Alternative praktische Ausbildungsprogramme im Ausland kosten teilweise mehr als 7.000&euro; pro Monat. Wir k&ouml;nnen Ihnen nur deshalb so g&uuml;nstige Konditionen bieten, weil bei uns keine Profite, Zinsen oder Steuern lukriert werden m&uuml;ssen und viel Idealismus privater Unterst&uuml;tzer dahinter steht. </p>
+
+			<p>Wir&nbsp;hoffen,&nbsp;Sie&nbsp;k&ouml;nnen&nbsp;sich&nbsp;zu&nbsp;dieser&nbsp;langfristigen&nbsp;Investition&nbsp;und&nbsp;Starthilfe&nbsp;f&uuml;r&nbsp;Ihren&nbsp;Sohn/Ihre&nbsp;Tochter&nbsp;entschlie&szlig;en&nbsp;und&nbsp;stehen&nbsp;Ihnen&nbsp;gerne&nbsp;f&uuml;r&nbsp;weitere&nbsp;Fragen&nbsp;zur&nbsp;Verf&uuml;gung.&nbsp;Bitte&nbsp;schreiben&nbsp;Sie&nbsp;uns&nbsp;unter&nbsp;info@wertewirtschaft.org.&nbsp;Wir&nbsp;w&uuml;rden&nbsp;uns&nbsp;sehr&nbsp;freuen,&nbsp;Ihren&nbsp;Sohn/Ihre&nbsp;Tochter&nbsp;bald&nbsp;auf&nbsp;seinem/ihrem&nbsp;Lebensweg&nbsp;unterst&uuml;tzen&nbsp;zu&nbsp;d&uuml;rfen.</p>
+
 		</div>		
 	</div>
 </div>
