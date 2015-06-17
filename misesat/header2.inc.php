@@ -7,7 +7,7 @@
     <!--[if IE]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="http://test.wertewirtschaft.net/misesat/style/style.css">
        
     <title><?=$title?> | Wiener Schule</title>
   </head>
