@@ -145,12 +145,13 @@ elseif (isset($_POST['ok']))
     //after user is created, SESSION variables should be set in Login.php
     $user_id = $_SESSION['user_id'];
 
+    $user_email = $_POST['email'];
+    $id = $_POST['event_id'];
+    $title = $_POST['title'];
+
     //register for the event
+    //payments coming from kurse_not_in
     if ($_POST['ok'] == 2) { 
-    
-      $user_email = $_POST['email'];
-      $id = $_POST['event_id'];
-      $title = $_POST['title'];
 
       echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Kursteilnehmer&quot;</b> freigeschalten und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
 
@@ -174,11 +175,8 @@ elseif (isset($_POST['ok']))
       //TO DO: send email, create user first 
     }
 
+    //payments coming from projekte_not_in
     elseif ($_POST['ok'] == 3) { 
-    
-      $user_email = $_POST['email'];
-      $id = $_POST['event_id'];
-      $title = $_POST['title'];
       
       echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschalten und Ihrem Konto ein Guthaben von <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
 
@@ -191,12 +189,12 @@ elseif (isset($_POST['ok']))
       $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
       mysql_query($registration_query);
 
-      $credits_left = 25;
+      $credits_left = 0;
 
       $left_credits_query = "UPDATE mitgliederExt SET credits_left='$credits_left' WHERE `user_id` LIKE '$user_id'";
       mysql_query($left_credits_query) or die("Failed Query of " . $left_credits_query. mysql_error());
 
-      $space_query = "UPDATE produkte SET spots_sold = spots_sold + 1 WHERE `n` LIKE '$id'";
+      $space_query = "UPDATE produkte SET spots_sold = spots_sold + '$betrag' WHERE `n` LIKE '$id'";
       mysql_query($space_query);
                    
       //TO DO: send email, create user first 

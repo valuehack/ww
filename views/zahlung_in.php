@@ -32,6 +32,9 @@ if(isset($_POST['pay'])) {
             break;
         }
     
+    $event_id = $_POST['event_id'];
+    $title = $_POST['title'];
+
 ?>
 <div class="content">
 	<div class="payment">
@@ -63,6 +66,8 @@ if ($_SESSION['Mitgliedschaft'] == 1) {
     		<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
     		<input type="hidden" name="level" value="<?php echo $level; ?>">
             <input type="hidden" name="source" value="<?php echo $source; ?>">
+            <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
+            <input type="hidden" name="title" value="<?php echo $title; ?>">
 
     		<input type="radio" class="payment_form_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
     		<input type="radio" class="payment_form_radio" name="zahlung" value="kredit">Paypal<br>
@@ -81,32 +86,77 @@ elseif (isset($_POST['ok']))
     $zahlung = $_POST['zahlung'];
     $user_id = $_SESSION['user_id'];
     $source = $_POST['source'];
-
-    
+    $user_email = $_SESSION['user_email'];
+    $id = $_POST['event_id'];
+    $title = $_POST['title'];
 ?>    
 
 <div class="content">
 	<div class="payment">
     	
         <?
-        if ($source == 2) {
-      echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Kursteilnehmer&quot;</b> freigeschalten und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
-    }
-    elseif ($source == 3) {
-      echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschalten und Ihrem Konto ein Guthaben von <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
-    }
-        else {
+
+    //register for the event
+        // payments coming from kurse_in (Membership 1)
+    if ($source == 2) { 
     
-        echo '<div class="payment_success"><p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p>';
+      echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Kursteilnehmer&quot;</b> freigeschalten und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
 
-            }
-            ?>
-    <p><b>Laufzeit und K&uuml;ndigung:</b></p>
+      $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
+      $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
 
-    <p>Die Mitgliedschaft l&auml;uft ein Jahr und verl&auml;ngernt sich automatisch um ein weiteres Jahr wenn Sie nicht zwei Wochen vor Ablauf k&uuml;ndigen. Eine K&uuml;ndigung ist jederzeit m&ouml;glich, E-Mail oder Fax gen&uuml;gt.</p></div>
+      $userArray = mysql_fetch_array($user_result);
+      $user_id = $userArray[user_id];
 
-    <? 
-    echo "<br><p>Sie haben das Abo <b>".$level."</b> bestellt.<br>";
+      $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
+      mysql_query($registration_query);
+
+      $credits_left = 25;
+
+      $left_credits_query = "UPDATE mitgliederExt SET credits_left='$credits_left' WHERE `user_id` LIKE '$user_id'";
+      mysql_query($left_credits_query) or die("Failed Query of " . $left_credits_query. mysql_error());
+
+      $space_query = "UPDATE produkte SET spots_sold = spots_sold + 1 WHERE `n` LIKE '$id'";
+      mysql_query($space_query);
+                   
+      //TO DO: send email
+    }
+
+        // payments coming from projekte_in (Membership 1)
+    elseif ($source == 3) { 
+
+      echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschalten und Ihrem Konto ein Guthaben von <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
+
+      $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
+      $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
+
+      $userArray = mysql_fetch_array($user_result);
+      $user_id = $userArray[user_id];
+
+      $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
+      mysql_query($registration_query);
+
+      $credits_left = 0;
+
+      $left_credits_query = "UPDATE mitgliederExt SET credits_left='$credits_left' WHERE `user_id` LIKE '$user_id'";
+      mysql_query($left_credits_query) or die("Failed Query of " . $left_credits_query. mysql_error());
+
+      $space_query = "UPDATE produkte SET spots_sold = spots_sold + '$betrag' WHERE `n` LIKE '$id'";
+      mysql_query($space_query);
+                   
+      //TO DO: send email 
+    }
+
+    else {
+      echo '<div class="payment_success>"<p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p>';
+
+      echo '<p><b>Laufzeit und K&uuml;ndigung:</b></p>';
+
+      echo '<p>Die Mitgliedschaft l&auml;uft ein Jahr und verl&auml;ngernt sich automatisch um ein weiteres Jahr wenn Sie nicht zwei Wochen vor Ablauf k&uuml;ndigen. Eine K&uuml;ndigung ist jederzeit m&ouml;glich, E-Mail oder Fax gen&uuml;gt.</p>';
+
+      echo "<p>Sie haben das Abo ".$level." bestellt.</p></div>";
+
+    }
 
     if ($zahlung=="bank")
     {
