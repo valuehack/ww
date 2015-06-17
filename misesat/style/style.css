@@ -163,12 +163,11 @@ a:visited {
  ===================================*/
 
 .content {
-	margin: 40px 15%;
+	margin: 40px 10%;
 	padding: 15px 50px 50px 50px;
-	width: 70%;
+	width: 80%;
 	background: rgb(255,255,255);
-	box-shadow: 4px 4px 3px rgb(26,26,26), -4px 4px 3px rgb(26,26,26);
-}
+	box-shadow: 4px 4px 3px rgb(220,220,220), -4px 4px 3px rgb(220,220,220);
 
 .content h2 {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
