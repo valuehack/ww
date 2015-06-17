@@ -132,6 +132,7 @@ a:visited {
    	float: left; 
 	height: 75px;
    	display: block;
+   	transition: all 0.2s ease 0s;
 }
 
 .nav li:hover {
@@ -144,7 +145,6 @@ a:visited {
 	text-decoration: none;
 	padding: 45px 20px 20px 20px;
 	color: rgb(255,255,255);
-	transition: all 0.2s ease 0s;
 }
 
 .nav li a:active {
