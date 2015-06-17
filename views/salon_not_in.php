@@ -183,9 +183,6 @@ else {
           </form>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="inputbutton_white" data-dismiss="modal">Schlie&szlig;en</button>
-      </div>
     </div>
   </div>
 </div>

@@ -15,7 +15,7 @@ include('_header_not_in.php');
 <?php
 //payments coming from kurse_not_in
 if (isset($_POST["registrationform"])) {
-    $level = "Kursteilnehmer";
+    $level = "Teilnehmer";
     $betrag = 150;
     $event_id = $_POST['event_id'];
     $title = $_POST['title'];
