@@ -36,22 +36,6 @@
 //set timezone
 mysql_query("SET time_zone = 'Europe/Vienna'");
 
-// show potential errors / feedback (from login object)
-if (isset($login)) {
-    if ($login->errors) {
-        foreach ($login->errors as $error) {
-            #add some html to make it look nicer
-            
-          ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
-        }
-    }
-    if ($login->messages) {
-        foreach ($login->messages as $message) {
-            #echo $message;
-            ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
-        }
-    }
-}
 ?>
 
 <?php
@@ -64,6 +48,23 @@ if (isset($login)) {
         	<div class="login">
 
                   <?php
+
+                  // show potential errors / feedback (from login object)
+              if (isset($login)) {
+                  if ($login->errors) {
+                      foreach ($login->errors as $error) {
+                          #add some html to make it look nicer
+                          
+                        ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
+                      }
+                  }
+                  if ($login->messages) {
+                      foreach ($login->messages as $message) {
+                          #echo $message;
+                          ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
+                      }
+                  }
+              }
               // show potential errors / feedback (from registration object)
               if (isset($registration)) {
                   if ($registration->errors) {
