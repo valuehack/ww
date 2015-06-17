@@ -1061,8 +1061,8 @@ public function upgradeUserAccount($betrag, $zahlung, $level, $profile, $source)
     */
 
 //set cookie to see if the credits were already given (problem: if upgrade form gets refreshed, more credits are added)
-if (!isset($_COOKIE("gaveCredits"))) {
-    setcookie("gaveCredits", false, time()+3600*24*2);  /* expire in 2 Days */
+if (!isset($_COOKIE['gaveCredits'])) {
+    setcookie("gaveCredits", true, time()+3600*24*2);  /* expire in 2 Days */
 
     
     if ($_SESSION['user_email']) $user_email = $_SESSION['user_email'];
