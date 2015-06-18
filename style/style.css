@@ -82,7 +82,8 @@ strong {
 }
 
 h3 {
-	font-size: 16pt;
+	font-size: 18pt;
+	font-weight: bold;
 }
 
 /* Class for div - centers everything within */
