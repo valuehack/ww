@@ -8,11 +8,14 @@
 
 <!--Content-->
 
-    <div id="content">
-     <a class="index" href="index.php">Home &raquo;</a> <a class="index" href="#">&Uuml;ber WienerSchule.org</a>
-     <div id="wrapper_lower"><h2>&Uuml;ber WienerSchule.org</h2></div> 
-    </div>
-
+    <div class="content">
+      <article class="denker">
+      	<div class="index"><p><a href="">Mises Austria</a> / <a href="">Verlag</a></p></div>
+      
+      	<h1>Verlag</h1>
+      	
+	  </article>
+	</div>
 <?	
 	include "../page/footer.inc.php";
 ?>

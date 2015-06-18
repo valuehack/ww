@@ -93,7 +93,7 @@ a:visited {
 
 .logo {
 	float: left;
-	width: 35%;
+	width: 30%;
 	margin-left: 125px;
 	padding: 40px 0 0 0;
 }
@@ -540,6 +540,18 @@ footer {
 	font-family: Verdana, Tahoma, sans-serif;
 	font-weight: 600;
 	margin-bottom: 0;
+}
+
+footer a:link, footer a:visited {
+	font-size: 10pt;
+	line-height: 20px;
+	text-align: center;
+	text-shadow: 1px 1px 1px rgb(71, 95, 117);
+	color: rgb(28, 45, 59);
+}
+
+footer a:hover {
+	color: rgb(23, 37, 49);
 }
 
 .section_footer {
