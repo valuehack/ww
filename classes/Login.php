@@ -538,7 +538,7 @@ GET user data using old database connection
         session_destroy();
 
         $this->user_is_logged_in = false;
-        $this->messages[] = MESSAGE_LOGGED_OUT;
+        //$this->messages[] = MESSAGE_LOGGED_OUT;
     }
 
     /**

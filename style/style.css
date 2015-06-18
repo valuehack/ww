@@ -69,7 +69,7 @@ table {
 body {
 }
 
-p, h1, h2, a, ul, ol {
+p, h1, h2, h3, a, ul, ol {
 	font-family: "Baskerville", Georgia, Times, serif;
 }
 
@@ -78,6 +78,11 @@ em {
 }
 
 strong {
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 18pt;
 	font-weight: bold;
 }
 
@@ -1059,6 +1064,17 @@ a.socialimg:hover  {
 .salon_content {
 	width: 75%;
 	padding: 75px 12.5%;
+}
+
+.salon_content a {
+	color: rgb(46,74,98);
+	text-decoration: none;
+	border-bottom: 1px dotted rgb(46,74,98);
+}
+
+.salon_content a:hover{
+	color: rgb(46,74,98);
+	border-bottom: 1px solid rgb(46,74,98);
 }
 
 .salon_content img {
