@@ -394,8 +394,8 @@ a:visited {
 
 img.denker {
 	max-width: 300px;
-	margin-bottom: 20px;
 	float: right;
+	margin: 10px 0 10px 20px;
 }
 
 .works {
