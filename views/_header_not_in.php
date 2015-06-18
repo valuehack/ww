@@ -55,13 +55,13 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                       foreach ($login->errors as $error) {
                           #add some html to make it look nicer
                           
-                        ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
+                        ?><p class='error'> <?php echo $error; ?> </p> <?php
                       }
                   }
                   if ($login->messages) {
                       foreach ($login->messages as $message) {
                           #echo $message;
-                          ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
+                          ?><p class='message'> <?php echo $message; ?> </p> <?php
                       }
                   }
               }
@@ -70,13 +70,13 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                   if ($registration->errors) {
                       foreach ($registration->errors as $error) {
                           #echo $error;
-                      ?><p style="text-align:center;"> <?php echo $error; ?> </p> <?php
+                      ?><p class='error'> <?php echo $error; ?> </p> <?php
                       }
                   }
                   if ($registration->messages) {
                       foreach ($registration->messages as $message) {
                           #echo $message;
-                          ?><p style="text-align:center;"> <?php echo $message; ?> </p> <?php
+                          ?><p class='message'> <?php echo $message; ?> </p> <?php
                       }
                   }
               }
