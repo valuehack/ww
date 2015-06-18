@@ -344,7 +344,6 @@ a:visited {
 .autorenliste dd {
 	margin-bottom: 0.8em;
 	min-height: 185px;
-	border-bottom: 1px solid rgb(46,74,98);
 }
 
 .autorenliste dd p {
