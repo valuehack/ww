@@ -28,7 +28,7 @@
   	  </nav>
    </section>-->
     <div class="nav_footer_copy">
-  	  <p>&copy; Mises Austria, Scholarium 2015, <a href="../verlag/impressum.phph">Impressum</a>, <a href="../verlag/index.php">&Uuml;ber Uns</a></p>
+  	  <p>&copy; Mises Austria, Scholarium 2015 - <a href="../verlag/impressum.phph">Impressum</a> - <a href="../verlag/index.php">&Uuml;ber Uns</a></p>
   	</div>
   </footer>
 <!--End Footer-->  

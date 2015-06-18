@@ -37,7 +37,7 @@
       	</section>
      	<section class="works">
      	
-     		<h2>Werke</h2>
+     		<h1>Werke</h1>
      	
      		<span class="works_sub">
           		<h4>B&uuml;cher</h4>
