@@ -208,7 +208,7 @@ a:visited {
 }
 
 .index a:hover {
-	color: rgb(100,100,100);
+	color: rgb(100,100,100) !important;
 }
 
 .index a:visited {
@@ -538,7 +538,7 @@ a.map_detail h4 {
 /*==================================================*/
 
 footer {
-	background: transparent url(bg_footer.gif) repeat;
+	background: rgb(46, 74, 98);
 	width: 100%;
 	font-family: Verdana, Tahoma, sans-serif;
 	font-weight: 600;
