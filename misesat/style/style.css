@@ -79,6 +79,9 @@ a:visited {
 	clear: both;
 }
 
+em {
+	font-style: italic;
+}
 
 /*==================================================*/
 /*                   Header                    		*/
@@ -403,6 +406,7 @@ img.denker {
 	background: rgb(46,74,98) none repeat scroll 0% 0%;
 	border-bottom: 10px solid rgb(28,109,186);
 	padding: 30px;
+	display: inline-block;
 }
 
 .works h1 {

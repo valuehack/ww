@@ -30,7 +30,7 @@ if(isset($_GET['q']))
       	<h2>Leben</h2>
       
       <?php
-      	if ($img != 0) { 
+      	if ($img !== "" OR $img !== 0) { 
       	echo '<img src="'.$img.'" class="denker" alt="Portr&auml;t von '.$name.'">';
 		}
       ?>
