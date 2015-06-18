@@ -1,6 +1,6 @@
 <!--Footer-->
   <footer>
-  	  	  <p>&copy; Mises Austria, Scholarium 2015 &mdash; <a href="../verlag/impressum.phph">Impressum</a> &msdash; <a href="../verlag/index.php">&Uuml;ber Uns</a></p>
+  	  	  <p>&copy; Mises Austria ein Angebot von <a href="http://www.scholarium.at">Scholarium&trade;</a> 2015 &mdash; <a href="../verlag/impressum.php">Impressum</a> &mdash; <a href="../verlag/index.php">&Uuml;ber Uns</a></p>
   	<!--<section class="section_footer">
   	  <nav class="nav_footer nav_footer_left">
   		<div class="nav_footer_item nav_footer_iww">
