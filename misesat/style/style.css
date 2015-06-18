@@ -215,6 +215,41 @@ a:visited {
 	color: rgb(175,175,175);
 }
 
+/*================== Buchquelle ====================*/
+
+.booksource {
+	background: rgb(240,240,240);
+	min-height: 180px;
+	margin: 20px 0px;
+	padding: 2.5%;
+	width: 95%;
+	border-bottom: 10px solid rgb(203,44,52);
+}
+
+.booksource p {
+	font-size: 11pt;
+	color: rgb(160,160,160);
+	line-height: 1.4;
+	margin: 0;
+}
+
+.booksource a {
+	color: rgb(203,44,52);
+	text-decoration: none;
+    border-bottom: 1px dotted rgb(203,44,52);
+}
+
+.booksource a:hover {
+	color: rgb(203,44,52);
+	border-bottom: 1px solid rgb(203,44,52);
+}
+
+.booksource img {
+	margin-right: 20px;
+	float: left;
+	height: 180px;
+}
+
 /*==================================================*/
 /*                   Denker                    		*/
 /*==================================================*/
@@ -349,43 +384,10 @@ a:visited {
 	margin: 40px 0;
 }
 
-img.autor {
+img.denker {
 	max-width: 300px;
 	margin-bottom: 20px;
-	float: left;
-}
-
-.booksource {
-	background: rgb(240,240,240);
-	min-height: 180px;
-	margin: 20px 0px;
-	padding: 2.5%;
-	width: 95%;
-	border-bottom: 10px solid rgb(203,44,52);
-}
-
-.booksource p {
-	font-size: 11pt;
-	color: rgb(160,160,160);
-	line-height: 1.4;
-	margin: 0;
-}
-
-.booksource a {
-	color: rgb(203,44,52);
-	text-decoration: none;
-    border-bottom: 1px dotted rgb(203,44,52);
-}
-
-.booksource a:hover {
-	color: rgb(203,44,52);
-	border-bottom: 1px solid rgb(203,44,52);
-}
-
-.booksource img {
-	margin-right: 20px;
-	float: left;
-	height: 180px;
+	float: right;
 }
 
 .works {
