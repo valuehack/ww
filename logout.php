@@ -42,11 +42,12 @@ include("views/_header_not_in.php");
 <!--Content-->
 <div class="content">
         <div class="salon_content">
-          
-          <h3 class='centered'>Logout erfolgreich</h3>
+            <div class='centered'>
+            <h3>Logout erfolgreich</h3>
 
-          <p class='centered'><a href='index.php'>&raquo; zur Startseite</a></p>
+            <p><a href='index.php'>&raquo; zur Startseite</a></p>
         
+            </div>
         </div>
 </div>
 <? include "views/_footer.php"; 
