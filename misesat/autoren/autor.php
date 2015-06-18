@@ -1,27 +1,37 @@
 <? 
 	include "../config/header1.inc.php";
 
-	$title="Ludwig von Mises";
+	$title="Denker";
 
 	include "../page/header2.inc.php";
+	
+if(isset($_GET['q']))
+{
+  $id = $_GET['q'];
+
+  //Autorendetails
+  $sql="SELECT * from denker WHERE id='$id'";
+  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+  $entry = mysql_fetch_array($result);
+  $name = $entry[name];
+  $bio = $entry[bio];
+  $img = $entry[img];
 ?>
 
 <!--Content-->
 
     <div class="content">
       <article class="denker">
-      	<div class="index"><p><a href="">Wiener Schule</a> / <a href="">Denker</a> / <a href="">Ludwig von Mises</a></p></div>
+      	<div class="index"><p><a href="">Wiener Schule</a> / <a href="">Denker</a> / <a href=""><?=$name?></a></p></div>
       
-      	<h1>Ludwig Edler von Mises</h1>
-      
-      	
-      
+      	<h1><?=$name?></h1>
+      	     
       	<section>
       	<h2>Leben</h2>
       
-      	<img src="mises.jpg" class="denker" alt="">
+      	<img src="<?=$img?>" class="denker" alt="Portr&auml;t von <?=$name?>">
       	
-      	<p>Ludwig Edler von Mises wurde am 29. September 1881 als Sohn des Arthur Edlen von Mises und seiner Frau Adele, geb. Landau, als Sohn einer wohlhabenden j&uuml;dischen Familie in Lemberg (damals Hauptstadt des Kronlandes Galizien, heute Lwiw, Ukraine) geboren. Die Erhebung in den erblichen Adelsstand war f&uuml;r seinen Urgro�vater Mayer Rachmiel Mises durch Kaiser Franz Joseph I. erfolgt. Sein Bruder war der Mathematiker Richard von Mises. Wenige Jahre sp&auml;ter siedelte die Familie nach Wien &uuml;ber, wo Mises 1900 sein Studium der Rechtswissenschaft aufnahm und 1906 mit einer Dissertation abschloss. Von Mises war ab 1906 Mitarbeiter der Handels- und Gewerbekammer in Wien und leitete dort die Finanzabteilung. Er lehrte ab 1913 in einer unbezahlten Privatdozentur, ab 1918 als au�erordentlicher Professor an der Universit&auml;t Wien sowie ab 1934 am Institut universitaire de hautes �tudes internationales in Genf. W&auml;hrend seiner Zeit in Wien hielt er zudem Privatseminare in seinem B&uuml;ro bei der Handelskammer ab, Teilnehmer waren etwa Fritz Machlup, Oskar Morgenstern und Eric Voegelin. Auch das heutige Wirtschaftsforschungsinstitut (WIFO) geht auf seine Gr&uuml;ndung zur&uuml;ck.[1] Von Mises war einer der f&uuml;hrenden Wirtschaftsberater der &ouml;sterreichischen Regierung; sein wichtigster Mitarbeiter zu dieser Zeit war Friedrich August von Hayek.</p>
+      	<p><?=$bio?></p>
       
       	<div class="booksource">
       		<p>
@@ -32,8 +42,6 @@
 
       		</p>
       	</div>
-      
-      	<p>Aus der Schweiz emigrierte von Mises im Jahr 1940 in die USA, weil er sich in Europa zunehmend bedroht f&uuml;hlte. In den USA hatte er als konsequenter Liberaler in der Phase des New Deal beruflich zun&auml;chst einen schweren Stand und mu�te von Ersparnissen leben. 1946 erhielt er die US-amerikanische Staatsb&uuml;rgerschaft verliehen. Er unterrichtete von 1945 bis 1969 ? damals als &auml;ltester lehrender Professor in den USA ? an der New York University an einem Stiftungslehrstuhl. Von Mises war Mitglied der liberalen Denkfabrik Mont Pelerin Society.</p>
       	</section>
      	<section class="works">
      	
@@ -67,7 +75,223 @@
         <div class="clear"></div>
        </div>
     </div>
+<?php
+}
+else {
+?>
+	
+<article class="content">
+  	
+  	  <p class="index"><a class="index" href="">Wiener Schule</a> / <a class="index" href="">Denker</a></p>
+      
+      <h2>Autoren&uuml;bersicht</h2>
+      
+    <nav>
+    	<ol class="nav_autoren">
+    		<li><a href="#a">A</a></li>
+    		<li><a href="#b">B</a></li>
+    		<li>C</li>
+    		<li>D</li>
+    		<li>E</li>
+    		
+    		<li><a href="#f">F</a></li>
+    		<li>G</li>
+    		<li><a href="#h">H</a></li>
+    		<li>I</li>
+    		<li>J</li>
+    		
+    		<li>K</li>
+    		<li><a href="#l">A</a></li>
+    		<li><a href="#m">M</a></li>
+    		<li>N</li>
+    		<li>O</li>
+    		
+    		<li>P</li>
+    		<li>Q</li>
+    		<li><a href="#r">R</a></li>
+    		<li><a href="#s">S</a></li>
+    		<li>T</li>
+    		
+    		<li>U</li>
+    		<li>V</li>
+    		<li><a href="#w">W</a></li>
+    		<li>X</li>
+    		<li>Y</li>
+    		
+    		<li>Z</li>
+    	</ol>
+    </nav>
+    
+    <div class="autorenliste">
+    	
+      <section>
+      <h2 id="a">A</h2>   
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">A.A.</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>
+      </section>
+      
+      <section>
+      <h2 id="b">B</h2>   
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Eugen B&ouml;hm Ritter von Bawerk</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>
+      </section>
+      
+      <section>
+      <h2 id="f">F</h2>   
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Frank Fetter</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>
+      </section>
+      
+      <section>
+      <h2 id="h">H</h2>   
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Gottfried von Harberler</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Friedrich August von Hayek</a></dt>
+    	  <dd>
+    	    <p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    	    <p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    	    <p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    	    <p><a href="#">zum Autor</a></p>
+		  </dd>
+      	</dl>      
+      </section>
+      
+      <section>
+      <h2 id="l">L</h2>   
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Ludwig Lachmann</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>
+      </section>
+      
+      <section>
+      <h2 id="m">M</h2>   
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Fritz Machlup</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>        
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Carl Menger</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>             
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Ludwig von Mises</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>
+      </section>
+      
+      <section>
+      <h2 id="r">R</h2>   
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Paul Narcyz Rosenstein-Rodan</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>
+      </section>
+      
+      <section>
+      <h2 id="s">S</h2>   
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Emil Sax</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Hans Sennholz</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>  
+      </section>
+      
+      <section>
+      <h2 id="w">W</h2>   
+        <dl>
+          <img src="../style/mises_scetch.jpg" alt="" />
+    	  <dt><a href="#">Friedrich von Wieser</a></dt>
+    	  <dd>
+    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
+    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
+    		<p><a href="#">zum Autor</a></p>
+    	  </dd>
+        </dl>
+      </section>
+  </article>
 
 <?	
+	}
 	include "../page/footer.inc.php";
 ?>
