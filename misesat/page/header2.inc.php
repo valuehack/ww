@@ -10,6 +10,21 @@
     <link rel="stylesheet" href="../style/style.css">
        
     <title><?=$title?> | Mises Austria</title>
+    
+    <script type="text/javascript">
+    	    function setActive() {
+              aObj = document.getElementById('nav').getElementsByTagName('a');
+              for(i=0;i<aObj.length;i++) { 
+                if(document.location.href.indexOf(aObj[i].href)>=0) {
+                  aObj[i].className='active';
+                }
+              }
+            }
+
+            window.onload = setActive;
+		</script>
+    </script>
+    
   </head>
 
 <body>
@@ -20,7 +35,7 @@
 	</div>
   	<div class="nav">
     	<div class="navi">
-      		<ul>
+      		<ul id="nav">
       			<li><a href="../verlag/index.php">Verlag</a></li>
         		<li><a href="../begriffe/index.php">Begriffe</a></li>
         		<li><a href="../autoren/index.php">Denker</a></li>
