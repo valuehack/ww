@@ -115,7 +115,7 @@ if(isset($_GET['q']))
 		<p>Sie k&ouml;nnen zu diesem Termin leider nicht teilnehmen, interessen sich aber f&uuml;r unser weiteres Angebot? Kein Problem. Tragen Sie hier Ihre eMail Adresse ein dann k&ouml;nnen wir Sie &uuml;ber unsere weiteren Veranstaltungen und Angebote informieren.</p>
           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
-          	<input class="inputbutton" type="submit" name="submit" value="Eintragen">
+          	<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
           </form> 
   </div>
 <?php
