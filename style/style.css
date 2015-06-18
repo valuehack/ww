@@ -69,7 +69,7 @@ table {
 body {
 }
 
-p, h1, h2, a, ul, ol {
+p, h1, h2, h3, a, ul, ol {
 	font-family: "Baskerville", Georgia, Times, serif;
 }
 
@@ -79,6 +79,10 @@ em {
 
 strong {
 	font-weight: bold;
+}
+
+h3 {
+	font-size: 16pt;
 }
 
 /* Class for div - centers everything within */

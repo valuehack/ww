@@ -89,6 +89,10 @@ elseif(isset($_POST['delete'])) {
     $total_quantity = 0;
 }
 
+elseif(isset($_POST['checkout'])) {
+    $total_quantity = 0;
+}
+
 elseif(isset($_POST['remove'])) {
     $remove_id = $_POST['remove'];
     $remove_quantity = $_SESSION['basket'][$remove_id];
@@ -190,7 +194,7 @@ while ($entry = mysql_fetch_array($result))
                 			<li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry[credits_left];?></li>
                 			<li><a href="/abo/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></li> 
                 			<li class="divider"></li>
-                			<li><a href="/index.php?logout">Abmelden</a></li>        			               		
+                			<li><a href="/logout.php?logout">Abmelden</a></li>        			               		
                 		</ul>
                 	</div>
                 	<div class="login_basket"><a href="../abo/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></div>
