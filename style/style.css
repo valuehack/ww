@@ -305,6 +305,17 @@ strong {
 	border-bottom: 1px solid rgb(46,74,98);
 }
 
+.messages {
+	float: left;
+	margin-left: 17%;
+	padding: 2px 2px;
+	border: 1px solid #EBCCD1;
+	border-radius: 4px;
+	box-shadow: 0 0 1px 0 transparent;
+	color: #A94442;
+	background-color: #F2DEDE;
+}
+
 /*================  Main Navigation  ===============*/
 
 .nav {
