@@ -2223,6 +2223,7 @@ a:visited.medien_title_list {
 
 .basket_message a {
 	border-bottom: 1px dotted #2E4A62;
+	text-decoration: none;
 }
 
 /*==================================================*/
