@@ -1,6 +1,6 @@
 <!--Footer-->
   <footer>
-  	<section class="section_footer">
+  	<!--<section class="section_footer">
   	  <nav class="nav_footer nav_footer_left">
   		<div class="nav_footer_item nav_footer_iww">
   			<span>&nbsp;</span>
@@ -26,9 +26,9 @@
   			<li><a href="http://www.wertewirtschaft.org/analysen/">Analysen</a></li>
   		</ul>
   	  </nav>
-    </section>
+   </section>-->
     <div class="nav_footer_copy">
-  	  <p>&copy; Mises Austria, Scholarium 2015</p>
+  	  <p>&copy; Mises Austria, Scholarium 2015, <a href="../verlag/impressum.phph">Impressum</a>, <a href="../verlag/index.php">&Uuml;ber Uns</a></p>
   	</div>
   </footer>
 <!--End Footer-->  
