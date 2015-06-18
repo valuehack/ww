@@ -3,6 +3,7 @@
 require_once('../classes/Login.php');
 $title="Scholien";
 include('_header_not_in.php'); 
+include ("_db.php");
 
 if(isset($_GET['q']))
 {
@@ -110,7 +111,7 @@ else
 		<div class="blog_subscribe">
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
         <input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required>
-        <input class="inputbutton" type="submit" name="submit" value="Eintragen" />
+        <input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen" />
       </form>	
 		</div>
 		</div>

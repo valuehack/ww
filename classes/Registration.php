@@ -46,12 +46,20 @@ class Registration
             $this->verifyNewUser($_GET["id"], $_GET["verification_code"]);
 
 
-
-        } elseif (isset($_POST["fancy_ajax_form_submit"]) and ($_POST["fancy_ajax_form_submit"] === "Eintragen" )) {
+//old - ajax login form handle
+/*        } elseif (isset($_POST["fancy_ajax_form_submit"]) and ($_POST["fancy_ajax_form_submit"] === "Eintragen" )) {
         //} elseif (isset($_POST["fancy_ajax_form_submit"]) and (trim($_POST["user_password"]) === "" )) {
 
             $this->subscribeNewUser($_POST['user_email']);
+        }*/
+
+        //register new user
+        } elseif (isset($_POST["eintragen_submit"])) {
+
+            $this->subscribeNewUser($_POST['user_email']);
         }
+
+
 
 
     }
@@ -74,11 +82,12 @@ class Registration
                 // @see http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers#Connecting_to_MySQL says:
                 // "Adding the charset to the DSN is very important for security reasons,
                 // most examples you'll see around leave it out. MAKE SURE TO INCLUDE THE CHARSET!"
-                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=ISO-8859-1', DB_USER, DB_PASS);
+                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=latin1', DB_USER, DB_PASS);
                 return true;
             // If an error is catched, database connection failed
             } catch (PDOException $e) {
                 $this->errors[] = MESSAGE_DATABASE_ERROR;
+                $this->errors[] = "this is it";
                 return false;
             }
         }

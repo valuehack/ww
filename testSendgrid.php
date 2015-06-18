@@ -27,18 +27,13 @@
 
 	curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
 
-	curl_setopt($ch, CURLOPT_VERBOSE, true);
-
 	// $output contains the output string
 	$response = curl_exec($ch);
 
-	// close curl resource to free up system resources
-	$response = curl_exec($ch);
-
+	//TODO - add here current
 	if(empty($response))die("Error: No response.");
 	else
 	{
-		
 	    $json = json_decode($response);
 	    // print_r($json->access_token);
 	    print_r($response);
