@@ -30,7 +30,7 @@ if(isset($_GET['q']))
       	<h2>Leben</h2>
       
       <?php
-      	if ($img) { 
+      	if ($img != 0) { 
       	echo '<img src="'.$img.'" class="denker" alt="Portr&auml;t von '.$name.'">';
 		}
       ?>
@@ -65,8 +65,9 @@ if(isset($_GET['q']))
               		<li><a href="">Ludwig von Mises: Der Mensch und sein Werk</a></li>
             	</ul>
         	</span>
+        </section>
         <div class="clear"></div>
-              	<div class="booksource">
+        <div class="booksource">
       		<p>
       			<img src="wienerschule_buch.jpg" title="Die Wiener Schule der National&oouml;konomie von Eugen-Maria Schulak und Hebert Unterk&ouml;fler" alt="">
       		Die hier vorgestellte Biografie enstammt dem Buch <i>&quot;Die Wiener Schule der National&ouml;konomie&quot;</i>, geschrieben von <a href="#">Eugen-Maria Schulak</a> und Hebert Unterk&ouml;fler. Das Werk erschien in der Reihe &quot;Wiener Wissen&quot; und ist die bislang am tiefsten gehende Darstellung der historischen Entwicklung der Wiener Schule der &Ouml;konomie. Umfassende Recherchen bef&ouml;rderten viel Unbekanntes und &Uuml;berraschendes zu Tage. Neben Biografien und der historischen Entwicklung werden auch die Ideen der Wiener Schule leicht verst&auml;ndlich dargestellt.<br><br>     		
@@ -78,6 +79,9 @@ if(isset($_GET['q']))
 <?php
 }
 else {
+	
+   $sql="SELECT * from denker order by id asc";
+   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 ?>
 <!--Denkerliste-->	
 <article class="content">
@@ -121,19 +125,21 @@ else {
     		<li>Z</li>
     	</ol>
     </nav>
-    
     <div class="autorenliste">
-    	
+<?php 
+  //while($entry = mysql_fetch_array($result))
+  //{	
+?>
       <section>
       <h2 id="a">A</h2>   
         <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">A.A.</a></dt>
+          <img src="<?=$img?>" alt="">
+    	  <dt><a href="?q=<?=$id?>"><?=$name?></a></dt>
     	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
+    		<p><?=$shortbio?></p>
     		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
     		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
+    		<p><a href="?q=<?=$id?>">zum Autor</a></p>
     	  </dd>
         </dl>
       </section>
@@ -292,6 +298,7 @@ else {
   </article>
 
 <?	
-	}
+	//}
+}
 	include "../page/footer.inc.php";
 ?>
