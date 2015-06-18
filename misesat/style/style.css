@@ -350,12 +350,9 @@ a:visited {
 }
 
 img.autor {
-	width: 100%;
+	max-width: 300px;
 	margin-bottom: 20px;
-	/*border: 1px solid rgb(46,74,98);*/
-	border-bottom: 1px solid rgb(46,74,98);
-	border-top: 1px solid rgb(46,74,98);
-	/*padding: 3px*/
+	float: left;
 }
 
 .booksource {

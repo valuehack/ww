@@ -1,15 +1,15 @@
 <!DOCTYPE html >
-<html lang="de">
-	
+<html lang="de">	
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="description" content="Verlag und Kompendium zur &Ouml;stereichischen Schule der &Ouml;konomik">
     <link rel="shortcut icon" href="../favicon.ico">
     <!--[if IE]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
     <link rel="stylesheet" href="../style/style.css">
        
-    <title><?=$title?> | Wiener Schule</title>
+    <title><?=$title?> | Mises Austria</title>
   </head>
 
 <body>
@@ -21,6 +21,7 @@
   	<div class="nav">
     	<div class="navi">
       		<ul>
+      			<li><a href="../verlag/index.php">Verlag</a></li>
         		<li><a href="../begriffe/index.php">Begriffe</a></li>
         		<li><a href="../autoren/index.php">Denker</a></li>
         		<li><a href="../buecher/index.php">B&uuml;cher</a></li>

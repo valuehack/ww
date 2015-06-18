@@ -14,11 +14,13 @@
       
       	<h1>Ludwig Edler von Mises</h1>
       
-      	<img src="mises.jpg" class="autor" alt="">
+      	
       
       	<section>
       	<h2>Leben</h2>
       
+      	<img src="mises.jpg" class="autor" alt="">
+      	
       	<p>Ludwig Edler von Mises wurde am 29. September 1881 als Sohn des Arthur Edlen von Mises und seiner Frau Adele, geb. Landau, als Sohn einer wohlhabenden j&uuml;dischen Familie in Lemberg (damals Hauptstadt des Kronlandes Galizien, heute Lwiw, Ukraine) geboren. Die Erhebung in den erblichen Adelsstand war f&uuml;r seinen Urgro�vater Mayer Rachmiel Mises durch Kaiser Franz Joseph I. erfolgt. Sein Bruder war der Mathematiker Richard von Mises. Wenige Jahre sp&auml;ter siedelte die Familie nach Wien &uuml;ber, wo Mises 1900 sein Studium der Rechtswissenschaft aufnahm und 1906 mit einer Dissertation abschloss. Von Mises war ab 1906 Mitarbeiter der Handels- und Gewerbekammer in Wien und leitete dort die Finanzabteilung. Er lehrte ab 1913 in einer unbezahlten Privatdozentur, ab 1918 als au�erordentlicher Professor an der Universit&auml;t Wien sowie ab 1934 am Institut universitaire de hautes �tudes internationales in Genf. W&auml;hrend seiner Zeit in Wien hielt er zudem Privatseminare in seinem B&uuml;ro bei der Handelskammer ab, Teilnehmer waren etwa Fritz Machlup, Oskar Morgenstern und Eric Voegelin. Auch das heutige Wirtschaftsforschungsinstitut (WIFO) geht auf seine Gr&uuml;ndung zur&uuml;ck.[1] Von Mises war einer der f&uuml;hrenden Wirtschaftsberater der &ouml;sterreichischen Regierung; sein wichtigster Mitarbeiter zu dieser Zeit war Friedrich August von Hayek.</p>
       
       	<div class="booksource">
