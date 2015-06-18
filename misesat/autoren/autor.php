@@ -1,9 +1,9 @@
 <? 
-	include "../header1.inc.php";
+	include "../config/header1.inc.php";
 
 	$title="Ludwig von Mises";
 
-	include "../header2.inc.php";
+	include "../page/header2.inc.php";
 ?>
 
 <!--Content-->
@@ -67,5 +67,5 @@
     </div>
 
 <?	
-	include "../footer.inc.php";
+	include "../page/footer.inc.php";
 ?>

@@ -1,9 +1,9 @@
 <? 
-	include "../header1.inc.php";
+	include "../config/header1.inc.php";
 
 	$title="Das Wien der Wiener Schule";
 
-	include "../header2.inc.php";
+	include "../page/header2.inc.php";
 ?>
 
 <!--Content-->
@@ -20,5 +20,5 @@
 
 <!--End Content-->
 <?	
-	include "../footer.inc.php";
+	include "../page/footer.inc.php";
 ?>

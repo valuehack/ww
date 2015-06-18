@@ -1,9 +1,9 @@
 <? 
-	include "../header1.inc.php";
+	include "../config/header1.inc.php";
 
 	$title="Artikel";
 
-	include "../header2.inc.php";
+	include "../page/header2.inc.php";
 ?>
 
 <!--Content-->
@@ -14,6 +14,5 @@
     </div>
 
 <?	
-	// include "../sidebar.inc.php";
 	include "../footer.inc.php";
 ?>
