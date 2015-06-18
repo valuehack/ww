@@ -2209,16 +2209,16 @@ a:visited.medien_title_list {
 }
 
 .basket_message {
-	width: 75%;
+	width: 50%;
 	padding: 10px 2.5%;
 	border: 1px solid #EBCCD1;
 	border-radius: 4px;
 	box-shadow: 0 0 1px 0 transparent;
-	margin: 40px 10%;
+	margin: 20px 22.5%;
 	color: #468847;
 	background-color: #DFF0D8;
 	font-size: 16pt;
-	line-height: 1.4;
+	text-align: center;
 }
 
 /*==================================================*/
