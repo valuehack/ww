@@ -135,7 +135,7 @@ a:visited {
    	transition: all 0.2s ease 0s;
 }
 
-.nav li:hover {
+.nav li:hover, .nav li:active {
 	background: rgb(255,255,255);
 	border-bottom: 10px solid rgb(203,44,52);
 }
@@ -154,6 +154,14 @@ a:visited {
 .nav li a:hover {
 	color: rgb(150,150,150);
 }
+
+#nav li a.active {
+	text-decoration: none; 
+   	color: rgb(225,225,225); 
+	background: rgb(255,255,255);
+	border-bottom: 10px solid rgb(203,44,52);
+}
+
 
 /*==================================================*/
 /*                 Content General                  */
