@@ -36,12 +36,12 @@
   	<div class="nav">
     	<div class="navi">
       		<ul id="nav">
-      			<li><a href="../verlag/index.php">Verlag</a></li>
-        		<li><a href="../begriffe/index.php">Begriffe</a></li>
-        		<li><a href="../autoren/index.php">Denker</a></li>
-        		<li><a href="../buecher/index.php">B&uuml;cher</a></li>
-        		<li><a href="../dokumente/index.php">Dokumente</a></li>
-        		<li><a href="../orte/index.php">Orte</a></li>
+      			<li><a href="../verlag/">Verlag</a></li>
+        		<li><a href="../begriffe/">Begriffe</a></li>
+        		<li><a href="../autoren/">Denker</a></li>
+        		<li><a href="../buecher/">B&uuml;cher</a></li>
+        		<li><a href="../dokumente/">Dokumente</a></li>
+        		<li><a href="../orte/">Orte</a></li>
       		</ul>
    		</div>
   	</div>
