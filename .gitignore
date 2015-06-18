@@ -5,7 +5,8 @@ misesat/wienerschule.org.webprj
 misesat/wienerschule.org.txt
 misesat/wienerschule.org.session
 misesat/index.html
-misesat/header1.inc.php
+misesat/config/header1.inc.php
+misesat/config
 
 ._db.php
 .werte_db.php
