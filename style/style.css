@@ -305,15 +305,26 @@ strong {
 	border-bottom: 1px solid rgb(46,74,98);
 }
 
-.messages {
+.error {
 	float: left;
 	margin-left: 17%;
-	padding: 2px 2px;
+	padding: 3px 3px;
 	border: 1px solid #EBCCD1;
 	border-radius: 4px;
 	box-shadow: 0 0 1px 0 transparent;
 	color: #A94442;
 	background-color: #F2DEDE;
+}
+
+.message {
+	float: left;
+	margin-left: 17%;
+	padding: 3px 3px;
+	border: 1px solid #EBCCD1;
+	border-radius: 4px;
+	box-shadow: 0 0 1px 0 transparent;
+	color: #468847;
+	background-color: #DFF0D8;
 }
 
 /*================  Main Navigation  ===============*/
@@ -2195,6 +2206,10 @@ a:visited.medien_title_list {
 
 .basket_no_items p {
 	font-size: 18pt;
+}
+
+.basket_message {
+
 }
 
 /*==================================================*/

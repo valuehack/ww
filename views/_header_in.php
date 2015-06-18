@@ -153,13 +153,13 @@ while ($entry = mysql_fetch_array($result))
                       foreach ($login->errors as $error) {
                           #add some html to make it look nicer
                           
-                        ?><p class='messages'> <?php echo $error; ?> </p> <?php
+                        ?><p class='error'> <?php echo $error; ?> </p> <?php
                       }
                   }
                   if ($login->messages) {
                       foreach ($login->messages as $message) {
                           #echo $message;
-                          ?><p class='messages'> <?php echo $message; ?> </p> <?php
+                          ?><p class='message'> <?php echo $message; ?> </p> <?php
                       }
                   }
               }
@@ -168,13 +168,13 @@ while ($entry = mysql_fetch_array($result))
                   if ($registration->errors) {
                       foreach ($registration->errors as $error) {
                           #echo $error;
-                      ?><p class='messages'> <?php echo $error; ?> </p> <?php
+                      ?><p class='error'> <?php echo $error; ?> </p> <?php
                       }
                   }
                   if ($registration->messages) {
                       foreach ($registration->messages as $message) {
                           #echo $message;
-                          ?><p class='messages'> <?php echo $message; ?> </p> <?php
+                          ?><p class='message'> <?php echo $message; ?> </p> <?php
                       }
                   }
               }
