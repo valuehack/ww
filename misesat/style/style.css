@@ -542,7 +542,7 @@ footer {
 	font-family: Verdana, Tahoma, sans-serif;
 	font-weight: 600;
 	margin-bottom: 0;
-	height: 30px;
+	padding: 20px 0;
 }
 
 footer a:link, footer a:visited {
@@ -556,6 +556,17 @@ footer a:link, footer a:visited {
 footer a:hover {
 	text-decoration: underline;
 }
+
+footer p {
+	font-size: 10pt;
+	line-height: 20px;
+	text-align: center;
+	color: rgb(255,255,255);
+}
+
+/*=======================================*/
+/*========= Erweiterter Footer ==========*/
+/*=======================================*/
 
 .section_footer {
 	width: 600px;
@@ -616,20 +627,12 @@ a.nav_footer_iww:hover, a.nav_footer_iww:active {
     height: 65px;
 }
 .nav_footer_copy {
-	float: none;
 	clear: both;
 	text-align: center;
-    padding: 10px 0 5px;
 }
 .nav_footer_copy p {
 	font-size: 10pt;
 	line-height: 20px;
 	text-align: center;
-	text-shadow: 1px 1px 1px rgb(71, 95, 117);
-	color: rgb(28, 45, 59);
-}
-
-.img_footer {
-	max-width: 290px;
-	border: 0;
+	color: rgb(255,255,255);
 }
