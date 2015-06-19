@@ -31,14 +31,14 @@ define("MESSAGE_PASSWORD_RESET_MAIL_FAILED", "Password reset mail NOT successful
 define("MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT", "\"Passwort zurücksetzen\"-E-Mail wurde erfolgreich versendet");
 define("MESSAGE_PASSWORD_TOO_SHORT", "Passwort muss mindestens 6 Zeichen haben");
 define("MESSAGE_PASSWORD_WRONG", "Passwort falsch");
-define("MESSAGE_PASSWORD_WRONG_3_TIMES", "Sie haben das Passwort dreimal falsch eingegeben. Bitte warten Sie 30 Sekunden, um es noch einmal zu probieren.");
+define("MESSAGE_PASSWORD_WRONG_3_TIMES", "Passwort wurde dreimal falsch eingegeben. Bitte warten Sie 30 Sekunden, um es noch einmal zu probieren.");
 define("MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL", "Sorry, no such id/verification code combination here...");
 define("MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL", "Aktivierung war erfolgreich!");
 define("MESSAGE_REGISTRATION_FAILED", "Sorry, your registration failed. Please go back and try again.");
 define("MESSAGE_RESET_LINK_HAS_EXPIRED", "Your reset link has expired. Please use the reset link within one hour.");
 define("MESSAGE_VERIFICATION_MAIL_ERROR", "Sorry, we could not send you an verification mail. Your account has NOT been created.");
 define("MESSAGE_VERIFICATION_MAIL_NOT_SENT", "Verification Mail NOT successfully sent! Error: ");
-define("MESSAGE_VERIFICATION_MAIL_SENT", "Ihr Account wurde erfolgreich erstellt und eine E-Mail versandt. Bitte prüfen Sie Ihren Posteingang und klicken Sie auf den Best&auml;tigungslink.");
+define("MESSAGE_VERIFICATION_MAIL_SENT", "Ihr Account wurde erfolgreich erstellt. Bitte pr&uuml;fen Sie Ihren Posteingang.");
 define("MESSAGE_USER_DOES_NOT_EXIST", "Der Nutzer existiert nicht.");
 define("MESSAGE_USERNAME_BAD_LENGTH", "Username cannot be shorter than 2 or longer than 64 characters");
 define("MESSAGE_USERNAME_CHANGE_FAILED", "Sorry, your chosen username renaming failed");

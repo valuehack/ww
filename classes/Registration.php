@@ -359,7 +359,7 @@ class Registration
             // get result row (as an object)
             $the_row = $verify_user->fetchObject();
 
-            print_r($the_row);
+            //print_r($the_row);
 
             //copy data to the main database
 
