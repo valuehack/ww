@@ -48,7 +48,7 @@ if(isset($_GET['q']))
    				$sql3 = "SELECT * from buecher WHERE autor='$name'";
 		        $result3 = mysql_query($sql3) or die("Failed Query of " . $sql3. " - ". mysql_error());         		
           		while($entry3 = mysql_fetch_array($result3)) {
-          			echo '<li><a href="'.$entry3[link].'">'.$entry3[title].'</a>';
+          			echo '<li><a href="'.$entry3[link].'">'.$entry3[titel].'</a>';
           		}
 				?>
           		</ul>
@@ -61,7 +61,7 @@ if(isset($_GET['q']))
    				$sql2 = "SELECT * from artikel WHERE autor='$name'";
 		        $result2 = mysql_query($sql2) or die("Failed Query of " . $sql2. " - ". mysql_error());         		
           		while($entry2 = mysql_fetch_array($result2)) {
-          			echo '<li><a href="'.$entry2[link].'">'.$entry2[title].'</a>';
+          			echo '<li><a href="'.$entry2[link].'">'.$entry2[titel].'</a>';
           		}
 				?>
             	</ul>
