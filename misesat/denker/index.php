@@ -58,7 +58,7 @@ if(isset($_GET['q']))
           		<h4>Artikel</h4>
             	<ul>
           		<?php
-   				$sql2 = "SELECT * from article WHERE autor='$name'";
+   				$sql2 = "SELECT * from artikel WHERE autor='$name'";
 		        $result2 = mysql_query($sql2) or die("Failed Query of " . $sql2. " - ". mysql_error());         		
           		while($entry2 = mysql_fetch_array($result2)) {
           			echo '<li><a href="'.$entry2[link].'">'.$entry2[title].'</a>';
@@ -71,13 +71,13 @@ if(isset($_GET['q']))
           		<h4>Biografien</h4>
      
            		<ul>
-          		<?php
+          		<!--<?php
    				$sql4 = "SELECT * from biografie WHERE autor='$name'";
 		        $result4 = mysql_query($sql4) or die("Failed Query of " . $sql4. " - ". mysql_error());         		
           		while($entry4 = mysql_fetch_array($result4)) {
           			echo '<li><a href="'.$entry4[link].'">'.$entry4[title].'</a>';
           		}
-				?>
+				?>-->
             	</ul>
         	</span>
         </section>
