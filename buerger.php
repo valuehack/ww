@@ -77,6 +77,12 @@ if ($login->isUserLoggedIn() == true) {
 			<p>
 				Wir laden die letzten eigenverantwortlichen B&uuml;rger im deutschsprachigen Raum (und auch jene, die bereits den Exodus angetreten haben) ein, uns bei unserer unbequemen Suche nach Erkenntnis, Wertsch&ouml;pfung und Sinnfindung zu begleiten und daraus Nutzen, Inspiration und Ermutigung zu ziehen.
 			</p>
+			<div class="centered">
+				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+  					<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+  					<input class="inputbutton" type="submit" name="subscribe" value="Eintragen">
+				</form>
+			</div>
 		</div>		
 	</div>
 </div>

@@ -81,7 +81,12 @@ if ($login->isUserLoggedIn() == true) {
 			<p>Exklusive Bildungsprogramme mit pers&ouml;nlicher Betreuung, hochwertiger Infrastruktur und moderner Ausr&uuml;stung sind teuer. Alternative praktische Ausbildungsprogramme im Ausland kosten teilweise mehr als 7.000&euro; pro Monat. Wir k&ouml;nnen Ihnen nur deshalb so g&uuml;nstige Konditionen bieten, weil bei uns keine Profite, Zinsen oder Steuern lukriert werden m&uuml;ssen und viel Idealismus privater Unterst&uuml;tzer dahinter steht. </p>
 
 			<p>Wir hoffen, Sie k&ouml;nnen sich zu dieser langfristigen Investition und Starthilfe f&uuml;r Ihren Sohn/Ihre Tochter entschlie&szlig;en und stehen Ihnen gerne f&uuml;r weitere Fragen zur Verf&uuml;gung. Bitte schreiben Sie uns unter info@wertewirtschaft.org. Wir w&uuml;rden uns sehr freuen, Ihren Sohn/Ihre Tochter bald auf seinem/ihrem Lebensweg unterst&uuml;tzen zu d&uuml;rfen.</p>
-
+			<div class="centered">
+				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+  					<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+  					<input class="inputbutton" type="submit" name="subscribe" value="Eintragen">
+				</form>
+			</div>
 		</div>		
 	</div>
 </div>

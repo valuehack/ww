@@ -63,9 +63,9 @@ if ($length>10)
 		Beehren Sie eine der letzten v&ouml;llig unabh&auml;ngigen Bildungs- und&nbsp;Forschungseinrichtungen als Gast und sichern Sie sich Ihren Wissensvorteil. 
 		Treten Sie dazu bitte zun&auml;chst einen Schritt weit aus der Anonymit&auml;t und tragen Sie hier Ihre E-Mail-Adresse ein:</p>
 
-		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform" style="text-aligna:center; paddinga: 10px ">
-  			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required />
-  			<input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
+		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+  			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+  			<input class="inputbutton" type="submit" name="subscribe" value="Eintragen">
 		</form>
 	</div>
 	<? } 
@@ -76,8 +76,8 @@ else
 		erfahren Sie, wenn Sie zun&auml;chst einen Schritt weit aus der Anonymit&auml;t treten und hier Ihre E-Mail-Adresse eintragen:</p>
 
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform" style="text-aligna:center; paddinga: 10px ">
-  			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required />
-  			<input class="inputbutton" type="submit" name="subscribe" value="Eintragen" />
+  			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+  			<input class="inputbutton" type="submit" name="subscribe" value="Eintragen">
 		</form>
 	</div>
 	<? } ?>
@@ -111,7 +111,7 @@ else
 		<div class="blog_subscribe">
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
         <input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required>
-        <input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen" />
+        <input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
       </form>	
 		</div>
 		</div>
