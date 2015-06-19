@@ -1,5 +1,5 @@
 <? 
-	include "header1.inc.php";
+	include "../config/header1.inc.php";
 
 	$title="Willkommen!";
 
