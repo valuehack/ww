@@ -48,7 +48,7 @@ if(isset($_GET['q']))
    				$sql3 = "SELECT * from buecher WHERE autor='$name'";
 		        $result3 = mysql_query($sql3) or die("Failed Query of " . $sql3. " - ". mysql_error());         		
           		while($entry3 = mysql_fetch_array($result3)) {
-          			echo '<li><a href="'.$entry2[link].'">'.$entry2[title].'</a>';
+          			echo '<li><a href="'.$entry3[link].'">'.$entry3[title].'</a>';
           		}
 				?>
           		</ul>
