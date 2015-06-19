@@ -392,11 +392,10 @@ em {
 	text-align: justify;
 	font-size: 12pt;
 	line-height: 1.8;
-	margin: 40px 0;
 }
 
 img.denker {
-	max-width: 300px;
+	max-width: 250px;
 	float: right;
 	margin: 10px 0 10px 20px;
 }

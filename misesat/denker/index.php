@@ -16,6 +16,7 @@ if(isset($_GET['q']))
   $name = $entry[name];
   $bio = $entry[bio];
   $img = $entry[img];
+    
 ?>
 <!--Denker-->
 <!--Content-->
@@ -42,18 +43,27 @@ if(isset($_GET['q']))
      	
      		<span class="works_sub">
           		<h4>B&uuml;cher</h4>
-            	<ul>
-              		<li><a href="">Theorie des Geldes und der Umlaufsmittel</a></li>
-              		<li><a href="">Die Gemeinwirtschaft</a></li>
-              		<li><a href="">Human Action - A Treatise in Economics</a></li>
+          		<ul>
+          		<?php
+   				$sql3 = "SELECT * from buecher WHERE autor='$name'";
+		        $result3 = mysql_query($sql3) or die("Failed Query of " . $sql3. " - ". mysql_error());         		
+          		while($entry3 = mysql_fetch_array($result3)) {
+          			echo '<li><a href="'.$entry2[link].'">'.$entry2[title].'</a>';
+          		}
+				?>
           		</ul>
        		</span>
         
         	<span class="works_sub_m">
           		<h4>Artikel</h4>
             	<ul>
-              		<li><a href="">Soziologie und Geschichte</a></li>
-              		<li><a href="">Begreifen und Verstehen</a></li>
+          		<?php
+   				$sql2 = "SELECT * from article WHERE autor='$name'";
+		        $result2 = mysql_query($sql2) or die("Failed Query of " . $sql2. " - ". mysql_error());         		
+          		while($entry2 = mysql_fetch_array($result2)) {
+          			echo '<li><a href="'.$entry2[link].'">'.$entry2[title].'</a>';
+          		}
+				?>
             	</ul>
        		</span>
         
@@ -61,8 +71,13 @@ if(isset($_GET['q']))
           		<h4>Biografien</h4>
      
            		<ul>
-              		<li><a href="">The Last Knight of Liberalism</a></li>
-              		<li><a href="">Ludwig von Mises: Der Mensch und sein Werk</a></li>
+          		<?php
+   				$sql4 = "SELECT * from biografie WHERE autor='$name'";
+		        $result4 = mysql_query($sql4) or die("Failed Query of " . $sql4. " - ". mysql_error());         		
+          		while($entry4 = mysql_fetch_array($result4)) {
+          			echo '<li><a href="'.$entry4[link].'">'.$entry4[title].'</a>';
+          		}
+				?>
             	</ul>
         	</span>
         </section>
