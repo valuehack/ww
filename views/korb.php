@@ -506,7 +506,7 @@ if($_SESSION['basket']) {
            		 			echo $itemsExtraArray[price];
         				}
 					?>				
-				<img style='height:25px' src='../style/gfx/logo_credits.png'></span>
+				<img style='height:25px' src='../style/gfx/coin.png'></span>
 			</div>
 			<div class="basket_body_col_c">
 				<span>
@@ -532,7 +532,7 @@ if($_SESSION['basket']) {
 		<div class="basket_shipping">
 			<div class="basket_shipping_col_a">Versandkostenpauschale</div>
 			<div class="basket_shipping_col_c">&nbsp;</div>
-			<div class="basket_shipping_col_b">5 <img style='height:25px' src='../style/gfx/logo_credits.png'></div>
+			<div class="basket_shipping_col_b">5 <img style='height:25px' src='../style/gfx/coin.png'></div>
 		</div>
 	<?php
 		$total += 5;
@@ -541,7 +541,7 @@ if($_SESSION['basket']) {
 		<div class="basket_footer">
 			<div class="basket_footer_col_a">Summe:</div>
 			<div class="basket_footer_col_c">&nbsp;</div>		
-			<div class="basket_footer_col_b"><?echo $total;?> <img style='height:25px' src='../style/gfx/logo_credits.png'></div>	
+			<div class="basket_footer_col_b"><?echo $total;?> <img style='height:25px' src='../style/gfx/coin.png'></div>	
 		</div>	
 		<div class="basket_pay">
 		    <!-- possibility 1 -->
