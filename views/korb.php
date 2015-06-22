@@ -220,7 +220,7 @@ if(isset($_POST['checkout'])) {
                 //echo '<td><a href="'.$download$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'/.pdf';_link.'" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>';
            
 
-                if (($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'media' || $type == 'audio') && $format != 4) {
+                if (($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'paket' || $type == 'audio') && $format != 4) {
 
                 ?>
                 <td><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href);">Download</a></td>
@@ -454,7 +454,7 @@ if($_SESSION['basket']) {
 			$url = 'http://test.wertewirtschaft.net/salon/'.$itemsExtraArray[id].'.jpg';
             $url2 = 'salon';
 			}
-        if ($itemsExtraArray[type] == 'media' OR 'audio' OR 'video') {
+        if ($itemsExtraArray[type] == 'paket' OR 'audio' OR 'video') {
             $url = 'http://test.wertewirtschaft.net/medien/'.$itemsExtraArray[id].'.jpg';
             $url2 = 'medien';
             }
@@ -506,7 +506,7 @@ if($_SESSION['basket']) {
            		 			echo $itemsExtraArray[price];
         				}
 					?>				
-				Credits</span>
+				<img style='height:25px' src='../style/gfx/logo_credits.png'></span>
 			</div>
 			<div class="basket_body_col_c">
 				<span>
@@ -532,7 +532,7 @@ if($_SESSION['basket']) {
 		<div class="basket_shipping">
 			<div class="basket_shipping_col_a">Versandkostenpauschale</div>
 			<div class="basket_shipping_col_c">&nbsp;</div>
-			<div class="basket_shipping_col_b">5 Credits</div>
+			<div class="basket_shipping_col_b">5 <img style='height:25px' src='../style/gfx/logo_credits.png'></div>
 		</div>
 	<?php
 		$total += 5;
@@ -541,7 +541,7 @@ if($_SESSION['basket']) {
 		<div class="basket_footer">
 			<div class="basket_footer_col_a">Summe:</div>
 			<div class="basket_footer_col_c">&nbsp;</div>		
-			<div class="basket_footer_col_b"><?echo $total;?> Credits</div>	
+			<div class="basket_footer_col_b"><?echo $total;?> <img style='height:25px' src='../style/gfx/logo_credits.png'></div>	
 		</div>	
 		<div class="basket_pay">
 		    <!-- possibility 1 -->
