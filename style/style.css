@@ -134,6 +134,7 @@ h3 {
 	width: 500px;
 }
 
+
 /*================= Login/Profil ===================*/
 
 .login {
@@ -264,6 +265,11 @@ h3 {
     margin: 9px 0px;
     overflow: hidden;
     background-color: #E5E5E5;
+}
+
+.et {
+	border: 2px solid #777;
+	border-radius: 3px;
 }
 
 .inputbutton_login {
