@@ -105,11 +105,11 @@ if(isset($_GET['q']))
      
     		<?php
     			if ($entry3[format] == '0001') {
-    				echo '<span id="total2" class="schriften_price">'.$entry3[price].' <img style="height:25px" src="../style/gfx/scholarium_logo_credits.png"></span>';
+    				echo '<span id="total2" class="schriften_price">'.$entry3[price].' <img style="height:25px" src="../style/gfx/logo_credits.png"></span>';
 					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				else {
-					echo '<span id="price" class="schriften_price">' .$entry3[price].' <img style="height:25px" src="../style/gfx/scholarium_logo_credits.png"></span>';
+					echo '<span id="price" class="schriften_price">' .$entry3[price].' <img style="height:25px" src="../style/gfx/logo_credits.png"></span>';
 					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				echo '<span class="schriften_format">Format: <select name="format"';

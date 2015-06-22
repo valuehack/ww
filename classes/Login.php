@@ -1137,7 +1137,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
             $this->editProfile($profile);
         }
         
-        $this->messages[] = 'Upgrade erfolgreich durchgeführt! Bitte prüfen Sie Ihren Posteingang - '. $user_email;
+        $this->messages[] = 'Upgrade erfolgreich durchgef&uuml;hrt! Bitte pr&uuml;fen Sie Ihren Posteingang - '. $user_email;
 
 } 
 else {
