@@ -169,11 +169,12 @@ else {
      	  </ul>
 		</p>  
   </div>
+  <div class="medien_seperator">
+    <h1>Schriften</h1>
+  </div> 
   <?
   } ?>
-  	<div class="medien_seperator">
-    	<h1>Schriften</h1>
-    </div> 
+
 	<div class="medien_content">
 <?php
 

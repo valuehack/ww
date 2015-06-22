@@ -2,7 +2,7 @@
 <html lang="de">
 	<head>  
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title><?=$title?> | Wertewirtschaft</title>
+		<title><?=$title?> | Scholarium</title>
     
     	<link rel="shortcut icon" href="/favicon.ico">
     	<link rel="stylesheet" type="text/css" href="../style/style.css">
