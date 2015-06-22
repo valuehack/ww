@@ -221,7 +221,7 @@ else {
 	<div class="projekte">
 		<h1><a href='?q=<?php echo $id;?>'><?php echo $entry[title];?></h1></a>
 		<?php echo $entry[text]; ?>
-		<div class="medien_anmeldung"><a href="?q=<?php echo $id;?>">weitere Informationen</a></div>
+		<!--<div class="medien_anmeldung"><a href="?q=<?php echo $id;?>">weitere Informationen</a></div>-->
 		<div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
  	</div>    
     <?php

@@ -250,7 +250,7 @@ while($entry = mysql_fetch_array($result))
 	 <a class="medien_title_list" href='?q=<?echo $id;?>'><?echo $entry[title];?></a>
      <p><?echo $entry[text];?></p>
      
-     <?
+     <? /*
 			if ($_SESSION['Mitgliedschaft'] == 1) {
 				echo '<div class="centered"><input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal"></div>';
 			}
@@ -272,7 +272,7 @@ while($entry = mysql_fetch_array($result))
     			</div>
     		<?
 			}
-			?>
+			*/?>
      
 	 <div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
 	

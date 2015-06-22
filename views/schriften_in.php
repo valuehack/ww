@@ -105,11 +105,11 @@ if(isset($_GET['q']))
      
     		<?php
     			if ($entry3[format] == '0001') {
-    				echo '<span id="total2" class="schriften_price">'.$entry3[price].' <img class="et_schriften" src="../style/gfx/scholarium_logo_credits.png"></span>';
+    				echo '<span id="total2" class="schriften_price">'.$entry3[price].' <img style="height:25px" src="../style/gfx/scholarium_logo_credits.png"></span>';
 					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				else {
-					echo '<span id="price" class="schriften_price">' .$entry3[price].' <img class="et_schriften" src="../style/gfx/scholarium_logo_credits.png"></span>';
+					echo '<span id="price" class="schriften_price">' .$entry3[price].' <img style="height:25px" src="../style/gfx/scholarium_logo_credits.png"></span>';
 					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				echo '<span class="schriften_format">Format: <select name="format"';
@@ -316,7 +316,7 @@ while($entry = mysql_fetch_array($result))
 ?>
 		<tr>
 			<td class="schriften_table_a">
-				<img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>">
+				<a href="<? echo "?q=$id";?>"><img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>"></a>
 			</td>			
 			<td class="schriften_table_b">
 				<span><? echo ucfirst($entry[type]);?></span><br>
@@ -330,18 +330,21 @@ while($entry = mysql_fetch_array($result))
 						}?>
 				...</p>
 			</td>
-			<td class="schriften_table_c">
+			<!--<td class="schriften_table_c">
 				<?php
-					if 	($_SESSION['Mitgliedschaft'] == 1) { 
+					/*if 	($_SESSION['Mitgliedschaft'] == 1) { 
 						echo '<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">';
 					}
 					else {
 						
 						echo "<a href='?q=$id'><button class='inputbutton' type='button'>Bestellen</button></a>";
       					}     									
-					?>
-			</td>
+					*/?>
+			</td>-->
 		</tr>
+      
+    <tr><td colspan="3"> <div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div></td></tr>
+
 
 <?php
 	}

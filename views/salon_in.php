@@ -193,7 +193,7 @@ else {
       else echo "Der Termin wird in K&uuml;rze bekannt gegeben."; ?>
 		</div>
 		<?php echo $entry[text]; ?> 
-			<div class="salon_anmeldung"><a href="<? echo "?q=$id";?>">zur Anmeldung</a></div>
+			<!--<div class="salon_anmeldung"><a href="<? echo "?q=$id";?>">zur Anmeldung</a></div>-->
 			<div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
   <?php
   }

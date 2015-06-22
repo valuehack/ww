@@ -213,7 +213,7 @@ while($entry = mysql_fetch_array($result))
 ?>
 		<tr>
 			<td class="schriften_table_a">
-				<img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>">
+				<a href="<? echo "?q=$id";?>"><img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>"></a>
 			</td>			
 			<td class="schriften_table_b">
 				<span><? echo ucfirst($entry[type]);?></span><br>
@@ -228,10 +228,13 @@ while($entry = mysql_fetch_array($result))
 					?>
 				...</p>
 			</td>
-			<td class="schriften_table_c">	
+			<!--<td class="schriften_table_c">	
 				<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">
-			</td>
+			</td>-->
 		</tr>
+
+    <tr><td colspan="3"> <div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div></td></tr>
+
 
 <?php
 	}

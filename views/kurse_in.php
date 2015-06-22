@@ -207,7 +207,7 @@ if(isset($_GET['q']))
     echo "<p>";
     //echo "<img src='$img_url' alt='$id'>";
     echo $entry[text];
-    echo "<div class='salon_anmeldung'><a href='?q=$id'>zur Anmeldung</a></div>";
+    //echo "<div class='salon_anmeldung'><a href='?q=$id'>zur Anmeldung</a></div>";
 	echo "<div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>";
 	echo "</div>";
   } 
