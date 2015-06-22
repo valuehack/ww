@@ -878,6 +878,7 @@ h3 {
 
 .linie img {
 	max-height: 35px;
+	margin: 0px !important;
 }
 
 .blog_footer {
@@ -1575,6 +1576,14 @@ a:visited.medien_title_list {
 
 .et_schriften {
 	height: 25px;
+}
+
+.schriften_linie {
+	text-align: center !important;
+}
+
+.schriften_linie img {
+	max-height: 35px;
 }
 
 /* ============= Projekte ============*/
