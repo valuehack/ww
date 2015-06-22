@@ -186,7 +186,7 @@ while ($entry = mysql_fetch_array($result))
 
                 <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
                 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
-                			<li class="dropdown-header"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
+                			<li class="dropdown-header dropdown_name"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
                             <li class="dropdown-header dropdown_level"><? echo $Mitgliedschaft;?></li>
                 			<li><a href="/abo/profil.php">Profil</a></li>
                 			<li><a href="/abo/upgrade.php">Upgrade</a></li>
