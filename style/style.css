@@ -2091,7 +2091,7 @@ a:visited.medien_title_list {
 }
 
 .basket_body_col_b span {
-	font-size: 16pt;
+	font-size: 20pt;
 }
 
 .basket_body_col_c {
@@ -2148,9 +2148,10 @@ a:visited.medien_title_list {
 }
 
 .basket_footer_col_b {
-	width: 15%;
+	/*width: 15%;*/
 	float: right;
 	text-align: right;	
+	font-size: 23pt;
 }
 
 .basket_footer_col_c {
@@ -2276,6 +2277,23 @@ a:visited.medien_title_list {
 
 .basket_message a:hover{
 	border-bottom: 1px solid rgb(46,74,98);
+}
+
+.basket_coin {
+	float: right;
+}
+
+.basket_coin img {
+	height:23px;
+}
+
+.basket_coin_total {
+	float: right;
+}
+
+.basket_coin_total img {
+	height:26px;
+}
 }
 
 /*==================================================*/
