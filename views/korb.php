@@ -197,7 +197,9 @@ if(isset($_POST['checkout'])) {
             $type = $itemsExtraArray[type];
 
             switch ($format) {
-                case 0: if ($type == 'audio' OR 'media') $extension = '.mp3'; break;
+                case 0: if ($type == 'audio') $extension = '.mp3';
+                        if ($type == 'paket') $extension = '.zip';
+                        break;
                 case 1: $extension = '.pdf'; break;
                 case 2: $extension = '.epub'; break;
                 case 3: $extension = '.mobi'; break;
