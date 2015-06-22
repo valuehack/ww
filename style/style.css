@@ -273,6 +273,10 @@ h3 {
 	padding: 0px 4px;
 }
 
+.et_img img {
+	height: 15px;
+}
+
 .inputbutton_login {
 	text-decoration: none;
 	background: rgb(46,74,98);
@@ -1553,6 +1557,11 @@ a:visited.medien_title_list {
 	width: 65px;
 	margin-left: 74px;
 }
+
+img .et_schriften {
+	height: 25px;
+}
+
 /* ============= Projekte ============*/
 
 .projekte {
