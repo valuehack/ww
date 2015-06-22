@@ -269,7 +269,8 @@ h3 {
 
 .et {
 	border: 2px solid #777;
-	border-radius: 3px;
+	border-radius: 20px;
+	padding: 0px 4px;
 }
 
 .inputbutton_login {
