@@ -273,7 +273,7 @@ h3 {
 	padding: 0px 4px;
 }
 
-.et_img img {
+.et_img {
 	height: 15px;
 }
 
@@ -1558,7 +1558,7 @@ a:visited.medien_title_list {
 	margin-left: 74px;
 }
 
-img .et_schriften {
+.et_schriften {
 	height: 25px;
 }
 
