@@ -67,7 +67,7 @@ if(isset($_GET['q']))
 				echo '<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';
 			}
 			else { ?>
-				<span class="schriften_price"><?php echo $entry3[price]; ?> <img style="height:30px" src="../style/gfx/coin.png"></span>
+				<span class="schriften_price"><?php echo $entry3[price]; ?></span> <span class='coin'><img style="height:30px" src="../style/gfx/coin.png"></span>
 				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
       				<input type="hidden" name="add" value="<?php echo $n; ?>" />
      				<!--<select name="quantity">
