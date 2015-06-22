@@ -2281,6 +2281,7 @@ a:visited.medien_title_list {
 
 .basket_coin {
 	float: right;
+	margin-left: 8px;
 }
 
 .basket_coin img {
@@ -2289,6 +2290,7 @@ a:visited.medien_title_list {
 
 .basket_coin_total {
 	float: right;
+	margin-left: 8px;
 }
 
 .basket_coin_total img {
