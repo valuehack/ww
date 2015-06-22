@@ -109,7 +109,7 @@ if(isset($_GET['q']))
       </select> 
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
     </form>
-	<span id="change" class="salon_reservation_span_b"><?php echo $price; ?> <span class='et'>&amp;</span></span>
+	<span id="change" class="salon_reservation_span_b"><?php echo $price; ?> <span class='salon_et'>&amp;</span></span>
 <?php  
   }
 ?>		
