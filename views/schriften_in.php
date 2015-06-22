@@ -324,11 +324,12 @@ while($entry = mysql_fetch_array($result))
       			<p>
       				<? if (strlen($entry[text]) > 500) {
 							echo substr ($entry[text], 0, 500);
+              echo '...';
 						}
 						else {
 							echo $entry[text];
 						}?>
-				...</p>
+				</p>
 			</td>
 			<!--<td class="schriften_table_c">
 				<?php
@@ -343,7 +344,7 @@ while($entry = mysql_fetch_array($result))
 			</td>-->
 		</tr>
       
-    <tr><td colspan="3"> <div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div></td></tr>
+    <tr><td colspan="3"> <div class="centered"><p class='linie'><img style='height: 35px' src='../style/gfx/linie.png' alt=''></p></div></td></tr>
 
 
 <?php

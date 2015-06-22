@@ -35,13 +35,13 @@ if(isset($_GET['q']))
   $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE (type LIKE 'media' or type LIKE 'audio' or type LIKE 'video') AND id = '$id'";
+  $sql="SELECT * from produkte WHERE (type LIKE 'paket' or type LIKE 'audio' or type LIKE 'video') AND id = '$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
   
   				//Change button-value according to media type
-    if ($entry3[type] == 'media') { $btn_value = "Herunterladen";} 
+    if ($entry3[type] == 'paket') { $btn_value = "Herunterladen";} 
   	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
     if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
 
@@ -126,7 +126,7 @@ else {
 	   First get total number of rows in data table. 
 	   If you have a WHERE clause in your query, make sure you mirror it here.
 	*/
-	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media' or type LIKE 'audio' or type LIKE 'video') AND status > 0";
+	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'paket' or type LIKE 'audio' or type LIKE 'video') AND status > 0";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -140,7 +140,7 @@ else {
 		$start = 0;								//if no page var is given, set start to 0
 	
 	/* Get data. */
-	$sql = "SELECT * from produkte WHERE (type LIKE 'media' or type LIKE 'audio' or type LIKE 'video') AND status > 0 order by title asc, n asc LIMIT $start, $limit";
+	$sql = "SELECT * from produkte WHERE (type LIKE 'paket' or type LIKE 'audio' or type LIKE 'video') AND status > 0 order by title asc, n asc LIMIT $start, $limit";
 	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	
@@ -233,13 +233,13 @@ else {
 			$pagination.= "<span class=\"disabled\">vor &raquo;</span>";
 		$pagination.= "</div>\n";		
 	}
-//$sql = "SELECT * from produkte WHERE (type LIKE 'media' or type LIKE 'audio' or type LIKE 'video') AND status > 0 order by title asc, n asc";
+//$sql = "SELECT * from produkte WHERE (type LIKE 'paket' or type LIKE 'audio' or type LIKE 'video') AND status > 0 order by title asc, n asc";
 //$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
 						//Change button-value according to media type
-	if ($entry[type] == 'media') { $btn_value = "Herunterladen";} 
+	if ($entry[type] == 'paket') { $btn_value = "Herunterladen";} 
   if ($entry[type] == 'audio') { $btn_value = "Herunterladen";} 
     if ($entry[type] == 'video') { $btn_value = "Ansehen";}
 	

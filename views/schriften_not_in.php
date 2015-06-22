@@ -221,19 +221,20 @@ while($entry = mysql_fetch_array($result))
       			<p>
       				<? if (strlen($entry[text]) > 300) {
 							echo substr ($entry[text], 0, 300);
+              echo '...';
 						}
 						else {
 							echo $entry[text];
 						}
 					?>
-				...</p>
+				</p>
 			</td>
 			<!--<td class="schriften_table_c">	
 				<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">
 			</td>-->
 		</tr>
 
-    <tr><td colspan="3"> <div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div></td></tr>
+    <tr><td colspan="3"> <div class="centered"><p class='linie'><img style='height: 35px' src='../style/gfx/linie.png' alt=''></p></div></td></tr>
 
 
 <?php
