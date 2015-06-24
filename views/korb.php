@@ -533,7 +533,7 @@ if($_SESSION['basket']) {
 		<div class="basket_shipping">
 			<div class="basket_shipping_col_a">Versandkostenpauschale</div>
 			<div class="basket_shipping_col_c">&nbsp;</div>
-            <div class="basket_shipping_col_b"><span class='basket_coin'><img src="../style/gfx/coin.png"></span>5</div>
+            <div class="basket_shipping_col_b"><span class='basket_coin'><img src="../style/gfx/coin.png"></span><span>5</span></div>
 		</div>
 	<?php
 		$total += 5;

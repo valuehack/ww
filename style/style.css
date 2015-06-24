@@ -2138,6 +2138,9 @@ a:visited.medien_title_list {
 	text-align: right;
 }
 
+.basket_shipping_col_b span {
+	font-size: 20pt;
+}
 
 .basket_shipping_col_c {
 	width: 15%;
