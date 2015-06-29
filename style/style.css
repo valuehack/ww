@@ -1673,7 +1673,7 @@ a:visited.medien_title_list {
 
 img.projekte_coin  {
 	height: 20px;
-	margin: 0px;
+	margin: 0px 3px;
 	display: inline;
 	vertical-align: -3px;
 }
