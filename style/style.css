@@ -1418,6 +1418,7 @@ a.medien_title_list  {
 
 a:hover.medien_title_list {
 	text-decoration: none;
+	border-bottom: 1px solid rgb(46,74,98);
 }
 
 a:visited.medien_title_list {
@@ -1617,6 +1618,10 @@ a:visited.medien_title_list {
 
 .projekte h1 a {
 	text-decoration: none;
+}
+
+.projekte h1 a:hover {
+	border-bottom: 1px solid rgb(46,74,98);
 }
 
 .projekte p {
