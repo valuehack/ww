@@ -7,7 +7,7 @@ include('_header_in.php');
 
 <script>
 function changePrice(totalQuantity, price){
-    document.getElementById("change").innerHTML = (totalQuantity * price) + " Credits";
+    document.getElementById("change").innerHTML = (totalQuantity * price);
 }
 </script>
 
@@ -122,7 +122,7 @@ if(isset($_GET['q']))
       </select> 
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
     </form>
-	<span id="change" class="salon_reservation_span_b"><?php echo $entry3[price]; ?> Credits</span>
+  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
   <?php
   }
 ?>
