@@ -1671,12 +1671,7 @@ a:visited.medien_title_list {
 	margin: 10px;
 }
 
-.projekte_coin {
-	margin-right: 8px;
-	margin-top: 9px;
-}
-
-.projekte_coin img {
+img.projekte_coin  {
 	height: 20px;
 	margin: 0px;
 	display: inline;
