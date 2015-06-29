@@ -21,12 +21,12 @@ if(isset($_GET['q']))
 	$length = str_word_count($private, 0, 'äüöÄÜÖß') - str_word_count($public, 0, 'äüöÄÜÖß');
 
 	//check, if there is a image in the scholien folder
-	$img = 'http://test.wertewirtschaft.net/scholien/'.$id.'.jpg';
+	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/scholien/default.jpg";
+	    $img_url = "http://scholarium.at/scholien/default.jpg";
 	}
 
 ?>
@@ -37,11 +37,11 @@ if(isset($_GET['q']))
      </div>-->
         <aside class="social">
                    <ul>
-                       <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
-                       <li><a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
-                       <li><a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
-                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
-                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
+                       <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
+                       <li><a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
+                       <li><a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
+                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
+                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
                     </ul>                 
                </aside>
         <div class="content">
@@ -89,11 +89,11 @@ if(isset($_GET['q']))
 ?>
 				<!--<footer class="article">-->			   
                    <div class="socialimg">
-                   <a href="https://www.facebook.com/sharer/sharer.php?u=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"> <img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
-                   <a href="http://twitter.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
-                   <a href="https://plus.google.com/share?url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
-                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
-                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://test.wertewirtschaft.net/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
+                   <a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"> <img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
+                   <a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
+                   <a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
+                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
+                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
                    </div>
                </footer>
                <p class="linie"><img src="../style/gfx/linie.png" alt=""></p>
