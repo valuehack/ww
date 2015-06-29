@@ -108,7 +108,7 @@ if(isset($_GET['q']))
   
   if ($_SESSION['Mitgliedschaft'] > 1) {
     ?>
-    <p class="salon_reservation_span_d"><?echo $entry3[price]?> Credits pro Teilnehmer</p>
+    <!--<p class="salon_reservation_span_d"><?echo $entry3[price]?> Credits pro Teilnehmer</p>-->
 
 	<span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Teilnehmer</span><br>
     <form class="salon_reservation_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
