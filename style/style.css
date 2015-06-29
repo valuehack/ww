@@ -1671,6 +1671,20 @@ a:visited.medien_title_list {
 	margin: 10px;
 }
 
+.projekte_coin {
+	margin-left: 5px;
+	margin-top: 9px;
+}
+
+.projekte_coin img {
+	height: 20px;
+}
+
+.projekte_price_list li {
+	list-style: none;
+	float: left;
+}
+
 /*==================================================*/
 /*                Upgrade - Payment	                */
 /*==================================================*/
