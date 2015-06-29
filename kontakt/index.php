@@ -56,7 +56,7 @@ if ($login->isUserLoggedIn() == true) {
    		<table>
    			<tr>
    				<td>
-   					<p>Wertewirtschaft<br>
+   					<p>Scholarium<br>
 					   Schl&ouml;sselgasse 19/2/18<br>
 					   A-1080 Wien, &Ouml;sterreich</p>
 				</td>
