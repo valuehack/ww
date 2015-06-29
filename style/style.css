@@ -713,7 +713,7 @@ h3 {
 }
 
 .blog_entry h2 {
-	font-size: 26pt;
+	font-size: 40pt;
 	color: #000;
 	margin: 40px 0 0 0;	
 	text-align: center;
@@ -747,7 +747,7 @@ h3 {
 	margin: 2px;
 	text-decoration: none;
 	color: rgb(46,74,98);
-	border: 0;
+	border: 0 !important;
 }
 
 .pagination a:hover, .pagination a:active {

@@ -71,15 +71,15 @@ if ($length>10)
 	<? } 
 else 
 	{ ?>
-<div class="blog_upgrade">
+	<div class="blog_upgrade">
 		<p>Wie Sie alle Scholien in voller L&auml;nge lesen k&ouml;nnen, indem Sie eine der letzten v&ouml;llig unabh&auml;ngigen Bildungs- und&nbsp;Forschungseinrichtungen als Gast beehren, 
 		erfahren Sie, wenn Sie zun&auml;chst einen Schritt weit aus der Anonymit&auml;t treten und hier Ihre E-Mail-Adresse eintragen:</p>
-
+		<div class="centered">
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
 			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
   			<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
-
 		</form>
+		</div>
 	</div>
 	<? } ?>
 	
@@ -109,18 +109,18 @@ else
 			<p>Wenn Sie sich angesprochen f&uuml;hlen, treten Sie doch bitte zun&auml;chst einen Schritt weit aus der Anonymit&auml;t und tragen Sie hier Ihre E-Mail-Adresse ein, Sie k&ouml;nnen dann die letzten Scholien-Beitr&auml;ge anlesen.</p>
 		</div>
 		<div class="centered">
-		<div class="blog_subscribe">
-		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
-        <input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required>
-        <input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
-      </form>	
-		</div>
+			<div class="blog_subscribe">
+				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+        			<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required>
+        			<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+      			</form>	
+			</div>
 		</div>
 		<p class="linie"><img src="../style/gfx/linie.png" alt=""></p>
-		
-</article>
-</div>
-
 <?php 
 }
+
+	echo "</article>";
+	echo "</div>";
+
 include('_footer.php'); ?>
