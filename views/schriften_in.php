@@ -11,20 +11,20 @@ function changeView(price, price_book) {
 
     if (x == 4) {    
       document.getElementById("quantity").innerHTML = '<input type="number" name="quantity" onchange="changePrice(this.value,' + price_book + ')" value="1" min="1" max="100">';
-      document.getElementById("price").innerHTML = "<span id='total'>" + price_book + " Credits</span>";
+      document.getElementById("price").innerHTML = "<span id='total'>" + price_book + " </span>";
     }
     else {
       document.getElementById("quantity").innerHTML = '<input type="hidden" name="quantity" value="1"><input type="number" name="quantity2" value="1" disabled>';
-      document.getElementById("price").innerHTML = price + " Credits";
+      document.getElementById("price").innerHTML = price;
     }
 }
 
 function changePrice(totalQuantity, price_book){
-    document.getElementById("total").innerHTML = (totalQuantity * price_book) + " Credits";
+    document.getElementById("total").innerHTML = (totalQuantity * price_book);
 }
 
 function changeprice_book(totalQuantity, price_book){
-    document.getElementById("total2").innerHTML = (totalQuantity * price_book) + " Credits";
+    document.getElementById("total2").innerHTML = (totalQuantity * price_book);
 }
 </script>
 
@@ -105,11 +105,11 @@ if(isset($_GET['q']))
      
     		<?php
     			if ($entry3[format] == '0001') {
-    				echo '<span id="total2" class="schriften_price">'.$entry3[price].' <img style="height:25px" src="../style/gfx/logo_credits.png"></span>';
+    				echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="total2" class="schriften_price">'.$entry3[price].' </span>';
 					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				else {
-					echo '<span id="price" class="schriften_price">' .$entry3[price].' <img style="height:25px" src="../style/gfx/logo_credits.png"></span>';
+					echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="price" class="schriften_price">' .$entry3[price].' </span>';
 					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				echo '<span class="schriften_format">Format: <select name="format"';
