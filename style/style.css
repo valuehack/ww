@@ -273,8 +273,8 @@ h3 {
 }
 
 img.dropdown_coin {
-	height:17px;
-	margin: 0px 3px;
+	height: 17px;
+	margin: 0px;
 	display: inline;
 	vertical-align: -3px;
 }
@@ -1675,6 +1675,12 @@ img.projekte_coin  {
 	vertical-align: -3px;
 }
 
+img.projekte_coin2  {
+	height: 23px;
+	margin: 0px 3px;
+	display: inline;
+	vertical-align: -3px;
+}
 
 /*==================================================*/
 /*                Upgrade - Payment	                */
