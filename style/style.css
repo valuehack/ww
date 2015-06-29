@@ -319,6 +319,7 @@ h3 {
 	font-size: 14pt;
 	text-decoration: none;
 	border-bottom: 1px dotted rgb(46,74,98);
+	color: rgb(46,74,98);
 }
 
 .password_login a:hover {
@@ -744,8 +745,9 @@ h3 {
 .pagination a {
 	padding: 2px 5px 2px 5px;
 	margin: 2px;
-	text-decoration: none; /* no underline */
+	text-decoration: none;
 	color: rgb(46,74,98);
+	border: 0;
 }
 
 .pagination a:hover, .pagination a:active {
@@ -952,9 +954,9 @@ a.blog_linkbutton {
 	text-decoration: none;
 	display: block;
 	border-radius: 2px;
-	color: #fff;
+	color: rgb(255,255,255) !important;
 	background: rgb(46,74,98);
-	border: 0;
+	border: 0 !important;
 	margin: 30px auto 10px auto;
 	width: 200px;
 	height: 37px;
@@ -966,13 +968,13 @@ a.blog_linkbutton {
 }
 
 a.blog_linkbutton:hover {
-	color: #fff;
+	color: rgb(255,255,255);
 	background: rgb(30,48,64);
 	text-decoration: none;
 }
 
 a.blog_linkbutton:visited {
-	color: #fff;
+	color: rgb(255,255,255);
 	text-decoration: none;
 }
 
@@ -1117,6 +1119,7 @@ a.socialimg:hover  {
 .salon_content h1 a {
 	text-decoration: none;
 	color: rgb(46,74,98);
+	border: 0;
 }
 
 .salon_date  {
