@@ -272,14 +272,11 @@ h3 {
     background-color: #E5E5E5;
 }
 
-.dropdown_coin {
-	float: right;
-	margin-top: 8px;
-	margin-right: 21px
-}
-
-.dropdown_coin img {
+img.dropdown_coin {
 	height:17px;
+	margin: 0px 3px;
+	display: inline;
+	vertical-align: -3px;
 }
 
 .inputbutton_login {
