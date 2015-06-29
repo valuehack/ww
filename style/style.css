@@ -1164,7 +1164,7 @@ a.socialimg:hover  {
 }
 
 .salon_reservation_span_b {
-	font-size: 24pt;
+	font-size: 14pt;
 	margin: 10px 0;
 }
 
@@ -1263,6 +1263,15 @@ a.socialimg:hover  {
 	border: 2px solid #000;
 	border-radius: 20px;
 	padding: 3px 4px 1px 4px;
+}
+
+.salon_coin {
+	margin-left: 8px;
+	margin-top: 0px;
+}
+
+.salon_coin img {
+	height:20px;
 }
 
 /*==================================================*/
