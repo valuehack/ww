@@ -26,6 +26,7 @@ $ort = trim($result_row->Ort);
 $strasse = trim($result_row->Strasse);
 $plz = trim($result_row->PLZ);
 
+/*
 if ($result_row->gave_credits == 0) echo "Please fill in this form to get a free credit.";
 
 if ( isset($result_row->Vorname) and trim($result_row->Vorname) and 
@@ -49,7 +50,7 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
 
 
     }
-
+*/
 ?>
 		</div>
 		<div class="medien_seperator">

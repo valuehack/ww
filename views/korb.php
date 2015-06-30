@@ -435,6 +435,9 @@ if($_SESSION['basket']) {
         $key = substr($code,0,$length);
         $format = substr($code,-1,1);
 
+        $url = "";
+        $url2= "";
+
         $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
         $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
         $itemsExtraArray = mysql_fetch_array($items_extra_result);
@@ -447,19 +450,19 @@ if($_SESSION['basket']) {
         }
         
 		if ($itemsExtraArray[type] == 'buch' OR 'analyse' OR 'scholie') {
-			$url = 'http://test.wertewirtschaft.net/schriften/'.$itemsExtraArray[id].'.jpg';
+			$url = 'http://scholarium.at/schriften/'.$itemsExtraArray[id].'.jpg';
             $url2 = 'schriften';
 			}
-		if ($itemsExtraArray[type] == 'kurse') {
-			$url = 'http://test.wertewirtschaft.net/kurse/'.$itemsExtraArray[id].'.jpg';
+		elseif ($itemsExtraArray[type] == 'kurse') {
+			$url = 'http://scholarium.at/kurse/'.$itemsExtraArray[id].'.jpg';
             $url2 = 'kurse';
 			}
-		if ($itemsExtraArray[type] == 'salon') {
-			$url = 'http://test.wertewirtschaft.net/salon/'.$itemsExtraArray[id].'.jpg';
+		elseif ($itemsExtraArray[type] == 'salon') {
+			$url = 'http://scholarium.at/salon/'.$itemsExtraArray[id].'.jpg';
             $url2 = 'salon';
 			}
-        if ($itemsExtraArray[type] == 'paket' OR 'audio' OR 'video') {
-            $url = 'http://test.wertewirtschaft.net/medien/'.$itemsExtraArray[id].'.jpg';
+        elseif ($itemsExtraArray[type] == 'paket' OR 'audio' OR 'video') {
+            $url = 'http://scholarium.at/medien/'.$itemsExtraArray[id].'.jpg';
             $url2 = 'medien';
             }
 ?>        
