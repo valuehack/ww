@@ -1,4 +1,6 @@
-<?php include('_header_not_in.php'); ?>
+<?php 
+$title="Passwort zur&uuml;setzen";
+include('_header_not_in.php'); ?>
 
 <div class="content">
 	<div class="password">
