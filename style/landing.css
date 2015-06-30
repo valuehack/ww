@@ -200,20 +200,18 @@ body {
 }
 
 .button_1 {
-	/*width: 88px;*/
 	font-size: 20pt;
+	margin-right: 130px;
 }
 
 .button_2 {
-	/*width: 110px;*/
 	font-size: 30pt;
-	margin-left: 25px;
+	margin-left: 0px;
 }
 
 .button_3 {
-	/*width: 128px;*/
 	font-size: 20pt;
-	margin-left: 230px;
+	margin-left: 200px;
 }
 
 .button_1:hover, .button_2:hover, .button_3:hover {
