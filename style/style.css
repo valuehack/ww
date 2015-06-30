@@ -2319,7 +2319,7 @@ img.projekte_coin2  {
 	text-decoration: none;
 }
 
-.basket_message a:hover{
+.basket_message a:hover {
 	border-bottom: 1px solid rgb(46,74,98);
 }
 
@@ -2339,7 +2339,6 @@ img.projekte_coin2  {
 
 .basket_coin_total img {
 	height:26px;
-}
 }
 
 /*==================================================*/
