@@ -45,7 +45,7 @@ include("views/_header_not_in.php");
             <div class='centered'>
             <h3>Logout erfolgreich</h3>
 
-            <p><a href='index.php'>&raquo; zur Startseite</a></p>
+            <p class='centered'><a href='index.php'>&raquo; zur Startseite</a></p>
         
             </div>
         </div>

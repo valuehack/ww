@@ -257,7 +257,15 @@ echo "</div>";
 }
 
 else {
-  echo "<p>Aus Sicherheitsgründen kann innerhalb 24 Stunden leider nur einmal upgegradet werden.</p>";
+  ?>
+  <div class="content">
+        <div class="salon_content">
+              <p class='centered'>Aus Sicherheitsgr&uuml;nden kann innerhalb 24 Stunden leider nur einmal upgegradet werden.</p>
+              <p class='centered'><a href='index.php'>&raquo; zur Startseite</a></p>
+        </div>
+  </div>
+
+<?
 }
 
 
