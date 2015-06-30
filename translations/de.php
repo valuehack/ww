@@ -75,7 +75,7 @@ define("WORDING_REGISTRATION_PASSWORD_REPEAT", "Password repeat");
 define("WORDING_REGISTRATION_USERNAME", "Username (only letters and numbers, 2 to 64 characters)");
 define("WORDING_REMEMBER_ME", "Keep me logged in (for 2 weeks)");
 define("WORDING_REQUEST_PASSWORD_RESET", "Fordern Sie ein neues Passwort an. Geben Sie hier Ihre E-Mail-Adresse ein und Sie bekommen eine E-Mail mit weiteren Anweisungen:");
-define("WORDING_RESET_PASSWORD", "Passwort zurücksetzen");
+define("WORDING_RESET_PASSWORD", "Passwort zur&uuml;cksetzen");
 define("WORDING_SUBMIT_NEW_PASSWORD", "Neues Passwort abschicken");
 define("WORDING_USERNAME", "Username");
 define("WORDING_YOU_ARE_LOGGED_IN_AS", "You are logged in as ");
