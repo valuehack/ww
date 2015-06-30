@@ -261,7 +261,7 @@ while($entry = mysql_fetch_array($result))
         <div class="subscribe">
           <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
-          	<input class="inputbutton" type="submit" name="submit" value="Eintragen">
+          	<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
           </form> 
         </div>
       </div>

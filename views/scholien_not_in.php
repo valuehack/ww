@@ -65,7 +65,7 @@ if ($length>10)
 		<div class="centered">
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
   			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
-  			<input class="inputbutton" type="submit" name="subscribe" value="Eintragen">
+  			<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
 		</form>
 		</div>
 	</div>
