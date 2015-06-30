@@ -228,11 +228,11 @@ if(isset($_POST['checkout'])) {
 
                 <?php
                  }
-                elseif ($type == 'projekt') {
-                    echo '';
+                elseif ($type == 'salon' || $type == 'lehrgang' || $type == 'seminar' || $type == 'kurs') {
+                    echo '<td>Reserviert</td></tr>';
                 }
                 else {
-                    echo "<td>Reserviert</td></tr>";
+                    echo "";
                 }
 
             //echo '</td></tr>';

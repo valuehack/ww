@@ -1,4 +1,4 @@
-<?php include('_header.php'); ?>
+<?php include('_header_not_in.php'); ?>
 
 <div class="content">
 	<div class="password">
