@@ -1,5 +1,5 @@
 <?php 
-$title="Passwort zur&uuml;setzen";
+$title="Passwort zur&uuml;cksetzen";
 include('_header_not_in.php'); ?>
 
 <div class="content">
