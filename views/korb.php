@@ -231,6 +231,10 @@ if(isset($_POST['checkout'])) {
                 elseif ($type == 'salon' || $type == 'lehrgang' || $type == 'seminar' || $type == 'kurs') {
                     echo '<td>Reserviert</td></tr>';
                 }
+                elseif ($format == 4) {
+                    echo '<td>wird zugesandt</td></tr>';
+                }
+
                 else {
                     echo "";
                 }
