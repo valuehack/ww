@@ -339,7 +339,7 @@ img.dropdown_coin {
 	float: left;
 	margin-left: 17%;
 	padding: 3px 3px;
-	border: 1px solid #EBCCD1;
+	border: 1px solid #D6E9C6;
 	border-radius: 4px;
 	box-shadow: 0 0 1px 0 transparent;
 	color: #468847;
@@ -2315,12 +2315,12 @@ img.projekte_coin2  {
 }
 
 .basket_message a {
-	border-bottom: 1px dotted #2E4A62;
+	color: rgb(46,74,98);
 	text-decoration: none;
 }
 
 .basket_message a:hover {
-	border-bottom: 1px solid rgb(46,74,98);
+	text-decoration: underline;
 }
 
 .basket_coin {
