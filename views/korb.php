@@ -442,6 +442,9 @@ if($_SESSION['basket']) {
         $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
         $itemsExtraArray = mysql_fetch_array($items_extra_result);
         
+        $type = $itemsExtraArray[type];
+        $id = $itemsExtraArray[id];
+
         if ($format == 4 && $itemsExtraArray[price_book]) {
             $sum = $quantity*$itemsExtraArray[price_book];
         }
@@ -449,20 +452,20 @@ if($_SESSION['basket']) {
             $sum = $quantity*$itemsExtraArray[price];
         }
         
-		if ($itemsExtraArray[type] == 'buch' OR 'analyse' OR 'scholie') {
-			$url = 'http://scholarium.at/schriften/'.$itemsExtraArray[id].'.jpg';
+		if ($type == 'buch' || $type == 'analyse' || $type == 'scholie') {
+			$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
             $url2 = 'schriften';
 			}
-		elseif ($itemsExtraArray[type] == 'kurse') {
-			$url = 'http://scholarium.at/kurse/'.$itemsExtraArray[id].'.jpg';
+		elseif ($type == 'kurse') {
+			$url = 'http://scholarium.at/kurse/'.$id.'.jpg';
             $url2 = 'kurse';
 			}
-		elseif ($itemsExtraArray[type] == 'salon') {
-			$url = 'http://scholarium.at/salon/'.$itemsExtraArray[id].'.jpg';
+		elseif ($type == 'salon') {
+			$url = 'http://scholarium.at/salon/'.$id.'.jpg';
             $url2 = 'salon';
 			}
-        elseif ($itemsExtraArray[type] == 'paket' OR 'audio' OR 'video') {
-            $url = 'http://scholarium.at/medien/'.$itemsExtraArray[id].'.jpg';
+        elseif ($type == 'paket' || $type == 'audio' || $type == 'video') {
+            $url = 'http://scholarium.at/medien/'.$id.'.jpg';
             $url2 = 'medien';
             }
 ?>        
