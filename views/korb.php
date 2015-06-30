@@ -456,7 +456,7 @@ if($_SESSION['basket']) {
 			$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
             $url2 = 'schriften';
 			}
-		elseif ($type == 'kurse') {
+		elseif ($type == 'lehrgang' || $type == 'seminar' || $type == 'kurs') {
 			$url = 'http://scholarium.at/kurse/'.$id.'.jpg';
             $url2 = 'kurse';
 			}
@@ -478,7 +478,7 @@ if($_SESSION['basket']) {
 <?php			
 		echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span>";
 		echo "<span class='basket_body_title'>";
-		echo "<a href='../".$url2."/index.php?q=".$itemsExtraArray[id]."'>".$itemsExtraArray[title]."</a></span>";
+		echo "<a href='../".$url2."/index.php?q=".$id."'>".$itemsExtraArray[title]."</a></span>";
 		echo "<span class='basket_body_format'>";
         switch ($format) {
             case 1: echo "pdf"; break;
