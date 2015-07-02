@@ -18,7 +18,7 @@ include ("_header_in.php");
         <div class="content">
             
             <div class="startpage_section_a">
-            	<div class="startpage_last_scholie">
+            	
             		<?php
 $sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 1";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -36,10 +36,11 @@ while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
 				
+				echo "<div class='startpage_last_scholie' style='background:url(".$img_url.") no-repeat;'>";
+				
                 echo "<a class='startpage_last_scholie_title' href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
 				echo "<span>Scholie</span>";
 				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i><br>";  
-				echo "<img src='".$img_url."' alt='".$id."'>";
 				if (strlen($entry[public_text]) > 300) {
 					echo substr ($entry[public_text], 0, 300);
 					echo " ... <a href='?q=$id'>Weiterlesen</a>";
@@ -65,7 +66,7 @@ while($entry = mysql_fetch_array($result))
               	echo ": $entry[title]</a><br>";
 				echo date("d.m.Y",strtotime($entry[start]));
               	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end])); 
-				echo $entry[type];                 
+				echo ucfirst($entry[type]);                 
 				}
                     ?>
                 	</div> 
@@ -83,7 +84,8 @@ while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
                 echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
-				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";                 
+				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";
+				echo ucfirst($entry[type]);                  
 }
                     ?>
                     </div>
@@ -104,7 +106,8 @@ while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
                 echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
-				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";                   
+				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";
+				echo ucfirst($entry[type]);                    
 }
                     ?>
                     </div>
@@ -121,7 +124,8 @@ while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
                 echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
-				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";                  
+				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";
+				echo ucfirst($entry[type]);                   
 }
                     ?>
                     </div>
@@ -142,7 +146,8 @@ while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
                 echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
-				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";                
+				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";
+				echo ucfirst($entry[type]);                 
 }
                     ?>
                     </div>

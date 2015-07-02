@@ -618,7 +618,7 @@ img.dropdown_coin {
 }
 
 .startpage_box_outer h1 {
-	text-transform: uppercase:
+	text-transform: uppercase;
 	font-size: 12pt;
 	color: rgb(46,74,98);
 }
@@ -632,7 +632,7 @@ img.dropdown_coin {
 	float: left;
 }
 
-.right {
+.left{
 	padding-right: 2.5%;
 	float: right;
 }
