@@ -39,9 +39,9 @@ while($entry = mysql_fetch_array($result))
 	}
 				
 				echo "<div class='startpage_last_scholie'>";
-				echo "<div class='startpage_last_scholie_img' style='background:url(".$img_url.") no-repeat;'></div>";
+				echo "<div class='startpage_last_scholie_img' style='background:url(".$img_url.") no-repeat;'>";
 				echo "<div class='startpage_last_scholie_ms'>";
-                echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
+                echo "<h1><a href='/scholien/index.php?q=$id'>".$entry[title]."</a></h1><br>"; 
 				echo "<span>Scholie</span>";
 				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i><br>";  
 				if (strlen($entry[public_text]) > 300) {
@@ -54,6 +54,7 @@ while($entry = mysql_fetch_array($result))
 		}              
 }
                     ?>
+                   </div>
                    </div>
             	</div>
             	
@@ -69,7 +70,7 @@ while($entry = mysql_fetch_array($result))
                 $id = $entry[id];
                 echo "<p>"; 
 				echo "<a href='/salon/index.php?q=$id'>";
-              	echo ": $entry[title]</a><br>";
+              	echo "$entry[title]</a><br>";
 				echo date("d.m.Y",strtotime($entry[start]));
               	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end])); 
 				echo ucfirst($entry[type]);
@@ -106,7 +107,7 @@ while($entry = mysql_fetch_array($result))
 
                 <div class="startpage_box_outer right">
                     <h1>Schriften</h1>
-                    <div class="startpage_box_inner"></div>
+                    <div class="startpage_box_inner">
                      <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());

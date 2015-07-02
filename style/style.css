@@ -549,14 +549,6 @@ img.dropdown_coin {
 	width: 70%;
 }
 
-.startpage_section_b h1 {
-	text-align: center;
-	text-transform: uppercase;
-	font-size: 30pt;
-	margin-bottom: 40px;
-	text-shadow: 0 0 1px rgba(255,255,255,0.6);
-}
-
 .startpage_section_c {
 	background: rgb(7,16,24);
 	padding: 0 15% 50px 15%;
@@ -589,12 +581,16 @@ img.dropdown_coin {
 	
 }
 
-.startpage_last_scholie_ms h1 {
+.startpage_last_scholie_ms h1 a {
 	font-size: 40pt;
 	color: rgb(46,74,98);
 	text-decoration: none;
 	color: rgb(255,255,255);
 	text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
+}
+
+.startpage_last_scholie_ms h1 a:hover {
+	text-decoration: underline;
 }
 
 .startpage_last_scholie_more a {
@@ -639,12 +635,12 @@ img.dropdown_coin {
 
 .right {
 	padding-left: 2.5%;
-	float: left;
+	float: right;
 }
 
 .left{
 	padding-right: 2.5%;
-	float: right;
+	float: left;
 }
 
 .startpage_box_inner a {
@@ -658,9 +654,14 @@ img.dropdown_coin {
 	text-decoration: underline;
 }
 
+.startpage_box_inner a:visited {
+	text-decoration: none;
+	color: rgb(20,20,20);
+}
+
 .startpage_box_inner p {
 	border-bottom: 1px solid rgb(200,200,200);
-	margin-bottom: 5px;
+	padding: 10px;
 }
 
 .startpage_box_events {
