@@ -81,7 +81,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                   }
               }
               ?>
-
+                	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="signup" value="Anmelden">Eintragen</button></div>
                 	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
             </div>
             <div class="logo">
@@ -109,7 +109,28 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
       </div>
     </div>
   </div>
-            	</div>
+<!-- Sign Up Modal -->  
+  <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog-login">
+      <div class="modal-content-login">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div class="modal-header">
+
+          <h2 class="modal-title" id="myModalLabel">Eintragen</h2>
+        </div>
+        <div class="modal-body">
+          <p>
+            <form method="post" action="index.php" name="registerform">
+                <input class="inputfield_login" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
+                <input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Passwort" required><br>
+                <input class="inputbutton_login" id="inputbutton" name="eintragen_submit" type="submit" value="Eintragen">
+            </form>         
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>           	
+  				</div>
             <div class="nav">
                 <div class="navi"></div>
            </div>

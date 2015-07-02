@@ -57,7 +57,7 @@ include('_header_in.php');
             $op2 = $op2.'<div id="op2" class="pay_option_box pay_option_box2">
                <table>
                     <tr><th rowspan="3">
-                        <h1>Kursteilnehmer</h1>
+                        <h1>Teilnehmer</h1>
                         <h2>12,50&euro;/ Monat</h2>
                     </th>
                     <td>
@@ -76,7 +76,7 @@ include('_header_in.php');
                         <form method="post" action="zahlung.php">
                             <input type="hidden" name="betrag" value="150">
                             <input type="hidden" name="level" value="Kursteilnehmer">
-                            <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Kursteilnehmer">
+                            <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Teilnehmer">
                         </form>   
                     </td>
                     </tr>
@@ -96,7 +96,7 @@ include('_header_in.php');
                 </tr><tr>
                 <td>
                     <ul>
-                        <li>Vorteile von Gast und Kursteilnehmer</li>
+                        <li>Vorteile von Gast und Teilnehmer</li>
                         <li>Teilnahme an Seminaren und Salon, sowie Bezug von B&uuml;chern und Medien  je nach Belieben in entsprechend gr&ouml;&szlig;erem Ausma&szlig;.</li>
                         <li>Nutzung der digitalen Bibliothek.</li>
                         <li>Exklusive Informationen.</li>
@@ -126,7 +126,7 @@ include('_header_in.php');
                 </tr><tr>
                 <td>
                     <ul>
-                        <li>Vorteile von Gast, Kursteilnehmer und Wertewirt</li>
+                        <li>Vorteile von Gast, Teilnehmer und Wertewirt</li>
                         <li>Einladung zu einem regelm&auml;&szlig;igen exklusiven Abendessen zum pers&ouml;nlichen Austausch, bei dem Sie Hintergrundinformationen zu unserer Arbeit erhalten.</li>
                         <li>Alternativ, wenn Sie nicht zuf&auml;llig vor Ort sind oder anreisen wollen: Geschenkkorb mit wertvollen Produkten.</li>
                         <li>Auf Wunsch: Visitenkarten, Verlinkung des eigenen Unternehmens.</li>
@@ -156,7 +156,7 @@ include('_header_in.php');
                 </tr><tr>
                 <td>
                     <ul>
-                        <li>Vorteile von Gast, Kursteilnehmer, Wertewirt und Partner</li>
+                        <li>Vorteile von Gast, Teilnehmer, Wertewirt und Partner</li>
                         <li>Einladung zu unserer j&auml;hrlichen Klausur an einem historischen Ort in wundersch&ouml;ner Landschaft</li>
                         <li>Alternativ, wenn Sie zum Termin verhindert sind:  Aufzeichnungen/Nachlesen</li>
                     </ul>
@@ -185,7 +185,7 @@ include('_header_in.php');
                 </tr><tr>
                 <td>
                     <ul>
-                        <li>Vorteile von Gast, Kursteilnehmer, Wertewirt, Partner und Beirat</li>
+                        <li>Vorteile von Gast, Teilnehmer, Wertewirt, Partner und Beirat</li>
                         <li>Einmal im Jahr zu Ihrem Wunschtermin private Campusf&uuml;hrung durch den Rektor mit tief gehender Vorstellung und Reflexion unserer Arbeit und Erkenntnisse, sowie einem exklusiven Mittagessen.</li>
                     </ul>
                 </td>
