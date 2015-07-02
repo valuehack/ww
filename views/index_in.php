@@ -46,11 +46,11 @@ while($entry = mysql_fetch_array($result))
 				echo "<span>".date('d.m.Y', strtotime($entry[publ_date]))."</span><br>";  
 				if (strlen($entry[public_text]) > 300) {
 					echo substr ($entry[public_text], 0, 300);
-					echo " ... <a href='?q=$id'>Weiterlesen</a>";
+					echo " ... <a href='scholien/index.php?q=$id'>Weiterlesen</a>";
 					}
 				else {
 					echo $entry[public_text];
-					echo "... <a href='?q=$id'>Weiterlesen</a>";
+					echo "... <a href='/index.php?q=$id'>Weiterlesen</a>";
 		}              
 }
                     ?>

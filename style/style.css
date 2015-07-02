@@ -662,14 +662,14 @@ img.dropdown_coin {
 }
 
 .startpage_box_inner p {
-	border-bottom: 1px solid rgb(200,200,200);
+	border-bottom: 1px solid rgb(230,230,230);
 	padding: 10px 0;
 }
 
 .startpage_box_inner span {
-	text-transform: uppercase;
 	margin: 0 10px;
 }
+
 /*==================================================*/
 /*                 Scholien/ Blog	                */
 /*==================================================*/
