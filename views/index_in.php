@@ -40,12 +40,12 @@ while($entry = mysql_fetch_array($result))
 				echo "<span>Scholie</span>";
 				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i><br>";  
 				echo "<img src='".$img_url." alt='".$id."' '>";
-				if (strlen($public) > 200) {
-					echo substr ($public, 0, 200);
+				if (strlen($entry[public_text]) > 200) {
+					echo substr ($entry[public_text], 0, 200);
 					echo " ... <a href='?q=$id'>Weiterlesen</a>";
 					}
 				else {
-					echo $public;
+					echo $entry[public_text];
 					echo "... <a href='?q=$id'>Weiterlesen</a>";
 		}              
 }

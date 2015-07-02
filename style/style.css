@@ -576,6 +576,40 @@ img.dropdown_coin {
 	clear: both;
 }
 
+.startpage_last_scholie {
+	width: 100%;
+	margin: 20px 0 30px 0;
+}
+
+.startpage_last_scholie_title {
+	font-size: 40pt;
+	color: rgb(46,74,98);
+	text-decoration: none;
+	color: rgb(20,20,20);
+}
+
+.startpage_last_scholie_more a {
+	text-decoration: none;
+	color: rgb(46,74,98);
+	border-bottom: 1px dotted rgb(46,74,98);
+	font-size: 14pt;
+	text-align: right;
+}
+
+.startpage_last_scholie_more a:hover {
+	border-bottom: 1px solid rgb(46,74,98);
+}
+
+.startpage_last_scholie span {
+	text-transform: uppercase;
+	margin-right: 10px;
+	font-size: 12pt;
+}
+
+.startpage_last_scholie p {
+	font-size: 14pt;
+}
+
 .startpage_box_events {
 	width: 60%;
 	padding: 0;
