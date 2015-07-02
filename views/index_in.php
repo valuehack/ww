@@ -85,7 +85,7 @@ while($entry = mysql_fetch_array($result))
                     <h1>Scholien</h1>
                     <div class="startpage_box_inner">
                     <?php
-$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 2";
+$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 1, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
@@ -101,9 +101,7 @@ while($entry = mysql_fetch_array($result))
                     </div>
                     <p><a href="/scholien/">Mehr Scholien</a></p>
                 </div>
-            </div>
-            
-            <div class="startpage_section_b">
+            </div>            
 
                 <div class="startpage_box_outer right">
                     <h1>Schriften</h1>
@@ -143,10 +141,7 @@ while($entry = mysql_fetch_array($result))
                     </div>
                     <p><a href="/medien/">Mehr Medien</a></p>
                 </div>
-
-            </div>  
-            <div class="startpage_section_c">                
-                                
+                                            
                 <div class="startpage_box_outer left">
                     <h1>Letzte Spende</h1>
                     <div class="startpage_box_inner">
@@ -169,8 +164,7 @@ while($entry = mysql_fetch_array($result))
                
             	 <div class="startpage_info">
                     <p>Die Wertewirtschaft ist ein lernendes Unternehmen, in dem Wege werte- und sinnorientierten Unternehmertums praktisch erkundet und theoretisch reflektiert werden. Wir bieten eine Orientierungshilfe f&uuml;r kritische B&uuml;rger und eine Bildungsalternative f&uuml;r junge Menschen, die der heutigen Blasenwirtschaft, aber auch ideologischen Versprechen misstrauen.</p>
-                </div>
-            </div>                   	
+                </div>                	
 	</div>
   
 <?php include "_footer.php"; ?>

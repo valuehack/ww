@@ -557,7 +557,7 @@ img.dropdown_coin {
 
 .startpage_info {
 	width: 100%;
-	color: rgb(255,255,255);
+	color: rgb(20,20,20);
 	font-size: 15pt;
 	line-height: 1.8;
 	font-style: italic;
@@ -578,7 +578,7 @@ img.dropdown_coin {
 }
 
 .startpage_last_scholie_ms {
-	
+	padding: 30px;
 }
 
 .startpage_last_scholie_ms h1 a {
@@ -587,6 +587,8 @@ img.dropdown_coin {
 	text-decoration: none;
 	color: rgb(255,255,255);
 	text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
+	margin-top: 100px;
+	display: inline-block;
 }
 
 .startpage_last_scholie_ms h1 a:hover {
@@ -638,7 +640,7 @@ img.dropdown_coin {
 	float: right;
 }
 
-.left{
+.left {
 	padding-right: 2.5%;
 	float: left;
 }
@@ -661,113 +663,9 @@ img.dropdown_coin {
 
 .startpage_box_inner p {
 	border-bottom: 1px solid rgb(200,200,200);
-	padding: 10px;
+	padding: 10px 0;
 }
 
-.startpage_box_events {
-	width: 60%;
-	padding: 0;
-	float: left; 
-	margin: 0 15px;
-	margin: 20px 0;
-}
-
-.startpage_box_events h1 {
-	font-size: 34pt;
-	margin: 0 0 40px 0;
-	text-shadow: 0 0 1px rgb(20,20,20);
-	color: rgb(20,20,20);
-}
-
-.startpage_box_events h2 {
-	font-size: 18pt;
-	color: rgb(20,20,20);
-	margin: 10px 0;
-}
-
-.startpage_box_events a {
-	font-size: 14pt;
-	text-decoration: none;
-	color: rgb(20,20,20) !important;
-	line-height: 1.5;
-	margin-left: 30px;
-}
-
-.startpage_box_events a:hover {
-	text-decoration: underline;
-}
-
-.startpage_box_scholien {
-	width: 30%;
-	padding: 20px;
-	float: left; 
-	margin: 0 15px;
-	margin: 20px 0;
-	border-radius: 2px;
-	background: rgb(46,74,98); 
-	text-align: left;
-}
-
-
-.startpage_box_scholien h1 {
-	font-size: 24pt;
-	margin: 10px 0px 30px 0;
-	color: rgb(255,255,255);
-	text-shadow: 0 0 1px rgb(255,255,255);
-}
-
-.startpage_box_scholien a {
-	font-size: 16pt;
-	text-decoration: none;
-	color: rgb(255,255,255) !important;
-	line-height: 1.5;
-	display: block;
-	margin: -3px 0;
-}
-
-.startpage_box_scholien a:hover {
-	text-decoration: underline;
-}
-
-.startpage_box_contents {
-	width: 28%;
-	padding: 15px 2%;
-	margin: 0 15px;
-	margin: 20px 0;
-	background: rgba(255,255,255,0.2);
-	color: rgb(255,255,255);
-	box-shadow: 0 0 4px 0 rgba(0,0,0,0.6);
-	float: left;
-	text-align: left;
-}
-
-.startpage_box_contents_middle {
-	margin: 20px 2%;
-}
-
-.startpage_box_contents h1 {
-	font-size: 18pt;
-	color: rgb(255,255,255);
-	margin: 10px 0 30px 0;
-	text-align: left;
-}
-
-.startpage_box_contents a {
-	color: rgb(255,255,255);
-	font-size: 14pt;
-	text-decoration: none;	
-	line-height: 1.5;
-	display: block;
-	margin: -2px 0;
-}
-
-.startpage_box_contents a:hover {
-	text-decoration: underline;
-}
-
-.startpage_box_contents a:visited {
-	color: rgb(255,255,255);
-}
 /*==================================================*/
 /*                 Scholien/ Blog	                */
 /*==================================================*/
