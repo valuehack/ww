@@ -542,7 +542,7 @@ img.dropdown_coin {
 }
 
 .startpage_section_b {
-	background: rgb(7,16,24) url(../style/gfx/ww_landing_dark.png) no-repeat center top;
+	/*background: rgb(7,16,24) url(../style/gfx/ww_landing_dark.png) no-repeat center top;*/
 	box-shadow: 0 0 10px 0 rgba(0,0,0,0.6);
 	color: rgb(255,255,255);
 	padding: 50px 15% 0 15%;
@@ -623,7 +623,7 @@ img.dropdown_coin {
 
 .startpage_box_outer {
 	width: 47.5%;
-	margin: 20px;
+	margin: 20px 0;
 	padding: 0;
 }
 
@@ -645,6 +645,22 @@ img.dropdown_coin {
 .left{
 	padding-right: 2.5%;
 	float: right;
+}
+
+.startpage_box_inner a {
+	font-size: 16pt;
+	text-decoration: none;
+	color: rgb(20,20,20);
+	line-height: 1.4;
+}
+
+.startpage_box_inner a:hover {
+	text-decoration: underline;
+}
+
+.startpage_box_inner p {
+	border-bottom: 1px solid rgb(200,200,200);
+	margin-bottom: 5px;
 }
 
 .startpage_box_events {
