@@ -36,8 +36,9 @@ while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
 				
-				echo "<div class='startpage_last_scholie' style='background:url(".$img_url.") no-repeat;'>";
-				
+				echo "<div class='startpage_last_scholie'>";
+				echo "<div class='startpage_last_scholie_img' style='background:url(".$img_url.") no-repeat cover;'></div>";
+				echo "<div class='startpage_last_scholie_ms'>";
                 echo "<a class='startpage_last_scholie_title' href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
 				echo "<span>Scholie</span>";
 				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i><br>";  
@@ -51,7 +52,9 @@ while($entry = mysql_fetch_array($result))
 		}              
 }
                     ?>
+                   </div>
             	</div>
+            	
                 <div class="startpage_box_outer  left">
                     <h1>Veranstaltungen</h1>
                     <div class="startpage_box_inner">
