@@ -18,6 +18,39 @@ include ("_header_in.php");
         <div class="content">
             
             <div class="startpage_section_a">
+            	<div class="startpage_last_scholie">
+            		<?php
+$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 1";
+$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+
+	//check, if there is a image in the scholien folder
+	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
+
+	if (@getimagesize($img)) {
+	    $img_url = $img;
+	} else {
+	    $img_url = "http://scholarium.at/scholien/default.jpg";
+	}
+
+while($entry = mysql_fetch_array($result))
+{
+                $id = $entry[id]; 
+				
+                echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
+				echo "<span>Scholie</span>";
+				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i><br>";  
+				echo "<img src='".$img_url." alt='".$id."' '>";
+				if (strlen($public) > 200) {
+					echo substr ($public, 0, 200);
+					echo " ... <a href='?q=$id'>Weiterlesen</a>";
+					}
+				else {
+					echo $public;
+					echo "... <a href='?q=$id'>Weiterlesen</a>";
+		}              
+}
+                    ?>
+            	</div>
                 <div class="startpage_box_events">
                     <h1>Aktuelle Veranstaltungen</h1>
                     <h2>Salons</h2>
@@ -36,7 +69,7 @@ while($entry = mysql_fetch_array($result))
                     ?>
                     <h2>Kurse</h2>
                         <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'kurs') AND status > 0 order by id asc, n asc LIMIT 0, 3";
+$sql = "SELECT * from produkte WHERE (type LIKE 'kurs') AND status > 0 order by id asc, n asc LIMIT 1, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
