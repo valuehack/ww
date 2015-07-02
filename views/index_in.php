@@ -43,7 +43,7 @@ while($entry = mysql_fetch_array($result))
 				echo "<div class='startpage_last_scholie_ms'>";
                 echo "<h1><a href='/scholien/index.php?q=$id'>".$entry[title]."</a></h1><br>"; 
 				echo "<span>Scholie</span>";
-				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i><br>";  
+				echo "<span>".date('d.m.Y', strtotime($entry[publ_date]))."</span><br>";  
 				if (strlen($entry[public_text]) > 300) {
 					echo substr ($entry[public_text], 0, 300);
 					echo " ... <a href='?q=$id'>Weiterlesen</a>";
@@ -62,7 +62,7 @@ while($entry = mysql_fetch_array($result))
                     <h1>Veranstaltungen</h1>
                     <div class="startpage_box_inner">
                         <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'salon' OR 'kurs' OR 'seminar') AND status > 0 order by id asc, n asc LIMIT 0, 3";
+$sql = "SELECT * from produkte WHERE (type='lehrgang' or type='seminar' or type='kurs' or type='salon') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
@@ -100,8 +100,7 @@ while($entry = mysql_fetch_array($result))
                     ?>
                     </div>
                     <p><a href="/scholien/">Mehr Scholien</a></p>
-                </div>
-            </div>            
+                </div>          
 
                 <div class="startpage_box_outer right">
                     <h1>Schriften</h1>
