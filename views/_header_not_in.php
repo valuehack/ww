@@ -81,7 +81,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                   }
               }
               ?>
-                	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="signup" value="Anmelden">Eintragen</button></div>
+                	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Eintragen</button></div>
                 	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
             </div>
             <div class="logo">

@@ -219,7 +219,7 @@ else {
     </form>
     <!--TO DO: Create account when registering for the event -->
         
-    
+    </div>
     </div>
   </div>
 </div>
