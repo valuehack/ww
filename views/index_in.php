@@ -71,14 +71,15 @@ while($entry = mysql_fetch_array($result))
                 echo "<p>"; 
 				echo "<a href='/salon/index.php?q=$id'>";
               	echo "$entry[title]</a><br>";
-				echo date("d.m.Y",strtotime($entry[start]));
-              	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end])); 
-				echo ucfirst($entry[type]);
+				echo "<span>".date("d.m.Y",strtotime($entry[start]));
+              	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]))."</span>"; 
+				echo "<span>".ucfirst($entry[type])."</span>";
 				echo "</p>";                 
 				}
                     ?>
                 	</div> 
                 <p><a href="/salon/">Mehr Salons</a></p> 
+                <p><a href="/seminare/">Mehr Seminare</a></p> 
                 </div>
                 
                 <div class="startpage_box_outer right">
@@ -123,7 +124,7 @@ while($entry = mysql_fetch_array($result))
                 </div>
                 <div class="startpage_box_outer left">
                     <h1>Medien</h1>
-                    <div class="startpage_box_inner right"> 
+                    <div class="startpage_box_inner"> 
                     <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'media' OR type LIKE 'audio' OR type LIKE 'video') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
