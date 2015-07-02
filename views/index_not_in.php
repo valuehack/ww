@@ -79,8 +79,9 @@ if (isset($registration)) {
 ?>  
     <body>
        <header class="landing_header">
+       	            <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Eintragen</button></div>
                     <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
-                    <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Eintragen</button></div>
+
                     
 <!-- Login Modal -->
   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -98,8 +99,7 @@ if (isset($registration)) {
                 <input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Passwort" required><br>
                 <input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="Anmelden">
             </form>     
-            <p class="password_login"><a href="/password_reset.php">Passwort vergessen?</a></p>  
-            <p class="password_login"><a href="#" data-toggle="modal" data-target="#signup">Eintragen</a></p>   
+            <p class="password_login"><a href="/password_reset.php">Passwort vergessen?</a></p>
           </p>
         </div>
       </div>
@@ -119,7 +119,7 @@ if (isset($registration)) {
             <form method="post" action="index.php" name="registerform">
                 <input class="inputfield_login" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
                 <input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Passwort" required><br>
-                <input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="Eintragen">
+                <input class="inputbutton_login" id="inputbutton" name="eintragen_submit" type="submit" value="Eintragen">
             </form>         
           </p>
         </div>
