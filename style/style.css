@@ -608,6 +608,33 @@ img.dropdown_coin {
 
 .startpage_last_scholie p {
 	font-size: 14pt;
+	line-height: 1.5;
+}
+
+.startpage_box_outer {
+	width: 47.5%;
+	margin: 20px;
+	padding: 0;
+}
+
+.startpage_box_outer h1 {
+	text-transform: uppercase:
+	font-size: 12pt;
+	color: rgb(46,74,98);
+}
+
+.startpage_box_inner {
+	margin: 10px 0;
+}
+
+.right {
+	padding-left: 2.5%;
+	float: left;
+}
+
+.right {
+	padding-right: 2.5%;
+	float: right;
 }
 
 .startpage_box_events {

@@ -36,12 +36,12 @@ while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
 				
-                echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
+                echo "<a class='startpage_last_scholie_title' href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
 				echo "<span>Scholie</span>";
 				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i><br>";  
-				echo "<img src='".$img_url." alt='".$id."' '>";
-				if (strlen($entry[public_text]) > 200) {
-					echo substr ($entry[public_text], 0, 200);
+				echo "<img src='".$img_url."' alt='".$id."'>";
+				if (strlen($entry[public_text]) > 300) {
+					echo substr ($entry[public_text], 0, 300);
 					echo " ... <a href='?q=$id'>Weiterlesen</a>";
 					}
 				else {
@@ -51,40 +51,30 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
             	</div>
-                <div class="startpage_box_events">
-                    <h1>Aktuelle Veranstaltungen</h1>
-                    <h2>Salons</h2>
+                <div class="startpage_box_outer  left">
+                    <h1>Veranstaltungen</h1>
+                    <div class="startpage_box_inner">
                         <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'salon') AND status > 0 order by id asc, n asc LIMIT 0, 3";
+$sql = "SELECT * from produkte WHERE (type LIKE 'salon' OR 'kurs' OR 'seminar') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
 				echo "<a href='/salon/index.php?q=$id'>";
+              	echo ": $entry[title]</a><br>";
 				echo date("d.m.Y",strtotime($entry[start]));
-              	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
-              	echo ": $entry[title]</a><br>";                  
-}
+              	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end])); 
+				echo $entry[type];                 
+				}
                     ?>
-                    <h2>Kurse</h2>
-                        <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'kurs') AND status > 0 order by id asc, n asc LIMIT 1, 3";
-$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-
-while($entry = mysql_fetch_array($result))
-{
-                $id = $entry[id];
-				echo "<a href='/kurse/index.php?q=$id'>";
-				echo date("d.m.Y",strtotime($entry[start]));
-              	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
-              	echo ": $entry[title]</a><br>";                  
-}
-                    ?>
-                </div>  
+                	</div> 
+                <p><a href="/salon/">Mehr Salons</a></p> 
+                </div>
                 
-                <div class="startpage_box_scholien black">
-                    <h1>Neue Scholien</h1>
+                <div class="startpage_box_outer right">
+                    <h1>Scholien</h1>
+                    <div class="startpage_box_inner">
                     <?php
 $sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 2";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -92,16 +82,20 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/scholien/index.php?q=$id'><i>".date('d.m.Y', strtotime($entry[publ_date]))."</i> ".$entry[title]."</a><br>";                  
+                echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
+				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";                 
 }
                     ?>
+                    </div>
+                    <p><a href="/scholien/">Mehr Scholien</a></p>
                 </div>
             </div>
             
             <div class="startpage_section_b">
-                <h1>Neue Inhalte</h1>
-                <div class="startpage_box_contents white">
+
+                <div class="startpage_box_outer right">
                     <h1>Schriften</h1>
+                    <div class="startpage_box_inner"></div>
                      <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -109,12 +103,16 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]." <i>(".ucfirst($entry[type]).")</i></a><br>";                  
+                echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
+				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";                   
 }
                     ?>
+                    </div>
+                    <p><a href="/schriften/">Mehr Schriften</a></p>
                 </div>
-                <div class="startpage_box_contents white startpage_box_contents_middle">
+                <div class="startpage_box_outer left">
                     <h1>Medien</h1>
+                    <div class="startpage_box_inner right"> 
                     <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'media' OR type LIKE 'audio' OR type LIKE 'video') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -122,12 +120,20 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/medien/index.php?q=$id'>".$entry[title]." <i>(".ucfirst($entry[type]).")</i></a><br>";                  
+                echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
+				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";                  
 }
                     ?>
+                    </div>
+                    <p><a href="/medien/">Mehr Medien</a></p>
                 </div>
-                <div class="startpage_box_contents white">
+
+            </div>  
+            <div class="startpage_section_c">                
+                                
+                <div class="startpage_box_outer left">
                     <h1>Letzte Spende</h1>
+                    <div class="startpage_box_inner">
                     <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'projekt') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -135,22 +141,18 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id]; 
-                echo "<a href='/projekte/index.php?q=$id'>".$entry[title]."</a><br>";                  
+                echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
+				echo "<i>".date('d.m.Y', strtotime($entry[publ_date]))."</i>";                
 }
                     ?>
+                    </div>
+                    <p><a href="/projekte/">Weitere Projekte</a></p>
                 </div>
-            </div>  
-            <div class="startpage_section_c">
+               
             	 <div class="startpage_info">
                     <p>Die Wertewirtschaft ist ein lernendes Unternehmen, in dem Wege werte- und sinnorientierten Unternehmertums praktisch erkundet und theoretisch reflektiert werden. Wir bieten eine Orientierungshilfe f&uuml;r kritische B&uuml;rger und eine Bildungsalternative f&uuml;r junge Menschen, die der heutigen Blasenwirtschaft, aber auch ideologischen Versprechen misstrauen.</p>
                 </div>
-            </div>            
-     
-     <?php 
-     #include ("views/sidebar.inc.php"); 
-     #include ("_side_in.php");       
-     ?>
-        	
+            </div>                   	
 	</div>
   
 <?php include "_footer.php"; ?>
