@@ -59,9 +59,11 @@ if(isset($_GET['q']))
 		}	
 		
 	if ($_SESSION['Mitgliedschaft'] == 1) {
-		echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
-		echo "<div class='blog_text'>";
-		echo '<img class="blog_img" src="'.$img_url.'" alt="'.$id.'">';
+		echo "<p class='blogdate'>".date('d.m.Y', strtotime($publ_date))."</p>";
+		?>
+		<div class='blog_text'>
+			<img class="blog_img" src="<?echo $img_url;?>" alt="<?echo $id;?>">
+		<?php
 		echo $public;
 		echo "</div>";
 ?>		<div class="blog_upgrade">
@@ -76,9 +78,9 @@ if(isset($_GET['q']))
 
 	else {
 		echo "<h1>$title</h1>";
-		echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
+		echo "<p class='blogdate'>".date('d.m.Y', strtotime($publ_date))."</p>";
 		echo "<div class='blog_text'>";
-		echo "<img class='blog_img' src='$img_url' alt='$id''>";
+		echo '<img class="blog_img" src="'.$img_url.'" alt="'.$id.'">';
 		echo $public."\n";
 		echo $private;
 		echo "</div>";
