@@ -12,28 +12,17 @@ if(isset($_POST['add'])){
 
   $add_id = $_POST['add'];
   $add_quantity = $_POST['quantity'];
-  $add_donationdate = $_POST['donationdate'];
   $add_code = $add_id . "0";
   if ($add_quantity==1) $wort = "wurde";
   else $wort = "wurden";
   echo "<div class='basket_message'><i>".$add_quantity." Credits f&uuml;r das ausgew&auml;hlte Projekt ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>&raquo; zum Korb</a></div>";
 
-	$add_stuff = array($add_quantity, $add_donationdate);
-
-	  if (isset($_SESSION['basket'][$add_code])) {
-    $_SESSION['basket'][$add_code] += $add_stuff; 
-  }
-  else {
-    $_SESSION['basket'][$add_code] = $add_stuff; 
-  }
-
-
-  /*if (isset($_SESSION['basket'][$add_code])) {
+  if (isset($_SESSION['basket'][$add_code])) {
     $_SESSION['basket'][$add_code] += $add_quantity + $add_donationdate; 
   }
   else {
     $_SESSION['basket'][$add_code] = $add_quantity + $add_donationdate; 
-  }*/
+  }
 }
 
 
@@ -67,12 +56,10 @@ if ($id = $_GET["q"])
     <?php
     }
     else {
-    	$date = date("d.m.Y - H:i");
 		echo "<div class='projekte_invest'>
 		<p>Interessierte Mitglieder haben bereits <span class='projekte_credits_sold'>".$entry[spots_sold]."</span> von <span class='projekte_credits_sold'>".$entry[spots]."</span> n&ouml;tigen <img class='projekte_coin' src='../style/gfx/coin.png'> investiert.</p>"; ?>
       	<form class="projekte_invest_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         	<input type="hidden" name="add" value="<?php echo $n ?>">
-        	<input type="hidden" name="donationdate" value="<?php echo $date;?>">
         	<span class="projekte_invest_span">Ich m&ouml;chte mit </span>
         	<input class="projekte_invest_select" type="number" name="quantity" value="1" min="1" max="<?php echo $avail;?>">
         	<span class="projekte_invest_span"><img class='projekte_coin2' src='../style/gfx/coin.png'> zu diesem Projekt beitragen.</span><br>
