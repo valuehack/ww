@@ -139,6 +139,9 @@ if(isset($_POST['checkout'])) {
 
                     $space_query = "UPDATE produkte SET spots_sold = spots_sold + '$quantity' WHERE `n` LIKE '$key'";
                     mysql_query($space_query);
+					
+					$last_donation_query = "UPDATE produkte SET last_donation = '$donationdate' WHERE `n` LIKE '$key'";
+					mysql_query($last_donation_query);
                 
                 }
         
@@ -421,6 +424,7 @@ if($_SESSION['basket']) {
     echo "<br><br>";*/
 ?>
 		<div class="basket_head">
+			<? echo $item;?>
 			<div class="basket_head_col_a"></div>
 			<div class="basket_head_col_b">Menge</div>
 			<div class="basket_head_col_c">Preis</div>
