@@ -146,7 +146,7 @@ if(isset($_POST['checkout'])) {
                     $space_query = "UPDATE produkte SET spots_sold = spots_sold + '$quantity' WHERE `n` LIKE '$key'";
                     mysql_query($space_query);
 					
-					$last_donation_query = "UPDATE produkte SET last_donation = '$donationdate' WHERE `n` LIKE '$key'";
+					$last_donation_query = "UPDATE produkte SET last_donation = NOW() WHERE `n` LIKE '$key'";
 					mysql_query($last_donation_query);
                 
                 }
