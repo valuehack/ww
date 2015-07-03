@@ -424,7 +424,7 @@ if($_SESSION['basket']) {
     echo "<br><br>";*/
 ?>
 		<div class="basket_head">
-			<? echo $item;?>
+			<? echo $items;?>
 			<div class="basket_head_col_a"></div>
 			<div class="basket_head_col_b">Menge</div>
 			<div class="basket_head_col_c">Preis</div>
