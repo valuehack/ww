@@ -120,7 +120,7 @@ else {
 	//Pagination Script found at http://www.phpeasystep.com/phptu/29.html
 	$tbl_name="produkte";		//your table name
 	// How many adjacent pages should be shown on each side?
-	$adjacents = 3;
+	$adjacents = 4;
 	
 	/* 
 	   First get total number of rows in data table. 
@@ -132,7 +132,7 @@ else {
 	
 	/* Setup vars for query. */
 	$targetpage = "index.php"; 	//your file name  (the name of this file)
-	$limit = 10; 								//how many items to show per page
+	$limit = 8; 								//how many items to show per page
 	$page = $_GET['page'];
 	if($page) 
 		$start = ($page - 1) * $limit; 			//first item to display on this page
