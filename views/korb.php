@@ -438,7 +438,6 @@ if($_SESSION['basket']) {
     echo "<br><br>";*/
 ?>
 		<div class="basket_head">
-			<? echo $items;?>
 			<div class="basket_head_col_a"></div>
 			<div class="basket_head_col_b">Menge</div>
 			<div class="basket_head_col_c">Preis</div>
@@ -510,7 +509,7 @@ if($_SESSION['basket']) {
             default: NULL; break;
         }
 		echo "</span>";
-				       // TO DO: Find better solution to display the relevant information for different product categories  
+
        if (!(is_null($itemsExtraArray[start]))) {
             echo "<span class='basket_body_date'>".date("d.m.Y",strtotime($itemsExtraArray[start]));
             if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
@@ -538,6 +537,8 @@ if($_SESSION['basket']) {
        					else {
            		 			echo $itemsExtraArray[price];
         				}
+						echo "<br>";
+						echo $donationdate;
 					?>				
 				</span>
 			</div>
