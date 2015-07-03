@@ -615,7 +615,7 @@ img.dropdown_coin {
 }
 
 .startpage_box_outer img {
-	max-width: 47.5%;
+	width: 100%;
 	max-height: 100px;
 }
 

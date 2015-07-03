@@ -39,7 +39,7 @@ while($entry = mysql_fetch_array($result))
 	}
 				
 				echo "<div class='startpage_last_scholie'>";
-				echo "<div class='startpage_last_scholie_img' style='background:url(".$img_url.") no-repeat;'>";
+				echo "<div class='startpage_last_scholie_img' style='background:url(".$img_url.") no-repeat;'></div>";
 				echo "<div class='startpage_last_scholie_ms'>";
                 echo "<h1><a href='/scholien/index.php?q=$id'>".$entry[title]."</a></h1><br>"; 
 				echo "<span>Scholie</span>";
@@ -55,14 +55,13 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
                    </div>
-        </div>
             	</div>
             </div>
 			            	
             <div class="startpage_section">
                 <div class="startpage_box_outer  left">
                     <h1>Veranstaltungen</h1>
-                    <img src="../style/gfx/seminare.jpg">
+                    <img src="../style/gfx/sp_seminare.jpg" alt="">
                     <div class="startpage_box_inner">
                         <?php
 $sql = "SELECT * from produkte WHERE (type='lehrgang' or type='seminar' or type='kurs' or type='salon') AND status > 0 order by id asc, n asc LIMIT 0, 3";
@@ -87,6 +86,7 @@ while($entry = mysql_fetch_array($result))
 			                
                 <div class="startpage_box_outer right">
                     <h1>Scholien</h1>
+                    <img src="../style/gfx/sp_scholien.jpg" alt="">
                     <div class="startpage_box_inner">
                     <?php
 $sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 1, 3";
@@ -110,6 +110,7 @@ while($entry = mysql_fetch_array($result))
 			<div class="startpage_section">
                 <div class="startpage_box_outer right">
                     <h1>Schriften</h1>
+                    <img src="../style/gfx/sp_schriften.jpg" alt="">
                     <div class="startpage_box_inner">
                      <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status > 0 order by id asc, n asc LIMIT 0, 3";
@@ -129,6 +130,7 @@ while($entry = mysql_fetch_array($result))
                 </div>
                 <div class="startpage_box_outer left">
                     <h1>Medien</h1>
+                    <img src="../style/gfx/sp_medien.jpg" alt="">
                     <div class="startpage_box_inner"> 
                     <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'media' OR type LIKE 'audio' OR type LIKE 'video') AND status > 0 order by id asc, n asc LIMIT 0, 3";
@@ -151,6 +153,7 @@ while($entry = mysql_fetch_array($result))
 			<div class="startpage_section">                                                                
                 <div class="startpage_box_outer left">
                     <h1>Letzte Spende</h1>
+                    <img src="../style/gfx/sp_projekte.jpg" alt="">
                     <div class="startpage_box_inner">
                     <?php
 $sql = "SELECT * from produkte WHERE (type LIKE 'projekt') AND status > 0 order by id asc, n asc LIMIT 0, 3";
