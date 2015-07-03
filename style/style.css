@@ -614,6 +614,11 @@ img.dropdown_coin {
 	padding: 10px;
 }
 
+.startpage_box_outer img {
+	max-width: 47.5%;
+	max-height: 100px;
+}
+
 .startpage_box_inner {
 	margin: 10px 0;
 }
