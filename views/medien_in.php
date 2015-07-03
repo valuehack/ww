@@ -167,7 +167,7 @@ else {
 			$pagination.= "<span class=\"disabled\">&laquo; zur&uuml;ck</span>";	
 		
 		//pages	
-		if ($lastpage < 7 + ($adjacents * 2))	//not enough pages to bother breaking it up
+		if ($lastpage < 4 + ($adjacents * 2))	//not enough pages to bother breaking it up -7
 		{	
 			for ($counter = 1; $counter <= $lastpage; $counter++)
 			{
@@ -177,7 +177,7 @@ else {
 					$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";					
 			}
 		}
-		elseif($lastpage > 5 + ($adjacents * 2))	//enough pages to hide some
+		elseif($lastpage > 2 + ($adjacents * 2))	//enough pages to hide some -5
 		{
 			//close to beginning; only hide later pages
 			if($page < 1 + ($adjacents * 2))		
