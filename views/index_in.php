@@ -17,8 +17,8 @@ include ("_header_in.php");
 
         <div class="content">
             
-            <div class="startpage_section_a">
-            	
+            <div class="startpage_section">
+			            	
             		<?php
 $sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 1";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -39,7 +39,7 @@ while($entry = mysql_fetch_array($result))
 	}
 				
 				echo "<div class='startpage_last_scholie'>";
-				echo "<div class='startpage_last_scholie_img' style='background:url(".$img_url.") no-repeat;'>";
+				echo "<div class='startpage_last_scholie_img' style='background:url(".$img_url.") no-repeat;'></div>";
 				echo "<div class='startpage_last_scholie_ms'>";
                 echo "<h1><a href='/scholien/index.php?q=$id'>".$entry[title]."</a></h1><br>"; 
 				echo "<span>Scholie</span>";
@@ -55,9 +55,11 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
                    </div>
-                   </div>
+        
             	</div>
-            	
+            </div>
+			            	
+            <div class="startpage_section">
                 <div class="startpage_box_outer  left">
                     <h1>Veranstaltungen</h1>
                     <div class="startpage_box_inner">
@@ -71,17 +73,17 @@ while($entry = mysql_fetch_array($result))
                 echo "<p>"; 
 				echo "<a href='/salon/index.php?q=$id'>";
               	echo "$entry[title]</a><br>";
-				echo "<span>".date("d.m.Y",strtotime($entry[start]));
-              	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]))."</span>"; 
+				echo date("d.m.Y",strtotime($entry[start]));
+              	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end])); 
 				echo "<span>".ucfirst($entry[type])."</span>";
 				echo "</p>";                 
 				}
                     ?>
                 	</div> 
-                <p><a href="/salon/">Mehr Salons</a></p> 
-                <p><a href="/seminare/">Mehr Seminare</a></p> 
+                <p class="startpage_more"><a href="/salon/">Mehr Salons</a></p> 
+                <p class="startpage_more"><a href="/seminare/">Mehr Seminare</a></p> 
                 </div>
-                
+			                
                 <div class="startpage_box_outer right">
                     <h1>Scholien</h1>
                     <div class="startpage_box_inner">
@@ -100,9 +102,11 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
                     </div>
-                    <p><a href="/scholien/">Mehr Scholien</a></p>
-                </div>          
-
+                    <p class="startpage_more"><a href="/scholien/">Mehr Scholien</a></p>
+                </div>     
+			</div>        
+			         
+			<div class="startpage_section">
                 <div class="startpage_box_outer right">
                     <h1>Schriften</h1>
                     <div class="startpage_box_inner">
@@ -120,7 +124,7 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
                     </div>
-                    <p><a href="/schriften/">Mehr Schriften</a></p>
+                    <p class="startpage_more"><a href="/schriften/">Mehr Schriften</a></p>
                 </div>
                 <div class="startpage_box_outer left">
                     <h1>Medien</h1>
@@ -139,9 +143,11 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
                     </div>
-                    <p><a href="/medien/">Mehr Medien</a></p>
+                    <p class="startpage_more"><a href="/medien/">Mehr Medien</a></p>
                 </div>
-                                            
+			</div>
+			
+			<div class="startpage_section">                                                                
                 <div class="startpage_box_outer left">
                     <h1>Letzte Spende</h1>
                     <div class="startpage_box_inner">
@@ -159,12 +165,15 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
                     </div>
-                    <p><a href="/projekte/">Weitere Projekte</a></p>
+                    <p class="startpage_more"><a href="/projekte/">Weitere Projekte</a></p>
                 </div>
-               
+			</div>
+			
+			<div class="startpage_section darkblue">               
             	 <div class="startpage_info">
                     <p>Die Wertewirtschaft ist ein lernendes Unternehmen, in dem Wege werte- und sinnorientierten Unternehmertums praktisch erkundet und theoretisch reflektiert werden. Wir bieten eine Orientierungshilfe f&uuml;r kritische B&uuml;rger und eine Bildungsalternative f&uuml;r junge Menschen, die der heutigen Blasenwirtschaft, aber auch ideologischen Versprechen misstrauen.</p>
-                </div>                	
+                </div>  
+			</div>              	
 	</div>
   
 <?php include "_footer.php"; ?>
