@@ -56,11 +56,13 @@ if ($id = $_GET["q"])
     <?php
     }
     else {
+    	$date = date("d.m.Y - H:i");
+		echo $date;
 		echo "<div class='projekte_invest'>
 		<p>Interessierte Mitglieder haben bereits <span class='projekte_credits_sold'>".$entry[spots_sold]."</span> von <span class='projekte_credits_sold'>".$entry[spots]."</span> n&ouml;tigen <img class='projekte_coin' src='../style/gfx/coin.png'> investiert.</p>"; ?>
       	<form class="projekte_invest_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         	<input type="hidden" name="add" value="<?php echo $n ?>">
-        	<input type="hidden" name="donationdate" value="<?php date("d.m.Y H:i");?>">
+        	<input type="hidden" name="donationdate" value="<?php date("d.m.Y - H:i");?>">
         	<span class="projekte_invest_span">Ich m&ouml;chte mit </span>
         	<input class="projekte_invest_select" type="number" name="quantity" value="1" min="1" max="<?php echo $avail;?>">
         	<span class="projekte_invest_span"><img class='projekte_coin2' src='../style/gfx/coin.png'> zu diesem Projekt beitragen.</span><br>
