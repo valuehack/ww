@@ -20,7 +20,7 @@ include ("_header_in.php");
             <div class="startpage_section">
 			            	
             		<?php
-$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 1";
+$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 2, 2";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 
