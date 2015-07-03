@@ -20,7 +20,7 @@ include ("_header_in.php");
             <div class="startpage_section">
 			            	
             		<?php
-$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 1, 1";
+$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 1";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 
@@ -39,7 +39,7 @@ while($entry = mysql_fetch_array($result))
 	}
 				
 				echo "<div class='startpage_last_scholie'>";
-				echo "<div class='startpage_last_scholie_img' style='background:url(".$img_url.") no-repeat;'></div>";
+				echo "<div class='startpage_last_scholie_img' style='background:url(".$img_url.") no-repeat;'>";
 				echo "<div class='startpage_last_scholie_ms'>";
                 echo "<h1><a href='/scholien/index.php?q=$id'>".$entry[title]."</a></h1><br>"; 
 				echo "<span>Scholie</span>";
@@ -55,7 +55,7 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
                    </div>
-        
+        </div>
             	</div>
             </div>
 			            	
