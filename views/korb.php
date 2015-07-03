@@ -61,8 +61,11 @@ if(isset($_POST['checkout'])) {
     mysql_query("SET time_zone = 'Europe/Vienna'");
 
     $itemsPrice = 0;
-    foreach ($items as $code => $quantity) 
+    foreach ($items as $code => $stuff) /*$quantity*/
     {
+    	$quantity = $stuff[0];
+		$donationdate = $stuff[1];
+				
         $length = strlen($code) - 1;
 
         $key = substr($code,0,$length);
@@ -115,8 +118,11 @@ if(isset($_POST['checkout'])) {
 
         else 
         {
-        foreach ($items as $code => $quantity) 
-                {    
+        foreach ($items as $code => $stuff /*$quantity*/) 
+                {
+					$quantity = $stuff[0];
+					$donationdate = $stuff[1];
+					    
                     $length = strlen($code) - 1;
 
                     $key = substr($code,0,$length);
@@ -154,7 +160,11 @@ if(isset($_POST['checkout'])) {
         echo "<td style='width:15%'><b>Preis</b></td>";
         echo "<td style='width:15%'>&nbsp;</td></tr>";
 
-        foreach ($items as $code => $quantity) {
+        foreach ($items as $code => $stuff/*$quantity*/) {
+
+    		$quantity = $stuff[0];
+			$donationdate = $stuff[1];
+			
             $length = strlen($code) - 1;
 
             $key = substr($code,0,$length);
@@ -340,7 +350,11 @@ if(isset($_POST['checkout'])) {
                         <td style='width:10%'><b>Total</b></td></tr>";
 
        
-        foreach ($items as $code => $quantity) {
+        foreach ($items as $code => $stuff /*$quantity*/) {
+        	
+    		$quantity = $stuff[0];
+			$donationdate = $stuff[1];
+		
             $length = strlen($code) - 1;
 
             $key = substr($code,0,$length);
@@ -433,7 +447,11 @@ if($_SESSION['basket']) {
 
     $total = 0;
 
-    foreach ($items as $code => $quantity) {
+    foreach ($items as $code => $stuff /*$quantity*/) {
+    			
+    	$quantity = $stuff[0];
+		$donationdate = $stuff[1];	
+    	
         $length = strlen($code) - 1;
 
         $key = substr($code,0,$length);
