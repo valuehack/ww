@@ -5,20 +5,21 @@
         			</p>
         		</div>
         		<div class="footer_contact">
-        			<p><a href="http://scholarium.at/">&copy; Scholarium&trade;</a></p>
+        			<img src="../style/gfx/footer_logo.png" alt="Scholarium Logo">
         			<ul>
-        				<li>Schl&ouml;sselgasse 18//</li>
-        				<li>1080 Wien</li>
+        				<li>Schl&ouml;sselgasse 19/2/18</li>
+        				<li>A - 1080 Wien</li>
+        				<li>&Ouml;sterreich</li>
+        				<li>&nbsp;</li>
         				<li>Fax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +43 1 2533033 4733</li>
         				<li>E-Mail: &nbsp;<a href="mailto:&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;">&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;</a></li>
-        			</ul>
+					</ul>
+					<p><a href="../kontakt/">Impressum</a> <a href="../agb/">AGB</a></p> 
         		</div>
         	</div>
         	<div class="footer_section">
-        		<div class="footer_logo">
-        			<img src="../style/gfx/footer_logo.png" alt="Scholarium Logo">
-					<a href="../kontakt/">Impressum</a>
-                	<a href="../agb/">AGB</a> 
+        		<div class="footer_tm">
+        			<p>&copy; Scholarium&trade;</p>
         		</div>
         		<div class="footer_social">
         			<ul>
