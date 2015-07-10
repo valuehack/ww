@@ -50,8 +50,9 @@ if ($login->isUserLoggedIn() == true) {
 			<?php
 				$sql = "SELECT * from static_content WHERE (page LIKE 'burger')";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			
-				echo $result[text];			
+				$entry = mysql_fetch_array($result);
+				
+				echo $entry[text];			
 			?>
 			<div class="centered">
 				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
