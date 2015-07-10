@@ -9,8 +9,8 @@
         			<ul>
         				<li>Schl&ouml;sselgasse 18//</li>
         				<li>1080 Wien</li>
-        				<li>Fax</li>
-        				<li>E-Mail</li>
+        				<li>Fax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +43 1 2533033 4733</li>
+        				<li>E-Mail: &nbsp;<a href="mailto:&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;">&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;</a></li>
         			</ul>
         		</div>
         	</div>
