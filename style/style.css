@@ -669,20 +669,6 @@ img.dropdown_coin {
 	border-bottom: 1px solid rgb(46,74,98);
 }
 
-.startpage_info {
-	width: 100%;
-	color: rgb(255,255,255);
-	font-size: 15pt;
-	line-height: 1.8;
-	font-style: italic;
-	margin: 50px 0;
-	clear: both;
-}
-
-.darkblue {
-	background: rgb(7,16,24);
-}
-
 /*==================================================*/
 /*                 Scholien/ Blog	                */
 /*==================================================*/
@@ -2448,7 +2434,7 @@ img.projekte_coin2  {
 .footer_info p {
 	font-size: 14pt;
 	text-align: justify;
-	line-height: 1.44;
+	line-height: 1.73;
 	margin-top: 131.8667px;
 	font-style: italic;
 }
