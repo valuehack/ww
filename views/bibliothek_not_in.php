@@ -8,8 +8,15 @@ include('_header_not_in.php');
 <div class="content">
 		<div class="medien_info">
 			<h1>Bibliothek</h1>
-
-  			<p>Die Wertewirtschaft verf&uuml;gt &uuml;ber die wohl bedeutendste Bibliothek zu den Themenbereichen realistischer &Ouml;konomik, Unternehmertum, Freiheit und praktischer Philosophie &ndash; dank zahlreicher Stiftungen, insbesondere derjenigen des Privatgelehrten Roland Baader (Kirrlach), des Saloniers und Freidenkers Rainer Ernst Sch&uuml;tz (Wien), des &Ouml;konomen Hans-Hermann Hoppe (Istanbul) und des Wirtschaftsphilosophen Rahim Taghizadegan (Wien). Diese Bibliothek ist f&uuml;r unsere G&auml;ste zug&auml;nglich und nutzbar. Wir sind noch immer mit der gro&szlig;en Arbeit der vollst&auml;ndigen Erfassung und des digitalen Zugangs besch&auml;ftigt.</p>
+			
+			<?php
+				$sql = "SELECT * from static_content WHERE (page LIKE 'bibliothek')";
+				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+				$entry = mysql_fetch_array($result);
+				
+				echo $entry[text];			
+			?>
+			
 			<p>Wenn Sie ein Zugang interessiert, hinterlassen Sie uns Ihre E-Mail-Adresse:</p>
   
   			<div class="subscribe">

@@ -52,7 +52,7 @@ if ($login->isUserLoggedIn() == true) {
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				$entry = mysql_fetch_array($result);
 				
-				echo $entry[text];			
+				echo $entry[info];			
 			?>
 			<div class="centered">
 				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
