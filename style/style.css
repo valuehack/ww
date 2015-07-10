@@ -2504,7 +2504,8 @@ img.projekte_coin2  {
 	text-decoration: none;
 	display: block;
 	height: 40px;
-	width: 20px;
+	width: 40px;
+	background-size: contain;
 }
 
 .footer_social a:hover {
@@ -2512,19 +2513,19 @@ img.projekte_coin2  {
 }
 
 .footer_social_facebook {
-	background: url(gfx/footer_social_facebook.png) contain no-repeat;
+	background: url(gfx/footer_social_facebook.png) no-repeat;
 }
 
 .footer_social_twitter {
-	background: url(gfx/footer_social_twitter.png) contain no-repeat;
+	background: url(gfx/footer_social_twitter.png) no-repeat;
 }
 
 .footer_social_xing {
-	background: url(gfx/footer_social_xing.png) contain no-repeat;
+	background: url(gfx/footer_social_xing.png) no-repeat;
 }
 
 .footer_social_youtube {
-	background: url(gfx/footer_social_youtube.png) contain no-repeat;
+	background: url(gfx/footer_social_youtube.png) no-repeat;
 }
 
 /*.banner_blog {
