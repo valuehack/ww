@@ -2449,6 +2449,7 @@ img.projekte_coin2  {
 	font-size: 14pt;
 	text-align: justify;
 	line-height: 1.3;
+	margin-top: 131.8667px;
 }
 
 .footer_contact {
@@ -2464,6 +2465,11 @@ img.projekte_coin2  {
 .footer_contact p {
 	font-size: 14pt;
 	padding: 10px 0 0 0;
+	margin-left: 90px;
+}
+
+.footer_contact ul {
+	margin-left: 90px;
 }
 
 .footer_contact li {
@@ -2492,10 +2498,11 @@ img.projekte_coin2  {
 .footer_social {
 	width: 45%;
 	float: right;
+	text-align: right;
 }
 
 .footer_social li {
-	float: right;
+	float: left;
 	width: 40px;
 	margin: 0 5px;	
 }
