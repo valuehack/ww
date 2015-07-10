@@ -2423,21 +2423,87 @@ img.projekte_coin2  {
 	padding-top: 15px;
 }
 
-.footer p {
-	text-align: center;
+.footer_section {
+	width: 75%;
+	padding: 10px 12.5%;
 }
 
-.footer p a {
-	font-size: 12pt;
-	color: rgb(200,200,200);
-	text-shadow: 1px 1px 1px 0 rgb(15,15,15);
+.footer_info {
+	width: 60%;
+	margin-right: 5%;
+}
+
+.footer_info p {
+	font-size: 14pt;
+	text-align: justify;
+	color: rgb(255,255,255);
+}
+
+.footer_contact {
+	width: 35%;
+}
+
+.footer_contact p {
+	font-size: 20pt;
+	color: rgb(255,255,255);
+}
+
+.footer_contact li {
+	font-size: 16pt;
+	color: rgb(255,255,255);
+	line-height: 1.4;
+}
+
+.footer_logo {
+	width: 60%;
+	margin-right: 5%;
+}
+
+.footer_logo img {
+	width: 200px;	
+}
+
+.footer_logo a {
+	display: block;
+	font-size: 18pt;
+	color: rgb(255,255,255);
+	padding: 0 10px;
+}
+
+.footer_social {
+	width: 35%;
+}
+
+.footer_social li {
+	float: right;
+	width: 20px;
+	margin: 0 5px;	
+}
+
+.footer_social a {
 	text-decoration: none;
+	display: block;
+	opacity: 0.8;
 }
 
-.footer p a:hover {
-	font-size: 12pt;
-	color: rgb(230,230,230);
-	text-shadow: 1px 1px 1px 0 rgb(15,15,15);
+.footer_social a:hover {
+	opacity: 1;
+}
+
+.footer_social_facebook {
+	background: url(gfx/footer_social_facebook.png) no-repeat;
+}
+
+.footer_social_twitter {
+	background: url(gfx/footer_social_twitter.png) no-repeat;
+}
+
+.footer_social_xing {
+	background: url(gfx/footer_social_xing.png) no-repeat;
+}
+
+.footer_social_youtube {
+	background: url(gfx/footer_social_youtube.png) no-repeat;
 }
 
 /*.banner_blog {
