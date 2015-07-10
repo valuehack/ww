@@ -1,8 +1,13 @@
         <footer class="footer">
         	<div class="footer_section">
         		<div class="footer_info">
-					<p>Das Scholarium ist ein lernendes Unternehmen, in dem Wege werte- und sinnorientierten Unternehmertums praktisch erkundet und theoretisch reflektiert werden. Wir bieten eine Orientierungshilfe f&uuml;r kritische B&uuml;rger und eine Bildungsalternative f&uuml;r junge Menschen, die der heutigen Blasenwirtschaft, aber auch ideologischen Versprechen misstrauen.
-        			</p>
+        			<?php
+						$sql = "SELECT * from static_content WHERE (page LIKE 'footer')";
+						$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+						$entry = mysql_fetch_array($result);
+				
+						echo $entry[info];			
+					?>
         		</div>
         		<div class="footer_contact">
         			<img src="../style/gfx/footer_logo.png" alt="Scholarium Logo">

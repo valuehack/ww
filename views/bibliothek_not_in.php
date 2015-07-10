@@ -14,7 +14,7 @@ include('_header_not_in.php');
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				$entry = mysql_fetch_array($result);
 				
-				echo $entry[text];			
+				echo $entry[info];			
 			?>
 			
 			<p>Wenn Sie ein Zugang interessiert, hinterlassen Sie uns Ihre E-Mail-Adresse:</p>

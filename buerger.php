@@ -48,7 +48,7 @@ if ($login->isUserLoggedIn() == true) {
 		<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>
 		<div class="blog_text">
 			<?php
-				$sql = "SELECT * from static_content WHERE (page LIKE 'burger')";
+				$sql = "SELECT * from static_content WHERE (page LIKE 'buerger')";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				$entry = mysql_fetch_array($result);
 				

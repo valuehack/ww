@@ -48,9 +48,15 @@ if(isset($_GET['q']))
            <article class="blog">
            		
 <?  
+	$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
+	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+	$entry4 = mysql_fetch_array($result);
+
 	if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div class='blog_info'>";
-		echo '<p>Mit Scholion bezeichnete man urspr&uuml;nglich eine Randnotiz, die Gelehrte in den B&uuml;chern anbrachten, die ihre st&auml;ndigen Wegbegleiter waren. Heute sind die Scholien die Randnotizen von <a href="http://rahim.cc">Rahim Taghizadegan</a>, die Erkenntnisgewinne im Rahmen der Wertewirtschaft dokumentieren: der tiefgehenden Reflexion und praktischen &Uuml;berpr&uuml;fung der M&ouml;glichkeiten, unter erschwerten Bedingungen noch Werte zu schaffen, Realit&auml;t von Illusion zu unterscheiden und Sinn zu finden. Um alle Scholien in voller L&auml;nge lesen zu k&ouml;nnen, <a href="../abo/upgrade.php"> beehren Sie uns bitte als Gast</a>.</p>';
+				
+				echo $entry4[info1];			
+		
 		echo "</div>";
 		echo "<header>";
 		echo "<h1>$title</h1>";
@@ -66,8 +72,9 @@ if(isset($_GET['q']))
 		<?php
 		echo $public;
 		echo "</div>";
-?>		<div class="blog_upgrade">
-		<p>Weitere <? echo $length;?> W&ouml;rter Kontext nur f&uuml;r G&auml;ste. Wir freuen uns, dass Sie &uuml;ber die Scholien an unseren Erkenntnissen teilhaben m&ouml;chten. Die Scholien enthalten oft allzu pers&ouml;nliche Gedanken, Hintergrundinformationen, intimes Wissen, sind aus gesetzlichen Gr&uuml;nden nicht teilbar, oder sonstwie heikel. Wir k&ouml;nnen Sie nur G&auml;sten offen zug&auml;nglich machen, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r auch die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie <a href="http://wertewirtschaft.org/abo.php">diesem Link</a> und in K&uuml;rze erhalten Sie Zugriff auf alle unsere Scholien in voller L&auml;nge.</p>
+		echo '<div class="blog_upgrade">';
+		echo $entry4[mehr_lesen1];
+			?>
 
 		<a class="blog_linkbutton" href="../abo/upgrade.php">Upgrade</a>
 		</div>
@@ -226,7 +233,13 @@ else
 	
 		<?php if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div class='blog_info'>";
-		echo '<p>Mit Scholion bezeichnete man urspr&uuml;nglich eine Randnotiz, die Gelehrte in den B&uuml;chern anbrachten, die ihre st&auml;ndigen Wegbegleiter waren. Heute sind die Scholien die Randnotizen von <a href="http://rahim.cc">Rahim Taghizadegan</a>, die Erkenntnisgewinne im Rahmen der Wertewirtschaft dokumentieren: der tiefgehenden Reflexion und praktischen &Uuml;berpr&uuml;fung der M&ouml;glichkeiten, unter erschwerten Bedingungen noch Werte zu schaffen, Realit&auml;t von Illusion zu unterscheiden und Sinn zu finden. Um alle Scholien in voller L&auml;nge lesen zu k&ouml;nnen, <a href="../abo/upgrade.php"> beehren Sie uns bitte als Gast</a>.</p>';
+		
+				$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
+				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+				$entry4 = mysql_fetch_array($result);
+				
+				echo $entry4[info1];
+
 		echo "</div>";
 		echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 		}

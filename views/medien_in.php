@@ -104,7 +104,13 @@ else {
   if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>       
   	<div class='medien_info'>
-      <p>Da die meisten unserer G&auml;ste nicht in Wien zuhause sind und unsere Arbeit ein Publikum im gesamten deutschsprachigen Raum anspricht (hinter der Wertewirtschaft stehen deutsche, &ouml;sterreichische, Schweizer und Liechtensteiner Unternehmer), bieten wir selbstverst&auml;ndlich digitale Medien an, die es erlauben, an unseren Erkenntnissen auch aus der Ferne teilzuhaben. Wir geben uns dabei viel M&uuml;he, den Fernzugang so angenehm wie m&ouml;glich zu halten. Sie k&ouml;nnen also nicht nur bequem nachlesen, sondern meist auch nachh&ouml;ren, was sich in der Wertewirtschaft tut.</p>
+  		<?php
+				$sql = "SELECT * from static_content WHERE (page LIKE 'medien)";
+				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+				$entry4 = mysql_fetch_array($result);
+				
+				echo $entry4[info];			
+			?>
    </div>
  	<div class="medien_seperator">
     	<h1>Medien</h1>
@@ -317,7 +323,9 @@ while($entry = mysql_fetch_array($result))
         <h2 class="modal-title" id="myModalLabel">Herunterladen</h2>
       </div>
       <div class="modal-body">
-          <p>Wir freuen uns, dass Sie eine unserer Aufzeichnungen herunterladen m&ouml;chten. Allerdings sind einige Aufnahmen nicht f&uuml;r die &Ouml;ffentlichkeit bestimmt &ndash; wir und unsere G&auml;ste m&uuml;ssten uns ein allzu gro&szlig;es Blatt vor den Mund nehmen, wenn jeder mith&ouml;ren k&ouml;nnte. Das Herunterladen von Medien steht nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r die meisten Medien kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf alle unsere Medien:</p>
+      	<?php
+      		echo $entry4[modal];
+		?>
       </div>
       <div class="modal-footer">
          <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>

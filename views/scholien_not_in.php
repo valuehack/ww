@@ -58,10 +58,14 @@ if(isset($_GET['q']))
 if ($length>10) 
 	{ ?>
 	<div class="blog_upgrade">
-		<p>Weitere <? echo $length;?> W&ouml;rter Kontext nur f&uuml;r G&auml;ste. Bitte um Verzeihung, dieser Text ist f&uuml;r Fremde nicht sichtbar. 
-		Er k&ouml;nnte allzu pers&ouml;nliche Gedanken, Hintergrundinformationen, intimes Wissen enthalten, aus gesetzlichen Gr&uuml;nden nicht teilbar, oder sonstwie heikel sein. 
-		Beehren Sie eine der letzten v&ouml;llig unabh&auml;ngigen Bildungs- und&nbsp;Forschungseinrichtungen als Gast und sichern Sie sich Ihren Wissensvorteil. 
-		Treten Sie dazu bitte zun&auml;chst einen Schritt weit aus der Anonymit&auml;t und tragen Sie hier Ihre E-Mail-Adresse ein:</p>
+		<?php  
+			$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
+			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry4 = mysql_fetch_array($result);
+	
+				echo $entry4[mehr_lesen];			
+			?>
+			
 		<div class="centered">
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
   			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
@@ -103,11 +107,14 @@ else
 <div class="content">
 	<article class="blog">
 		<div class="blog_text">
-			<p>Mit Scholion bezeichnete man urspr&uuml;nglich eine Randnotiz, die Gelehrte in den B&uuml;chern anbrachten, die ihre st&auml;ndigen Wegbegleiter waren. Heute sind die Scholien die Randnotizen von <a href="http://www.rahim.cc">Rahim Taghizadegan</a>, die Erkenntnisgewinne im Rahmen der Wertewirtschaft dokumentieren: der tiefgehenden Reflexion und praktischen &Uuml;berpr&uuml;fung der M&ouml;glichkeiten, unter erschwerten Bedingungen noch Werte zu schaffen, Realit&auml;t von Illusion zu unterscheiden und Sinn zu finden.</p>
-			<p>Das Institut f&uuml;r Wertewirtschaft ist ein lernendes Unternehmen, in dem aus der Spannung zwischen mu&szlig;evoll-theoretischer Reflexion und praktisch-unternehmerischem Schaffen Erkenntnis gewonnen wird. Die Sp&auml;ne, die bei dieser Erkenntnissuche abfallen, teilt <a href="http://www.rahim.cc">Rahim Taghizadegan</a> an dieser Stelle mit Seelenverwandten. Die Scholien sind daher pers&ouml;nlich und frei von der Leber geschrieben &ndash; ohne Blatt vor dem Mund.</p>
-			<p>Themen: Unternehmerische Herausforderungen auf verzerrten M&auml;rkten, Werte und Wirtschaft, Theorie und Praxis des guten Lebens, Freiheit und Ordnung, Erkenntnis, Dynamiken und Hintergr&uuml;nde der Gegenwart und Vergangenheit, Ideengeschichte, Alternativen und Traditionen, Aktuelles und Zeitloses, Strategie und Einstellung, Sprache und Symbole, Spirituelles und Materielles, Fragen und Antworten, hilfreiche Hinweise und Ratschl&auml;ge, Kunst und Kultur.</p>
-			<p>Die Scholien sind eine Anregung f&uuml;r Vielleser, aber vielmehr noch eine Dienstleistung f&uuml;r Wenigleser &ndash; insbesondere f&uuml;r Praktiker, die es auch unter schwierigsten Bedingungen nicht aufgeben, Werte zu schaffen und zu wahren, und f&uuml;r Erkenntnis- und Sinnsucher in Zeiten inflation&auml;rer Desinformation.</p>
-			<p>Wenn Sie sich angesprochen f&uuml;hlen, treten Sie doch bitte zun&auml;chst einen Schritt weit aus der Anonymit&auml;t und tragen Sie hier Ihre E-Mail-Adresse ein, Sie k&ouml;nnen dann die letzten Scholien-Beitr&auml;ge anlesen.</p>
+			<?php  
+			$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
+			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry4 = mysql_fetch_array($result);
+	
+				echo $entry4[info];			
+			?>
+		
 		</div>
 		<div class="centered">
 			<div class="blog_subscribe">

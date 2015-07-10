@@ -34,7 +34,7 @@ if(isset($_POST['add'])){
   }
 }
 
-    	//check, if there is a image in the salon folder
+   	//check, if there is a image in the salon folder
 	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
@@ -142,8 +142,14 @@ if(isset($_GET['q']))
     
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
-?>
-		<p>Unsere Seminare inmitten unserer einzigartigen Bibliothek bieten inhaltliche Vertiefungen abseits des Mainstream-Lehrbetriebs. Wir folgen dabei dem Beispiel der klassischen Akademie &ndash; der Bibliothek im Hain der Mu&szlig;e fern vom Wahnsinn der Zeit, in der Freundschaften durch regen Austausch und gemeinsames Nachdenken gestiftet werden. Alle unsere Lehrangebote zeichnen sich durch geb&uuml;hrende Tiefe bei gleichzeitiger Verst&auml;ndlichkeit, kleine Gruppen und gro&szlig;en Freiraum f&uuml;r Fragen und Diskussionen aus. Tauchen Sie mit uns in intellektuelle Abenteuer, wie sie unsere Zeit kaum noch zul&auml;&szlig;t.</p>
+				
+	$sql = "SELECT * from static_content WHERE (page LIKE 'kurse')";
+	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+	$entry4 = mysql_fetch_array($result);
+	
+				echo $entry4[info];			
+			?>
+
 		<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Seminaren</a></div>
 	</div>
 	
@@ -152,8 +158,14 @@ if(isset($_GET['q']))
   else { 
   if ($_SESSION['Mitgliedschaft'] >= 1) {
   ?>
-    <div class="salon_info">    
-    	<p>Unsere Seminare inmitten unserer einzigartigen Bibliothek bieten inhaltliche Vertiefungen abseits des Mainstream-Lehrbetriebs. Wir folgen dabei dem Beispiel der klassischen Akademie &ndash; der Bibliothek im Hain der Mu&szlig;e fern vom Wahnsinn der Zeit, in der Freundschaften durch regen Austausch und gemeinsames Nachdenken gestiftet werden. Alle unsere Lehrangebote zeichnen sich durch geb&uuml;hrende Tiefe bei gleichzeitiger Verst&auml;ndlichkeit, kleine Gruppen und gro&szlig;en Freiraum f&uuml;r Fragen und Diskussionen aus. Tauchen Sie mit uns in intellektuelle Abenteuer, wie sie unsere Zeit kaum noch zul&auml;sst.</p>
+    <div class="salon_info">  
+    	<?php  
+			$sql = "SELECT * from static_content WHERE (page LIKE 'kurse')";
+			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry4 = mysql_fetch_array($result);
+	
+				echo $entry4[info];			
+			?>
     </div> 
     <div class="salon_seperator">
     	<h1>Termine</h1>
