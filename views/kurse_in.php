@@ -143,7 +143,7 @@ if(isset($_GET['q']))
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
 				
-	$sql = "SELECT * from static_content WHERE (page LIKE 'kurse')";
+	$sql = "SELECT * from static_content WHERE (page LIKE 'seminare')";
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	$entry4 = mysql_fetch_array($result);
 	
@@ -160,7 +160,7 @@ if(isset($_GET['q']))
   ?>
     <div class="salon_info">  
     	<?php  
-			$sql = "SELECT * from static_content WHERE (page LIKE 'kurse')";
+			$sql = "SELECT * from static_content WHERE (page LIKE 'seminare')";
 			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 			$entry4 = mysql_fetch_array($result);
 	

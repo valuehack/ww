@@ -105,7 +105,7 @@ else {
   ?>       
   	<div class='medien_info'>
   		<?php
-				$sql = "SELECT * from static_content WHERE (page LIKE 'medien)";
+				$sql = "SELECT * from static_content WHERE (page LIKE 'medien')";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				$entry4 = mysql_fetch_array($result);
 				

@@ -127,7 +127,7 @@ else {
   		<h1>Seminare</h1>
   		
   		<?php  
-			$sql = "SELECT * from static_content WHERE (page LIKE 'kurse')";
+			$sql = "SELECT * from static_content WHERE (page LIKE 'seminare')";
 			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 			$entry4 = mysql_fetch_array($result);
 	

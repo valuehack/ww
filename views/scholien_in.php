@@ -49,8 +49,8 @@ if(isset($_GET['q']))
            		
 <?  
 	$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
-	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-	$entry4 = mysql_fetch_array($result);
+	$result2 = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+	$entry4 = mysql_fetch_array($result2);
 
 	if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div class='blog_info'>";
@@ -235,8 +235,8 @@ else
 		echo "<div class='blog_info'>";
 		
 				$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
-				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-				$entry4 = mysql_fetch_array($result);
+				$result2 = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+				$entry4 = mysql_fetch_array($result2);
 				
 				echo $entry4[info1];
 

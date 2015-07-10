@@ -240,7 +240,7 @@ else {
         </div>
         <div class="modal-body">
         	<?php  
-			$sql = "SELECT * from static_content WHERE (page LIKE 'kurse')";
+			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
 			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 			$entry4 = mysql_fetch_array($result);
 	

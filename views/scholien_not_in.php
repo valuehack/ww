@@ -60,8 +60,8 @@ if ($length>10)
 	<div class="blog_upgrade">
 		<?php  
 			$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
+			$result2 = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry4 = mysql_fetch_array($result2);
 	
 				echo $entry4[mehr_lesen];			
 			?>
@@ -109,8 +109,8 @@ else
 		<div class="blog_text">
 			<?php  
 			$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
+			$result2 = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry4 = mysql_fetch_array($result2);
 	
 				echo $entry4[info];			
 			?>
