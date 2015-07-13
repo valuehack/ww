@@ -665,6 +665,7 @@ img.dropdown_coin {
 	border-bottom: 1px dotted rgb(46,74,98);
 	margin: 5px;
 	float: right;
+	color: rgb(46,74,98);
 }
 
 .startpage_more a:hover {
