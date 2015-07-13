@@ -5,7 +5,7 @@
 		<title><?=$title?> | Scholarium</title>
     
     	<meta name="twitter:card" content="summary">
-		<meta name="twitter:site" content="@Wertewirtschaft">
+		<meta name="twitter:site" content="@wertewirtschaft">
 		<meta name="author" content="Rahim Taghizadegan">
 		<meta property="og:type" content="article">
 		<meta property="og:title" content="">

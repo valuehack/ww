@@ -68,7 +68,7 @@ if(isset($_GET['q']))
 		echo "<p class='blogdate'>".date('d.m.Y', strtotime($publ_date))."</p>";
 		?>
 		<div class='blog_text'>
-			<img class="blog_img" src="<?echo $img_url;?>" alt="<?echo $id;?>">
+			<img class="blog_img" src="<?echo $img_url;?>" rel="image_src" alt="<?echo $id;?>" title="<?echo $id;?>">
 		<?php
 		echo $public;
 		echo "</div>";
