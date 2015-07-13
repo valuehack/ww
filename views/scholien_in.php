@@ -62,14 +62,13 @@ if(isset($_GET['q']))
 		echo "<header>";
 		echo "<h1>$title</h1>";
 		echo "</header>";
-		echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 		}	
 		
 	if ($_SESSION['Mitgliedschaft'] == 1) {
-		echo "<p class='blogdate'>".date('d.m.Y', strtotime($publ_date))."</p>";
+		echo "<p class='blogdate'> &mdash; ".date('d.m.Y', strtotime($publ_date))." &mdash; </p>";
 		?>
-		<div class='blog_text'>
-			<img class="blog_img" src="<?echo $img_url;?>" rel="image_src" alt="<?echo $id;?>" title="<?echo $id;?>">
+		<img class="blog_img" src="<?echo $img_url;?>" rel="image_src" alt="<?echo $id;?>">
+		<div class='blog_text'>			
 		<?php
 		echo $public;
 		echo "</div>";
@@ -86,9 +85,9 @@ if(isset($_GET['q']))
 
 	else {
 		echo "<h1>$title</h1>";
-		echo "<p class='blogdate'>".date('d.m.Y', strtotime($publ_date))."</p>";
-		echo "<div class='blog_text'>";
+		echo "<p class='blogdate'> &mdash; ".date('d.m.Y', strtotime($publ_date))." &mdash; </p>";
 		echo '<img class="blog_img" src="'.$img_url.'" alt="'.$id.'">';
+		echo "<div class='blog_text'>";
 		echo $public."\n";
 		echo $private;
 		echo "</div>";
