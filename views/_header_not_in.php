@@ -12,7 +12,7 @@
 		<meta name="author" content="Rahim Taghizadegan">
 		<meta property="og:type" content="article">
 		<meta property="og:title" content="<?=$title?>">
-		<meat property="og:image" content="<?=$img_url?>>"
+		<meta property="og:image" content="<?=$img_url?>>"
 		<meta property="og:site_name" content="Scholarium">
 		<meta property="og:locale" content="de_DE">
 		<meta property="article:publisher" content="https://www.facebook.com/wertewirtschaft">
