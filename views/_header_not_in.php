@@ -41,6 +41,14 @@
     			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   			})();
 		</script>
+		
+		<!-- Social Links PopUp -->
+		<script type="text/javascript">
+			function openpopup (url) {
+   			popup = window.open(url, "popup1", "width=640,height=480,status=yes,scrollbars=yes,resizable=yes");
+   			popup.focus();
+			}
+		</script>
 	</head>
 		
 <?php
