@@ -23,6 +23,8 @@ if(isset($_GET['q']))
 	$publ_date = $entry[publ_date];
 	$length = str_word_count($private, 0, 'äüöÄÜÖß');
 
+	$description_fb = substr($public, 4, 400);
+	
 	//check, if there is a image in the blog/gfx folder
 	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
 
