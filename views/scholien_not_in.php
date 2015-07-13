@@ -39,11 +39,11 @@ if(isset($_GET['q']))
 ?>		
         <aside class="social">
                    <ul>
-                       <li><a href="https://www.facebook.com/sharer/sharer.php?s=100&p[title]=<?=$title?>&p[summary]=<?$decription_fb?>&p[url]=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>&p[images][0]=<?=$img_url?>" target="_blank"><img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
-                       <li><a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $title;?>&via=wertewirtschaft" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
-                       <li><a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
-                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
-                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
+                       <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank"><img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
+                       <li><a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>&text=<?php echo $title;?>&via=wertewirtschaft" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
+                       <li><a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
+                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
+                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a></li>
                     </ul>                 
         </aside>
         <div class="content">
@@ -96,11 +96,11 @@ else
 	<footer class="blog_footer">
 		<p><a href='index.php'>Alle Scholien</a></p>
 		<div class="socialimg">
-                   <a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"> <img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
-                   <a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $title;?>&via=wertewirtschaft" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
-                   <a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
-                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
-                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
+                   <a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank"> <img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
+                   <a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>&text=<?php echo $title;?>&via=wertewirtschaft" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
+                   <a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
+                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
+                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
                    </div>
     </footer>
 		<p class="linie"><img src="../style/gfx/linie.png" alt=""></p>
