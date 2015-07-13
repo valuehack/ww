@@ -52,9 +52,9 @@ if(isset($_GET['q']))
 	echo "<header>";
 	echo "<h1>$title</h1>";
 	echo "</header>";
-	echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
 	echo "<img class='blog_img' src='$img_url' alt='$id'>";
+	echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 	echo "<div class='blog_text'>";
 	echo $public;
 	echo "</div>";
