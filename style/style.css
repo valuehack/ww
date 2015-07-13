@@ -1009,6 +1009,10 @@ a.socialimg:hover  {
 	text-decoration: none;
 }
 
+a.socialimg:visited {
+	border: 0;
+	text-decoration: none;
+}
 /*==================================================*/
 /*                 Salon - Kurse 	                */
 /*==================================================*/

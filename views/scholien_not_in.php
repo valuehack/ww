@@ -1,8 +1,8 @@
 <?php 
 
 require_once('../classes/Login.php');
-$title="Scholien";
-include('_header_not_in.php'); 
+//$title="Scholien";
+//include('_header_not_in.php'); 
 include ("_db.php");
 
 if(isset($_GET['q']))
@@ -22,6 +22,8 @@ if(isset($_GET['q']))
 	$private = $entry[private_text];
 	$publ_date = $entry[publ_date];
 	$length = str_word_count($private, 0, 'äüöÄÜÖß');
+
+	include('_header_not_in.php');
 
 	//check, if there is a image in the blog/gfx folder
 	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
@@ -75,7 +77,8 @@ if ($length>10)
 	</div>
 	<? } 
 else 
-	{ ?>
+	{ 				
+		?>
 	<div class="blog_upgrade">
 		<p>Wie Sie alle Scholien in voller L&auml;nge lesen k&ouml;nnen, indem Sie eine der letzten v&ouml;llig unabh&auml;ngigen Bildungs- und&nbsp;Forschungseinrichtungen als Gast beehren, 
 		erfahren Sie, wenn Sie zun&auml;chst einen Schritt weit aus der Anonymit&auml;t treten und hier Ihre E-Mail-Adresse eintragen:</p>
@@ -102,7 +105,9 @@ else
 <?php
 }
 else 
-{
+{		
+	$title = "Scholien";
+	include('_header_not_in.php');
 ?>
 <div class="content">
 	<article class="blog">
