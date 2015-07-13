@@ -23,7 +23,7 @@ if(isset($_GET['q']))
 	$publ_date = $entry[publ_date];
 	$length = str_word_count($private, 0, 'äüöÄÜÖß');
 
-	$description_fb = substr($public, 4, 400);
+	$description_fb = substr($public, 3, 400);
 	
 	//check, if there is a image in the blog/gfx folder
 	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
@@ -53,7 +53,7 @@ if(isset($_GET['q']))
 	echo "</header>";
 	echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 	echo "<p class='blogdate'><!--Keyword: ".$id."&nbsp &nbsp &nbsp-->".date('d.m.Y', strtotime($publ_date))."</p>";
-	echo "<img class='blog_img' src='$img_url' alt='$id''>";
+	echo "<img class='blog_img' src='$img_url' alt='$id'>";
 	echo "<div class='blog_text'>";
 	echo $public;
 	echo "</div>";
