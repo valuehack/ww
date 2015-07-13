@@ -12,9 +12,9 @@
 		<meta name="author" content="Rahim Taghizadegan">
 		<meta property="og:type" content="article">
 		<meta property="og:title" content="">
-		<meta property="og:url" content="http://www.scholarium.at/">
+		<!--<meta property="og:url" content="http://www.scholarium.at/">-->
 		<meta property="og:image" content="http://www.scholarium.at/scholien/default.jpg">
-		<meta property="og:description" content="">
+		<!--<meta property="og:description" content="">-->
 		<meta property="og:site_name" content="Scholarium">
 		<meta property="og:locale" content="de_DE">
 		<meta property="article:publisher" content="https://www.facebook.com/wertewirtschaft">
