@@ -138,3 +138,10 @@ else
 	echo "</div>";
 
 include('_footer.php'); ?>
+
+<script type="text/javascript">
+	function lenght() {
+		document.getElementById('lenght').innerHTML = <?php echo json_encode($length) ?>
+	}
+	lenght();
+</script>
