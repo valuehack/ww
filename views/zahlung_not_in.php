@@ -13,14 +13,29 @@ include('_header_not_in.php');
 		<h1>Zahlung</h1>
 		
 <?php
-//payments coming from kurse_not_in
+
+//payments coming from kurse_not_in using session var
+if (isset($_SESSION["seminar_profile"])) {
+    
+    $profile = $_SESSION['seminar_profile'];
+
+    unset ($_SESSION['seminar_profile']);
+    
+    $level = "Teilnehmer";
+    $betrag = 150;
+    $event_id = $profile[event_id];
+    $title = $profile[title];
+    $user_email = $profile[user_email];
+
+/*//payments coming from kurse_not_in
 if (isset($_POST["registrationform"])) {
+
     $level = "Teilnehmer";
     $betrag = 150;
     $event_id = $_POST['event_id'];
     $title = $_POST['title'];
     $profile = $_POST['profile'];
-    $user_email = $profile[user_email];
+    $user_email = $profile[user_email];*/
 
 ?>		
 		<p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>

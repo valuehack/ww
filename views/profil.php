@@ -1,7 +1,7 @@
 
 <?php 
 
-require_once('../classes/Login.php');
+// require_once('../classes/Login.php');
 $title="Profil";
 include('_header_in.php'); 
 // include ('testView.php');

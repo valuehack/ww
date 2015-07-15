@@ -58,6 +58,24 @@ class Registration
 
             $this->subscribeNewUser($_POST['user_email']);
         }
+        elseif (isset($_POST["registrationform"])) {
+
+            //$this->subscribeNewUser($_POST['user_email']);
+            $profile = $_POST["seminar_profile"];
+            $user_email = $profile[user_email];
+            $this->subscribeNewUser($user_email);
+            header("Location: ../abo/zahlung.php");
+
+            $_SESSION["seminar_profile"] = $profile;
+
+            /*
+            if set post where user has registered - then add it to first registration column
+
+        
+            */
+
+        }
+
 
 
 
@@ -87,7 +105,7 @@ class Registration
             // If an error is catched, database connection failed
             } catch (PDOException $e) {
                 $this->errors[] = MESSAGE_DATABASE_ERROR;
-                $this->errors[] = "this is it";
+               // $this->errors[] = "this is it";
                 return false;
             }
         }
@@ -125,7 +143,7 @@ class Registration
                 for ($i = 0; $i < count($result); $i++) {
                     #$this->errors[] = ($result[$i]['user_name'] == $user_name) ? MESSAGE_USERNAME_EXISTS : MESSAGE_EMAIL_ALREADY_EXISTS;
                     $this->errors[] = ($result[$i]['user_email'] == $user_email) ? MESSAGE_EMAIL_ALREADY_EXISTS : MESSAGE_EMAIL_ALREADY_EXISTS;
-                   
+                  
                 }
             } else {
                 // check if we have a constant HASH_COST_FACTOR defined (in config/hashing.php),
@@ -151,6 +169,12 @@ class Registration
                 $query_delete_user->bindValue(':user_email', $user_email, PDO::PARAM_INT);
                 $query_delete_user->execute();
 
+
+
+                if (isset($_POST["registrationform"])) echo "hahahahaha";
+
+
+
                 // write new users data into database                
                 $query_new_user_insert = $this->db_connection->prepare('INSERT INTO grey_user (user_email, Mitgliedschaft, user_password_hash, user_activation_hash, user_registration_ip, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :user_password_hash, :user_activation_hash, :user_registration_ip, now())');
                 #$query_new_user_insert->bindValue(':user_name', $user_name, PDO::PARAM_STR);
@@ -163,6 +187,10 @@ class Registration
                 $query_new_user_insert->execute();
 
                 $_SESSION['Mitgliedschaft'] = 1;
+
+
+
+
 
                 // id of new user
                 $grey_user_id = $this->db_connection->lastInsertId();
@@ -191,14 +219,10 @@ class Registration
                 #TO-DO: exchange with a custom function to have control over email content
                 #$this->subscriptionVerification($user_id,$user_email,$user_activation_hash);
 
-
-
                 if ($query_new_user_insert) 
                 {
                     #$this->errors[] = "Successfully registered.";
                     // $this->messages[] =
-                    
-
 
                 } else 
                 {
@@ -315,7 +339,7 @@ class Registration
                 <span style="color: #000000">
                 Click here for membership!
                 </span></a></td></tr></table> 
-                <strong>And your password is: </strong>'.$user_password.'
+                <strong>And your password is:</strong>'.$user_password.'
                 ';
 
 
