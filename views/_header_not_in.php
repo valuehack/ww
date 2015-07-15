@@ -7,6 +7,17 @@
     	<link rel="shortcut icon" href="/favicon.ico">
     	<link rel="stylesheet" type="text/css" href="../style/style.css">
 
+    	<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@wertewirtschaft">
+		<meta name="author" content="Rahim Taghizadegan">
+		<meta property="og:type" content="article">
+		<meta property="og:title" content="<?=$title?>">
+		<meta property="og:image" content="<?=$img_url?>">
+		<meta property="og:description" content="<?=$description_fb?>">
+		<meta property="og:site_name" content="Scholarium">
+		<meta property="og:locale" content="de_DE">
+		<meta property="article:publisher" content="https://www.facebook.com/wertewirtschaft">
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 		<!-- Bootstrap -->
@@ -29,6 +40,14 @@
     			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   			})();
+		</script>
+		
+		<!-- Social Links PopUp -->
+		<script type="text/javascript">
+			function openpopup (url) {
+   			popup = window.open(url, "popup1", "width=640,height=480,status=yes,scrollbars=yes,resizable=yes");
+   			popup.focus();
+			}
 		</script>
 	</head>
 		

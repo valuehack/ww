@@ -1,9 +1,6 @@
 <?php 
 
 require_once('../classes/Login.php');
-$title="Scholien";
-include('_header_in.php'); 
-
 
 if(isset($_GET['q']))
 {
@@ -20,6 +17,8 @@ if(isset($_GET['q']))
 	$publ_date = $entry[publ_date];
 	$length = str_word_count($private, 0, 'äüöÄÜÖß') - str_word_count($public, 0, 'äüöÄÜÖß');
 
+	$description_fb = substr($public, 3, 400);
+
 	//check, if there is a image in the scholien folder
 	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
 
@@ -29,6 +28,8 @@ if(isset($_GET['q']))
 	    $img_url = "http://scholarium.at/scholien/default.jpg";
 	}
 
+	include('_header_in.php'); 
+
 ?>
 
 		<!--<div class="banner_blog">
@@ -37,37 +38,43 @@ if(isset($_GET['q']))
      </div>-->
         <aside class="social">
                    <ul>
-                       <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
-                       <li><a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
-                       <li><a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
-                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
-                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Facebook" title="Teile diesen Post auf Xing!"></a></li>
-                    </ul>                 
+                       <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a></li>
+                       <li><a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>&text=<?php echo $title;?>&via=wertewirtschaft" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a></li>
+                       <li><a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a></li>
+                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a></li>
+                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a></li>
+                    </ul>                  
                </aside>
         <div class="content">
            <article class="blog">
            		
 <?  
+	$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
+	$result2 = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+	$entry4 = mysql_fetch_array($result2);
+
 	if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div class='blog_info'>";
-		echo '<p>Mit Scholion bezeichnete man urspr&uuml;nglich eine Randnotiz, die Gelehrte in den B&uuml;chern anbrachten, die ihre st&auml;ndigen Wegbegleiter waren. Heute sind die Scholien die Randnotizen von <a href="http://rahim.cc">Rahim Taghizadegan</a>, die Erkenntnisgewinne im Rahmen der Wertewirtschaft dokumentieren: der tiefgehenden Reflexion und praktischen &Uuml;berpr&uuml;fung der M&ouml;glichkeiten, unter erschwerten Bedingungen noch Werte zu schaffen, Realit&auml;t von Illusion zu unterscheiden und Sinn zu finden. Um alle Scholien in voller L&auml;nge lesen zu k&ouml;nnen, <a href="../abo/upgrade.php"> beehren Sie uns bitte als Gast</a>.</p>';
+				
+				echo $entry4[info1];			
+		
 		echo "</div>";
 		echo "<header>";
 		echo "<h1>$title</h1>";
 		echo "</header>";
-		echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 		}	
 		
 	if ($_SESSION['Mitgliedschaft'] == 1) {
-		echo "<p class='blogdate'>".date('d.m.Y', strtotime($publ_date))."</p>";
+		echo "<p class='blogdate'> &mdash; ".date('d.m.Y', strtotime($publ_date))." &mdash; </p>";
 		?>
-		<div class='blog_text'>
-			<img class="blog_img" src="<?echo $img_url;?>" alt="<?echo $id;?>">
+		<img class="blog_img" src="<?echo $img_url;?>" rel="image_src" alt="<?echo $id;?>">
+		<div class='blog_text'>			
 		<?php
 		echo $public;
 		echo "</div>";
-?>		<div class="blog_upgrade">
-		<p>Weitere <? echo $length;?> W&ouml;rter Kontext nur f&uuml;r G&auml;ste. Wir freuen uns, dass Sie &uuml;ber die Scholien an unseren Erkenntnissen teilhaben m&ouml;chten. Die Scholien enthalten oft allzu pers&ouml;nliche Gedanken, Hintergrundinformationen, intimes Wissen, sind aus gesetzlichen Gr&uuml;nden nicht teilbar, oder sonstwie heikel. Wir k&ouml;nnen Sie nur G&auml;sten offen zug&auml;nglich machen, die einen kleinen Kostenbeitrag (6,25&euro;) f&uuml;r das Bestehen der Wertewirtschaft leisten (und daf&uuml;r auch die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie <a href="http://wertewirtschaft.org/abo.php">diesem Link</a> und in K&uuml;rze erhalten Sie Zugriff auf alle unsere Scholien in voller L&auml;nge.</p>
+		echo '<div class="blog_upgrade">';
+		echo $entry4[mehr_lesen1];
+			?>
 
 		<a class="blog_linkbutton" href="../abo/upgrade.php">Upgrade</a>
 		</div>
@@ -78,9 +85,9 @@ if(isset($_GET['q']))
 
 	else {
 		echo "<h1>$title</h1>";
-		echo "<p class='blogdate'>".date('d.m.Y', strtotime($publ_date))."</p>";
-		echo "<div class='blog_text'>";
+		echo "<p class='blogdate'> &mdash; ".date('d.m.Y', strtotime($publ_date))." &mdash; </p>";
 		echo '<img class="blog_img" src="'.$img_url.'" alt="'.$id.'">';
+		echo "<div class='blog_text'>";
 		echo $public."\n";
 		echo $private;
 		echo "</div>";
@@ -91,11 +98,11 @@ if(isset($_GET['q']))
 ?>
 				<!--<footer class="article">-->			   
                    <div class="socialimg">
-                   <a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"> <img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
-                   <a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>&text=<?php echo $id;?>&hashtags=<?php echo $id;?>" target="_blank"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
-                   <a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
-                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
-                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?id=<?php echo $id;?>" target="_blank"><img src="../style/gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
+                   <a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank" onclick="openpopup(this.href); return false"> <img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
+                   <a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>&text=<?php echo $title;?>&via=wertewirtschaft" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
+                   <a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/google.png" alt="Google+" title="Teile diesen Post auf Google+!"></a>
+                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teile diesen Post auf Linkedin!"></a>
+                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/xing.png" alt="Xing" title="Teile diesen Post auf Xing!"></a>
                    </div>
                </footer>
                <p class="linie"><img src="../style/gfx/linie.png" alt=""></p>
@@ -104,6 +111,9 @@ if(isset($_GET['q']))
 
 else 
 {
+	$title = "Scholien";
+	include('_header_in.php');
+	
 	//Pagination Script found at http://www.phpeasystep.com/phptu/29.html
 	$tbl_name="blog";		//your table name
 	// How many adjacent pages should be shown on each side?
@@ -226,7 +236,13 @@ else
 	
 		<?php if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div class='blog_info'>";
-		echo '<p>Mit Scholion bezeichnete man urspr&uuml;nglich eine Randnotiz, die Gelehrte in den B&uuml;chern anbrachten, die ihre st&auml;ndigen Wegbegleiter waren. Heute sind die Scholien die Randnotizen von <a href="http://rahim.cc">Rahim Taghizadegan</a>, die Erkenntnisgewinne im Rahmen der Wertewirtschaft dokumentieren: der tiefgehenden Reflexion und praktischen &Uuml;berpr&uuml;fung der M&ouml;glichkeiten, unter erschwerten Bedingungen noch Werte zu schaffen, Realit&auml;t von Illusion zu unterscheiden und Sinn zu finden. Um alle Scholien in voller L&auml;nge lesen zu k&ouml;nnen, <a href="../abo/upgrade.php"> beehren Sie uns bitte als Gast</a>.</p>';
+		
+				$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
+				$result2 = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+				$entry4 = mysql_fetch_array($result2);
+				
+				echo $entry4[info1];
+
 		echo "</div>";
 		echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 		}

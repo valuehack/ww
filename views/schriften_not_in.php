@@ -57,15 +57,14 @@ else {
 	<div class="medien_info">
 		<h1>Schriften</h1>
 
-		<p>Unsere Schriften umfassen derzeit:<br>
-
-			<ul>
-				<li><b>B&uuml;cher</b> &ndash; teilweise eigene, eher f&uuml;r ein breiteres Publikum, teilweise &Uuml;bersetzungen, meist schwierigere Texte</li>
-				<li><b>Analysen</b> &ndash; besonders effiziente und lesbare Texte f&uuml;r einen schnellen, aber profunden &Uuml;berblick zu einem Thema</li>
-				<li>Restexemplare der gedruckten <b>Scholien</b> bis 2014</li>
-			<li>neue Druckausgaben der <b>Scholien</b></li>
-			</ul>
-		</p>
+		<?php  
+			$sql = "SELECT * from static_content WHERE (page LIKE 'schriften')";
+			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry4 = mysql_fetch_array($result);
+	
+				echo $entry4[info];			
+			?>
+			
 	</div>
 	<div class="medien_seperator">
     	<h1>Schriften</h1>

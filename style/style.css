@@ -552,7 +552,7 @@ img.dropdown_coin {
 
 .startpage_last_scholie_img {
 	height: 300px;
-	opacity: 0.65;
+	/*opacity: 0.65;*/
 }
 
 .startpage_last_scholie_ms {
@@ -566,7 +566,7 @@ img.dropdown_coin {
 	color: rgb(46,74,98);
 	text-decoration: none;
 	color: rgb(255,255,255);
-	text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
+	text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
 	margin-top: 65px;
 	display: inline-block;
 	text-align: left;
@@ -581,6 +581,7 @@ img.dropdown_coin {
 	margin-right: 10px;
 	font-size: 12pt;
 	color: rgb(255,255,255);
+	text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
 .startpage_last_scholie p {
@@ -588,6 +589,7 @@ img.dropdown_coin {
 	line-height: 1.5;
 	color: rgb(255,255,255);
 	margin-top: 20px;
+	text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
 }
 
 .startpage_last_scholie p a {
@@ -663,24 +665,11 @@ img.dropdown_coin {
 	border-bottom: 1px dotted rgb(46,74,98);
 	margin: 5px;
 	float: right;
+	color: rgb(46,74,98);
 }
 
 .startpage_more a:hover {
 	border-bottom: 1px solid rgb(46,74,98);
-}
-
-.startpage_info {
-	width: 100%;
-	color: rgb(255,255,255);
-	font-size: 15pt;
-	line-height: 1.8;
-	font-style: italic;
-	margin: 50px 0;
-	clear: both;
-}
-
-.darkblue {
-	background: rgb(7,16,24);
 }
 
 /*==================================================*/
@@ -778,7 +767,7 @@ img.dropdown_coin {
 }
 
 .blog header {
-	margin: 50px 0;	
+	margin: 30px 0;	
 }
 
 .blog h1 {
@@ -790,16 +779,14 @@ img.dropdown_coin {
 
 .blogdate {
 	font-size: 18pt;
-	font-style: italic;
-	text-align: right;
-	margin: 40px 0;
+	text-align: center;
+	margin: 20px 0;
 }
 
 .blog_img {
-	max-width: 470px !important;
+	width: 100%;
 	background: #000;
-	margin: 15px 0 0 50px !important;
-	float: right;
+	margin: 0 !important;
 }
 
 .blog p {
@@ -1020,6 +1007,10 @@ a.socialimg:hover  {
 	text-decoration: none;
 }
 
+a.socialimg:visited {
+	border: 0;
+	text-decoration: none;
+}
 /*==================================================*/
 /*                 Salon - Kurse 	                */
 /*==================================================*/
@@ -2421,23 +2412,122 @@ img.projekte_coin2  {
 	background: rgb(7,16,24);
 	margin: 0;
 	padding-top: 15px;
+	color: rgb(238,238,238);
 }
 
-.footer p {
-	text-align: center;
-}
-
-.footer p a {
-	font-size: 12pt;
-	color: rgb(200,200,200);
-	text-shadow: 1px 1px 1px 0 rgb(15,15,15);
+.footer a {
+	color: rgb(238,238,238);
 	text-decoration: none;
 }
 
-.footer p a:hover {
-	font-size: 12pt;
-	color: rgb(230,230,230);
-	text-shadow: 1px 1px 1px 0 rgb(15,15,15);
+.footer a:hover {
+	text-decoration: underline;
+}
+
+.footer_section {
+	width: 75%;
+	padding: 30px 12.5%;
+	overflow: hidden;
+}
+
+.footer_info {
+	width: 50%;
+	margin-right: 5%;
+	float: left;
+}
+
+.footer_info p {
+	font-size: 14pt;
+	text-align: justify;
+	line-height: 1.73;
+	margin-top: 131.8667px;
+	font-style: italic;
+}
+
+.footer_contact {
+	width: 45%;
+	float: right;
+}
+
+.footer_contact img {
+	width: 350px;	
+	margin-bottom: 40px;
+}
+
+.footer_contact p {
+	font-size: 14pt;
+	padding: 10px 0 0 0;
+	margin-left: 90px;
+}
+
+.footer_contact ul {
+	margin-left: 90px;
+}
+
+.footer_contact li {
+	font-size: 14pt;
+	line-height: 1.4;
+}
+
+.footer_tm {
+	width: 50%;
+	margin-right: 5%;
+	float: left;
+}
+
+.footer_tm p {
+	font-size: 16pt;
+	line-height: 2;
+	text-align: left;
+}
+
+.footer_logo a {
+	display: block;
+	font-size: 18pt;
+	padding: 0 10px;
+}
+
+.footer_social {
+	width: 45%;
+	float: right;
+	text-align: right;
+}
+.footer_social ul {
+		margin-left: 90px;
+}
+
+.footer_social li {
+	float: left;
+	width: 40px;
+	margin: 0 5px;	
+}
+
+.footer_social a {
+	text-decoration: none;
+	display: block;
+	height: 40px;
+	width: 40px;
+	background-size: contain;
+}
+
+.footer_social a:hover {
+	opacity: 0.8;
+}
+
+.footer_social_facebook {
+	background: url(gfx/footer_social_facebook.png) no-repeat;
+}
+
+.footer_social_twitter {
+	background: url(gfx/footer_social_twitter.png) no-repeat;
+}
+
+.footer_social_xing {
+	background: url(gfx/footer_social_xing.png) no-repeat;
+}
+
+.footer_social_youtube {
+	background: url(gfx/footer_social_youtube.png) no-repeat;
 }
 
 /*.banner_blog {

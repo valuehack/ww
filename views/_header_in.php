@@ -4,6 +4,19 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title><?=$title?> | Scholarium</title>
     
+    	<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@wertewirtschaft">
+		<meta name="author" content="Rahim Taghizadegan">
+		<meta property="og:type" content="article">
+		<meta property="og:title" content="">
+		<meta property="og:url" content="http://www.scholarium.at/">
+		<meta property="og:image" content="http://www.scholarium.at/scholien/default.jpg">
+		<meta property="og:description" content="">
+		<meta property="og:site_name" content="Scholarium">
+		<meta property="og:locale" content="de_DE">
+		<meta property="article:publisher" content="https://www.facebook.com/wertewirtschaft">
+    
+    
     	<link rel="shortcut icon" href="/favicon.ico">
     	<link rel="stylesheet" type="text/css" href="../style/style.css">
 
@@ -40,6 +53,14 @@
             }
 
             window.onload = setActive;
+		</script>
+		
+		<!-- Social Links PopUp -->
+		<script type="text/javascript">
+			function openpopup (url) {
+   			popup = window.open(url, "popup1", "width=640,height=480,status=yes,scrollbars=yes,resizable=yes");
+   			popup.focus();
+			}
 		</script>
 	</head>
 

@@ -132,7 +132,13 @@ if (isset($registration)) {
         </div>
         
         <div class="landing_info">
-            <p>SCHOLARIUM bedeutet Gemeinschaft der Lernenden und ist das, was die Universit&auml;t h&auml;tte sein k&ouml;nnen, aber nicht sein durfte. Im Gegensatz zum subventionierten Elfenbeinturm der Universitas magistrorum (Gemeinschaft der Intellektuellen) sind wir ein lernendes Unternehmen, in dem bessere Wege werte- und sinnorientierten Schaffens praktisch erkundet und theoretisch reflektiert werden. Wir bieten derzeit eine Orientierungshilfe f&uuml;r kritische B&uuml;rger und eine Bildungsalternative f&uuml;r junge Menschen, die der heutigen Blasenwirtschaft, aber auch ideologischen Versprechen misstrauen. Die Orientierungshilfe ist ein Programm verst&auml;ndlicher und inspirierender Schriften, Medien und Kurse unter der Devise &quot;Wertewirtschaft&quot;, das sich an kritische, unternehmerisch denkende B&uuml;rger richtet, die unabh&auml;ngige Erkenntnis suchen. Die Bildungsalternative bietet unter der Devise &quot;craftprobe&quot; jungen Menschen zwischen 18 und 28 Jahren eine praxisorientierte Hilfestellung f&uuml;r Bildungs- und Berufsentscheidungen. SCHOLARIUM ist ein professionell und wirtschaftlich gef&uuml;hrtes, dem nachhaltigen Unternehmertum verpflichtetes, rein privat finanziertes, und dennoch gemeinn&uuml;tziges Unternehmen: Alle Ertr&auml;ge und Zuwendungen flie&szlig;en direkt, ohne Abzug von Steuern, Dividenden und Zinsen, in den Unternehmenszweck, eigenverantwortlichen, insbesondere jungen Menschen Wege sinnorientierter Wertsch&ouml;pfung zu erschlie&szlig;en, sie dazu zu bef&auml;higen und zu inspirieren und dabei zu unterst&uuml;tzen.</p>
+        	<?php
+				$sql = "SELECT * from static_content WHERE (page LIKE 'landing')";
+				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+				$entry = mysql_fetch_array($result);
+				
+				echo $entry[info];			
+			?>
         </div>
         
         <div class="landing_links">

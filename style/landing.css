@@ -79,9 +79,10 @@ body {
 	background: none;
 	color: rgb(255,255,255);
 	border: 0;
-	font-size: 16pt;
+	font-size: 14pt;
 	float: right;
 	font-family: "Baskerville", Georgia, Times, serif;
+	margin: 0 5px;
 }
 
 .landing_login_button a {
@@ -127,8 +128,8 @@ body {
 .landing_info p {
 	color: #fff;
 	font-family: "Baskerville", Georgia, Times, serif;
-	font-size: 18pt;
-	line-height: 1.8em;
+	font-size: 12pt;
+	line-height: 1.6em;
 	text-align: justify;
 }
 

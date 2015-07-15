@@ -53,7 +53,13 @@ else {
 	<div class="medien_info">
 		<h1>Medien</h1>
 
-  		<p>Da die meisten unserer G&auml;ste nicht in Wien zuhause sind und unsere Arbeit ein Publikum im gesamten deutschsprachigen Raum anspricht (hinter der Wertewirtschaft stehen deutsche, &ouml;sterreichische Schweizer und Liechtensteiner Unternehmer), bieten wir selbstverst&auml;ndlich digitale Medien an, die es erlauben, an unseren Erkenntnissen auch aus der Ferne teilzuhaben. Wir geben uns dabei viel M&uuml;he, den Fernzugang so angenehm wie m&ouml;glich zu halten. Sie k&ouml;nnen also nicht nur bequem nachlesen, sondern meist auch nachh&ouml;ren, was sich in der Wertewirtschaft tut.</p>
+		<?php
+				$sql = "SELECT * from static_content WHERE (page LIKE 'medien')";
+				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+				$entry = mysql_fetch_array($result);
+				
+				echo $entry[info];			
+			?>
 	</div>
 	<div class="medien_seperator">
 		<h1>Audio und Video</h1>

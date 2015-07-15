@@ -19,10 +19,13 @@ $(document).ready(function(){
 
 <div class="payment">
            <div class="payment_info">
-            <p>Gro&szlig;artig, dass Sie zu uns gefunden haben! Es gibt heute nur noch wenige, die bereit sind, Institutionen zivilgesellschaftlich zu tragen &ndash; die meisten verlassen sich auf Staat und Lobbies und &quot;engagieren&quot; sich allenfalls als Zuwendungsempf&auml;nger.<br><br>
-            Die Wertewirtschaft wird ausschlie&szlig;lich privat von B&uuml;rgern wie Ihnen finanziert. Wir lehnen jede Subvention aus Prinzip ab, weil wir niemals mehr Werte aufbrauchen als sch&ouml;pfen wollen, Zwang verabscheuen und Unabh&auml;ngigkeit f&uuml;r einen hohen Wert halten. Wir sind ein gemeinn&uuml;tziges Unternehmen, das hei&szlig;t, alle Ertr&auml;ge flie&szlig;en direkt in die F&ouml;rderung unserer Zwecke, ohne Abzug von Dividenden, Zinsen oder Steuern.<br><br>
-            Wir sind aber auch stolz darauf, ein Unternehmen zu sein, und eben keine Beh&ouml;rde, kein Komitee, keine Partei, kein Hobbyverein, keine ideologische Bewegung. Professionalit&auml;t, Effizienz, reale Wertsch&ouml;pfung und &ouml;konomische N&uuml;chternheit sind zentral f&uuml;r uns. Wir bieten Ihnen daher realen Gegenwert und nicht blo&szlig; allgemeine Versprechen.<br><br>
-            Auch wenn Ihre finanziellen Mittel beschr&auml;nkt sind, k&ouml;nnen Sie schon mit einem kleinen Beitrag an unseren Erkenntnissen und Werten teilhaben, Teil eines au&szlig;ergew&ouml;hnlichen Netzwerkes von Wertewirten werden und eine gewichtige L&uuml;cke f&uuml;llen.</p>
+           	<?php  
+				$sql = "SELECT * from static_content WHERE (page LIKE 'upgrade')";
+				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+				$entry4 = mysql_fetch_array($result);
+	
+				echo $entry4[info];			
+			?>
            </div>
     
             <div class="pay_option_box pay_option_box1">
@@ -205,4 +208,4 @@ $(document).ready(function(){
         </div>-->
         </div>
 
-<?php include('_footer_blog.php'); ?>
+<?php include('_footer.php'); ?>

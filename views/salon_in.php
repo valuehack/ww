@@ -129,11 +129,14 @@ if(isset($_GET['q']))
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
 
-?>
 
-  <p>Unser Salon erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition.</p>
-
-  <p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>
+			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
+			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry4 = mysql_fetch_array($result);
+	
+				echo $entry4[info];			
+			?>
+			
   			<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Salons</a></div>
 		</div>
 	</div>
@@ -148,10 +151,12 @@ else {
 	
   if ($_SESSION['Mitgliedschaft'] == 1) {
   	echo "<div class='salon_info'>";
-    echo "<p>Unser Salon erweckt eine alte Wiener Tradition zu neuem Leben: Wie im Wien der Jahrhundertwende widmen wir uns gesellschaftlichen, philosophischen und wirtschaftlichen Themen ohne Denkverbote, politische Abh&auml;ngigkeiten und Ideologien, Sonderinteressen und Schablonen. Dieser Salon soll ein erfrischender Gegenentwurf zum vorherrschenden Diskurs sein. Wir besinnen uns dabei auf das Beste der Wiener Salontradition.</p>";
-
-    echo "<p>N&uuml;tzen Sie die Gelegenheit, die Wertewirtschaft und deren au&szlig;ergew&ouml;hnliche G&auml;ste bei einem unserer Salonabende kennenzulernen. Ein spannender und tiefgehender Input bringt Ihren Geist auf Hochtouren, worauf dann eine intensive Diskussion in intimer Atmosph&auml;re folgt. Dabei kommt auch das leibliche Wohl nicht zu kurz: Selbst zu bereitete Gaumenfreuden und gute Tropfen machen den Abend auch zu einem kulinarischen Erlebnis.</p>";
-     echo "</div>";
+			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
+			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry4 = mysql_fetch_array($result);
+	
+				echo $entry4[info];			
+     			echo "</div>";
   }
 ?>
 		<div class="salon_seperator">
@@ -234,8 +239,13 @@ else {
           <h2 class="modal-title" id="myModalLabel">Reservieren</h2>
         </div>
         <div class="modal-body">
-          <p>Wir freuen uns, dass Sie erstmals teilnehmen wollen! Ein Salon ist jedoch, wenn man ihn ernst nimmt und nicht nur den sch&ouml;nen Namen f&uuml;hrt, eine intime und exklusive Veranstaltung, die viel Vertrauen erfordert. Eine Einzelkarte k&ouml;nnen nur bestehende G&auml;ste der Wertewirtschaft erwerben. Sie k&ouml;nnen entweder einen Ihnen bekannten Gast darum bitten, f&uuml;r Sie zu b&uuml;rgen und eine Eintrittskarte f&uuml;r Sie zu erwerben. Oder Sie werden Teil unseres exklusiven Netzwerks, indem Sie unsere Arbeit mit nur 6.25&euro; im Monat unterst&uuml;tzen und damit auch aus unserer Arbeit vollen Nutzen ziehen k&ouml;nnen: Sie erhalten nicht nur Zugang zu unserem Salon (ohne weitere Mehrkosten, inklusive Abendessen), sondern unter anderem auch Zugang zu den Scholien und zu unserer einzigartigen physischen und digitalen Bibliothek. Ist es das wert? Vertrauen Sie uns (Wertsch&ouml;pfung ist unser Antrieb) &ndash; dann vertrauen auch wir Ihnen.</p>
-          <p>Sind Sie gar nicht in Wien zuhause? Keine Sorge, die meisten unserer G&auml;ste kommen von au&szlig;erhalb. Wenn sich kein Wienbesuch mit einem sch&ouml;nen Abend bei uns &uuml;berschneiden sollte, erleiden Sie keine Einbu&szlig;e: Sie k&ouml;nnen stattdessen im selben Gegenwert Aufzeichnungen anh&ouml;ren, Schriften beziehen oder anderswie aus unserem umfangreichen Angebot Nutzen ziehen &ndash; ein Angebot, das insbesondere f&uuml;r Nicht-Wiener gedacht ist, denn vom Unternehmergeist und Erkenntnisdrang des alten Wiens bestehen im neuen leider nur noch letzte Reste. Inspiration findet sich hier aber noch genug, und wir bringen Leben ins Freilicht-Museum! Geben Sie uns eine Chance, auch Sie zu inspirieren und zu beleben.</p>
+        	<?php  
+			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
+			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry4 = mysql_fetch_array($result);
+	
+				echo $entry4[modal];			
+			?>
         </div>
         <div class="modal-footer">
           <a href="../abo/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
