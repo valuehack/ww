@@ -70,10 +70,10 @@ if ($length>10)
 			?>
 			
 		<script type="text/javascript">
-			function lenght() {
-				document.getElementById('lenght').innerHTML = <?php echo json_encode($length) ?>
+			function length() {
+				document.getElementById('length').innerHTML = <?php echo json_encode($length) ?>
 			}
-			window.open = lenght();
+			window.open = length();
 		</script>
 			
 		<div class="centered">
