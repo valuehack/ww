@@ -131,6 +131,13 @@ else
 			</div>
 		</div>
 		<p class="linie"><img src="../style/gfx/linie.png" alt=""></p>
+		
+		<script type="text/javascript">
+			function lenght() {
+				document.getElementById('lenght').innerHTML = <?php echo json_encode($length) ?>
+			}
+			window.onload = lenght();
+		</script>
 <?php 
 }
 
@@ -139,9 +146,3 @@ else
 
 include('_footer.php'); ?>
 
-<script type="text/javascript">
-	function lenght() {
-		document.getElementById('lenght').innerHTML = <?php echo json_encode($length) ?>
-	}
-	lenght();
-</script>
