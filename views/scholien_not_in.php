@@ -69,6 +69,12 @@ if ($length>10)
 				echo $entry4[mehr_lesen];			
 			?>
 			
+				<script type="text/javascript">
+			function lenght() {
+				document.getElementById('lenght').innerHTML = <?php echo json_encode($length) ?>
+			}
+		</script>
+			
 		<div class="centered">
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
   			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
@@ -132,12 +138,6 @@ else
 		</div>
 		<p class="linie"><img src="../style/gfx/linie.png" alt=""></p>
 		
-		<script type="text/javascript">
-			function lenght() {
-				document.getElementById('lenght').innerHTML = <?php echo json_encode($length) ?>
-			}
-			window.onload = lenght();
-		</script>
 <?php 
 }
 
