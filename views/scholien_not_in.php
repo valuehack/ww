@@ -69,10 +69,11 @@ if ($length>10)
 				echo $entry4[mehr_lesen];			
 			?>
 			
-				<script type="text/javascript">
+		<script type="text/javascript">
 			function lenght() {
 				document.getElementById('lenght').innerHTML = <?php echo json_encode($length) ?>
 			}
+			window.open = lenght();
 		</script>
 			
 		<div class="centered">
