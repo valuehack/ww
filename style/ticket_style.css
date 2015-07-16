@@ -17,6 +17,7 @@ p {
 h1 {
 	font-weight: normal;
 	font-family: "Baskerville", Georgia, Times, serif;
+	display: block;
 }
 
 .ticket_content {
