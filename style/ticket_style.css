@@ -9,16 +9,14 @@
 	font-style: italic;
 }
 
-.body {
-	font-family: "Baskerville", Georgia, Times, serif;
-}
-
 p {
 	margin: 0;
+	font-family: "Baskerville", Georgia, Times, serif;
 }
 
 h1 {
 	font-weight: normal;
+	font-family: "Baskerville", Georgia, Times, serif;
 }
 
 .ticket_content {
