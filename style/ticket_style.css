@@ -30,8 +30,8 @@ h1 {
 }
 
 .ticket_event h1 {
-	font-size: 26pt;
-	line-height: 140%;
+	font-size: 24pt;
+	line-height: 130%;
 	margin: 0;
 }
 
@@ -77,12 +77,13 @@ h1 {
 }
 
 .ticket_location {
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 .ticket_location h1 {
 	font-size: 20pt;
 	line-height: 160%;
+	margin: 0;
 }
 
 .ticket_location p {
