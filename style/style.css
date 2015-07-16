@@ -2844,6 +2844,6 @@ button.close {
 
 .ticket_location p {
 	font-size: 16pt;
-	line-height: 1.6;
+	line-height: 160%;
 	margin-bottom: 40px;
 }
