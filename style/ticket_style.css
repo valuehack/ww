@@ -1,3 +1,26 @@
+@font-face {
+	font-family: 'Baskerville';
+	src: url('baskerville_regular.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Baskerville';
+	src: url('baskerville_italic.otf') format('opentype');
+	font-style: italic;
+}
+
+.body {
+	font-family: "Baskerville", Georgia, Times, serif;
+}
+
+p {
+	margin: 0;
+}
+
+h1 {
+	font-weight: normal;
+}
+
 .ticket_content {
 	margin: 38px 76px;
 }
@@ -8,26 +31,27 @@
 }
 
 .ticket_event h1 {
-	font-size: 38pt;
+	font-size: 30pt;
 	line-height: 140%;
+	margin: 0 0 10px 0;
 }
 
 .ticket_event p {
-	font-size: 14pt;
+	font-size: 12pt;
 	line-height: 160%;
 }
 
 .ticket_date {
-	font-size: 20pt;
+	font-size: 18pt;
 	display: block;
 }
 
 .ticket_object {
-	font-size: 12pt;
+	font-size: 10pt;
 }
 
 .ticket_value {
-	font-size: 34pt;
+	font-size: 26pt;
 	line-height: 140%;
 	margin-left: 120px;
 }
@@ -38,14 +62,14 @@
 }
 
 .ticket_user_name {
-	font-size: 20pt;
+	font-size: 18pt;
 	text-transform: uppercase;
 	display: block;
 	float: left;
 }
 
 .ticket_user_no {
-	font-size: 14pt;
+	font-size: 12pt;
 	display: block;
 	float: left;
 	padding: 5px 0;
@@ -57,12 +81,12 @@
 }
 
 .ticket_location h1 {
-	font-size: 26pt;
+	font-size: 24pt;
 	line-height: 160%;
 }
 
 .ticket_location p {
-	font-size: 16pt;
+	font-size: 14pt;
 	line-height: 160%;
 	margin-bottom: 40px;
 }
