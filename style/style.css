@@ -2780,7 +2780,7 @@ button.close {
 /*==================================================*/
 
 .ticket_content {
-	margin: 38px;
+	margin: 38px 76px;
 }
 
 .ticket_event {
@@ -2790,12 +2790,12 @@ button.close {
 
 .ticket_event h1 {
 	font-size: 38pt;
-	line-height: 1.4;
+	line-height: 140%;
 }
 
 .ticket_event p {
 	font-size: 14pt;
-	line-height: 1.6;
+	line-height: 160%;
 }
 
 .ticket_date {
@@ -2809,7 +2809,7 @@ button.close {
 
 .ticket_value {
 	font-size: 34pt;
-	line-height: 1.4;
+	line-height: 140%;
 	margin-left: 120px;
 }
 
@@ -2839,7 +2839,7 @@ button.close {
 
 .ticket_location h1 {
 	font-size: 26pt;
-	line-height: 1.6;
+	line-height: 160%;
 }
 
 .ticket_location p {
