@@ -36,8 +36,6 @@
 require_once("../dompdf/dompdf_config.inc.php");
 
 $html = '
-
-<!DOCTYPE html>
 <html lang="de">
     <head>
         <title>Ticket</title>        
