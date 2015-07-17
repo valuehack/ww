@@ -47,6 +47,8 @@ if(isset($_POST['checkout'])) {
     //$login->checkout($items);   
 
     $user_id = $_SESSION['user_id'];
+	$user_name = $_SESSION['Vorname'];
+	$user_surname = $_SESSION['Nachname'];
    
     $user_credits_query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '$user_id' ";
     $user_credits_result = mysql_query($user_credits_query) or die("Failed Query of " . $user_credits_query. mysql_error());
@@ -113,8 +115,8 @@ if(isset($_POST['checkout'])) {
         echo '<div class="basket_error"><p>Text f&uuml;r Warenkorb-Checkout nach Ablauf Mitgliedschaft. <a href="../abo/">Zur Aboseite</a></p></div>';
     }
 
-        else 
-        {
+    else 
+    	{
         foreach ($items as $code => $$quantity) 
                 {					    
                     $length = strlen($code) - 1;
@@ -143,8 +145,31 @@ if(isset($_POST['checkout'])) {
 					$last_donation_query = "UPDATE produkte SET last_donation = NOW() WHERE `n` LIKE '$key'";
 					mysql_query($last_donation_query);
                 
+					//Ticket Generation
+				
+					$items_ticket_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
+            		$items_ticket_result = mysql_query($items_ticket_query) or die("Failed Query of " . $items_ticket_query. mysql_error());
+            		$itemsTicketArray = mysql_fetch_array($items_ticket_result);
+					
+						$title = $itemsTicketArray[title];
+						$start = $itemsTicketArray[start];
+						$end = $itemsTicketArray[end];
+						$type = $itemsTicketArray[type];
+						$price = $itemsTicketArray[price];
+														
+					if ($type == 'kurs' || $type == 'seminar' || $type == 'lehrgang' || $type == 'salon') {
+						
+						$quantity = $quantity;
+						
+						$user_id = $user_id;
+						$user_name = $user_name;
+						$user_surname = $user_surname;
+						
+						include ('..\tools\ticket.php');
+					}
+				
                 }
-        
+        		
         echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als eMail zugesandt.</p></div>";
 		echo "<div class='basket_summary'>";
         echo "<table><tr>";
