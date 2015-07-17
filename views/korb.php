@@ -165,7 +165,7 @@ if(isset($_POST['checkout'])) {
 						$user_name = $user_name;
 						$user_surname = $user_surname;
 						
-						include ('..\tools\ticket.php');
+						include ('../tools/ticket.php');
 					}
 				
                 }
