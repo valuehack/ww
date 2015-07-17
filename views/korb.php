@@ -47,14 +47,15 @@ if(isset($_POST['checkout'])) {
     //$login->checkout($items);   
 
     $user_id = $_SESSION['user_id'];
-	$user_name = $_SESSION['Vorname'];
-	$user_surname = $_SESSION['Nachname'];
    
     $user_credits_query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '$user_id' ";
     $user_credits_result = mysql_query($user_credits_query) or die("Failed Query of " . $user_credits_query. mysql_error());
 
     $userCreditsArray = mysql_fetch_array($user_credits_result);
     
+	$user_name = $userCreditsArray['Vorname'];
+	$user_surname = $userCreditsArray['Nachname'];
+	
     //check, if enough credits
     $userCredits = $userCreditsArray[credits_left];
 
