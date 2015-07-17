@@ -22,6 +22,16 @@
       					}
       				else 
       					$date = "Der Termin wird in K&uuml;rze bekannt gegeben.";
+
+		echo $date;
+		echo $title;
+		echo $type;
+		echo $price;
+		echo $quantity;
+		echo $user_name;
+		echo $user_surname;
+		echo $user_id;
+
 					
 require_once("../dompdf/dompdf_config.inc.php");
 
