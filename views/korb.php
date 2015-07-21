@@ -1,9 +1,11 @@
 <?php
+////DO NOT PUT ANY OUTPUT (html or java script) BEFORE include('_header_in.php');
+///NOR LEAVE ANY UNNECESSARY SPACES IN THE PHP CODE
+////DOING SO WILL CAUSE THE PDF TICKET GENERATION TO FAIL
 include_once("../down_secure/functions.php");
 dbconnect();
 require_once('../classes/Login.php');
 $title="Korb";
-//include('_header_in.php');
 //print_r($_SESSION);
 
 //Check if basket was cleared
@@ -256,7 +258,7 @@ function checkMe() {
                 <?php
                  }
                 elseif ($type == 'salon' || $type == 'lehrgang' || $type == 'seminar' || $type == 'kurs') {
-                    echo '<td>Reserviert</td></tr>';
+                    echo '<td>Reserviert - Ticket wird per E-Mail zugesandt</td></tr>';
                 }
                 elseif ($format == 4) {
                     echo '<td>wird zugesandt</td></tr>';
