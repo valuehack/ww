@@ -152,12 +152,13 @@ if(isset($_POST['checkout'])) {
 						$title = $itemsTicketArray[title];
 						$start = $itemsTicketArray[start];
 						$end = $itemsTicketArray[end];
-						$type = ucfirst($itemsTicketArray[type]);
+						$type = $itemsTicketArray[type];
 						$price = $itemsTicketArray[price];
 														
 					if ($type == 'kurs' || $type == 'seminar' || $type == 'lehrgang' || $type == 'salon') {
 						
 						$quantity = $quantity;
+						$type = ucfirst($type);
 						
 						$user_id = $user_id;
 						$user_name = $user_name;
