@@ -56,22 +56,12 @@ $html = '
                 <h1>Veranstaltungsort</h1>
                 <p>Schl&ouml;sselgasse 19/2/18<br>A-1080 Wien, &Ouml;sterreich</p>
                 <div>
-            <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.de/maps?f=q&amp;source=s_q&amp;hl=de&amp;geocode=&amp;q=Schl%C3%B6sselgasse+19%2F18+1080+Wien,+%C3%96sterreich&amp;aq=0&amp;oq=Schl%C3%B6sselgasse+19%2F18,+1080+Wien&amp;sll=51.175806,10.454119&amp;sspn=7.082438,21.643066&amp;ie=UTF8&amp;hq=&amp;hnear=Schl%C3%B6sselgasse+19,+Josefstadt+1080+Wien,+%C3%96sterreich&amp;t=m&amp;z=14&amp;ll=48.213954,16.353095&amp;output=embed"></iframe>
-            <br><small>
-                <a href="https://maps.google.de/maps?f=q&amp;source=embed&amp;hl=de&amp;geocode=&amp;q=Schl%C3%B6sselgasse+19%2F18+1080+Wien,+%C3%96sterreich&amp;aq=0&amp;oq=Schl%C3%B6sselgasse+19%2F18,+1080+Wien&amp;sll=51.175806,10.454119&amp;sspn=7.082438,21.643066&amp;ie=UTF8&amp;hq=&amp;hnear=Schl%C3%B6sselgasse+19,+Josefstadt+1080+Wien,+%C3%96sterreich&amp;t=m&amp;z=14&amp;ll=48.213954,16.353095">
-                </a>
-            </iframe>
-        </div>
+					<img src="../style/gfx/ticket_map.jpg" alt="">
+        		</div>
             </div>
         </div>        
     </body>
 </html>';
-
-//$file = fopen("temp_ticket.html","w+");
-		//fwrite($file, $html);
-        //fclose($file);
-
-//echo $html;
 
 require_once("../dompdf/dompdf_config.inc.php");
 
@@ -79,12 +69,5 @@ $dompdf = new DOMPDF();
 $dompdf->load_html($html);
 $dompdf->set_paper("a4", 'portrait');
 $dompdf->render();
-$f;
-$l;
-if(headers_sent($f,$l))
-{
-    echo '<br />',$f,'<br/>',$l,'<br/>';
-    die('now detect line');
-}
 $dompdf->stream("ticket_".$user_id."_".$start.".pdf");
 ?>
