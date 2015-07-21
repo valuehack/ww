@@ -69,6 +69,14 @@ $dompdf = new DOMPDF();
 $dompdf->load_html($html);
 $dompdf->set_paper("a4", 'portrait');
 $dompdf->render();
-$dompdf->stream("ticket_".$user_id."_".$start.".pdf");
+//$dompdf->stream("ticket_".$user_id."_".$start.".pdf");
 
+// The next call will store the entire PDF as a string in $pdf
+
+    $pdf = $dompdf->output();
+
+  // You can now write $pdf to disk, store it in a database or stream it
+  // to the client.
+
+   file_put_contents("../tickets/ticket_".$user_id."_".$user_surname."_".$start.".pdf", $pdf);
 ?>
