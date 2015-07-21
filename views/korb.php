@@ -127,7 +127,7 @@ if(isset($_POST['checkout'])) {
             		$items_ticket_result = mysql_query($items_ticket_query) or die("Failed Query of " . $items_ticket_query. mysql_error());
             		$itemsTicketArray = mysql_fetch_array($items_ticket_result);
 
-						$title = $itemsTicketArray[title];
+						$title2 = $itemsTicketArray[title];
 						$start = $itemsTicketArray[start];
 						$end = $itemsTicketArray[end];
 						$type = $itemsTicketArray[type];

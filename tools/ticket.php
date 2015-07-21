@@ -36,7 +36,7 @@ $html = '
             </div>
             <div class="ticket_event">
                 <p><i>'.$type.'</i></p>
-                <h1>'.$title.'</h1>
+                <h1>'.$title2.'</h1>
                 <p>
                     <span class="ticket_date">'.$date.'</span>
                     
@@ -78,5 +78,5 @@ $dompdf->render();
   // You can now write $pdf to disk, store it in a database or stream it
   // to the client.
 
-   file_put_contents("http://www.scholarium.at/tickets/ticket_".$user_id."_".$user_surname."_".$type."_".$n.".pdf", $pdf);
+   file_put_contents("/home/content/56/6152056/html/production/tickets/ticket_".$user_id."_".$user_surname."_".$type."_".$n.".pdf", $pdf);
 ?>
