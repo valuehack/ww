@@ -80,6 +80,8 @@ $file = fopen("temp_ticket.html","w+");
 		fwrite($file, $html);
         fclose($file);
 
+echo $file;
+
 require_once("../dompdf/dompdf_config.inc.php");
 
 $dompdf = new DOMPDF();
