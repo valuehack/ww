@@ -23,7 +23,7 @@ function checkMe() {
 		<h1>Warenkorb</h1>
 	</div>
 	<div class="basket">--></div>
-<?php 
+<?php
 //print_r($_SESSION);
 
 //Check if basket was cleared
@@ -39,20 +39,20 @@ if(isset($_POST['remove'])) {
 
 //Check if checkout was made. If yes, show bought items.
 if(isset($_POST['checkout'])) {
-    
+   
     $items = $_SESSION['basket'];
-    //$login->checkout($items);   
+    //$login->checkout($items);
 
     $user_id = $_SESSION['user_id'];
-   
+
     $user_credits_query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '$user_id' ";
     $user_credits_result = mysql_query($user_credits_query) or die("Failed Query of " . $user_credits_query. mysql_error());
 
     $userCreditsArray = mysql_fetch_array($user_credits_result);
-    
+
 	$user_name = $userCreditsArray['Vorname'];
 	$user_surname = $userCreditsArray['Nachname'];
-	
+
     //check, if enough credits
     $userCredits = $userCreditsArray[credits_left];
 
@@ -61,8 +61,8 @@ if(isset($_POST['checkout'])) {
     mysql_query("SET time_zone = 'Europe/Vienna'");
 
     $itemsPrice = 0;
-    foreach ($items as $code => $quantity) 
-    {				
+    foreach ($items as $code => $quantity)
+    {
         $length = strlen($code) - 1;
 
         $key = substr($code,0,$length);
@@ -71,7 +71,7 @@ if(isset($_POST['checkout'])) {
         $items_price_query = "SELECT * from produkte WHERE `n` LIKE '$key'";
         $items_price_result = mysql_query($items_price_query) or die("Failed Query of " . $items_price_query. mysql_error());
         $itemsPriceArray = mysql_fetch_array($items_price_result);
-        
+
         if ($format == 4 && $itemsPriceArray[price_book]) {
             $itemsPriceSum = $quantity * $itemsPriceArray[price_book];
         }
@@ -101,21 +101,19 @@ if(isset($_POST['checkout'])) {
         $error = 2;
     }
 
-
     if ($error == 1) {
         //$this->errors[] = "You do not have enough credits to buy the items in your basket.";
         //error message does not work, alternate message above
         echo '<div class="basket_error"><p>Ihre Bestellung &uuml;bersteigt Ihr derzeit noch freies Guthaben. Wir freuen uns sehr &uuml;ber Ihr Interesse. Um die Bestellung abzuschlie&szlig;en, f&uuml;llen Sie bitte Ihr Guthaben auf. Bitte w&auml;hlen Sie dazu eine der m&ouml;glichen Unterst&uuml;tzungsstufen &ndash; Sie k&ouml;nnen Ihr Guthaben im jeweiligen Ausma&szlig; erneut auff&uuml;llen. Sie k&ouml;nnen auch wieder denselben Betrag w&auml;hlen, so bleibt Ihr Guthaben wieder ein volles Jahr von nun an aktiv. Das bedeutet, Sie ziehen Ihre Guthabenauff&uuml;llung, die sonst nach Ablauf eines Jahres und erneuter Unterst&uuml;tzung erfolgen w&uuml;rde, einfach vor, um dieses Guthaben schon jetzt zu nutzen. Oder Sie nutzen die Gelegenheit, uns auf einer h&ouml;heren Stufe zu unterst&uuml;tzen und so innerhalb eines Jahres &uuml;ber noch mehr Guthaben verf&uuml;gen zu k&ouml;nnen. Es ehrt uns sehr, dass Sie unser Angebot in gr&ouml;&szlig;erem Ma&szlig;e nutzen wollen! Vielen Dank f&uuml;r Ihr Vertrauen. <a href="../abo/">Zur Aboseite</a></p></div>';
     }
 
-
     elseif ($error == 2) {
         echo '<div class="basket_error"><p>Text f&uuml;r Warenkorb-Checkout nach Ablauf Mitgliedschaft. <a href="../abo/">Zur Aboseite</a></p></div>';
     }
 
-    else 
+    else
     	{
-        foreach ($items as $code => $$quantity) 
+        foreach ($items as $code => $$quantity)
                 {					    
                     $length = strlen($code) - 1;
 
@@ -139,31 +137,31 @@ if(isset($_POST['checkout'])) {
 
                     $space_query = "UPDATE produkte SET spots_sold = spots_sold + '$quantity' WHERE `n` LIKE '$key'";
                     mysql_query($space_query);
-					
+
 					$last_donation_query = "UPDATE produkte SET last_donation = NOW() WHERE `n` LIKE '$key'";
 					mysql_query($last_donation_query);
-                
+
 					//Ticket Generation
-				
+
 					$items_ticket_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             		$items_ticket_result = mysql_query($items_ticket_query) or die("Failed Query of " . $items_ticket_query. mysql_error());
             		$itemsTicketArray = mysql_fetch_array($items_ticket_result);
-					
+
 						$title = $itemsTicketArray[title];
 						$start = $itemsTicketArray[start];
 						$end = $itemsTicketArray[end];
 						$type = $itemsTicketArray[type];
 						$price = $itemsTicketArray[price];
-														
+
 					if ($type == 'kurs' || $type == 'seminar' || $type == 'lehrgang' || $type == 'salon') {
-						
+
 						$quantity = $quantity;
 						$type = ucfirst($type);
-						
+
 						$user_id = $user_id;
 						$user_name = $user_name;
 						$user_surname = $user_surname;
-						
+
 						include ('../tools/ticket.php');
 					}
 				
