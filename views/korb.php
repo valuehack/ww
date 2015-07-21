@@ -22,7 +22,7 @@ function checkMe() {
 	<div class="basket_header">
 		<h1>Warenkorb</h1>
 	</div>
-	<div class="basket">--></div>
+	<div class="basket">-->
 <?php
 //print_r($_SESSION);
 
