@@ -21,7 +21,7 @@ h1 {
 }
 
 .ticket_content {
-	/*margin: 38px 76px;*/
+	margin: 15px;
 }
 
 .ticket_event {
@@ -92,5 +92,5 @@ h1 {
 }
 
 .ticket_location img {
-	
+	width: 100%;
 }
