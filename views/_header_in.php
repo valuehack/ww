@@ -68,7 +68,6 @@
 //set timezone
 mysql_query("SET time_zone = 'Europe/Vienna'");
 
-
 $user_id = $_SESSION['user_id'];
 $user_email = $_SESSION['user_email'];
 
@@ -85,7 +84,7 @@ if(isset($_SESSION['basket'])){
         $project_query = "SELECT * from produkte WHERE `n` LIKE '$key'";
         $project_result = mysql_query($project_query) or die("Failed Query of " . $project_query. mysql_error());
         $itemsPriceArray = mysql_fetch_array($project_result);
-        
+
         if ($itemsPriceArray[type] == 'projekt') {
             $total_quantity += 1;
         }
@@ -99,10 +98,10 @@ if(isset($_POST['add'])){
     $add_quantity = $_POST['quantity'];
 
     if(isset($_POST['projekt'])) {
-        $total_quantity = $total_quantity + 1;  
+        $total_quantity = $total_quantity + 1;
     }
     else {
-        $total_quantity = $total_quantity + $add_quantity;  
+        $total_quantity = $total_quantity + $add_quantity;
     }    
 }
 
@@ -119,10 +118,10 @@ elseif(isset($_POST['remove'])) {
     $remove_quantity = $_SESSION['basket'][$remove_id];
 
     if(isset($_POST['projekt'])) {
-        $total_quantity = $total_quantity - 1;  
+        $total_quantity = $total_quantity - 1;
     }
     else {
-         $total_quantity = $total_quantity - $remove_quantity;   
+         $total_quantity = $total_quantity - $remove_quantity;
     }  
 }
 
@@ -130,7 +129,7 @@ elseif(isset($_POST['remove'])) {
     //$basket_quantity = count($basket);  
 
 
-if (!isset($user_id)) echo ""; 
+if (!isset($user_id)) echo "";
 else
 {
 $query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '%$user_id%' AND `user_email` LIKE '%$user_email%' ";
