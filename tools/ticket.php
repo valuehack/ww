@@ -31,8 +31,6 @@
 		echo $user_name;
 		echo $user_surname;
 		echo $user_id;
-					
-require_once("../dompdf/dompdf_config.inc.php");
 
 $html = '
 <html lang="de">
@@ -81,6 +79,8 @@ $html = '
 $file = fopen("temp_ticket.html","w+");
 		fwrite($file, $html);
         fclose($file);
+
+require_once("../dompdf/dompdf_config.inc.php");
 
 $dompdf = new DOMPDF();
 $dompdf->load_html('temp_ticket.html');
