@@ -2,7 +2,7 @@
 <html lang="de">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title><?=$title?> | Scholarium</title>
+		<title>| Scholarium</title>
 
     	<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@wertewirtschaft">
@@ -124,9 +124,7 @@ elseif(isset($_POST['remove'])) {
     }  
 }
 
-
     //$basket_quantity = count($basket);  
-
 
 if (!isset($user_id)) echo "";
 else

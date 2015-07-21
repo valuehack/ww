@@ -1,5 +1,4 @@
 <?php
-ob_start();
                     if ($start != NULL && $end != NULL)
         				{
         				$tag=date("w",strtotime($start));
