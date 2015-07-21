@@ -16,7 +16,6 @@
 		<meta property="og:locale" content="de_DE">
 		<meta property="article:publisher" content="https://www.facebook.com/wertewirtschaft">
 
-
     	<link rel="shortcut icon" href="/favicon.ico">
     	<link rel="stylesheet" type="text/css" href="../style/style.css">
 
