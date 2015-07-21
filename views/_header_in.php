@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
-	<head>  
+	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title><?=$title?>|Scholarium</title>
+		<title><?=$title?> | Scholarium</title>
 
     	<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@wertewirtschaft">
@@ -67,10 +67,8 @@
 <?php
 //set timezone
 mysql_query("SET time_zone = 'Europe/Vienna'");
-
 $user_id = $_SESSION['user_id'];
 $user_email = $_SESSION['user_email'];
-
 //getting the number of items in the basket
 $total_quantity = 0;
 
