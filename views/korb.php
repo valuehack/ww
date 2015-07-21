@@ -163,18 +163,7 @@ if(isset($_POST['checkout'])) {
 						$user_name = $user_name;
 						$user_surname = $user_surname;
 						
-						echo '<form action="../tools/ticket.php">';
-						echo '<input type="hidden" value='.$title.' name="title">';
-						echo '<input type="hidden" value='.$start.' name="start">';
-						echo '<input type="hidden" value='.$end.' name="end">';
-						echo '<input type="hidden" value='.$type.' name="type">';
-						echo '<input type="hidden" value='.$price.' name="price">';
-						echo '<input type="hidden" value='.$quantity.' name="quantity">';
-						echo '<input type="hidden" value='.$user_id.' name="user_id">';
-						echo '<input type="hidden" value='.$user_name.' name="user_name">';
-						echo '<input type="hidden" value='.$user_surname.' name="user_surname">';
-						echo '</form>';
-						//include ('../tools/ticket.php');
+						include ('../tools/ticket.php');
 					}
 				
                 }

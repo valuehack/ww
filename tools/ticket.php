@@ -1,15 +1,4 @@
 <?php
-
-$title = $_POST['title'];
-$start = $_POST['start'];
-$end = $_POST['end'];
-$type = $_POST['type'];
-$price = $_POST['price'];
-$quantity = $_POST['quantity'];
-$user_id = $_POST['user_id'];
-$user_name = $_POST['user_name'];
-$user_surname = $_POST['user_surname'];
-
                     if ($start != NULL && $end != NULL)
         				{
         				$tag=date("w",strtotime($start));
