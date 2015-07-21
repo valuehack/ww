@@ -76,16 +76,16 @@ $html = '
     </body>
 </html>';
 
-$file = fopen("temp_ticket.html","w+");
-		fwrite($file, $html);
-        fclose($file);
+//$file = fopen("temp_ticket.html","w+");
+		//fwrite($file, $html);
+        //fclose($file);
 
-echo $html;
+//echo $html;
 
 require_once("../dompdf/dompdf_config.inc.php");
 
 $dompdf = new DOMPDF();
-$dompdf->load_html('temp_ticket.html');
+$dompdf->load_html($html);
 $dompdf->set_paper("a4", 'portrait');
 $dompdf->render();
 $dompdf->stream("ticket_".$user_id."_".$start.".pdf");
