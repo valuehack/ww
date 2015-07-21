@@ -4,13 +4,6 @@ dbconnect();
 require_once('../classes/Login.php');
 $title="Korb";
 //include('_header_in.php');
-?>
-<!--<div class="content">
-	<div class="basket_header">
-		<h1>Warenkorb</h1>
-	</div>
-	<div class="basket">-->
-<?php
 //print_r($_SESSION);
 
 //Check if basket was cleared
