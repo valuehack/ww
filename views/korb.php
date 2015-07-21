@@ -1,4 +1,5 @@
-<?php 
+<?php
+ob_start();
 include_once("../down_secure/functions.php");
 dbconnect();
 require_once('../classes/Login.php');

@@ -67,8 +67,10 @@
 <?php
 //set timezone
 mysql_query("SET time_zone = 'Europe/Vienna'");
+
 $user_id = $_SESSION['user_id'];
 $user_email = $_SESSION['user_email'];
+
 //getting the number of items in the basket
 $total_quantity = 0;
 
