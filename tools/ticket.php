@@ -57,7 +57,7 @@ $html = '
             </div>
             <div class="ticket_user">
                 <p>
-                    <span class="ticket_user_name">'.$user_name.' '.$user_surname.'</span> <span class="ticket_user_no">'.$user_id.'</span> 
+                    <span class="ticket_user_name">'.$user_name.' '.$user_surname.'</span> <span class="ticket_user_no">Kundennummer: '.$user_id.'</span> 
                 </p>
             </div>
             
@@ -76,6 +76,8 @@ $html = '
     </body>
 </html>';
 
+
+chmod("temp_ticket.html", 0644);
 $file = fopen("temp_ticket.html","w+");
 		fwrite($file, $html);
         fclose($file);
