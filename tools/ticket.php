@@ -78,5 +78,5 @@ $dompdf->render();
   // You can now write $pdf to disk, store it in a database or stream it
   // to the client.
 
-   file_put_contents("ticket_".$user_id."_".$user_surname."_".$type."_".$key.".pdf", $pdf);
+   file_put_contents("../tickets/ticket_".$user_id."_".$type."_".$key.".pdf", $pdf);
 ?>
