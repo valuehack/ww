@@ -31,7 +31,6 @@
 		echo $user_name;
 		echo $user_surname;
 		echo $user_id;
-
 					
 require_once("../dompdf/dompdf_config.inc.php");
 
@@ -83,8 +82,15 @@ $dompdf = new DOMPDF();
 $dompdf->load_html($html);
 $dompdf->set_paper("a4", 'portrait');
 $dompdf->render();
-echo 'end!'; 
-exit;
+
+$f;
+$l;
+if(headers_sent($f,$l))
+{
+    echo $f,'<br/>',$l,'<br/>';
+    die('now detect line');
+}
+
 $dompdf->stream("ticket_".$user_id."_".$start.".pdf");
 exit;
 ?>
