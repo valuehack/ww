@@ -5,19 +5,6 @@ require_once('../classes/Login.php');
 $title="Korb";
 //include('_header_in.php');
 ?>
-
-<script type="text/javascript">
-
-function checkMe() {
-    if (confirm("Are you sure?")) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-</script>
- 
 <!--<div class="content">
 	<div class="basket_header">
 		<h1>Warenkorb</h1>
@@ -39,7 +26,7 @@ if(isset($_POST['remove'])) {
 
 //Check if checkout was made. If yes, show bought items.
 if(isset($_POST['checkout'])) {
-   
+
     $items = $_SESSION['basket'];
     //$login->checkout($items);
 
@@ -168,7 +155,19 @@ if(isset($_POST['checkout'])) {
                 }
         
         include('_header_in.php');
-			
+?>
+<script type="text/javascript">
+
+function checkMe() {
+    if (confirm("Are you sure?")) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+</script>
+<?			
 			echo '<div class="content">';
 			echo '<div class="basket_header">';
 			echo '<h1>Warenkorb</h1>';
