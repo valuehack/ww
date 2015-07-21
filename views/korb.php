@@ -3,7 +3,7 @@ include_once("../down_secure/functions.php");
 dbconnect();
 require_once('../classes/Login.php');
 $title="Korb";
-include('_header_in.php');
+//include('_header_in.php');
 ?>
 
 <script type="text/javascript">
@@ -18,11 +18,11 @@ function checkMe() {
 
 </script>
  
-<div class="content">
+<!--<div class="content">
 	<div class="basket_header">
 		<h1>Warenkorb</h1>
 	</div>
-	<div class="basket">
+	<div class="basket">--></div>
 <?php 
 //print_r($_SESSION);
 
@@ -168,7 +168,16 @@ if(isset($_POST['checkout'])) {
 					}
 				
                 }
-        		
+        
+        include('_header_in.php');
+			
+			echo '<div class="content">';
+			echo '<div class="basket_header">';
+			echo '<h1>Warenkorb</h1>';
+			echo '</div>';
+			echo '<div class="basket">';
+			
+				
         echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als eMail zugesandt.</p></div>";
 		echo "<div class='basket_summary'>";
         echo "<table><tr>";
@@ -448,7 +457,15 @@ if($_SESSION['basket']) {
     /*echo "Items: ";
     print_r($items);
     echo "<br><br>";*/
+    include('_header_in.php');
 ?>
+
+	<div class="content">
+		<div class="basket_header">
+			<h1>Warenkorb</h1>
+		</div>
+		<div class="basket">
+
 		<div class="basket_head">
 			<div class="basket_head_col_a"></div>
 			<div class="basket_head_col_b">Menge</div>
