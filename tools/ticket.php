@@ -88,5 +88,12 @@ $dompdf = new DOMPDF();
 $dompdf->load_html($html);
 $dompdf->set_paper("a4", 'portrait');
 $dompdf->render();
+$f;
+$l;
+if(headers_sent($f,$l))
+{
+    echo '<br />',$f,'<br/>',$l,'<br/>';
+    die('now detect line');
+}
 $dompdf->stream("ticket_".$user_id."_".$start.".pdf");
 ?>
