@@ -1,4 +1,3 @@
-
 <?php 
 include_once("../down_secure/functions.php");
 dbconnect();
