@@ -688,6 +688,17 @@ else {
         echo "";
     }
     else {
+    	
+		    include('_header_in.php');
+?>
+
+	<div class="content">
+		<div class="basket_header">
+			<h1>Warenkorb</h1>
+		</div>
+		<div class="basket">
+			
+<?		
         echo "<div class='basket_no_items'><p>Keine Waren im Warenkorb.</p></div>"; 
     }
     
