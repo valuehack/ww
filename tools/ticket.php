@@ -76,8 +76,6 @@ $html = '
     </body>
 </html>';
 
-
-chmod("temp_ticket.html", 0644);
 $file = fopen("temp_ticket.html","w+");
 		fwrite($file, $html);
         fclose($file);
