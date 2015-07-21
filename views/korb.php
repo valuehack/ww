@@ -4,7 +4,6 @@ dbconnect();
 require_once('../classes/Login.php');
 $title="Korb";
 include('_header_in.php');
-ob_start();
 ?>
 
 <script type="text/javascript">
