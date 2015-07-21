@@ -83,6 +83,8 @@ $dompdf = new DOMPDF();
 $dompdf->load_html($html);
 $dompdf->set_paper("a4", 'portrait');
 $dompdf->render();
+echo 'end!'; 
+exit;
 $dompdf->stream("ticket_".$user_id."_".$start.".pdf");
 exit;
 ?>
