@@ -60,19 +60,26 @@ class Registration
         }
         elseif (isset($_POST["registrationform"])) {
 
-            //$this->subscribeNewUser($_POST['user_email']);
+
+            //grab post here and send it over to other functions
             $profile = $_POST["seminar_profile"];
+            
             $user_email = $profile[user_email];
             $this->subscribeNewUser($user_email);
+            
+            //use function for editing profile
+            $this->addPersonalData($profile);
+
+            //only redirect after registration was successfully finished
             header("Location: ../abo/zahlung.php");
 
-            $_SESSION["seminar_profile"] = $profile;
+
 
             /*
             if set post where user has registered - then add it to first registration column
-
-        
             */
+
+
 
         }
 
@@ -170,11 +177,6 @@ class Registration
                 $query_delete_user->execute();
 
 
-
-                if (isset($_POST["registrationform"])) echo "hahahahaha";
-
-
-
                 // write new users data into database                
                 $query_new_user_insert = $this->db_connection->prepare('INSERT INTO grey_user (user_email, Mitgliedschaft, user_password_hash, user_activation_hash, user_registration_ip, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :user_password_hash, :user_activation_hash, :user_registration_ip, now())');
                 #$query_new_user_insert->bindValue(':user_name', $user_name, PDO::PARAM_STR);
@@ -233,6 +235,7 @@ class Registration
         }
     }
 
+    #-------------------------------------
     //generates a random string of 6 characters used for temporary passwords
     private function randomPasswordGenerator() {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";  
@@ -245,6 +248,48 @@ class Registration
         return $str;
     }
 
+    #-------------------------------------
+    //add extra info from seminare
+    public function addPersonalData($profile)
+    {  
+
+        $user_email = $profile[user_email];
+        $name = $profile[user_first_name];
+        $surname = $profile[user_surname];
+        $street = $profile[user_street];
+        $city = $profile[user_city];
+        $country = $profile[user_country];
+        $plz = $profile[user_plz];
+
+        $event_id = $profile[event_id];
+
+        // $name = substr(trim($name), 0, 64);
+        // $surname = substr(trim($surname), 0, 64);
+        // $country = substr(trim($country), 0, 64);
+        // $city = substr(trim($city), 0, 64);
+        // $street = substr(trim($street), 0, 64);
+        // $plz = substr(trim($plz), 0, 64);
+
+        // $name = addslashes($name);
+        // $surname = addslashes($surname);
+        // $country = addslashes($country);
+        // $city = addslashes($city);
+        // $street = addslashes($street);
+        // $plz = addslashes($plz);
+        
+
+
+        $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
+        $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
+
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$event_id' WHERE user_email LIKE '$user_email'";
+        $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
+     
+        // print_r($_SESSION);echo "<br>";
+        // $this->editUserEmail($profile[user_email]);
+        // print_r($_SESSION);
+
+    }
 
     #-------------------------------------
     //send an email to a newly subscribed member, containing password and activation link
@@ -371,8 +416,8 @@ class Registration
      */
     public function verifyNewUser($user_id, $user_activation_hash)
     {
-        // if database connection opened
-        if ($this->databaseConnection()) {
+            // if database connection opened
+            if ($this->databaseConnection()) {
 
             //verify user - get data that will be inserted in the main database
             $verify_user = $this->db_connection->prepare('SELECT * FROM grey_user WHERE user_id = :user_id AND user_activation_hash = :user_activation_hash');
@@ -383,19 +428,64 @@ class Registration
             // get result row (as an object)
             $the_row = $verify_user->fetchObject();
 
-            //print_r($the_row);
+
+    //if entry in first registration exist, then register in the main registration database
+    if (  !is_null($the_row->first_reg)  ) 
+    {
+        $reg_query = "INSERT INTO registration (event_id, user_id) VALUES ('$the_row->first_reg', '$user_id')";
+        mysql_query($reg_query);
+    }
+
+
+
+
+
+
+/*        $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
+        $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
+
+
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz' WHERE user_email LIKE '$user_email'";
+        $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
+
+
+        $user_email = $profile[user_email];
+        $name = $profile[user_first_name];
+        $surname = $profile[user_surname];
+        $street = $profile[user_street];
+        $city = $profile[user_city];
+        $country = $profile[user_country];
+        $plz = $profile[user_plz];
+
+        */
+
 
             //copy data to the main database
-
-            $query_move_to_main = $this->db_connection->prepare('INSERT INTO mitgliederExt (user_email, Mitgliedschaft, user_password_hash, user_registration_ip, user_active, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :user_password_hash, :user_registration_ip, :user_active, now())');
+            $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
+                mitgliederExt 
+                (user_email, Mitgliedschaft, Vorname, Nachname, Land, Ort, Strasse, PLZ, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
+                VALUES
+                (:user_email, :Mitgliedschaft, :name, :surname, :country, :city, :street, :plz, :user_password_hash, :user_registration_ip, :user_active, now())');
 
             $query_move_to_main->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':Mitgliedschaft', $the_row->Mitgliedschaft, PDO::PARAM_STR);
+
+            $query_move_to_main->bindValue(':name', $the_row->Vorname, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':surname', $the_row->Nachname, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':country', $the_row->Land, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':city', $the_row->Ort, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':street', $the_row->Ort, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':plz', $the_row->PLZ, PDO::PARAM_STR);
+
+
             $query_move_to_main->bindValue(':user_password_hash', $the_row->user_password_hash, PDO::PARAM_STR);
             //$query_move_to_main->bindValue(':user_activation_hash', $the_row->user_activation_hash, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
             $query_move_to_main->bindValue(':user_active', '1', PDO::PARAM_STR);
             $query_move_to_main->execute();
+
+
+            //TODO: if first_reg is not null then 
 
 
             /*

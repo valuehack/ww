@@ -1499,17 +1499,16 @@ user_plz
         $query_edit_user_address = "UPDATE mitgliederExt SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
-     // print_r($_SESSION);echo "<br>";
+        // print_r($_SESSION);echo "<br>";
         $this->editUserEmail($profile[user_email]);
-     // print_r($_SESSION);
+        // print_r($_SESSION);
 
         
 
     }
 
-/*Function to modify user information*/
-    
-    #pass all of the variables that will be updated
+    /*Function to modify user information*/
+    #pass all of the variables that will be update
 
     public function editUserName($name, $surname)
     {  
