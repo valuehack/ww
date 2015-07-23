@@ -1,5 +1,4 @@
 <?php
-
 /**
  * handles the user login/logout/session
  * @author Panique
@@ -56,7 +55,6 @@ class Login
      * @var array $messages Collection of success / neutral messages
      */
     public $messages = array();
-
     /**
      * the function "__construct()" automatically starts whenever an object of this class is created,
      * you know, when you do "$login = new Login();"

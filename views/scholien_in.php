@@ -76,6 +76,14 @@ if(isset($_GET['q']))
 		echo $entry4[mehr_lesen1];
 			?>
 
+		<script type="text/javascript">
+			function length() {
+				document.getElementById('length').innerHTML = <?php echo json_encode($length) ?>
+			}
+			window.open = length();
+		</script>
+			
+
 		<a class="blog_linkbutton" href="../abo/upgrade.php">Upgrade</a>
 		</div>
 		<footer class="blog_footer">
