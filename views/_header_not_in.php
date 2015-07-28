@@ -4,9 +4,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title><?=$title?> | Scholarium</title>
     
-    	<link rel="shortcut icon" href="/favicon.ico">
-    	<link rel="stylesheet" type="text/css" href="../style/style.css">
-
+<?php
+		if ($type == 'blog'){
+			?>
     	<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@wertewirtschaft">
 		<meta name="author" content="Rahim Taghizadegan">
@@ -17,6 +17,11 @@
 		<meta property="og:site_name" content="Scholarium">
 		<meta property="og:locale" content="de_DE">
 		<meta property="article:publisher" content="https://www.facebook.com/wertewirtschaft">
+		<? }
+?>
+
+    	<link rel="shortcut icon" href="/favicon.ico">
+    	<link rel="stylesheet" type="text/css" href="../style/style.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 

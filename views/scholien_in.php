@@ -16,6 +16,7 @@ if(isset($_GET['q']))
 	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
 	$length = str_word_count($private, 0, 'äüöÄÜÖß') - str_word_count($public, 0, 'äüöÄÜÖß');
+	$type = 'blog';
 
 	$description_fb = substr($public, 3, 400);
 
