@@ -224,7 +224,6 @@ else {
     	<input type="submit" class="inputbutton_login" name="registrationform" value="Anmelden">
 
     </form>
-    <!--TO DO: Create account when registering for the event -->
         
     </div>
     </div>
