@@ -63,23 +63,28 @@ class Registration
 
             //grab post here and send it over to other functions
             $profile = $_POST["seminar_profile"];
-            
+            $_SESSION["seminar_profile"] = $profile;
+
             $user_email = $profile[user_email];
             $this->subscribeNewUser($user_email);
             
             //use function for editing profile
             $this->addPersonalData($profile);
 
+
+            $this->sendNewPayingUserEmailToInstitute($user_email);
+
             //only redirect after registration was successfully finished
             header("Location: ../abo/zahlung.php");
 
-
+            //send out email while still in grey to make sure user is being tracked and emailed in case of troubles
+            
 
             /*
             if set post where user has registered - then add it to first registration column
             */
 
-
+ 
 
         }
 
@@ -262,6 +267,8 @@ class Registration
         $plz = $profile[user_plz];
 
         $event_id = $profile[event_id];
+        $credits = $profile[credits];
+        
 
         // $name = substr(trim($name), 0, 64);
         // $surname = substr(trim($surname), 0, 64);
@@ -282,7 +289,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$event_id' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$event_id', credits_left = '$credits' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
         // print_r($_SESSION);echo "<br>";
@@ -410,6 +417,58 @@ class Registration
         }
     #-------------------------------------
 
+
+    #-------------------------------------
+    //send an email to a newly subscribed member, containing password and activation link
+    public function sendNewPayingUserEmailToInstitute($user_email)
+    {
+        $mail = new PHPMailer;
+
+        // please look into the config/config.php for much more info on how to use this!
+        // use SMTP or use mail()
+        if (EMAIL_USE_SMTP) {
+            // Set mailer to use SMTP
+            $mail->IsSMTP();
+            //useful for debugging, shows full SMTP errors
+            //$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+            // Enable SMTP authentication
+            $mail->SMTPAuth = EMAIL_SMTP_AUTH;
+            // Enable encryption, usually SSL/TLS
+            if (defined(EMAIL_SMTP_ENCRYPTION)) {
+                $mail->SMTPSecure = EMAIL_SMTP_ENCRYPTION;
+            }
+            // Specify host server
+            $mail->Host = EMAIL_SMTP_HOST;
+            $mail->Username = EMAIL_SMTP_USERNAME;
+            $mail->Password = EMAIL_SMTP_PASSWORD;
+            $mail->Port = EMAIL_SMTP_PORT;
+        } else {
+            $mail->IsMail();
+        }
+
+        $mail->From = EMAIL_PASSWORDRESET_FROM;
+        $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
+        // make sure email is correct
+        $mail->AddAddress(EMAIL_INSTITUTE);
+        $mail->Subject = "New Paying User";
+
+
+        $body = "Check database, there is a new paying member ".$user_email;
+        $mail->Body = $body;
+
+        $mail->isHTML(false);
+
+            if(!$mail->Send()) {
+                $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED . $mail->ErrorInfo;
+                return false;
+            } else {
+                // $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
+                #$this->messages[] = "Please check your inbox.";
+                return true;
+            }
+        }
+    #-------------------------------------
+
     
     /**
      * checks the id/verification code combination and set the user's activation status to true (=1) in the database
@@ -427,18 +486,6 @@ class Registration
 
             // get result row (as an object)
             $the_row = $verify_user->fetchObject();
-
-
-    //if entry in first registration exist, then register in the main registration database
-    if (  !is_null($the_row->first_reg)  ) 
-    {
-        $reg_query = "INSERT INTO registration (event_id, user_id) VALUES ('$the_row->first_reg', '$user_id')";
-        mysql_query($reg_query);
-    }
-
-
-
-
 
 
 /*        $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
@@ -463,9 +510,9 @@ class Registration
             //copy data to the main database
             $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
                 mitgliederExt 
-                (user_email, Mitgliedschaft, Vorname, Nachname, Land, Ort, Strasse, PLZ, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
+                (user_email, Mitgliedschaft, Vorname, Nachname, Land, Ort, Strasse, PLZ, first_reg, credits_left, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
                 VALUES
-                (:user_email, :Mitgliedschaft, :name, :surname, :country, :city, :street, :plz, :user_password_hash, :user_registration_ip, :user_active, now())');
+                (:user_email, :Mitgliedschaft, :name, :surname, :country, :city, :street, :plz, :first_reg, :credits_left, :user_password_hash, :user_registration_ip, :user_active, now())');
 
             $query_move_to_main->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':Mitgliedschaft', $the_row->Mitgliedschaft, PDO::PARAM_STR);
@@ -477,6 +524,9 @@ class Registration
             $query_move_to_main->bindValue(':street', $the_row->Ort, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':plz', $the_row->PLZ, PDO::PARAM_STR);
 
+            $query_move_to_main->bindValue(':first_reg', $the_row->first_reg, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':credits_left', $the_row->credits_left, PDO::PARAM_STR);
+        
 
             $query_move_to_main->bindValue(':user_password_hash', $the_row->user_password_hash, PDO::PARAM_STR);
             //$query_move_to_main->bindValue(':user_activation_hash', $the_row->user_activation_hash, PDO::PARAM_STR);
@@ -484,8 +534,6 @@ class Registration
             $query_move_to_main->bindValue(':user_active', '1', PDO::PARAM_STR);
             $query_move_to_main->execute();
 
-
-            //TODO: if first_reg is not null then 
 
 
             /*
@@ -497,6 +545,20 @@ class Registration
 
             $user_id = $this->db_connection->lastInsertId();
             $_SESSION['user_id'] = $user_id;
+
+
+
+            //if entry in first registration exist, then register in the main registration database
+            if (  !is_null($the_row->first_reg)  ) 
+            {
+
+            $reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id) VALUES (:event_id, :user_id)');
+            $reg_query->bindValue(':event_id', $the_row->first_reg, PDO::PARAM_INT);
+            $reg_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+            $reg_query->execute();
+
+            }
+
 
             $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
             $query_delete_user->bindValue(':user_email', $the_row->user_email, PDO::PARAM_INT);

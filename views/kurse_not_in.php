@@ -212,6 +212,7 @@ else {
       
         		<input type="hidden" name="seminar_profile[event_id]" value="<?php echo $n ?>" />
         		<input type="hidden" name="seminar_profile[title]" value="<?php echo $title ?>" />
+            <input type="hidden" name="seminar_profile[credits]" value="25" />
 				
 				<div class="salon_input">
         			<input class="salon_inputfield" id="user_email" type="email" name="seminar_profile[user_email]" placeholder="eMail" required><br> 
