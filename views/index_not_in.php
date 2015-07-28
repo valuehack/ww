@@ -8,9 +8,9 @@
 	$lang = 'en';
 	$page_title = "Welcome";
 	$eintragen = 'Sign In';
-	$anmelden = 'Log Ii';
+	$anmelden = 'Log In';
 	$forgot_password ='Forgot your password?';
-	$email_address = 'E-mail Address';
+	$email_adresse = 'E-mail Address';
 	$passwort = 'Password';
 	$fur = 'for';
 	$eltern = 'Parents';
@@ -24,7 +24,7 @@
 	$eintragen = 'Eintragen';
 	$anmelden = 'Anmelden';
 	$forgot_password ='Passwort vergessen?';
-	$email_address = 'E-Mail Adresse';
+	$email_adresse = 'E-Mail Adresse';
 	$passwort = 'Passwort';
 	$fur = 'f&uuml;r';
 	$eltern = 'Eltern';
@@ -110,7 +110,7 @@ if (isset($registration)) {
 ?>  
     <body>
        <header class="landing_header">
-       				<div class="landing_anmelden"><a href="?q=en"><img src="../style/gfx/flagge_us.png"></a> <a href="www.scholarium.at"><img src="../style/gfx/flagge_at.png"></a></div>
+       				<div class="landing_anmelden"><a href="index.php?q=en"><img src="../style/gfx/flagge_us.png"></a> <a href=""><img src="../style/gfx/flagge_at.png"></a></div>
        	            <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden"><?=$eintragen?></button></div>
                     <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden"><?=$anmelden?></button></div>
 
@@ -131,7 +131,7 @@ if (isset($registration)) {
                 <input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" <?=$passwort?>" required><br>
                 <input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="<?=$anmelden?>">
             </form>     
-            <p class="password_login"><a href="/password_reset.php"><?=$forgot_password?>Passwort vergessen?</a></p>
+            <p class="password_login"><a href="/password_reset.php"><?=$forgot_password?></a></p>
           </p>
         </div>
       </div>
