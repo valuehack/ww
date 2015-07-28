@@ -168,8 +168,12 @@ if (isset($registration)) {
 				$sql = "SELECT * from static_content WHERE (page LIKE 'landing')";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				$entry = mysql_fetch_array($result);
-				
-				echo $entry[info];			
+				if ($lang_change == 'en') {
+					echo $entry[info_en];
+				}
+				else {
+					echo $entry[info];
+				}			
 			?>
         </div>
         
