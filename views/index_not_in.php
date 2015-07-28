@@ -142,7 +142,7 @@ if (isset($registration)) {
 			?>
         </div>
         
-        <div class="landing_box">
+        <div class="landing_links_box">
             <div class="link"><p><a class="button_1" href="eltern.php"><span>f&uuml;r</span>Eltern</a></p></div>
             <div class="link"><p><a class="button_2" href="buerger.php">B&uuml;rger</a></p></div>
             <div class="link"><p><a class="button_3" href="http://www.craftprobe.com"><span>f&uuml;r</span>Studenten</a></p></div>
