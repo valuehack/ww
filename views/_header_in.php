@@ -3,19 +3,23 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title><?=$title?> | Scholarium</title>
-
+<?php
+		if ($title == 'Scholien' OR $type == 'scholie'){
+			?>
     	<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@wertewirtschaft">
 		<meta name="author" content="Rahim Taghizadegan">
 		<meta property="og:type" content="article">
-		<meta property="og:title" content="">
+		<meta property="og:title" content="<?=$title?>">
 		<meta property="og:url" content="http://www.scholarium.at/">
-		<meta property="og:image" content="http://www.scholarium.at/scholien/default.jpg">
-		<meta property="og:description" content="">
+		<meta property="og:image" content="<?=$img_url?>">
+		<meta property="og:description" content="<?=$description_fb?>">
 		<meta property="og:site_name" content="Scholarium">
 		<meta property="og:locale" content="de_DE">
 		<meta property="article:publisher" content="https://www.facebook.com/wertewirtschaft">
-
+		<?
+		}
+?>
     	<link rel="shortcut icon" href="/favicon.ico">
     	<link rel="stylesheet" type="text/css" href="../style/style.css">
 

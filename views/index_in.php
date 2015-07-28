@@ -120,7 +120,7 @@ while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id];
 				echo "<p>";  
-                echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>"; 
 				echo ucfirst($entry[type]);
 				echo "</p>";                    
 }
@@ -140,7 +140,7 @@ while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id];
                 echo "<p>"; 
-                echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
+                echo "<a href='/medien/index.php?q=$id'>".$entry[title]."</a><br>"; 
 				echo ucfirst($entry[type]);
 				echo "</p>";                   
 }
@@ -163,7 +163,7 @@ while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id];
                 echo "<p>"; 
-                echo "<a href='/scholien/index.php?q=$id'>".$entry[title]."</a><br>"; 
+                echo "<a href='/projekte/index.php?q=$id'>".$entry[title]."</a><br>"; 
 				echo ucfirst($entry[type]); 
 				echo "</p>";                
 }
