@@ -110,7 +110,7 @@ if (isset($registration)) {
 ?>  
     <body>
        <header class="landing_header">
-       				<div class="landing_anmelden"><a href="index.php?q=en"><img src="../style/gfx/flagge_us.png"></a> <a href=""><img src="../style/gfx/flagge_at.png"></a></div>
+       				<div class="landing_anmelden"><a href="index.php?q=en"><img src="../style/gfx/flagge_us.png"></a> <a href="index.php"><img src="../style/gfx/flagge_at.png"></a></div>
        	            <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden"><?=$eintragen?></button></div>
                     <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden"><?=$anmelden?></button></div>
 
