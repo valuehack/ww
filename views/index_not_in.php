@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <?php
     include ("_db.php");
+
+	$lang_change = $_GET['q'];
+
+	if ($lang_change == 'en') {
+	$lang = 'en';
+	$page_title = "Welcome";
+	$eintragen = 'Sign In';
+	$anmelden = 'Log Ii';
+	$forgot_password ='Forgot your password?';
+	$email_address = 'E-mail Address';
+	$passwort = 'Password';
+	$fur = 'for';
+	$eltern = 'Parents';
+	$burger = 'Citizens';
+	$studenten = 'Students';	
+	}
+	
+	else {
+	$lang = 'de';
+	$page_title = "Willkommen";
+	$eintragen = 'Eintragen';
+	$anmelden = 'Anmelden';
+	$forgot_password ='Passwort vergessen?';
+	$email_address = 'E-Mail Adresse';
+	$passwort = 'Passwort';
+	$fur = 'f&uuml;r';
+	$eltern = 'Eltern';
+	$burger = 'B&uuml;rger';
+	$studenten = 'Studenten';
+	}
 ?>
-<html lang="de">
+
+<html lang="<?=$lang?>">
     <head>  
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Willkommen | Scholarium</title>
+        <title><?=$page_title?> | Scholarium</title>
     
         <link rel="shortcut icon" href="/favicon.ico">
         <link rel="stylesheet" type="text/css" href="../style/style.css">
@@ -79,9 +110,9 @@ if (isset($registration)) {
 ?>  
     <body>
        <header class="landing_header">
-       				<div class="landing_anmelden"><a href=""><img src="../style/gfx/flagge_us.png"></a> <a href=""><img src="../style/gfx/flagge_at.png"></a></div>
-       	            <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Eintragen</button></div>
-                    <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
+       				<div class="landing_anmelden"><a href="?q=en"><img src="../style/gfx/flagge_us.png"></a> <a href="www.scholarium.at"><img src="../style/gfx/flagge_at.png"></a></div>
+       	            <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden"><?=$eintragen?></button></div>
+                    <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden"><?=$anmelden?></button></div>
 
                     
 <!-- Login Modal -->
@@ -91,16 +122,16 @@ if (isset($registration)) {
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="modal-header">
 
-          <h2 class="modal-title" id="myModalLabel">Anmelden</h2>
+          <h2 class="modal-title" id="myModalLabel"><?=$anmelden?></h2>
         </div>
         <div class="modal-body">
           <p>
             <form method="post" action="index.php" name="registerform">
-                <input class="inputfield_login" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
-                <input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Passwort" required><br>
-                <input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="Anmelden">
+                <input class="inputfield_login" id="keyword" type="email" placeholder=" <?=$email_adresse?>" name="user_email" required><br>
+                <input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" <?=$passwort?>" required><br>
+                <input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="<?=$anmelden?>">
             </form>     
-            <p class="password_login"><a href="/password_reset.php">Passwort vergessen?</a></p>
+            <p class="password_login"><a href="/password_reset.php"><?=$forgot_password?>Passwort vergessen?</a></p>
           </p>
         </div>
       </div>
@@ -113,14 +144,14 @@ if (isset($registration)) {
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="modal-header">
 
-          <h2 class="modal-title" id="myModalLabel">Eintragen</h2>
+          <h2 class="modal-title" id="myModalLabel"><?=$eintragen?></h2>
         </div>
         <div class="modal-body">
           <p>
             <form method="post" action="index.php" name="registerform">
-                <input class="inputfield_login" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
-                <input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Passwort" required><br>
-                <input class="inputbutton_login" id="inputbutton" name="eintragen_submit" type="submit" value="Eintragen">
+                <input class="inputfield_login" id="keyword" type="email" placeholder=" <?=$email_adresse?>" name="user_email" required><br>
+                <input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" <?=$passwort?>" required><br>
+                <input class="inputbutton_login" id="inputbutton" name="eintragen_submit" type="submit" value="<?=$eintragen?>">
             </form>         
           </p>
         </div>
@@ -143,9 +174,9 @@ if (isset($registration)) {
         </div>
         
         <div class="landing_links_box">
-            <div class="link"><p><a class="button_1" href="eltern.php"><span>f&uuml;r</span>Eltern</a></p></div>
-            <div class="link"><p><a class="button_2" href="buerger.php">B&uuml;rger</a></p></div>
-            <div class="link"><p><a class="button_3" href="http://www.craftprobe.com"><span>f&uuml;r</span>Studenten</a></p></div>
+            <div class="link"><p><a class="button_1" href="eltern.php"><span><?=$fur?></span><?=$eltern?></a></p></div>
+            <div class="link"><p><a class="button_2" href="buerger.php"><?=$burger?></a></p></div>
+            <div class="link"><p><a class="button_3" href="http://www.craftprobe.com"><span><?=$fur?></span><?=$studenten?></a></p></div>
         </div>
     </body>
 </html>
