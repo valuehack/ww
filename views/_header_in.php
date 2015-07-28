@@ -4,7 +4,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title><?=$title?> | Scholarium</title>
 <?php
-		if ($title == 'Scholien' OR $type == 'scholie'){
+		if ($type == 'blog'){
 			?>
     	<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@wertewirtschaft">

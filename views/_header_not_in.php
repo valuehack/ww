@@ -4,10 +4,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title><?=$title?> | Scholarium</title>
     
-    	<link rel="shortcut icon" href="/favicon.ico">
-    	<link rel="stylesheet" type="text/css" href="../style/style.css">
 <?php
-		if ($title == 'Scholien' OR $type == 'scholie'){
+		if ($type == 'blog'){
 			?>
     	<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@wertewirtschaft">
@@ -21,6 +19,9 @@
 		<meta property="article:publisher" content="https://www.facebook.com/wertewirtschaft">
 		<? }
 ?>
+
+    	<link rel="shortcut icon" href="/favicon.ico">
+    	<link rel="stylesheet" type="text/css" href="../style/style.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
