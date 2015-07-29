@@ -146,7 +146,6 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
           <p>
             <form method="post" action="index.php" name="registerform">
                 <input class="inputfield_login" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
-                <input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Passwort" required><br>
                 <input class="inputbutton_login" id="inputbutton" name="eintragen_submit" type="submit" value="Eintragen">
             </form>         
           </p>
