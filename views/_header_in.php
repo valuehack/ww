@@ -213,12 +213,12 @@ while ($entry = mysql_fetch_array($result))
                 			<li><a href="/abo/upgrade.php">Upgrade</a></li>
                 			<li class="divider"></li>
                       <li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry[credits_left];?> <img class='dropdown_coin' src="../style/gfx/coin.png"></li>
-                			<li><a href="/abo/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></li> 
+                			<li><a href="/abo/korb.php">Bestellungen <span class="badge"><?echo $total_quantity;?></span></a></li> 
                 			<li class="divider"></li>
                 			<li><a href="/logout.php?logout">Abmelden</a></li>        			               		
                 		</ul>
                 	</div>
-                	<div class="login_basket"><a href="../abo/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></div>
+                	<div class="login_basket"><a href="../abo/korb.php">Bestellungen <span class="badge"><?echo $total_quantity;?></span></a></div>
 <?
 		}
 	}

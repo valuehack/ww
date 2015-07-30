@@ -5,7 +5,7 @@
 include_once("../down_secure/functions.php");
 dbconnect();
 require_once('../classes/Login.php');
-$title="Korb";
+$title="Bestellungen";
 //print_r($_SESSION);
 
 //Check if basket was cleared
@@ -165,7 +165,7 @@ function checkMe() {
 <?			
 			echo '<div class="content">';
 			echo '<div class="basket_header">';
-			echo '<h1>Warenkorb</h1>';
+			echo '<h1>Bestellungen</h1>';
 			echo '</div>';
 			echo '<div class="basket">';
 			
@@ -454,7 +454,7 @@ if($_SESSION['basket']) {
 
 	<div class="content">
 		<div class="basket_header">
-			<h1>Warenkorb</h1>
+			<h1>Bestellungen</h1>
 		</div>
 		<div class="basket">
 
@@ -601,7 +601,7 @@ if($_SESSION['basket']) {
         	</form>   		 
 			<!-- Clear Basket + Checkout Buttons-->	
 			<form class="basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-    			<input class="basket_pay_button_clear" type="submit" name="delete" value="Warenkorb leeren" onClick="return checkMe()">
+    			<input class="basket_pay_button_clear" type="submit" name="delete" value="Korb leeren" onClick="return checkMe()">
     		</form>
     	</div>
 
@@ -686,12 +686,12 @@ else {
 
 	<div class="content">
 		<div class="basket_header">
-			<h1>Warenkorb</h1>
+			<h1>Bestellungen</h1>
 		</div>
 		<div class="basket">
 			
 <?		
-        echo "<div class='basket_no_items'><p>Keine Waren im Warenkorb.</p></div>"; 
+        echo "<div class='basket_no_items'><p>Keine Bestellungen.</p></div>"; 
     }
     
 }
