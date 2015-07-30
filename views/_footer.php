@@ -16,7 +16,7 @@
         				<li>A - 1080 Wien</li>
         				<li>&Ouml;sterreich</li>
         				<li>&nbsp;</li>
-        				<li>E-Mail: &nbsp;<a href="mailto:&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;">&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;</a></li>
+        				<li>E-Mail:&nbsp;<a href="mailto:&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;">&#105;nf&#111;&#064;&#119;&#101;rt&#101;wirtsc&#104;&#097;f&#116;.or&#103;</a></li>
 					</ul>
 					<p><a href="../kontakt/">Impressum</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="../agb/">AGB</a></p> 
         		</div>
