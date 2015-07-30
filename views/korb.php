@@ -170,7 +170,7 @@ function checkMe() {
 			echo '<div class="basket">';
 			
 				
-        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als eMail zugesandt.</p></div>";
+        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als E-Mail zugesandt.</p></div>";
 		echo "<div class='basket_summary'>";
         echo "<table><tr>";
 		echo "<td style='width:10%'>&nbsp;</td>";
