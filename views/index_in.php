@@ -152,7 +152,7 @@ while($entry = mysql_fetch_array($result))
 			
 			<div class="startpage_section">                                                                
                 <div class="startpage_box_outer left">
-                    <h1>Letzter Projektbeitrag</h1>
+                    <h1>Letzte Projektbeitr&auml;ge</h1>
                     <img src="../style/gfx/sp_projekte.jpg" alt="">
                     <div class="startpage_box_inner">
                     <?php
