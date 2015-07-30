@@ -59,7 +59,7 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
 		<div class="profil">	
 			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="user_edit_profile_form">
 
-        		<label for="user_email">Email</label>
+        		<label for="user_email">E-Mail</label>
         		<input id="user_email" type="email" class="profil_inputfield" value="<?php echo $_SESSION['user_email']; ?>"  name="profile[user_email]" required><br>
         		<label for="user_first_name">Vorname</label>
         		<input id="user_first_name" type="text" class="profil_inputfield" value="<?php echo $vorname; ?>" name="profile[user_first_name]" required><br>
@@ -140,7 +140,7 @@ user_plz -->
     		<input id="user_password_old" class="profil_inputfield" type="password" name="user_password_old" autocomplete="off"><br>
     		<label for="user_password_new">Neues Passwort</label>
     		<input id="user_password_new" class="profil_inputfield" type="password" name="user_password_new" autocomplete="off"><br>
-    		<label for="user_password_repeat">Neues Passwort Wiederholen</label>
+    		<label for="user_password_repeat">Neues Passwort wiederholen</label>
     		<input id="user_password_repeat" class="profil_inputfield" type="password" name="user_password_repeat" autocomplete="off"><br>
     		<input type="submit" class="profil_inputbutton" name="user_edit_submit_password" value="Passwort &auml;ndern">
 		</form>

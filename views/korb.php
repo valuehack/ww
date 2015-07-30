@@ -384,7 +384,7 @@ function checkMe() {
                 $sum = $quantity*$itemsExtraArray[price];
             }
 
-            $body = $body. "<tr><td>".$itemsExtraArray[n]."&nbsp</td>";
+            $body = $body. "<tr><td>".$itemsExtraArray[n]."&nbsp;</td>";
             $body = $body. "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>";
             switch ($format) {
                 case 1: $body = $body. "PDF"; break;
