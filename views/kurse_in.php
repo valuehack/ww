@@ -100,7 +100,7 @@ if(isset($_GET['q']))
       <input type="hidden" name="betrag" value='150' />
       <input class="inputbutton" type="submit" value="Anmelden"><br>
     </form>
-    <p class="salon_reservation_span_c">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r das Seminar, sondern auch Zugang zu unserem weiteren Angebot. (u.a. Scholien, unserem Salon, Schriften, Medien)</p>
+    <p class="salon_reservation_span_c">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r das Seminar, sondern auch Zugang zu unserem weiteren Angebot (u.a. Scholien, unserem Salon, Schriften, Medien).</p>
 
     <?
     //echo '<input class="salon_reservation_inputbutton" type="button" value="Anmelden" data-toggle="modal" data-target="#myModal1">';
