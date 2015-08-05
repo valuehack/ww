@@ -20,7 +20,7 @@ include "_header_in.php";
     	<h1>Termine</h1>
     </div>
     <div class="salon_types">
-    	<span><a href="">Alle</a></span>
+    	<span><a class="salon_types_active" href="">Alle</a></span>
     	<span><a href="../seminare/">Seminare</a></span>
     	<span><a href="../salon/">Salons</a></span>
     </div>

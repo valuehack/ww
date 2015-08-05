@@ -1051,15 +1051,27 @@ a.socialimg:visited {
 }
 
 .salon_types {
-	margin: 50px 15% 75px;
+	margin: 75px 15% 0;
 	text-align: center;
 }
 
 .salon_types span {
 	font-size: 22pt;
-	padding: 0 30px;
+	padding: 0 7%;
 }
 
+.salon_types a {
+	text-decoration: none;
+}
+
+.salon_types a:hover {
+	text-decoration: underline;
+}
+
+.salon_types_active a {
+	text-decoration: underline;
+	font-size: 24pt;
+}
 .salon_head {
 	width: 75%;
 	padding: 75px 12.5%;
@@ -1105,7 +1117,7 @@ a.socialimg:visited {
 .salon_type {
 	text-align: center;
 	font-size: 18pt;
-	margin: 35px 0 0;
+	margin: 50px 0 0;
 }
 
 .salon_content h1 {
