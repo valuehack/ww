@@ -1,5 +1,7 @@
 <?php
-
+	echo 'Type ='.$type3;
+	 $page = $_GET['page'];
+  	echo 'Seite ='.$page;
 //Pagination Script found at http://www.phpeasystep.com/phptu/29.html
   $tbl_name="produkte";   //your table name
   // How many adjacent pages should be shown on each side?
