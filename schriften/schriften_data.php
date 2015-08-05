@@ -1,11 +1,8 @@
 <?php
-	echo 'Type ='.$type3;
-	 $page = $_GET['page'];
-  	echo 'Seite ='.$page;
 //Pagination Script found at http://www.phpeasystep.com/phptu/29.html
   $tbl_name="produkte";   //your table name
   // How many adjacent pages should be shown on each side?
-  $adjacents = 3;
+  $adjacents = 2;
   
   /* 
      First get total number of rows in data table. 
@@ -19,7 +16,6 @@
   $targetpage = "index.php?type=$type2";  //your file name  (the name of this file)
   $limit = 6;                //how many items to show per page
   $page = $_GET['page'];
-  echo 'Seite ='.$page;
   if($page) 
     $start = ($page - 1) * $limit;      //first item to display on this page
   else

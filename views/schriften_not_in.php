@@ -80,7 +80,6 @@ else {
 <? if(isset($_GET['type']))
 {
 	$type2 =  $_GET['type'];
-	echo 'Type2 ='.$type2;
 	
 	if ($type2 == 'scholien'){
 		$type3 = 'scholie';
