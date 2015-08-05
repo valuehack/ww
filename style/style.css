@@ -372,7 +372,7 @@ img.dropdown_coin {
 #nav li {
 	float: left;
 	width: 16.6667%;
-	padding: 9px 0;
+	padding: 9px 0 4px;
 	height: 27px;
 	margin: 0;
 	list-style: none;
