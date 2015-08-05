@@ -1,9 +1,9 @@
 
     <div class="salon_types">
     	<span><a href="index.php">Alle</a></span>
-    	<span><a <?if ($type3 = 'scholie'){echo 'class="salon_types_active"';}?> href="?type=scholien">Scholien</a></span>
-    	<span><a <?if ($type3 = 'analyse'){echo 'class="salon_types_active"';}?>href="?type=analysen">Analysen</a></span>
-    	<span><a <?if ($type3 = 'buch'){echo 'class="salon_types_active"';}?>href="?type=buecher">B&uuml;cher</a></span>
+    	<span><a <?if ($type3 == 'scholie'){echo 'class="salon_types_active"';}?> href="?type=scholien">Scholien</a></span>
+    	<span><a <?if ($type3 == 'analyse'){echo 'class="salon_types_active"';}?>href="?type=analysen">Analysen</a></span>
+    	<span><a <?if ($type3 == 'buch'){echo 'class="salon_types_active"';}?>href="?type=buecher">B&uuml;cher</a></span>
     </div> 
     <div class="medien_content">
 <?php
