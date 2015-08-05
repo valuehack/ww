@@ -117,7 +117,7 @@ else {
     $id = $entry[id];
       ?>
       
-<?php echo "<h1><a href='?q=$id'><i>".$entry[title]; ?></a></h1>
+<?php echo "<h1><a href='?q=$id'>".$entry[title]; ?></a></h1>
 		<div class="salon_dates">
       <?php 
       if ($entry[start] != NULL && $entry[end] != NULL)
