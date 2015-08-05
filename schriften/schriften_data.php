@@ -16,7 +16,7 @@
   $total_pages = $total_pages[num];
   
   /* Setup vars for query. */
-  $targetpage = "index.php?type=$type3";  //your file name  (the name of this file)
+  $targetpage = "index.php?type=$type2";  //your file name  (the name of this file)
   $limit = 6;                //how many items to show per page
   $page = $_GET['page'];
   echo 'Seite ='.$page;
