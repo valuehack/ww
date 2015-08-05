@@ -69,9 +69,36 @@ else {
 	<div class="medien_seperator">
     	<h1>Schriften</h1>
     </div>
+    <div class="salon_types">
+    	<span><a href="">Alle</a></span>
+    	<span><a class="salon_types_active" href="?type=scholien">Scholien</a></span>
+    	<span><a href="?type=analysen">Analysen</a></span>
+    	<span><a href="?type=buecher">B&uuml;cher</a></span>
+    </div> 
     <div class="medien_content">
-    	
-<?php
+ 
+<? if(isset($_GET['type']))
+{
+	$type2 =  $_GET['type'];
+	
+	if ($type2 == 'scholien'){
+		$type3 = 'scholie';
+		include('../schriften/schriften_data.php');
+	}
+	
+	elseif ($type2 == 'analysen'){
+		$type3 = 'analysen';
+		include('../schriften/schriften_data.php');
+	}
+	
+	elseif ($type2 == 'buecher'){
+		$type3 = 'buecher';
+		include('../schriften/schriften_data.php');
+	}
+	
+	else {
+	
+	}
 
 //Pagination Script found at http://www.phpeasystep.com/phptu/29.html
   $tbl_name="produkte";   //your table name
@@ -189,13 +216,10 @@ else {
       $pagination.= "<span class=\"disabled\">vor &raquo;</span>";
     $pagination.= "</div>\n";   
   }
-
-
-//$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status > 0 order by title asc, n asc";
-//$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-
-	echo "<table class='schriften_table'>";
-
+?>
+	<table class='schriften_table'>
+		
+<?php
 while($entry = mysql_fetch_array($result))
 {
 	$id = $entry[id];
@@ -240,7 +264,7 @@ while($entry = mysql_fetch_array($result))
 	}
 	echo "</table>";
   	echo $pagination;
-  
+  	}
 }
 ?>
 
