@@ -34,8 +34,8 @@ include "_header_not_in.php";
     $id = $entry[id];
       ?>
       
-<?php echo "<h1><a href='../".$entry[type]."/index.php?q=$id'>".$entry[title]; ?></a></h1>
-		<div class="salon_type"><?echo ucfirst($entry[type]);?></div>
+        <div class="salon_type"><?echo ucfirst($entry[type]);?></div>        
+		<h1><a href='../<?=$entry[type]?>/index.php?q=$id'><?=$entry[title]; ?></a></h1>		
 		<div class="salon_dates">
       <?php 
       if ($entry[start] != NULL && $entry[end] != NULL)
