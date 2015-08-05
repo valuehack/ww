@@ -26,7 +26,7 @@ include "_header_not_in.php";
     </div>
     <div class="salon_content">
   <?php
-  $sql = "SELECT * from produkte WHERE (type='salon' or type='lehrgang' or type='seminar' or type='kurs') and (start > NOW()) and (spots > spots_sold) and (status = 1) order by start asc, n asc";
+  $sql = "SELECT * from produkte WHERE (type='salon' or type='lehrgang' or type='seminar' or type='kurs') and (start > NOW()) and (status = 1) order by start asc, n asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	
   while($entry = mysql_fetch_array($result))
