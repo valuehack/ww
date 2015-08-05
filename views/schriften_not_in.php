@@ -70,7 +70,7 @@ else {
     	<h1>Schriften</h1>
     </div>
     <div class="salon_types">
-    	<span><a class="salon_types_active" href="">Alle</a></span>
+    	<span><a class="salon_types_active" href="index.php">Alle</a></span>
     	<span><a href="?type=scholien">Scholien</a></span>
     	<span><a href="?type=analysen">Analysen</a></span>
     	<span><a href="?type=buecher">B&uuml;cher</a></span>
