@@ -87,19 +87,17 @@ else {
 	}
 	
 	elseif ($type2 == 'analysen'){
-		$type3 = 'analysen';
+		$type3 = 'analyse';
 		include('../schriften/schriften_data.php');
 	}
 	
 	elseif ($type2 == 'buecher'){
-		$type3 = 'buecher';
+		$type3 = 'buch';
 		include('../schriften/schriften_data.php');
 	}
+}	
+else {
 	
-	else {
-	
-	}
-
 //Pagination Script found at http://www.phpeasystep.com/phptu/29.html
   $tbl_name="produkte";   //your table name
   // How many adjacent pages should be shown on each side?
