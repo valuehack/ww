@@ -82,17 +82,20 @@ else {
 	$type2 =  $_GET['type'];
 	
 	if ($type2 == 'scholien'){
-		$type3 = 'scholie';
+		$sql = "SELECT * from produkte WHERE (type LIKE 'scholie') AND status > 0 order by title asc, n asc LIMIT $start, $limit";
+		$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 		include('../schriften/schriften_data.php');
 	}
 	
 	elseif ($type2 == 'analysen'){
-		$type3 = 'analyse';
+		$sql = "SELECT * from produkte WHERE (type LIKE 'analyse') AND status > 0 order by title asc, n asc LIMIT $start, $limit";
+		$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 		include('../schriften/schriften_data.php');
 	}
 	
 	elseif ($type2 == 'buecher'){
-		$type3 = 'buch';
+		$sql = "SELECT * from produkte WHERE (type LIKE 'buch') AND status > 0 order by title asc, n asc LIMIT $start, $limit";
+		$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 		include('../schriften/schriften_data.php');
 	}
 }	

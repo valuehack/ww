@@ -1,8 +1,5 @@
 <table class='schriften_table'>
 <?php
-  $sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status > 0 order by title asc, n asc LIMIT $start, $limit";
-
-	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	
 while($entry = mysql_fetch_array($result))
 {
