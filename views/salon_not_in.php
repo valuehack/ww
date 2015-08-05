@@ -107,9 +107,6 @@ else {
   $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND start > NOW() AND spots > spots_sold AND status = 1 order by start asc, n asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	
-  $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND start > NOW() AND spots > spots_sold AND status = 1 order by start asc, n asc";
-  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-
   while($entry = mysql_fetch_array($result))
   {
     $id = $entry[id];
