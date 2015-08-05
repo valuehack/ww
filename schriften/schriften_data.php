@@ -15,8 +15,9 @@
   
   /* Setup vars for query. */
   $targetpage = "index.php?type=$type3";  //your file name  (the name of this file)
-  $limit = 10;                //how many items to show per page
+  $limit = 6;                //how many items to show per page
   $page = $_GET['page'];
+  echo $page;
   if($page) 
     $start = ($page - 1) * $limit;      //first item to display on this page
   else
