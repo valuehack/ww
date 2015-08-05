@@ -101,9 +101,9 @@ else {
     	<h1>Termine</h1>
     </div>
     <div class="salon_types">
-    	<span><a href="">Alle</a></span>
+    	<span><a href="../veranstaltungen/">Alle</a></span>
     	<span><a href="../seminare/">Seminare</a></span>
-    	<span><a class="salon_types_active" href="../salon/">Salons</a></span>
+    	<span><a class="salon_types_active" href="">Salons</a></span>
     </div>
     <div class="salon_content">
   

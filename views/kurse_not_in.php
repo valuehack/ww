@@ -138,11 +138,11 @@ else {
     <div class="salon_seperator">
     	<h1>Termine</h1>
     </div>
-    <div class="salon_types">
-    	<span><a href="">Alle</a></span>
-    	<span><a class="salon_types_active" href="../seminare/">Seminare</a></span>
+   	<div class="salon_types">
+    	<span><a href="../veranstaltungen/">Alle</a></span>
+    	<span><a class="salon_types_active" href="">Seminare</a></span>
     	<span><a href="../salon/">Salons</a></span>
-    </div>
+    </div> 
     <div class="salon_content">
 
   <?php
