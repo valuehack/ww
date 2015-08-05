@@ -23,7 +23,7 @@
         	</div>
         	<div class="footer_section">
         		<div class="footer_tm">
-        			<p>&copy; scholarium GmbH&trade;</p>
+        			<p>&copy; scholarium&trade; GmbH</p>
         		</div>
         		<div class="footer_social">
         			<ul>
