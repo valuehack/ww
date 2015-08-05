@@ -138,6 +138,11 @@ else {
     <div class="salon_seperator">
     	<h1>Termine</h1>
     </div>
+    <div class="salon_types">
+    	<span><a href="">Alle</a></span>
+    	<span><a class="salon_types_active" href="../seminare/">Seminare</a></span>
+    	<span><a href="../salon/">Salons</a></span>
+    </div>
     <div class="salon_content">
 
   <?php
@@ -152,13 +157,8 @@ else {
     $id = $entry[id];
     echo "<h1>";
     echo "<a href='?q=$id'>";
-    echo ucfirst($entry[type])." ".$entry[title]."</a></h1>";
+    echo $entry[title]."</a></h1>";
 	     
-    /* weekdays don't work:
-    $day=date("w",strtotime($entry[start]));
-    if ($day==0) $day=7;
-    echo Phrase('day'.$day).", ";
-    */
     echo "<div class='salon_dates'>";
            
     if ($entry[start] != NULL && $entry[end] != NULL)

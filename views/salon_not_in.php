@@ -100,6 +100,11 @@ else {
     <div class="salon_seperator">
     	<h1>Termine</h1>
     </div>
+    <div class="salon_types">
+    	<span><a href="">Alle</a></span>
+    	<span><a href="../seminare/">Seminare</a></span>
+    	<span><a class="salon_types_active" href="../salon/">Salons</a></span>
+    </div>
     <div class="salon_content">
   
 
@@ -112,7 +117,7 @@ else {
     $id = $entry[id];
       ?>
       
-<?php echo "<h1><a href='?q=$id'><i>".$event_id."</i>".$entry[title]; ?></a></h1>
+<?php echo "<h1><a href='?q=$id'><i>".$entry[title]; ?></a></h1>
 		<div class="salon_dates">
       <?php 
       if ($entry[start] != NULL && $entry[end] != NULL)
