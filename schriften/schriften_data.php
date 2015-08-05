@@ -17,7 +17,7 @@
   $targetpage = "index.php?type=$type3";  //your file name  (the name of this file)
   $limit = 6;                //how many items to show per page
   $page = $_GET['page'];
-  echo $page;
+  echo 'Seite ='.$page;
   if($page) 
     $start = ($page - 1) * $limit;      //first item to display on this page
   else
