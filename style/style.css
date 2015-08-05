@@ -1050,6 +1050,16 @@ a.socialimg:visited {
 	text-transform: uppercase;
 }
 
+.salon_types {
+	margin: 50px 15%;
+	text-align: center;
+}
+
+.salon_types span {
+	font-size: 22pt;
+	padding: 0 30px;
+}
+
 .salon_head {
 	width: 75%;
 	padding: 75px 12.5%;
@@ -1092,11 +1102,17 @@ a.socialimg:visited {
 	line-height: 1.7;
 }
 
+.salon_type {
+	text-align: center;
+	font-size: 18pt;
+	margin: 35px 0 0;
+}
+
 .salon_content h1 {
 	font-size: 36pt;
 	text-transform: uppercase;
 	text-shadow: 0px 0px 1px rgb(20,20,20);
-	margin: 50px 0 30px 0;
+	margin: 15px 0 30px 0;
 	text-align: center;
 }
 

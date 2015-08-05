@@ -26,7 +26,7 @@ include "_header_in.php";
     </div>
     <div class="salon_content">
   <?php
-  $sql = "SELECT * from produkte WHERE (type='salon' or type='lehrgang' or type='seminar' or type='kurs') AND start > NOW() AND spots > spots_sold AND status = 1 order by start asc, n asc";
+  $sql = "SELECT * from produkte WHERE (type='salon' or type='lehrgang' or type='seminar' or type='kurs') and (start > NOW()) and (status = 1) order by start asc, n asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	
   while($entry = mysql_fetch_array($result))
@@ -34,9 +34,10 @@ include "_header_in.php";
     $id = $entry[id];
       ?>
       
-<?php echo "<h1><a href='../".$entry[type]."/index.php?q=$id'>".$entry[title]; ?></a></h1>
-		<div class="salon_type"><?echo ucfirst($entry[type]);?></div>
+        <div class="salon_type"><?echo ucfirst($entry[type]);?></div>        
+		<h1><a href='../<?=$entry[type]?>/index.php?q=$id'><?=$entry[title]; ?></a></h1>		
 		<div class="salon_dates">
+			
       <?php 
       if ($entry[start] != NULL && $entry[end] != NULL)
         {
