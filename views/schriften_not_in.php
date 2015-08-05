@@ -69,13 +69,6 @@ else {
 	<div class="medien_seperator">
     	<h1>Schriften</h1>
     </div>
-    <div class="salon_types">
-    	<span><a class="salon_types_active" href="index.php">Alle</a></span>
-    	<span><a href="?type=scholien">Scholien</a></span>
-    	<span><a href="?type=analysen">Analysen</a></span>
-    	<span><a href="?type=buecher">B&uuml;cher</a></span>
-    </div> 
-    <div class="medien_content">
  
 <? if(isset($_GET['type']))
 {
@@ -97,7 +90,16 @@ else {
 	}
 }	
 else {
-	
+?>
+    <div class="salon_types">
+    	<span><a class="salon_types_active" href="index.php">Alle</a></span>
+    	<span><a href="?type=scholien">Scholien</a></span>
+    	<span><a href="?type=analysen">Analysen</a></span>
+    	<span><a href="?type=buecher">B&uuml;cher</a></span>
+    </div> 
+    <div class="medien_content">
+    	
+<?php	
 //Pagination Script found at http://www.phpeasystep.com/phptu/29.html
   $tbl_name="produkte";   //your table name
   // How many adjacent pages should be shown on each side?
