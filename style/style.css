@@ -1068,7 +1068,7 @@ a.socialimg:visited {
 	text-decoration: underline;
 }
 
-.salon_types_active a {
+.salon_types_active {
 	text-decoration: underline;
 	font-size: 24pt;
 }
