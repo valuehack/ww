@@ -1,6 +1,6 @@
 <table class='schriften_table'>
 <?php
-		$sql = "SELECT * from produkte WHERE (type LIKE $type3) AND status > 0 order by title asc, n asc";
+		$sql = "SELECT * from produkte WHERE (type LIKE '$type3') AND status > 0 order by title asc, n asc";
 		$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 			
 while($entry = mysql_fetch_array($result))
