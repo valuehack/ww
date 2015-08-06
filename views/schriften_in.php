@@ -172,7 +172,36 @@ else {
     <h1>Schriften</h1>
   </div> 
   <?
-  } ?>
+  }
+
+	if(isset($_GET['type']))
+	{
+	$type2 =  $_GET['type'];
+	
+	if ($type2 == 'scholien'){
+		$type3 = 'scholie';
+		include('../schriften/schriften_data.php');
+	}
+	
+	elseif ($type2 == 'analysen'){
+		$type3 = 'analyse';
+		include('../schriften/schriften_data.php');
+	}
+	
+	elseif ($type2 == 'buecher'){
+		$type3 = 'buch';
+		include('../schriften/schriften_data.php');
+	}
+}	
+else {
+?>
+    <div class="salon_types">
+    	<span><a class="salon_types_active" href="index.php">Alle</a></span>
+    	<span><a href="?type=scholien">Scholien</a></span>
+    	<span><a href="?type=analysen">Analysen</a></span>
+    	<span><a href="?type=buecher">B&uuml;cher</a></span>
+    </div> 
+    <div class="medien_content">
 
 	<div class="medien_content">
 <?php
