@@ -177,8 +177,9 @@ if (isset($registration)) {
 					</div>
         
         <div class="landing_links_box">
-            <div class="link"><p><a class="button_2" href="http://www.craftprobe.com">craftprobe</a></p></div>
-            <div class="link"><p><a class="button_3" href="http://www.austrian-school.com">Austrian School for Investors</a></p></div>
+            <div class="link"><p><a class="button_1" href="http://craftprobe.com"> </a><p></div>
+            <div class="link"><p><a class="button_2" href="http://craftprobe.com">craftprobe</a></p></div>
+            <div class="link"><p><a class="button_3" href="http://austrian-school.com">Austrian School for Investors</a></p></div>
             
         </div>
 			<?	
@@ -191,7 +192,7 @@ if (isset($registration)) {
         <div class="landing_links_box">
             <div class="link"><p><a class="button_1" href="eltern.php"><span><?=$fur?></span><?=$eltern?></a></p></div>
             <div class="link"><p><a class="button_2" href="buerger.php"><?=$burger?></a></p></div>
-            <div class="link"><p><a class="button_3" href="http://www.craftprobe.com"><span><?=$fur?></span><?=$studenten?></a></p></div>
+            <div class="link"><p><a class="button_3" href="http://craftprobe.com"><span><?=$fur?></span><?=$studenten?></a></p></div>
         </div>
 			<?	}			
 			?>
