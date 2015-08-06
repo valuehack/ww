@@ -203,7 +203,6 @@ else {
     </div> 
     <div class="medien_content">
 
-	<div class="medien_content">
 <?php
 
 //Pagination Script found at http://www.phpeasystep.com/phptu/29.html
