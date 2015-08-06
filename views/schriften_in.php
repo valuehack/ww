@@ -380,6 +380,7 @@ while($entry = mysql_fetch_array($result))
 	echo "</table>";
   	echo $pagination;
   
+  }
 }
 ?>
 
