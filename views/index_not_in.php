@@ -111,9 +111,12 @@ if (isset($registration)) {
     <body>
        <header class="landing_header">
        				<div class="landing_anmelden"><a href="index.php?q=en"><img src="../style/gfx/flagge_us.png"></a> <a href="index.php"><img src="../style/gfx/flagge_at.png"></a></div>
+       	     <? if ($lang_change <> 'en') 
+					{
+       	            ?>
        	            <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden"><?=$eintragen?></button></div>
                     <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden"><?=$anmelden?></button></div>
-
+				 <? } ?>
                     
 <!-- Login Modal -->
   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -174,8 +177,8 @@ if (isset($registration)) {
 					</div>
         
         <div class="landing_links_box">
-            <div class="link"><p><a class="button_1" href="http://www.craftprobe.com">craftprobe</a></p></div>
-            <div class="link"><p><a class="button_2" href="http://www.austrian-school.com">Austrian School for Investors</a></p></div>
+            <div class="link"><p><a class="button_2" href="http://www.craftprobe.com">craftprobe</a></p></div>
+            <div class="link"><p><a class="button_3" href="http://www.austrian-school.com">Austrian School for Investors</a></p></div>
             
         </div>
 			<?	
