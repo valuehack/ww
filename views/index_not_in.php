@@ -167,19 +167,31 @@ if (isset($registration)) {
 				$sql = "SELECT * from static_content WHERE (page LIKE 'landing')";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				$entry = mysql_fetch_array($result);
-				if ($lang_change == 'en') {
+				if ($lang_change == 'en') 
+					{
 					echo $entry[info_en];
-				}
+					?>
+					</div>
+        
+        <div class="landing_links_box">
+            <div class="link"><p><a class="button_1" href="http://www.craftprobe.com">craftprobe</a></p></div>
+            <div class="link"><p><a class="button_2" href="http://www.austrian-school.com">Austrian School for Investors</a></p></div>
+            
+        </div>
+			<?	
+					}
 				else {
 					echo $entry[info];
-				}			
-			?>
-        </div>
+					?>
+					</div>
         
         <div class="landing_links_box">
             <div class="link"><p><a class="button_1" href="eltern.php"><span><?=$fur?></span><?=$eltern?></a></p></div>
             <div class="link"><p><a class="button_2" href="buerger.php"><?=$burger?></a></p></div>
             <div class="link"><p><a class="button_3" href="http://www.craftprobe.com"><span><?=$fur?></span><?=$studenten?></a></p></div>
         </div>
+			<?	}			
+			?>
+        
     </body>
 </html>
