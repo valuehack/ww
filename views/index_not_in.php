@@ -113,13 +113,13 @@ if (isset($registration)) {
        				
     <? if ($lang_change <> 'en') 
 		 { ?>
-       	 <div class="anmelden"><i><a href="http://scholarium.at/?q=en">English</a></i></div>
+       	 <div class="anmelden"><button class="landing_login_button" type="button"><i><a href="http://scholarium.at/?q=en">English</a></i></button></div>
        	 <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden"><?=$eintragen?></button></div>
          <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden"><?=$anmelden?></button></div>
 	  <? } 
 	   else 
 		 { ?>
-		 <div class="anmelden"><i><a href="http://scholarium.at/">Deutsch</a></i></div>		 
+		 <div class="anmelden"><button class="landing_login_button" type="button"><i><a href="http://scholarium.at/">Deutsch</a></i></button></div>		 
     <? } ?> 
 <!-- Login Modal -->
   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -180,9 +180,9 @@ if (isset($registration)) {
 					</div>
         
         <div class="landing_links_box">
-            <div class="link"><p><a class="button_1" href="http://craftprobe.com"> </a><p></div>
+            <div class="link"><p><a class="button_1" href="http://craftprobe.com">Innovative educational program in Vienna:</a><p></div>
             <div class="link"><p><a class="button_2" href="http://craftprobe.com">craftprobe</a></p></div>
-            <div class="link"><p><a class="button_3" href="http://austrian-school.com">Austrian School for Investors</a></p></div>
+            <div class="link"><p><a class="button_3" href="http://austrian-school.com">Book: Austrian School for Investors</a></p></div>
             
         </div>
 			<?	
