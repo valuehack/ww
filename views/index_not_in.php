@@ -180,7 +180,7 @@ if (isset($registration)) {
 					</div>
         
         <div class="landing_links_box">
-            <div class="link"><p><a class="button_1" href="http://craftprobe.com">Innovative educational program in Vienna:</a><p></div>
+            <div class="link"><p><a class="button_1" href="http://craftprobe.com">Educational program in Vienna:</a><p></div>
             <div class="link"><p><a class="button_2" href="http://craftprobe.com">craftprobe</a></p></div>
             <div class="link"><p><a class="button_3" href="http://austrian-school.com">Book: Austrian School for Investors</a></p></div>
             
