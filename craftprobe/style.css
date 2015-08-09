@@ -1,0 +1,653 @@
+@font-face {
+	font-family: 'Baskerville';
+	src: url('baskerville_regular.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Baskerville';
+	src: url('baskerville_italic.otf') format('opentype');
+	font-style: italic;
+}
+
+/*==================================
+ * CSS Reset
+ ===================================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+u, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+   display: block;
+}
+body {
+   line-height: 1;
+}
+ul {
+   list-style: none;
+}
+ol {
+	list-style-position: inside;
+}
+blockquote, q {
+   quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+   content: '';
+   content: none;
+}
+table {
+   border-collapse: collapse;
+   border-spacing: 0;
+}
+
+/*=========================================*/
+
+/*=========================================*/
+/*          General                        */
+/*=========================================*/
+
+p, h1, h2, a, ul, ol {
+	font-family: "Baskerville", Georgia, Times, serif;
+	color: #333;
+}
+
+/*=========================================*/
+/*          Header                         */
+/*=========================================*/
+
+.header {
+	height: 55px;
+	width: 100%;
+	background: rgb(10,10,10);
+	position: fixed;
+	z-index: 500;
+	opacity: 0.9;
+}
+
+.header p {
+	margin: 10px 6% 10px 6%;
+	font-size: 30px;
+	color: #fff;
+	float: left;
+	text-shadow: 0px 0px 2px #fff;
+}
+
+.header span {
+	margin: 10px 6% 10px 0;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 30px;
+	color: #fff;
+	text-shadow: 0px 0px 2px #fff;
+	
+}
+
+.nav {
+	position: relative;
+   	right: 0;
+   	margin: 0 auto;
+   	padding: 0;
+	text-align: center;
+	font-size: 12pt;
+	font-weight: 100;
+	text-shadow: 2px 2px 2px rgb(20,20,20);
+}
+
+.nav li {
+	list-style: none;
+   	float: left; 
+	height: 55px;
+   	display: block;
+}
+
+.nav li a {
+	display: block;
+	text-decoration: none;
+	padding: 20px;
+	color: rgb(180,180,180);
+}
+
+.nav li a:active {
+	color: rgb(225,225,225);
+}
+
+.nav li a:hover {
+	color: rgb(225,225,225);
+}
+
+.banner {
+	background: #000;
+	position: relative;
+	height: 600px;
+	width: 100%;
+	top: 55px;
+}
+
+.bannerimg {
+	width: 100%;
+	height: 600px;
+	opacity: 0.7;
+}
+
+.bannerms {
+	width: 70%;
+	margin: -450px auto;
+	position: relative;
+}
+
+.bannerms h1 {
+	font-size: 80pt;
+	line-height: 1.1em;
+	color: #fff;
+	padding-top: 60px;
+	text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
+}
+
+.bannerms span {
+	font-size: 80pt;
+	line-height: 1.1em;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #fff;
+	padding-top: 60px;
+	text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
+}
+
+.bannerms h2 {
+	font-size: 30pt;
+	line-height: 1.1em;
+	color: #fff;
+	margin-left: 200px;
+	padding-top: 30px;
+	text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
+}
+
+/*=========================================*/
+/*          Content                        */
+/*=========================================*/
+
+.content {
+	width: 100%;
+	background: #fff;
+}
+
+.s1, .s2, .s3, .s4 {
+	width: 70%;
+	min-height: 410px;
+	background-size: cover;
+	padding: 80px 15% 80px 15%;
+}
+
+section p {
+	font-size: 13pt;
+	line-height: 2em;
+	font-family: "Baskerville", Georgia, Times, serif;
+	margin: 20px 0;
+	text-align: justify;
+}
+
+section h1 {
+	font-size: 22pt;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+section h2 {
+	font-style: italic;
+	font-size: 18pt;
+	margin: 30px 0;
+}
+
+section ol {
+	list-style-position: outside;
+	margin: 16px 0;
+	padding-left: 20px;
+	text-align: justify;
+}
+
+section li {
+	font-size: 12pt;
+	line-height: 1.8em; 
+	margin: 10px 0;
+}
+
+.fontchange {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.s1 {
+	background: #f7f7f7;
+}
+
+.s2 {
+	background: #ececec;
+}
+
+.s3 {
+	background: #f7f7f7;
+}
+
+.s4 {
+	background: #ececec;
+}
+
+.s5 {
+	background: #000;
+	position: relative;
+	width: 100%;
+}
+
+.s5img {
+	width: 100%;
+	height: 480px;
+}
+
+/*=========================================*/
+/*          Form                           */
+/*=========================================*/
+
+.form {
+	padding: 67px 5%;
+    background-color: rgba(26,26,26,0.6);
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.05) inset;
+    font-size: 22pt;
+    display: inline-block;
+    text-align: center;
+    height: 346px;
+    width: 90%;
+}
+
+.form p {
+	line-height: 1.4em;
+	color: #fff;
+	text-align: center;
+	margin: 20px 0;
+	
+}
+
+.form h1 {
+	color: #fff;
+	font-size: 30pt;
+	line-height: 1.5em;
+	margin: 40px 0px 80px;
+}
+
+.inputfield_old {
+	padding: 0 14px;
+	background-color: #fff;
+	border: 1px solid #cfcfcf;
+	border-radius: 2px;
+	color: #aaa;
+	margin: 5px;
+	width: 35%;
+	height: 50px;
+	font-size: 16pt;
+	font-family: "Baskerville", Georgia, Times, serif;
+	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2) inset;
+}
+
+.inputbutton {
+	text-decoration: none;
+	background: rgb(153,210,23);
+	color: #fff;
+	text-shadow: 1px 0 2px 0 rgba(30, 30, 30, 0.6);
+	border: 0;
+	border-radius: 2px;
+	margin: 5px;
+	width: 350px;
+	height: 60px;
+	font-size: 24pt;
+	font-family: "Baskerville", Georgia, Times, serif;
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16) inset, 0px 0px 10px 0px rgba(0, 0, 0, 0.34) inset;
+}
+
+.inputbutton:hover {
+	background: rgb(111,153,17);
+}
+
+.ok {
+	width: 100%;
+	background: rgb(10,10,10);
+	text-align: center;
+	position: absolute;
+	top: 55px;
+	z-index: 400;
+	opacity: 0.9;
+	padding: 20px 0;
+}
+
+.ok p {
+	color: rgb(255,255,255);
+	padding: 10px;
+	font-size: 14pt;
+	line-height: 1.4em;
+	text-align: center;
+	text-shadow: 1px 1px 1px rgb(15,15,15);
+}
+
+.ok h1 {
+	font-size: 18pt;
+	text-align: center;
+	text-shadow: 1px 1px 1px rgb(15,15,15);
+	color: rgb(255,255,255);
+}
+
+.input {
+	border: 1px solid #dad8d8;
+	font-size: 16pt;
+	line-height: 1.4;
+	margin-bottom: 30px;
+	width: 520px;
+}
+
+.inputfield {
+	border: 0;
+	border-top: 1px solid #dad8d8 !important;
+	width: 490px;
+	height: 48px;
+	box-shadow: 0 0 0 0 inset;
+	padding: 3px 15px;
+	color:  rgba(0,0,0,0.6);	
+}
+
+.inputfield_select {
+	border-top: 1px solid #dad8d8 !important;
+	width: 520px;
+	height: 48px;
+	box-shadow: 0 0 0 0 inset;
+	padding: 3px 15px;	
+	border: 0;
+	color:  rgba(0,0,0,0.6);
+}
+
+.inputfield:first-of-type {
+	border-top: medium none !important;	
+}
+
+.bottom_border {
+	border-bottom: 1px solid #dad8d8 !important;
+}
+
+.inputarea {
+	border-top: 1px solid #dad8d8 !important;
+	border-bottom: 1px solid #dad8d8 !important;
+	width: 490px;
+	height: 200px;
+	box-shadow: 0 0 0 0 inset;
+	padding: 3px 15px;	
+	border: 0;
+	color:  rgba(0,0,0,0.6);
+}
+
+.inputlabel {
+	display: block;
+	font-size: 10pt;
+	font-family: Helvetica, Arial, sans-serif;
+	padding: 8px 5px;
+}
+
+.inputlabel2 {
+	font-size: 10pt;
+	font-family: Helvetica, Arial, sans-serif;
+	padding: 8px 5px;
+}
+
+.inputbutton_subscribe {
+	text-decoration: none;
+	background: rgb(153,210,23);
+	color: #fff;
+	border: 0;
+	border-radius: 2px;
+	margin: 5px;
+	width: 520px;
+	height: 50px;
+	font-size: 16pt;
+	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
+}
+
+.inputbutton_subscribe:hover {
+	background: rgb(111,153,17);
+}
+
+/*=========================================*/
+/*          Footer                         */
+/*=========================================*/
+
+.footer {
+	width: 90%;
+	background: rgb(26,26,26);
+	padding: 20px 5% 15px 5%;
+}
+
+footer p {
+	width: 70%;
+	padding: 0 15%;
+	color: rgb(180,180,180);
+	text-shadow: 1px 1px 1px rgb(15,15,15);
+	font-size: 12pt;
+	line-height: 1.7;
+	text-align: center;
+}
+
+.img_links {
+	font-size: 8pt !important;
+}
+
+.img_links a {
+	text-decoration: none;
+	color: rgb(100,100,100);
+}
+
+.img_links a:hover {
+	text-decoration: none;
+	color: rgb(210,210,210);
+}
+
+/*===========================================*/
+/*              Modal Overlay                */
+/*===========================================*/
+
+.close {
+  	float: right;
+  	font-size: 26pt;
+  	font-weight: bold;
+  	line-height: 1;
+  	color: #000;
+  	text-shadow: 0 1px 0 #fff;
+  	filter: alpha(opacity=20);
+  	opacity: .2;
+}
+
+.close:hover,
+.close:focus {
+  	color: #000;
+  	text-decoration: none;
+  	cursor: pointer;
+  	filter: alpha(opacity=50);
+  	opacity: .5;
+}
+
+button.close {
+  	-webkit-appearance: none;
+  	padding: 0;
+  	cursor: pointer;
+  	background: transparent;
+  	border: 0;
+}
+
+.modal-open {
+  	overflow: hidden;
+}
+
+.modal {
+  	position: fixed;
+  	top: 0;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  	z-index: 1050;
+  	display: none;
+  	overflow: hidden;
+  	-webkit-overflow-scrolling: touch;
+  	outline: 0;
+}
+
+.modal.fade .modal-dialog {
+  	-webkit-transition: -webkit-transform .3s ease-out;
+       	 -o-transition:      -o-transform .3s ease-out;
+          	transition:         transform .3s ease-out;
+  	-webkit-transform: translate(0, -25%);
+      	-ms-transform: translate(0, -25%);
+      	 -o-transform: translate(0, -25%);
+          	transform: translate(0, -25%);
+}
+
+.modal.in .modal-dialog {
+  	-webkit-transform: translate(0, 0);
+      	-ms-transform: translate(0, 0);
+       	 -o-transform: translate(0, 0);
+	        transform: translate(0, 0);
+}
+
+.modal-open .modal {
+  	overflow-x: hidden;
+  	overflow-y: auto;
+}
+
+.modal-dialog {
+  	position: relative;
+  	width: 60%;
+  	margin: 50px auto;
+}
+
+.modal-dialog-login {
+	position: relative;
+  	width: 600px;
+  	margin: 50px auto;
+}
+
+.modal-content {
+  	position: relative;
+  	background-color: #fff;
+  	-webkit-background-clip: padding-box;
+          	background-clip: padding-box;
+  	border: 1px solid #999;
+  	border: 1px solid rgba(0, 0, 0, .2);
+  	border-radius: 6px;
+  	outline: 0;
+  	-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          	box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    padding: 80px;
+}
+
+.modal-content-login {
+  	position: relative;
+  	background-color: rgb(250,250,250);
+  	-webkit-background-clip: padding-box;
+          	background-clip: padding-box;
+  	border: 1px solid #999;
+  	border: 1px solid rgba(0, 0, 0, .2);
+  	border-radius: 6px;
+  	outline: 0;
+  	-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          	box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    padding: 10px 40px;
+}
+
+.modal-backdrop {
+  	position: fixed;
+  	top: 0;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  	z-index: 1040;
+  	background-color: #000;
+}
+
+.modal-backdrop.fade {
+  	filter: alpha(opacity=0);
+  	opacity: 0;
+}
+
+.modal-backdrop.in {
+  	filter: alpha(opacity=50);
+  	opacity: .5;
+}
+
+.modal-header {
+  	min-height: 16.42857143px;
+ 	padding: 15px;
+  	text-align: center;
+}
+
+.modal-header .close {
+  	margin-top: -2px;
+}
+
+.modal-title {
+	font-size: 22pt;
+  	margin: 0;
+  	line-height: 1.5;
+  	font-weight: bold;
+  	padding-top: 20px;
+  	font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-body {
+  	position: relative;
+  	padding: 15px;
+  	text-align: justify;
+	font-size: 14pt;
+	line-height: 1.6;
+	padding: 15px 0;
+}
+
+.modal-body p {
+	margin: 20px 0;
+}
+
+.modal-footer {
+  	padding: 15px;
+  	text-align: right;
+  	text-align: center;
+}
+
+.modal-footer .btn + .btn {
+  	margin-bottom: 0;
+  	margin-left: 5px;
+}
+.modal-footer .btn-group .btn + .btn {
+  	margin-left: -1px;
+}
+
+.modal-footer .btn-block + .btn-block {
+  	margin-left: 0;
+}
+
+.modal-scrollbar-measure {
+  	position: absolute;
+  	top: -9999px;
+  	width: 50px;
+  	height: 50px;
+  	overflow: scroll;
+}
