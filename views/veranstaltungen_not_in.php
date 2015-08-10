@@ -4,18 +4,7 @@ $title="Veranstaltungen";
 include "_header_not_in.php"; 
 ?>
 	<div class="content">
-		<div class="salon_info">
-			<h1>Veranstaltungen</h1>
-		
-		<?php
-			$sql = "SELECT * from static_content WHERE (page LIKE 'veranstaltungen')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[info];	
-		?>
-
-    </div>
+		<h1>Veranstaltungen</h1>
     <div class="salon_seperator">
     	<h1>Termine</h1>
     </div>
