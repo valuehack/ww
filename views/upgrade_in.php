@@ -89,7 +89,7 @@ include('_header_in.php');
         $op3 = $op3.'<div id="op3" class="pay_option_box pay_option_box3">
             <table>
                 <tr><th th rowspan="3">
-                    <h1>Wertewirt</h1>
+                    <h1>Scholar</h1>
                     <h2>25&euro;/ Monat</h2>
                 </th>
                 <td class="pay_option_box_td_top">           
@@ -129,7 +129,7 @@ include('_header_in.php');
                 </tr><tr>
                 <td>
                     <ul>
-                        <li>Vorteile von Gast, Teilnehmer und Wertewirt</li>
+                        <li>Vorteile von Gast, Teilnehmer und Scholar</li>
                         <li>Einladung zu einem regelm&auml;&szlig;igen exklusiven Abendessen zum pers&ouml;nlichen Austausch, bei dem Sie Hintergrundinformationen zu unserer Arbeit erhalten.</li>
                         <li>Alternativ, wenn Sie nicht zuf&auml;llig vor Ort sind oder anreisen wollen: Geschenkkorb mit wertvollen Produkten.</li>
                         <li>Auf Wunsch: Visitenkarten, Verlinkung des eigenen Unternehmens.</li>
@@ -159,7 +159,7 @@ include('_header_in.php');
                 </tr><tr>
                 <td>
                     <ul>
-                        <li>Vorteile von Gast, Teilnehmer, Wertewirt und Partner</li>
+                        <li>Vorteile von Gast, Teilnehmer, Scholar und Partner</li>
                         <li>Einladung zu unserer j&auml;hrlichen Klausur an einem historischen Ort in wundersch&ouml;ner Landschaft</li>
                         <li>Alternativ, wenn Sie zum Termin verhindert sind:  Aufzeichnungen/Nachlesen</li>
                     </ul>
@@ -188,7 +188,7 @@ include('_header_in.php');
                 </tr><tr>
                 <td>
                     <ul>
-                        <li>Vorteile von Gast, Teilnehmer, Wertewirt, Partner und Beirat</li>
+                        <li>Vorteile von Gast, Teilnehmer, Scholar, Partner und Beirat</li>
                         <li>Einmal im Jahr zu Ihrem Wunschtermin private Campusf&uuml;hrung durch den Rektor mit tief gehender Vorstellung und Reflexion unserer Arbeit und Erkenntnisse, sowie einem exklusiven Mittagessen.</li>
                     </ul>
                 </td>
