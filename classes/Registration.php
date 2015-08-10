@@ -326,10 +326,10 @@ class Registration
             $mail->IsMail();
         }
 
-        $mail->From = EMAIL_PASSWORDRESET_FROM;
-        $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
+        $mail->From = "info@scholarium.at";
+        $mail->FromName = "scholarium";
         $mail->AddAddress($user_email);
-        $mail->Subject = "Membership confirmation";
+        $mail->Subject = "Herzlich willkommen";
 
         #verification link
         $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
@@ -442,8 +442,8 @@ class Registration
             $mail->IsMail();
         }
 
-        $mail->From = EMAIL_PASSWORDRESET_FROM;
-        $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
+        $mail->From = "info@scholarium.at";
+        $mail->FromName = "scholarium";
         // make sure email is correct
         $mail->AddAddress(EMAIL_INSTITUTE);
         $mail->Subject = "New Paying User";
