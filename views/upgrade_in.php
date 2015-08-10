@@ -110,7 +110,7 @@ include('_header_in.php');
                     <form method="post" action="zahlung.php">
                         <input type="hidden" name="betrag" value="300">
                         <input type="hidden" name="level" value="Wertewirt">
-                        <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Wertewirt">
+                        <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Scholar">
                     </form>   
                 </td>
                 </tr>
