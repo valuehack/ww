@@ -8,7 +8,7 @@
 			?>
     	<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@wertewirtschaft">
-		<meta name="author" content="Rahim Taghizadegan">
+		<meta name="author" content="scholarium">
 		<meta property="og:type" content="article">
 		<meta property="og:title" content="<?=$title?>">
 		<meta property="og:url" content="http://www.scholarium.at/">
@@ -150,7 +150,7 @@ while ($entry = mysql_fetch_array($result))
             $Mitgliedschaft = 'Teilnehmer';
             break;
         case 4:
-            $Mitgliedschaft = 'Wertewirt';
+            $Mitgliedschaft = 'Scholar';
             break;
         case 5:
             $Mitgliedschaft = 'Partner';
@@ -210,7 +210,7 @@ while ($entry = mysql_fetch_array($result))
                 			<li class="dropdown-header dropdown_name"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
                             <li class="dropdown-header dropdown_level"><? echo $Mitgliedschaft;?></li>
                 			<li><a href="/abo/profil.php">Profil</a></li>
-                			<li><a href="/abo/upgrade.php">Upgrade</a></li>
+                			<li><a href="/abo/upgrade.php">Unterst&uuml;tzen</a></li>
                 			<li class="divider"></li>
                       <li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry[credits_left];?> <img class='dropdown_coin' src="../style/gfx/coin.png"></li>
                 			<li><a href="/abo/korb.php">Bestellungen <span class="badge"><?echo $total_quantity;?></span></a></li> 

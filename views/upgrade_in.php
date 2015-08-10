@@ -1,7 +1,7 @@
 <?php 
 
 require_once('../classes/Login.php');
-$title="Upgrades";
+$title="Unterst&uuml;tzen";
 include('_header_in.php'); 
 
 ?>

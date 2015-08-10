@@ -988,8 +988,8 @@ public function sendEventRegMail($events)
             $mail->IsMail();
         }
 
-        $mail->From = EMAIL_PASSWORDRESET_FROM;
-        $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
+        $mail->From = "info@scholarium.at";
+        $mail->FromName = "scholarium";
         $mail->AddAddress($user_email);
         $mail->Subject = 'Successfully registered to the events!';
 
@@ -1175,10 +1175,10 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
         $user_email = $_SESSION['user_email'];
         $user_id = $_SESSION['user_id'];
 
-        $mail->From = EMAIL_PASSWORDRESET_FROM;
-        $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
+        $mail->From = "info@scholarium.at";
+        $mail->FromName = "scholarium";
         $mail->AddAddress($user_email);
-        $mail->Subject = 'Upgrade';
+        $mail->Subject = 'Unterstuetzung';
 
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         // $link    = 'http://test.wertewirtschaft.net/'.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
@@ -1205,23 +1205,18 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
             <span style="color: #000000;">
             <!--#/html#-->
             <br>            
-            Dear economist,
+            Lieber Gast,
             <br><br>
-            Vielen Dank f&uuml;r Ihr Upgrade! Sie sind nun <b>'.$level_html.'</b>.<br>
+            Vielen Dank f&uuml;r Ihre Unterst&uuml;tzung! Sie sind nun <b>'.$level_html.'</b>.<br>
             Sie werden ein weiteres Email von uns erhalten, wenn Ihre Zahlung best&auml;tigt wurde. 
-            <br>
-         
-            <p><b>Laufzeit und K&uuml;ndigung:</b></p>   
-
-            <p>Die Mitgliedschaft l&auml;uft ein Jahr. ...</p>
-                        ';
+            <br>';
 
 
 
         switch ($zahlung) {
 
         case "bar":   
-        $body .="<p>Bitte schicken Sie uns den gew&auml;hlten Betrag von ".$betrag."  &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das Institut f&uuml;r Wertewirtschaft, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich im Institut (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>";
+        $body .="<p>Bitte schicken Sie uns den gew&auml;hlten Betrag von ".$betrag."  &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an Scholarium, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich im Institut (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>";
             break;
 
         case "kredit":
@@ -1263,18 +1258,6 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
         <li>BIC: GIBAATWW</li>
         </ul></p>
 
-        <p>Alternativ k&ouml;nnen Sie den Gegenwert in Schweizer Franken auf folgendes Konto &uuml;berweisen:</p>
-
-        <p>
-        <ul>
-        <li>Institut f&uuml;r Wertewirtschaft</li>
-        <li>Liechtensteinische Landesbank</li>
-        <li>Kontonummer: 23103297</li>
-        <li>Bankleitzahl: 08800</li>
-        <li>IBAN: LI6308800000023103297</li>
-        <li>BIC: LILALI2X</li>
-        </ul>
-        </p>
 
         <p><b>Bitte verwenden Sie als Sie als Zahlungsreferenz/Betreff unbedingt &quot;Mitglied Nr.".$user_id."&quot;</b></p>
         ";
@@ -1336,8 +1319,8 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
             $mail->IsMail();
         }
 
-        $mail->From = EMAIL_PASSWORDRESET_FROM;
-        $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
+        $mail->From = "info@scholarium.at";
+        $mail->FromName = "scholarium";
         $mail->AddAddress("dzainius@gmail.com");
         $mail->Subject = 'user upgrade';
 
@@ -1383,8 +1366,8 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
 
         $user_email = $_SESSION['user_email'];
 
-        $mail->From = EMAIL_PASSWORDRESET_FROM;
-        $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
+        $mail->From = "info@scholarium.at";
+        $mail->FromName = "scholarium";
         $mail->AddAddress($user_email);
         $mail->Subject = 'Free credits';
 
@@ -1808,8 +1791,8 @@ user_plz
             $mail->IsMail();
         }
 
-        $mail->From = EMAIL_PASSWORDRESET_FROM;
-        $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
+        $mail->From = "info@scholarium.at";
+        $mail->FromName = "scholarium";
         $mail->AddAddress($user_email);
         $mail->Subject = 'Password reset email';
 
