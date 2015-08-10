@@ -93,7 +93,7 @@ include('_header_in.php');
                     <h2>25&euro;/ Monat</h2>
                 </th>
                 <td class="pay_option_box_td_top">           
-                    <p>Sie sind nicht zuf&auml;llig hier, sondern empfinden so wie wir. Wenn es das scholarkum nicht g&auml;be, w&uuml;rden Sie es vermissen. Sie wollen wie wir die Realit&auml;t erkennen, Werte schaffen und Sinn finden. Sie leben Eigenverantwortung und leisten als B&uuml;rger einen Beitrag, um dieses Zentrum verantwortlichen Unternehmertums, unabh&auml;ngiger Forschung und zivilgesellschaftlichen Engagements abseits der subventionierten Anstalten zu erm&ouml;glichen. Wenn es Sie nicht g&auml;be, g&auml;be es auch kein scholarium.
+                    <p>Sie sind nicht zuf&auml;llig hier, sondern empfinden so wie wir. Wenn es das scholarium nicht g&auml;be, w&uuml;rden Sie es vermissen. Sie wollen wie wir die Realit&auml;t erkennen, Werte schaffen und Sinn finden. Sie leben Eigenverantwortung und leisten als B&uuml;rger einen Beitrag, um dieses Zentrum verantwortlichen Unternehmertums, unabh&auml;ngiger Forschung und zivilgesellschaftlichen Engagements abseits der subventionierten Anstalten zu erm&ouml;glichen. Wenn es Sie nicht g&auml;be, g&auml;be es auch kein scholarium.
                     </p>
                 </td>
                 </tr><tr>
