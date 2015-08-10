@@ -374,25 +374,21 @@ class Registration
                 <span style="color: #000000;">
                 <!--#/html#-->
                 <br>            
-                Dear economist,
+                Lieber Gast,
                 <br>
-                Thank you for becoming a member.
-                <br>
-                Please consider supporting us by becoming a paying member. 
-                In addition you will get access to our members area. 
-
-                    ';
+                vielen Dank f&uuml;r Ihr Interesse!.
+                <br>';
 
     $body = $body.'
-                And finally, please click on the link below to redeem your free credit with which you will be able to register for one of our events. 
+                Bitte klicken Sie unterhalb, um Zugang zu scholarium.at zu erhalten.
                 <table cellspacing="0" cellpadding="0"> <tr>
                 <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
                 <a href="'.$link.'" style="font-size:16px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
                 <span style="color: #000000">
-                Click here for membership!
+                scholarium.at-Zugang
                 </span></a></td></tr></table> 
-                <strong>And your password is:</strong>'.$user_password.'
-                ';
+                <br><strong>Ihr vorl&auml;ufiges Passwort ist: </strong>'.$user_password.'<br>
+                Herzliche Gr&uuml;&szlig;e aus Wien!';
 
 
     $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');

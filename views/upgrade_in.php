@@ -33,7 +33,7 @@ include('_header_in.php');
                         <h2>6,25&euro;/Monat</h2>
                     </th>
                     <td>
-                        <p>Sie sind interessierter B&uuml;rger mit beschr&auml;nkten Mitteln, der nur einmal neugierig hineinschnuppern m&ouml;chte, ob es die Wertewirtschaft auch wert ist.</p>
+                        <p>Sie sind interessierter B&uuml;rger mit beschr&auml;nkten Mitteln, der nur einmal neugierig hineinschnuppern m&ouml;chte, ob es das scholarium auch wert ist.</p>
                     </td>
                     </tr><tr>
                     <td>
@@ -64,7 +64,7 @@ include('_header_in.php');
                         <h2>12,50&euro;/ Monat</h2>
                     </th>
                     <td>
-                        <p>Sie sind an tiefer gehender Erkenntnis und Inspiration interessiert. Sie vertrauen der Wertewirtschaft bereits, dass sich hier wirklich etwas lernen l&auml;sst. Manchmal w&uuml;rde Sie auch die Teilnahme an intensiven Seminaren reizen.</p>
+                        <p>Sie sind an tiefer gehender Erkenntnis und Inspiration interessiert. Sie vertrauen dem scholarium bereits, dass sich hier wirklich etwas lernen l&auml;sst. Manchmal w&uuml;rde Sie auch die Teilnahme an intensiven Seminaren reizen.</p>
                     </td>
                     </tr><tr>
                     <td>
@@ -93,7 +93,7 @@ include('_header_in.php');
                     <h2>25&euro;/ Monat</h2>
                 </th>
                 <td class="pay_option_box_td_top">           
-                    <p>Sie sind nicht zuf&auml;llig hier, sondern empfinden so wie wir. Wenn es die Wertewirtschaft nicht g&auml;be, w&uuml;rden Sie sie vermissen. Sie wollen wie wir die Realit&auml;t erkennen, Werte schaffen und Sinn finden. Sie leben Eigenverantwortung und leisten als B&uuml;rger einen Beitrag, um dieses Zentrum verantwortlichen Unternehmertums, unabh&auml;ngiger Forschung und zivilgesellschaftlichen Engagements abseits der subventionierten Anstalten zu erm&ouml;glichen. Wenn es Sie nicht g&auml;be, g&auml;be es auch keine Wertewirtschaft.
+                    <p>Sie sind nicht zuf&auml;llig hier, sondern empfinden so wie wir. Wenn es das scholarkum nicht g&auml;be, w&uuml;rden Sie es vermissen. Sie wollen wie wir die Realit&auml;t erkennen, Werte schaffen und Sinn finden. Sie leben Eigenverantwortung und leisten als B&uuml;rger einen Beitrag, um dieses Zentrum verantwortlichen Unternehmertums, unabh&auml;ngiger Forschung und zivilgesellschaftlichen Engagements abseits der subventionierten Anstalten zu erm&ouml;glichen. Wenn es Sie nicht g&auml;be, g&auml;be es auch kein scholarium.
                     </p>
                 </td>
                 </tr><tr>
@@ -154,7 +154,7 @@ include('_header_in.php');
                     <h2>100&euro;/Monat</h2>
                 </th>
                 <td>
-                    <p>Sie wollen und k&ouml;nnen einen wirklich ernsthaften Beitrag leisten, weil Sie ein Interesse an der strategischen Entwicklung der Wertewirtschaft haben. Wir nehmen Sie als Beirat auf und Sie gestalten mit uns die Zukunft. Nat&uuml;rlich gehen wir mit Ihrer Zeit pfleglich um: Einmal im Jahr reflektieren wir mit unseren Beir&auml;ten die Erkenntnisse des vergangenen Jahres und blicken in das kommende.</p>
+                    <p>Sie wollen und k&ouml;nnen einen wirklich ernsthaften Beitrag leisten, weil Sie ein Interesse an der strategischen Entwicklung des scholarium haben. Wir nehmen Sie als Beirat auf und Sie gestalten mit uns die Zukunft. Nat&uuml;rlich gehen wir mit Ihrer Zeit pfleglich um: Einmal im Jahr reflektieren wir mit unseren Beir&auml;ten die Erkenntnisse des vergangenen Jahres und blicken in das kommende.</p>
                 </td>
                 </tr><tr>
                 <td>
@@ -183,7 +183,7 @@ include('_header_in.php');
                     <h2>200&euro;/Monat</h2>
                 </th>
                 <td class="pay_option_box_td_m">
-                    <p>Vielleicht w&auml;re das ja eine Aufgabe f&uuml;r Sie? Als Ehrenpr&auml;sident leisten Sie einen Beitrag, der das nachhaltige Bestehen der Wertewirtschaft sichert. Ehrenpr&auml;sidenten sind unsere VIPs: Keine falsche Elite mit Anspr&uuml;chen, sondern eine wahre mit &uuml;berdurchschnittlicher Leistungs- und Verantwortungsbereitschaft.</p>
+                    <p>Vielleicht w&auml;re das ja eine Aufgabe f&uuml;r Sie? Als Ehrenpr&auml;sident leisten Sie einen Beitrag, der das nachhaltige Bestehen des scholarium sichert. Ehrenpr&auml;sidenten sind unsere VIPs: Keine falsche Elite mit Anspr&uuml;chen, sondern eine wahre mit &uuml;berdurchschnittlicher Leistungs- und Verantwortungsbereitschaft.</p>
                 </td>
                 </tr><tr>
                 <td>
