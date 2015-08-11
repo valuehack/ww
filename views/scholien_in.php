@@ -75,8 +75,7 @@ if(isset($_GET['q']))
 		<?php
 		echo $public;
 		echo "</div>";
-		echo 'Lenght:'.$lenght;
-		echo 'l'.$l;
+		
 		if ($l>10)
 		{
 		echo '<div class="blog_upgrade">';
