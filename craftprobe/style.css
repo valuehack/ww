@@ -277,10 +277,11 @@ section li {
 }
 
 .form p {
-	line-height: 1.4em;
+	line-height: 2em;
 	color: #fff;
-	text-align: center;
+	text-align: justify;
 	margin: 20px 0;
+	font-size: 13pt;
 	
 }
 
