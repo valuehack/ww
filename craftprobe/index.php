@@ -183,7 +183,7 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
             <p><a href="#top">Back to the top</a></p>
             </section> -->
             
-            <section id="board" class="s4">
+            <section id="board" class="s3">
             	<h1>BOARD</h1>
             	
             	<p>What are you waiting for? A television spot to tell you that this is meant for you? A government decree? A viral video to make you part of a crowd? We will try the best we can to avoid hypes, unwanted publicity, and official recognition. A craft like ours has to shun such shallow waters. If you are afraid, then stay ashore. No worries, anyway there is not enough space for everyone. Lifeboats get crowded easily. If you have the courage but just lack the confidence that you are good enough, go ahead and apply. We will get in touch with you. It won’t hurt. But it might open up opportunities you have not even dared to dream about.</p>
@@ -218,7 +218,7 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
       </div>
       <div class="modal-body">
 		<form method="post" action="index.php" name="user_create_profile_form">
-				<p>Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</p>
+				<p><span class="inputlabel2">Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</span></p>
 				<div class="input">
 					<input type="hidden" name="ok" value="1">
 					<span class="inputlabel">Tell us about your life and major experiences so far:*</span>
@@ -244,7 +244,8 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
 					<input type="radio" name="pref_lenght" value="6" required><span class="inputlabel2">one term</span>&nbsp;&nbsp;
 					<input type="radio" name="pref_lenght" value="12" required><span class="inputlabel2">one year</span><br> 
 					<span class="inputlabel">Earliest possible boarding time:*</span>
-					<input class="inputfield bottom_border" type="date" name="pref_date" placeholder=" e.g. 2015-09-01" required>&nbsp;&nbsp;<input type="checkbox" name="flexible" value="1"><span class="inputlabel2">I am flexible.</span>
+					<input class="inputfield bottom_border" type="date" name="pref_date" placeholder=" e.g. 2015-09-01" required><br>
+					<input type="checkbox" name="flexible" value="1"><span class="inputlabel2">I am flexible.</span><br>
 					<input class="inputfield" type="text" name="firstname" placeholder=" First Name" required><br>
         			<input class="inputfield" type="text" name="name" placeholder=" Surname" required><br>
         			<input class="inputfield" type="email" name="email" placeholder=" e-mail" required><br> 
