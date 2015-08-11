@@ -17,7 +17,7 @@ if(isset($_GET['q']))
 	
 	$length = str_word_count(strip_tags($private), 0, '&;');
 	$l = str_word_count(strip_tags($private), 0, '&;');
-	$ll = str_word_count(strip_tags($private), 0, '&;') - str_word_count(strip_tags($public), 0, '&;');
+
 	$type = 'blog';
 
 	$description_fb = substr(strip_tags($public), 0, 400);
@@ -77,8 +77,7 @@ if(isset($_GET['q']))
 		echo "</div>";
 		echo 'Lenght:'.$lenght;
 		echo 'l'.$l;
-		echo 'll'.$ll;
-		if ($lenght>10)
+		if ($l>10)
 		{
 		echo '<div class="blog_upgrade">';
 		echo $entry4[mehr_lesen1];
