@@ -11,12 +11,13 @@ if(isset($_GET['q']))
 	$entry = mysql_fetch_array($result);
 
 	$title = $entry[title];
-	$img = $entry[img];
 	$private = $entry[private_text];
 	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
 	
 	$length = str_word_count(strip_tags($private), 0, '&;');
+	$l = str_word_count(strip_tags($private), 0, '&;');
+	$ll = str_word_count(strip_tags($private), 0, '&;') - str_word_count(strip_tags($public), 0, '&;');
 	$type = 'blog';
 
 	$description_fb = substr(strip_tags($public), 0, 400);
@@ -75,6 +76,8 @@ if(isset($_GET['q']))
 		echo $public;
 		echo "</div>";
 		echo 'Lenght:'.$lenght;
+		echo 'l'.$l;
+		echo 'll'.$ll;
 		if ($lenght>10)
 		{
 		echo '<div class="blog_upgrade">';
