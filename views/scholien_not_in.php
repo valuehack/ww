@@ -25,7 +25,7 @@ if(isset($_GET['q']))
 	$length = str_word_count(strip_tags($private), 0, '&;');
 	$type = 'blog';
 
-	$description_fb = substr(strip_tags($public), 3, 400);
+	$description_fb = substr(strip_tags($public), 0, 400);
 	
 	//check, if there is a image in the blog/gfx folder
 	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
