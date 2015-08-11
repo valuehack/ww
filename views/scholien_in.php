@@ -15,6 +15,7 @@ if(isset($_GET['q']))
 	$private = $entry[private_text];
 	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
+	
 	$length = str_word_count(strip_tags($private), 0, '&;');
 	$type = 'blog';
 
@@ -73,7 +74,7 @@ if(isset($_GET['q']))
 		<?php
 		echo $public;
 		echo "</div>";
-		echo $lenght;
+		echo 'Lenght:'.$lenght;
 		if ($lenght>10)
 		{
 		echo '<div class="blog_upgrade">';
@@ -109,8 +110,7 @@ if(isset($_GET['q']))
 		echo "<p><a href='index.php'>Alle Scholien</a></p>";
 		
 	}
-?>
-				<!--<footer class="article">-->			   
+?>	   
                    <div class="socialimg">
                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>" target="_blank" onclick="openpopup(this.href); return false"> <img src="../style/gfx/facebook.png" alt="Facebook" title="Teile diesen Post auf Facebook!"></a>
                    <a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?q=<?php echo $id;?>&text=<?php echo $title;?>&via=wertewirtschaft" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweete diesen Post!"></a>
