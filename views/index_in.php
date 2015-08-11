@@ -45,7 +45,7 @@ while($entry = mysql_fetch_array($result))
 				echo "<span>Scholie</span>";
 				echo "<span>".date('d.m.Y', strtotime($entry[publ_date]))."</span><br>";  
 				
-					$text1 = wordwrap($entry[text], 300, "\0");
+					$text1 = wordwrap($entry[public_text], 300, "\0");
 					$short_text = preg_replace('/^(.*?)\0(.*)$/is', '$1', $text1);
 				if (strlen($entry[public_text]) > 300) {
 					echo $short_text;
