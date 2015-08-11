@@ -47,7 +47,9 @@ if(isset($_GET['q']))
   return count($wc);
 
 }	
-	$length = str_word_count(word_count($private), 0, '&;');
+
+	$lenght = word_count($private);
+	$length = str_word_count($lenght, 0, '&;');
 	$type = 'blog';
 
 	$description_fb = substr($public, 3, 400);
