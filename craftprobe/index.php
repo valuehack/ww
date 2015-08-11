@@ -4,9 +4,6 @@ $ok = $_POST['ok'];
 $email = $_POST['email'];
 $firstname = $_POST['firstname'];
 $name = $_POST['name'];
-$street = $_POST['street'];
-$postal = $_POST['postal'];
-$city = $_POST['city'];
 $country = $_POST['country'];
 $telephone = $_POST['telephone'];
 $nationality = $_POST['nationality'];
@@ -18,11 +15,12 @@ $car_vienna = $_POST['car_vienna'];
 $pref_lenght = $_POST['pref_lenght'];
 $pref_date = $_POST['pref_date'];
 $flexible = $_POST['flexible'];
+$knowledge = $_POST['knowledge'];
 
 if ($ok) {
 
-$sql = "INSERT INTO cp_anmeldung (id, email, firstname, name, street, postal, city, country, telephone, nationality, liveexperiance,  skills, languages, drivers_licence, car_vienna, pref_lenght, pref_date, flexible, sub_date) 
-VALUES ('', '$email', '$firstname', '$name', '$street', '$postal', '$city', '$country', '$telephone', '$nationality', '$liveexperiance', '$skills', '$languages', '$drivers_licence', '$car_vienna', '$pref_lenght', '$pref_date', '$flexible', NOW())";
+$sql = "INSERT INTO cp_anmeldung (id, email, firstname, name, country, telephone, nationality, liveexperiance, knowdledge, skills, languages, drivers_licence, car_vienna, pref_lenght, pref_date, flexible, sub_date) 
+VALUES ('', '$email', '$firstname', '$name', '$country', '$telephone', '$nationality', '$liveexperiance', '$knowledge', '$skills', '$languages', '$drivers_licence', '$car_vienna', '$pref_lenght', '$pref_date', '$flexible', NOW())";
 
 $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
 
@@ -76,10 +74,11 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
         <header class="header">
             <p>craft<span>probe</span></p>
             <ul class="nav">
-                <li><a href="#sense">Sense</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#manual">Manual</a></li>
                 <li><a href="#course">Course</a></li>
                 <li><a href="#vessel">Vessel</a></li>
-                <li><a href="#manual">Manual</a></li>
+                <!--<li><a href="#crew">Crew</a></li>-->
                 <li><a href="#form">Board</a></li>
             </ul>
         </header>
@@ -98,84 +97,98 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
             </div>
         </div>
         <div class="content">
-            <section id="sense" class="s1">
-                <p>Sense: the final frontier. These are the voyages of <b>craft<span class="fontchange">probe</span></b>, an exploratory enterprise. Its mission: to explore alternatives to create real value and make sense, to boldly pierce through the endless swaths of bullshit that surround us every day in search of intelligent life. Our probe is a perpetual start-up, with some of the coolness, but none of the hype.</p>
+            <section id="about" class="s1">
+            	<p>Sense: the final frontier. These are the voyages of <b>craft<span class="fontchange">probe</span></b>, an exploratory enterprise. Its mission: to explore alternatives to create real value and make sense, to boldly pierce through the endless swaths of bullshit that surround us every day in search of intelligent life. Our craft is a perpetual start-up, with some of the coolness, but none of the hype.</p>
 
-                <p><b>craft<span class="fontchange">probe</span></b> is a learning enterprise in Vienna, Austria, offering a limited number of selected participants a unique educational and work experience where they can develop, with the support of some of the best brains and tools and through entrepreneurial projects, practical experiments and profound reflection, the necessary skills and ideas to create real value. Not the fake value pseudo-managers and pseudo-politicians are offering: either some over-hyped shiny stuff you do not need, to be paid for with money you do not have, or the fiction by which everyone tries to live at the expense of everybody else. Cut the crap, get real! <b>craft<span class="fontchange">probe</span></b> is a systematic reality check, always intent to build real things and develop real solutions, as it is an enterprise and not an agency, program or school. In view of the hugely distorted markets its shareholders do not strive to pocket quick profits but to develop a unique entrepreneurial laboratory to find feasible, small-scale solutions for tomorrow&apos;s problems.</p>
+<p><b>craft<span class="fontchange">probe</span></b> is an entrepreneurial gap year program (two months to one year) in Vienna, Austria, offering a limited number of selected participants a unique educational and work experience where they can develop, with the support of some of the best brains and tools and through entrepreneurial projects, practical experiments and profound reflection, the necessary skills and ideas to create real value. Not the fake value pseudo-managers and pseudo-politicians are offering: either some over-hyped shiny stuff you do not need, to be paid for with money you do not have, or the fiction by which everyone tries to live at the expense of everybody else. Cut the crap, get real!</p>
 
-                <p>We love exploring the unknown, we love entrepreneurship, we love learning new ideas, new skills and new ways, and we love our liberty and individuality. We  distrust experts, politicians, bankers, managers, journalists, teachers, venture capitalists, just as much as we distrust gurus, doomsayers, ideologues, do-gooders, hipsters, internet celebrities and trolls. Ready to board our craft? Ready to develop your skills and probe into the unknown? <b>craft<span class="fontchange">probe</span></b> is a trial of strength. Joining our expedition is definitely not for the weak of heart. Illusions might get shattered. We cannot tolerate any bullshit on board (it stinks). If you have what it takes, apply to join us on the bridge.</p>
+<p><b>craft<span class="fontchange">probe</span></b> is a systematic reality check, always intent to build real things and develop real solutions, as it is run by an enterprise and not an agency, program or school. In view of the hugely distorted markets the shareholders of <b>craft<span class="fontchange">probe</span></b>&apos;s mothership do not strive to pocket quick profits but to develop a unique entrepreneurial laboratory to find feasible, small-scale solutions for tomorrow&apos;s problems.</p>
+
+<p>Are you looking for a job? Almost everyone is, but entry level jobs are becoming scarcer and scarcer. Bad news: Due to current technological developments, the business cycle and political interventionism, soon there will be hardly any jobs for young people who have had no chance to prove their creativity and productivity – a vicious circle, because how to prove yourself without ever landing a sustainable job? Teachers, journalists, politicians have been misleading you for quite a while, but they do not know better. We understand you anger and fear. Better shape up and try to prepare for an uncertain future where many economic premises will turn out to be illusions.</p>
+
+<p>This is where we come in. Not because we know the future, but because we are open and willing to face it. We are an enterprise that does not entirely depend on current markets but explores future markets and checks today&apos;s premises. <b>craft<span class="fontchange">probe</span></b> is a unique personal development program to help you prepare for this uncertain future, but not through brainwashing, psychobabble or motivational lectures, ebooks, guides and videos that promise you some kind of bogus certainty, but through concrete and relevant projects and tasks that explore products, processes, tools, markets and ideas.</p>
+
+<p>We love exploring the unknown, we love entrepreneurship, we love learning new ideas, new skills and new ways, and we love our liberty and individuality. We distrust experts, politicians, bankers, managers, journalists, teachers, venture capitalists, just as much as we distrust gurus, doomsayers, ideologues, do-gooders, hipsters, internet celebrities and trolls. Ready to board our craft? Ready to develop your skills and probe into the unknown? <b>craft<span class="fontchange">probe</span></b> is a trial of strength. Joining our expedition is definitely not for the weak of heart. Illusions might get shattered. We cannot tolerate any bullshit on board (it stinks). If you have what it takes, apply to join us on the bridge.</p>
                 <p><a href="#top">Back to the top</a></p>
             </section>
-            <section id="course" class="s2">
+            
+            <section id="manual" class="s2">
+            	<h1>MANUAL</h1>
+
+				<h2>Who is this for?</h2>
+				
+				<p>Anyone old enough to be or become independent, and young enough to challenge conceived wisdom and walk off the beaten track. This means that the usual age bracket of our explorers is 18 to 28. 18 is the minimum age for insurance reasons (we do some dangerous stuff). If you are above 28, but absolutely longing for such a restart and reexamination, and financially independent, we may be able to make it happen. In this case do not apply, just contact us. Normally, 28 is the maximum age, because after that you will either have already invested too much sunk costs in the status quo or be a sad failure (most are, do not take it personally). Please leave us alone if you are looking for a 9-5 career where someone tells you what to do until retirement or if you think your degree somehow deserves you a well paid, fun and easy job. If you suspect that there is more out there than university teaches, the media informs about and politicians admit and that the future may be radically different from what the generation of your parents expects, but do not feel like retiring to virtual reality from a challenging world and have the courage and energy to confront those challenges, then you may just be the crew member we have been looking for.</p>
+
+				<h2>When should I do it?</h2>
+				<p>The most common options are:</p>
+					<ol>
+						<li>1. Directly after your school-leaving exam, before enrolling at university or making another career choice. You either take a gap year or at least use shorter gaps to prepare for a better decision and lay the right foundations for your life. The earlier the better, the longer you wait the more you will regret. Taking time for a full gap year before going to university is the best choice you can make.</li>
+						<li>2. After your Bachelor&apos;s degree, when considering or waiting for enrollment for a Master&apos;s degree. Many students face extended periods in doubt and frustration. Do not waste this time! <b>craft<span class="fontchange">probe</span></b> is the perfect gap filler, next to which in retrospect your studies and degrees will fade in importance.</li>
+						<li>3. After finishing university and when trying to enter the job market. You will realize that it is getting more and more difficult to land a job right out of university. Have you considered entrepreneurial alternatives? Even if you just want to grow personally, develop a network and get a head-start for your professional career, by making up for all the real-life lessons university has spared you, <b>craft<span class="fontchange">probe</span></b> is just what you are looking for.</li>
+					</ol>
+<p>You can start anytime (if your application is accepted or you have a sponsor) and stay on board either for two months, one term (four months) or a full year (two terms with a total of four months of breaks for individual travels, other internships or your own entrepreneurial projects). We cannot promise any wonders, but staying a full year greatly enhances their probability.</p>
+
+				<h2>How much does it cost?</h2>
+				<p>A practical program of this kind is usually prohibitively expensive. As the program is run by a non-profit enterprise which puts a high value on efficiency and effectiveness, we are able to cut costs to 580€-1000€ per month, depending on the placement period. Fully aware that this still surpasses the budget of many young people (and many parents may still prefer superficial credentials to an unusual gap year), we offer a traineeship which you can view as an internship combined with a study and skill development program. This option approximately halves the costs. If you still cannot afford to join us, apply anyway, the most promising candidates are offered scholarships to bridge any financial gaps. Living costs in Vienna can be cut by sharing accommodation. Explorers who stay on board will be paid according to their value contribution which is fairly and mutually assessed.</p>
+
+				<h2>Do I get a degree? Will my employability rise?</h2>
+				<p>You will not get a state-accredited degree, but we will help you develop alternatives (professional work portfolio, networking, creating your brand, certification). Coming on board is at most a &quot;gap year&quot;, if an unusually exciting, practical and useful one, not an alternative to university or vocational training. Even though we have a growing network of partner companies and have been founded by successful entrepreneurs, your employability may even sink. But only because you may not feel like slaving away below deck any more, but have acquired the taste of setting your own sails. Otherwise, your employability in the sense of a real and proven capacity to create value for real clients should rise a lot.</p>
+
+				<h2>Why should I do that? No degree, no certificate, no money, no prestige, are you kidding? What is in it for me?</h2>
+				<p>YOU should not. It all seems so easy in the beginning. You will get a degree, you will gather a few more certificates, and your dream job is waiting for you. If you are not employed right away, you only have to gather more certificates and do more internships. Until some day you realize that no-one is waiting for you. Then the only way out of frustration is enthusiasm for some start-up. While you dream of sudden riches, you exploit yourself for another web app, another drink, another gadget. Only that 80% of start-ups fail, and we are still in the midst of a bubble economy. More will fail when the bubble bursts. Or, on the other hand, you are a high-potential. A consultancy firm, investment bank or big corporation has recruited you right away. If you are checking out this site it is unlikely that you are at this stage. You would be exploited for good money and prestige and have neither time nor eagerness to explore alternatives. If you are not broken physically, you are broken mentally, and if not mentally, you are broken spiritually. At age 30 you may come to us whining, and it may well be too late. We do not mean to take away all hope. We are quite optimistic, only very down to earth. If you aim too hard at success, you will most certainly miss it. But there is still so much to succeed at in this world, so many unsolved problems, awaiting challenges, hidden treasures. We may not have a map for treasure island, but our amazing vessel can go places where no one else is digging. Yes, you will get no fancy paper. Instead, you will get inspired, challenged, and prepared for the real world. No bullshit.</p>
+
+				<h2>Why is it all in English? Are you embarrassing hipsters?</h2>
+				<p>We live in a global age. We have been connected for power and profit, for this we cannot take the blame. The things, ideas and voices that make sense are so rare and widely dispersed in this ocean of bullshit, which has been let loose around the globe, that we simply cannot afford to withdraw from the world and play deaf and mute for national pride. For most of our team, English is not a native language, but we are natives of a world that converses in English. We are masters of our native languages, we love them and we need them. Currently, our team is able to converse in German, French, Spanish, Persian, Arabic and Hungarian as well, if you prefer. Everyone who joins us will at least perfect his English and learn German. Speaking German or English is no condition to come on board, but speaking either of those languages and being willing to learn some of the other is. German is not only one of the richest and most precise languages that opens up a rich heritage of science and culture, but also the language that adds the most economic benefit for foreign speakers. According to a recent study, Americans who are able to speak German earn on average $128,000 more during their lifetime.</p>
+                <p><a href="#top">Back to the top</a></p>
+            </section>
+            <section  id="course" class="s3">
                 <h1>Course</h1>
+                
                 <p>You will probe into <b>culture</b>: Most start-ups and entrepreneurial education programs are rather shallow. You mainly learn how to sell promises of endless riches to greedy investors, promises of faked coolness to indebted consumers and promises of heroic images to funding bureaucrats. Our vessel goes much further and ignores all the need for hype and glamour. Based in one of the capitals of old European culture, a historic center of science, art, literature, music and trade, we have access to an ancient treasure trove of thought and creation. We do not live in the past but think about the future standing on the shoulders of giants. Right on board we carry along one of the most spectacular private libraries of Austria, with a unique selection of masterworks in practical philosophy, economics and history.</p>
 
-                <p>You will probe into the <b>market</b>: Many alternative educational programs are too much rooted in the past or too aloof in ivory towers to really understand what is going on in the world today and where it will lead. We are young natives of a globalized and digital world. Our captain is a renowned visionary with both feet firmly on the ground: As an economist, entrepreneur, physicist and investment consultant, he has just the eye to tell promising trends and ominous dynamics from hyped bullshit. We are following the markets and geopolitics, and are sober, down-to-earth entrepreneurs at the forefront of innovation. We are continually checking premises, gathering data, scouting for opportunities and challenges.</p>
+				<p>You will probe into the <b>market</b>: Many alternative educational programs are too much rooted in the past or too aloof in ivory towers to really understand what is going on in the world today and where it will lead. We are young natives of a globalized and digital world. Our captain is a renowned visionary with both feet firmly on the ground: As an economist, entrepreneur, physicist and investment consultant, he has just the eye to tell promising trends and ominous dynamics from hyped bullshit. We are following the markets and geopolitics, and are sober, down-to-earth entrepreneurs at the forefront of innovation. We are continually checking premises, gathering data, scouting for opportunities and challenges.</p>
 
-                <p>You will probe into <b>nature</b>: Austria is famous for its magnificent, largely intact, rough nature. This is a boundless resource for knowledge and self-reliance. It is a historic center of alpinism, of seeking challenges, sharpening the senses and strengthening the body in the world&apos;s most beautiful and breathtaking training circuit toughened by elements and terrain. In Austria, ancient traditions of agriculture, horticulture, medicine and craft have survived the ages which contain amazing amounts of lost knowledge. We gain hands-on experience and learn from masters hidden in distant valleys and on secluded mountains. No laboratory, no network, no university can replace this immense study resource at our hands. Our team comprises tough sportsmen and survivalists that guide us through challenging explorations of natural abundance and our inner potential to become truly self-reliant.</p>
+				<p>You will probe into <b>nature</b>: Austria is famous for its magnificent, largely intact, rough nature. This is a boundless resource for knowledge and self-reliance. It is a historic center of alpinism, of seeking challenges, sharpening the senses and strengthening the body in the world&apos;s most beautiful and breathtaking training circuit toughened by elements and terrain. In Austria, ancient traditions of agriculture, horticulture, medicine and craft have survived the ages which contain amazing amounts of lost knowledge. We gain hands-on experience and learn from masters hidden in distant valleys and on secluded mountains. No laboratory, no network, no university can replace this immense study resource at our hands. Our team comprises tough sportsmen and survivalists that guide us through challenging explorations of natural abundance and our inner potential to become truly self-reliant.</p>
 
-                <p>You will probe into <b>digital tools</b>: A thorough command of cutting-edge digital tools is a precondition of a successful, creative, entrepreneurial and self-reliant life. Most modern interactions, be it in communication, research or trade, are based on a digital infrastructure. Learning to code is like the sailing license without which you will not be very useful on board of a craft in today&apos;s stormy waters. We are learning by doing and continually probing into the newest tools, most of which are of course senseless time-wasters, but some of which are absolutely necessary to stay on top of the wave. Access to modern CNC and prototyping equipment allows us to translate our digital endeavors into real objects.</p>
+				<p>You will probe into <b>digital tools</b>: A thorough command of cutting-edge digital tools is a precondition of a successful, creative, entrepreneurial and self-reliant life. Most modern interactions, be it in communication, research or trade, are based on a digital infrastructure. Learning to code is like the sailing license without which you will not be very useful on board of a craft in today's stormy waters. We are learning by doing and continually probing into the newest tools, most of which are of course senseless time-wasters, but some of which are absolutely necessary to stay on top of the wave. Access to modern CNC and prototyping equipment allows us to translate our digital endeavors into real objects.</p>
 
-                <p>You will probe into <b>analog tools</b>: Austria is infused with a spirit of makers, craftsmen and artists. On the countryside people are to an amazing degree technologically self-reliant, being able to fix what is broken and continually finding hacks to make work what seems impossible. We get our hands dirty and experiment with the most versatile tools we can lay our hands on. A network of master craftsmen helps us in our explorations. The artist and creator is unthinkable without the right tools. There is so much of value outside our screens with their unhandy, fake gadgets. We need to understand the real, physical world in order to change it. Most educational alternatives just bombard you with even more digital information. You need to cut the cord once in a while if you really mean to learn something useful.</p>
+				<p>You will probe into <b>analog tools</b>: Austria is infused with a spirit of makers, craftsmen and artists. On the countryside people are to an amazing degree technologically self-reliant, being able to fix what is broken and continually finding hacks to make work what seems impossible. We get our hands dirty and experiment with the most versatile tools we can lay our hands on. A network of master craftsmen helps us in our explorations. The artist and creator is unthinkable without the right tools. There is so much of value outside our screens with their unhandy, fake gadgets. We need to understand the real, physical world in order to change it. Most educational alternatives just bombard you with even more digital information. You need to cut the cord once in a while if you really mean to learn something useful.</p>
 
-                <p>You will probe into your <b>own projects and ideas</b>. We will support you with infrastructure, investment, tools, contacts, and brains. This way you will be able to try out and develop skills, ideas, products, solutions, campaigns, brands, research interests, maybe even your own company or organization, in the widest possible variety of industries and fields. In our full-time program, five days a week, you will spend approximately half of the time developing ideas and skills and half of the time implementing them in concrete projects. In your free time you can have all the culture, partying and nature you like &ndash; partly on your own, making new friends, partly with fellow crew members. Explore art, music, theatre, opera, history, go skiing, rafting, hiking, biking, travel to neighboring Italy, Czech Republic, Hungary, Slovakia, Slovenia, Switzerland, Germany, Liechtenstein, or simply relax in the place with the highest quality of life.
-                </p>
+				<p>You will probe into your <b>own projects and ideas</b>. We will support you with infrastructure, investment, tools, contacts, and brains. This way you will be able to try out and develop skills, ideas, products, solutions, campaigns, brands, research interests, maybe even your own company or organization, in the widest possible variety of industries and fields. In our full-time program, five days a week, you will spend approximately half of the time developing ideas and skills and half of the time implementing them in concrete projects. In your free time you can have all the culture, partying and nature you like – partly on your own, making new friends, partly with fellow crew members. Explore art, music, theatre, opera, history, go skiing, rafting, hiking, biking, travel to neighboring Italy, Czech Republic, Hungary, Slovakia, Slovenia, Switzerland, Germany, Liechtenstein, or simply relax in the place ranked to have the highest quality of life on this planet.</p>
                 <p><a href="#top">Back to the top</a></p>
             </section>
-            <section  id="vessel" class="s3">
+            <section  id="vessel" class="s4">
                 <h1>Vessel</h1>
                 <p>Our first craft is anchored in one of the most ancient, creative and educated parts of Vienna, close to one of the oldest universities of the world (alas, of past glories not much more than the facades has survived), neighboring a beautiful, hidden monastery where the last remaining urban monks tend to their garden and library. The beauty of our deck and cabins will inspire you: in a historic building with high ceilings and impeccable interiors we explore, experiment and innovate within walls adorned by one of the most spectacular private libraries of Vienna, yet with plenty of space and equipment for practical endeavors.</p>
 
-                <p>We chose Austria as our home port for the high quality of life (Vienna is ranked highest worldwide), the unparalleled access to culture and nature, and the rich heritage as a center of science and entrepreneurship. Austria is the birthplace of the Austrian School of Economics, the only economic tradition that focusses on the entrepreneur and cherishes entrepreneurship while at the same time being highly critical of the financially and politically inflated bubble economy and the concomitant inflation of bullshit. But Austria is also the birthplace of logo-therapy, of the search for meaning and the rejection of cynicism, relativism and short-term materialism.</p>
+				<p>We chose Austria as our home port for the high quality of life (Vienna is ranked highest worldwide), the unparalleled access to culture and nature, and the rich heritage as a center of science and entrepreneurship. Austria is the birthplace of the Austrian School of Economics, the only economic tradition that focusses on the entrepreneur and cherishes entrepreneurship while at the same time being highly critical of the financially and politically inflated bubble economy and the concomitant inflation of bullshit. But Austria is also the birthplace of logo-therapy, of the search for meaning and the rejection of cynicism, relativism and short-term materialism.</p>
 
-                <p>Our current craft only offers space for twelve explorers, which is why our expeditions into the unknown are selective. The journey takes 2-12 months; new explorers may come on board anytime. The cost of riding along is either borne by sponsorship through private donors, by parents and relatives or by the explorers themselves. Proven explorers may stay on and earn their living on board depending on their courage and entrepreneurial acumen.</p>
+				<p>Our current craft only offers space for twelve explorers, which is why our expeditions into the unknown are selective. The journey takes 2-12 months; new explorers may come on board anytime. The cost of riding along is either borne by sponsorship through private donors, by parents and relatives or by the explorers themselves. Proven explorers may stay on and earn their living on board depending on their courage and entrepreneurial acumen.</p>
 
-                <p>Our mothership is a private, tax-exempted, non-profit enterprise founded by successful entrepreneurs and visionaries from Austria, Germany, Liechtenstein and Switzerland eager to pass on the spark to future generations. Contributions go directly to financing our explorations and scholarships, without deductions for interests, profits or taxes, keeping the costs for new explorers as low as possible. Even if you are unable to finance your journey, do not hesitate to apply.</p>
+				<p>Our mothership is a private, tax-exempted, non-profit enterprise founded by successful entrepreneurs and visionaries from Austria, Germany, Liechtenstein and Switzerland eager to pass on the spark to future generations. Contributions go directly to financing our explorations and scholarships, without deductions for interests, profits or taxes, keeping the costs for new explorers as low as possible. Even if you are unable to finance your journey, do not hesitate to apply.</p>
 
-                <p>You were looking for a job and are scared of being asked for money? While we choose not to give a ride to anyone just looking for a &quot;job&quot;, we are fundamentally an enterprise and generate value which means we can offer a living to some. Alas, it usually takes a while to get used to the waters and overcome the initial seasickness. So you start either as a paid-for passenger and we dedicate our resources to help you on your individual journey. Or you board as a cadet and, apart from your training, help out as well as you can &ndash; which will cover most of the costs, at the price of having less time and space for your individual journey and projects. Very promising applicants will receive scholarships to bridge remaining financial gaps.</p>
+				<p>You were looking for a job and are scared of being asked for money? While we choose not to give a ride to anyone just looking for a &quot;job&quot;, we are fundamentally an enterprise and generate value which means we can offer a living to some. Alas, it usually takes a while to get used to the waters and overcome the initial seasickness. So you start either as a paid-for passenger and we dedicate our resources to help you on your individual journey. Or you board as a cadet and, apart from your training, help out as well as you can – which will cover most of the costs, at the price of having less time and space for your individual journey and projects. Very promising applicants will receive scholarships to bridge remaining financial gaps.</p>
 
-                <p>If you have what it takes, we are absolutely sure that you will love this journey and it will be one of the greatest experiences of your life. No other educational program, internship, traineeship or job opportunity comes close to it. You will be reluctant to go ashore again and will either stay on board or join another vessel to boldly go where no one has gone before.</p>
+				<p>If you have what it takes, we are absolutely sure that you will love this journey and it will be one of the greatest experiences of your life. No other educational program, internship, traineeship or job opportunity comes close to it. You will be reluctant to go ashore again and will either stay on board or join another vessel to boldly go where no one has gone before.</p>
                 <p><a href="#top">Back to the top</a></p>
             </section>
-            <section  id="manual" class="s4">
-                <h1>Manual</h1>
-                                  
-                    <h2>What does <b>craft<span class="fontchange">probe</span></b> mean?</h2>
-
-                    <p>A probe to examine crafts, a craft to probe into the world, or a trial of strength (German Kraftprobe). <b>craft<span class="fontchange">probing</span></b> is the process of trying out new crafts to find and develop your personal craft. This is a trial of strength, like the initiation rites of traditional societies, whereby you get real and grow up. Most people nowadays stay kiddies all their life, incapable of really bearing responsibility. Only a few grow up and face reality. Doing a <b>craft<span class="fontchange">probe</span></b> is like rumspringa for the Amish, just a bit more serious.</p>
-
-                    <h2>Who is this for?</h2>
-
-                    <p>Anyone old enough to be or become independent, and young enough to challenge conceived wisdom and walk off the beaten track. This means that the usual age bracket of our explorers is 18 to 28. 18 is the minimum age for insurance reasons (we do some dangerous stuff). If you are above 28, but absolutely longing for such a restart and reexamination, and financially independent, we may be able to make it happen. In this case do not apply, just contact us. Normally, 28 is the maximum age, because after that you will either have already invested too much sunk costs in the status quo or be a sad failure (most are, do not take it personally). Please leave us alone if you are looking for a 9-5 career where someone tells you what to do until retirement or if you think your degree somehow deserves you a well paid, fun and easy job. If you suspect that there is more out there than university teaches, the media informs about and politicians admit and that the future may be radically different from what the generation of your parents expects, but do not feel like retiring to virtual reality from a challenging world and have the courage and energy to confront those challenges, then you may just be the crew member we have been looking for.</p>
-
-                    <h2>When should I do it?</h2>
-
-                    <p>The most common options are:<br>
-                    <ol>
-                        <li>Directly after your school-leaving exam, before enrolling at university or making another career choice. You either take a gap year or at least use shorter gaps to prepare for a better decision and lay the right foundations for your life. The earlier the better, the longer you wait the more you will regret. Taking time for a full gap year before going to university is the best choice you can make.</li>
-                        <li>After your Bachelor&apos;s degree, when considering or waiting for enrollment for a Master&apos;s degree. Many students face extended periods in doubt and frustration. Do not waste this time! <b>craft<span class="fontchange">probe</span></b> is the perfect gap filler, next to which in retrospect your studies and degrees will fade in importance.</li>
-                        <li>After finishing university and when trying to enter the job market. You will realize that it is getting more and more difficult to land a job right out of university. Have you considered entrepreneurial alternatives? Even if you just want to grow personally, develop a network and get a head-start for your professional career, by making up for all the real-life lessons university has spared you, <b>craft<span class="fontchange">probe</span></b> is just what you are looking for.</li>
-                    </ol></p>
+            <!--<section  id="crew" class="s3">
+                <h1>CREW</h1>
+                
+                <b></b>Captain</b>
+                <b>Officers</b>
+                <b>Admirals</b>
+                                  &apos; &hellip;
                     
-                    <p>You can start anytime (if your application is accepted or you have a sponsor) and stay on board either for two months, one term (four months) or a full year (two terms with a total of four months of breaks for individual travels, other internships or your own entrepreneurial projects). We cannot promise any wonders, but staying a full year greatly enhances their probability.</p>
-
-                    <h2>How much do you pay? Wait a minute &hellip; How much does it cost?</h2>
-
-                    <p>We know. You were looking for a job. Almost everyone is, but entry level jobs are becoming scarcer and scarcer. Bad news: Due to current technological developments, the business cycle and political interventionism, soon there will be hardly any jobs for young people who have had no chance to prove their creativity and productivity &ndash; a vicious circle, because how to prove yourself without ever landing a sustainable job? Teachers, journalists, politicians have been misleading you for quite a while, but they do not know better. We understand you anger and fear. Better shape up and try to prepare for an uncertain future where many economic premises will turn out to be illusions.<br>
-                    <br>
-                   This is where we come in. Not because we know the future, but because we are open and willing to face it. We are an enterprise that does not entirely depend on current markets but explores future markets and checks today&apos;s premises. You can see us as a unique personal development program aiming to help you prepare for this uncertain future, but not through brainwashing, psychobabble or motivational lectures, ebooks, guides and videos that promise you some kind of bogus certainty, but through concrete and relevant projects and tasks that explore products, processes, tools, markets and ideas with immediate market test and profound analysis.<br>
-                    <br>
-                    A practical program of this kind is usually prohibitively expensive. As a value generating enterprise which puts a high value on efficiency and effectiveness, we are able to cut costs to 580&euro;-1000&euro; per month, depending on the placement period. Fully aware that this still surpasses the budget of many young people (and many parents may still prefer superficial credentials to an unusual gap year), we offer a traineeship which you can view as an internship combined with a study and skill development program. This option approximately halves the costs. If you still cannot afford to join us, apply anyway, the most promising candidates are offered scholarships to bridge any financial gaps. Living costs in Vienna can be cut by sharing accommodation and taking full board at our craft (we cook and eat together). Any work assignment brings with it the possibility to gain money. Explorers who stay on board will be paid according to their value contribution which is fairly and mutually assessed.</p>
-
-                    <h2>Do I get a degree? Will my employability rise?</h2>
-
-                    <p>You will not get a state-accredited degree, but we will help you develop alternatives (professional work portfolio, networking, creating your brand, certification). Coming on board is at most a &quot;gap year&quot;, if an unusually exciting, practical and useful one, not an alternative to university or vocational training. Even though we have a growing network of partner companies and have been founded by successful entrepreneurs, your employability may even sink. But only because you may not feel like slaving away below deck any more, but have acquired the taste of setting your own sails. Otherwise, your employability in the sense of a real and proven capacity to create value for clients should rise a lot.</p>
-
-                    <h2>Why is it all in English? Are you embarrassing hipsters?</h2>
-
-                    <p>We live in a global age. We have been connected for power and profit, for this we cannot take the blame. The things, ideas and voices that make sense are so rare and widely dispersed in this ocean of bullshit, which has been let loose around the globe, that we simply cannot afford to withdraw from the world and play deaf and mute for national pride. For most of our team, English is not a native language, but we are natives of a world that converses in English. We are masters of our native languages, we love them and we need them. Currently, our team is able to converse in German, French, Spanish, Persian, Arabic and Hungarian as well, if you prefer. Everyone who joins us will at least perfect his English and learn German. Speaking German or English is no condition to come on board, but speaking either of those languages and being willing to learn some of the other is. German is not only one of the richest and most precise languages that opens up a rich heritage of science and culture, but also the language that adds the most economic benefit for foreign speakers. According to a recent study, Americans who are able to speak German earn on average $128,000 more during their lifetime.</p>
             <p><a href="#top">Back to the top</a></p>
-            </section>         
+            </section> -->
+            
+            <section id="board" class="s4">
+            	<h1>BOARD</h1>
+            	
+            	<p>What are you waiting for? A television spot to tell you that this is meant for you? A government decree? A viral video to make you part of a crowd? We will try the best we can to avoid hypes, unwanted publicity, and official recognition. A craft like ours has to shun such shallow waters. If you are afraid, then stay ashore. No worries, anyway there is not enough space for everyone. Lifeboats get crowded easily. If you have the courage but just lack the confidence that you are good enough, go ahead and apply. We will get in touch with you. It won’t hurt. But it might open up opportunities you have not even dared to dream about.</p>
+            	<p><a href="#top">Back to the top</a></p>
+            </section>        
             <section id="form" class="s5">
                 <div class="s5img" style="background-image: url(img/code2.jpg);">
                 <div class="form">
@@ -187,7 +200,7 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
         </div>    
         <footer class="footer">
             <p>
-                &copy; 2015 | Scholarium | Schl&ouml;sselgasse 19/2/18 | 1080 Vienna | Austria <br>
+                &copy; 2015 | scholarium&trade; | Schl&ouml;sselgasse 19/2/18 | 1080 Vienna | Austria <br>
             </p>
             <p class="img_links">
                 Background-Images: <a href="https://www.flickr.com/photos/vicky_dom/4505629727/in/photolist-7S9wKa-JpHmB-fmD7tY-pChGzq-im9VR9-7ksmUq-bseisy-7X9i14-7kosN6-7kos6V-7ksmx9-7ksnqJ-7ksnfm-7ksmMb-7kosoc-66F1Fj-8prkC2-tQneH-aF4GaF-7XcwQJ-p93rb8-sPuGz-tyicX-27zRvG-66AJjH-9eraM9-oDiyrz-aZycNt-bVNkEa-8Dz3Ms-4newSt-4newGx-aCffN8-4niAEG-4niAuS-85ADww-9zFcom-7XcwZo-8JhPq9-85WKqK-9zFctL-7TGwnw-85ADCo-7X9kFe-7TDf2X-bGFxpi-89uKFL-bVNoFF-bVNkXV-cdaDdo">"Wood Cutting" by Vicky Hugheston</a> 
@@ -205,16 +218,37 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
       </div>
       <div class="modal-body">
 		<form method="post" action="index.php" name="user_create_profile_form">
-				
+				<p>Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</p>
 				<div class="input">
 					<input type="hidden" name="ok" value="1">
-        			<input class="inputfield" type="text" name="firstname" placeholder=" First Name" required><br>
+					<span class="inputlabel">Tell us about your life and major experiences so far:*</span>
+					<textarea name="liveexperiance" class="inputarea" placeholder="Tell us" rows="10" required></textarea><br>
+					<span class="inputlabel">Which fields do you know more about than the average person? Which are your research/reading interests?*</span>
+					<textarea name="knowledge" class="inputarea" placeholder="Tell us" rows="10" required></textarea><br>
+					<span class="inputlabel">Skills:*<br>
+									1) I tried it and have some talent<br>
+									2) I am really good at it, it's a hobby<br>
+									3) I am a pro, I could teach it<br>
+									Examples: Writing, cooking, gardening/agriculture, drawing/painting, computer graphics, photography, survival, martial arts, first aid, electronics, sewing, woodwork, plumbing, masonry, PHP, CSS, Ruby, Java ...</span>
+					<textarea name="skills" class="inputarea" placeholder="e.g. photography (2), gardening (1)" rows="10" required></textarea><br>
+					<span class="inputlabel">Languages:*<br>
+									1) understand some<br>
+									2) can converse<br>
+									3) fluent<br>
+									4) perfect<br>
+									5) native</span>
+					<textarea name="languages" class="inputarea" placeholder="e.g. English (4)" rows="10" required></textarea><br>
+					<input type="checkbox" name="drivers_licence" value="1"><span class="inputlabel2">I have a driving license.</span><input type="checkbox" name="car_vienna" value="1"><span class="inputlabel2">I would have a car in Vienna.</span><br>
+					<span class="inputlabel">Preferred length of your voyage:*</span>
+					<input type="radio" name="pref_lenght" value="2" required><span class="inputlabel2">two months</span>&nbsp;&nbsp;
+					<input type="radio" name="pref_lenght" value="6" required><span class="inputlabel2">one term</span>&nbsp;&nbsp;
+					<input type="radio" name="pref_lenght" value="12" required><span class="inputlabel2">one year</span><br> 
+					<span class="inputlabel">Earliest possible boarding time:*</span>
+					<input class="inputfield bottom_border" type="date" name="pref_date" placeholder=" e.g. 2015-09-01" required>&nbsp;&nbsp;<input type="checkbox" name="flexible" value="1"><span class="inputlabel2">I am flexible.</span>
+					<input class="inputfield" type="text" name="firstname" placeholder=" First Name" required><br>
         			<input class="inputfield" type="text" name="name" placeholder=" Surname" required><br>
         			<input class="inputfield" type="email" name="email" placeholder=" e-mail" required><br> 
-        			<input class="inputfield" type="tel" name="telephone" placeholder=" Telephone/ Mobile (e.g. +431234567)" required><br>
-        			<input class="inputfield" type="text" name="street" placeholder=" Street Name and House Number" required><br> 
-        			<input class="inputfield" type="text" name="postal" placeholder=" Postal Code" required><br>
-        			<input class="inputfield" type="text" name="city" placeholder=" City" required><br>
+        			<input class="inputfield" type="tel" name="telephone" placeholder=" Telephone/ Mobile (e.g. +431234567)"><br>
 					 
         			<select class="inputfield_select" id="user_country" name="country" placeholder=" Country" required>
 <option value="Austria" selected>Austria</option>
@@ -468,28 +502,6 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
 <option value="Zimbabwe">Zimbabwe</option>
 					</select><br>
 					<input class="inputfield bottom_border" type="text" name="nationality" placeholder=" Nationality" required><br>
-					<span class="inputlabel">Tell us about your life and major experiences so far:*</span>
-					<textarea name="liveexperiance" class="inputarea" placeholder="Tell us" rows="10" required></textarea><br>
-					<span class="inputlabel">Skills:*<br>
-									1) I tried it and have some talent<br>
-									2) I am really good at it, it's a hobby<br>
-									3) I am a pro, I could teach it<br>
-									Examples: Writing, cooking, gardening/agriculture, drawing/painting, computer graphics, photography, survival, martial arts, first aid, electronics, sewing, woodwork, plumbing, masonry, PHP, CSS, Ruby, Java ...</span>
-					<textarea name="skills" class="inputarea" placeholder="e.g. photography (2), gardening (1)" rows="10" required></textarea><br>
-					<span class="inputlabel">Languages:*<br>
-									1) understand some<br>
-									2) can converse<br>
-									3) fluent<br>
-									4) perfect<br>
-									5) native</span>
-					<textarea name="languages" class="inputarea" placeholder="e.g. English (4)" rows="10" required></textarea><br>
-					<input type="checkbox" name="drivers_licence" value="1"><span class="inputlabel2">I have a driving license.</span><input type="checkbox" name="car_vienna" value="1"><span class="inputlabel2">I would have a car in Vienna.</span><br>
-					<span class="inputlabel">Preferred length of your voyage:*</span>
-					<input type="radio" name="pref_lenght" value="2" required><span class="inputlabel2">two months</span>&nbsp;&nbsp;
-					<input type="radio" name="pref_lenght" value="6" required><span class="inputlabel2">one term</span>&nbsp;&nbsp;
-					<input type="radio" name="pref_lenght" value="12" required><span class="inputlabel2">one year</span><br> 
-					<span class="inputlabel">Earliest possible boarding time:*</span>
-					<input class="inputfield bottom_border" type="date" name="pref_date" placeholder=" e.g. 2015-09-01" required>&nbsp;&nbsp;<input type="checkbox" name="flexible" value="1"><span class="inputlabel2">I am flexible.</span>
 				</div>
     			<input type="submit" class="inputbutton_subscribe" name="registrationform" value="Boarding request">
 			</form>
