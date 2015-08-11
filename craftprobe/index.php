@@ -79,7 +79,7 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
                 <li><a href="#course">Course</a></li>
                 <li><a href="#vessel">Vessel</a></li>
                 <!--<li><a href="#crew">Crew</a></li>-->
-                <li><a href="#form">Board</a></li>
+                <li><a href="#board">Board</a></li>
             </ul>
         </header>
         <?   if($ok == 1) {
