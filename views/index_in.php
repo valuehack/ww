@@ -44,8 +44,11 @@ while($entry = mysql_fetch_array($result))
                 echo "<h1><a href='/scholien/index.php?q=$id'>".$entry[title]."</a></h1><br>"; 
 				echo "<span>Scholie</span>";
 				echo "<span>".date('d.m.Y', strtotime($entry[publ_date]))."</span><br>";  
+				
+					$text1 = wordwrap($entry[text], 300, "\0");
+					$short_text = preg_replace('/^(.*?)\0(.*)$/is', '$1', $text1);
 				if (strlen($entry[public_text]) > 300) {
-					echo substr ($entry[public_text], 0, 300);
+					echo $short_text;
 					echo " ... <a href='scholien/index.php?q=$id'>Weiterlesen</a>";
 					}
 				else {

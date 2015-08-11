@@ -19,8 +19,9 @@ if(isset($_GET['q']))
 	$l = str_word_count(strip_tags($private), 0, '&;');
 
 	$type = 'blog';
-
-	$description_fb = substr(strip_tags($public), 0, 400);
+	
+	$description_fb0 = wordwrap($public, 400, "\0");
+	$description_fb = preg_replace('/^(.*?)\0(.*)$/is', '$1', $description_fb0);
 
 	//check, if there is a image in the scholien folder
 	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
@@ -275,8 +276,11 @@ else
 		echo "<h2><a href='?q=$id'>".$title."</a></h2>";
 		echo "<p class='blogdates'><!--Keyword: ".$id."&nbsp &nbsp &nbsp Datum: -->".date('d.m.Y', strtotime($publ_date))."</p>";
 		
+		$public1 = wordwrap($public, 500, "\0");
+		$public_short = preg_replace('/^(.*?)\0(.*)$/is', '$1', $public1);
+		
 		if (strlen($public) > 500) {
-			echo substr ($public, 0, 500);
+			echo $public_short;
 			echo " ... <a href='?q=$id'>Weiterlesen</a>";
 			echo "</div>";
 			echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";

@@ -242,8 +242,11 @@ while($entry = mysql_fetch_array($result))
 				<span><? echo ucfirst($entry[type]);?></span><br>
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
       			<p>
-      				<? if (strlen($entry[text]) > 300) {
-							echo substr ($entry[text], 0, 300);
+      				<? 	$text1 = wordwrap($entry[text], 300, "\0");
+						$short_text = preg_replace('/^(.*?)\0(.*)$/is', '$1', $text1);
+      				
+      					if (strlen($entry[text]) > 300) {
+							echo $short_text;
               echo '...';
 						}
 						else {
