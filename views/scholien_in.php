@@ -73,6 +73,8 @@ if(isset($_GET['q']))
 		<?php
 		echo $public;
 		echo "</div>";
+		if ($lenght > 10)
+		{
 		echo '<div class="blog_upgrade">';
 		echo $entry4[mehr_lesen1];
 			?>
@@ -87,6 +89,8 @@ if(isset($_GET['q']))
 
 		<a class="blog_linkbutton" href="../abo/upgrade.php">Upgrade</a>
 		</div>
+		<? }
+		?>
 		<footer class="blog_footer">
 		<p><a href="index.php">Alle Scholien</a></p>
 <?
