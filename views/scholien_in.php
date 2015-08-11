@@ -15,10 +15,10 @@ if(isset($_GET['q']))
 	$private = $entry[private_text];
 	$public = $entry[public_text];
 	$publ_date = $entry[publ_date];
-	$length = str_word_count($private, 0, 'äüöÄÜÖß') - str_word_count($public, 0, 'äüöÄÜÖß');
+	$length = str_word_count(strip_tags($private), 0, '&;');
 	$type = 'blog';
 
-	$description_fb = substr($public, 3, 400);
+	$description_fb = substr(strip_tags($public), 3, 400);
 
 	//check, if there is a image in the scholien folder
 	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
