@@ -22,7 +22,7 @@ if(isset($_GET['q']))
 	$private = $entry[private_text];
 	$publ_date = $entry[publ_date];
 	
-	$length = str_word_count(strip_tags($lenght), 0, '&;');
+	$length = str_word_count(strip_tags($private), 0, '&;');
 	$type = 'blog';
 
 	$description_fb = substr($public, 3, 400);
