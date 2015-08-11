@@ -22,34 +22,7 @@ if(isset($_GET['q']))
 	$private = $entry[private_text];
 	$publ_date = $entry[publ_date];
 	
-	function word_count($html) {
-
-  # strip all html tags
-  $wc = strip_tags($html);
-
-  # remove 'words' that don't consist of alphanumerical characters or punctuation
-  $pattern = "#[^(\w|\d|\'|\"|\.|\!|\?|;|,|\\|\/|\-|:|\&|@)]+#";
-  $wc = trim(preg_replace($pattern, " ", $wc));
-
-  # remove one-letter 'words' that consist only of punctuation
-  $wc = trim(preg_replace("#\s*[(\'|\"|\.|\!|\?|;|,|\\|\/|\-|:|\&|@)]\s*#", " ", $wc));
-
-  # remove superfluous whitespace
-  $wc = preg_replace("/\s\s+/", " ", $wc);
-
-  # split string into an array of words
-  $wc = explode(" ", $wc);
-
-  # remove empty elements
-  $wc = array_filter($wc);
-
-  # return the number of words
-  return count($wc);
-
-}	
-
-	$lenght = word_count($private);
-	$length = str_word_count($lenght, 0, '&;');
+	$length = str_word_count(strip_tags($lenght), 0, '&;');
 	$type = 'blog';
 
 	$description_fb = substr($public, 3, 400);
