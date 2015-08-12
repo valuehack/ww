@@ -140,7 +140,7 @@ class Login
 
             #used to refresh page for logging in with a cookie
             #please define REFRESH_URL in your local config file
-            header("Location:http://scholarium.at/");
+            header("Location:http://test.wertewirtschaft.net");
        
         }
         
