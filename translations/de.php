@@ -11,7 +11,7 @@ define("MESSAGE_ACCOUNT_NOT_ACTIVATED", "Ihr Account wurde noch nicht aktiviert.
 define("MESSAGE_CAPTCHA_WRONG", "Captcha falsch!");
 define("MESSAGE_COOKIE_INVALID", "Ung&uuml;ltiger Cookie");
 define("MESSAGE_DATABASE_ERROR", "Verbindung zur Datenbank fehlgeschlagen!");
-define("MESSAGE_EMAIL_ALREADY_EXISTS", "Diese E-Mail-Adresse ist bereits registriert. Bitte verwenden Sie den \"Passwort vergessen\"-Link.");
+define("MESSAGE_EMAIL_ALREADY_EXISTS", "Diese E-Mail-Adresse ist bereits registriert. Ein Passwort wurde Ihnen zugesandt. Bitte verwenden Sie den \"Passwort vergessen\"-Link.");
 define("MESSAGE_EMAIL_CHANGE_FAILED", "&Auml;nderung der E-Mail-Adresse fehlgeschlagen");
 define("MESSAGE_EMAIL_CHANGED_SUCCESSFULLY", "Die &Auml;nderung der E-Mail-Adresse war erfolgreich. Die neue Adresse lautet ");
 define("MESSAGE_EMAIL_EMPTY", "E-Mail-Feld leer");

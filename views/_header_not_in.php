@@ -9,7 +9,7 @@
 			?>
     	<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@wertewirtschaft">
-		<meta name="author" content="Rahim Taghizadegan">
+		<meta name="author" content="scholarium">
 		<meta property="og:type" content="article">
 		<meta property="og:title" content="<?=$title?>">
 		<meta property="og:image" content="<?=$img_url?>">

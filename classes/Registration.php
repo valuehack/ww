@@ -376,17 +376,17 @@ class Registration
                 <br>            
                 Lieber Gast,
                 <br>
-                vielen Dank f&uuml;r Ihr Interesse!.
+                vielen Dank f&uuml;r Ihr Interesse!
                 <br>';
 
     $body = $body.'
                 Bitte klicken Sie unterhalb, um Zugang zu scholarium.at zu erhalten.
-                <table cellspacing="0" cellpadding="0"> <tr>
+                <p align="center"><table cellspacing="0" cellpadding="0"> <tr>
                 <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
                 <a href="'.$link.'" style="font-size:16px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
                 <span style="color: #000000">
                 scholarium.at-Zugang
-                </span></a></td></tr></table> 
+                </span></a></td></tr></table> </p>
                 <br><strong>Ihr vorl&auml;ufiges Passwort ist: </strong>'.$user_password.'<br>
                 Herzliche Gr&uuml;&szlig;e aus Wien!';
 

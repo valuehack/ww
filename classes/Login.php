@@ -136,7 +136,7 @@ class Login
         // login with cookie
         elseif (isset($_POST['user_rememberme'])) {
             $this->newRememberMeCookie();
-            #header("Location:http://test.wertewirtschaft.net/");
+            #header("Location:http://scholarium.at/");
 
             #used to refresh page for logging in with a cookie
             #please define REFRESH_URL in your local config file
@@ -276,7 +276,7 @@ Old school database connect
 
     $this->sendGivenCreditsMail();
 
-    $this->messages[] = 'Upgrade successful! It is actually credits.';
+    $this->messages[] = 'Upgrade erfolgreich';
 
 
     // $query_edit_user_profile = "UPDATE mitgliederExt SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
@@ -358,7 +358,7 @@ GET user data using old database connection
             $this->deleteRememberMeCookie();
             $this->errors[] = MESSAGE_COOKIE_INVALID;
         }
-        $this->errors[] = "Cookie is not set. ";
+        $this->errors[] = "Cookie nicht gesetzt";
         return false;
     }
 
@@ -644,7 +644,7 @@ public function checkout ($items)
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
             
             $sum = $quantity*$itemsExtraArray[event_price];
-            $download_link = '<a href="<?php downloadurl(\'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf\',\''.$key.'\'); ?>" onclick="updateReferer(this.href);">Download</a>';
+            $download_link = '<a href="<?php downloadurl(\'http://scholarium.at/secdown/sec_files/'.$key.'.pdf\',\''.$key.'\'); ?>" onclick="updateReferer(this.href);">Download</a>';
 
             echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
@@ -991,10 +991,7 @@ public function sendEventRegMail($events)
         $mail->From = "info@scholarium.at";
         $mail->FromName = "scholarium";
         $mail->AddAddress($user_email);
-        $mail->Subject = 'Successfully registered to the events!';
-
-        // $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
-        // $link    = 'http://test.wertewirtschaft.net/'.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
+        $mail->Subject = 'Anmeldung';
         
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
@@ -1018,7 +1015,7 @@ public function sendEventRegMail($events)
                     <span style="color: #000000;">
                     <!--#/html#-->
                     <br>            
-                    You have registered for the event. 
+                    Sie haben sich erfolgreich f&uuml;r unsere Veranstaltung angemeldet. 
                         ';
 
         // $body = $body.'
@@ -1181,7 +1178,6 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
         $mail->Subject = 'Unterstuetzung';
 
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
-        // $link    = 'http://test.wertewirtschaft.net/'.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
@@ -1325,10 +1321,8 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
         $mail->Subject = 'user upgrade';
 
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
-        // $link    = 'http://test.wertewirtschaft.net/'.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         
-        $body = 'User '.$_SESSION['user_email'].'möchte auf die Stufe '.$level.' upgraden!
-            ';
+        $body = 'User '.$_SESSION['user_email'].'möchte auf die Stufe '.$level.' upgraden!';
 
         $mail->Body = $body;
 
@@ -1372,7 +1366,6 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
         $mail->Subject = 'Free credits';
 
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
-        // $link    = 'http://test.wertewirtschaft.net/'.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
@@ -1797,7 +1790,6 @@ user_plz
         $mail->Subject = 'Password reset email';
 
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
-        // $link    = 'http://test.wertewirtschaft.net/'.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
