@@ -20,7 +20,7 @@ if(isset($_GET['q']))
 
 	$type = 'blog';
 	
-	$description_fb0 = wordwrap($public, 400, "\0");
+	$description_fb0 = wordwrap(strip_tags($public), 400, "\0");
 	$description_fb = preg_replace('/^(.*?)\0(.*)$/is', '$1', $description_fb0);
 
 	//check, if there is a image in the scholien folder
