@@ -91,7 +91,7 @@ if(isset($_GET['q']))
 		</script>
 			
 
-		<a class="blog_linkbutton" href="../abo/upgrade.php">Upgrade</a>
+		<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
 		</div>
 		<? }
 		?>

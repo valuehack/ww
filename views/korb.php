@@ -90,7 +90,7 @@ if(isset($_POST['checkout'])) {
     }
 
     elseif ($error == 2) {
-        echo '<div class="basket_error"><p>Text f&uuml;r Warenkorb-Checkout nach Ablauf Mitgliedschaft. <a href="../abo/">Zur Aboseite</a></p></div>';
+        echo '<div class="basket_error"><p>Leider liegt Ihre letzte Unterst&uuml;tzung mehr als ein Jahr zur&uuml;ck. <a href="../abo/">Bitte erneuern Sie Ihre Unterst&uuml;tzung, um auf Ihr Guthaben zuzugreifen</a></p></div>';
     }
 
     else
@@ -154,7 +154,7 @@ if(isset($_POST['checkout'])) {
 <script type="text/javascript">
 
 function checkMe() {
-    if (confirm("Are you sure?")) {
+    if (confirm("Sind Sie sicher?")) {
         return true;
     } else {
         return false;
@@ -242,8 +242,7 @@ function checkMe() {
             }
 
 
-                //$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/1057.pdf'.$key;
-                $file_path = 'http://test.wertewirtschaft.net/down_secure/content_secure/'.$id.$extension;
+                $file_path = 'http://scholarium.at/down_secure/content_secure/'.$id.$extension;
                 //$download_link = downloadurl($file_path , $key);
                 //echo $file_path;
                 //echo '<td><a href="'.$download$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'/.pdf';_link.'" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>';
@@ -334,7 +333,7 @@ function checkMe() {
         $mail->From = EMAIL_PASSWORDRESET_FROM;
         $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
         $mail->AddAddress($user_email);
-        $mail->Subject = 'Produktbestellung';
+        $mail->Subject = 'Bestellung';
  
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
@@ -357,13 +356,13 @@ function checkMe() {
                     <span style="font-size: 12pt;">
                     <span style="color: #000000;">
                     <!--#/html#-->
-                    <br> Sie haben folgende Produkte gekauft';           
+                    <br>Sie haben folgende Bestellungen get&auml;tigt:';           
       
 
         $body = $body. "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>
                         <td style='width:55%'><b>Name</b></td>
-                        <td style='width:10%'><b>Quantity</b></td>
-                        <td style='width:10%'><b>Total</b></td></tr>";
+                        <td style='width:10%'><b>Menge</b></td>
+                        <td style='width:10%'><b>Preis</b></td></tr>";
 
        
         foreach ($items as $code => $quantity) {
@@ -419,7 +418,7 @@ function checkMe() {
             $total2 += 5;
         }
 
-        $body = $body. "<tr><td></td><td></td><td><b>TOTAL</b></td><td><b>".$total2." Credits</b></td></tr>";
+        $body = $body. "<tr><td></td><td></td><td><b>Summe</b></td><td><b>".$total2." Credits</b></td></tr>";
 
         $body = $body. "</table><hr>";
         
@@ -711,7 +710,7 @@ else {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-        <a href="../upgrade.php"><button type="button" class="btn btn-primary">Upgraden</button></a>
+        <a href="../"><button type="button" class="btn btn-primary">Aufladen</button></a>
 
       </div>
     </div>
