@@ -22,7 +22,11 @@ include "_header_not_in.php";
 	
   while($entry = mysql_fetch_array($result))
   {
-    $id = $entry[id];
+  	 $id = $entry[id];
+	 $type = $entry[type];
+  	if ($type == 'seminar') {
+  		$type = 'seminar';
+  	}   
       ?>
       
         <div class="salon_type"><?echo ucfirst($entry[type]);?></div>        
