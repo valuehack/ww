@@ -276,7 +276,7 @@ Old school database connect
 
     $this->sendGivenCreditsMail();
 
-    $this->messages[] = 'Upgrade erfolgreich';
+    $this->messages[] = 'Guthaben erfolgreich aufgeladen';
 
 
     // $query_edit_user_profile = "UPDATE mitgliederExt SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
@@ -612,7 +612,7 @@ public function checkout ($items)
         //$this->errors[] = "You do not have enough credits to buy the items in your basket.";
         //error message does not work, alternate message above
         //echo "<div style='text-align:center'><hr><i>You do not have enough credits to buy the items in your basket.</i><hr><br></div>";
-        echo '';
+        echo 'Ihr Guthaben reicht leider nicht aus.';
         }
 
         else 
@@ -996,7 +996,7 @@ public function sendEventRegMail($events)
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://www.wertewirtschaft.org/tools/Erinnerung-Header-01.png" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                     <!--#/image#-->
                     </td>
                     </tr>
@@ -1046,7 +1046,7 @@ public function sendEventRegMail($events)
             $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED . $mail->ErrorInfo;
             return false;
         } else {
-            $this->messages[] = 'Eine Email wurde an Sie versandt.';
+            $this->messages[] = 'Eine Nachricht wurde an Sie versandt.';
             return true;
         }
     }
@@ -1132,11 +1132,11 @@ if (!isset($_COOKIE['gaveCredits'])) {
             $this->editProfile($profile);
         }
         
-        $this->messages[] = 'Upgrade erfolgreich durchgef&uuml;hrt! Bitte pr&uuml;fen Sie Ihren Posteingang - '. $user_email;
+        $this->messages[] = 'Guthaben erfolgreich aufgeladen! Bitte pr&uuml;fen Sie Ihren Posteingang - '. $user_email;
 
 } 
 else {
-    $this->messages[] = 'Das Upgrade-Formular wurde bereits gesendet.';
+    $this->messages[] = 'Das Unterst&uuml;tzungs-Formular wurde bereits gesendet.';
 }
 
 }
@@ -1182,7 +1182,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body .='
-            <img style="" class="" title="" alt="" src="http://www.wertewirtschaft.org/tools/Erinnerung-Header-01.png" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+            <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
             <!--#/image#-->
             </td>
             </tr>
@@ -1204,7 +1204,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
             Lieber Gast,
             <br><br>
             Vielen Dank f&uuml;r Ihre Unterst&uuml;tzung! Sie sind nun <b>'.$level_html.'</b>.<br>
-            Sie werden ein weiteres Email von uns erhalten, wenn Ihre Zahlung best&auml;tigt wurde. 
+            Sie werden eine weitere Nachricht von uns erhalten, wenn Ihre Zahlung best&auml;tigt wurde. 
             <br>';
 
 
@@ -1212,7 +1212,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
         switch ($zahlung) {
 
         case "bar":   
-        $body .="<p>Bitte schicken Sie uns den gew&auml;hlten Betrag von ".$betrag."  &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an Scholarium, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich im Institut (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>";
+        $body .="<p>Bitte schicken Sie uns den gew&auml;hlten Betrag von ".$betrag."  &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an Scholarium, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich im scholarium (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>";
             break;
 
         case "kredit":
@@ -1244,14 +1244,12 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
 
         $body .= "
         <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR ".$betrag." an:</p>
-        <p><i>International</i>
+        <p>
         <ul>
-        <li>Institut f&uuml;r Wertewirtschaft</li>
+        <li>Scholarium</li>
         <li>Erste Bank, Wien/&Ouml;sterreich</li>
-        <li>Kontonummer: 28824799900</li>
-        <li>Bankleitzahl: 20111</li>
-        <li>IBAN: AT332011128824799900</li>
-        <li>BIC: GIBAATWW</li>
+        <li>IBAN: AT112011182715898500</li>
+        <li>BIC: GIBAATWWXXX</li>
         </ul></p>
 
 
@@ -1363,14 +1361,14 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
         $mail->From = "info@scholarium.at";
         $mail->FromName = "scholarium";
         $mail->AddAddress($user_email);
-        $mail->Subject = 'Free credits';
+        $mail->Subject = 'Freies Guthaben';
 
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://www.wertewirtschaft.org/tools/Erinnerung-Header-01.png" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                     <!--#/image#-->
                     </td>
                     </tr>
@@ -1389,11 +1387,8 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
                     <span style="color: #000000;">
                     <!--#/html#-->
                     <br>            
-                    Dear economist,
                     <br>
-                    You have received a free credit.<br>
-                    Now you can register for an event.
-                    
+                    Als Dank f&uuml;r Ihr Interesse haben wir Ihnen ein kostenloses Guthaben im Gegenwert von 5 &euro; gutgeschrieben. Damit k&ouml;nnen Sie auf unser Angebot zugreifen - wenn Sie sich zu einer Unterst&uuml;tzung unserer Arbeit entschlie&szlig;en, wird Ihnen dieses Guthaben zu Ausma&szlig; Ihrer Unterst&uuml;tzung hinzugerechnet.<br>                    
                         ';
 
 /*        $body = $body.'
@@ -1642,7 +1637,6 @@ user_plz
                 if ($query_edit_user_email->rowCount()) {
                     $_SESSION['user_email'] = $user_email;
                     $this->messages[] = MESSAGE_EMAIL_CHANGED_SUCCESSFULLY . $user_email;
-                    // $this->messages[] = "Your profile was successfully updated.";
                 } else {
                     // $this->errors[] = MESSAGE_EMAIL_CHANGE_FAILED;
                 }
@@ -1794,7 +1788,7 @@ user_plz
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://www.wertewirtschaft.org/tools/Erinnerung-Header-01.png" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                     <!--#/image#-->
                     </td>
                     </tr>
@@ -1813,9 +1807,7 @@ user_plz
                     <span style="color: #000000;">
                     <!--#/html#-->
                     <br>            
-                    Dear economist,
-                    <br>
-                    Please click on the link below to reset your password. 
+                    Bitte klicken Sie auf den Link unterhalb, um Ihr Passwort zur&uuml;ckzusetzen. 
                         ';
 
         $body = $body.'
