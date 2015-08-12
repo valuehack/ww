@@ -1,13 +1,8 @@
-
 <?php 
-
 // require_once('../classes/Login.php');
 $title="Profil";
 include('_header_in.php'); 
-// include ('testView.php');
-
-?>
- 
+?> 
 	<div class="content">
 		<div class="profil">
 			<h1>Profil</h1>
@@ -145,15 +140,5 @@ user_plz -->
     		<input type="submit" class="profil_inputbutton" name="user_edit_submit_password" value="Passwort &auml;ndern">
 		</form>
 	</div>
-This is only used to test views of different memberships:
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="user_edit_form_level">
-    <label for="user_level"></label>
-    <input id="user_level" type="text" name="user_level" placeholder="Membership Level" required>
-<br>
-    <input type="submit" name="user_edit_form_level" value="Change Level">
-</form>
-
-	
-
 </div>
 <?php include('_footer.php'); ?>

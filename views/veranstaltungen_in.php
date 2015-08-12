@@ -20,7 +20,7 @@ include "_header_in.php";
       ?>
       
         <div class="salon_type"><?echo ucfirst($entry[type]);?></div>        
-		<h1><a href='../<?=$entry[type]?>/index.php?q=$id'><?=$entry[title]; ?></a></h1>		
+		<h1><a href='../<?=$entry[type]?>/index.php?q=<?=$id?>'><?=$entry[title]; ?></a></h1>		
 		<div class="salon_dates">
 			
       <?php 

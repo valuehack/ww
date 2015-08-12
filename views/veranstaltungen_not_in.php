@@ -4,7 +4,9 @@ $title="Veranstaltungen";
 include "_header_not_in.php"; 
 ?>
 	<div class="content">
+		<div class="salon_head">
 		<h1>Veranstaltungen</h1>
+		</div>
     <div class="salon_seperator">
     	<h1>Termine</h1>
     </div>
@@ -24,7 +26,7 @@ include "_header_not_in.php";
       ?>
       
         <div class="salon_type"><?echo ucfirst($entry[type]);?></div>        
-		<h1><a href='../<?=$entry[type]?>/index.php?q=$id'><?=$entry[title]; ?></a></h1>		
+		<h1><a href='../<?=$entry[type]?>/index.php?q=<?=$id?>'><?=$entry[title]; ?></a></h1>		
 		<div class="salon_dates">
       <?php 
       if ($entry[start] != NULL && $entry[end] != NULL)
@@ -35,7 +37,7 @@ include "_header_not_in.php";
         echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry[start]));
         if (strftime("%d.%m.%Y", strtotime($entry[start]))!=strftime("%d.%m.%Y", strtotime($entry[end])))
           {
-          echo " Uhr &ndash; ";
+          echo "&ndash; ";
           $tag=date("w",strtotime($entry[end]));
           echo $tage[$tag];
           echo strftime(" %d.%m.%Y %H:%M Uhr", strtotime($entry[end]));
