@@ -36,7 +36,7 @@ include "_header_in.php";
         echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry[start]));
         if (strftime("%d.%m.%Y", strtotime($entry[start]))!=strftime("%d.%m.%Y", strtotime($entry[end])))
           {
-          echo " Uhr &ndash; ";
+          echo " &ndash; ";
           $tag=date("w",strtotime($entry[end]));
           echo $tage[$tag];
           echo strftime(" %d.%m.%Y %H:%M Uhr", strtotime($entry[end]));
