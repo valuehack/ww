@@ -1,6 +1,6 @@
 <?php 
 
-require_once('http://www.scholarium.at/classes/Login.php');
+require_once('classes/Login.php');
 $title="Unterst&uuml;tzen";
 include('_header_in.php'); 
 
