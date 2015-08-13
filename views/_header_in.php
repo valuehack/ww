@@ -163,6 +163,8 @@ while ($entry = mysql_fetch_array($result))
             break;
         }
 	$mitgliedschaft = $entry[Mitgliedschaft];
+	
+	$test = $entry[test];
 ?>
 
 <body>
@@ -203,6 +205,10 @@ while ($entry = mysql_fetch_array($result))
                       }
                   }
               }
+			  
+			  #temporary differentiation between normal users and testers/ developers
+			  
+			  if ($test = 1){
               ?>
 
                 <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
@@ -220,6 +226,8 @@ while ($entry = mysql_fetch_array($result))
                 	</div>
                 	<div class="login_basket"><a href="../abo/korb.php">Bestellungen <span class="badge"><?echo $total_quantity;?></span></a></div>
 <?
+			}	
+	#isset and while-loop
 		}
 	}
 ?>
@@ -231,6 +239,7 @@ while ($entry = mysql_fetch_array($result))
             </div>
             <div class="nav">
                 <div class="navi">
+                	<? if ($test = 1){ ?>
                 <ul id="nav">
                     <li><a href="/scholien/">Scholien</a></li>
                     <li><a href="/veranstaltungen/">Veranstaltungen</a></li>
@@ -239,6 +248,7 @@ while ($entry = mysql_fetch_array($result))
                     <li><a href="/bibliothek/">Bibliothek</a></li>
                     <li><a href="/projekte/">Projekte</a></li>
                 </ul>
+                	<?}?>
                 </div>
            </div>
         </header>
