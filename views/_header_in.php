@@ -207,7 +207,7 @@ while ($entry = mysql_fetch_array($result))
               }
 			  
 			  #temporary differentiation between normal users and testers/ developers
-			  
+			  echo 'Test: '.$test;
 			  if ($test = 1){
               ?>
 
