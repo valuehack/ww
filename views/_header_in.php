@@ -207,7 +207,7 @@ while ($entry = mysql_fetch_array($result))
               }
 			  
 			  #temporary differentiation between normal users and testers/ developers
-			  if ($test == 'NULL'){?>
+			  if ($test == ''){?>
 			  	                <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
                 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
                 			<li class="dropdown-header dropdown_name"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
@@ -254,9 +254,9 @@ while ($entry = mysql_fetch_array($result))
             </div>
             <div class="nav">
                 <div class="navi">
-                	<? if ($test == 'NULL'){ 
+                	<? if ($test == ''){ 
                 		}
-                		else {?>
+						elseif ($test == 1) {?>
                 <ul id="nav">
                     <li><a href="/scholien/">Scholien</a></li>
                     <li><a href="/veranstaltungen/">Veranstaltungen</a></li>
