@@ -241,7 +241,9 @@ while ($entry = mysql_fetch_array($result))
             </div>
             <div class="nav">
                 <div class="navi">
-                	<? if ($test = 1){ ?>
+                	<? if ($test = 'NULL'){ 
+                		}
+                		else {?>
                 <ul id="nav">
                     <li><a href="/scholien/">Scholien</a></li>
                     <li><a href="/veranstaltungen/">Veranstaltungen</a></li>
