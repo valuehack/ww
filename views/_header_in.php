@@ -208,7 +208,9 @@ while ($entry = mysql_fetch_array($result))
 			  
 			  #temporary differentiation between normal users and testers/ developers
 			  echo 'Test: '.$test;
-			  if ($test = 1){
+			  if ($test = 'NULL'){
+			  }
+			  else
               ?>
 
                 <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
