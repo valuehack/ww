@@ -52,7 +52,7 @@ if ($login->isUserLoggedIn() == true)
 	$test = $entry[test];
 	
 	if ($test == ''){
-		include("abo/upgrade_in.php");
+		include("views/upgrade_in.php");
 	}
 	elseif ($test == 1){
     	include("views/index_in.php");
