@@ -207,8 +207,21 @@ while ($entry = mysql_fetch_array($result))
               }
 			  
 			  #temporary differentiation between normal users and testers/ developers
-			  echo 'Test: '.$test;
-			  if ($test = 'NULL'){
+			  if ($test = 'NULL'){?>
+			  	                <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
+                		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
+                			<li class="dropdown-header dropdown_name"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
+                            <li class="dropdown-header dropdown_level"><? echo $Mitgliedschaft;?></li>
+                			<li><a href="/abo/profil.php">Profil</a></li>
+                			<li><a href="/abo/">Unterst&uuml;tzen</a></li>
+                			<li class="divider"></li>
+                      <li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry[credits_left];?> <img class='dropdown_coin' src="../style/gfx/coin.png"></li>
+                			<li>Bestellungen <span class="badge"><?echo $total_quantity;?></span></li> 
+                			<li class="divider"></li>
+                			<li><a href="/logout.php?logout">Abmelden</a></li>        			               		
+                		</ul>
+                	</div>
+              <?
 			  }
 			  else {
               ?>
