@@ -93,7 +93,7 @@ p, h1, h2, a, ul, ol {
 
 .header span {
 	margin: 10px 6% 10px 0;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: Futura, sans-serif;
 	font-size: 30px;
 	color: #fff;
 	text-shadow: 0px 0px 2px #fff;
@@ -164,7 +164,7 @@ p, h1, h2, a, ul, ol {
 .bannerms span {
 	font-size: 80pt;
 	line-height: 1.1em;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: Futura, sans-serif;
 	color: #fff;
 	padding-top: 60px;
 	text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
@@ -231,7 +231,7 @@ section li {
 }
 
 .fontchange {
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: Futura, sans-serif;
 }
 
 .s1 {
