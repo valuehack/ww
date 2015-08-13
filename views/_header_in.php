@@ -216,7 +216,7 @@ while ($entry = mysql_fetch_array($result))
                 			<li><a href="/abo/">Unterst&uuml;tzen</a></li>
                 			<li class="divider"></li>
                       <li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry[credits_left];?> <img class='dropdown_coin' src="../style/gfx/coin.png"></li>
-                			<li>Bestellungen <span class="badge"><?echo $total_quantity;?></span></li> 
+                			<li class="dropdown-header dropdown_credits">Bestellungen <span class="badge"><?echo $total_quantity;?></span></li> 
                 			<li class="divider"></li>
                 			<li><a href="/logout.php?logout">Abmelden</a></li>        			               		
                 		</ul>
