@@ -210,7 +210,7 @@ while ($entry = mysql_fetch_array($result))
 			  echo 'Test: '.$test;
 			  if ($test = 'NULL'){
 			  }
-			  else
+			  else {
               ?>
 
                 <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
