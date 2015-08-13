@@ -85,7 +85,7 @@ p, h1, h2, a, ul, ol {
 
 .header p {
 	margin: 10px 6% 10px 6%;
-	font-size: 30px;
+	font-size: 34px;
 	color: #fff;
 	float: left;
 	text-shadow: 0px 0px 2px #fff;
@@ -106,7 +106,7 @@ p, h1, h2, a, ul, ol {
    	margin: 0 auto;
    	padding: 0;
 	text-align: center;
-	font-size: 12pt;
+	font-size: 34pt;
 	font-weight: 100;
 	text-shadow: 2px 2px 2px rgb(20,20,20);
 }
@@ -162,7 +162,7 @@ p, h1, h2, a, ul, ol {
 }
 
 .bannerms span {
-	font-size: 80pt;
+	font-size: 76pt;
 	line-height: 1.1em;
 	font-family: Futura, sans-serif;
 	color: #fff;
@@ -196,7 +196,7 @@ p, h1, h2, a, ul, ol {
 }
 
 section p {
-	font-size: 13pt;
+	font-size: 16pt;
 	line-height: 2em;
 	font-family: "Baskerville", Georgia, Times, serif;
 	margin: 20px 0;
@@ -204,7 +204,7 @@ section p {
 }
 
 section h1 {
-	font-size: 22pt;
+	font-size: 24pt;
 	font-weight: bold;
 	text-transform: uppercase;
 	margin-bottom: 20px;
@@ -213,7 +213,7 @@ section h1 {
 
 section h2 {
 	font-style: italic;
-	font-size: 18pt;
+	font-size: 20pt;
 	margin: 30px 0;
 }
 
@@ -225,13 +225,14 @@ section ol {
 }
 
 section li {
-	font-size: 12pt;
+	font-size: 16pt;
 	line-height: 1.8em; 
 	margin: 10px 0;
 }
 
 .fontchange {
 	font-family: Futura, sans-serif;
+	font-size: 12pt;
 }
 
 .s1 {
@@ -281,7 +282,7 @@ section li {
 	color: #fff;
 	text-align: justify;
 	margin: 20px 10% 60px;
-	font-size: 13pt;
+	font-size: 16pt;
 	width: 80%;
 }
 
