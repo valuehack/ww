@@ -17,7 +17,7 @@ include ("_header_in.php");
 
         <div class="content">
             
-            <div class="startpage_section blue">
+            <div class="startpage_section_last_scholie">
 			            	
             		<?php
 $sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 1";
