@@ -153,7 +153,7 @@ else
 		$start = 0;								//if no page var is given, set start to 0
 	
 	/* Get data. */
-	$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT $start, $limit";
+	$sql = "SELECT * from blog WHERE publ_date<=CURDATE() AND publ_date > '2000-01-01' order by publ_date desc, id asc LIMIT $start, $limit";
 	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	

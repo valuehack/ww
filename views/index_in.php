@@ -81,7 +81,7 @@ while($entry = mysql_fetch_array($result))
                     <!--<img src="../style/gfx/sp_scholien.jpg" alt="">-->
                     <div class="startpage_box_inner">
                     <?php
-$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 1, 3";
+$sql = "SELECT * from blog WHERE publ_date<=CURDATE() AND publ_date > '2000-01-01' order by publ_date desc, id asc LIMIT 1, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
