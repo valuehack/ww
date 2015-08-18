@@ -31,7 +31,7 @@ if ($publ_rows == 0) {
 	
 	//2. if no priority entry available, pick the oldest unpublished one 
 	else {
-	$n_query = "SELECT * FROM blog WHERE publ_date '1969-12-31' ORDER BY n asc LIMIT 1";
+	$n_query = "SELECT * FROM blog WHERE publ_date = '1969-12-31' ORDER BY n asc LIMIT 1";
 	$n_result = mysql_query($n_query) or die("Failed Query of " .$n_query. mysql_error());
 	$n_entry = mysql_fetch_array($n_result);
 	$n = $n_entry[n];
