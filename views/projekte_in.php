@@ -60,7 +60,7 @@ if ($id = $_GET["q"])
     else {
 		echo "<div class='projekte_invest'>
 		<p>Interessierte Mitglieder haben bereits <span class='projekte_credits_sold'>".$entry[spots_sold]."</span> von <span class='projekte_credits_sold'>".$entry[spots]."</span> n&ouml;tigen <img class='projekte_coin' src='../style/gfx/coin.png'> investiert.</p>"; ?>
-      	<form class="projekte_invest_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      	<form class="projekte_invest_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
         	<input type="hidden" name="add" value="<?php echo $n ?>">
         	<span class="projekte_invest_span">Ich m&ouml;chte mit </span>
         	<input class="projekte_invest_select" type="number" name="quantity" value="1" min="1" max="<?php echo $avail;?>">
@@ -69,7 +69,7 @@ if ($id = $_GET["q"])
           <input type="submit" class="medien_inputbutton" value="Jetzt beitragen">
       	</form>
       </div>
-      <div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Projekten</a></div>
+      <div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Projekten</a></div>
     <?php
     }
 	echo "</div>";

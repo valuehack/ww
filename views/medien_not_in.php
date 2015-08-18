@@ -43,7 +43,7 @@ if(isset($_GET['q']))
   	<div class="centered">
   		<input type="button" class="inputbutton" value="Herunterladen" data-toggle="modal" data-target="#myModal">
   	</div>
-  	<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Medien</a></div>  
+  	<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Medien</a></div>  
   </div>
 <?php
 }
@@ -215,7 +215,7 @@ while($entry = mysql_fetch_array($result))
          <p>Wir freuen uns, dass Sie Interesse an unseren Medien haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten der Bestellung oder des Herunterladens digitaler Dateien zu erfahren (diese k&ouml;nnen wir leider nicht offen zug&auml;nglich machen):
          </p>
         <div class="subscribe">
-          <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+          <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
           	<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
           </form> 

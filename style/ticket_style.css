@@ -9,6 +9,28 @@
 	font-style: italic;
 }
 
+@font-face {
+	font-family: 'Garamond';
+	src: url('garamond_regular.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Garamond';
+	src: url('garamond_italic.otf') format('opentype');
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Futura';
+	src: url('futura_regular.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	src: url('futura_italic.otf') format('opentype');
+	font-style: italic;
+}
+
 p {
 	margin: 0;
 	font-family: "Baskerville", Georgia, Times, serif;

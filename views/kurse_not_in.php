@@ -108,12 +108,12 @@ if(isset($_GET['q']))
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
 ?>
-		<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Seminaren</a></div>
+		<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Seminaren</a></div>
 	</div>
 
 	<div class="salon_subscribe">
 		<p>Sie k&ouml;nnen zu diesem Termin leider nicht teilnehmen, interessen sich aber f&uuml;r unser weiteres Angebot? Kein Problem. Tragen Sie hier Ihre eMail Adresse ein dann k&ouml;nnen wir Sie &uuml;ber unsere weiteren Veranstaltungen und Angebote informieren.</p>
-          <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+          <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
           	<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
           </form> 
@@ -208,7 +208,7 @@ else {
       </div>
       <div class="modal-body">
     	<!-- <form method="post" action="../abo/zahlung.php" name="user_create_profile_form"> -->
-      <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="user_create_profile_form">
+      <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">
       
         		<input type="hidden" name="seminar_profile[event_id]" value="<?php echo $n ?>" />
         		<input type="hidden" name="seminar_profile[title]" value="<?php echo $title ?>" />

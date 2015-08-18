@@ -41,7 +41,7 @@ if (isset($_POST["registrationform"])) {
 		<p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>
 		
 		<div class="payment_form">
-			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="upgrade_user_account" accept-charset="UTF-8">
+			<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account" accept-charset="UTF-8">
                 
     			<input type="hidden" name="ok" value="2">
     			<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
@@ -96,7 +96,7 @@ if (isset($_POST["donationform"])) {
     <p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>
     
     <div class="payment_form">
-      <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="upgrade_user_account" accept-charset="UTF-8">
+      <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account" accept-charset="UTF-8">
                 
           <input type="hidden" name="ok" value="3">
           <input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
@@ -123,7 +123,7 @@ elseif(isset($_POST['pay'])) {
     $betrag = $_POST['betrag'];
 
 ?>
-		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="upgrade_user_account" accept-charset="UTF-8">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account" accept-charset="UTF-8">
 
 		<p>Bitte geben Sie Ihre Daten ein:</p>
 

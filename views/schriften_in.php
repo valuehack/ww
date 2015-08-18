@@ -100,7 +100,7 @@ if(isset($_GET['q']))
     				$price = $entry3[price];
     				$price_book = $entry3[price_book];
     			?>
-    		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    		<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       			<input type="hidden" name="add" value="<?php echo $n; ?>" />
      
     		<?php
@@ -149,7 +149,7 @@ if(isset($_GET['q']))
   if ($entry3[text2]) echo $entry3[text2];
 
 ?>
-    	<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
+    	<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Schriften</a></div>
     </div>
    </div>
 <?php 

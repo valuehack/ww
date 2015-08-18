@@ -43,7 +43,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
     		<h1>Zahlung</h1>		
 
     		<div class="payment_form">	
-    			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="upgrade_user_account">	
+    			<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account">	
     <?
     if ($_SESSION['Mitgliedschaft'] == 1) {
    

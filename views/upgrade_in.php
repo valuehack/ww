@@ -209,30 +209,34 @@ include('_header_in.php');
 			echo $op2;
 			echo $op3;
 			echo $op4;
+			echo $op5;
+			echo $op6;
 		}
 		if ($mitgliedschaft == 2) {
-			echo $op1;
-			echo $op2;
-			echo $op3;
-			echo $op4;
-		}
-		if ($mitgliedschaft == 3) {
-			echo $op1;
-			echo $op2;
-			echo $op3;
-			echo $op4;
-		}
-		if ($mitgliedschaft == 4) {
-			echo $op1;
-			echo $op2;
-			echo $op3;
-			echo $op4;
-		}
-		if ($mitgliedschaft == 5) {
 			echo $op2;
 			echo $op3;
 			echo $op4;
 			echo $op5;
+			echo $op6;
+		}
+		if ($mitgliedschaft == 3) {
+			echo $op2;
+			echo $op3;
+			echo $op4;
+			echo $op5;
+			echo $op6;
+		}
+		if ($mitgliedschaft == 4) {
+			echo $op3;
+			echo $op4;
+			echo $op5;
+			echo $op6;
+		}
+		if ($mitgliedschaft == 5) {
+			echo $op3;
+			echo $op4;
+			echo $op5;
+			echo $op6;
 		}
 		if ($mitgliedschaft == 6) {
 			echo $op3;

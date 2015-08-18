@@ -68,7 +68,7 @@ if(isset($_GET['q']))
 			}
 			else { ?>
 				<span class='coin'><img src="../style/gfx/coin.png"></span><span class="schriften_price"><?php echo $entry3[price]; ?></span> 
-				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+				<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       				<input type="hidden" name="add" value="<?php echo $n; ?>" />
      				<!--<select name="quantity">
         				<option value="1">1</option>
@@ -94,7 +94,7 @@ if(isset($_GET['q']))
   if ($entry3[text]) echo "<p>".$entry3[text]."</p>";
   if ($entry3[text2]) echo "<p>".$entry3[text2]."</p>";
 ?>
-  	<div class="medien_anmeldung"><a href='<?echo $_SERVER['PHP_SELF'];?>'>zur&uuml;ck zu den Medien</a></div>
+  	<div class="medien_anmeldung"><a href='<?echo htmlentities($_SERVER['PHP_SELF']);?>'>zur&uuml;ck zu den Medien</a></div>
 	</div>
 <?php
 }
@@ -262,7 +262,7 @@ while($entry = mysql_fetch_array($result))
 			}
 			else { ?>
 				<div class='centered'>			
-				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+				<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
 					<span class="medien_price"><?php echo $entry[price]; ?> Credits</span>
       				<input type="hidden" name="add" value="<?php echo $n; ?>">
      				<!--<select name="quantity">

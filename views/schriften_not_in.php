@@ -47,7 +47,7 @@ if(isset($_GET['q']))
   if ($entry3[text]) echo $entry3[text];
   if ($entry3[text2]) echo $entry3[text2];
 ?>
-  		<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Schriften</a></div>
+  		<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Schriften</a></div>
   </div>
 <?php
 }
@@ -285,7 +285,7 @@ while($entry = mysql_fetch_array($result))
       <div class="modal-body">
   			<p>Wir freuen uns, dass Sie Interesse an unseren Schriften haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten der Bestellung oder des Herunterladens digitaler Dateien zu erfahren (diese k&ouml;nnen wir leider nicht offen zug&auml;nglich machen):</p>
         <div class="subscribe">
-          <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+          <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
           	<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
           </form> 

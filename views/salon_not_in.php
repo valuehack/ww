@@ -77,7 +77,7 @@ if(isset($_GET['q']))
 	
 				echo $entry4[info];			
 			?>
-			<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Salons</a></div>
+			<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Salons</a></div>
     	</div>
 	</div>
 <?php
@@ -187,7 +187,7 @@ else {
       <div class="modal-body">
         <p>Wir freuen uns, dass Sie Interesse an einer Teilnahme haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten einer Teilnahme zu erfahren:</p>
         <div class="subscribe">
-          <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+          <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email"r equired>
           	<input class="inputbutton" id="inputbutton" type="submit" name="eintragen_submit" value="Eintragen" />
           </form>

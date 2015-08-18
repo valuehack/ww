@@ -111,7 +111,7 @@ if(isset($_GET['q']))
     <!--<p class="salon_reservation_span_d"><?echo $entry3[price]?> Credits pro Teilnehmer</p>-->
 
 	<span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Teilnehmer</span><br>
-    <form class="salon_reservation_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
       <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
       	<option value="1">1</option>
@@ -150,7 +150,7 @@ if(isset($_GET['q']))
 				echo $entry4[info];			
 			?>
 
-		<div class="medien_anmeldung"><a href="<?php echo $_SERVER['PHP_SELF']; ?>">zur&uuml;ck zu den Seminaren</a></div>
+		<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Seminaren</a></div>
 	</div>
 	
 <?php

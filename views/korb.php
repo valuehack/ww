@@ -534,7 +534,7 @@ if($_SESSION['basket']) {
         }
 		
         ?>
-        		<form class="basket_body_remove" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        		<form class="basket_body_remove" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
                 	<input type="hidden" name="remove" value="<?php echo $code ?>" />
                     <? if ($itemsExtraArray[type] == 'projekt') {echo '<input type="hidden" name="projekt" value="1" />';} ?>
                 	<input class="basket_body_remove_button" type="submit" value="Entfernen" onClick="return checkMe()">
@@ -595,11 +595,11 @@ if($_SESSION['basket']) {
 		</div>	
 		<div class="basket_pay">
 		    <!-- possibility 1 -->
-    		<form class="basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    		<form class="basket_pay_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
         		<input class="basket_pay_button_check" type="submit" name="checkout" value="Jetzt bestellen">
         	</form>   		 
 			<!-- Clear Basket + Checkout Buttons-->	
-			<form class="basket_pay_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+			<form class="basket_pay_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
     			<input class="basket_pay_button_clear" type="submit" name="delete" value="Korb leeren" onClick="return checkMe()">
     		</form>
     	</div>
@@ -662,7 +662,7 @@ if($_SESSION['basket']) {
     else {
     ?>  
         <td align="right">
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
         <input type="submit" name="checkout" value="Checkout"></form></td>
     <?
     }
