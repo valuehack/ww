@@ -96,7 +96,7 @@ p, h1, h2, a, ul, ol {
 /*=========================================*/
 
 .header {
-	height: 55px;
+	height: 60px;
 	width: 100%;
 	background: rgb(10,10,10);
 	position: fixed;
@@ -105,7 +105,7 @@ p, h1, h2, a, ul, ol {
 }
 
 .header p {
-	margin: 10px 6% 10px 6%;
+	margin: 13px 6%;
 	font-size: 34px;
 	color: #fff;
 	float: left;
@@ -127,7 +127,7 @@ p, h1, h2, a, ul, ol {
    	margin: 0 auto;
    	padding: 0;
 	text-align: center;
-	font-size: 20pt;
+	font-size: 16pt;
 	font-weight: 100;
 	text-shadow: 2px 2px 2px rgb(20,20,20);
 }
@@ -136,7 +136,7 @@ p, h1, h2, a, ul, ol {
     font-family: Futura, sans-serif;
 	list-style: none;
    	float: left; 
-	height: 55px;
+	height: 60px;
    	display: block;
 }
 
@@ -160,7 +160,7 @@ p, h1, h2, a, ul, ol {
 	position: relative;
 	height: 600px;
 	width: 100%;
-	top: 55px;
+	top: 60px;
 }
 
 .bannerimg {
