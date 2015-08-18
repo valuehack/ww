@@ -103,7 +103,7 @@ if(isset($_GET['q']))
 	else {
 		echo "<h1>$title</h1>";
 		echo "<p class='blogdate'> &mdash; ".date('d.m.Y', strtotime($publ_date))." &mdash; </p>";
-		echo '<img class="blog_img" src="'.$img_url.'" alt="'.$id.'">';
+		echo '<!--<img class="blog_img" src="'.$img_url.'" alt="'.$id.'">-->';
 		echo "<div class='blog_text'>";
 		echo $public."\n";
 		echo $private;
