@@ -563,6 +563,8 @@ img.dropdown_coin {
 
 .blue {
 	background: rgb(46,74,98);
+	padding: 20px 15%;
+	margin-bottom: 20px;
 }
 
 .startpage_last_scholie {
@@ -572,8 +574,12 @@ img.dropdown_coin {
 }
 
 .startpage_last_scholie_ms {
-	padding: 30px;
+	padding: 30px 0;
 	position: relative;
+}
+
+.startpage_last_scholie_ms h1 {
+	text-align: left;	
 }
 
 .startpage_last_scholie_ms h1 a {
@@ -583,7 +589,6 @@ img.dropdown_coin {
 	color: rgb(255,255,255);
 	text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
 	margin-top: 65px;
-	text-align: left;
 }
 
 .startpage_last_scholie_ms h1 a:hover {
