@@ -194,7 +194,8 @@ elseif (isset($_POST['ok']))
 
     //payments coming from projekte_not_in
     elseif ($_POST['ok'] == 3) { 
-      
+
+           
       echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschalten.</p></div>';
 
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
@@ -231,6 +232,7 @@ elseif (isset($_POST['ok']))
     }
    
     if ($zahlung=="bank")
+        $result_row = $login->getUserData(trim($_SESSION['user_email']));
     {
     ?>
     <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <b><?php echo $betrag?></b> an:</p>
@@ -257,7 +259,13 @@ elseif (isset($_POST['ok']))
     </ul>
     </p>
 
-    <p><b>Bitte verwenden Sie als Sie als Zahlungsreferenz/Betreff unbedingt &quot;Mitglied Nr.<?php echo $user_id ?>&quot;</b></p>
+
+    <p><b>Bitte verwenden Sie als Sie als Zahlungsreferenz/Betreff unbedingt &quot;Mitglied Nr.<?php echo $user_id ?> <?php echo $result_row->Vorname ?> <?php echo $result_row->Vorname ?>&quot;</b></p>
+
+
+
+    
+    
     
     <?php
     }

@@ -56,10 +56,11 @@ class Registration
         //register new user
         } elseif (isset($_POST["eintragen_submit"])) {
 
+            $_SESSION['first_reg'] = $_POST['first_reg'];
             $this->subscribeNewUser($_POST['user_email']);
         }
+        //registrationform variable is only used for for notloggedin member in kurse
         elseif (isset($_POST["registrationform"])) {
-
 
             //grab post here and send it over to other functions
             $profile = $_POST["seminar_profile"];
@@ -183,10 +184,19 @@ class Registration
 
 
                 // write new users data into database                
-                $query_new_user_insert = $this->db_connection->prepare('INSERT INTO grey_user (user_email, Mitgliedschaft, user_password_hash, user_activation_hash, user_registration_ip, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :user_password_hash, :user_activation_hash, :user_registration_ip, now())');
+                $query_new_user_insert = $this->db_connection->prepare('INSERT INTO grey_user (user_email, Mitgliedschaft, first_reg, user_password_hash, user_activation_hash, user_registration_ip, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :first_reg, :user_password_hash, :user_activation_hash, :user_registration_ip, now())');
                 #$query_new_user_insert->bindValue(':user_name', $user_name, PDO::PARAM_STR);
 
+
+/*                //if session var exists then first reg is that, if not then add NA
+                if ( !($_SESSION['first_reg'] === "") )
+                {
+                    $first_reg = $_SESSION['first_reg']
+                }*/
+
                 $query_new_user_insert->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+                $query_new_user_insert->bindValue(':first_reg', $_SESSION['first_reg'], PDO::PARAM_STR);
+                //$query_new_user_insert->bindValue(':first_reg', "eltern", PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':Mitgliedschaft', '1', PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_activation_hash', $user_activation_hash, PDO::PARAM_STR);

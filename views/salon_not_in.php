@@ -189,7 +189,8 @@ else {
         <div class="subscribe">
           <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email"r equired>
-          	<input class="inputbutton" id="inputbutton" type="submit" name="eintragen_submit" value="Eintragen" />
+          	<input type=hidden name="first_reg" value="salon">
+            <input class="inputbutton" id="inputbutton" type="submit" name="eintragen_submit" value="Eintragen" />
           </form>
         </div>
       </div>
