@@ -565,7 +565,7 @@ img.dropdown_coin {
 	padding: 40px 15%;
 	width: 70%;
 	display: inline-block;
-	color: rgb(26,26,26);
+	color: rgb(20,20,20);
 }
 
 .startpage_last_scholie {
@@ -587,6 +587,7 @@ img.dropdown_coin {
 	font-size: 36pt;
 	text-decoration: none;
 	margin-top: 65px;
+	color: rgb(20,20,20);
 }
 
 .startpage_last_scholie_ms h1 a:hover {
@@ -606,8 +607,9 @@ img.dropdown_coin {
 }
 
 .startpage_last_scholie p a {
-	border-bottom: 1px dotted rgb(26,26,26);
+	border-bottom: 1px dotted rgb(20,20,20);
 	text-decoration: none;
+	color: rgb(20,20,20);
 }
 
 .startpage_last_scholie p a:hover {
