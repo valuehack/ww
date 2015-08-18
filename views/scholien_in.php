@@ -71,7 +71,7 @@ if(isset($_GET['q']))
 	if ($_SESSION['Mitgliedschaft'] == 1) {
 		echo "<p class='blogdate'> &mdash; ".date('d.m.Y', strtotime($publ_date))." &mdash; </p>";
 		?>
-		<img class="blog_img" src="<?echo $img_url;?>" rel="image_src" alt="<?echo $id;?>">
+		<!--<img class="blog_img" src="<?echo $img_url;?>" rel="image_src" alt="<?echo $id;?>">-->
 		<div class='blog_text'>			
 		<?php
 		echo $public;
