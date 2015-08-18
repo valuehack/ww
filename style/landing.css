@@ -82,8 +82,10 @@ body {
 	font-family: "Baskerville", Georgia, Times, serif;
 	margin: 0 5px;
 	display: block;
+	padding: 5px 0;
+	text-decoration: none;
 }
-
+	
 .landing_anmelden img {
 	margin: 8px 8px 0px;
 }
