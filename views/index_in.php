@@ -17,7 +17,7 @@ include ("_header_in.php");
 
         <div class="content">
             
-            <div class="startpage_section blue">
+            <div class="startpage_section_last_scholie">
 			            	
             		<?php
 $sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 0, 1";
@@ -57,7 +57,7 @@ while($entry = mysql_fetch_array($result))
                     <!--<img src="../style/gfx/sp_seminare.jpg" alt="">-->
                     <div class="startpage_box_inner">
                         <?php
-$sql = "SELECT * from produkte WHERE (type='lehrgang' or type='seminar' or type='kurs' or type='salon') AND status > 0 order by id asc, n asc LIMIT 0, 3";
+$sql = "SELECT * from produkte WHERE (type='lehrgang' or type='seminar' or type='kurs' or type='salon') AND status > 0 AND start >= CURDATE() order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
@@ -81,7 +81,7 @@ while($entry = mysql_fetch_array($result))
                     <!--<img src="../style/gfx/sp_scholien.jpg" alt="">-->
                     <div class="startpage_box_inner">
                     <?php
-$sql = "SELECT * from blog WHERE publ_date<=CURDATE() order by publ_date desc, id asc LIMIT 1, 3";
+$sql = "SELECT * from blog WHERE publ_date<=CURDATE() AND publ_date > '2000-01-01' order by publ_date desc, id asc LIMIT 1, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))

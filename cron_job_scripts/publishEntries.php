@@ -13,7 +13,7 @@ $publ_query = "SELECT * FROM blog WHERE publ_date <= CURDATE() AND DATEDIFF(CURD
 $publ_result = mysql_query($publ_query) or die("Failed Query of " .$publ_query. mysql_error());
 $publ_rows = mysql_num_rows($publ_result); 
 
-echo $publ_rows;
+echo $publ_rows."<br>";
 
 if ($publ_rows == 0) {
 	//get the id of the next entry which gets published
@@ -31,13 +31,13 @@ if ($publ_rows == 0) {
 	
 	//2. if no priority entry available, pick the oldest unpublished one 
 	else {
-	$n_query = "SELECT * FROM blog WHERE publ_date IS NULL ORDER BY n asc LIMIT 1";
+	$n_query = "SELECT * FROM blog WHERE publ_date = '0000-00-00' ORDER BY n asc LIMIT 1";
 	$n_result = mysql_query($n_query) or die("Failed Query of " .$n_query. mysql_error());
 	$n_entry = mysql_fetch_array($n_result);
 	$n = $n_entry[n];
 	}
 
-	//echo $n;
+	echo $n."<br>";
 
 	//publish the entry where publ_date is NULL, which has the lowest identification number(n)
 	$update_query = "UPDATE blog SET publ_date = CURDATE() WHERE n = '$n'";
@@ -50,7 +50,7 @@ $edit_query = "SELECT * FROM blog WHERE edited = 0";
 $edit_result = mysql_query($edit_query) or die("Failed Query of " .$edit_query. mysql_error());
 $edit_rows = mysql_num_rows($edit_result); 
 
-echo $edit_rows;
+echo $edit_rows."<br>";
 
 if (!$edit_rows == 0) {
 
