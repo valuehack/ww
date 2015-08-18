@@ -113,13 +113,13 @@ if (isset($registration)) {
        				
     <? if ($lang_change <> 'en') 
 		 { ?>
-       	 <div class="anmelden"><i><a href="http://scholarium.at/?q=en">English</a></i></div>
-       	 <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden"><?=$eintragen?></button></div>
-         <div class="anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden"><?=$anmelden?></button></div>
+       	 <div class="landing_anmelden"><i><a href="http://scholarium.at/?q=en">English</a></i></div>
+       	 <div class="landing_anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden"><?=$eintragen?></button></div>
+         <div class="landing_anmelden"><button class="landing_login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden"><?=$anmelden?></button></div>
 	  <? } 
 	   else 
 		 { ?>
-		 <div class="anmelden"><i><a href="http://scholarium.at/">Deutsch</a></i></div>		 
+		 <div class="landing_anmelden"><i><a href="http://scholarium.at/">Deutsch</a></i></div>		 
     <? } ?> 
 <!-- Login Modal -->
   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
