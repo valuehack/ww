@@ -540,18 +540,16 @@ img.dropdown_coin {
 	display: inline-block;
 }
 
-.startpage_last_scholie {
-	width: 100%;
-	height: 300px;
-	margin: 0,
-	height: 300px;
-	background: rgb(0,0,0);
-	position: relative;
+.blue {
+	background: rgb(46,74,98);
 }
 
-.startpage_last_scholie_img {
-	height: 300px;
-	/*opacity: 0.65;*/
+.startpage_last_scholie {
+	width: 100%;
+	min-height: 300px;
+	margin: 0,
+	background: rgb(0,0,0);
+	position: relative;
 }
 
 .startpage_last_scholie_ms {
