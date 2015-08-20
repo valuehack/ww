@@ -11,7 +11,7 @@ define("MESSAGE_ACCOUNT_NOT_ACTIVATED", "Ihr Account wurde noch nicht aktiviert.
 define("MESSAGE_CAPTCHA_WRONG", "Captcha falsch!");
 define("MESSAGE_COOKIE_INVALID", "Ung&uuml;ltiger Cookie");
 define("MESSAGE_DATABASE_ERROR", "Verbindung zur Datenbank fehlgeschlagen!");
-define("MESSAGE_EMAIL_ALREADY_EXISTS", "Diese E-Mail-Adresse ist bereits registriert. Ein Passwort wurde Ihnen zugesandt. Bitte verwenden Sie den \"Passwort vergessen\"-Link.");
+define("MESSAGE_EMAIL_ALREADY_EXISTS", "Diese E-Mail-Adresse ist bereits registriert. Ein Passwort wurde Ihnen zugesandt. <a href='/password_reset.php'>Passwort vergessen?");
 define("MESSAGE_EMAIL_CHANGE_FAILED", "&Auml;nderung der E-Mail-Adresse fehlgeschlagen");
 define("MESSAGE_EMAIL_CHANGED_SUCCESSFULLY", "Die &Auml;nderung der E-Mail-Adresse war erfolgreich. Die neue Adresse lautet ");
 define("MESSAGE_EMAIL_EMPTY", "E-Mail-Feld leer");
@@ -30,7 +30,7 @@ define("MESSAGE_PASSWORD_EMPTY", "Passwort-Feld ist leer");
 define("MESSAGE_PASSWORD_RESET_MAIL_FAILED", "Passwort zur&uuml;ksetzen E-mail wurde NICHT erfolgreich gesendet! Fehler ");
 define("MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT", "\"Passwort zur&uuml;cksetzen\"-E-Mail wurde erfolgreich versendet");
 define("MESSAGE_PASSWORD_TOO_SHORT", "Passwort muss mindestens 6 Zeichen haben");
-define("MESSAGE_PASSWORD_WRONG", "Passwort falsch");
+define("MESSAGE_PASSWORD_WRONG", "Passwort falsch. <a href='/password_reset.php'>Passwort vergessen?</a>");
 define("MESSAGE_PASSWORD_WRONG_3_TIMES", "Passwort wurde dreimal falsch eingegeben. Bitte warten Sie 30 Sekunden, um es noch einmal zu probieren.");
 define("MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL", "...Verzeihen sie bitte, solche Code-Kombinationen sind hier nicht zul&auml;ssig");
 define("MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL", "Aktivierung war erfolgreich!");
