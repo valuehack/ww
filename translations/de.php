@@ -63,7 +63,7 @@ define("WORDING_NEW_EMAIL", "Neue E-Mail");
 define("WORDING_NEW_PASSWORD", "Neues Passwort");
 define("WORDING_NEW_PASSWORD_REPEAT", "Wiederhole neues Passwort");
 define("WORDING_NEW_USERNAME", "Neuer Benutzername (Das Feld Benutzername darf nicht leer sein und muss azAZ09 und 2-64 Zeichen enthalten");
-define("WORDING_OLD_PASSWORD", "Ihr ALTES Passwort"
+define("WORDING_OLD_PASSWORD", "Ihr ALTES Passwort");
 define("WORDING_PASSWORD", "Passwort");
 define("WORDING_PROFILE_PICTURE", "Ihr Profilbild (von Gravatar):");
 define("WORDING_REGISTER", "Registrieren");

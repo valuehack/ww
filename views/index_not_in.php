@@ -156,6 +156,7 @@ if (isset($registration)) {
           <p>
             <form method="post" action="index.php" name="registerform">
                 <input class="inputfield_login" id="keyword" type="email" placeholder=" <?=$email_adresse?>" name="user_email" required><br>
+                <input type=hidden name="first_reg" value="landing">
                 <input class="inputbutton_login" id="inputbutton" name="eintragen_submit" type="submit" value="<?=$eintragen?>">
             </form>         
           </p>
