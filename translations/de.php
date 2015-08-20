@@ -21,7 +21,7 @@ define("MESSAGE_EMAIL_TOO_LONG", "Ihre Email darf nicht l&auml;nger als 64 Zeich
 define("MESSAGE_LINK_PARAMETER_EMPTY", "Dieser Link ist ohne Inhalt.");
 define("MESSAGE_LOGGED_OUT", "Erfolgreich ausgeloggt.");
 // The "login failed"-message is a security improved feedback that doesn't show a potential attacker if the user exists or not
-define("MESSAGE_LOGIN_FAILED", "Login fehlgeschlagen.");
+define("MESSAGE_LOGIN_FAILED", "Login fehlgeschlagen. Sollten Sie Probleme mit der Anmeldung haben, schreiben Sie eine E-Mail an info@scholarium.at");
 define("MESSAGE_OLD_PASSWORD_WRONG", "Das ALTE Passwort war falsch.");
 define("MESSAGE_PASSWORD_BAD_CONFIRM", "Die Passw&ouml;rter stimmen nicht &uuml;berein.");
 define("MESSAGE_PASSWORD_CHANGE_FAILED", "Verzeihen sie bitte, ihre Passwortver&auml;nderung ist fehlgeschlagen.");
