@@ -1,15 +1,4 @@
 @font-face {
-	font-family: 'Baskerville';
-	src: url('baskerville_regular.otf') format('opentype');
-}
-
-@font-face {
-	font-family: 'Baskerville';
-	src: url('baskerville_italic.otf') format('opentype');
-	font-style: italic;
-}
-
-@font-face {
 	font-family: 'Garamond';
 	src: url('garamond_regular.otf') format('opentype');
 }
@@ -21,14 +10,59 @@
 }
 
 @font-face {
-	font-family: 'Futura';
-	src: url('futura_regular.otf') format('opentype');
+	font-family: 'Garamond';
+	src: url('garamond_bold.otf') format('opentype');
+	font-weight: bold;
 }
 
 @font-face {
-	font-family: 'Futura';
-	src: url('futura_italic.otf') format('opentype');
+	font-family: 'Garamond';
+	src: url('garamond_semibold.otf') format('opentype');
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: 'Garamond';
+	src: url('garamond_italic.otf') format('opentype');
 	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Garamond';
+	src: url('garamond_bold-italic.otf') format('opentype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Garamond';
+	src: url('garamond_semibold-italic.otf') format('opentype');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Futura Bock';
+	src: url('futura_bock_regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura Bock';
+	src: url('futura_bock_italic.ttf') format('truetype');
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Futura Bock';
+	src: url('futura_bock_bold.ttf') format('truetype');
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'Futura Bock';
+	src: url('futura_bock_bold-italic.ttf') format('truetype');
+	font-style: italic;
+	font-weight: bold;
 }
 
 /*==================================
@@ -101,7 +135,7 @@ body {
 	border: 0;
 	font-size: 14pt;
 	float: right;
-	font-family: "Baskerville", Georgia, Times, serif;
+	font-family: "Garamond", Georgia, Times, serif;
 	margin: 0 5px;
 	display: block;
 	padding: 5px 0;
@@ -118,14 +152,14 @@ body {
 	border: 0;
 	font-size: 14pt;
 	float: right;
-	font-family: "Baskerville", Georgia, Times, serif;
+	font-family: "Garamond", Georgia, Times, serif;
 	margin: 0 5px;
 }
 
 .landing_login_button a {
 	color: rgb(255,255,255);
 	text-decoration: none;
-	font-family: "Baskerville", Georgia, Times, serif;
+	font-family: "Garamond", Georgia, Times, serif;
 }
 
 .landing_login {
@@ -161,7 +195,7 @@ body {
 	margin: 100px 20%;
 	padding: 60px 0;
 	color: #000;
-	font-family: "Baskerville", Georgia, Times, serif;
+	font-family: "Garamond", Georgia, Times, serif;
 	font-size: 16pt;
 	line-height: 1.6em;
 	text-align: justify;
