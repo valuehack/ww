@@ -180,18 +180,14 @@ else {
 	
 	if ($type2 == 'scholien'){
 		$type3 = 'scholie';
-		include('../schriften/schriften_data.php');
-	}
-	
+	}	
 	elseif ($type2 == 'analysen'){
 		$type3 = 'analyse';
-		include('../schriften/schriften_data.php');
-	}
-	
+	}	
 	elseif ($type2 == 'buecher'){
 		$type3 = 'buch';
-		include('../schriften/schriften_data.php');
 	}
+	include('../schriften/schriften_data.php');
 }	
 else {
 ?>

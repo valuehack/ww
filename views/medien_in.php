@@ -59,7 +59,7 @@ if(isset($_GET['q']))
   		<h1><?=$entry3[title];?></h1>	
 		<div>
   		<div class="schriften_img">
-			<img src="<?echo $img;?>" alt="<?echo $id;?>">
+			<img src="<?echo $img;?>" alt="">
 		</div>
 		<div class="schriften_bestellen">
 			<?
@@ -121,22 +121,21 @@ else {
   
 	if(isset($_GET['type']))
 	{
-	$type2 =  $_GET['type'];
+	$type2 =  $_GET['type'];	
 	
-	if ($type2 == 'scholien'){
+	if ($type2 == 'oekonomik'){
 		$type3 = 'scholie';
-		include('../schriften/schriften_data.php');
-	}
-	
-	elseif ($type2 == 'analysen'){
+	}	
+	elseif ($type2 == 'ethik'){
 		$type3 = 'analyse';
-		include('../schriften/schriften_data.php');
-	}
-	
-	elseif ($type2 == 'buecher'){
+	}	
+	elseif ($type2 == 'politik'){
 		$type3 = 'buch';
-		include('../schriften/schriften_data.php');
 	}
+	elseif ($type2 == 'audio'){
+		$type3 = 'buch';
+	}
+	include('../medien/medien_data.php');
 }
 else {
   ?>
@@ -292,7 +291,7 @@ while($entry = mysql_fetch_array($result))
 ?>
 		<tr>
 			<td class="schriften_table_a">
-				<a href="<? echo "?q=$id";?>"><img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>"></a>
+				<a href="<? echo "?q=$id";?>"><img src="<?echo $img_url;?>" alt=""></a>
 			</td>			
 			<td class="schriften_table_b">
 				<span><? echo ucfirst($entry[type]);?></span><br>
