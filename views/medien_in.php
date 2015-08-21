@@ -46,12 +46,12 @@ if(isset($_GET['q']))
     if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
 
             	//check, if there is a image in the medien folder
-	$img = 'http://test.wertewirtschaft.net/medien/'.$id.'.jpg';
+	$img = 'http://www.scholarium.at/medien/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/medien/default.jpg";
+	    $img_url = "http://www.scholarium.at/medien/default.jpg";
 	}
 	
 ?>
@@ -266,12 +266,12 @@ while($entry = mysql_fetch_array($result))
     if ($entry[type] == 'video') { $btn_value = "Ansehen";}
   
     //check, if there is a image in the salon folder
-	$img = 'http://test.wertewirtschaft.net/medien/'.$id.'.jpg';
+	$img = 'http://www.scholarium.at/medien/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/medien/default.jpg";
+	    $img_url = "http://www.scholarium.at/medien/default.jpg";
 	}
 	
 ?>
