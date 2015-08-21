@@ -159,7 +159,7 @@ while($entry = mysql_fetch_array($result))
 ?>
 		<tr>
 			<td class="schriften_table_a">
-				<a href="<? echo "?q=$id";?>"><img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>"></a>
+				<a href="<? echo "?q=$id";?>"><img src="<?echo $img_url;?>" alt=""></a>
 			</td>			
 			<td class="schriften_table_b">
 				<span><? echo ucfirst($entry[type]);?></span><br>
