@@ -124,7 +124,8 @@ table {
 
 body {
 }
-p,  a, ul, ol {
+
+p, ul, ol {
 	font-family: "Garamond", Georgia, Times, sans-serif;
 }
 
@@ -498,6 +499,7 @@ img.dropdown_coin {
 	font-size: 72px;
 	text-transform: uppercase;
 	text-shadow: 0px 0px 1px #666;	
+	font-family: "Futura Bock", Helvetica, Arial, serif;
 }
 
 .article h2 {
@@ -619,6 +621,7 @@ img.dropdown_coin {
 
 .startpage_last_scholie_ms h1 {
 	text-align: left;	
+	font-family: "Futura Bock", Helvetica, Arial, serif;
 }
 
 .startpage_last_scholie_ms h1 a {
@@ -666,6 +669,7 @@ img.dropdown_coin {
 	color: rgb(255,255,255);
 	background: rgb(46,74,98);
 	padding: 10px;
+	font-family: "Futura Bock", Helvetica, Arial, serif;
 }
 
 .startpage_box_outer img {
@@ -827,6 +831,7 @@ img.dropdown_coin {
 	font-size: 72px;
 	text-transform: uppercase;
 	text-shadow: 0px 0px 1px #666;	
+	font-family: "Futura Bock", Helvetica, Arial, serif;
 }
 
 .blogdate {
@@ -865,7 +870,8 @@ img.dropdown_coin {
 	text-align: center;
 	font-size: 72px;
 	text-transform: uppercase;
-	text-shadow: 0px 0px 1px #666;	
+	text-shadow: 0px 0px 1px #666;
+	font-family: "Futura Bock", Helvetica, Arial, serif;	
 }
 
 .blog a {
