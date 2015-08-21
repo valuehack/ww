@@ -236,6 +236,7 @@ h3 {
 	font-size: 12pt;
 	float: right;
 	font-family: "Garamond", Georgia, Times, sans-serif;
+	padding-top: 2px;
 }
 
 .login_button a {
@@ -1502,11 +1503,11 @@ a.medien_title_list  {
 	text-decoration: none;
 	color: rgb(46,74,98);
 	display: block;
+	font-family: "Futura Bock", Helvetica, Arial, serif;
 }
 
 a:hover.medien_title_list {
-	text-decoration: none;
-	border-bottom: 1px solid rgb(46,74,98);
+	text-decoration: underline
 }
 
 a:visited.medien_title_list {
@@ -1597,6 +1598,7 @@ a:visited.medien_title_list {
 	text-decoration: none;
 	color: rgb(46,74,98);
 	font-size: 24pt;
+	font-family: "Futura Bock", Helvetica, Arial, serif;
 }
 
 .schriften_table td a:hover {
@@ -2865,7 +2867,7 @@ button.close {
 .badge {
   display: inline-block;
   min-width: 12px;
-  padding: 3px 3px 7px;
+  padding: 4px 3px 7px;
   font-weight: bold;
   line-height: 0.7;
   color: #fff;
