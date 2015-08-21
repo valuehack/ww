@@ -1,14 +1,14 @@
 
     <div class="salon_types">
     	<span><a href="index.php">Alle</a></span>
-    	<span><a <?if ($type2 == 'oekonomik'){echo 'class="salon_types_active"';}?> href="?type=oekonomik">&Oumlt;konomik</a></span>
+    	<span><a <?if ($type2 == 'oekonomik'){echo 'class="salon_types_active"';}?> href="?type=oekonomik">&Ouml;konomik</a></span>
     	<span><a <?if ($type2 == 'ethik'){echo 'class="salon_types_active"';}?> href="?type=ethik">Ethik</a></span>
     	<span><a <?if ($type2 == 'politik'){echo 'class="salon_types_active"';}?> href="?type=politik">Politik</a></span>
     	<span><a <?if ($type2 == 'audio'){echo 'class="salon_types_active"';}?> href="?type=audio">Tonaufnahmen</a></span>
     </div> 
     <div class="medien_content">
 <?php
-		$type3 = 'Wiener Schule der ';
+		$type3 = 'W';
 
 
 //Pagination Script found at http://www.phpeasystep.com/phptu/29.html
@@ -20,7 +20,7 @@
      First get total number of rows in data table. 
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
-  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (SUBSTRING(type,0,18) LIKE '$type3') AND status > 0";
+  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (SUBSTRING(type,0,1) LIKE '$type3') AND status > 0";
   $total_pages = mysql_fetch_array(mysql_query($query));
   $total_pages = $total_pages[num];
   

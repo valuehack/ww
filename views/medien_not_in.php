@@ -88,7 +88,7 @@ else {
   ?>
     <div class="salon_types">
     	<span><a class="salon_types_active" href="index.php">Alle</a></span>
-    	<span><a href="?type=oekonomik">&Oumlt;konomik</a></span>
+    	<span><a href="?type=oekonomik">&Ouml;konomik</a></span>
     	<span><a href="?type=ethik">Ethik</a></span>
     	<span><a href="?type=politik">Politik</a></span>
     	<span><a href="?type=audio">Tonaufnahmen</a></span>
