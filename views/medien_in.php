@@ -117,9 +117,36 @@ else {
     </div>
 
   <?
-  } ?>
+  } 
   
-
+	if(isset($_GET['type']))
+	{
+	$type2 =  $_GET['type'];
+	
+	if ($type2 == 'scholien'){
+		$type3 = 'scholie';
+		include('../schriften/schriften_data.php');
+	}
+	
+	elseif ($type2 == 'analysen'){
+		$type3 = 'analyse';
+		include('../schriften/schriften_data.php');
+	}
+	
+	elseif ($type2 == 'buecher'){
+		$type3 = 'buch';
+		include('../schriften/schriften_data.php');
+	}
+}
+else {
+  ?>
+    <div class="salon_types">
+    	<span><a class="salon_types_active" href="index.php">Alle</a></span>
+    	<span><a href="?type=oekonomik">&Oumlt;konomik</a></span>
+    	<span><a href="?type=ethik">Ethik</a></span>
+    	<span><a href="?type=politik">Politik</a></span>
+    	<span><a href="?type=audio">Tonaufnahmen</a></span>
+    </div> 
 	<div class="medien_content">
 
 <?php
@@ -146,7 +173,7 @@ else {
 		$start = 0;								//if no page var is given, set start to 0
 	
 	/* Get data. */
-	$sql = "SELECT * from produkte WHERE (type LIKE 'paket' or type LIKE 'audio' or type LIKE 'video') AND status > 0 order by id asc, n asc LIMIT $start, $limit";
+	$sql = "SELECT * from produkte WHERE (type LIKE 'paket' or type LIKE 'audio') AND status > 0 order by id asc, n asc LIMIT $start, $limit";
 	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	
@@ -242,50 +269,68 @@ else {
 //$sql = "SELECT * from produkte WHERE (type LIKE 'paket' or type LIKE 'audio' or type LIKE 'video') AND status > 0 order by title asc, n asc";
 //$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
+echo "<table class='schriften_table'>";
+
 while($entry = mysql_fetch_array($result))
 {
-						//Change button-value according to media type
-	if ($entry[type] == 'paket') { $btn_value = "Herunterladen";} 
-  if ($entry[type] == 'audio') { $btn_value = "Herunterladen";} 
-    if ($entry[type] == 'video') { $btn_value = "Ansehen";}
-	
   $id = $entry[id];
-  $n = $entry[n];
-            
-?>    
-	 <a class="medien_title_list" href='?q=<?echo $id;?>'><?echo $entry[title];?></a>
-     <p><?echo $entry[text];?></p>
-     
-     <? /*
-			if ($_SESSION['Mitgliedschaft'] == 1) {
-				echo '<div class="centered"><input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal"></div>';
-			}
-			else { ?>
-				<div class='centered'>			
-				<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-					<span class="medien_price"><?php echo $entry[price]; ?> Credits</span>
-      				<input type="hidden" name="add" value="<?php echo $n; ?>">
-     				<!--<select name="quantity">
-        				<option value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>        
-      				</select> -->
-      				<input type="hidden" name="quantity" value="1">
-      				<input type="submit" class="inputbutton" value="<?echo $btn_value;?>">
-    			</form>
-    			</div>
-    		<?
-			}
-			*/?>
-     
-	 <div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
+  
+  	//Change button-value according to media type
+	if ($entry[type] == 'paket') { $btn_value = "Herunterladen";} 
+    if ($entry[type] == 'audio') { $btn_value = "Herunterladen";} 
+    if ($entry[type] == 'video') { $btn_value = "Ansehen";}
+  
+    //check, if there is a image in the salon folder
+	$img = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
+
+	if (@getimagesize($img)) {
+	    $img_url = $img;
+	} else {
+	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
+	}
 	
+?>
+		<tr>
+			<td class="schriften_table_a">
+				<a href="<? echo "?q=$id";?>"><img src="<?echo $img_url;?>" alt="Cover <?echo $id;?>"></a>
+			</td>			
+			<td class="schriften_table_b">
+				<span><? echo ucfirst($entry[type]);?></span><br>
+      			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
+      			<p>
+      				<? 	$text1 = wordwrap($entry[text], 500, "\0");
+						$short_text = preg_replace('/^(.*?)\0(.*)$/is', '$1', $text1);
+      				
+      					if (strlen($entry[text]) > 500) {
+							echo $short_text;
+              echo '...';
+						}
+						else {
+							echo $entry[text];
+						}?>
+				</p>
+			</td>
+			<!--<td class="schriften_table_c">
+				<?php
+					/*if 	($_SESSION['Mitgliedschaft'] == 1) { 
+						echo '<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">';
+					}
+					else {
+						
+						echo "<a href='?q=$id'><button class='inputbutton' type='button'>Bestellen</button></a>";
+      					}     									
+					*/?>
+			</td>-->
+		</tr>
+      
+    <tr><td colspan="3"> <div class="centered"><p class='linie'><img style='height: 35px' src='../style/gfx/linie.png' alt=''></p></div></td></tr>
+
+
 <?php
 	}
+	echo "</table>";
 	echo $pagination;
-	echo "</div>";
+	}
 }
 ?>
 
