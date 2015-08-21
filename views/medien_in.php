@@ -120,21 +120,7 @@ else {
   } 
   
 	if(isset($_GET['type']))
-	{
-	$type2 =  $_GET['type'];	
-	
-	if ($type2 == 'oekonomik'){
-		$type3 = substr('');
-	}	
-	elseif ($type2 == 'ethik'){
-		$type3 = 'analyse';
-	}	
-	elseif ($type2 == 'politik'){
-		$type3 = 'buch';
-	}
-	elseif ($type2 == 'audio'){
-		$type3 = 'buch';
-	}
+	{	
 	include('../medien/medien_data.php');
 }
 else {

@@ -1,4 +1,6 @@
-
+<?php
+	$type2 =  $_GET['type'];	
+?>
     <div class="salon_types">
     	<span><a href="index.php">Alle</a></span>
     	<span><a <?if ($type2 == 'oekonomik'){echo 'class="salon_types_active"';}?> href="?type=oekonomik">&Ouml;konomik</a></span>
