@@ -281,12 +281,12 @@ while($entry = mysql_fetch_array($result))
     if ($entry[type] == 'video') { $btn_value = "Ansehen";}
   
     //check, if there is a image in the salon folder
-	$img = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
+	$img = 'http://test.wertewirtschaft.net/medien/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
+	    $img_url = "http://test.wertewirtschaft.net/medien/default.jpg";
 	}
 	
 ?>
@@ -334,6 +334,7 @@ while($entry = mysql_fetch_array($result))
 }
 ?>
 
+	</div>
 <!--	<div class="medien_seperator">
     	<h1>Video</h1>
     </div>
