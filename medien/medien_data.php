@@ -10,9 +10,7 @@
     </div> 
     <div class="medien_content">
 <?php
-		$type3 = 'W';
-
-
+	
 //Pagination Script found at http://www.phpeasystep.com/phptu/29.html
   $tbl_name="produkte";   //your table name
   // How many adjacent pages should be shown on each side?
@@ -22,7 +20,12 @@
      First get total number of rows in data table. 
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
-  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (SUBSTRING(type,0,1) LIKE '$type3') AND status > 0";
+  if ($type2 == 'audio'){
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE '$type2') AND status > 0";
+  }
+  else {
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type2 LIKE '$type2') AND status > 0";
+  }
   $total_pages = mysql_fetch_array(mysql_query($query));
   $total_pages = $total_pages[num];
   
@@ -36,8 +39,12 @@
     $start = 0;               //if no page var is given, set start to 0
   
   /* Get data. */
-  $sql = "SELECT * from produkte WHERE (type LIKE '$type3') AND status > 0 order by n desc LIMIT $start, $limit";
-  
+  if ($type2 == 'audio'){
+  	$sql = "SELECT * from produkte WHERE (type LIKE '$type2') AND status > 0 order by n desc LIMIT $start, $limit";
+    }
+  else {
+  	$sql = "SELECT * from produkte WHERE (type2 LIKE '$type2') AND status > 0 order by n desc LIMIT $start, $limit";
+	  }
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   
 
