@@ -54,7 +54,9 @@ if(isset($_GET['q']))
   $n = $entry3[n];
   $price = $entry3[price];
   $title=$entry3[title];
-
+  $spots_total=$entry3[spots];
+  $spots_sold=$entry3[spots_sold];
+  $spots_available=$spots_total-$spots_sold;
   
 ?>
   	<div class="salon_head">
@@ -109,7 +111,10 @@ if(isset($_GET['q']))
   if ($_SESSION['Mitgliedschaft'] > 1) {
     ?>
     <!--<p class="salon_reservation_span_d"><?echo $entry3[price]?> Credits pro Teilnehmer</p>-->
-
+<?php  
+	if ($spots_available >= 5) {
+		?>	
+				
 	<span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Teilnehmer</span><br>
     <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
@@ -123,7 +128,83 @@ if(isset($_GET['q']))
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
     </form>
   <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
-  <?php
+  
+ <?php
+  	}
+
+elseif ($spots_available == 4) {
+	?>
+
+	<span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Teilnehmer</span><br>
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      	<option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>        
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
+    </form>
+  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+
+<?php	
+	}
+ 
+ elseif ($spots_available == 3) {
+	?>
+
+	<span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Teilnehmer</span><br>
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      	<option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>        
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
+    </form>
+  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+ 
+ <?php	
+	}
+ 
+ 
+ elseif ($spots_available == 2) {
+	?>
+
+	<span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Teilnehmer</span><br>
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      	<option value="1">1</option>
+        <option value="2">2</option>       
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
+    </form>
+  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+ 
+ <?php	
+	}
+ 
+ 
+ elseif ($spots_available == 1) {
+	?>
+
+<span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Teilnehmer</span><br>
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      	<option value="1">1</option>      
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
+    </form>
+  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+
+ <?php	
+	}
+ 
+	
   }
 ?>
 			</div>
