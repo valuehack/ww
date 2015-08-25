@@ -199,8 +199,7 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
                 &copy; 2015 | scholarium&trade; | Schl&ouml;sselgasse 19/2/18 | 1080 Vienna | Austria <br>
             </p>
             <p class="img_links">
-                Background-Images: <a href="https://www.flickr.com/photos/vicky_dom/4505629727/in/photolist-7S9wKa-JpHmB-fmD7tY-pChGzq-im9VR9-7ksmUq-bseisy-7X9i14-7kosN6-7kos6V-7ksmx9-7ksnqJ-7ksnfm-7ksmMb-7kosoc-66F1Fj-8prkC2-tQneH-aF4GaF-7XcwQJ-p93rb8-sPuGz-tyicX-27zRvG-66AJjH-9eraM9-oDiyrz-aZycNt-bVNkEa-8Dz3Ms-4newSt-4newGx-aCffN8-4niAEG-4niAuS-85ADww-9zFcom-7XcwZo-8JhPq9-85WKqK-9zFctL-7TGwnw-85ADCo-7X9kFe-7TDf2X-bGFxpi-89uKFL-bVNoFF-bVNkXV-cdaDdo">"Wood Cutting" by Vicky Hugheston</a> 
-                and <a href="https://www.flickr.com/photos/riebart/4466482623/in/photolist-7NFTF6-4qquBv-4qvivG-6WxYTc-57hHm6-mjhDwB-5VKcCj-8SjwXw-79EVn6-nfPx72-6xfvm9-ccQ6rL-75cgcM-59ib1t-7Gyyds-9UNeUM-fKSF1d-asasy3-Mdf4-ptJh3V-apgafX-KnCK4-4U2GPi-bpd8Ht-4usG5p-GH7wh-jmr8PB-as7QVk-ec78kF-b7r6g-6fmKyW-3AvBtV-4nqiZn-5RUuNN-6NKzvV-kmhEbE-7E9fqU-d9A4Eb-7d7ipd-8dpeZZ-buRLHu-5WvBYq-7tnkmy-8dsw7J-asaxj1-asawS3-5XzfyW-aMG5S4-9dUbHm-d9A3SY">"Code" by Michael Himbeault</a>
+                Background-Image: <a href="https://www.flickr.com/photos/riebart/4466482623/in/photolist-7NFTF6-4qquBv-4qvivG-6WxYTc-57hHm6-mjhDwB-5VKcCj-8SjwXw-79EVn6-nfPx72-6xfvm9-ccQ6rL-75cgcM-59ib1t-7Gyyds-9UNeUM-fKSF1d-asasy3-Mdf4-ptJh3V-apgafX-KnCK4-4U2GPi-bpd8Ht-4usG5p-GH7wh-jmr8PB-as7QVk-ec78kF-b7r6g-6fmKyW-3AvBtV-4nqiZn-5RUuNN-6NKzvV-kmhEbE-7E9fqU-d9A4Eb-7d7ipd-8dpeZZ-buRLHu-5WvBYq-7tnkmy-8dsw7J-asaxj1-asawS3-5XzfyW-aMG5S4-9dUbHm-d9A3SY">"Code" by Michael Himbeault</a>
             </p>
         </footer>        
 
