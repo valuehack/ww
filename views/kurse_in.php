@@ -156,7 +156,7 @@ if(isset($_GET['q']))
 <?php
 }
   else { 
-  if ($_SESSION['Mitgliedschaft'] >= 1) {
+  if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>
     <div class="salon_info">  
     	<?php  
@@ -166,7 +166,18 @@ if(isset($_GET['q']))
 	
 				echo $entry4[info];			
 			?>
-    </div> 
+		<div class="centered">
+			<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
+				<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+  				<input type=hidden name="first_reg" value="seminare">
+  				<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+			</form>
+		</div>
+    </div>
+	<?
+  }
+  else {
+  ?>
     <div class="salon_seperator">
     	<h1>Termine</h1>
    	</div>
@@ -177,7 +188,6 @@ if(isset($_GET['q']))
     </div>   
  	<div class="salon_content">
   <?
-  } 
   
   $current_dateline=strtotime(date("Y-m-d"));
   
@@ -223,12 +233,13 @@ if(isset($_GET['q']))
     //echo "<div class='salon_anmeldung'><a href='?q=$id'>zur Anmeldung</a></div>";
 	echo "<div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>";
   } 
-} 
-
 ?>
 		</div>
 	</div>
-
+<?
+  }
+}
+?>
 <!-- Modal 1 - Mitgliedschaft == 1 
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

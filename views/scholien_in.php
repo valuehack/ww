@@ -258,11 +258,18 @@ else
 				$entry4 = mysql_fetch_array($result2);
 				
 				echo $entry4[info1];
-
-		echo "</div>";
-		echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
+		?>
+			<div class="centered">
+				<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
+					<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+  					<input type=hidden name="first_reg" value="scholien">
+  					<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+				</form>
+			</div>
+		</div>
+		<?
 		}
-
+		else {
 
 		while($entry = mysql_fetch_array($result))
 		{
@@ -291,7 +298,8 @@ else
 			echo "</div>";
 			echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 		}
-	}
+	  }
+   }
 }
 	?>
 

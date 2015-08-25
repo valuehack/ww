@@ -149,15 +149,25 @@ else {
 		<?
 //für Interessenten (Mitgliedschaft 1) Erklärungstext oben
 	
-  if ($_SESSION['Mitgliedschaft'] >= 1) {
+  if ($_SESSION['Mitgliedschaft'] == 1) {
   	echo "<div class='salon_info'>";
 			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
 			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 			$entry4 = mysql_fetch_array($result);
 	
-				echo $entry4[info];			
-     			echo "</div>";
+				echo $entry4[info];	
+	?>
+			<div class="centered">
+				<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
+					<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+  					<input type=hidden name="first_reg" value="scholien">
+  					<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+				</form>
+			</div>		
+   </div>
+   <?
   }
+  else {
 ?>
 		<div class="salon_seperator">
     		<h1>Termine</h1>
@@ -210,10 +220,13 @@ else {
   ?>
   	</div>
   </div>
-  
-<?php
+  	<?php
+  }
 }    
   ?> 
+
+  
+
 
  <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

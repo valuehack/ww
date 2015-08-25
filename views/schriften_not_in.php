@@ -64,7 +64,6 @@ else {
 	
 				echo $entry4[info];			
 			?>
-			<div class="blog_upgrade">
 				<div class="centered">
 					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
 						<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
@@ -72,7 +71,6 @@ else {
   						<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
 					</form>
 				</div>
-			</div>	
 	</div>
 <? 
 }
