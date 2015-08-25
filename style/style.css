@@ -452,7 +452,7 @@ img.dropdown_coin {
 
 #nav li:hover {
 	/*background: #827d77;*/
-	background: rgb(11,19,30);
+	background: rgb(255,255,255);
 }
 
 #nav li a {
@@ -467,7 +467,7 @@ img.dropdown_coin {
 
 #nav li a:hover {
   	text-decoration: none; 
-   	color: rgb(250,250,250); 
+   	color: rgb(20,20,20); 
 	padding: 2px 10px;
 	font-size: 17px;
 	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
@@ -475,11 +475,11 @@ img.dropdown_coin {
 
 #nav li a.active {
 	text-decoration: none; 
-   	color: rgb(250,250,250); 
+   	color: rgb(20,20,20); 
 	padding: 10px 10px 2px 10px;
 	font-size: 17px;
 	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
-	background: rgb(11,19,30);
+	background: rgb(255,255,255);
 	margin-top: -9px;
 }
 
@@ -745,9 +745,12 @@ img.dropdown_coin {
 
 .blog_info {
 	font-size: 14pt;
-	font-style: italic;
 	line-height: 1.6;
 	margin-top: -30px;
+}
+
+.blog_info p {
+	font-style: italic;
 }
 
 .blog_info a:hover {

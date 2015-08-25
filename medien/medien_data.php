@@ -3,9 +3,9 @@
 ?>
     <div class="salon_types">
     	<span><a href="index.php">Alle</a></span>
-    	<span><a <?if ($type2 == 'Salon'){echo 'class="salon_types_active"';}?> href="?type=salon">&Ouml;konomik</a></span>
-    	<span><a <?if ($type2 == 'Vorlesung'){echo 'class="salon_types_active"';}?> href="?type=vorlesung">Ethik</a></span>
-    	<span><a <?if ($type2 == 'Vortrag'){echo 'class="salon_types_active"';}?> href="?type=vortrag">Politik</a></span>
+    	<span><a <?if ($type2 == 'salon'){echo 'class="salon_types_active"';}?> href="?type=salon">Salon</a></span>
+    	<span><a <?if ($type2 == 'vorlesung'){echo 'class="salon_types_active"';}?> href="?type=vorlesung">Vorlesung</a></span>
+    	<span><a <?if ($type2 == 'vortrag'){echo 'class="salon_types_active"';}?> href="?type=vortrag">Vortrag</a></span>
     </div> 
     <div class="medien_content">
 <?php
