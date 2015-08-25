@@ -76,7 +76,7 @@ if ($id = $_GET["q"])
 }
 
 else {
-  if ($_SESSION['Mitgliedschaft'] >= 1) { 
+  if ($_SESSION['Mitgliedschaft'] == 1) { 
     echo "<div class='medien_info'>";
 
 			$sql = "SELECT * from static_content WHERE (page LIKE 'projekte')";
@@ -96,7 +96,7 @@ else {
     <?
   }
 
-  else {
+  elseif ($_SESSION['Mitgliedschaft'] > 1){
 
   echo "<div class='medien_info'>";
 
