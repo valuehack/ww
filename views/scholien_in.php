@@ -68,7 +68,7 @@ if(isset($_GET['q']))
 		echo "</header>";
 		}	
 		
-	if ($_SESSION['Mitgliedschaft'] == 1) {
+	if ($_SESSION['Mitgliedschaft'] >= 1) {
 		"<p class='blogdate'>".date('d.m.Y', strtotime($publ_date))."</p>";
 		?>
 		<!--<img class="blog_img" src="<?echo $img_url;?>" rel="image_src" alt="<?echo $id;?>">-->
