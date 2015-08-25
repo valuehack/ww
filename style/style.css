@@ -229,6 +229,14 @@ h3 {
 	font-family: "Garamond", Georgia, Times, sans-serif;
 }
 
+.anmelden a {
+	padding-top: 4px;
+	display: block;
+	text-decoration: none;
+	color: rgb(20,20,20);
+	font-style: italic;
+}
+
 .login_button {
 	background: none;
 	color: rgb(0,0,0);

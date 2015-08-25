@@ -87,9 +87,10 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                   }
               }
               ?>
+              		<div class="anmelden"><i><a href="http://www..scholarium.at/">Deutsch</a></i></div>
                 	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Sign In</button></div>
                 	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Log In</button></div>
-                	 <div class="anmelden"><i><a href="http://www..scholarium.at/">Deutsch</a></i></div>
+                	 
             </div>
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>
