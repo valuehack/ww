@@ -1369,7 +1369,7 @@ a.socialimg:visited {
 
 .medien_info {
 	width: 75%;
-	padding: 75px 12.5%;
+	padding: 75px 12.5% 0;
 }
 
 .medien_info h1 {
@@ -2552,11 +2552,11 @@ img.projekte_coin2  {
 .footer_contact p {
 	font-size: 14pt;
 	padding: 10px 0 0 0;
-	margin-left: 90px;
+	margin-left: 73px;
 }
 
 .footer_contact ul {
-	margin-left: 90px;
+	margin-left: 73px;
 }
 
 .footer_contact li {
