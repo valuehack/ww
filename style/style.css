@@ -1004,7 +1004,7 @@ a.blog_linkbutton {
 	background: rgb(46,74,98);
 	border: 0 !important;
 	margin: 30px auto 10px auto;
-	width: 200px;
+	max-width: 400px;
 	height: 37px;
 	padding-top: 13px;
 	font-size: 16pt;

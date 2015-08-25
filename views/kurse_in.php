@@ -156,7 +156,7 @@ if(isset($_GET['q']))
 <?php
 }
   else { 
-  if ($_SESSION['Mitgliedschaft'] == 1) {
+  if ($_SESSION['Mitgliedschaft'] >= 1) {
   ?>
     <div class="salon_info">  
     	<?php  
