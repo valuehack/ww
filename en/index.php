@@ -1,25 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 	<head>  
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title><?=$title?> | Scholarium</title>
+		<title>Welcome | Scholarium</title>
     
-<?php
-		if ($type == 'blog'){
-			?>
-    	<meta name="twitter:card" content="summary">
-		<meta name="twitter:site" content="@wertewirtschaft">
-		<meta name="author" content="scholarium">
-		<meta property="og:type" content="article">
-		<meta property="og:title" content="<?=$title?>">
-		<meta property="og:image" content="<?=$img_url?>">
-		<meta property="og:description" content="<?=$description_fb?>">
-		<meta property="og:site_name" content="Scholarium">
-		<meta property="og:locale" content="de_DE">
-		<meta property="article:publisher" content="https://www.facebook.com/wertewirtschaft">
-		<? }
-?>
-
     	<link rel="shortcut icon" href="/favicon.ico">
     	<link rel="stylesheet" type="text/css" href="../style/style.css">
 
@@ -103,9 +87,9 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                   }
               }
               ?>
-                	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Eintragen</button></div>
-                	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
-                	 <div class="anmelden"><i><a href="http://en.scholarium.at/">English</a></i></div>
+                	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Sign In</button></div>
+                	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Log In</button></div>
+                	 <div class="anmelden"><i><a href="http://www..scholarium.at/">Deutsch</a></i></div>
             </div>
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>
@@ -117,16 +101,16 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
       	          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="modal-header">
 
-          <h2 class="modal-title" id="myModalLabel">Anmelden</h2>
+          <h2 class="modal-title" id="myModalLabel">Log In</h2>
         </div>
         <div class="modal-body">
           <p>
           	<form method="post" action="index.php" name="registerform">
-          		<input class="inputfield_login" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="on" autofocus required><br>
-          		<input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Passwort" required><br>
-          		<input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="Anmelden">
+          		<input class="inputfield_login" id="keyword" type="email" placeholder=" e-Mail Address" name="user_email" autocomplete="on" autofocus required><br>
+          		<input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Password" required><br>
+          		<input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="Log In">
           	</form>     
-          	<p class="password_login"><a href="/password_reset.php">Passwort vergessen?</a></p>  	
+          	<p class="password_login"><a href="/password_reset.php">Forgott your password?</a></p>  	
           </p>
         </div>
       </div>
@@ -139,13 +123,13 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="modal-header">
 
-          <h2 class="modal-title" id="myModalLabel">Eintragen</h2>
+          <h2 class="modal-title" id="myModalLabel">Sign In</h2>
         </div>
         <div class="modal-body">
           <p>
             <form method="post" action="index.php" name="registerform">
-                <input class="inputfield_login" id="keyword" type="email" placeholder=" E-Mail Adresse" name="user_email" required><br>
-                <input class="inputbutton_login" id="inputbutton" name="eintragen_submit" type="submit" value="Eintragen">
+                <input class="inputfield_login" id="keyword" type="email" placeholder=" e-Mail Address" name="user_email" required><br>
+                <input class="inputbutton_login" id="inputbutton" name="eintragen_submit" type="submit" value="Sign In">
             </form>         
           </p>
         </div>
@@ -157,3 +141,28 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                 <div class="navi"></div>
            </div>
         </header>
+        <div class="content">
+	<div class="blog">
+		<div class="blog_text">
+			
+			<?php
+				$sql = "SELECT * from static_content WHERE (page LIKE 'buerger')";
+				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+				$entry = mysql_fetch_array($result);
+				
+				echo $entry[info_en];			
+			?>
+		
+			<div class="centered">
+				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+  					<input class="inputfield" id="user_email" type="email" placeholder=" e-Mail Address" name="user_email" required>
+  					<!-- make sure that value is changed in here if form is copied/ captures the place of first reg -->
+  					<input type="hidden" name="first_reg" value="landing">
+  					<input class="inputbutton" type="submit" name="eintragen_submit" value="Sign In">
+				</form>
+			</div>
+		</div>		
+	</div>
+</div>
+
+<?php include('views/_footer.php'); ?>
