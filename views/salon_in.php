@@ -148,7 +148,7 @@ else {
 	<div class="content">
 		<?
 //für Interessenten (Mitgliedschaft 1) Erklärungstext oben
-	
+	echo "Session-ID".$_SESSION['Mitgliedschaft'];
   if ($_SESSION['Mitgliedschaft'] <= 1) {
   	echo "<div class='salon_info'>";
 			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
