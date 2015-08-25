@@ -167,8 +167,6 @@ h1, h2 {
    	padding: 0;
 	text-align: center;
 	font-size: 16pt;
-	font-weight: 100;
-	text-shadow: 1px 1px 2px rgb(175,175,175);
 }
 
 .nav li {   
@@ -182,7 +180,7 @@ h1, h2 {
 	display: block;
 	text-decoration: none;
 	padding: 20px;
-	color: rgb(245,245,245);
+	color: rgb(225,225,225);
 	font-family: "Futura Bock", Helvetica, Arial, sans-serif;
 }
 
@@ -501,14 +499,14 @@ section li {
 
 .footer {
 	width: 90%;
-	background: rgb(26,26,26);
+	background: rgb(64,64,128);
 	padding: 20px 5% 15px 5%;
 }
 
 footer p {
 	width: 70%;
 	padding: 0 15%;
-	color: rgb(180,180,180);
+	color: rgb(225,225,225);
 	text-shadow: 1px 1px 1px rgb(15,15,15);
 	font-size: 12pt;
 	line-height: 1.7;
@@ -521,12 +519,12 @@ footer p {
 
 .img_links a {
 	text-decoration: none;
-	color: rgb(100,100,100);
+	color: rgb(225,225,225);
 }
 
 .img_links a:hover {
 	text-decoration: none;
-	color: rgb(210,210,210);
+	color: rgb(255,255,255);
 }
 
 /*===========================================*/
