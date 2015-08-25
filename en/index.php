@@ -69,12 +69,12 @@ else
 		<title>Welcome | Scholarium</title>
     
     	<link rel="shortcut icon" href="/favicon.ico">
-    	<link rel="stylesheet" type="text/css" href="../../style/style.css">
+    	<link rel="stylesheet" type="text/css" href="www.scholarium.at/style/style.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="../tools/bootstrap.js"></script>
+		<script src="www.scholarium.at/tools/bootstrap.js"></script>
 
     	<!-- this is used for this fancy login form -->
     	<script language="javascript" src="../js/jquery.js"></script>
