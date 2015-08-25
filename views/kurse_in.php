@@ -188,7 +188,7 @@ if(isset($_GET['q']))
   
   $current_dateline=strtotime(date("Y-m-d"));
   
-  $sql="SELECT * from produkte WHERE (UNIX_TIMESTAMP(start)>=$current_dateline) and (type='lehrgang' or type='seminar' or type='kurs') and status>0 order by start asc, n asc";
+  $sql="SELECT * from produkte WHERE (UNIX_TIMESTAMP(start)>=$current_dateline) and (type='lehrgang' or type='seminar' or type='kurs') and status>0 and spots > spots_sold order by start asc, n asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   
   while($entry = mysql_fetch_array($result))
