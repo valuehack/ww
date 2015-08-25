@@ -1,66 +1,66 @@
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_regular.otf') format('opentype');
+	src: url('fonts/garamond_regular.otf') format('opentype');
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_italic.otf') format('opentype');
+	src: url('fonts/garamond_italic.otf') format('opentype');
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_bold.otf') format('opentype');
+	src: url('fonts/garamond_bold.otf') format('opentype');
 	font-weight: bold;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_semibold.otf') format('opentype');
+	src: url('fonts/garamond_semibold.otf') format('opentype');
 	font-weight: 500;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_italic.otf') format('opentype');
+	src: url('fonts/garamond_italic.otf') format('opentype');
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_bold-italic.otf') format('opentype');
+	src: url('fonts/garamond_bold-italic.otf') format('opentype');
 	font-weight: bold;
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_semibold-italic.otf') format('opentype');
+	src: url('fonts/garamond_semibold-italic.otf') format('opentype');
 	font-weight: 500;
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Futura Bock';
-	src: url('futura_bock_regular.ttf') format('truetype');
+	src: url('fonts/futura_bock_regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Futura Bock';
-	src: url('futura_bock_italic.ttf') format('truetype');
+	src: url('fonts/futura_bock_italic.ttf') format('truetype');
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Futura Bock';
-	src: url('futura_bock_bold.ttf') format('truetype');
+	src: url('fonts/futura_bock_bold.ttf') format('truetype');
 	font-weight: bold;
 }
 
 @font-face {
 	font-family: 'Futura Bock';
-	src: url('futura_bock_bold-italic.ttf') format('truetype');
+	src: url('fonts/futura_bock_bold-italic.ttf') format('truetype');
 	font-style: italic;
 	font-weight: bold;
 }
@@ -206,6 +206,8 @@ h1, h2 {
 	width: 100%;
 	height: 600px;
 	opacity: 0.7;
+	background-size: cover;
+	background-position: 0px -300px;
 }
 
 .bannerms {
