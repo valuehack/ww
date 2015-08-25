@@ -103,7 +103,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                   }
               }
               ?>
-                    <div class="anmelden"><i><a href="http://en.scholarium.at/">English</a></i></div>
+                    <div class="anmelden"><a href="http://en.scholarium.at/">English</a></div>
                 	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Eintragen</button></div>
                 	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
 

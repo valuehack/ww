@@ -230,11 +230,12 @@ h3 {
 }
 
 .anmelden a {
-	padding-top: 4px;
+	padding-top: 4px 9px;
 	display: block;
 	text-decoration: none;
 	color: rgb(20,20,20);
 	font-style: italic;
+	float: right;
 }
 
 .login_button {
