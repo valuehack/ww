@@ -167,11 +167,8 @@ else {
    </div>
    <?
   }
-  else {
+  elseif ($_SESSION['Mitgliedschaft'] > 1) {
 ?>
-		<div class="salon_seperator">
-    		<h1>Termine</h1>
-   		</div>
    		<div class="salon_types">
     		<span><a href="../veranstaltungen/">Alle</a></span>
     		<span><a href="../seminare/">Seminare</a></span>

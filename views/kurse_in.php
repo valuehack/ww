@@ -156,7 +156,7 @@ if(isset($_GET['q']))
 <?php
 }
   else { 
-  if ($_SESSION['Mitgliedschaft'] >= 1) {
+  if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>
     <div class="salon_info">  
     	<?php  
@@ -176,11 +176,8 @@ if(isset($_GET['q']))
     </div>
 	<?
   }
-  else {
+  elseif ($_SESSION['Mitgliedschaft'] > 1){ 
   ?>
-    <div class="salon_seperator">
-    	<h1>Termine</h1>
-   	</div>
    	<div class="salon_types">
     	<span><a href="../veranstaltungen/">Alle</a></span>
     	<span><a class="salon_types_active" href="">Seminare</a></span>

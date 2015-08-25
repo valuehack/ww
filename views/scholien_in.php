@@ -250,7 +250,7 @@ else
 	 <div class="content">
            <article class="blog">
 	
-		<?php if ($_SESSION['Mitgliedschaft'] >= 1) { 
+		<?php if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div class='blog_info'>";
 		
 				$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
@@ -269,7 +269,7 @@ else
 		</div>
 		<?
 		}
-		else {
+		elseif ($_SESSION['Mitgliedschaft'] > 1){
 
 		while($entry = mysql_fetch_array($result))
 		{

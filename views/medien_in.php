@@ -101,7 +101,7 @@ if(isset($_GET['q']))
      
 else {
 	
-  if ($_SESSION['Mitgliedschaft'] >= 1) {
+  if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>       
   	<div class='medien_info'>
   		<?php
@@ -122,7 +122,7 @@ else {
 
   <?
   } 
-  else {
+  elseif ($_SESSION['Mitgliedschaft'] > 1) {
   
 	if(isset($_GET['type']))
 	{	
