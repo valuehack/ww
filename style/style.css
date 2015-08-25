@@ -2535,7 +2535,7 @@ img.projekte_coin2  {
 	font-size: 12pt;
 	text-align: justify;
 	line-height: 1.73;
-	margin-top: 131.8667px;
+	margin-top: 140px;
 }
 
 .footer_contact {
@@ -2808,7 +2808,6 @@ button.close {
 	font-size: 22pt;
   	margin: 0;
   	line-height: 1.5;
-  	font-weight: bold;
 }
 
 .modal-body {

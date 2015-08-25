@@ -299,11 +299,11 @@ else
 			echo "<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>";
 		}
 	  }
-   }
-}
-	?>
 
-<?=$pagination?>
+	echo $pagination;
+	   }
+}
+?>
            </article> 
         </div>
 
