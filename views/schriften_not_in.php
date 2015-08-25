@@ -66,10 +66,6 @@ else {
 			?>
 			
 	</div>
-	<div class="medien_seperator">
-    	<h1>Schriften</h1>
-    </div>
- 
 <? if(isset($_GET['type']))
 {
 	$type2 =  $_GET['type'];

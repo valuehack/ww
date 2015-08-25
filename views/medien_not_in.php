@@ -61,9 +61,6 @@ else {
 				echo $entry[info];			
 			?>
 	</div>
-	<div class="medien_seperator">
-		<h1>Tonaufnahmen</h1>
-	</div>
 	<?
 	  
 	if(isset($_GET['type']))

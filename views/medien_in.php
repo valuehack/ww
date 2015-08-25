@@ -112,9 +112,6 @@ else {
 				echo $entry4[info];			
 			?>
    </div>
- 	<div class="medien_seperator">
-    	<h1>Medien</h1>
-    </div>
 
   <?
   } 
