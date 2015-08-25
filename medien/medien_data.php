@@ -3,10 +3,9 @@
 ?>
     <div class="salon_types">
     	<span><a href="index.php">Alle</a></span>
-    	<span><a <?if ($type2 == 'oekonomik'){echo 'class="salon_types_active"';}?> href="?type=oekonomik">&Ouml;konomik</a></span>
-    	<span><a <?if ($type2 == 'ethik'){echo 'class="salon_types_active"';}?> href="?type=ethik">Ethik</a></span>
-    	<span><a <?if ($type2 == 'politik'){echo 'class="salon_types_active"';}?> href="?type=politik">Politik</a></span>
-    	<span><a <?if ($type2 == 'audio'){echo 'class="salon_types_active"';}?> href="?type=audio">Tonaufnahmen</a></span>
+    	<span><a <?if ($type2 == 'Salon'){echo 'class="salon_types_active"';}?> href="?type=salon">&Ouml;konomik</a></span>
+    	<span><a <?if ($type2 == 'Vorlesung'){echo 'class="salon_types_active"';}?> href="?type=vorlesung">Ethik</a></span>
+    	<span><a <?if ($type2 == 'Vortrag'){echo 'class="salon_types_active"';}?> href="?type=vortrag">Politik</a></span>
     </div> 
     <div class="medien_content">
 <?php
@@ -20,8 +19,8 @@
      First get total number of rows in data table. 
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
-  if ($type2 == 'audio'){
-  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE '$type2') AND status > 0";
+  if ($type2 == 'vorlesung'){
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'paket') AND status > 0";
   }
   else {
   	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type2 LIKE '$type2') AND status > 0";
@@ -39,8 +38,8 @@
     $start = 0;               //if no page var is given, set start to 0
   
   /* Get data. */
-  if ($type2 == 'audio'){
-  	$sql = "SELECT * from produkte WHERE (type LIKE '$type2') AND status > 0 order by n desc LIMIT $start, $limit";
+  if ($type2 == 'vorlesung'){
+  	$sql = "SELECT * from produkte WHERE (type LIKE 'paket') AND status > 0 order by n desc LIMIT $start, $limit";
     }
   else {
   	$sql = "SELECT * from produkte WHERE (type2 LIKE '$type2') AND status > 0 order by n desc LIMIT $start, $limit";
