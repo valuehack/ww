@@ -25,8 +25,6 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-		<!-- Bootstrap -->
-		<!--<link href="../style/modal.css" rel="stylesheet">-->
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../tools/bootstrap.js"></script>
 
@@ -105,8 +103,10 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                   }
               }
               ?>
+                    <div class="anmelden"><a href="http://en.scholarium.at/">English</a></div>
                 	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Eintragen</button></div>
                 	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
+
             </div>
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>

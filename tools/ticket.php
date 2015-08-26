@@ -79,4 +79,7 @@ $dompdf->render();
   // to the client.
 
    file_put_contents("../tickets/ticket_".$user_id."_".$type."_".$key.".pdf", $pdf);
+
+   $ticket_location = "../tickets/ticket_".$user_id."_".$type."_".$key.".pdf";
+
 ?>

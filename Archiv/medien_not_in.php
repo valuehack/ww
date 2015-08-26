@@ -1,51 +1,23 @@
 <?
 require_once('../classes/Login.php');
 $title="Medien";
-include "_header_in.php";
+include('_header_not_in.php'); 
 
 ?>
 
 <div class="content">
-
-<?php 
-if(!isset($_SESSION['basket'])){
-    $_SESSION['basket'] = array();
-}
-
-if(isset($_POST['add'])){
-
-  $add_id = $_POST['add'];
-  $add_quantity = $_POST['quantity'];
-  $add_code = $add_id . "0";
-  if ($add_quantity==1) $wort = "wurde";
-  else $wort = "wurden";
-  echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>&raquo; zum Korb</a></div>";
-
-  if (isset($_SESSION['basket'][$add_code])) {
-    $_SESSION['basket'][$add_code] += $add_quantity; 
-  }
-  else {
-    $_SESSION['basket'][$add_code] = $add_quantity; 
-  }
-}
-
-
+ 
+ <?php
 if(isset($_GET['q']))
 {
   $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE (type LIKE 'paket' or type LIKE 'audio' or type LIKE 'video') AND id = '$id'";
+  $sql="SELECT * from produkte WHERE (type LIKE 'paket' or type LIKE 'audio' or type LIKE 'video') AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
-  $n = $entry3[n];
   
-  				//Change button-value according to media type
-    if ($entry3[type] == 'paket') { $btn_value = "Herunterladen";} 
-  	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
-    if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
-
-            	//check, if there is a image in the medien folder
+      	//check, if there is a image in the medien folder
 	$img = 'http://www.scholarium.at/medien/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
@@ -53,84 +25,70 @@ if(isset($_GET['q']))
 	} else {
 	    $img_url = "http://www.scholarium.at/medien/default.jpg";
 	}
-	
 ?>
   	<div class="medien_head">
-  		<h1><?=$entry3[title];?></h1>	
-		<div>
-  		<div class="schriften_img">
-			<img src="<?echo $img;?>" alt="">
-		</div>
-		<div class="schriften_bestellen">
-			<?
-			if ($_SESSION['Mitgliedschaft'] == 1) {
-				echo '<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';
-			}
-			else { ?>
-				<span class='coin'><img src="../style/gfx/coin.png"></span><span class="schriften_price"><?php echo $entry3[price]; ?></span> 
-				<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-      				<input type="hidden" name="add" value="<?php echo $n; ?>" />
-     				<!--<select name="quantity">
-        				<option value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>        
-      				</select> -->
-      				<input type="hidden" name="quantity" value="1">
-              <input type="submit" class="inputbutton" value="<?echo $btn_value;?>">
-    			</form>
-    		<?
-			}
-			?>
-		</div>
-		</div>
+  		<h1><?=$entry3[title];?></h1>
+		<!--<img src="<?echo $img;?>" alt="<?echo $id;?>">-->
 	</div>
 	<div class="medien_seperator">
-		<h1>Inhalt</h1>
+		<h1>Inhalt und Informationen</h1>
 	</div>
 	<div class="medien_content">
 <? 
   if ($entry3[text]) echo "<p>".$entry3[text]."</p>";
   if ($entry3[text2]) echo "<p>".$entry3[text2]."</p>";
 ?>
-  	<div class="medien_anmeldung"><a href='<?echo htmlentities($_SERVER['PHP_SELF']);?>'>zur&uuml;ck zu den Medien</a></div>
-	</div>
+
+  	<!-- Button trigger modal -->
+  	<div class="centered">
+  		<input type="button" class="inputbutton" value="Herunterladen" data-toggle="modal" data-target="#myModal">
+  	</div>
+  	<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Medien</a></div>  
+  </div>
 <?php
 }
-     
-else {
-	
-  if ($_SESSION['Mitgliedschaft'] == 1) {
-  ?>       
-  	<div class='medien_info'>
-  		<?php
+         
+else { 
+?>   
+	<div class="medien_info">
+		<h1>Medien</h1>
+
+		<?php
 				$sql = "SELECT * from static_content WHERE (page LIKE 'medien')";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-				$entry4 = mysql_fetch_array($result);
+				$entry = mysql_fetch_array($result);
 				
-				echo $entry4[info];			
+				echo $entry[info];			
 			?>
-		<div class="centered">
-			<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
-		</div>
-   </div>
-
-  <?
-  } 
-  elseif ($_SESSION['Mitgliedschaft'] > 1) {
-  
+	</div>
+	<?
+	  
 	if(isset($_GET['type']))
-	{	
-	include('../medien/medien_data.php');
+	{
+	$type2 =  $_GET['type'];	
+	
+	if ($type2 == 'oekonomik'){
+		$type3 = 'scholie';
+	}	
+	elseif ($type2 == 'ethik'){
+		$type3 = 'analyse';
+	}	
+	elseif ($type2 == 'politik'){
+		$type3 = 'buch';
 	}
-	else {
+	elseif ($type2 == 'audio'){
+		$type3 = 'buch';
+	}
+	include('../medien/medien_data.php');
+}
+else {
   ?>
     <div class="salon_types">
     	<span><a class="salon_types_active" href="index.php">Alle</a></span>
-    	<span><a href="?type=salon">Salon</a></span>
-    	<span><a href="?type=vorlesung">Vorlesung</a></span>
-    	<span><a href="?type=politik">Vortrag</a></span>
+    	<span><a href="?type=oekonomik">&Ouml;konomik</a></span>
+    	<span><a href="?type=ethik">Ethik</a></span>
+    	<span><a href="?type=politik">Politik</a></span>
+    	<span><a href="?type=audio">Tonaufnahmen</a></span>
     </div> 
 	<div class="medien_content">
 
@@ -316,36 +274,12 @@ while($entry = mysql_fetch_array($result))
 	echo "</table>";
 	echo $pagination;
 	}
-  }
 }
 ?>
 
 	</div>
-<!--	<div class="medien_seperator">
-    	<h1>Video</h1>
-    </div>
-	<div class="medien_content"> -->
-<?php
-/*
-$sql = "SELECT * from produkte WHERE type LIKE 'video' AND status > 0 order by title asc, id asc";
-$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
-while($entry = mysql_fetch_array($result))
-{
-  $video_id = $entry[id];
- 
-          echo "<a class='medien_title_list' href='?q=$video_id'>".$entry[title];"</a>"; 
-	}
-
-?>
-	</div>
-<?
-}
-*/
-?>
-
-<!-- </div> -->
-
+	
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -355,12 +289,14 @@ while($entry = mysql_fetch_array($result))
         <h2 class="modal-title" id="myModalLabel">Herunterladen</h2>
       </div>
       <div class="modal-body">
-      	<?php
-      		echo $entry4[modal];
-		?>
-      </div>
-      <div class="modal-footer">
-         <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
+         <p>Wir freuen uns, dass Sie Interesse an unseren Medien haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten der Bestellung oder des Herunterladens digitaler Dateien zu erfahren (diese k&ouml;nnen wir leider nicht offen zug&auml;nglich machen):
+         </p>
+        <div class="subscribe">
+          <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
+          	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+          	<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+          </form> 
+        </div>
       </div>
     </div>
   </div>

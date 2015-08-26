@@ -1,35 +1,70 @@
 @font-face {
-	font-family: 'Baskerville';
-	src: url('baskerville_regular.otf') format('opentype');
+	font-family: 'Garamond';
+	src: url('fonts/garamond_regular.otf') format('opentype');
 }
 
 @font-face {
-	font-family: 'Baskerville';
-	src: url('baskerville_italic.otf') format('opentype');
+	font-family: 'Garamond';
+	src: url('fonts/garamond_italic.otf') format('opentype');
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_regular.otf') format('opentype');
+	src: url('fonts/garamond_bold.otf') format('opentype');
+	font-weight: bold;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_italic.otf') format('opentype');
+	src: url('fonts/garamond_semibold.otf') format('opentype');
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: 'Garamond';
+	src: url('fonts/garamond_italic.otf') format('opentype');
 	font-style: italic;
 }
 
 @font-face {
-	font-family: 'Futura';
-	src: url('futura_regular.otf') format('opentype');
+	font-family: 'Garamond';
+	src: url('fonts/garamond_bold-italic.otf') format('opentype');
+	font-weight: bold;
+	font-style: italic;
 }
 
 @font-face {
-	font-family: 'Futura';
-	src: url('futura_italic.otf') format('opentype');
+	font-family: 'Garamond';
+	src: url('fonts/garamond_semibold-italic.otf') format('opentype');
+	font-weight: 500;
 	font-style: italic;
 }
+
+@font-face {
+	font-family: 'Futura Bock';
+	src: url('fonts/futura_bock_regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Futura Bock';
+	src: url('fonts/futura_bock_italic.ttf') format('truetype');
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Futura Bock';
+	src: url('fonts/futura_bock_bold.ttf') format('truetype');
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'Futura Bock';
+	src: url('fonts/futura_bock_bold-italic.ttf') format('truetype');
+	font-style: italic;
+	font-weight: bold;
+}
+
 /*==================================
  * CSS Reset
  ===================================*/
@@ -86,9 +121,13 @@ table {
 /*          General                        */
 /*=========================================*/
 
-p, h1, h2, a, ul, ol {
-	font-family: "Baskerville", Georgia, Times, serif;
+p, a, ul, ol {
+	font-family: "Garamond", Georgia, Times, serif;
 	color: #333;
+}
+
+h1, h2 {
+	font-family: "Futura Bock", Helvetica, Arial, sans-serif;
 }
 
 /*=========================================*/
@@ -98,7 +137,7 @@ p, h1, h2, a, ul, ol {
 .header {
 	height: 60px;
 	width: 100%;
-	background: rgb(10,10,10);
+	background: rgb(64,64,127);
 	position: fixed;
 	z-index: 500;
 	opacity: 0.9;
@@ -114,7 +153,7 @@ p, h1, h2, a, ul, ol {
 
 .header span {
 	margin: 10px 6% 10px 0;
-	font-family: Futura, sans-serif;
+	font-family: "Futura Bock", Helvetica, Arial, sans-serif;
 	font-size: 30px;
 	color: #fff;
 	text-shadow: 0px 0px 2px #fff;
@@ -128,12 +167,9 @@ p, h1, h2, a, ul, ol {
    	padding: 0;
 	text-align: center;
 	font-size: 16pt;
-	font-weight: 100;
-	text-shadow: 2px 2px 2px rgb(20,20,20);
 }
 
-.nav li {
-    font-family: Futura, sans-serif;
+.nav li {   
 	list-style: none;
    	float: left; 
 	height: 60px;
@@ -144,15 +180,16 @@ p, h1, h2, a, ul, ol {
 	display: block;
 	text-decoration: none;
 	padding: 20px;
-	color: rgb(180,180,180);
+	color: rgb(225,225,225);
+	font-family: "Futura Bock", Helvetica, Arial, sans-serif;
 }
 
 .nav li a:active {
-	color: rgb(225,225,225);
+	color: rgb(255,255,255);
 }
 
 .nav li a:hover {
-	color: rgb(225,225,225);
+	color: rgb(255,255,255);
 }
 
 .banner {
@@ -167,6 +204,8 @@ p, h1, h2, a, ul, ol {
 	width: 100%;
 	height: 600px;
 	opacity: 0.7;
+	background-size: cover;
+	background-position: 0px -300px;
 }
 
 .bannerms {
@@ -181,12 +220,13 @@ p, h1, h2, a, ul, ol {
 	color: #fff;
 	padding-top: 60px;
 	text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
+	font-family: "Garamond", Georgia, Times, serif;
 }
 
 .bannerms span {
 	font-size: 76pt;
 	line-height: 1.1em;
-	font-family: Futura, sans-serif;
+	font-family: "Futura Bock", Helvetica, Arial, sans-serif;
 	color: #fff;
 	padding-top: 60px;
 	text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
@@ -220,23 +260,23 @@ p, h1, h2, a, ul, ol {
 section p {
 	font-size: 16pt;
 	line-height: 2em;
-	font-family: "Baskerville", Georgia, Times, serif;
+	font-family: "Garamond", Georgia, Times, serif;
 	margin: 20px 0;
 	text-align: justify;
 }
 
 section h1 {
 	font-size: 24pt;
-	font-weight: bold;
 	text-transform: uppercase;
 	margin-bottom: 20px;
-	font-family: Futura, sans-serif;
+	font-family: "Futura Bock", Helvetica, Arial, sans-serif;
 }
 
 section h2 {
 	font-style: italic;
 	font-size: 20pt;
 	margin: 30px 0;
+	line-height: 1.4;
 }
 
 section ol {
@@ -253,8 +293,7 @@ section li {
 }
 
 .fontchange {
-	font-family: Futura, sans-serif;
-	font-size: 14pt;
+	font-family: "Futura Bock", Helvetica, Arial, sans-serif;
 }
 
 .s1 {
@@ -325,13 +364,13 @@ section li {
 	width: 35%;
 	height: 50px;
 	font-size: 16pt;
-	font-family: "Baskerville", Georgia, Times, serif;
+	font-family: "Garamond", Georgia, Times, serif;
 	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2) inset;
 }
 
 .inputbutton {
 	text-decoration: none;
-	background: rgb(153,210,23);
+	background: rgb(64,64,124);
 	color: #fff;
 	text-shadow: 1px 0 2px 0 rgba(30, 30, 30, 0.6);
 	border: 0;
@@ -340,13 +379,13 @@ section li {
 	width: 350px;
 	height: 60px;
 	font-size: 24pt;
-	font-family: "Baskerville", Georgia, Times, serif;
+	font-family: "Garamond", Georgia, Times, serif;
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
 	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.16) inset, 0px 0px 10px 0px rgba(0, 0, 0, 0.34) inset;
 }
 
 .inputbutton:hover {
-	background: rgb(111,153,17);
+	background: rgb(51,51,102);
 }
 
 .ok {
@@ -374,6 +413,7 @@ section li {
 	text-align: center;
 	text-shadow: 1px 1px 1px rgb(15,15,15);
 	color: rgb(255,255,255);
+	font-family: "Futura Bock", Helvetica, Arial, serif;
 }
 
 .input {
@@ -459,14 +499,14 @@ section li {
 
 .footer {
 	width: 90%;
-	background: rgb(26,26,26);
+	background: rgb(64,64,128);
 	padding: 20px 5% 15px 5%;
 }
 
 footer p {
 	width: 70%;
 	padding: 0 15%;
-	color: rgb(180,180,180);
+	color: rgb(225,225,225);
 	text-shadow: 1px 1px 1px rgb(15,15,15);
 	font-size: 12pt;
 	line-height: 1.7;
@@ -479,12 +519,12 @@ footer p {
 
 .img_links a {
 	text-decoration: none;
-	color: rgb(100,100,100);
+	color: rgb(225,225,225);
 }
 
 .img_links a:hover {
 	text-decoration: none;
-	color: rgb(210,210,210);
+	color: rgb(255,255,255);
 }
 
 /*===========================================*/
@@ -622,6 +662,7 @@ button.close {
   	min-height: 16.42857143px;
  	padding: 15px;
   	text-align: center;
+  	font-style: "Futura Bock", Helvetica, Arial, sans-serif;
 }
 
 .modal-header .close {
@@ -644,6 +685,7 @@ button.close {
 	font-size: 14pt;
 	line-height: 1.6;
 	padding: 15px 0;
+	font-style: "Garamond", Georgia, Times, serif;
 }
 
 .modal-body p {

@@ -83,11 +83,16 @@ else {
 			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 			$entry4 = mysql_fetch_array($result);
 	
-				echo $entry4[info];			
-    echo "</div>";
+				echo $entry4[info];	
+	?>
+			<div class="centered">
+				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+			</div>		
+    </div>
+    <?
   }
 
-  else {
+  elseif ($_SESSION['Mitgliedschaft'] > 1){
 
   echo "<div class='medien_info'>";
 
@@ -97,11 +102,8 @@ else {
 	
 				echo $entry4[info2];		
   echo '</div>';
-  }
+  
 ?>
-	<div class="medien_seperator">
-		<h1>Offene Projekte</h1>
-	</div>
 	<div class="medien_content">
 <?php
 
@@ -244,6 +246,7 @@ else {
 
 
 <?php 
+	}
 } 
 ?>
 </div>

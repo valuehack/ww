@@ -334,6 +334,7 @@ function checkMe() {
         $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
         $mail->AddAddress($user_email);
         $mail->Subject = 'Bestellung';
+        $mail->addAttachment($ticket_location); 
  
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 

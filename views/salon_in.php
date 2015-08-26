@@ -48,6 +48,9 @@ if(isset($_GET['q']))
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
   $price = $entry3[price];
+  $spots_total=$entry3[spots];
+  $spots_sold=$entry3[spots_sold];
+  $spots_available=$spots_total-$spots_sold;
   
   	//check, if there is a image in the salon folder
 	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
@@ -95,7 +98,7 @@ if(isset($_GET['q']))
     //Button trigger modal
     echo '<input class="salon_reservation_inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';
   }  
-  else {
+  elseif ($spots_available >= 5){
     ?>
     <span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Eintrittskarten</span><br>
     <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
@@ -111,8 +114,70 @@ if(isset($_GET['q']))
     </form>
 	<div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
 <?php  
+  }	
+
+ elseif ($spots_available >= 4){
+    ?>
+    <span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Eintrittskarten</span><br>
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      	<option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>       
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
+    </form>
+	<div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+<?php  
+  }	
+	
+	elseif ($spots_available >= 3){
+    ?>
+    <span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Eintrittskarten</span><br>
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      	<option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>      
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
+    </form>
+	<div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+<?php  
   }
-?>		
+		
+	elseif ($spots_available >= 2){
+    ?>
+    <span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Eintrittskarten</span><br>
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      	<option value="1">1</option>
+        <option value="2">2</option>      
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
+    </form>
+	<div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+<?php  
+  }
+
+	elseif ($spots_available >= 1){
+    ?>
+    <span class="salon_reservation_span_a">Anzahl gew&uuml;nschter Eintrittskarten</span><br>
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      	<option value="1">1</option>     
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
+    </form>
+	<div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+<?php  
+  }
+?>	
 			</div>
 		</div>		
 	</div>
@@ -148,20 +213,23 @@ else {
 	<div class="content">
 		<?
 //für Interessenten (Mitgliedschaft 1) Erklärungstext oben
-	
-  if ($_SESSION['Mitgliedschaft'] >= 1) {
+	echo "Session-ID".$_SESSION['Mitgliedschaft'];
+  if ($_SESSION['Mitgliedschaft'] == 1) {
   	echo "<div class='salon_info'>";
 			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
 			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 			$entry4 = mysql_fetch_array($result);
 	
-				echo $entry4[info];			
-     			echo "</div>";
+				echo $entry4[info];	
+	?>
+			<div class="centered">
+				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+			</div>		
+   </div>
+   <?
   }
+  elseif ($_SESSION['Mitgliedschaft'] > 1) {
 ?>
-		<div class="salon_seperator">
-    		<h1>Termine</h1>
-   		</div>
    		<div class="salon_types">
     		<span><a href="../veranstaltungen/">Alle</a></span>
     		<span><a href="../seminare/">Seminare</a></span>
@@ -210,8 +278,8 @@ else {
   ?>
   	</div>
   </div>
-  
-<?php
+  	<?php
+  }
 }    
   ?> 
 

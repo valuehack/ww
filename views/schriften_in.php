@@ -69,12 +69,12 @@ if(isset($_GET['q']))
   $title=$entry3[title];
   
           	//check, if there is a image in the salon folder
-	$img = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
+	$img = 'http://www.scholarium.at/schriften/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
+	    $img_url = "http://www.scholarium.at/schriften/default.jpg";
 	}
 ?>
   	<div class="medien_head">
@@ -166,32 +166,28 @@ else {
 			$entry4 = mysql_fetch_array($result);
 	
 				echo $entry4[info];			
-			?>	  
+			?>
+			<div class="centered">
+				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+			</div>	  
   </div>
-  <div class="medien_seperator">
-    <h1>Schriften</h1>
-  </div> 
   <?
   }
-
+  elseif ($_SESSION['Mitgliedschaft'] > 1){
 	if(isset($_GET['type']))
 	{
 	$type2 =  $_GET['type'];
 	
 	if ($type2 == 'scholien'){
 		$type3 = 'scholie';
-		include('../schriften/schriften_data.php');
-	}
-	
+	}	
 	elseif ($type2 == 'analysen'){
 		$type3 = 'analyse';
-		include('../schriften/schriften_data.php');
-	}
-	
+	}	
 	elseif ($type2 == 'buecher'){
 		$type3 = 'buch';
-		include('../schriften/schriften_data.php');
 	}
+	include('../schriften/schriften_data.php');
 }	
 else {
 ?>
@@ -332,12 +328,12 @@ while($entry = mysql_fetch_array($result))
   $id = $entry[id];
   
   //check, if there is a image in the salon folder
-	$img = 'http://test.wertewirtschaft.net/schriften/'.$id.'.jpg';
+	$img = 'http://www.scholarium.at/schriften/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/schriften/default.jpg";
+	    $img_url = "http://www.scholarium.at/schriften/default.jpg";
 	}
 	
 ?>
@@ -381,7 +377,7 @@ while($entry = mysql_fetch_array($result))
 	}
 	echo "</table>";
   	echo $pagination;
-  
+  	}
   }
 }
 ?>

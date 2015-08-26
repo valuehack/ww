@@ -133,7 +133,7 @@ if (isset($registration)) {
         <div class="modal-body">
           <p>
             <form method="post" action="index.php" name="registerform">
-                <input class="inputfield_login" id="keyword" type="email" placeholder=" <?=$email_adresse?>" name="user_email" required autofocus><br>
+                <input class="inputfield_login" id="keyword" type="email" placeholder=" <?=$email_adresse?>" name="user_email" required><br>
                 <input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" <?=$passwort?>" required><br>
                 <input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="<?=$anmelden?>">
             </form>     
