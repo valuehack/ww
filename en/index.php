@@ -112,92 +112,12 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
 	<body>
         <header class="header">
         	<div class="login">
-
-                  <?php
-
-                  // show potential errors / feedback (from login object)
-              if (isset($login)) {
-                  if ($login->errors) {
-                      foreach ($login->errors as $error) {
-                          #add some html to make it look nicer
-                          
-                        ?><p class='error'> <?php echo $error; ?> </p> <?php
-                      }
-                  }
-                  if ($login->messages) {
-                      foreach ($login->messages as $message) {
-                          #echo $message;
-                          ?><p class='message'> <?php echo $message; ?> </p> <?php
-                      }
-                  }
-              }
-              // show potential errors / feedback (from registration object)
-              if (isset($registration)) {
-                  if ($registration->errors) {
-                      foreach ($registration->errors as $error) {
-                          #echo $error;
-                      ?><p class='error'> <?php echo $error; ?> </p> <?php
-                      }
-                  }
-                  if ($registration->messages) {
-                      foreach ($registration->messages as $message) {
-                          #echo $message;
-                          ?><p class='message'> <?php echo $message; ?> </p> <?php
-                      }
-                  }
-              }
-              ?>
               		<div class="anmelden"><i><a href="http://www.scholarium.at/">Deutsch</a></i></div>
-                	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Sign In</button></div>
-                	<div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Log In</button></div>
-                	 
+                               	 
             </div>
             <div class="logo">
-                <a href="/"><img class="logo_img" src="http://www.scholarium.at/style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>
-                	
-<!-- Login Modal -->
-  <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog-login">
-      <div class="modal-content-login">
-      	          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <div class="modal-header">
-
-          <h2 class="modal-title" id="myModalLabel">Log In</h2>
-        </div>
-        <div class="modal-body">
-          <p>
-          	<form method="post" action="index.php" name="registerform">
-          		<input class="inputfield_login" id="keyword" type="email" placeholder=" e-Mail Address" name="user_email" autocomplete="on" autofocus required><br>
-          		<input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Password" required><br>
-          		<input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="Log In">
-          	</form>     
-          	<p class="password_login"><a href="http://www.scholarium.at/password_reset.php">Forgot your password?</a></p>  	
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- Sign Up Modal -->  
-  <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog-login">
-      <div class="modal-content-login">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <div class="modal-header">
-
-          <h2 class="modal-title" id="myModalLabel">Sign In</h2>
-        </div>
-        <div class="modal-body">
-          <p>
-            <form method="post" action="index.php" name="registerform">
-                <input class="inputfield_login" id="keyword" type="email" placeholder=" e-Mail Address" name="user_email" required><br>
-                <input class="inputbutton_login" id="inputbutton" name="eintragen_submit" type="submit" value="Sign In">
-            </form>         
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>           	
-  				</div>
+                <a href="/"><img class="logo_img" src="http://www.scholarium.at/style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>              	
+  			</div>
             <div class="nav">
                 <div class="navi"></div>
            </div>
