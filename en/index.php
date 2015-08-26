@@ -68,17 +68,13 @@ else
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Welcome | Scholarium</title>
     
-    	<link rel="shortcut icon" href="favicon.ico">
-    	<link rel="stylesheet" type="text/css" href="style.css">
+    	<link rel="shortcut icon" href="http://www.scholarium.at/favicon.ico">
+    	<link rel="stylesheet" type="text/css" href="http://www.scholarium.at/style/style.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="bootstrap.js"></script>
-
-    	<!-- this is used for this fancy login form -->
-    	<script language="javascript" src="../js/jquery.js"></script>
-    	<script language="javascript" src="../js/script.js"></script>
+		<script src="http://www.scholarium.at/tools/bootstrap.js"></script>
 
 		<!-- Google Analytics Code -->
 		<script type="text/javascript">
@@ -157,7 +153,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                 	 
             </div>
             <div class="logo">
-                <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>
+                <a href="/"><img class="logo_img" src="http://www.scholarium.at/style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>
                 	
 <!-- Login Modal -->
   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -175,7 +171,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
           		<input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Password" required><br>
           		<input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="Log In">
           	</form>     
-          	<p class="password_login"><a href="/password_reset.php">Forgott your password?</a></p>  	
+          	<p class="password_login"><a href="http://www.scholarium.at/password_reset.php">Forgot your password?</a></p>  	
           </p>
         </div>
       </div>
@@ -211,7 +207,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
 		<div class="blog_text">
 			
 			<?php
-				$sql = "SELECT * from static_content WHERE (page LIKE 'buerger')";
+				$sql = "SELECT * from static_content WHERE (page LIKE 'landing')";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				$entry = mysql_fetch_array($result);
 				
@@ -219,7 +215,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
 			?>
 		
 			<div class="centered">
-				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+				<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
   					<input class="inputfield" id="user_email" type="email" placeholder=" e-Mail Address" name="user_email" required>
   					<!-- make sure that value is changed in here if form is copied/ captures the place of first reg -->
   					<input type="hidden" name="first_reg" value="landing">
@@ -230,7 +226,45 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
 	</div>
 </div>
 
-<?php include('../views/_footer.php'); ?>
+        <footer class="footer">
+        	<div class="footer_section">
+        		<div class="footer_info">
+        			<?php
+						$sql = "SELECT * from static_content WHERE (page LIKE 'footer')";
+						$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+						$entry = mysql_fetch_array($result);
+				
+						echo $entry[info];			
+					?>
+        		</div>
+        		<div class="footer_contact">
+        			<img src="http://www.scholarium.at/style/gfx/footer_logo.png" alt="Scholarium Logo">
+        			<ul>
+        				<li>Schl&ouml;sselgasse 19/2/18</li>
+        				<li>1080 Wien</li>
+        				<li>&Ouml;sterreich</li>
+        				<li>&nbsp;</li>
+        				<li>E-Mail:&nbsp;<a href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;</a></li>
+					</ul>
+					<p><a href="http://www.scholarium.at/agb/">AGB</a></p> 
+        		</div>
+        	</div>
+        	<div class="footer_section">
+        		<div class="footer_tm">
+        			<p>&copy; scholarium&trade;</p>
+        		</div>
+        		<div class="footer_social">
+        			<ul>
+        				<li><a class="footer_social_facebook" href="https://www.facebook.com/wertewirtschaft" target="_blank" title="Besuchen Sie uns auf Facebook"></a></li>
+        				<li><a class="footer_social_twitter" href="https://www.twitter.com/wertewirtschaft" target="_blank" title="Folgen Sie uns auf Twitter"></a></li>
+        				<li><a class="footer_social_xing" href="https://www.xing.com/companies/institutf%C3%BCrwertewirtschaft" target="_blank" title="Scholarium bei Xing"></a></li>
+        				<li><a class="footer_social_youtube" href="https://www.youtube.com/user/Wertewirtschaft" target="_blank" title="Schauen Sie unsere Videos auf YouTube"></a></li>
+        			</ul>
+        		</div>
+        	</div>
+        </footer>
+    </body>
+</html>
 <?
 }
 ?>
