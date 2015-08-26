@@ -20,10 +20,13 @@
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
   if ($type2 == 'vorlesung'){
-  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'paket') AND status > 0";
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'vorlesung') AND status > 0";
+  }
+  elseif ($type2 == 'vortrag'){
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'vortrag') AND status > 0";
   }
   else {
-  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type2 LIKE '$type2') AND status > 0";
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type2 LIKE 'salon') AND status > 0";
   }
   $total_pages = mysql_fetch_array(mysql_query($query));
   $total_pages = $total_pages[num];
@@ -38,12 +41,15 @@
     $start = 0;               //if no page var is given, set start to 0
   
   /* Get data. */
-  if ($type2 == 'vorlesung'){
-  	$sql = "SELECT * from produkte WHERE (type LIKE 'paket') AND status > 0 order by n desc LIMIT $start, $limit";
-    }
+    if ($type2 == 'vorlesung'){
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'vorlesung') AND status > 0 order by n desc LIMIT $start, $limit";
+  }
+  elseif ($type2 == 'vortrag'){
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'vortrag') AND status > 0 order by n desc LIMIT $start, $limit";
+  }
   else {
-  	$sql = "SELECT * from produkte WHERE (type2 LIKE '$type2') AND status > 0 order by n desc LIMIT $start, $limit";
-	  }
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type2 LIKE 'salon') AND status > 0 order by n desc LIMIT $start, $limit";
+  }
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   
 
