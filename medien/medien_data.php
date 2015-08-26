@@ -42,13 +42,13 @@
   
   /* Get data. */
     if ($type2 == 'vorlesung'){
-  	$sql = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'vorlesung') AND status > 0 order by n desc LIMIT $start, $limit";
+  	$sql = "SELECT * from produkte WHERE (type LIKE 'vorlesung') AND status > 0 order by n desc LIMIT $start, $limit";
   }
   elseif ($type2 == 'vortrag'){
-  	$sql = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'vortrag') AND status > 0 order by n desc LIMIT $start, $limit";
+  	$sql = "SELECT * from produkte WHERE (type LIKE 'vortrag') AND status > 0 order by n desc LIMIT $start, $limit";
   }
   else {
-  	$sql = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type2 LIKE 'salon') AND status > 0 order by n desc LIMIT $start, $limit";
+  	$sql = "SELECT * from produkte WHERE (type2 LIKE 'salon') AND status > 0 order by n desc LIMIT $start, $limit";
   }
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   
