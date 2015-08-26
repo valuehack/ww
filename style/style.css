@@ -1,66 +1,66 @@
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_regular.otf') format('opentype');
+	src: url('http://www.scholarium.at/style/font/garamond_regular.otf') format('opentype');
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_italic.otf') format('opentype');
+	src: url('http://www.scholarium.at/style/font/garamond_italic.otf') format('opentype');
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_bold.otf') format('opentype');
+	src: url('http://www.scholarium.at/style/font/garamond_bold.otf') format('opentype');
 	font-weight: bold;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_semibold.otf') format('opentype');
+	src: url('http://www.scholarium.at/style/font/garamond_semibold.otf') format('opentype');
 	font-weight: 500;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_italic.otf') format('opentype');
+	src: url('http://www.scholarium.at/style/font/garamond_italic.otf') format('opentype');
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_bold-italic.otf') format('opentype');
+	src: url('http://www.scholarium.at/style/font/garamond_bold-italic.otf') format('opentype');
 	font-weight: bold;
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_semibold-italic.otf') format('opentype');
+	src: url('http://www.scholarium.at/style/font/garamond_semibold-italic.otf') format('opentype');
 	font-weight: 500;
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Futura Bock';
-	src: url('futura_bock_regular.ttf') format('truetype');
+	src: url('http://www.scholarium.at/style/font/futura_bock_regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Futura Bock';
-	src: url('futura_bock_italic.ttf') format('truetype');
+	src: url('http://www.scholarium.at/style/font/futura_bock_italic.ttf') format('truetype');
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Futura Bock';
-	src: url('futura_bock_bold.ttf') format('truetype');
+	src: url('http://www.scholarium.at/style/font/futura_bock_bold.ttf') format('truetype');
 	font-weight: bold;
 }
 
 @font-face {
 	font-family: 'Futura Bock';
-	src: url('futura_bock_bold-italic.ttf') format('truetype');
+	src: url('http://www.scholarium.at/style/font/futura_bock_bold-italic.ttf') format('truetype');
 	font-style: italic;
 	font-weight: bold;
 }
