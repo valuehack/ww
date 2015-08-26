@@ -68,17 +68,13 @@ else
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Welcome | Scholarium</title>
     
-    	<link rel="shortcut icon" href="../favicon.ico">
-    	<link rel="stylesheet" type="text/css" href="../style/style.css">
+    	<link rel="shortcut icon" href="http://www.scholarium.at/favicon.ico">
+    	<link rel="stylesheet" type="text/css" href="http://www.scholarium.at/style/style.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="../tools/bootstrap.js"></script>
-
-    	<!-- this is used for this fancy login form -->
-    	<script language="javascript" src="../js/jquery.js"></script>
-    	<script language="javascript" src="../js/script.js"></script>
+		<script src="http://www.scholarium.at/tools/bootstrap.js"></script>
 
 		<!-- Google Analytics Code -->
 		<script type="text/javascript">
@@ -157,7 +153,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                 	 
             </div>
             <div class="logo">
-                <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>
+                <a href="/"><img class="logo_img" src="http://www.scholarium.at/style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>
                 	
 <!-- Login Modal -->
   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -175,7 +171,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
           		<input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Password" required><br>
           		<input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="Log In">
           	</form>     
-          	<p class="password_login"><a href="/password_reset.php">Forgott your password?</a></p>  	
+          	<p class="password_login"><a href="http://www.scholarium.at/password_reset.php">Forgott your password?</a></p>  	
           </p>
         </div>
       </div>
@@ -219,7 +215,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
 			?>
 		
 			<div class="centered">
-				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
+				<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
   					<input class="inputfield" id="user_email" type="email" placeholder=" e-Mail Address" name="user_email" required>
   					<!-- make sure that value is changed in here if form is copied/ captures the place of first reg -->
   					<input type="hidden" name="first_reg" value="landing">
