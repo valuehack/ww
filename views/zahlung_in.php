@@ -21,7 +21,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
               $level = 'Teilnehmer';
               break;
           case 300:
-              $level = 'Wertewirt';
+              $level = 'Scholar';
               break;
           case 600:
               $level = 'Partner';
@@ -164,13 +164,9 @@ if (!isset($_COOKIE['gaveCredits'])) {
       }
 
       else {
-        echo '<div class="payment_success>"<p><b>Vielen Dank f&uuml;r Ihre Mitgliedschaft!</b></p>';
+        echo '<div class="payment_success>"<p><b>Vielen Dank f&uuml;r Ihre Unterst&uuml;tzung!</b></p>';
 
-        echo '<p><b>Laufzeit und K&uuml;ndigung:</b></p>';
-
-        echo '<p>Die Mitgliedschaft l&auml;uft ein Jahr und verl&auml;ngert sich automatisch um ein weiteres Jahr wenn Sie nicht zwei Wochen vor Ablauf k&uuml;ndigen. Eine K&uuml;ndigung ist jederzeit m&ouml;glich, E-Mail oder Fax gen&uuml;gt.</p>';
-
-        echo "<p>Sie haben das Abo ".$level." bestellt.</p></div>";
+        echo "<p>Sie haben das Unterst&uuml;tzungs-Niveau ".$level." gew&auml;hlt.</p></div>";
 
       }
 
@@ -178,30 +174,15 @@ if (!isset($_COOKIE['gaveCredits'])) {
       {
       ?>
       <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <?php echo $betrag?> an:</p><br>
-      <p><i>International</i>
+      <p>
       <ul>
-      <li>Institut f&uuml;r Wertewirtschaft</li>
+      <li>scholarium</li>
       <li>Erste Bank, Wien/&Ouml;sterreich</li>
-      <li>Kontonummer: 28824799900</li>
-      <li>Bankleitzahl: 20111</li>
-      <li>IBAN: AT332011128824799900</li>
+      <li>IBAN: AT81 2011 1827 1589 8501</li>
       <li>BIC: GIBAATWW</li>
       </ul></p>
 
-      <p>Alternativ k&ouml;nnen Sie den Gegenwert in Schweizer Franken auf folgendes Konto &uuml;berweisen:</p>
-
-      <p>
-      <ul>
-      <li>Institut f&uuml;r Wertewirtschaft</li>
-      <li>Liechtensteinische Landesbank</li>
-      <li>Kontonummer: 23103297</li>
-      <li>Bankleitzahl: 08800</li>
-      <li>IBAN: LI6308800000023103297</li>
-      <li>BIC: LILALI2X</li>
-      </ul>
-      </p>
-
-      <p><b>Bitte verwenden Sie als Sie als Zahlungsreferenz/Betreff unbedingt &quot;Mitglied Nr. <?php echo $user_id ?>&quot;</b></p>
+      <p><b>Bitte verwenden Sie als Sie als Zahlungsreferenz/Betreff unbedingt &quot;Spende Nr. <?php echo $user_id ?>&quot;</b></p>
       
       <?php
       }
@@ -246,7 +227,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
 
       elseif ($zahlung=="bar")
       {
-      echo "<p>Bitte schicken Sie uns den gew&auml;hlten Betrag von $betrag &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das Institut f&uuml;r Wertewirtschaft, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich im Institut (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>";
+      echo "<p>Bitte schicken Sie uns den gew&auml;hlten Betrag von $betrag &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das scholarium, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>";
       }
 
 
