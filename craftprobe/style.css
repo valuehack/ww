@@ -350,6 +350,13 @@ section li {
 	margin: 2px 0 50px;
 	text-align: justify;
 }
+
+.crew_levels {
+	font-family: "Futura Bock", Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-weight: 550;
+}
 /*=========================================*/
 /*          Form                           */
 /*=========================================*/

@@ -179,7 +179,7 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
                 <h1>crew</h1>
                 
                 
-                <p><b>Captain</b></p>
+                <p class="crew_levels">Captain</p>
                 
             	<?php
             
@@ -222,7 +222,7 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
                       
         
                 
-                <p><b>Admiralty</b></p>
+                <p class="crew_levels">Admiralty</p>
                 
                 <?php
                 
@@ -258,7 +258,7 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
                 		
 			?>
                 
-                <p><b>Officers</b></p>
+               <p class="crew_levels">Officers</p>
                 
                         
             	<?php
@@ -302,7 +302,7 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
                
                
                
-               <p><b>Mates</b></p>
+               <p class="crew_levels">Mates</p>
                 
                         
             	<?php
@@ -343,7 +343,7 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
 				?>
 				
 				
-               <!--<p><b>Sailors</b></p>
+              <!--<p class="crew_levels">Sailors</p>
                 
                         
             	<?php
