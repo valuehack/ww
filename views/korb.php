@@ -176,7 +176,7 @@ function checkMe() {
 		echo "<td style='width:10%'>&nbsp;</td>";
         echo "<td style='width:50%'><b>Name</b></td>";
         echo "<td style='width:10%'><b>Menge</b></td>";
-        echo "<td style='width:15%'><b>Preis</b></td>";
+        echo "<td style='width:15%'><b>Guthaben</b></td>";
         echo "<td style='width:15%'>&nbsp;</td></tr>";
 
         foreach ($items as $code => $quantity) {
@@ -220,14 +220,14 @@ function checkMe() {
                             echo $quantity;
                         }
             echo "</td>";
-            echo "<td><i>".$sum." Credits</i></td>";
+            echo "<td><i>".$sum."</i></td>";
 
             $id = $itemsExtraArray[id];
             $type = $itemsExtraArray[type];
 
             switch ($format) {
-                case 0: if ($type == 'audio') $extension = '.mp3';
-                        if ($type == 'paket') $extension = '.zip';
+                case 0: if ($type == 'media-salon' || $type == 'media-vortrag') $extension = '.mp3';
+                        if ($type == 'media-vorlesung') $extension = '.zip';
                         break;
                 case 1: $extension = '.pdf'; break;
                 case 2: $extension = '.epub'; break;
@@ -244,20 +244,17 @@ function checkMe() {
 
                 $file_path = 'http://scholarium.at/down_secure/content_secure/'.$id.$extension;
                 //$download_link = downloadurl($file_path , $key);
-                //echo $file_path;
-                //echo '<td><a href="'.$download$file_path = 'http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'/.pdf';_link.'" onclick="updateReferer(this.href);">03/14 Universit&auml;t (Test secureDownload)</a>';
-           
-
-                if (($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'paket' || $type == 'audio') && $format != 4) {
+                
+                if (($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'media-vorlesung' || $type == 'media-vortrag' || $type == 'media-salon') && $format != 4) {
 
                 ?>
-                <td><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href);">Download</a></td>
+                <td><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href);">Herunterladen</a></td>
                 </tr>
 
                 <?php
                  }
                 elseif ($type == 'salon' || $type == 'lehrgang' || $type == 'seminar' || $type == 'kurs') {
-                    echo '<td>Reserviert - Ticket wird per E-Mail zugesandt</td></tr>';
+                    echo '<td>Reserviert</td></tr>';
                 }
                 elseif ($format == 4) {
                     echo '<td>wird zugesandt</td></tr>';
@@ -272,11 +269,11 @@ function checkMe() {
             /*
             $file = '/secdown/sec_files/'.$key.'.jpg';
             if (file_exists($file)) {
-                echo '<td><a href="'.$file.'" download>Download</a></td></tr>';
+                echo '<td><a href="'.$file.'" download>Herunterladen</a></td></tr>';
             } 
             else {
                 //generated ticket should come here
-                echo '<td><a href="">Download</a></td></tr>';
+                echo '<td><a href="">Herunterladen</a></td></tr>';
 
             }
             */
@@ -286,11 +283,11 @@ function checkMe() {
         }
         
         if ($versand >= 1) {
-            echo "<tr><td></td><td>Versandkostenpauschale</td><td></td><td>5 Credits</td><td></td></tr>";
+            echo "<tr><td></td><td>Versandkostenpauschale</td><td></td><td>5</td><td></td></tr>";
             $total += 5;
         }
 		echo "<tr><td></td><td></td><td></td><td></td><td></td></tr>";
-        echo "<tr><td></td><td></td><td><b>Summe</b></td><td><b>".$total." Credits</b></td></tr>";
+        echo "<tr><td></td><td></td><td><b>Summe</b></td><td></td><b>".$total."</b><td></td></tr>";
 
         echo "</table>";
 		echo "</div>";
@@ -342,7 +339,7 @@ function checkMe() {
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://www.wertewirtschaft.org/tools/Erinnerung-Header-01.png" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                     <!--#/image#-->
                     </td>
                     </tr>
@@ -366,7 +363,7 @@ function checkMe() {
         $body = $body. "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>
                         <td style='width:55%'><b>Name</b></td>
                         <td style='width:10%'><b>Menge</b></td>
-                        <td style='width:10%'><b>Preis</b></td></tr>";
+                        <td style='width:10%'><b>Guthaben</b></td></tr>";
 
        
         foreach ($items as $code => $quantity) {
@@ -397,14 +394,17 @@ function checkMe() {
                 default: NULL; break;
             }
             $body = $body. "</i></td>";
-            $body = $body. "<td>&nbsp; &nbsp;".$quantity."</td>";
+           
             if ($itemsExtraArray[type] == 'projekt') {
                             $body = $body. "<td>&nbsp; &nbsp; 1</td>";
                         }
                         else {
                             $body = $body. "<td>&nbsp; &nbsp;".$quantity."</td>";
                         }
-            $body = $body. "<td><i>".$sum." Credits</i></td></tr>";
+            if ($format == 4) {$preis=$itemsExtraArray[price_book];}
+            else {$preis=$itemsExtraArray[price];}            
+            $body = $body. "<td>&nbsp; &nbsp;".$preis."</td>";
+            $body = $body. "<td><i>".$sum."</i></td></tr>";
 
             $total2 += $sum;
 
@@ -418,11 +418,11 @@ function checkMe() {
         }
         
         if ($versand >= 1) {
-            $body = $body. "<tr><td></td><td>Versandkostenpauschale</td><td></td><td>5 Credits</td></tr>";
+            $body = $body. "<tr><td></td><td>Versandkostenpauschale</td><td></td><td>5</td><td></td></tr>";
             $total2 += 5;
         }
 
-        $body = $body. "<tr><td></td><td></td><td><b>Summe</b></td><td><b>".$total2." Credits</b></td></tr>";
+        $body = $body. "<tr><td></td><td></td><td><b>Summe</b></td><td></td><td><b>".$total2."</b></td></tr>";
 
         $body = $body. "</table><hr>";
         
@@ -464,7 +464,7 @@ if($_SESSION['basket']) {
 		<div class="basket_head">
 			<div class="basket_head_col_a"></div>
 			<div class="basket_head_col_b">Menge</div>
-			<div class="basket_head_col_c">Preis</div>
+			<div class="basket_head_col_c">Guthaben</div>
 		</div>
 <?php
 
@@ -498,15 +498,15 @@ if($_SESSION['basket']) {
 			$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
             $url2 = 'schriften';
 			}
-		elseif ($type == 'lehrgang' || $type == 'seminar' || $type == 'kurs') {
-			$url = 'http://scholarium.at/kurse/'.$id.'.jpg';
-            $url2 = 'kurse';
+		elseif ($type == 'seminar' || $type == 'kurs') {
+			$url = 'http://scholarium.at/seminare/'.$id.'.jpg';
+            $url2 = 'seminare';
 			}
 		elseif ($type == 'salon') {
 			$url = 'http://scholarium.at/salon/'.$id.'.jpg';
             $url2 = 'salon';
 			}
-        elseif ($type == 'paket' || $type == 'audio' || $type == 'video') {
+        elseif ($type == 'media-vorlesung' || $type == 'media-vortrag' || $type == 'media-salon') {
             $url = 'http://scholarium.at/medien/'.$id.'.jpg';
             $url2 = 'medien';
             }
@@ -709,7 +709,7 @@ else {
         <h2 class="modal-title" id="myModalLabel">Ungenügendes Guthaben</h2>
       </div>
       <div class="modal-body">
-        <p>Vielen Dank f&uuml;r Ihre Bestellung/Reservierung! F&uuml;r den Zugriff/die Teilnahme laden Sie bitte noch Ihr Guthaben auf &ndash; nach Zahlungseingang reservieren wir dann sofort die Pl&auml;tze bzw. Medien f&uuml;r Sie. W&auml;hlen Sie dazu bitte wieder die gew&uuml;nschte Stufe. Vielleicht ist das der richtige Augenblick, sich als Wertewirt zu bekennen und unser Angebot voll nutzen zu k&ouml;nnen?</p>
+        <p>Vielen Dank f&uuml;r Ihre Bestellung/Reservierung! F&uuml;r den Zugriff/die Teilnahme laden Sie bitte noch Ihr Guthaben auf &ndash; nach Zahlungseingang reservieren wir dann sofort die Pl&auml;tze bzw. Medien f&uuml;r Sie. W&auml;hlen Sie dazu bitte wieder die gew&uuml;nschte Stufe. Vielleicht ist das der richtige Augenblick, sich als Scholar zu bekennen und unser Angebot voll nutzen zu k&ouml;nnen?</p>
         
       </div>
       <div class="modal-footer">
