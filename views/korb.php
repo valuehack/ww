@@ -287,7 +287,7 @@ function checkMe() {
             $total += 5;
         }
 		echo "<tr><td></td><td></td><td></td><td></td><td></td></tr>";
-        echo "<tr><td></td><td></td><td><b>Summe</b></td><td></td><b>".$total."</b><td></td></tr>";
+        echo "<tr><td></td><td></td><td><b>Summe</b></td><td><b>".$total."</b></td><td></td></tr>";
 
         echo "</table>";
 		echo "</div>";
