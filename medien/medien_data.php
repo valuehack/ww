@@ -1,11 +1,11 @@
 <?php
-	$type2 =  $_GET['type'];	
+	$type =  $_GET['type'];	
 ?>
     <div class="salon_types">
     	<span><a href="index.php">Alle</a></span>
-    	<span><a <?if ($type2 == 'salon'){echo 'class="salon_types_active"';}?> href="?type=salon">Salon</a></span>
-    	<span><a <?if ($type2 == 'vorlesung'){echo 'class="salon_types_active"';}?> href="?type=vorlesung">Vorlesung</a></span>
-    	<span><a <?if ($type2 == 'vortrag'){echo 'class="salon_types_active"';}?> href="?type=vortrag">Vortrag</a></span>
+    	<span><a <?if ($type == 'media-salon'){echo 'class="salon_types_active"';}?> href="?type=salon">Salon</a></span>
+    	<span><a <?if ($type == 'media-vorlesung'){echo 'class="salon_types_active"';}?> href="?type=vorlesung">Vorlesung</a></span>
+    	<span><a <?if ($type == 'media-vortrag'){echo 'class="salon_types_active"';}?> href="?type=vortrag">Vortrag</a></span>
     </div> 
     <div class="medien_content">
 <?php
@@ -19,20 +19,20 @@
      First get total number of rows in data table. 
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
-  if ($type2 == 'vorlesung'){
-  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'vorlesung') AND status > 0";
+  if ($type2 == 'media-vorlesung'){
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media-vorlesung') AND status > 0";
   }
-  elseif ($type2 == 'vortrag'){
-  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'vortrag') AND status > 0";
+  elseif ($type2 == 'media-vortrag'){
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media-vortrag') AND status > 0";
   }
   else {
-  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type2 LIKE 'salon') AND status > 0";
+  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media-salon') AND status > 0";
   }
   $total_pages = mysql_fetch_array(mysql_query($query));
   $total_pages = $total_pages[num];
   
   /* Setup vars for query. */
-  $targetpage = "index.php?type=$type2";  //your file name  (the name of this file)
+  $targetpage = "index.php?type=$type";  //your file name  (the name of this file)
   $limit = 6;                //how many items to show per page
   $page = $_GET['page'];
   if($page) 
@@ -41,15 +41,8 @@
     $start = 0;               //if no page var is given, set start to 0
   
   /* Get data. */
-    if ($type2 == 'vorlesung'){
-  	$sql = "SELECT * from produkte WHERE (type LIKE 'vorlesung') AND status > 0 order by n desc LIMIT $start, $limit";
-  }
-  elseif ($type2 == 'vortrag'){
-  	$sql = "SELECT * from produkte WHERE (type LIKE 'vortrag') AND status > 0 order by n desc LIMIT $start, $limit";
-  }
-  else {
-  	$sql = "SELECT * from produkte WHERE (type2 LIKE 'salon') AND status > 0 order by n desc LIMIT $start, $limit";
-  }
+
+  	$sql = "SELECT * from produkte WHERE (type LIKE '$type') AND status > 0 order by n desc LIMIT $start, $limit";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   
 
