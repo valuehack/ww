@@ -3,9 +3,9 @@
 ?>
     <div class="salon_types">
     	<span><a href="index.php">Alle</a></span>
-    	<span><a <?if ($type == 'media-salon'){echo 'class="salon_types_active"';}?> href="?type=salon">Salon</a></span>
-    	<span><a <?if ($type == 'media-vorlesung'){echo 'class="salon_types_active"';}?> href="?type=vorlesung">Vorlesung</a></span>
-    	<span><a <?if ($type == 'media-vortrag'){echo 'class="salon_types_active"';}?> href="?type=vortrag">Vortrag</a></span>
+    	<span><a <?if ($type == 'media-salon'){echo 'class="salon_types_active"';}?> href="?type=media-salon">Salon</a></span>
+    	<span><a <?if ($type == 'media-vorlesung'){echo 'class="salon_types_active"';}?> href="?type=media-vorlesung">Vorlesung</a></span>
+    	<span><a <?if ($type == 'media-vortrag'){echo 'class="salon_types_active"';}?> href="?type=media-vortrag">Vortrag</a></span>
     </div> 
     <div class="medien_content">
 <?php
@@ -19,10 +19,10 @@
      First get total number of rows in data table. 
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
-  if ($type2 == 'media-vorlesung'){
+  if ($type == 'media-vorlesung'){
   	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media-vorlesung') AND status > 0";
   }
-  elseif ($type2 == 'media-vortrag'){
+  elseif ($type == 'media-vortrag'){
   	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media-vortrag') AND status > 0";
   }
   else {
@@ -160,7 +160,7 @@ while($entry = mysql_fetch_array($result))
 				<a href="<? echo "?q=$id";?>"><img src="<?echo $img_url;?>" alt=""></a>
 			</td>			
 			<td class="schriften_table_b">
-				<span><? echo ucfirst($entry[type]);?></span><br>
+				<span><? echo ucfirst(substr($entry[type],6));?></span><br>
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
       			<p>
       				<? if (strlen($entry[text]) > 300) {
