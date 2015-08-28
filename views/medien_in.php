@@ -280,7 +280,7 @@ while($entry = mysql_fetch_array($result))
 				<a href="<? echo "?q=$id";?>"><img src="<?echo $img_url;?>" alt=""></a>
 			</td>			
 			<td class="schriften_table_b">
-				<span><? echo ucfirst($entry[type]);?></span><br>
+				<span><? echo ucfirst(substr($entry[type],6));?></span><br>
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
       			<p>
       				<? 	$text1 = wordwrap($entry[text], 500, "\0");
