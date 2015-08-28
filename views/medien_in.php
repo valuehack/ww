@@ -144,7 +144,7 @@ else {
 	   First get total number of rows in data table. 
 	   If you have a WHERE clause in your query, make sure you mirror it here.
 	*/
-	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'vortrag' or type LIKE 'vorlesung' or type2 like 'salon') AND status > 0";
+	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media%') AND status > 0";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -158,7 +158,7 @@ else {
 		$start = 0;								//if no page var is given, set start to 0
 	
 	/* Get data. */
-	$sql = "SELECT * from produkte WHERE (type LIKE 'vortrag' or type LIKE 'vorlesung' or type2 like 'salon') AND status > 0 order by id asc, n asc LIMIT $start, $limit";
+	$sql = "SELECT * from produkte WHERE (type LIKE 'media%') AND status > 0 order by id asc, n asc LIMIT $start, $limit";
 	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	
@@ -261,11 +261,11 @@ while($entry = mysql_fetch_array($result))
   $id = $entry[id];
   
   	//Change button-value according to media type
-	if ($entry[type] == 'paket') { $btn_value = "Herunterladen";} 
-    if ($entry[type] == 'audio') { $btn_value = "Herunterladen";} 
-    if ($entry[type] == 'video') { $btn_value = "Ansehen";}
+	 $btn_value = "Herunterladen"; 
+//    if ($entry[type] == 'audio') { $btn_value = "Herunterladen";} 
+//    if ($entry[type] == 'video') { $btn_value = "Ansehen";}
   
-    //check, if there is a image in the salon folder
+    //check, if there is a image in the medien folder
 	$img = 'http://www.scholarium.at/medien/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
