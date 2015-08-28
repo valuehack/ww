@@ -325,12 +325,11 @@ section li {
 
 .crew_image {
 	float:left;
-	padding-right: 20px;
-	padding-bottom: 10px;
+	margin: 0 20px 10px 0;
 }
 
 .crew_link {
-	padding-right: 20px;
+	margin: 0 20px 50px 0;
 	text-align: center;
 	font-size: 16px;
 }
@@ -338,14 +337,14 @@ section li {
 .crew_name {
 	font-size: 16pt;
 	font-weight:bold;
-	line-height: 1.5em;
+	line-height: 24pt;
 	font-family: "Garamond", Georgia, Times, serif;
 	text-align: justify;
 }
 
 .crew_text {
 	font-size: 14pt;
-	line-height: 1.5em;
+	line-height: 22pt;
 	font-family: "Garamond", Georgia, Times, serif;
 	margin: 2px 0 50px;
 	text-align: justify;
