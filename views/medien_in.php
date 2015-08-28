@@ -130,7 +130,7 @@ else {
     	<span><a class="salon_types_active" href="index.php">Alle</a></span>
     	<span><a href="?type=media-salon">Salon</a></span>
     	<span><a href="?type=media-vorlesung">Vorlesung</a></span>
-    	<span><a href="?type=media-politik">Vortrag</a></span>
+    	<span><a href="?type=media-vortrag">Vortrag</a></span>
     </div> 
 	<div class="medien_content">
 

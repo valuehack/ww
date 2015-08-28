@@ -19,15 +19,8 @@
      First get total number of rows in data table. 
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
-  if ($type == 'media-vorlesung'){
-  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media-vorlesung') AND status > 0";
-  }
-  elseif ($type == 'media-vortrag'){
-  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media-vortrag') AND status > 0";
-  }
-  else {
-  	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media-salon') AND status > 0";
-  }
+ 
+  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE '$type') AND status > 0";
   $total_pages = mysql_fetch_array(mysql_query($query));
   $total_pages = $total_pages[num];
   
@@ -138,9 +131,7 @@
 
 <table class='schriften_table'>
 <?php
-		//$sql = "SELECT * from produkte WHERE (type LIKE '$type3') AND status > 0 order by n desc";
-		//$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			
+	
 while($entry = mysql_fetch_array($result))
 {
 	$id = $entry[id];
