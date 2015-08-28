@@ -18,7 +18,7 @@ echo $publ_rows."<br>";
 if ($publ_rows == 0) {
 	//get the id of the next entry which gets published
 	//1. is there a unpublished entry that has priority status?
-	$priority_query = "SELECT * FROM blog WHERE publ_date IS NULL AND priority = 1 ORDER BY n asc LIMIT 1";
+	$priority_query = "SELECT * FROM blog WHERE publ_date = '0000-00-00' AND priority = 1 ORDER BY n asc LIMIT 1";
 	$priority_result = mysql_query($priority_query) or die("Failed Query of " .$priority_query. mysql_error());
 	$priority_rows = mysql_num_rows($priority_result); 
 
