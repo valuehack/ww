@@ -34,16 +34,16 @@ if(isset($_GET['q']))
 {
   $id = $_GET['q'];
 
-  //Termindetails
-  $sql="SELECT * from produkte WHERE (type LIKE 'paket' or type LIKE 'audio' or type LIKE 'video') AND id = '$id'";
+  //Mediendetails
+  $sql="SELECT * from produkte WHERE (type LIKE 'media%') AND id = '$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
   
   				//Change button-value according to media type
-    if ($entry3[type] == 'paket') { $btn_value = "Herunterladen";} 
-  	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
-    if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
+ $btn_value = "Herunterladen";
+  //	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
+  //  if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
 
             	//check, if there is a image in the medien folder
 	$img = 'http://www.scholarium.at/medien/'.$id.'.jpg';
@@ -128,9 +128,9 @@ else {
   ?>
     <div class="salon_types">
     	<span><a class="salon_types_active" href="index.php">Alle</a></span>
-    	<span><a href="?type=salon">Salon</a></span>
-    	<span><a href="?type=vorlesung">Vorlesung</a></span>
-    	<span><a href="?type=politik">Vortrag</a></span>
+    	<span><a href="?type=media-salon">Salon</a></span>
+    	<span><a href="?type=media-vorlesung">Vorlesung</a></span>
+    	<span><a href="?type=media-politik">Vortrag</a></span>
     </div> 
 	<div class="medien_content">
 
