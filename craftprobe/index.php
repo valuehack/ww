@@ -90,7 +90,7 @@ mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $ema
 }
 ?>
         <div class="banner">
-            <div class="bannerimg"></div>
+            <div class="bannerimg" style="background-image: url(img/iceship.jpg);"></div>
             <div class="bannerms">
                 <h1>craft<span>probe</span></h1>
                 <h2>...the Gap Year program to get real.</h2>
