@@ -204,12 +204,14 @@ h1, h2 {
 	width: 100%;
 	height: 600px;
 	opacity: 0.7;
-	background-repeat: no-repeat;
+	background-position: 0px -240px; /*vorher 0px -300px */
+	 
+  	/*
+  	background-repeat: no-repeat;
   	-webkit-background-size: cover;
    	-moz-background-size: cover;
    	-o-background-size: cover;
-	background-size: cover;
-	background-position: 0px -240px; /*vorher 0px -300px */
+	background-size: cover;*/
 }
 
 .bannerms {
