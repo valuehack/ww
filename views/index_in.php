@@ -125,7 +125,7 @@ while($entry = mysql_fetch_array($result))
                     <!--<img src="../style/gfx/sp_medien.jpg" alt="">-->
                     <div class="startpage_box_inner"> 
                     <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'media' OR type LIKE 'audio' OR type LIKE 'video') AND status > 0 order by id asc, n asc LIMIT 0, 3";
+$sql = "SELECT * from produkte WHERE (type LIKE 'media%') AND status > 0 order by id asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
