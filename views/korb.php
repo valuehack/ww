@@ -170,7 +170,7 @@ function checkMe() {
 			echo '<div class="basket">';
 			
 				
-        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als E-Mail zugesandt. <b>Achtung: Bestellte Dateien k&ouml;nnen Sie nur von dieser Seite direkt herunterladen (rechts unterhalb f&uuml;r jede bestellte Datei &quot;Herunterladen&quot; anklicken). Laden Sie die Dateien bitte gleich herunter, bevor Sie diese Seite schlie&szlig;en.</b></p></div>";
+        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als E-Mail zugesandt. <b>Achtung: Bestellte Dateien k&ouml;nnen Sie nur von dieser Seite direkt herunterladen (rechts unterhalb f&uuml;r jede bestellte Datei &bdquo;Herunterladen&ldquo; anklicken). Laden Sie die Dateien bitte gleich herunter, bevor Sie diese Seite schlie&szlig;en.</b></p></div>";
 		echo "<div class='basket_summary'>";
         echo "<table><tr>";
 		echo "<td style='width:10%'>&nbsp;</td>";
@@ -357,7 +357,7 @@ function checkMe() {
                     <span style="font-size: 12pt;">
                     <span style="color: #000000;">
                     <!--#/html#-->
-                    <br>Sie haben folgende Bestellungen get&auml;tigt (Dateien nur auf der unmittelbar angezeigten Seite herunterzuladen):';           
+                    <br>Sie haben folgende Bestellungen get&auml;tigt (Dateien k&ouml;nnen nur auf der unmittelbar angezeigten Bestellseite heruntergeladen werden):';           
       
 
         $body = $body. "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>
