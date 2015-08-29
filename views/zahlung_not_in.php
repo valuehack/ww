@@ -227,9 +227,9 @@ elseif (isset($_POST['ok']))
 
     }
    
-    if ($zahlung=="bank")
+    if ($zahlung=="bank") {
         $result_row = $login->getUserData(trim($_SESSION['user_email']));
-    {
+    
     ?>
     <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <b><?php echo $betrag?></b> an:</p>
       <li>scholarium</li>
