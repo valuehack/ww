@@ -204,7 +204,7 @@ function checkMe() {
                 case 1: echo "pdf"; break;
                 case 2: echo "ePub"; break;
                 case 3: echo "kindle"; break;
-                case 4: echo "druck"; break;
+                case 4: echo "Druck"; break;
                 default: NULL; break;
             }
             echo "</i><br>";
@@ -526,7 +526,7 @@ if($_SESSION['basket']) {
             case 1: echo "pdf"; break;
             case 2: echo "ePub"; break;
             case 3: echo "kindle"; break;
-            case 4: echo "druck"; break;
+            case 4: echo "Druck"; break;
             default: NULL; break;
         }
 		echo "</span>";
