@@ -275,7 +275,7 @@ else
 
 		echo "<div class='blog_entry'>";
 		echo "<h2><a href='?q=$id'>".$title."</a></h2>";
-		echo "<p class='blogdates'><!--Keyword: ".$id."&nbsp &nbsp &nbsp Datum: -->".date('d.m.Y', strtotime($publ_date))."</p>";
+		##echo "<p class='blogdates'><!--Keyword: ".$id."&nbsp &nbsp &nbsp Datum: -->".date('d.m.Y', strtotime($publ_date))."</p>";
 		
 		$public1 = wordwrap($public, 500, "\0");
 		$public_short = preg_replace('/^(.*?)\0(.*)$/is', '$1', $public1);
