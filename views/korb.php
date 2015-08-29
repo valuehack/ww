@@ -90,7 +90,7 @@ if(isset($_POST['checkout'])) {
     }
 
     elseif ($error == 2) {
-        echo '<div class="basket_error"><p>Leider liegt Ihre letzte Unterst&uuml;tzung mehr als ein Jahr zur&uuml;ck. <a href="../abo/">Bitte erneuern Sie Ihre Unterst&uuml;tzung, um auf Ihr Guthaben zuzugreifen</a></p></div>';
+        echo '<div class="basket_error"><p>Leider liegt Ihre letzte Unterst&uuml;tzung mehr als ein Jahr zur&uuml;ck. <a href="../abo/">Bitte erneuern Sie Ihre Unterst&uuml;tzung, um auf Ihr Guthaben zuzugreifen.</a></p></div>';
     }
 
     else
