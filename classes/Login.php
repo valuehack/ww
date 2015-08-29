@@ -1815,7 +1815,7 @@ user_plz
                     <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
                     <a href="'.$link.'" style="font-size:10px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
                     <span style="color: #000000">
-                    Password reset
+                    Passwort zur&uuml;cksetzen
                     </span>
                     </a></td></tr></table> 
                     ';

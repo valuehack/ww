@@ -50,7 +50,7 @@ define("MESSAGE_USERNAME_SAME_LIKE_OLD_ONE", "Verzeihen sie bitte, diesen Benutz
 
 // views
 define("WORDING_BACK_TO_LOGIN", "Zur&uuml;ck zum Login");
-define("WORDING_CHANGE_EMAIL", "E-mail Adresse wechseln");
+define("WORDING_CHANGE_EMAIL", "E-Mail-Adresse wechseln");
 define("WORDING_CHANGE_PASSWORD", "Passwort wechseln");
 define("WORDING_CHANGE_USERNAME", "Benutzername wechseln");
 define("WORDING_CURRENTLY", "aktuell");
@@ -69,7 +69,7 @@ define("WORDING_PROFILE_PICTURE", "Ihr Profilbild (von Gravatar):");
 define("WORDING_REGISTER", "Registrieren");
 define("WORDING_REGISTER_NEW_ACCOUNT", "Registrieren sie einen neuen Account");
 define("WORDING_REGISTRATION_CAPTCHA", "Bitte best&auml;tigen sie diese Benutzer");
-define("WORDING_REGISTRATION_EMAIL", "Benutzer E-mail (bitte geben sie eine reale E-mail Adresse an, sie werden eine Best&auml;tigungs-E-mail mit einem Aktivierungslink erhalten");
+define("WORDING_REGISTRATION_EMAIL", "Benutzer E-Mail (bitte geben sie eine reale E-Mail-Adresse an, sie werden eine Best&auml;tigungs-E-Mail mit einem Aktivierungslink erhalten");
 define("WORDING_REGISTRATION_PASSWORD", "Passwort (min. 6 Zeichen");
 define("WORDING_REGISTRATION_PASSWORD_REPEAT", "Passwort wiederholen");
 define("WORDING_REGISTRATION_USERNAME", "Benutzername (nur Buchstaben und Zahlen, zwischen 2 und 64 Zeichen)");
