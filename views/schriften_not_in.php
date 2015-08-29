@@ -66,7 +66,7 @@ else {
 			?>
 				<div class="centered">
 					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
-						<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+						<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
   						<input type=hidden name="first_reg" value="scholien">
   						<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
 					</form>
@@ -89,7 +89,7 @@ else {
   			<p>Wir freuen uns, dass Sie Interesse an unseren Schriften haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten der Bestellung oder des Herunterladens digitaler Dateien zu erfahren (diese k&ouml;nnen wir leider nicht offen zug&auml;nglich machen):</p>
         <div class="subscribe">
           <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
-          	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+          	<input class="inputfield" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
           	<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
           </form> 
         </div>
