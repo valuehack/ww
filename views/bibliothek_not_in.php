@@ -21,7 +21,7 @@ include('_header_not_in.php');
   
   			<div class="subscribe">
 				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
-        			<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" autocomplete="off" required>
+        			<input class="inputfield" type="email" placeholder=" E-Mail-Adresse" name="user_email" autocomplete="off" required>
         			<input class="inputbutton" id="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
       			</form>	
 			</div>
