@@ -70,8 +70,8 @@ include('_header_in.php');
                     <td>
                         <ul>
                             <li>Vorteile von Gast</li>
-                            <li>Zugang zu allen Seminaren.</li>
-                            <li>Kostenlose Teilnahme an einem Seminar pro Jahr (oder alternativ Fernkurse/ Aufzeichnungen/Schriften im selben Gegenwert).</li>
+                            <li>Zugang zu allen Seminaren</li>
+                            <li>Kostenlose Teilnahme an einem Seminar pro Jahr (oder alternativ Fernkurse/ Aufzeichnungen/Schriften im selben Gegenwert)</li>
                         </ul>
                     </td>
                     </tr><tr>
@@ -90,7 +90,7 @@ include('_header_in.php');
             <table>
                 <tr><th th rowspan="3">
                     <h1>Scholar</h1>
-                    <h2>25&euro;/ Monat</h2>
+                    <h2>25&euro;/Monat</h2>
                 </th>
                 <td class="pay_option_box_td_top">           
                     <p>Sie sind nicht zuf&auml;llig hier, sondern empfinden so wie wir. Wenn es das scholarium nicht g&auml;be, w&uuml;rden Sie es vermissen. Sie wollen wie wir die Realit&auml;t erkennen, Werte schaffen und Sinn finden. Sie leben Eigenverantwortung und leisten als B&uuml;rger einen Beitrag, um dieses Zentrum verantwortlichen Unternehmertums, unabh&auml;ngiger Forschung und zivilgesellschaftlichen Engagements abseits der subventionierten Anstalten zu erm&ouml;glichen. Wenn es Sie nicht g&auml;be, g&auml;be es auch kein scholarium.
@@ -100,9 +100,9 @@ include('_header_in.php');
                 <td>
                     <ul>
                         <li>Vorteile von Gast und Teilnehmer</li>
-                        <li>Teilnahme an Seminaren und Salon, sowie Bezug von B&uuml;chern und Medien  je nach Belieben in entsprechend gr&ouml;&szlig;erem Ausma&szlig;.</li>
-                        <li>Nutzung der digitalen Bibliothek.</li>
-                        <li>Exklusive Informationen.</li>
+                        <li>Teilnahme an Seminaren und Salon, sowie Bezug von B&uuml;chern und Medien  je nach Belieben in entsprechend gr&ouml;&szlig;erem Ausma&szlig;</li>
+                        <li>Nutzung der digitalen Bibliothek</li>
+                        <li>Exklusive Informationen</li>
                     </ul>
                 </td>
                 </tr><tr>
@@ -130,9 +130,9 @@ include('_header_in.php');
                 <td>
                     <ul>
                         <li>Vorteile von Gast, Teilnehmer und Scholar</li>
-                        <li>Einladung zu einem regelm&auml;&szlig;igen exklusiven Abendessen zum pers&ouml;nlichen Austausch, bei dem Sie Hintergrundinformationen zu unserer Arbeit erhalten.</li>
-                        <li>Alternativ, wenn Sie nicht zuf&auml;llig vor Ort sind oder anreisen wollen: Geschenkkorb mit wertvollen Produkten.</li>
-                        <li>Auf Wunsch: Visitenkarten, Verlinkung des eigenen Unternehmens.</li>
+                        <li>Einladung zu einem regelm&auml;&szlig;igen exklusiven Abendessen zum pers&ouml;nlichen Austausch, bei dem Sie Hintergrundinformationen zu unserer Arbeit erhalten</li>
+                        <li>Alternativ, wenn Sie nicht zuf&auml;llig vor Ort sind oder anreisen wollen: Geschenkkorb mit wertvollen Produkten</li>
+                        <li>Auf Wunsch: Visitenkarten, Verlinkung des eigenen Unternehmens</li>
                     </ul>
                 </td>
                 </tr><tr>
@@ -189,7 +189,7 @@ include('_header_in.php');
                 <td>
                     <ul>
                         <li>Vorteile von Gast, Teilnehmer, Scholar, Partner und Beirat</li>
-                        <li>Einmal im Jahr zu Ihrem Wunschtermin private Campusf&uuml;hrung durch den Rektor mit tief gehender Vorstellung und Reflexion unserer Arbeit und Erkenntnisse, sowie einem exklusiven Mittagessen.</li>
+                        <li>Einmal im Jahr zu Ihrem Wunschtermin private Campusf&uuml;hrung durch den Rektor mit tief gehender Vorstellung und Reflexion unserer Arbeit und Erkenntnisse, sowie einem exklusiven Mittagessen</li>
                     </ul>
                 </td>
                 </tr><tr>

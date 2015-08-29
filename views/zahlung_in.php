@@ -182,7 +182,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
       <li>BIC: GIBAATWW</li>
       </ul></p>
 
-      <p><b>Bitte verwenden Sie als Sie als Zahlungsreferenz/Betreff unbedingt &quot;Spende Nr. <?php echo $user_id ?>&quot;</b></p>
+      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;Spende Nr. <?php echo $user_id ?>&quot;</b></p>
       
       <?php
       }
