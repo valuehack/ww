@@ -93,7 +93,7 @@ $(document).ready(function(){
             <table>
                 <tr><th th rowspan="3">
                     <h1>Scholar</h1>
-                    <h2>25&euro;/ Monat</h2>
+                    <h2>25&euro;/Monat</h2>
                 </th>
                 <td class="pay_option_box_td_top">           
                     <p>Sie sind nicht zuf&auml;llig hier, sondern empfinden so wie wir. Wenn es das scholarium nicht g&auml;be, w&uuml;rden Sie sie vermissen. Sie wollen wie wir die Realit&auml;t erkennen, Werte schaffen und Sinn finden. Sie leben Eigenverantwortung und leisten als B&uuml;rger einen Beitrag, um dieses Zentrum verantwortlichen Unternehmertums, unabh&auml;ngiger Forschung und zivilgesellschaftlichen Engagements abseits der subventionierten Anstalten zu erm&ouml;glichen. Wenn es Sie nicht g&auml;be, g&auml;be es auch kein scholarium.
@@ -150,7 +150,64 @@ $(document).ready(function(){
             </table>
         </div>
 
+		<div class="pay_option_box pay_option_box5">
+            <table>
+                <tr><th rowspan="3">
+                    <h1>Beirat</h1>
+                    <h2>100&euro;/Monat</h2>
+                </th>
+                <td>
+                    <p>Sie wollen und k&ouml;nnen einen wirklich ernsthaften Beitrag leisten, weil Sie ein Interesse an der strategischen Entwicklung des scholarium haben. Wir nehmen Sie als Beirat auf und Sie gestalten mit uns die Zukunft. Nat&uuml;rlich gehen wir mit Ihrer Zeit pfleglich um: Einmal im Jahr reflektieren wir mit unseren Beir&auml;ten die Erkenntnisse des vergangenen Jahres und blicken in das kommende.</p>
+                </td>
+                </tr><tr>
+                <td>
+                    <ul>
+                        <li>Vorteile von Gast, Teilnehmer, Scholar und Partner</li>
+                        <li>Einladung zu unserer j&auml;hrlichen Klausur an einem historischen Ort in wundersch&ouml;ner Landschaft</li>
+                        <li>Alternativ, wenn Sie zum Termin verhindert sind:  Aufzeichnungen/Nachlesen</li>
+                    </ul>
+                </td>
+                </tr><tr>
+                <td class="pay_option_form" colspan="2">
+                    <form method="post" action="zahlung.php">
+                        <input type="hidden" name="betrag" value="1200">
+                        <input type="hidden" name="level" value="Beirat">
+                        <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Beirat">
+                    </form>   
+                </td>
+                </tr>
+            </table>
+        </div>
 
+        <div class="pay_option_box pay_option_box6">
+            <table>
+                <tr><th rowspan="3">
+                    <h1>Ehrenpr&auml;sident</h1>
+                    <h2>200&euro;/Monat</h2>
+                </th>
+                <td class="pay_option_box_td_m">
+                    <p>Vielleicht w&auml;re das ja eine Aufgabe f&uuml;r Sie? Als Ehrenpr&auml;sident leisten Sie einen Beitrag, der das nachhaltige Bestehen des scholarium sichert. Ehrenpr&auml;sidenten sind unsere VIPs: Keine falsche Elite mit Anspr&uuml;chen, sondern eine wahre mit &uuml;berdurchschnittlicher Leistungs- und Verantwortungsbereitschaft.</p>
+                </td>
+                </tr><tr>
+                <td>
+                    <ul>
+                        <li>Vorteile von Gast, Teilnehmer, Scholar, Partner und Beirat</li>
+                        <li>Einmal im Jahr zu Ihrem Wunschtermin private Campusf&uuml;hrung durch den Rektor mit tief gehender Vorstellung und Reflexion unserer Arbeit und Erkenntnisse, sowie einem exklusiven Mittagessen</li>
+                    </ul>
+                </td>
+                </tr><tr>
+                <td class="pay_option_form" colspan="2">
+                    <form method="post" action="zahlung.php">
+                        <input type="hidden" name="betrag" value="2400">
+                        <input type="hidden" name="level" value="Ehrenpr&auml;sident">
+                        <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Ehrenpr&auml;sident">
+                    </form>   
+                </td>
+                </tr>
+            </table>
+        </div>
+        
+        
         </div>
 
 <?php include('_footer.php'); ?>
