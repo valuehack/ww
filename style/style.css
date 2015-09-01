@@ -498,7 +498,8 @@ img.dropdown_coin {
 	background: rgb(255,255,255);
 	box-shadow: 0 0 10px 0 rgb(20,20,20) !important;
 	margin: 0 !important;
-  	border-radius: none !important:
+  	border-radius: none !important;
+  	position: relative !important;
 }
 
 .subnav li {
