@@ -237,11 +237,13 @@ while ($entry = mysql_fetch_array($result))
                 <ul id="nav">
                     <li><a href="/scholien/">Scholien</a></li>
                     <li><a id="drop1" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Veranstaltungen</a>
-                    	<ul class="subnav" aria-labelledby="drop1">
-                    		<li class="subnav-elm"><a href="/veranstaltungen/">Alle</a></li>
-                    		<li class="subnav-elm"><a href="/salon/">Salons</a></li>
-                    		<li class="subnav-elm"><a href="/seminare/">Seminare</a></li>
-                    	</ul></li>
+                    	<div class="subnav" aria-labelledby="drop1">
+                    	<ul>
+                    		<li><a href="/veranstaltungen/">Alle</a></li>
+                    		<li><a href="/salon/">Salons</a></li>
+                    		<li><a href="/seminare/">Seminare</a></li>
+                    	</ul>
+                    	</div></li>
                     <li><a href="/schriften/">Schriften</a></li>
                     <li><a href="/medien/">Medien</a></li>
                     <!--<li><a href="/bibliothek/">Bibliothek</a></li>-->
