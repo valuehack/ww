@@ -186,11 +186,6 @@ if(isset($_GET['q']))
 	</div>
 	<div class="salon_content">
   <?php
-  /* weekdays don't work
-    $day=date("w",strtotime($entry3[start]));
-    if ($day==0) $day=7;
-    echo Phrase('day'.$day).", ";
-    */
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
 
@@ -213,7 +208,6 @@ else {
 	<div class="content">
 		<?
 //für Interessenten (Mitgliedschaft 1) Erklärungstext oben
-	//echo "Session-ID".$_SESSION['Mitgliedschaft'];
   if ($_SESSION['Mitgliedschaft'] == 1) {
   	echo "<div class='salon_info'>";
 			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";

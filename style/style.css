@@ -2464,21 +2464,22 @@ img.projekte_coin2  {
 
 .profil label {
 	font-size: 12pt;
-	color: #969696;
+	color: rgb(150,150,150);
 	display: block;
 	float: left;
-	width: 200px;
+	width: 150px;
 	margin: 5px;
 	height: 30px;
 	padding-top: 20px;
+	text-align: left;
 }
 
 .profil select {
 	padding: 10px;
-	font-size: 14pt;
+	font-size: 12pt;
 	height: 50px;
 	margin-left: 5px;
-	width: 242px;
+	width: 292px;
 }
 
 .profil_inputfield {
@@ -2486,10 +2487,10 @@ img.projekte_coin2  {
 	background-color: #fff;
 	border: 1px solid #cfcfcf;
 	margin: 5px;
-	width: 212px;
+	width: 262px;
 	height: 50px;
-	font-size: 16pt;
-	font-family: "Garamond", Georgia, Times, sans-serif;
+	font-size: 12pt;
+	font-family: "Futura Bock", Helvetica, Arial, sans-serif;
 }
 
 .profil_inputbutton {
@@ -2498,8 +2499,8 @@ img.projekte_coin2  {
 	color: #fff;
 	border: 0;
 	border-radius: 2px;
-	margin: 30px 0 0 215px;
-	min-width: 242px;
+	margin: 30px 0 0 165px;
+	min-width: 292px;
 	height: 50px;
 	font-size: 16pt;
 	font-family: "Garamond", Georgia, Times, sans-serif;
