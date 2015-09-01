@@ -516,6 +516,7 @@ img.dropdown_coin {
 
 .subnav li:hover {
 	background: rgb(46,74,98) !important;
+	width: 100%;
 }
 
 .subnav li a {
