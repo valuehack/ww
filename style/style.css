@@ -493,6 +493,19 @@ img.dropdown_coin {
 	height: 28px;
 }
 
+.subnav {
+	width: 100%;
+	background: rgb(255,255,255);
+	box-shadow: 0 0 1px rgba(0,0,0,0.2);
+}
+
+.subnav-elm {
+	font-size: 15px;
+	color: rgb(20,20,20);
+	padding: 3px 0;
+	float: none;
+	width: 100%;
+}
 /*==================================================*/
 /*                 Content General                  */
 /*==================================================*/
