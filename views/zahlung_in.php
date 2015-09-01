@@ -39,10 +39,9 @@ if (!isset($_COOKIE['gaveCredits'])) {
 
     ?>
     <div class="content">
-    	<div class="payment">
-    		<h1>Zahlung</h1>		
+    	<div class="profil">
+    		<h2>Zahlung</h2>		
 
-    		<div class="payment_form">	
     			<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account">	
     <?
     if ($_SESSION['Mitgliedschaft'] == 1) {
@@ -57,7 +56,6 @@ if (!isset($_COOKIE['gaveCredits'])) {
         $plz = trim($result_row->PLZ);
 
     ?>
-			<div class="profil">
     			<p>Bitte geben Sie Ihre Daten ein:</p>
     		    					
     			<label for="user_email">E-Mail</label>
@@ -347,9 +345,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
       		<input type="radio" class="payment_form_radio" name="zahlung" value="bar">Bar<br>
 
       		<input type="submit" class="inputbutton_login" name="upgrade_user_account" value="Weiter">
-      		</div>
-  		</form>
-  		
+  		</form>  		
   	</div>
   <?php
   }
