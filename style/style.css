@@ -501,6 +501,13 @@ img.dropdown_coin {
 	display: none;
 	padding: 0 15%;
 	margin: 0 !important;
+	border-radius: none;
+	position: absolute;
+    top: 100%;
+    z-index: 1000;
+    background-clip: padding-box;
+    right: 0;
+  	left: auto;
 }
 
 .subnav li {
