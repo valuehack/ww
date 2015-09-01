@@ -46,7 +46,7 @@
     			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   			})();
 
-           /*function setActive() {
+           function setActive() {
               aObj = document.getElementById('nav').getElementsByTagName('a');
               for(i=0;i<aObj.length;i++) { 
                 if(document.location.href.indexOf(aObj[i].href)>=0) {
@@ -55,7 +55,7 @@
               }
             }
 
-            window.onload = setActive;*/
+            window.onload = setActive;
 		</script>
 		
 		<!-- Social Links PopUp -->
@@ -236,7 +236,7 @@ while ($entry = mysql_fetch_array($result))
                 <div class="navi">
                 <ul id="nav">
                     <li><a href="/scholien/">Scholien</a></li>
-                    <li class="dropdown"><a id="drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/veranstaltungen/" data-target="/veranstaltungen/" role="button">Veranstaltungen</a></li>
+                    <li><a onclick="$('.dropdown-toggle').dropdown()" id="drop1" data-toggle="dropdown" href="/veranstaltungen/" data-target="/veranstaltungen/" role="button">Veranstaltungen</a></li>
                     	<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="drop1">
                     		<li><a href="/veranstaltungen/">Alle</a></li>
                     		<li><a href="/salon/">Salons</a></li>
