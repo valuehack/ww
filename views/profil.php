@@ -67,8 +67,7 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
                 <select id="user_anrede" name="profile[user_anrede]" required>
                 	<option value="Herr" <?if ($anrede=='Herr'){echo "selected";}?>>Herr</option>
                 	<option value="Frau" <?if ($anrede=='Frau'){echo "selected";}?>>Frau</option>
-                </select><br>
-                	
+                </select><br>      	
         		<label for="user_first_name">Vorname</label>
         		<input id="user_first_name" type="text" class="profil_inputfield" value="<?php echo $vorname; ?>" name="profile[user_first_name]" required><br>
        			<label for="user_surname">Nachname</label>

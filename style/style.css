@@ -2468,7 +2468,6 @@ img.projekte_coin2  {
 	display: block;
 	float: left;
 	width: 150px;
-	margin: 5px;
 	height: 30px;
 	padding-top: 20px;
 	text-align: left;
@@ -2480,6 +2479,7 @@ img.projekte_coin2  {
 	height: 50px;
 	margin-left: 5px;
 	width: 292px;
+	border: 1px solid #cfcfcf;
 }
 
 .profil_inputfield {
