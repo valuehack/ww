@@ -497,29 +497,31 @@ img.dropdown_coin {
 .subnav {
 	width: 70%;
 	background: rgb(255,255,255);
-	box-shadow: 0 0 10px 0 rgb(20,20,20);
-	display: none;
+	box-shadow: 0 0 10px 0 rgb(20,20,20) !important;
 	padding: 0 15%;
 	margin: 0 !important;
-	border-radius: none;
-	position: absolute;
-    top: 100%;
-    z-index: 1000;
-    background-clip: padding-box;
-    right: 0;
-  	left: auto;
+  	height: 40px;
+  	border-radius: 0 !important:
 }
 
 .subnav li {
 	font-size: 15px !important;
 	color: rgb(20,20,20) !important;
-	padding: 3px 0 !important
+	padding: 9px 0 4px !important
+	height: 27px;
+}
+
+.subnav li:hover {
+	background: rgb(46,74,98) !important;
 }
 
 .subnav li a {
 	color: rgb(20,20,20) !important;
 }
 
+.subnav li a:hover {
+	color: rgb(255,255,255) !important;
+}
 /*==================================================*/
 /*                 Content General                  */
 /*==================================================*/
