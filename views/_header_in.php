@@ -215,7 +215,7 @@ while ($entry = mysql_fetch_array($result))
                 			<li><a href="/abo/profil.php">Profil</a></li>
                 			<li><a href="/abo/">Unterst&uuml;tzen</a></li>
                 			<li class="divider"></li>
-                      <li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry[credits_left];?> <img class='dropdown_coin' src="../style/gfx/coin.png"></li>
+                      		<li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry[credits_left];?> <img class='dropdown_coin' src="../style/gfx/coin.png"></li>
                 			<li class="dropdown-header dropdown_credits">Bestellungen <span class="badge"><?echo $total_quantity;?></span></li> 
                 			<li class="divider"></li>
                 			<li><a href="/logout.php?logout">Abmelden</a></li>        			               		
@@ -254,18 +254,19 @@ while ($entry = mysql_fetch_array($result))
             </div>
             <div class="nav">
                 <div class="navi">
-                	<? if ($test == ''){ 
-                		}
-						elseif ($test == 1) {?>
                 <ul id="nav">
                     <li><a href="/scholien/">Scholien</a></li>
-                    <li><a href="/veranstaltungen/">Veranstaltungen</a></li>
+                    <li><a id="dLabel2" type="button" data-toggle="dropdown" aria-haspopup="true">Veranstaltungen</a></li>
+                    	<ul class="dropdown-menu dropdown-menu-right" aria-expanded="false" href="/veranstaltungen/" data-target="/veranstaltungen/" role="menu" aria-labelledby="dLabel2">
+                    		<li><a href="/veranstaltungen/">Alle</a></li>
+                    		<li><a href="/salon/">Salons</a></li>
+                    		<li><a href="/seminare/">Seminare</a></li>
+                    	</ul>
                     <li><a href="/schriften/">Schriften</a></li>
                     <li><a href="/medien/">Medien</a></li>
                     <!--<li><a href="/bibliothek/">Bibliothek</a></li>-->
                     <li><a href="/projekte/">Projekte</a></li>
                 </ul>
-                	<?}?>
                 </div>
            </div>
         </header>
