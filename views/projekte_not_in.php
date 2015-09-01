@@ -86,13 +86,13 @@ else {
         	  </select>
               <input class="salon_inputfield" id="user_first_name" type="text" name="profile[user_first_name]" placeholder=" Vorname" required><br>
               <input class="salon_inputfield" id="user_surname" type="text" name="profile[user_surname]" placeholder=" Nachname" required><br>
-              <input id="user_telefon" type="tel" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" placeholder=" Telefonnummer"><br>
+              <input class="salon_inputfield" id="user_telefon" type="tel"  name="profile[user_telefon]" placeholder=" Telefonnummer"><br>
               <input class="salon_inputfield" id="user_street" type="text" name="profile[user_street]" placeholder=" Stra&szlig;e und Hausnummer" required><br> 
               <input class="salon_inputfield" id="user_plz" type="text" name="profile[user_plz]" placeholder=" Postleitzahl" required><br>
               <input class="salon_inputfield" id="user_city" type="text" name="profile[user_city]" placeholder=" Stadt" required><br>
               <select class="salon_inputfield_select" id="user_country" name="profile[user_country]" placeholder=" Land" required>
               	<option value="<?php echo $result_row->Land; ?>"><?php if ($result_row->Land) echo $result_row->Land; ?></option>
-        			<option value="&Ouml;sterreich">&Ouml;sterreich</option>
+        			<option value="&Ouml;sterreich" selected>&Ouml;sterreich</option>
         			<option value="Deutschland">Deutschland</option>
         			<option value="Schweiz">Schweiz</option>
         			<option value="Liechtenstein">Liechtenstein</option>
