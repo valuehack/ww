@@ -500,6 +500,9 @@ img.dropdown_coin {
 	margin: 0 !important;
   	border-radius: none !important;
   	position: relative !important;
+  	right: 0;
+  	left: 0;
+  	top: 0 !important;
 }
 
 .subnav li {
@@ -508,6 +511,7 @@ img.dropdown_coin {
 	padding: 9px 0 4px !important
 	height: 27px;
 	float: none !important;
+	width: 100%;
 }
 
 .subnav li:hover {
