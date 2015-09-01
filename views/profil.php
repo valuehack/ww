@@ -64,15 +64,17 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
         		<input id="user_email" type="email" class="profil_inputfield" value="<?php echo $_SESSION['user_email']; ?>"  name="profile[user_email]" required><br>
 
                 <label for="user_anrede">Anrede</label>
-                <input id="user_anrede" type="text" class="profil_inputfield" value="<?php echo $anrede; ?>" name="profile[user_anrede]" required><br>
-
+                <select id="user_anrede" name="profile[user_anrede]" required>
+                	<option value="Herr" <?if ($anrede=='Herr'){echo "selected";}?>>Herr</option>
+                	<option value="Frau" <?if ($anrede=='Frau'){echo "selected";}?>>Frau</option><br>
+                	
         		<label for="user_first_name">Vorname</label>
         		<input id="user_first_name" type="text" class="profil_inputfield" value="<?php echo $vorname; ?>" name="profile[user_first_name]" required><br>
        			<label for="user_surname">Nachname</label>
         		<input id="user_surname" type="text" class="profil_inputfield" value="<?php echo $nachname; ?>" name="profile[user_surname]" required><br>
 
                 <label for="user_telefon">Telefon</label>
-                <input id="user_telefon" type="text" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
+                <input id="user_telefon" type="tel" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
 
         		<label for="user_street">Stra&szlig;e</label>
         		<input id="user_street" type="text" class="profil_inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]"><br>
