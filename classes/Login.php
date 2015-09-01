@@ -1316,6 +1316,7 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
         $mail->From = "info@scholarium.at";
         $mail->FromName = "scholarium";
         $mail->AddAddress("dzainius@gmail.com");
+        $mail->AddAddress("info@scholarium.at");
         $mail->Subject = 'user upgrade';
 
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);

@@ -163,23 +163,16 @@ function sendEmail($user_profile)
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 	$post_data = array(
-
 		
-/*		'to' => $user_profile[user_email],
+		'to' => $user_profile[user_email],
 		'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
-		'subject' => 'Herzlich willkommen',
-		'html' => htmlEmail($user_profile, $user_password),
-		'from' => 'info@scholarium.at'*/
-
-
-// !!!
-		'to' => 'dzainius@gmail.com',
-		'toname' => 'test',
-		'subject' => 'testing',
-		'html' => htmlEmail($user_profile, $user_password),
+		'subject' => '#subject',
+		'html' => htmlEmail($user_profile),
 		'from' => 'info@scholarium.at'
 
 		);
+
+
 
 	curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
 
