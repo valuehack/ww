@@ -56,7 +56,7 @@ while($entry = mysql_fetch_array($result))
                     <h1>Veranstaltungen</h1>
                     <div class="startpage_box_inner">
                         <?php
-$sql = "SELECT * from produkte WHERE (type='lehrgang' or type='seminar' or type='kurs' or type='salon') AND status > 0 AND start >= CURDATE() order by start asc, n asc LIMIT 0, 3";
+$sql = "SELECT * from produkte WHERE (type='salon' or type='lehrgang' or type='seminar' or type='kurs') and (start > NOW()) and (status = 1) and (spots > spots_sold) order by start asc, n asc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))

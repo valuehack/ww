@@ -41,22 +41,23 @@ $login = new Login();
 // ... ask if we are logged in here:
 if ($login->isUserLoggedIn() == true) 
 {
+	include("views/index_in.php");
 	#temporarly differentiation between normal users and testers/developers
-	$user_id = $_SESSION['user_id'];
-	$user_email = $_SESSION['user_email'];
+	#$user_id = $_SESSION['user_id'];
+	#$user_email = $_SESSION['user_email'];
 	
-	$query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '%$user_id%' AND `user_email` LIKE '%$user_email%' ";
-	$result = mysql_query($query) or die("Failed Query of " . $query. mysql_error());
-	$entry = mysql_fetch_array($result);
+	#$query = "SELECT * from mitgliederExt WHERE `user_id` LIKE '%$user_id%' AND `user_email` LIKE '%$user_email%' ";
+	#$result = mysql_query($query) or die("Failed Query of " . $query. mysql_error());
+	#$entry = mysql_fetch_array($result);
 	
-	$test = $entry[test];
+	#$test = $entry[test];
 	
-	if ($test == ''){
-		include("views/upgrade_in_temp.php");
-	}
-	elseif ($test == 1){
-    	include("views/index_in.php");
-	}
+	#if ($test == ''){
+	#	include("views/upgrade_in_temp.php");
+	#}
+	#elseif ($test == 1){
+    #	include("views/index_in.php");
+	#}
 } 
 else 
 {
