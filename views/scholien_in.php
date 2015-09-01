@@ -137,7 +137,7 @@ else
 	   First get total number of rows in data table. 
 	   If you have a WHERE clause in your query, make sure you mirror it here.
 	*/
-	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE publ_date<=CURDATE()";
+	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE publ_date<=CURDATE() and publ_date >'1999-12-31'";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
