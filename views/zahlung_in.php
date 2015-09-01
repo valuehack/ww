@@ -57,10 +57,9 @@ if (!isset($_COOKIE['gaveCredits'])) {
         $plz = trim($result_row->PLZ);
 
     ?>
-
-    				<p>Bitte geben Sie Ihre Daten ein:</p>
-    				<div class="profil">
-    					
+			<div class="profil">
+    			<p>Bitte geben Sie Ihre Daten ein:</p>
+    		    					
     			<label for="user_email">E-Mail</label>
         		<input id="user_email" type="email" class="profil_inputfield" value="<?php echo $_SESSION['user_email']; ?>"  name="profile[user_email]" required><br>
 
@@ -329,8 +328,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
                     <option value="Wei&szlig;russland">Wei&szlig;russland</option>
                     <option value="Westsahara">Westsahara</option>
                     <option value="Zentralafrikanische Republik">Zentralafrikanische Republik</option>
-                    <option value="Zypern">Zypern</option></select>
-    			</div>
+                    <option value="Zypern">Zypern</option></select>    			
     <?
     }
     ?>
@@ -340,16 +338,18 @@ if (!isset($_COOKIE['gaveCredits'])) {
       		<input type="hidden" name="ok" value="1">
       		<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
       		<input type="hidden" name="level" value="<?php echo $level; ?>">
-              <input type="hidden" name="source" value="<?php echo $source; ?>">
-              <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
-              <input type="hidden" name="title" value="<?php echo $title; ?>">
+            <input type="hidden" name="source" value="<?php echo $source; ?>">
+            <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
+            <input type="hidden" name="title" value="<?php echo $title; ?>">
 
       		<input type="radio" class="payment_form_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
       		<input type="radio" class="payment_form_radio" name="zahlung" value="kredit">Paypal<br>
       		<input type="radio" class="payment_form_radio" name="zahlung" value="bar">Bar<br>
 
       		<input type="submit" class="inputbutton_login" name="upgrade_user_account" value="Weiter">
+      		</div>
   		</form>
+  		
   	</div>
   <?php
   }
