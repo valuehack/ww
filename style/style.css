@@ -462,6 +462,7 @@ img.dropdown_coin {
 #nav li:hover {
 	/*background: #827d77;*/
 	background: rgb(255,255,255);
+	color: rgb(20,20,20);
 }
 
 #nav li a {
@@ -494,18 +495,21 @@ img.dropdown_coin {
 }
 
 .subnav {
-	width: 100%;
+	width: 70%;
 	background: rgb(255,255,255);
-	box-shadow: 0 0 1px rgba(0,0,0,0.2);
+	box-shadow: 0 0 10px 0 rgb(20,20,20);
 	display: none;
+	padding: 0 15%;
 }
 
 .subnav li {
 	font-size: 15px !important;
 	color: rgb(20,20,20) !important;
 	padding: 3px 0 !important
-	float: none !important;
-	width: 100% !important;
+}
+
+.subnav li a {
+	color: rgb(20,20,20) !important;
 }
 
 /*==================================================*/
