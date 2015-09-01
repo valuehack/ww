@@ -500,6 +500,7 @@ img.dropdown_coin {
 	box-shadow: 0 0 10px 0 rgb(20,20,20);
 	display: none;
 	padding: 0 15%;
+	margin: 0 !important;
 }
 
 .subnav li {
