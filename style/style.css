@@ -2454,12 +2454,20 @@ img.projekte_coin2  {
 	padding: 50px 17.5%;
 }
 
+.profil p {
+	margin: 10px 0;
+	
+}
 .profil h1 {
 	font-size: 80pt;
 	color: rgba(0,0,0,0.9);
 	text-shadow: 0 0 1px 0 rgb(20,20,20);
 	margin: 30px 0 50px 0;
 	text-align: center;
+}
+
+.profil h2 {
+	
 }
 
 .profil label {
@@ -2509,6 +2517,12 @@ img.projekte_coin2  {
 
 .profil_inputbutton:hover {
 	background: rgb(30,48,64);
+}
+
+.profil_radio {
+	font-family: "Futura Bock", Helvetica, Arial, Sans-serif;
+	margin: 10px 10px 10px 157px;
+	font-size: 12pt;
 }
 
 /*==================================================*/

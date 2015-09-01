@@ -344,7 +344,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
       		<input type="radio" class="payment_form_radio" name="zahlung" value="kredit">Paypal<br>
       		<input type="radio" class="payment_form_radio" name="zahlung" value="bar">Bar<br>
 
-      		<input type="submit" class="inputbutton_login" name="upgrade_user_account" value="Weiter">
+      		<input type="submit" class="profil_inputbutton" name="upgrade_user_account" value="Weiter">
   		</form>  		
   	</div>
   <?php
