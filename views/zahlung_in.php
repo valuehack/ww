@@ -61,8 +61,10 @@ if (!isset($_COOKIE['gaveCredits'])) {
     				<p>Bitte geben Sie Ihre Daten ein:</p>
     				<div class="salon_input">
     					<input class="salon_inputfield" id="user_email" type="email" value="<?php echo $_SESSION['user_email']; ?>" name="profile[user_email]" placeholder=" eMail" required><br> 
+              <input id="user_anrede" type="text" class="profil_inputfield" value="<?php echo $anrede; ?>" name="profile[user_anrede]" required><br>
     					<input class="salon_inputfield" id="user_first_name" type="text" value="<?php echo $vorname; ?>" name="profile[user_first_name]" placeholder=" Vorname" required><br>
     					<input class="salon_inputfield" id="user_surname" type="text" value="<?php echo $nachname; ?>" name="profile[user_surname]" placeholder=" Nachname" required><br>
+              <input id="user_telefon" type="text" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
     					<input class="salon_inputfield" id="user_street" type="text" value="<?php echo $strasse; ?>" name="profile[user_street]" placeholder=" Stra&szlig;e und Hausnummer" required><br> 
     					<input class="salon_inputfield" id="user_plz" type="text" value="<?php echo $plz; ?>" name="profile[user_plz]" placeholder=" Postleitzahl" required><br>
     					<input class="salon_inputfield" id="user_city" type="text" value="<?php echo $ort; ?>" name="profile[user_city]" placeholder=" Stadt" required><br>

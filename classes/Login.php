@@ -1437,6 +1437,10 @@ user_plz
         $country = $profile[user_country];
         $plz = $profile[user_plz];
 
+        $anrede = $profile[user_anrede];
+        $telefon = $profile[user_telefon];
+
+
         $name = substr(trim($name), 0, 64);
         $surname = substr(trim($surname), 0, 64);
         $country = substr(trim($country), 0, 64);
@@ -1444,12 +1448,19 @@ user_plz
         $street = substr(trim($street), 0, 64);
         $plz = substr(trim($plz), 0, 64);
 
+        $anrede = substr(trim($anrede), 0, 64);
+        $telefon = substr(trim($telefon), 0, 64);
+
+
         $name = addslashes($name);
         $surname = addslashes($surname);
         $country = addslashes($country);
         $city = addslashes($city);
         $street = addslashes($street);
         $plz = addslashes($plz);
+
+        $anrede = addslashes($anrede);
+        $telefon = addslashes($telefon);
         
         /*
         $name = htmlentities($name, ENT_QUOTES, "ISO-8859-1");
@@ -1466,7 +1477,7 @@ user_plz
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
 
-        $query_edit_user_address = "UPDATE mitgliederExt SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE mitgliederExt SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
         // print_r($_SESSION);echo "<br>";

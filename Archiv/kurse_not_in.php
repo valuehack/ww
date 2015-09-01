@@ -115,6 +115,7 @@ if(isset($_GET['q']))
 		<p>Sie k&ouml;nnen zu diesem Termin leider nicht teilnehmen, interessen sich aber f&uuml;r unser weiteres Angebot? Kein Problem. Tragen Sie hier Ihre eMail Adresse ein dann k&ouml;nnen wir Sie &uuml;ber unsere weiteren Veranstaltungen und Angebote informieren.</p>
           <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
+            <input type=hidden name="first_reg" value="salon">
           	<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
           </form> 
   </div>
@@ -216,8 +217,10 @@ else {
 				
 				<div class="salon_input">
         			<input class="salon_inputfield" id="user_email" type="email" name="seminar_profile[user_email]" placeholder="eMail" required><br> 
+              <input id="user_anrede" type="text" class="profil_inputfield" value="<?php echo $anrede; ?>" name="profile[user_anrede]" required><br>
         			<input class="salon_inputfield" id="user_first_name" type="text" name="seminar_profile[user_first_name]" placeholder=" Vorname" required><br>
         			<input class="salon_inputfield" id="user_surname" type="text" name="seminar_profile[user_surname]" placeholder=" Nachname" required><br>
+              <input id="user_telefon" type="text" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
         			<input class="salon_inputfield" id="user_street" type="text" name="seminar_profile[user_street]" placeholder=" Stra&szlig;e und Hausnummer" required><br> 
         			<input class="salon_inputfield" id="user_plz" type="text" name="seminar_profile[user_plz]" placeholder=" Postleitzahl" required><br>
         			<input class="salon_inputfield" id="user_city" type="text" name="seminar_profile[user_city]" placeholder=" Stadt" required><br>

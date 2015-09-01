@@ -12,6 +12,7 @@ include('_header_in.php');
 
 // $some = $login->getUserData($_SESSION['user_email']); 
 
+//this is used for placeholders to show what is the current user info
 $result_row = $login->getUserData(trim($_SESSION['user_email']));
 
 $vorname = trim($result_row->Vorname);
@@ -20,6 +21,11 @@ $land = trim($result_row->Land);
 $ort = trim($result_row->Ort);
 $strasse = trim($result_row->Strasse);
 $plz = trim($result_row->PLZ);
+
+//additions
+$anrede = trim($result_row->Anrede);
+$telefon = trim($result_row->Telefon);
+
 
 /*
 if ($result_row->gave_credits == 0) echo "Please fill in this form to get a free credit.";
@@ -56,10 +62,18 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
 
         		<label for="user_email">E-Mail</label>
         		<input id="user_email" type="email" class="profil_inputfield" value="<?php echo $_SESSION['user_email']; ?>"  name="profile[user_email]" required><br>
+
+                <label for="user_anrede">Anrede</label>
+                <input id="user_anrede" type="text" class="profil_inputfield" value="<?php echo $anrede; ?>" name="profile[user_anrede]" required><br>
+
         		<label for="user_first_name">Vorname</label>
         		<input id="user_first_name" type="text" class="profil_inputfield" value="<?php echo $vorname; ?>" name="profile[user_first_name]" required><br>
        			<label for="user_surname">Nachname</label>
         		<input id="user_surname" type="text" class="profil_inputfield" value="<?php echo $nachname; ?>" name="profile[user_surname]" required><br>
+
+                <label for="user_telefon">Telefon</label>
+                <input id="user_telefon" type="text" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
+
         		<label for="user_street">Stra&szlig;e</label>
         		<input id="user_street" type="text" class="profil_inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]"><br>
         		<label for="user_plz">PLZ</label>

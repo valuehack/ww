@@ -278,6 +278,9 @@ class Registration
 
         $event_id = $profile[event_id];
         $credits = $profile[credits];
+
+        $anrede = $profile[user_anrede];
+        $telefon = $profile[user_telefon];
         
 
         // $name = substr(trim($name), 0, 64);
@@ -299,7 +302,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$event_id', credits_left = '$credits' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$event_id', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
         // print_r($_SESSION);echo "<br>";
