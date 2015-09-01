@@ -59,9 +59,10 @@ if (!isset($_COOKIE['gaveCredits'])) {
     ?>
 
     				<p>Bitte geben Sie Ihre Daten ein:</p>
-    				<div class="salon_input">
-    					<label for="user_email">E-Mail</label>
-        		<input id="user_email" type="email" class="salon_inputfield" value="<?php echo $_SESSION['user_email']; ?>"  name="profile[user_email]" required><br>
+    				<div class="profil">
+    					
+    			<label for="user_email">E-Mail</label>
+        		<input id="user_email" type="email" class="profil_inputfield" value="<?php echo $_SESSION['user_email']; ?>"  name="profile[user_email]" required><br>
 
                 <label for="user_anrede">Anrede</label>
                 <select id="user_anrede" name="profile[user_anrede]" required>
@@ -69,19 +70,19 @@ if (!isset($_COOKIE['gaveCredits'])) {
                 	<option value="Frau" <?if ($anrede=='Frau'){echo "selected";}?>>Frau</option>
                 </select><br>      	
         		<label for="user_first_name">Vorname</label>
-        		<input id="user_first_name" type="text" class="salon_inputfield" value="<?php echo $vorname; ?>" name="profile[user_first_name]" required><br>
+        		<input id="user_first_name" type="text" class="profil_inputfield" value="<?php echo $vorname; ?>" name="profile[user_first_name]" required><br>
        			<label for="user_surname">Nachname</label>
-        		<input id="user_surname" type="text" class="salon_inputfield" value="<?php echo $nachname; ?>" name="profile[user_surname]" required><br>
+        		<input id="user_surname" type="text" class="profil_inputfield" value="<?php echo $nachname; ?>" name="profile[user_surname]" required><br>
 
                 <label for="user_telefon">Telefon</label>
-                <input id="user_telefon" type="tel" class="salon_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
+                <input id="user_telefon" type="tel" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
 
         		<label for="user_street">Stra&szlig;e</label>
-        		<input id="user_street" type="text" class="salon_inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]"><br>
+        		<input id="user_street" type="text" class="profil_inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]"><br>
         		<label for="user_plz">PLZ</label>
-        		<input id="user_plz" type="text" class="salon_inputfield" value="<?php echo $plz; ?>" name="profile[user_plz]"><br>
+        		<input id="user_plz" type="text" class="profil_inputfield" value="<?php echo $plz; ?>" name="profile[user_plz]"><br>
         		<label for="user_city">Ort</label>
-        		<input id="user_city" type="text" class="salon_inputfield" value="<?php echo $ort; ?>" name="profile[user_city]"><br>
+        		<input id="user_city" type="text" class="profil_inputfield" value="<?php echo $ort; ?>" name="profile[user_city]"><br>
         		<label for="user_country">Land</label>
 
         		<select id="user_country" name="profile[user_country]">
