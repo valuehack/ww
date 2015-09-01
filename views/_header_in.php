@@ -205,26 +205,7 @@ while ($entry = mysql_fetch_array($result))
                       }
                   }
               }
-			  
-			  #temporary differentiation between normal users and testers/ developers
-			  if ($test == ''){?>
-			  	                <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
-                		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
-                			<li class="dropdown-header dropdown_name"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
-                            <li class="dropdown-header dropdown_level"><? echo $Mitgliedschaft;?></li>
-                			<li><a href="/abo/profil.php">Profil</a></li>
-                			<li><a href="/abo/">Unterst&uuml;tzen</a></li>
-                			<li class="divider"></li>
-                      		<li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry[credits_left];?> <img class='dropdown_coin' src="../style/gfx/coin.png"></li>
-                			<li class="dropdown-header dropdown_credits">Bestellungen <span class="badge"><?echo $total_quantity;?></span></li> 
-                			<li class="divider"></li>
-                			<li><a href="/logout.php?logout">Abmelden</a></li>        			               		
-                		</ul>
-                	</div>
-              <?
-			  }
-			elseif ($test == 1) {
-              ?>
+			  ?>
 
                 <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
                 		<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
@@ -241,7 +222,6 @@ while ($entry = mysql_fetch_array($result))
                 	</div>
                 	<div class="login_basket"><a href="../abo/korb.php">Bestellungen <span class="badge"><?echo $total_quantity;?></span></a></div>
 <?
-			}	
 	#isset and while-loop
 		}
 	}
@@ -257,7 +237,7 @@ while ($entry = mysql_fetch_array($result))
                 <ul id="nav">
                     <li><a href="/scholien/">Scholien</a></li>
                     <li class="dropdown"><a id="drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/veranstaltungen/" data-target="/veranstaltungen/" role="button">Veranstaltungen</a></li>
-                    	<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="drop1">
+                    	<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="drop1">
                     		<li><a href="/veranstaltungen/">Alle</a></li>
                     		<li><a href="/salon/">Salons</a></li>
                     		<li><a href="/seminare/">Seminare</a></li>
