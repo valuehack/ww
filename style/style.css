@@ -2467,7 +2467,10 @@ img.projekte_coin2  {
 }
 
 .profil h2 {
-	
+	font-size: 36pt;
+	text-shadow: 0px 0px 1px rgb(20,20,20);
+	margin: 50px 0;
+	text-align: center;
 }
 
 .profil label {
