@@ -2455,7 +2455,7 @@ img.projekte_coin2  {
 }
 
 .profil p {
-	margin: 10px 0;
+	margin: 40px 0 20px;
 	
 }
 .profil h1 {
@@ -2523,11 +2523,14 @@ img.projekte_coin2  {
 }
 
 .profil_radio {
-	font-family: "Futura Bock", Helvetica, Arial, Sans-serif;
 	margin: 10px 10px 10px 157px;
-	font-size: 12pt;
+
 }
 
+.profil_radio_label {
+	font-size: 12pt;
+	font-family: "Futura Bock", Helvetica, Arial, Sans-serif;
+}
 /*==================================================*/
 /*                   Footer                    		*/
 /*==================================================*/

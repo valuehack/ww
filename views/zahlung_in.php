@@ -340,9 +340,9 @@ if (!isset($_COOKIE['gaveCredits'])) {
             <input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
             <input type="hidden" name="title" value="<?php echo $title; ?>">
 
-      		<input type="radio" class="profil_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
-      		<input type="radio" class="profil_radio" name="zahlung" value="kredit">Paypal<br>
-      		<input type="radio" class="profil_radio" name="zahlung" value="bar">Bar<br>
+      		<input type="radio" class="profil_radio" name="zahlung" value="bank" required><span class="profil_radio_label">&Uuml;berweisung</span><br>
+      		<input type="radio" class="profil_radio" name="zahlung" value="kredit"><span class="profil_radio_label">Paypal</span><br>
+      		<input type="radio" class="profil_radio" name="zahlung" value="bar"><span class="profil_radio_label">Bar</span><br>
 
       		<input type="submit" class="profil_inputbutton" name="upgrade_user_account" value="Weiter">
   		</form>  		
