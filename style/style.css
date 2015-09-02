@@ -464,8 +464,10 @@ img.dropdown_coin {
 }
 
 #nav li:hover {
-	/*background: #827d77;*/
 	background: rgb(255,255,255);
+}
+
+#nav ul > li:hover {
 	color: rgb(20,20,20);
 }
 
