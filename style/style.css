@@ -512,11 +512,12 @@ img.dropdown_coin {
 .subnav li {
 	font-size: 15px !important;
 	color: rgb(20,20,20) !important;
-	padding: 9px 20% 4px 0 !important
-	height: 27px;
 	float: none !important;
 	width: 80% !important;
 	text-align: left;
+	font-size: 15px !important;
+	padding: 0px !important;
+	height: 40px !important;
 }
 
 .subnav li:hover {
@@ -526,6 +527,9 @@ img.dropdown_coin {
 
 .subnav li a {
 	color: rgb(20,20,20) !important;
+	display: block !important;
+	height: 34px !important;
+	padding: 12px 20% 7px !important;
 }
 
 .subnav li a:hover {
