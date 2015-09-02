@@ -243,9 +243,29 @@ while ($entry = mysql_fetch_array($result))
                     		<li><a href="/salon/">Salons</a></li>
                     		<li><a href="/seminare/">Seminare</a></li>
                     	</ul>
-                    	</div></li>
-                    <li id="navelm"><a href="/schriften/">Schriften</a></li>
-                    <li id="navelm"><a href="/medien/">Medien</a></li>
+                    	</div>
+                    </li>
+                    <li id="navelm"><a id="drop2" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Schriften</a>
+                    	<div class="subnav dropdown-menu" aria-labelledby="drop2">
+                    	<ul>
+                    		<li><a href="/schriften/">Alle</a></li>
+                    		<li><a href="/schriften/index.php?type=scholien">Scholien</a></li>
+                    		<li><a href="/schriften/index.php?type=analysen">Analysen</a></li>
+                    		<li><a href="/schriften/index.php?type=buecher">B&uuml;cher</a></li>
+                    	</ul>
+                    	</div>
+                    </li>
+                    
+                    <li id="navelm"><a a id="drop3" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Medien</a>
+                    	<div class="subnav dropdown-menu" aria-labelledby="drop3">
+                    	<ul>
+                    		<li><a href="/medien/">Alle</a></li>
+                    		<li><a href="/medien/index.php?type=media-salon">Salon</a></li>
+                    		<li><a href="/medien/index.php?type=media-vorlesung">Vorlesung</a></li>
+                    		<li><a href="/medien/index.php?type=media-vortrag">Vortrag</a></li>
+                    	</ul>
+                    	</div>
+                    </li>
                     <!--<li><a href="/bibliothek/">Bibliothek</a></li>-->
                     <li id="navelm"><a href="/projekte/">Projekte</a></li>
                 </ul>
