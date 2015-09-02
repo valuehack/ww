@@ -2035,8 +2035,8 @@ img.projekte_coin2  {
 }
 
 .agb h1 {
-	font-size: 80pt;
-	color: rgba(0,0,0,0.9);
+	font-size: 56pt;
+	color: rgb(20,20,20);
 	text-shadow: 0 0 1px 0 rgb(20,20,20);
 	margin: 30px 0 100px 0;
 	text-align: center;
@@ -2050,7 +2050,7 @@ img.projekte_coin2  {
 }
 
 .agb p {
-	line-height: 1.8em;
+	line-height: 1.8;
 	font-size: 15pt;
 	text-align: justify;
 	margin: 20px 0;
@@ -2059,10 +2059,24 @@ img.projekte_coin2  {
 .agb ul {
 	list-style-position: outside;
 	list-style-type: none;
+	font-size: 15pt;
+	font-weight: bold;
+	line-height: 1.4;
 }
 
-.agb li {
-	font-weight: bold;
+.agb a {
+	color: rgb(46,74,98);
+	text-decoration: none;
+	border-bottom: 1px dotted rgb(46,74,98);
+}
+
+.agb a:hover {
+	border-bottom: 1px solid rgb(46,74,98);
+}
+
+.agb a:visited {
+	color: rgb(46,74,98);
+	text-decoration: none;
 }
 
 /*============== Location Information ==============*/
