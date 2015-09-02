@@ -249,6 +249,7 @@ while ($entry = mysql_fetch_array($result))
                     <li id="navelm"><a id="drop2" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Schriften</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop2">
                     	<ul>
+                    		<li class="subnav_head"><a href="#">Schriften</a></li>
                     		<li><a href="/schriften/">Alle</a></li>
                     		<li><a href="/schriften/index.php?type=scholien">Scholien</a></li>
                     		<li><a href="/schriften/index.php?type=analysen">Analysen</a></li>
@@ -260,6 +261,7 @@ while ($entry = mysql_fetch_array($result))
                     <li id="navelm"><a a id="drop3" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Medien</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop3">
                     	<ul>
+                    		<li class="subnav_head"><a href="#">Medien</a></li>
                     		<li><a href="/medien/">Alle</a></li>
                     		<li><a href="/medien/index.php?type=media-salon">Salon</a></li>
                     		<li><a href="/medien/index.php?type=media-vorlesung">Vorlesung</a></li>

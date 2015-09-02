@@ -552,6 +552,23 @@ img.dropdown_coin {
 	height: 28px;
 }
 
+.subnav_head {
+	text-align: center !important;
+}
+
+.subnav_head:hover {
+	background: rgb(255,255,255) !important;
+	color: rgb(20,20,20) !important;
+}
+
+.subnav_head a {
+	padding-left: 0 !important;
+}
+
+.subnav_head a:hover {
+	color: rgb(20,20,20) !important;
+	font-size: 17px;
+}
 /*==================================================*/
 /*                 Content General                  */
 /*==================================================*/
