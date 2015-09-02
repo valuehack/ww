@@ -507,7 +507,7 @@ img.dropdown_coin {
   	position: relative !important;
   	right: 0;
   	left: 0;
-  	top: 0 !important;
+  	top: -40px !important;
   	width: 100% !important;
   	box-shadow: 0 3px 3px 0 rgb(20,20,20);
 }
