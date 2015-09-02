@@ -561,11 +561,11 @@ img.dropdown_coin {
 	color: rgb(20,20,20) !important;
 }
 
-.subnav_head a {
+a.subnav_head {
 	padding-left: 0 !important;
 }
 
-.subnav_head a:hover {
+a.subnav_head:hover {
 	color: rgb(20,20,20) !important;
 	font-size: 17px;
 }
