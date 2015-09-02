@@ -2056,6 +2056,15 @@ img.projekte_coin2  {
 	margin: 20px 0;
 }
 
+.agb ul {
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+.agb li {
+	font-weight: bold;
+}
+
 /*============== Location Information ==============*/
 
 .location_box {

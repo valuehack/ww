@@ -45,21 +45,46 @@ if ($login->isUserLoggedIn() == true) {
 
           <h1>Allgemeine Gesch&auml;ftsbedingungen</h1>
           
-	  	  	<h2>1. Anmeldung, Zahlungskonditionen</h2>
+	  	  	<h2>1. Geltung der AGB</h2>
 
-          	<p>Die Anmeldung zu den Seminaren kann online &uuml;ber wertewirtschaft.org, per e-Mail, per Fax, telefonisch oder pers&ouml;nlich erfolgen und konstituiert einen Vertragsabschlu&szlig;. Falls nicht anders angegeben, sind Kostenbeitr&auml;ge sp&auml;testens bei der Veranstaltung bar zu begleichen.</p>
+          	<p>Die Leistung s&auml;mtlicher Unterst&uuml;tzungsbeitr&auml;ge und Spenden sowie die Bez&uuml;ge von Scholien, Schriften, digitalen Medien sowie die Teilnahme an Seminaren und Veranstaltungen erfolgt ausschlie&szlig;lich gem&auml;&szlig; den nachfolgenden Allgemeinen Gesch&auml;ftsbedingungen der scholarium GmbH. M&uuml;ndliche Nebenabreden wurden nicht getroffen. Die AGB k&ouml;nnen von Ihnen auf Ihrem Rechner abgespeichert und/oder ausgedruckt werden.</p>
+          	
+          	<p>Ihr Vertragspartner ist:</p>
+          	
+          	<ul>
+          		<li>scholarium GmbH</li>
+          		<li>Schl&ouml;sselgasse 19/2/18</li>
+          		<li>A-1080 Wien</li>
+          		<li>FN 437260 f</li>
+          		<li>Gesch&auml;ftsf&uuml;hrer: DI Rahim Taghizadegan</li>
+          		<li>Kontakt: info@scholarium.at</li>
+          	</ul>
 
-			<h2>2. Stornobedingungen, Umbuchung</h2>
+			<h2>2. Unterst&uuml;tzungsbeitr&auml;ge und Spenden</h2>
 
-          	<p>Die kostenlose Stornierung der Teilnahme ist bei Eintreffen der Stornierung (schriftlich, per Post, per eMail) bis mindestens 14 Tage vor dem Veranstaltungstermin m&ouml;glich. Bei Storno innerhalb von 14 Tagen vor dem Veranstaltungstermin wird eine Stornogeb&uuml;hr von 30% des Seminarpreises verrechnet. Bei Storno innerhalb von 7 Tagen vor dem Veranstaltungsbeginn wird eine Stornogeb&uuml;hr von 50% des Seminarpreises verrechnet. Bei Stornierung am Vortag des Kursbeginns oder bei Nichterscheinen betr&auml;gt die Stornogeb&uuml;hr 100%. Bei Nominierung eines Ersatzteilnehmers entf&auml;llt die Stornogeb&uuml;hr zur G&auml;nze.</p>
+          	<p>Die Unterst&uuml;tzungsbeitr&auml;ge und Spenden an die scholarium GmbH (Gast, Teilnehmer, Scholar, Partner) erm&ouml;glichen den Bezug von Scholien, Schriften, digitalen Medien sowie die Teilnahme an Veranstaltungen, stellen jedoch keinen unmittelbaren Anspruch auf Gegenleistung dar. Erst der Bezug der genannten Produkte/Dienstleistungen konstituiert einen Vertragsabschluss mit Lieferverpflichtung seitens der scholarium GmbH.</p>
 
-          	<h2>3. Veranstaltungsabsage</h2>
+          	<h2>3. Anmeldung, Zahlungskonditionen f&uuml;r Veranstaltungen</h2>
 
-          	<p>Das Institut f&uuml;r Wertewirtschaft beh&auml;lt sich vor, Veranstaltungen aus organisatorischen Gr&uuml;nden abzusagen oder auf einen anderen Termin zu verschieben. Im Fall einer Absage erfolgt keine Verrechnung des Seminarpreises bzw. es erfolgt die R&uuml;ckerstattung bereits bezahlter Seminargeb&uuml;hren. Dar&uuml;ber hinaus gehende Schadenersatzanspr&uuml;che sind ausgeschlossen. Bei Ausfall einer Veranstaltung durch Krankheit des Vortragenden oder wegen unvorhersehbarer Ereignisse besteht kein Anspruch auf Durchf&uuml;hrung der Veranstaltung.</p>
+          	<p>Die Kostenbeitr&auml;ge f&uuml;r Produkte und Dienstleistungen der scholarium GmbH werden &uuml;ber das Online-Einkaufskonto des Kunden (auch Kundenkonto) auf unserer Homepage verrechnet. Die Anmeldung zu den Seminaren und Veranstaltungen erfolgt online &uuml;ber das Kundenkonto des Unterst&uuml;tzers. Die Zahlung der Beitr&auml;ge erfolgt im Voraus per Bank&uuml;berweisung, PayPal (Kreditkarten) oder in bar. </p>
 
-          	<h2>4. Ihre Daten</h2>
+          	<h2>4. Laufzeit der Unterst&uuml;tzungsbeitr&auml;ge</h2>
 
-          	<p>F&uuml;r die interne Bearbeitung werden Ihre Daten elektronisch gespeichert und k&ouml;nnen in weiterer Folge zur Information &uuml;ber Angebote des Instituts f&uuml;r Wertewirtschaft verwendet werden. Das Institut f&uuml;r Wertewirtschaft verpflichtet sich, Ihre Daten mit gr&ouml;&szlig;ter Sorgfalt zu behandeln und keinesfalls an Dritte weiterzugeben.</p>
+          	<p>Die gew&auml;hlten Unterst&uuml;tzungsbeitr&auml;ge (Gast, Teilnehmer, Scholar, Partner, Beirat, Ehrenpr&auml;sident) erm&ouml;glichen den Bezug von Produkten/Dienstleistungen der scholarium GmbH innerhalb eines Jahres (ab Zeitpunkt der erstmaligen Zahlung). Ein Upgrade der Unterst&uuml;tzungsbeitr&auml;ge ist jederzeit m&ouml;glich und verl&auml;ngert die Bezugslaufzeit wieder um ein Jahr. Ist &uuml;ber ein Jahr keine Einzahlung erfolgt, kann erst nach erneuter Einzahlung wieder auf das vorhandene Guthaben zugegriffen werden.</p>
+          	
+          	<h2>5. Stornobedingungen, Umbuchung</h2>
+          	
+          	<p>Die kostenlose Stornierung der Teilnahme an Seminaren und Veranstaltungen ist bei Eintreffen der Stornierung (schriftlich, per Post oder per eMail) bis mindestens 14 Tage vor dem Veranstaltungstermin m&ouml;glich. Bei Storno innerhalb von 14 Tagen vor dem Veranstaltungstermin wird eine Stornogeb&uuml;hr von 30% des Seminar-Veranstaltungspreises verrechnet. Bei Storno innerhalb von 7 Tagen vor dem Veranstaltungsbeginn wird eine Stornogeb&uuml;hr von 50% des Seminar-Veranstaltungspreises verrechnet. Bei Stornierung am Vortag des Kursbeginns oder bei Nichterscheinen betr&auml;gt die Stornogeb&uuml;hr 100%. Bei Nominierung eines Ersatzteilnehmers entf&auml;llt die Stornogeb&uuml;hr zur G&auml;nze.</p>
+          	
+          	<h2>6. Veranstaltungsabsage</h2>
+          	
+          	<p>Die scholarium GmbH beh&auml;lt sich vor, Veranstaltungen aus organisatorischen Gr&uuml;nden abzusagen oder auf einen anderen Termin zu verschieben. Im Fall einer Absage erfolgt keine Verrechnung des Seminar-Veranstaltungspreises bzw. es erfolgt die R&uuml;ckerstattung bereits bezahlter Geb&uuml;hren auf das Kundenkonto. Dar&uuml;ber hinaus gehende Schadenersatzanspr&uuml;che sind ausgeschlossen. Bei Ausfall einer Veranstaltung durch Krankheit des Vortragenden oder wegen unvorhersehbarer Ereignisse besteht kein Anspruch auf Durchf&uuml;hrung der Veranstaltung.</p>
+          	
+          	<h2>7. Ihre Daten</h2>
+          	
+          	<p>Alle personenbezogenen Daten werden mit gr&ouml;&szlig;ter Sorgfalt behandelt und grunds&auml;tzlich vertraulich behandelt und Ihre schutzw&uuml;rdigen Belange entsprechend den gesetzlichen Vorgaben streng ber&uuml;cksichtigt.</p>
+			<p>F&uuml;r die interne Bearbeitung werden Ihre Daten elektronisch gespeichert und k&ouml;nnen in weiterer Folge zur Information &uuml;ber Angebote der scholarium GmbH verwendet werden sowie gegebenenfalls an und verbundene Unternehmen oder unsere Dienstleistungspartner weitergegeben. </p>
 
+			<p><a href="scholarium_agb.pdf">Eine pdf Version unserer AGB finden Sie hier.</a></p>
         </div>
 <? include "../views/_footer.php"; ?>
