@@ -47,7 +47,7 @@
   			})();
 
            function setActive() {
-              aObj = document.getElementById('nav').getElementsByTagName('a');
+              aObj = document.getElementById('navelm').getElementsByTagName('a');
               for(i=0;i<aObj.length;i++) { 
                 if(document.location.href.indexOf(aObj[i].href)>=0) {
                   aObj[i].className='active';
@@ -235,8 +235,8 @@ while ($entry = mysql_fetch_array($result))
             <div class="nav">
                 <div class="navi">
                 <ul id="nav">
-                    <li><a href="/scholien/">Scholien</a></li>
-                    <li><a id="drop1" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Veranstaltungen</a>
+                    <li id="navelm"><a href="/scholien/">Scholien</a></li>
+                    <li id="navelm"><a id="drop1" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Veranstaltungen</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop1">
                     	<ul>
                     		<li><a href="/veranstaltungen/">Alle</a></li>
@@ -244,10 +244,10 @@ while ($entry = mysql_fetch_array($result))
                     		<li><a href="/seminare/">Seminare</a></li>
                     	</ul>
                     	</div></li>
-                    <li><a href="/schriften/">Schriften</a></li>
-                    <li><a href="/medien/">Medien</a></li>
+                    <li id="navelm"><a href="/schriften/">Schriften</a></li>
+                    <li id="navelm"><a href="/medien/">Medien</a></li>
                     <!--<li><a href="/bibliothek/">Bibliothek</a></li>-->
-                    <li><a href="/projekte/">Projekte</a></li>
+                    <li id="navelm"><a href="/projekte/">Projekte</a></li>
                 </ul>
                 </div>
            </div>
