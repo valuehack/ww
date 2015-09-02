@@ -278,6 +278,10 @@ h3 {
 }
 
 .dropdown-menu {
+	display: none;
+}
+
+.dropdown_menu {
     position: absolute;
     top: 100%;
     z-index: 1000;
@@ -298,7 +302,7 @@ h3 {
   	left: auto;
 }
 
-.dropdown-menu > li > a {
+.dropdown_menu > li > a {
     display: block;
     padding: 3px 20px;
     clear: both;
@@ -315,7 +319,7 @@ h3 {
     background-color: #F5F5F5;
 }*/
 
-.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+.dropdown_menu > li > a:focus, .dropdown_menu > li > a:hover {
    background: rgb(46,74,98);
    color: rgb(255,255,255);
 }
@@ -496,13 +500,13 @@ img.dropdown_coin {
 
 .subnav {
 	background: rgb(255,255,255);
-	box-shadow: 0 0 10px 0 rgb(20,20,20) !important;
-	margin: 0 !important;
+	margin: -2px 0 0 !important;
   	border-radius: none !important;
   	position: relative !important;
   	right: 0;
   	left: 0;
   	top: 0 !important;
+  	width: 100% !important;
 }
 
 .subnav li {
@@ -512,6 +516,8 @@ img.dropdown_coin {
 	height: 27px;
 	float: none !important;
 	width: 100% !important;
+	text-align: left;
+	padding-left: 10px !important;
 }
 
 .subnav li:hover {
