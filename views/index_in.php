@@ -102,7 +102,7 @@ while($entry = mysql_fetch_array($result))
                     <h1>Schriften</h1>
                     <div class="startpage_box_inner">
                      <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status > 0 order by id asc, n asc LIMIT 0, 3";
+$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status > 0 order by n desc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
@@ -121,7 +121,7 @@ while($entry = mysql_fetch_array($result))
                     <h1>Medien</h1>
                     <div class="startpage_box_inner"> 
                     <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'media%') AND status > 0 order by id asc, n asc LIMIT 0, 3";
+$sql = "SELECT * from produkte WHERE (type LIKE 'media%') AND status > 0 order by n desc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
