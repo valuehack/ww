@@ -83,7 +83,6 @@ if (!isset($_COOKIE['gaveCredits'])) {
         		<label for="user_country">Land</label>
 
         		<select id="user_country" name="profile[user_country]">
-        			<option value="<?php echo $result_row->Land; ?>"><?php if ($result_row->Land) echo $result_row->Land; ?></option>
         			<option value="&Ouml;sterreich">&Ouml;sterreich</option>
         			<option value="Deutschland">Deutschland</option>
         			<option value="Schweiz">Schweiz</option>
@@ -343,7 +342,9 @@ if (!isset($_COOKIE['gaveCredits'])) {
       		<input type="radio" class="profil_radio" name="zahlung" value="bank" required><span class="profil_radio_label">&Uuml;berweisung</span><br>
       		<input type="radio" class="profil_radio" name="zahlung" value="kredit"><span class="profil_radio_label">Paypal</span><br>
       		<input type="radio" class="profil_radio" name="zahlung" value="bar"><span class="profil_radio_label">Bar</span><br>
-
+			
+			<p>Mit dem klick auf <i>Weiter</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+			
       		<input type="submit" class="profil_inputbutton" name="upgrade_user_account" value="Weiter">
   		</form>  		
   	</div>
