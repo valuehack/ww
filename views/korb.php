@@ -196,7 +196,7 @@ function checkMe() {
             else {
                 $sum = $quantity*$itemsExtraArray[price];
             }
-            //$download_link = downloadurl('http://test.wertewirtschaft.net/secdown/sec_files/'.$key.'.pdf\','.$key);
+            //$download_link = downloadurl('http://scholarium.at/secdown/sec_files/'.$key.'.pdf\','.$key);
 
             echo "<td>".ucfirst($itemsExtraArray[type])."</td>";
             echo "<td>".$itemsExtraArray[title]."<br><i>";

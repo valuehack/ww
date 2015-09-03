@@ -34,7 +34,7 @@ while ($entry = mysql_fetch_array($result))
       else $anrede="Sehr geehrte Frau ";
       if ($entry2[Titel]) $anrede=$anrede.$entry2[Titel]." ";
       $anrede=$anrede.$entry2[Nachname];
-      $dankemail=$anrede.",\n\nWir m&ouml;chten Ihnen nur kurz mitteilen, da&szlig; Ihre Zahlung f&uuml;r Ihre Mitgliedschaft/Ihr Abonnement beim Institut f&uuml;r Wertewirtschaft eingegangen ist. Ihr Vertrauen und Ihre Unterst&uuml;tzung bedeuten uns sehr viel! Nur dank privaten Unterst&uuml;tzern wie Ihnen kann das Institut unabh&auml;ngig bleiben und &uuml;berleben.\n\n
+      $dankemail=$anrede.",\n\nWir m&ouml;chten Ihnen nur kurz mitteilen, da&szlig; Ihre Unterst&uuml;tzung beim scholarium eingegangen ist. Ihr Vertrauen und Ihre Unterst&uuml;tzung bedeuten uns sehr viel! Nur dank privaten Unterst&uuml;tzern wie Ihnen kann das scholarium unabh&auml;ngig bleiben und &uuml;berleben.\n\n
 Falls Sie Fragen haben, stehen wir Ihnen gerne zur Verf&uuml;gung. Herzliche Gr&uuml;&szlig;e und vielen Dank f&uuml;r Ihre Unterst&uuml;tzung,\n\n
 Ihr Scholarium";
       $body1 = html_entity_decode(preg_replace('<br>',"\n",$dankemail));

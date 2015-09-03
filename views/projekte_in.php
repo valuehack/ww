@@ -94,7 +94,7 @@ else {
 
   elseif ($_SESSION['Mitgliedschaft'] > 1){
 
-  echo "<div class='medien_info'>";
+  echo "<div class='medien_info projekte_padding'>";
 
 			$sql = "SELECT * from static_content WHERE (page LIKE 'projekte')";
 			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());

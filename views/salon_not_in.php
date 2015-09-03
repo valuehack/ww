@@ -15,12 +15,12 @@ if(isset($_GET['q']))
   $entry3 = mysql_fetch_array($result);
   
     	//check, if there is a image in the salon folder
-	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
+	$img = 'http://scholarium.at/salon/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/salon/default.jpg";
+	    $img_url = "http://scholarium.at/salon/default.jpg";
 	}
 ?>
 	<div class="salon_head">

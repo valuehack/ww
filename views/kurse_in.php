@@ -34,13 +34,13 @@ if(isset($_POST['add'])){
   }
 }
 
-   	//check, if there is a image in the salon folder
-	$img = 'http://test.wertewirtschaft.net/salon/'.$id.'.jpg';
+   	//check, if there is a image in the seminare folder
+	$img = 'http://scholarium.at/seminare/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://test.wertewirtschaft.net/salon/default.jpg";
+	    $img_url = "http://scholarium.at/seminare/default.jpg";
 	}
 
 if(isset($_GET['q']))
