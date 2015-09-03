@@ -452,7 +452,7 @@ img.dropdown_coin {
 	text-align: center;
 }
 
-#nav li {
+#navelm {
 	float: left;
 	width: 20%; /*16.6667% with Bibliothek*/;
 	padding: 9px 0 4px;
@@ -463,15 +463,11 @@ img.dropdown_coin {
    	font-size: 15px;
 }
 
-#nav li:hover {
+#navelm:hover {
 	background: rgb(255,255,255);
 }
 
-#nav ul > li:hover {
-	color: rgb(20,20,20);
-}
-
-#nav li a {
+#navelm a {
 	display: block;
 	height: 27px;
   	text-decoration: none; 
@@ -481,7 +477,7 @@ img.dropdown_coin {
 	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
 }
 
-#nav li a:hover {
+#navelm a:hover {
   	text-decoration: none; 
    	color: rgb(20,20,20); 
 	padding: 1.75px 10px;
@@ -489,7 +485,7 @@ img.dropdown_coin {
 	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
 }
 
-#nav li a.active {
+#navelm a.active {
 	text-decoration: none; 
    	color: rgb(20,20,20); 
 	padding: 10px 10px 2px 10px;
