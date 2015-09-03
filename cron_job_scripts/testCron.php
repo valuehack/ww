@@ -12,7 +12,7 @@ The installed versions of PHP 4 and PHP 5 do not support the interpreter specifi
 Installed on my computer:PHP Version 5.5.9-1
 */
 
-$to = 'dzainius@gmail.com';
+$to = 'email@address';
 $subject = 'TEST: CRON JOB WORKS!';
 $body = 'That is sehr gut!';
 

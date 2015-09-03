@@ -6,12 +6,12 @@ TO DO: PDO, PHPMailer
 
 <?php
 
-@$con=mysql_connect ("wertewirtschaft1.db.6152056.hostedresource.com","wertewirtschaft1","Werte333wirte") or die ("cannot connect to MySQL");
+@$con=mysql_connect ("","","") or die ("cannot connect to MySQL");
 
 #@$con=mysql_connect("localhost","testwerte","password") or die ("cannot connect to MySQL");
 
 #mysql_select_db("testwerte");
-mysql_select_db("wertewirtschaft1");
+mysql_select_db("");
 
 $query = "SELECT * from Mitglieder WHERE Ablauf = DATE_ADD(CURDATE(),INTERVAL 14 DAY)";
 
@@ -21,7 +21,7 @@ $result = mysql_query($query) or die("Failed Query of " . $query. mysql_error())
   {
 
 	#$to = $entry[Email];
-	$to = 'dzainius@gmail.com';
+	$to = '@.com';
 
 	$subject = 'Zahlungserinnerung';
 
