@@ -1861,6 +1861,9 @@ img.projekte_coin2  {
 	vertical-align: -3px;
 }
 
+.projekte_padding {
+	padding: 75px 12.5% 0px !important ;
+}
 /*==================================================*/
 /*                Upgrade - Payment	                */
 /*==================================================*/
@@ -1872,7 +1875,6 @@ img.projekte_coin2  {
 
 .payment h1 {
 	font-size: 36pt;
-	text-transform: uppercase;
 	text-shadow: 0px 0px 1px rgb(20,20,20);
 	margin: 50px 0;
 	text-align: center;
@@ -1924,6 +1926,12 @@ img.projekte_coin2  {
 	line-height: 1.6em;
 	font-size: 14pt;
 	text-align: justify;
+}
+
+.payment_width {
+	width: 80% !important;
+	margin: 0 !important;
+	padding: 50px 10% !important;
 }
 
 .pay_option_box {
@@ -2651,13 +2659,13 @@ img.projekte_coin2  {
 
 .profil_radio {
 	margin: 10px 10px 10px 157px;
-
 }
 
 .profil_radio_label {
 	font-size: 12pt;
 	font-family: "Futura Bock", Helvetica, Arial, Sans-serif;
 }
+
 /*==================================================*/
 /*                   Footer                    		*/
 /*==================================================*/

@@ -127,17 +127,36 @@ elseif(isset($_POST['pay'])) {
     $betrag = $_POST['betrag'];
 
 ?>
+		<div class="profil payment_width">
 		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account" accept-charset="UTF-8">
 
 		<p>Bitte geben Sie Ihre Daten ein:</p>
 
-			<input class="inputfield" id="user_email" type="email" name="profile[user_email]" placeholder=" E-Mail" required><br> 
-			<input class="inputfield" id="user_first_name" type="text" name="profile[user_first_name]" placeholder=" Vorname" required><br>
-			<input class="inputfield" id="user_surname" type="text" name="profile[user_surname]" placeholder=" Nachname" required><br>
-			<input class="inputfield" id="user_street" type="text" name="profile[user_street]" placeholder=" Stra&szlig;e und Nr." required><br> 
-			<input class="inputfield" id="user_plz" type="text" name="profile[user_plz]" placeholder=" Postleitzahl" required><br>
-			<input class="inputfield" id="user_city" type="text" name="profile[user_city]" placeholder=" Stadt" required><br>
-			<select class="inputfield" id="user_country" name="profile[user_country]" required>
+			<label for="user_email">E-Mail</label>
+        		<input id="user_email" type="email" class="profil_inputfield" value="<?php echo $_SESSION['user_email']; ?>"  name="profile[user_email]" required><br>
+
+                <label for="user_anrede">Anrede</label>
+                <select id="user_anrede" name="profile[user_anrede]" required>
+                	<option value="Herr" <?if ($anrede=='Herr'){echo "selected";}?>>Herr</option>
+                	<option value="Frau" <?if ($anrede=='Frau'){echo "selected";}?>>Frau</option>
+                </select><br>      	
+        		<label for="user_first_name">Vorname</label>
+        		<input id="user_first_name" type="text" class="profil_inputfield" value="<?php echo $vorname; ?>" name="profile[user_first_name]" required><br>
+       			<label for="user_surname">Nachname</label>
+        		<input id="user_surname" type="text" class="profil_inputfield" value="<?php echo $nachname; ?>" name="profile[user_surname]" required><br>
+
+                <label for="user_telefon">Telefon</label>
+                <input id="user_telefon" type="tel" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
+
+        		<label for="user_street">Stra&szlig;e</label>
+        		<input id="user_street" type="text" class="profil_inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]"><br>
+        		<label for="user_plz">PLZ</label>
+        		<input id="user_plz" type="text" class="profil_inputfield" value="<?php echo $plz; ?>" name="profile[user_plz]"><br>
+        		<label for="user_city">Ort</label>
+        		<input id="user_city" type="text" class="profil_inputfield" value="<?php echo $ort; ?>" name="profile[user_city]"><br>
+        		<label for="user_country">Land</label>
+
+        		<select id="user_country" name="profile[user_country]">
         			<option value="&Ouml;sterreich">&Ouml;sterreich</option>
         			<option value="Deutschland">Deutschland</option>
         			<option value="Schweiz">Schweiz</option>
@@ -380,7 +399,7 @@ elseif(isset($_POST['pay'])) {
                     <option value="Wei&szlig;russland">Wei&szlig;russland</option>
                     <option value="Westsahara">Westsahara</option>
                     <option value="Zentralafrikanische Republik">Zentralafrikanische Republik</option>
-                    <option value="Zypern">Zypern</option></select><br> 
+                    <option value="Zypern">Zypern</option></select>    			
 
 			<p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>
                 
@@ -388,15 +407,15 @@ elseif(isset($_POST['pay'])) {
     		<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
     		<input type="hidden" name="level" value="<?php echo $level; ?>">
 
-    		<input type="radio" class="payment_form_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
-    		<input type="radio" class="payment_form_radio" name="zahlung" value="kredit">Paypal<br>
-    		<input type="radio" class="payment_form_radio" name="zahlung" value="bar">Bar<br>
+    		<input type="radio" class="profil_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
+    		<input type="radio" class="profil_radio" name="zahlung" value="kredit">Paypal<br>
+    		<input type="radio" class="profil_radio" name="zahlung" value="bar">Bar<br>
 
 			<p>Mit dem klick auf <i>Weiter</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 
     		<input type="submit" class="inputbutton" name="upgrade_user_account" value="Weiter">
 		</form>
-
+		</div>
 <?php
 }
 
