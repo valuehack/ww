@@ -8,7 +8,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
 while ($entry = mysql_fetch_array($result))
   {
   $id=$entry[Mitglied];
-  $sql2 = "SELECT Zahlung,Ablauf,Eintritt,Mitgliedschaft,Gesamt,Anrede,Titel,Nachname,Email from mitgliederExt WHERE user_id='$id'";
+  $sql2 = "SELECT Zahlung,Ablauf,Eintritt,Mitgliedschaft,Gesamt,Anrede,Titel,Nachname,user_email from mitgliederExt WHERE user_id='$id'";
   $result2 = mysql_query($sql2) or die("Failed Query of " . $sql2. mysql_error());
   $entry2 = mysql_fetch_array($result2);
   $gesamt[$id]=$gesamt[$id]+$entry[Betrag];
@@ -35,7 +35,7 @@ while ($entry = mysql_fetch_array($result))
 Falls Sie Fragen haben, stehen wir Ihnen gerne zur Verf&uuml;gung. Herzliche Gr&uuml;&szlig;e und vielen Dank f&uuml;r Ihre Unterst&uuml;tzung,\n\n
 Ihr Scholarium";
       $body1 = html_entity_decode(preg_replace('<br>',"\n",$dankemail));
-// mail ($entry2[Email],html_entity_decode("Vielen Dank fuer Ihre Unterstuetzung"),$body1,"From: info@scholarium.at\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
+// mail ($entry2[user_email],html_entity_decode("Vielen Dank fuer Ihre Unterstuetzung"),$body1,"From: info@scholarium.at\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
 //echo $body1; 
 
       }
