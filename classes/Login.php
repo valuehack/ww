@@ -1101,7 +1101,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
         $editProfile = 0;
         if ($_SESSION['Mitgliedschaft'] == 1) $editProfile = 1;
 
-        $upgrade_query = "UPDATE mitgliederExt SET Mitgliedschaft = '$Mitgliedschaft'  WHERE `user_email` LIKE '$user_email'";
+        $upgrade_query = "UPDATE mitgliederExt SET Mitgliedschaft = '$Mitgliedschaft', Ablauf = DATE_ADD(CURDATE(), INTERVAL 1 YEAR)  WHERE `user_email` LIKE '$user_email'";
         $upgrade_result = mysql_query($upgrade_query) or die("Failed Query of " . $upgrade_query. mysql_error());
         $_SESSION['Mitgliedschaft'] = $Mitgliedschaft;
 
