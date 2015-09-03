@@ -5,10 +5,12 @@ echo "Please do not load this page directly. Thanks!";
 exit;
 }  
 
-define('DBHOST', 'newBig.db.6152056.hostedresource.com');  // Add the Database Host Server Name. localhost in general cases. 
-define('DBNAME', 'newBig'); // Add Name of Database Here
-define('DBUSER', 'newBig'); // Add Database Username here
-define('DBPASS', 'bmbClat1!'); //Mysql User Password 
+require_once('../config/config.php');
+
+define('DBHOST', DB_HOST);  // Add the Database Host Server Name. localhost in general cases. 
+define('DBNAME', DB_NAME); // Add Name of Database Here
+define('DBUSER', DB_USER); // Add Database Username here
+define('DBPASS', DB_PASS); //Mysql User Password 
 
 define('URLTOFILES', 'http://test.wertewirtschaft.net/down_secure/');  /* Url to folder where files for SECURE DOWNLOAD LINKS script are stored. If you uploaded the secdown folder in root folder of your website then you just need to replace yourdomainame.com with the name of your domain. */
 

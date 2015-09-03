@@ -3,8 +3,10 @@
 //content: cron job to manage publication of blog entries in sql database
 //author: Bernhard Hegyi
 
-@$con=mysql_connect("newBig.db.6152056.hostedresource.com","newBig","bmbClat1!") or die ("cannot connect to MySQL");
-mysql_select_db("newBig");
+require_once('../config/config.php');
+
+@$con=mysql_connect(DB_HOST,DB_USER,DB_PASS) or die ("cannot connect to MySQL");
+mysql_select_db(DB_NAME);
 //mysql_query("SET NAMES 'utf8'");
 
 //checks if there are published entries from today or yesterday; every 3 days there should be a new post
