@@ -254,12 +254,7 @@ elseif ($spots_available == 4) {
 	<?
   }
   elseif ($_SESSION['Mitgliedschaft'] > 1){ 
-  ?>
-   	<div class="salon_types">
-    	<span><a href="../veranstaltungen/">Alle</a></span>
-    	<span><a class="salon_types_active" href="">Seminare</a></span>
-    	<span><a href="../salon/">Salons</a></span>
-    </div>   
+  ?>  
  	<div class="salon_content">
   <?
   

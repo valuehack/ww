@@ -4,11 +4,6 @@ $title="Veranstaltungen";
 include "_header_in.php"; 
 ?>
 	<div class="content">
-    <div class="salon_types">
-    	<span><a class="salon_types_active" href="">Alle</a></span>
-    	<span><a href="../seminare/">Seminare</a></span>
-    	<span><a href="../salon/">Salons</a></span>
-    </div>
     <div class="salon_content">
   <?php
   $sql = "SELECT * from produkte WHERE (type='salon' or type='lehrgang' or type='seminar' or type='kurs') and (start > NOW()) and (status = 1) and (spots > spots_sold) order by start asc, n asc";

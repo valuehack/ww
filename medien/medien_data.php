@@ -1,12 +1,6 @@
 <?php
 	$type =  $_GET['type'];	
 ?>
-    <div class="salon_types">
-    	<span><a href="index.php">Alle</a></span>
-    	<span><a <?if ($type == 'media-salon'){echo 'class="salon_types_active"';}?> href="?type=media-salon">Salon</a></span>
-    	<span><a <?if ($type == 'media-vorlesung'){echo 'class="salon_types_active"';}?> href="?type=media-vorlesung">Vorlesung</a></span>
-    	<span><a <?if ($type == 'media-vortrag'){echo 'class="salon_types_active"';}?> href="?type=media-vortrag">Vortrag</a></span>
-    </div> 
     <div class="medien_content">
 <?php
 	

@@ -224,11 +224,6 @@ else {
   }
   elseif ($_SESSION['Mitgliedschaft'] > 1) {
 ?>
-   		<div class="salon_types">
-    		<span><a href="../veranstaltungen/">Alle</a></span>
-    		<span><a href="../seminare/">Seminare</a></span>
-    		<span><a class="salon_types_active" href="">Salons</a></span>
-    	</div>
 		<div class="salon_content">
 <?	
   $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND start > NOW() AND spots > spots_sold AND status = 1 order by start asc, n asc";
