@@ -235,8 +235,8 @@ while ($entry = mysql_fetch_array($result))
             <div class="nav">
                 <div class="navi">
                 <ul id="nav">
-                    <li id="navelm"><a href="/scholien/">Scholien</a></li>
-                    <li id="navelm"><a id="drop1" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Veranstaltungen</a>
+                    <li id="navelm"><a class="navelm" href="/scholien/">Scholien</a></li>
+                    <li id="navelm"><a class="navelm" id="drop1" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Veranstaltungen</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop1">
                     	<ul>
                     		<li class="subnav_head"><a class="subnav_head" href="#">Veranstaltungen</a></li>
@@ -246,7 +246,7 @@ while ($entry = mysql_fetch_array($result))
                     	</ul>
                     	</div>
                     </li>
-                    <li id="navelm"><a id="drop2" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Schriften</a>
+                    <li id="navelm"><a class="navelm" id="drop2" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Schriften</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop2">
                     	<ul>
                     		<li class="subnav_head"><a class="subnav_head" href="#">Schriften</a></li>
@@ -258,7 +258,7 @@ while ($entry = mysql_fetch_array($result))
                     	</div>
                     </li>
                     
-                    <li id="navelm"><a a id="drop3" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Medien</a>
+                    <li id="navelm"><a class="navelm" id="drop3" data-toggle="dropdown" href="#" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Medien</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop3">
                     	<ul>
                     		<li class="subnav_head"><a class="subnav_head" href="#">Medien</a></li>
@@ -270,7 +270,7 @@ while ($entry = mysql_fetch_array($result))
                     	</div>
                     </li>
                     <!--<li><a href="/bibliothek/">Bibliothek</a></li>-->
-                    <li id="navelm"><a href="/projekte/">Projekte</a></li>
+                    <li id="navelm"><a class="navelm" href="/projekte/">Projekte</a></li>
                 </ul>
                 </div>
            </div>

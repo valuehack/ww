@@ -467,7 +467,7 @@ img.dropdown_coin {
 	background: rgb(255,255,255);
 }
 
-#navelm a {
+a.navelm {
 	display: block;
 	height: 27px;
   	text-decoration: none; 
@@ -477,7 +477,7 @@ img.dropdown_coin {
 	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
 }
 
-#navelm a:hover {
+a.navelm:hover {
   	text-decoration: none; 
    	color: rgb(20,20,20); 
 	padding: 1.75px 10px;
@@ -485,7 +485,7 @@ img.dropdown_coin {
 	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
 }
 
-#navelm a.active {
+a.navelm.active {
 	text-decoration: none; 
    	color: rgb(20,20,20); 
 	padding: 10px 10px 2px 10px;
