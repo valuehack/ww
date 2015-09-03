@@ -230,7 +230,7 @@ $body = wordwrap($body,70);
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 $headers .= 'From: Wertewirtschaft<info@wertewirtschaft.org>'. "\r\n";
-$headers .= 'Bcc: dzainius@gmail.com' . "\r\n"; #use bcc for testing purposes
+$headers .= 'Bcc:' . "\r\n"; #use bcc for testing purposes
 
 	if (
 	   mail($to, $subject, $body, $headers)
