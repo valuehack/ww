@@ -1122,7 +1122,11 @@ if (!isset($_COOKIE['gaveCredits'])) {
             $newCredits = $userCredits + $betrag;  
         }
         
-        $upgrade_query = "UPDATE mitgliederExt SET credits_left = '$newCredits'  WHERE `user_email` LIKE '$user_email'";
+//date from now - 1 year
+//DATE_ADD(NOW(), INTERVAL ? MONTH)
+//date = DATE_ADD(date, INTERVAL 1 YEAR)
+
+        $upgrade_query = "UPDATE mitgliederExt SET credits_left = '$newCredits', Ablauf = DATE_ADD(CURDATE(), INTERVAL 1 YEAR) WHERE `user_email` LIKE '$user_email'";
         $upgrade_result = mysql_query($upgrade_query) or die("Failed Query of " . $upgrade_query. mysql_error());
 
         $this->sendUpgradeMailToUser($betrag, $zahlung, $level);
@@ -1321,7 +1325,7 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
 
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         
-        $body = 'User '.$_SESSION['user_email'].'möchte auf die Stufe '.$level.' upgraden!';
+        $body = 'User '.$_SESSION['user_email'].' möchte auf die Stufe '.$level.' upgraden!';
 
         $mail->Body = $body;
 
