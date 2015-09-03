@@ -487,7 +487,7 @@ a.navelm:hover {
 
 a.navelm:visited {
   	text-decoration: none; 
-   	color: rgb(20,20,20); 
+   	color: rgb(245,245,245); 
 	padding: 1.75px 10px;
 	font-size: 17px;
 	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
@@ -538,6 +538,7 @@ a.navelm.active {
 	display: block;
 	height: 21px;
 	padding: 12px 0 7px 20%;
+	text-decoration: none;
 }
 
 .subnav li a:hover {
@@ -565,12 +566,12 @@ a.navelm.active {
 }
 
 a.subnav_head {
-	padding-left: 0;
+	padding-left: 0 !important;
 }
 
 a.subnav_head:hover {
-	color: rgb(20,20,20);
-	font-size: 17px;
+	color: rgb(20,20,20) !important;
+	font-size: 17px !important;
 }
 /*==================================================*/
 /*                 Content General                  */
