@@ -228,7 +228,7 @@ while ($entry = mysql_fetch_array($result))
 ?>
             </div>
             <div class="logo">
-                <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="Institut f&uuml; Wertewirtschaft" name="Home"></a>
+                <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>
                  
 
             </div>

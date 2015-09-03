@@ -35,15 +35,13 @@ craftprobe is a program offered by\n\n
 Scholarium\n
 Schloesselgasse 19/2/18\n
 1080 Vienna, Austria\n
-info@wertewirtschaft.org";
+info@scholarium.at";
 
-mail ($email,"Welcome to craftprobe",$body,"From: info@wertewirtschaft.org\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
+mail ($email,"Welcome to craftprobe",$body,"From: info@scholarium.at\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
 
 //Email an Uns
 
-mail ("moeller.ulrich@gmx.de","craftprobe Anmeldung","$firstname, $name, $email hat sich als Interessent eingetragen","From: $email\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
-
-mail ("info@wertewirtschaft.org","craftprobe Anmeldung","$firstname, $name, $email hat sich als Interessent eingetragen","From: $email\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
+mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat sich als Interessent eingetragen","From: $email\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
 }
 
 ?>
