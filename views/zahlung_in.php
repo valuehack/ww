@@ -426,7 +426,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
       else {
         echo '<div class="payment_success>"<p><b>Vielen Dank f&uuml;r Ihre Unterst&uuml;tzung!</b></p>';
 
-        echo "<p>Sie haben das Unterst&uuml;tzungs-Niveau ".$level." gew&auml;hlt.</p></div>";
+        echo "<p>Sie haben das Unterst&uuml;tzungs-Niveau ".$level." gew&auml;hlt. Eine monatliche Teilzahlung ist momentan noch aus technischen Gr&uuml;nden leider nicht m&ouml;glich, wir m&uuml;ssen um Vorauszahlung des Jahresbetrags bitten. Vielen Dank f&uuml;r Ihr Verst&auml;ndnis!</p></div>";
 
       }
 
