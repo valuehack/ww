@@ -53,14 +53,20 @@ if(isset($_POST['checkout'])) {
         $items_price_query = "SELECT * from produkte WHERE `n` LIKE '$key'";
         $items_price_result = mysql_query($items_price_query) or die("Failed Query of " . $items_price_query. mysql_error());
         $itemsPriceArray = mysql_fetch_array($items_price_result);
+        
+        $preis=$itemsPriceArray[price]
 
         if ($format == 4 && $itemsPriceArray[price_book]) {
-            $itemsPriceSum = $quantity * $itemsPriceArray[price_book];
-        }
-        else {
-            $itemsPriceSum = $quantity * $itemsPriceArray[price];
-        }
-
+            $preis = $itemsPriceArray[price_book]; }
+        
+        //check if already downloaded    
+        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
+        $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
+        $checkPriceArray = mysql_fetch_array($check_price_result);
+        
+        if ($checkPriceArray[quantity]==1) { $preis = 0 }
+        
+        $itemsPriceSum = $quantity * $preis;
         $itemsPrice += $itemsPriceSum;
 
         if ($format == 4) {
