@@ -74,12 +74,11 @@ if(isset($_POST['checkout'])) {
     }
 
     //check, if membership still valid
-    $zahlung = date_create($userCreditsArray[Zahlung]);
+    $ablauf = date_create($userCreditsArray[Ablauf]);
     $heute = date_create(date("Y-m-d"));
 
-    $differenz = date_diff($zahlung,$heute);
     //echo $differenz->format("%a");
-    if ($differenz->format("%a") > 365) {
+    if ($heute <= $ablauf) {
         $error = 2;
     }
 
