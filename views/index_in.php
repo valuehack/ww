@@ -62,8 +62,12 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id];
+				$type = $entry[type];
+  				if ($type == 'seminar') {
+  					$type = 'seminare';
+  				} 		
                 echo "<p>"; 
-				echo "<a href='/salon/index.php?q=$id'>";
+				echo "<a href='/$type/index.php?q=$id'>";
               	echo "$entry[title]</a><br>";
 				echo date("d.m.Y",strtotime($entry[start]));
               	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end])); 
