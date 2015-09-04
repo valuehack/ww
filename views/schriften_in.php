@@ -122,13 +122,8 @@ if(isset($_GET['q']))
 						echo ' id="change" onchange="changeView('.$price.','.$price_book.')">';
 							if ($pdf == 1) echo '<option value="1">PDF</option>';
         					if ($epub == 1) echo '<option value="2">ePub</option>';
-<<<<<<< HEAD
-        					if ($kindle == 1) echo '<option value="3">Kindle</option>'; 
-        					if ($druck == 1) echo '<option value="4">Druck</option>';
-=======
         					if ($kindle == 1) echo '<option value="3">Kindle</option>';
         					if ($druck == 1) echo '<option value="4">Druck</option>'; 
->>>>>>> parent of c886f10... schriften: check if downloaded
 						}					
 				echo '</select></span>';
 				
