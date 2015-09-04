@@ -52,6 +52,14 @@ if(isset($_GET['q']))
         <div class="content">
            <article class="blog">
 <?
+	$sql = "SELECT * from static_content WHERE (page LIKE 'scholien')";
+	$result2 = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+	$entry4 = mysql_fetch_array($result2);
+	echo "<div class='blog_info'>";
+				
+				echo $entry4[info1];			
+		
+	echo "</div>";
 	echo "<header>";
 	echo "<h1>$title</h1>";
 	echo "</header>";
