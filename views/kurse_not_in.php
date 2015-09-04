@@ -96,7 +96,7 @@ if(isset($_GET['q']))
 				<p class="salon_reservation_span_d"><? echo $entry3[price]+25; ?> &euro; pro Teilnehmer</p>
   				<!-- Button trigger modal -->
   				<input type="button" class="salon_reservation_inputbutton" value="Anmelden" data-toggle="modal" data-target="#myModal">
-  				<p class="salon_reservation_span_c">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml; das Seminar, sondern auch Zugang zu unserem weiteren Angebot. (u.a. Scholien, unserem Salon, Schriften, Medien)</p>
+  				<p class="salon_reservation_span_c">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r das Seminar, sondern auch Zugang zu unserem weiteren Angebot. (u.a. Scholien, unserem Salon, Schriften, Medien)</p>
     		</div>
     	</div>
     </div>
