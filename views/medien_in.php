@@ -66,8 +66,18 @@ if(isset($_GET['q']))
 			if ($_SESSION['Mitgliedschaft'] == 1) {
 				echo '<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';
 			}
-			else { ?>
-				<span class='coin'><img src="../style/gfx/coin.png"></span><span class="schriften_price"><?php echo $entry3[price]; ?></span> 
+			else { 
+			
+			//check if already downloaded    
+        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$id' AND `user_id`=".$_SESSION['user_id'];
+        $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
+        $checkPriceArray = mysql_fetch_array($check_price_result);
+        
+        if ($checkPriceArray[quantity]==1) { $preis = "0 (bereits beglichen)"; }
+        else { $preis=$entry3[price]; }
+        
+			?>
+				<span class='coin'><img src="../style/gfx/coin.png"></span><span class="schriften_price"><?php echo $preis; ?></span> 
 				<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       				<input type="hidden" name="add" value="<?php echo $n; ?>" />
      				<!--<select name="quantity">
