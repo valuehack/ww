@@ -79,7 +79,7 @@ else {
         
         <div class="centered">
         <div class="salon_input">
-              <input class="salon_inputfield" id="user_email" type="email" name="profile[user_email]" placeholder=" eMail" required><br> 
+              <input class="salon_inputfield" id="user_email" type="email" name="profile[user_email]" placeholder=" E-Mail" required><br> 
               <select class="salon_inputfield_select" id="user_anrede" name="profile[user_anrede]" required>
         			<option value="Herr">Herr</option>
         			<option value="Frau">Frau</option>
@@ -340,7 +340,7 @@ else {
               <div class="projekte_investment">
               <input type="radio" class="projekte_investment_radio" name="betrag" value="150" required>150&euro;: Sie erhalten Zugriff auf die Scholien.<br><br>
               <input type="radio" class="projekte_investment_radio" name="betrag" value="300">300&euro;: Ab diesem Beitrag erhalten Sie Zugriff auf digitale Inhalte in unserer Bibliothek.<br><br>
-              <input type="radio" class="projekte_investment_radio" name="betrag" value="600">600&euro;: Ab diesem Beitrag werden Sie Partner, wir f&uuml;hren Sie (au&szlig;er anders gew&uuml;nscht) pers&ouml;nlich mit Link auf unserer Seite an und laden Sie zu einem exklusiven Abendessen ein (oder Sie erhalten einen Geschenkkorb)<br><br>
+              <input type="radio" class="projekte_investment_radio" name="betrag" value="600">600&euro;: Ab diesem Beitrag werden Sie Partner, wir f&uuml;hren Sie (au&szlig;er anders gew&uuml;nscht) pers&ouml;nlich mit Link auf unserer Seite an und laden Sie zu einem exklusiven Abendessen ein (oder Sie erhalten einen Geschenkkorb).<br><br>
               <input type="radio" class="projekte_investment_radio" name="betrag" value="1200">1200&euro;: Ab diesem Beitrag nehmen wir Sie als Beirat auf und laden Sie zu unserer Strategieklausur ein.<br><br>
               <input type="radio" class="projekte_investment_radio" name="betrag" value="2400">2400&euro;: Ab diesem Beitrag werden Sie Ehrenpr&auml;sident und wir laden Sie zu einer privaten Campusf&uuml;hrung mit einem exklusiven Mittagessen ein.<br>
         	</div>
