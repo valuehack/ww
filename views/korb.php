@@ -514,6 +514,7 @@ if($_SESSION['basket']) {
         elseif ($type == 'media-vorlesung' || $type == 'media-vortrag' || $type == 'media-salon') {
             $url = 'http://scholarium.at/medien/'.$id.'.jpg';
             $url2 = 'medien';
+            $type=substr($type,6);
             }
 ?>        
 		<div class="basket_body">
@@ -523,7 +524,7 @@ if($_SESSION['basket']) {
 				</div>		
 				<div class="basket_body_col_a_2">		
 <?php			
-		echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span>";
+		echo "<span class='basket_body_type'>".ucfirst($type)."</span>";
 		echo "<span class='basket_body_title'>";
 		echo "<a href='../".$url2."/index.php?q=".$id."'>".$itemsExtraArray[title]."</a></span>";
 		echo "<span class='basket_body_format'>";
