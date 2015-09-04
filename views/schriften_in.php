@@ -96,13 +96,8 @@ if(isset($_GET['q']))
     				$epub = substr($entry3[format],1,1);
     				$kindle = substr($entry3[format],2,1);
     				$druck = substr($entry3[format],3,1);
-	//check if already downloaded    
-        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$n' AND `user_id`=".$_SESSION['user_id'];
-        $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
-        $checkPriceArray = mysql_fetch_array($check_price_result);
-        
-        if ($checkPriceArray[quantity]==1) { $preis = "0 (bereits beglichen)"; }
-        else { $preis=$entry3[price]; }
+
+    				$price = $entry3[price];
     				$price_book = $entry3[price_book];
     			?>
     		<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
@@ -125,11 +120,18 @@ if(isset($_GET['q']))
 					}
 					else {
 						echo ' id="change" onchange="changeView('.$price.','.$price_book.')">';
+<<<<<<< HEAD
 				
 							if ($pdf == 1) echo '<option value="1">PDF</option>';
         					if ($epub == 1) echo '<option value="2">ePub</option>';
         					if ($kindle == 1) echo '<option value="3">Kindle</option>'; 
         					if ($druck == 1) echo '<option value="4">Druck</option>';
+=======
+							if ($pdf == 1) echo '<option value="1">PDF</option>';
+        					if ($epub == 1) echo '<option value="2">ePub</option>';
+        					if ($kindle == 1) echo '<option value="3">Kindle</option>';
+        					if ($druck == 1) echo '<option value="4">Druck</option>'; 
+>>>>>>> parent of c886f10... schriften: check if downloaded
 						}					
 				echo '</select></span>';
 				
