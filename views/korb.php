@@ -77,8 +77,9 @@ if(isset($_POST['checkout'])) {
     $ablauf = date_create($userCreditsArray[Ablauf]);
     $heute = date_create(date("Y-m-d"));
 
+    $differenz = date_diff($heute,$ablauf);
     //echo $differenz->format("%a");
-    if ($heute <= $ablauf) {
+    if ($differenz>1) {
         $error = 2;
     }
 
