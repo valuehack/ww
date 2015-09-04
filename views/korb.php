@@ -56,9 +56,7 @@ if(isset($_POST['checkout'])) {
         
         $preis=$itemsPriceArray[price];
 
-        if ($format == 4 && $itemsPriceArray[price_book]) 
-        {
-            $preis = $itemsPriceArray[price_book]; }
+        if ($format == 4 && $itemsPriceArray[price_book]) { $preis = $itemsPriceArray[price_book]; }
         
         //check if already downloaded    
         $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
