@@ -97,7 +97,14 @@ if(isset($_GET['q']))
     				$kindle = substr($entry3[format],2,1);
     				$druck = substr($entry3[format],3,1);
 
-    				$price = $entry3[price];
+    					//check if already downloaded    
+        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$n' AND `user_id`=".$_SESSION['user_id'];
+        $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
+        $checkPriceArray = mysql_fetch_array($check_price_result);
+        
+        if ($checkPriceArray[quantity]==1) { $price = "0 (bereits beglichen)"; }
+        else { $price=$entry3[price]; }
+        
     				$price_book = $entry3[price_book];
     			?>
     		<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
