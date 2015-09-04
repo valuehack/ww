@@ -125,10 +125,11 @@ if(isset($_GET['q']))
 					}
 					else {
 						echo ' id="change" onchange="changeView('.$price.','.$price_book.')">';
-							if ($druck == 1) echo '<option value="4">Druck</option>';
+				
 							if ($pdf == 1) echo '<option value="1">PDF</option>';
         					if ($epub == 1) echo '<option value="2">ePub</option>';
         					if ($kindle == 1) echo '<option value="3">Kindle</option>'; 
+        					if ($druck == 1) echo '<option value="4">Druck</option>';
 						}					
 				echo '</select></span>';
 				
