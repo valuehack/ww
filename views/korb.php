@@ -55,15 +55,18 @@ if(isset($_POST['checkout'])) {
         $itemsPriceArray = mysql_fetch_array($items_price_result);
         
         $preis=$itemsPriceArray[price];
-
-        if ($format == 4 && $itemsPriceArray[price_book]) { $preis = $itemsPriceArray[price_book]; }
         
+        if (substr($itemsPriceArray[type],0,5)=='media'||$itemsPriceArray[type]=='analyse'||$itemsPriceArray[type]=='scholie'||$itemsPriceArray[type]=='buch')
+        {
         //check if already downloaded    
         $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
         $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
         $checkPriceArray = mysql_fetch_array($check_price_result);
         
         if ($checkPriceArray[quantity]==1) { $preis = 0; }
+        }
+        
+        if ($format == 4 && $itemsPriceArray[price_book]) { $preis = $itemsPriceArray[price_book]; }
         
         $itemsPriceSum = $quantity * $preis;
         $itemsPrice += $itemsPriceSum;
