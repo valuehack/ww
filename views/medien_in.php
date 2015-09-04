@@ -69,7 +69,7 @@ if(isset($_GET['q']))
 			else { 
 			
 			//check if already downloaded    
-        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$id' AND `user_id`=".$_SESSION['user_id'];
+        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$n' AND `user_id`=".$_SESSION['user_id'];
         $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
         $checkPriceArray = mysql_fetch_array($check_price_result);
         
