@@ -79,7 +79,7 @@ if(isset($_POST['checkout'])) {
 
     $differenz = date_diff($heute,$ablauf);
     //echo $differenz->format("%a");
-    if ($differenz->format("%a") < 1) {
+    if ($differenz->format("%r%a") < 1) {
         $error = 2;
     }
 
