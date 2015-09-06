@@ -98,7 +98,7 @@ if(isset($_POST['checkout'])) {
     }
 
     elseif ($error == 2) {
-        echo '<div class="basket_error"><p>Leider liegt Ihre letzte Unterst&uuml;tzung mehr als ein Jahr zur&uuml;ck. <a href="../abo/">Bitte erneuern Sie Ihre Unterst&uuml;tzung, um auf Ihr Guthaben zuzugreifen.</a></p></div>';
+        echo '<div class="basket_error"><p>Leider liegt Ihre letzte Unterst&uuml;tzung mehr als ein Jahr zur&uuml;ck. <a href="../abo/">Bitte erneuern Sie Ihre Unterst&uuml;tzung, um auf Ihr Guthaben zuzugreifen.</a> Falls uns ein Fehler unterlaufen sein sollte (manchmal werden Eing&auml;nge nicht korrekt erfasst), bitten wir um Ihr Verst&auml;ndnis und <a href="mailto:info@scholarium.at">Ihren Hinweis</a>.</p></div>';
     }
 
     else
