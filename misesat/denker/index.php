@@ -95,7 +95,7 @@ else {
    $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 ?>
 <!--Denkerliste-->	
-<article class="content">
+<div class="content">
   	
   	  <p class="index"><a class="index" href="../index.php">Wiener Schule</a> / <a class="index" href="">Denker</a></p>
       
@@ -319,7 +319,7 @@ else {
     	  </dd>
         </dl>
       </section>
-  </article>
+  </div>
 
 <?	
 	//}

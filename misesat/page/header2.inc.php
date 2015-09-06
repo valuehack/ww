@@ -29,7 +29,7 @@
 <!--Header-->
   <header class="header">
   	<div class="logo">
-  		<img src="../style/ma_logo.png" alt="">
+  		<a href="../index.php"><img src="../style/ma_logo.png" alt=""></a>
 	</div>
   	<div class="nav">
     	<div class="navi">

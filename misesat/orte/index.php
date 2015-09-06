@@ -52,7 +52,7 @@ else {
    
 ?>
 <!--Ortsliste-->	
-<article class="content">
+<div class="content">
   	
   	  <p class="index"><a class="index" href="../index.php">Wiener Schule</a> / <a class="index" href="">Orte</a></p>
       
@@ -278,7 +278,7 @@ else {
     	  </dd>
         </dl>
       </section>
-  </article>
+  </div>
 
 <?	
 	//}
