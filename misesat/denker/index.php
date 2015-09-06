@@ -23,7 +23,7 @@ if(isset($_GET['q']))
 
     <div class="content">
       <article class="denker">
-      	<div class="index"><p><a href="">Wiener Schule</a> / <a href="">Denker</a> / <a href=""><?=$name?></a></p></div>
+      	<div class="index"><p><a href="../index.php">Wiener Schule</a> / <a href="index.php">Denker</a> / <a href=""><?=$name?></a></p></div>
       
       	<h1><?=$name?></h1>
       	     
@@ -97,10 +97,23 @@ else {
 <!--Denkerliste-->	
 <article class="content">
   	
-  	  <p class="index"><a class="index" href="">Wiener Schule</a> / <a class="index" href="">Denker</a></p>
+  	  <p class="index"><a class="index" href="../index.php">Wiener Schule</a> / <a class="index" href="">Denker</a></p>
       
       <h2>Autoren&uuml;bersicht</h2>
-      
+<?php
+	while($entry = mysql_fetch_array($result))
+	{
+		$id = $entry[id]; 
+        $name = $entry[name];
+  		$bio = $entry[bio];
+  		$img = $entry[img];
+  		
+  		echo '<div>';
+		echo '<h2><a href="index.php?q='.$id.'">'.$name.'</a></h2>';
+		echo '<p>'.substr($text, 0, 200).'</p>';
+		echo '</div>';
+	}
+?>      
     <nav>
     	<ol class="nav_autoren">
     		<li><a href="#a">A</a></li>

@@ -20,9 +20,7 @@
                 }
               }
             }
-
             window.onload = setActive;
-		</script>
     </script>
     
   </head>
@@ -36,9 +34,9 @@
   	<div class="nav">
     	<div class="navi">
       		<ul id="nav">
-      			<li><a href="../verlag/">Verlag</a></li>
+      			<!--<li><a href="../verlag/">Verlag</a></li>-->
         		<li><a href="../begriffe/">Begriffe</a></li>
-        		<li><a href="../autoren/">Denker</a></li>
+        		<li><a href="../denker/">Denker</a></li>
         		<li><a href="../buecher/">B&uuml;cher</a></li>
         		<li><a href="../dokumente/">Dokumente</a></li>
         		<li><a href="../orte/">Orte</a></li>
