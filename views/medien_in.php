@@ -66,8 +66,18 @@ if(isset($_GET['q']))
 			if ($_SESSION['Mitgliedschaft'] == 1) {
 				echo '<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';
 			}
-			else { ?>
-				<span class='coin'><img src="../style/gfx/coin.png"></span><span class="schriften_price"><?php echo $entry3[price]; ?></span> 
+			else { 
+			
+			//check if already downloaded    
+        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$n' AND `user_id`=".$_SESSION['user_id'];
+        $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
+        $checkPriceArray = mysql_fetch_array($check_price_result);
+        
+        if ($checkPriceArray[quantity]==1) { $preis = "0 (bereits beglichen)"; }
+        else { $preis=$entry3[price]; }
+        
+			?>
+				<span class='coin'><img src="../style/gfx/coin.png"></span><span class="schriften_price"><?php echo $preis; ?></span> 
 				<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       				<input type="hidden" name="add" value="<?php echo $n; ?>" />
      				<!--<select name="quantity">
@@ -349,9 +359,9 @@ while($entry = mysql_fetch_array($result))
         <h2 class="modal-title" id="myModalLabel">Herunterladen</h2>
       </div>
       <div class="modal-body">
-      	<?php
-      		echo $entry4[modal];
-		?>
+      	
+      		<p>Wir freuen uns, dass Sie eine unserer Medien bestellen m&ouml;chten. Allerdings sind einige Aufnahmen nicht f&uuml;r die &Ouml;ffentlichkeit bestimmt. Unser Webshop, &uuml;ber den alle Medien heruntergeladen werden k&ouml;nnen, steht nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (6,25&euro; im Monat) f&uuml;r das Bestehen des <i>scholarium</i> leisten (und daf&uuml;r die meisten Medien kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf unsere Schriften:&nbsp;</p>
+		
       </div>
       <div class="modal-footer">
          <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>

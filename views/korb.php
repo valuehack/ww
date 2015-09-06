@@ -53,14 +53,22 @@ if(isset($_POST['checkout'])) {
         $items_price_query = "SELECT * from produkte WHERE `n` LIKE '$key'";
         $items_price_result = mysql_query($items_price_query) or die("Failed Query of " . $items_price_query. mysql_error());
         $itemsPriceArray = mysql_fetch_array($items_price_result);
-
-        if ($format == 4 && $itemsPriceArray[price_book]) {
-            $itemsPriceSum = $quantity * $itemsPriceArray[price_book];
+        
+        $preis=$itemsPriceArray[price];
+        
+        if (substr($itemsPriceArray[type],0,5)=='media'||$itemsPriceArray[type]=='analyse'||$itemsPriceArray[type]=='scholie'||$itemsPriceArray[type]=='buch')
+        {
+        //check if already downloaded    
+        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
+        $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
+        $checkPriceArray = mysql_fetch_array($check_price_result);
+        
+        if ($checkPriceArray[quantity]==1) { $preis = 0; }
         }
-        else {
-            $itemsPriceSum = $quantity * $itemsPriceArray[price];
-        }
-
+        
+        if ($format == 4 && $itemsPriceArray[price_book]) { $preis = $itemsPriceArray[price_book]; }
+        
+        $itemsPriceSum = $quantity * $preis;
         $itemsPrice += $itemsPriceSum;
 
         if ($format == 4) {
@@ -74,12 +82,12 @@ if(isset($_POST['checkout'])) {
     }
 
     //check, if membership still valid
-    $zahlung = date_create($userCreditsArray[Zahlung]);
+    $ablauf = date_create($userCreditsArray[Ablauf]);
     $heute = date_create(date("Y-m-d"));
 
-    $differenz = date_diff($zahlung,$heute);
+    $differenz = date_diff($heute,$ablauf);
     //echo $differenz->format("%a");
-    if ($differenz->format("%a") > 365) {
+    if ($differenz->format("%r%a") < 1) {
         $error = 2;
     }
 
@@ -509,6 +517,7 @@ if($_SESSION['basket']) {
         elseif ($type == 'media-vorlesung' || $type == 'media-vortrag' || $type == 'media-salon') {
             $url = 'http://scholarium.at/medien/'.$id.'.jpg';
             $url2 = 'medien';
+            $type=substr($type,6);
             }
 ?>        
 		<div class="basket_body">
@@ -518,7 +527,7 @@ if($_SESSION['basket']) {
 				</div>		
 				<div class="basket_body_col_a_2">		
 <?php			
-		echo "<span class='basket_body_type'>".ucfirst($itemsExtraArray[type])."</span>";
+		echo "<span class='basket_body_type'>".ucfirst($type)."</span>";
 		echo "<span class='basket_body_title'>";
 		echo "<a href='../".$url2."/index.php?q=".$id."'>".$itemsExtraArray[title]."</a></span>";
 		echo "<span class='basket_body_format'>";
