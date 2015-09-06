@@ -538,7 +538,7 @@ footer {
 	margin-bottom: 0;
 	padding: 20px 0;
 	bottom: 0;
-	position: absolute;
+	position: relative;
 }
 
 footer a:link, footer a:visited {
