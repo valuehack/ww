@@ -110,7 +110,7 @@ else {
   		
   		echo '<div>';
 		echo '<h2><a href="index.php?q='.$id.'">'.$name.'</a></h2>';
-		echo '<p>'.substr($text, 0, 200).'</p>';
+		echo '<p>'.substr($bio, 0, 200).'</p>';
 		echo '</div>';
 	}
 ?>      
