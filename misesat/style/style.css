@@ -90,7 +90,7 @@ em {
 .header {
 	background: rgb(46, 74, 98);
 	width: 100%;
-	height: 100px;
+	height: 122.5px;
     border-bottom: 10px solid rgb(28,109,186);
 }
 
@@ -98,24 +98,12 @@ em {
 	float: left;
 	width: 30%;
 	margin-left: 125px;
-	padding: 40px 0 0 0;
+	padding: 30px 0 0 0;
 }
 
-.logo h1 {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 50px;
-	color: rgb(255,255,255);
+.logo img {
+	height: 80px;	
 }
-
-.logo span {
-	background: url(ma_logo.svg) no-repeat center center;
-	margin-right: 10px;
-	width: 70px;
-	height: 100px;
-	display: block;
-	background-size: cover;
-	float: left;
-} 
 
 /*================  Main Navigation  ===============*/
 
@@ -133,7 +121,7 @@ em {
 .nav li {
 	list-style: none;
    	float: left; 
-	height: 100px;
+	height: 122.5px;
    	display: block;
    	transition: all 0.2s ease 0s;
 }
@@ -146,7 +134,7 @@ em {
 .nav li a {
 	display: block;
 	text-decoration: none;
-	padding: 65px 20px 20px 20px;
+	padding: 88px 20px 20px 20px;
 	color: rgb(255,255,255);
 }
 

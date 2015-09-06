@@ -29,7 +29,7 @@
 <!--Header-->
   <header class="header">
   	<div class="logo">
-  		<span>&nbsp;</span><h1>Mises Austria</h1>
+  		<img src="../style/ma_logo.png" alt="">
 	</div>
   	<div class="nav">
     	<div class="navi">
