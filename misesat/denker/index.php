@@ -320,6 +320,7 @@ else {
         </dl>
       </section>
   </div>
+</div>
 
 <?	
 	//}
