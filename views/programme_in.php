@@ -85,7 +85,7 @@ if(isset($_GET['q']))
       </select> 
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
     </form>
-	<div class='salon_price_list'><li id="change" class="programm_order_span"><?php echo $price; ?></li><li class='programm_coin'><img src="../style/gfx/coin.png"></li></div>
+	<div class='salon_price_list'><li id="change" class="order_span"><?php echo $price; ?></li><li class='coin'><img src="../style/gfx/coin.png"></li></div>
       </div>
      </div>
       <div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Programmen</a></div>
