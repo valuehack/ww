@@ -269,7 +269,7 @@ while ($entry = mysql_fetch_array($result))
                     	</ul>
                     	</div>
                     </li>
-                    <!--<li><a href="/bibliothek/">Bibliothek</a></li>-->
+                    <li id="navelm"><a class="navelm" href="/programme/">Programme</a></li>
                     <li id="navelm"><a class="navelm" href="/projekte/">Projekte</a></li>
                 </ul>
                 </div>

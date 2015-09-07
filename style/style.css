@@ -454,7 +454,7 @@ img.dropdown_coin {
 
 #navelm {
 	float: left;
-	width: 20%; /*16.6667% with Bibliothek*/;
+	width: 16.6667%; /*20% without Programme*/
 	padding: 9px 0 4px;
 	height: 27px;
 	margin: 0;
