@@ -261,7 +261,7 @@ function checkMe() {
 
                 <?php
                  }
-                elseif ($type == 'salon' || $type == 'lehrgang' || $type == 'seminar' || $type == 'kurs') {
+                elseif ($type == 'salon' || $type == 'lehrgang' || $type == 'seminar' || $type == 'kurs'|| $type == 'programm') {
                     echo '<td>Reserviert</td></tr>';
                 }
                 elseif ($format == 4) {

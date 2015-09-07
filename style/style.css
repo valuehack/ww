@@ -1781,6 +1781,36 @@ a:visited.medien_title_list {
 	max-height: 35px;
 }
 
+/* ============= Programme ============*/
+
+.programm_centered {
+	margin: -100px auto 0 auto;
+	text-align: center;
+}
+
+.programm_order  {
+	text-align: center;
+	margin: 40px auto 30px auto;
+	padding: 30px;
+    display: inline-block;
+    position: relative;
+}
+
+.programm_order_span {
+	font-size: 18pt;
+	margin: 10px 0px 0px 100px;
+
+}
+
+.programm_coin {
+	margin-left: 10px;
+	margin-top: -17px;
+}
+
+.programm_coin img {
+	height: 20px;
+}
+
 /* ============= Projekte ============*/
 
 .projekte {
