@@ -607,7 +607,7 @@ if($_SESSION['basket']) {
             <div class="basket_footer_col_b"><?echo $total;?></div>	
 		</div>	
 		<div class="basket_pay">
-			<p>Mit dem klick auf <i>Jetzt bestellen</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+			<p>Mit dem Klick auf <i>Jetzt bestellen</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 		    <!-- possibility 1 -->
     		<form class="basket_pay_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
         		<input class="basket_pay_button_check" type="submit" name="checkout" value="Jetzt bestellen">
