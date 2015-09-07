@@ -41,7 +41,7 @@ if(isset($_GET['q']))
 {
   $id = $_GET['q'];
   
-  $sql="SELECT * from produkte WHERE `type` LIKE 'programm' AND id='$id' order by n desc";
+  $sql="SELECT * from produkte WHERE `type` LIKE 'programm' AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry = mysql_fetch_array($result);
   $title=$entry[title];
