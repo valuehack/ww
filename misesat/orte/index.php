@@ -58,18 +58,18 @@ else {
       
       <h2>Orts&uuml;bersicht</h2>
       
-      <div id="overview_map" style="width:100%; height: 500px;"></div>
+      <div id="map" style="width:100%; height:500px;"></div>
       
     <noscript><b>Um unsere Kartenanwendung zu nutzen ben&ouml;tigen Sie JavaScript.</b> 
       JavaScript scheint in Ihrem Browser deaktiviert zu sein oder wird von diesem nicht unterst&uuml;tzt. 
-      Um unsere Kartenansischt sehen können, aktivieren Sie bitte JavaScript.
+      Um unsere Kartenansischt sehen k&oouml;nnen, aktivieren Sie bitte JavaScript.
     </noscript>
     
     <script type="text/javascript">
       
     var map;
     function initMap() {
-        map = new google.maps.Map(document.getElementById('overview_map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 50.0596696, lng: 14.4656239},
             zoom: 5
         });
