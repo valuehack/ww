@@ -47,7 +47,7 @@ if(isset($_GET['q']))
 }
 else {
 	
-   $sql="SELECT * from orte where id=1 order by id asc";
+   $sql="SELECT * from orte where n=3 order by id asc";
    $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
    
 ?>
@@ -94,7 +94,7 @@ else {
 	
 	}
 ?>
-}
+	}
 </script>
     <nav>
     	<ol class="nav_autoren">
