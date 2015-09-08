@@ -182,18 +182,19 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 
             	<?php
             	
-            	@$con=mysql_connect("wertewirtschaft1.db.6152056.hostedresource.com","wertewirtschaft1","Werte3#3wirte") or die ("cannot connect to MySQL");
-				mysql_select_db("wertewirtschaft1");
-				//header('Content-Type: text/html; charset=ISO-8859-1');           
-			
+                require_once('../config/config.php');
+
+                @$con=mysql_connect(DB_WERTE_HOST,DB_WERTE_USER,DB_WERTE_PASS) or die ("cannot connect to MySQL");
+                mysql_select_db(DB_WERTE_NAME);
+   
+
 				$sql = "SELECT * from crew WHERE level='1'";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				
 				
 				while ($entry= mysql_fetch_array($result)) {
 
- 	
-				
+
 				echo "<table>";
 				echo "<tr>";
 				echo "<td>";
