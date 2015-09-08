@@ -83,7 +83,7 @@ else {
   		$denker = $entry[denker];
 		$coord = $entry[geo];
  		
-		echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>";
+		echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";
 		
         echo"var marker = new google.maps.Marker({";
          echo"position: {lat: ".substr($coord,0, 9).", lng: ".substr($coord,11, 21)."},";
