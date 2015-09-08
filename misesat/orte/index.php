@@ -73,27 +73,7 @@ else {
             center: {lat: 50.0596696, lng: 14.4656239},
             zoom: 5
         });
-<?php
-	while($entry = mysql_fetch_array($result))
-	{
-		$id = $entry[id]; 
-        $name = $entry[name];
-  		$text = $entry[text];
-  		$img = $entry[img];
-  		$denker = $entry[denker];
-		$coord = $entry[geo];
- 		
-		echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";
-		
-        echo"var marker = new google.maps.Marker({";
-         echo"position: {lat: ".substr($coord,0, 9).", lng: ".substr($coord,11, 21)."},";
-         echo"map: map,";
-         echo"title: '".$name."'";
-        echo"});";
-       echo"attachInfoWindow(marker, info);";
-	
-	}
-?>
+
 }
 </script>
     <nav>
