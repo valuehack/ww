@@ -67,98 +67,12 @@ else {
 	<script type="text/javascript">
 
     function initMap() {
-    	var customMapType = new google.maps.StyledMapType(
-    	[
-  {
-    "featureType": "water",
-    "elementType": "geometry.fill",
-    "stylers": [
-      { "visibility": "on" },
-      { "color": "#4a6372" }
-    ]
-  },{
-    "featureType": "landscape.natural",
-    "elementType": "geometry.fill",
-    "stylers": [
-      { "visibility": "on" },
-      { "color": "#46514e" }
-    ]
-  },{
-    "featureType": "water",
-    "elementType": "labels",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "administrative",
-    "elementType": "geometry",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "landscape.man_made",
-    "elementType": "geometry.fill",
-    "stylers": [
-      { "visibility": "on" },
-      { "color": "#a1a0a1" }
-    ]
-  },{
-    "featureType": "road",
-    "elementType": "labels",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-      { "visibility": "simplified" },
-      { "lightness": -100 }
-    ]
-  },{
-    "featureType": "administrative",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      { "visibility": "simplified" }
-    ]
-  },{
-    "featureType": "landscape.natural.terrain",
-    "elementType": "geometry.fill",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "poi",
-    "elementType": "geometry",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "poi",
-    "elementType": "labels",
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-  },{
-  },{
-  },{
-  }
-], {
-	name: 'Custom Style'
-});
- var customMapTypeId = 'custom_style';
-   		
+
      var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 50.0596696, lng: 14.4656239},
             zoom: 5
-            mapTypeControlOptions: {
-      mapTypeIds: [google.maps.MapTypeId.ROADMAP, customMapTypeId]
-
         });
-	map.mapTypes.set(customMapTypeId, customMapType);
-    map.setMapTypeId(customMapTypeId);
-
+        
 <?php
 	while($entry = mysql_fetch_array($result))
 	{
