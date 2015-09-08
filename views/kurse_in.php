@@ -208,8 +208,8 @@ elseif ($spots_available == 4) {
 	<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht.</span><br>
     <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
-      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
-      	<option value="0" disabled>0</option>     
+      <select name="quantity" disabled onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      	<option value="0">0</option>     
       </select> 
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen" disabled><br>     
     </form>
