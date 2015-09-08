@@ -94,7 +94,7 @@ else {
 		
         echo"var marker = new google.maps.Marker({";
          echo"position: {lat: ".$lat.", lng: ".$lng."},";
-         echo"map: map,";
+         echo"map: map".$n.",";
          echo"title: '".$name."'";
         echo"});";
        echo"attachInfoWindow(marker, info);";
