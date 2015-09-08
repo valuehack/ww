@@ -674,6 +674,14 @@ a.subnav_head:hover {
 	background: rgb(30,48,64);
 }
 
+.inputbutton:disabled {
+	background: rgb(200,200,200);
+}
+
+.inputbutton.disabled[value] {
+	background: rgb(100,100,100);
+}
+
 .inputbutton_white {
 	text-decoration: none;
 	background: rgb(255,255,255);
