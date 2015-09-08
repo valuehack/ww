@@ -49,7 +49,7 @@ else {
 	
    $n = $_GET['n'];
 		
-   $sql="SELECT * from orte where n < '$n' order by id asc";
+   $sql="SELECT * from orte order by id asc";
    $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
    
 ?>
