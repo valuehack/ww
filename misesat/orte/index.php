@@ -47,7 +47,7 @@ if(isset($_GET['q']))
 }
 else {
 	
-   $sql="SELECT * from orte where n < 6 order by id asc";
+   $sql="SELECT * from orte where n < 10 order by id asc";
    $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
    
 ?>
@@ -70,7 +70,7 @@ else {
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 50.0596696, lng: 14.4656239},
-            zoom: 5';
+            zoom: 5
         });
 
 <?php
