@@ -47,7 +47,7 @@ if(isset($_GET['q']))
 }
 else {
 	
-   $sql="SELECT * from orte where n=3 and n=7 and n=2 order by id asc";
+   $sql="SELECT * from orte where n=3 or n=7 or n=2 order by id asc";
    $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
    
 ?>
