@@ -220,6 +220,9 @@ h1, h2 {
 	position: relative;
 }
 
+.logo img {
+}
+
 .bannerms h1 {
 	font-size: 80pt;
 	line-height: 1.1em;

@@ -181,10 +181,10 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 <p class="crew_levels">Captain</p>
                 
             	<?php
-            
-                @$con=mysql_connect("wertewirtschaft1.db.6152056.hostedresource.com","wertewirtschaft1","Werte3#3wirte") or die ("cannot connect to MySQL");
+            	
+            	@$con=mysql_connect("wertewirtschaft1.db.6152056.hostedresource.com","wertewirtschaft1","Werte3#3wirte") or die ("cannot connect to MySQL");
 				mysql_select_db("wertewirtschaft1");
-				//header('Content-Type: text/html; charset=ISO-8859-1');
+				//header('Content-Type: text/html; charset=ISO-8859-1');           
 			
 				$sql = "SELECT * from crew WHERE level='1'";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -230,8 +230,6 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
 				while ($entry= mysql_fetch_array($result)) {
 
-	
-
 				echo "<table>";
 				echo "<tr>";
 				echo "<td>";
@@ -248,29 +246,20 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				echo "<div class='crew_text'>";
 				echo "$entry[text_en]</td>";
 				echo "</div>";
-				echo "</tr>";				
-            
-		
-				echo "</table>";
-				
-    }          
-                		
+				echo "</tr>";						
+				echo "</table>";				
+    }                          		
 			?>
                 
                <p class="crew_levels">Officers</p>
-                
-                        
+                                        
             	<?php
-            
-            
+                        
 				$sql = "SELECT * from crew WHERE level='3' order by id asc";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-				
-				
+								
 				while ($entry= mysql_fetch_array($result)) {
-
- 	
- 				
+				
  				echo "<table>";
 				echo "<tr>";
 				echo "<td>";
@@ -288,33 +277,19 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				echo "$entry[text_en]</td>";
 				echo "</div>";
 				echo "</tr>";			
-            
-		
-				echo "</table>";
-				
-				
-				
-      }         
-      
-      
+				echo "</table>";				
+      }              
                ?>
-               
-               
-               
+                              
                <p class="crew_levels">Mates</p>
-                
-                        
+                                      
             	<?php
-            
-                
+              
 				$sql = "SELECT * from crew WHERE level='4' order by id asc";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				
-				
 				while ($entry= mysql_fetch_array($result)) {
 
- 	
- 	
                 echo "<table>";
 				echo "<tr>";
 				echo "<td>";
@@ -332,31 +307,19 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				echo "$entry[text_en]</td>";
 				echo "</div>";
 				echo "</tr>";			
-            
-		
-				echo "</table>";
-				
-	
-	}
-				
+				echo "</table>";	
+	}			
 				?>
-				
-				
+								
               <!--<p class="crew_levels">Sailors</p>
-                
-                        
+                             
             	<?php
             
-                
 				$sql = "SELECT * from crew WHERE level='5' order by id asc";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				
-				
 				while ($entry= mysql_fetch_array($result)) {
 
- 	
- 	
-               
                 echo "<table>";
 				echo "<tr>";
 				echo "<td>";
@@ -374,17 +337,10 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				echo "$entry[text_en]</td>";
 				echo "</div>";
 				echo "</tr>";			
-            
-		
-				echo "</table>";
-				
-				
+				echo "</table>";		
 	}			
-	
 				?>-->
-				
-				
-               
+				            
                     <p><a href="#top">Back to the top</a></p>
             </section>
             
