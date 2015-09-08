@@ -85,7 +85,9 @@ else {
 		$lat = $entry[lat];
 		$lng = $entry[lng];
       		 		
-		echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";
+		$info = '<div><a href="index.php?q='.$id.'"><h1>'.$name.'</h1></a><p>'.substr($text, 0, 200).'</p></div>';
+		
+		echo"var info = '".$info."'";
 		
         echo"var marker = new google.maps.Marker({";
          echo"position: {lat: ".$lat.", lng: ".$lng."},";
@@ -141,13 +143,9 @@ else {
         content: info
         });
         
-        marker.addListener('mouseover', function() {
+        marker.addListener('click', function() {
         infowindow.open(map, marker);
-        });
-        
-        marker.addListener('mouseout', function() {
-        infowindow.close(map, marker);
-        });
+        });        
     }
     </script>
     
