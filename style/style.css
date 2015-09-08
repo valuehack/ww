@@ -42,24 +42,24 @@
 }
 
 @font-face {
-	font-family: 'Futura Bock';
+	font-family: 'Futura Book';
 	src: url('http://www.scholarium.at/style/font/futura_bock_regular.ttf') format('truetype');
 }
 
 @font-face {
-	font-family: 'Futura Bock';
+	font-family: 'Futura Book';
 	src: url('http://www.scholarium.at/style/font/futura_bock_italic.ttf') format('truetype');
 	font-style: italic;
 }
 
 @font-face {
-	font-family: 'Futura Bock';
+	font-family: 'Futura Book';
 	src: url('http://www.scholarium.at/style/font/futura_bock_bold.ttf') format('truetype');
 	font-weight: bold;
 }
 
 @font-face {
-	font-family: 'Futura Bock';
+	font-family: 'Futura Book';
 	src: url('http://www.scholarium.at/style/font/futura_bock_bold-italic.ttf') format('truetype');
 	font-style: italic;
 	font-weight: bold;
@@ -130,11 +130,11 @@ p, ul, ol {
 }
 
 h1 {
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 h2 {
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 span {
@@ -602,11 +602,11 @@ a.subnav_head:hover {
 	font-size: 72px;
 	text-transform: uppercase;
 	text-shadow: 0px 0px 1px #666;	
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 .article h2 {
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 .article a {
@@ -725,7 +725,7 @@ a.subnav_head:hover {
 
 .startpage_last_scholie_ms h1 {
 	text-align: left;	
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 .startpage_last_scholie_ms h1 a {
@@ -773,7 +773,7 @@ a.subnav_head:hover {
 	color: rgb(255,255,255);
 	background: rgb(46,74,98);
 	padding: 10px;
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 .startpage_box_outer img {
@@ -870,7 +870,7 @@ a.subnav_head:hover {
 	margin: 40px 0 0 0;	
 	text-align: center;
 	text-shadow: 0px 0px 1px #666;
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 .blog_entry h2 a:link,  .blog_entry h2 a:hover, .blog_entry h2 a:visited {
@@ -939,7 +939,7 @@ a.subnav_head:hover {
 	text-align: center;
 	font-size: 56px;
 	text-shadow: 0px 0px 1px #666;	
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 .blogdate {
@@ -1084,7 +1084,7 @@ a.subnav_head:hover {
 .blog_upgrade h2 {
 	margin: 10px 0;
 	font-size: 24pt;
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 .blog_upgrade p {
@@ -1589,7 +1589,7 @@ a.medien_title_list  {
 	text-decoration: none;
 	color: rgb(46,74,98);
 	display: block;
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 a:hover.medien_title_list {
@@ -1684,7 +1684,7 @@ a:visited.medien_title_list {
 	text-decoration: none;
 	color: rgb(46,74,98);
 	font-size: 24pt;
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 .schriften_table td a:hover {
@@ -2051,7 +2051,7 @@ img.projekte_coin2  {
 	font-size: 26pt;
 	text-align: center;
 	color: #rgb(255,255,255);
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 	
 .pay_option_box p {
@@ -2122,7 +2122,7 @@ img.projekte_coin2  {
 	font-size: 24pt;
 	text-align: center;
 	margin: 80px 0 30px 0;
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 .agb p {
@@ -2666,7 +2666,7 @@ img.projekte_coin2  {
 	width: 262px;
 	height: 50px;
 	font-size: 12pt;
-	font-family: "Futura Bock", Helvetica, Arial, sans-serif;
+	font-family: "Futura Book", Helvetica, Arial, sans-serif;
 }
 
 .profil_inputbutton {
@@ -2693,7 +2693,7 @@ img.projekte_coin2  {
 
 .profil_radio_label {
 	font-size: 12pt;
-	font-family: "Futura Bock", Helvetica, Arial, Sans-serif;
+	font-family: "Futura Book", Helvetica, Arial, Sans-serif;
 }
 
 /*==================================================*/
@@ -3085,7 +3085,7 @@ button.close {
 	font-size: 24pt;
 	text-align: center;
 	margin: 80px 0 30px 0;
-	font-family: "Futura Bock", Helvetica, Arial, serif;
+	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 .agb p {

@@ -155,6 +155,14 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
   </div>           	
   				</div>
             <div class="nav">
-                <div class="navi"></div>
+                <div class="navi">
+                	<!--<ul id="nav">
+                    	<li id="navelm"><a class="navelm" href="../faq.php">FAQ</a></li>
+                    	<li id="navelm"><a class="navelm" href="../eltern.php">F&uuml;r Eltern</a></li>
+                    	<li id="navelm"><a class="navelm" href="../studenten.php">F&uuml;r Studenten</a></li>
+                    	<li id="navelm"><a class="navelm" href="../personen.php">Personen</a></li>
+                    	<li><a class="navelm" href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">Kontakt</a></li>
+                 </ul>-->
+                </div>
            </div>
         </header>

@@ -177,7 +177,20 @@ if(isset($_GET['q']))
 	<div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
 <?php  
   }
+	elseif ($spots_avaibale == 0){
 ?>	
+	<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht.</span><br>
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      	<option value="0" disabled>0</option>     
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen" disabled><br>     
+    </form>
+	<div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+<?php
+	}
+?>
 			</div>
 		</div>		
 	</div>
@@ -226,7 +239,7 @@ else {
 ?>
 		<div class="salon_content">
 <?	
-  $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND start > NOW() AND spots > spots_sold AND status = 1 order by start asc, n asc";
+  $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND start > NOW() AND status = 1 order by start asc, n asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
   while($entry = mysql_fetch_array($result))
