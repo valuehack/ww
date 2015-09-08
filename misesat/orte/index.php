@@ -66,6 +66,13 @@ else {
 	<div id="map" style="width:100%; height:500px;"></div>
 	<script type="text/javascript">
 
+	var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 50.0596696, lng: 14.4656239},
+            zoom: 5';
+        });
+
 <?php
 	while($entry = mysql_fetch_array($result))
 	{
@@ -77,14 +84,7 @@ else {
   		$denker = $entry[denker];
 		$lat = $entry[lat];
 		$lng = $entry[lng];
-      
-    echo'var map;';
-    echo'function initMap() {';
-        echo"map = new google.maps.Map(document.getElementById('map'), {";
-            echo'center: {lat: 50.0596696, lng: 14.4656239},';
-            echo'zoom: 5';
-        echo'});';
-		 		
+      		 		
 		echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";
 		
         echo"var marker = new google.maps.Marker({";
@@ -93,11 +93,10 @@ else {
          echo"title: '".$name."'";
         echo"});";
        echo"attachInfoWindow(marker, info);";
-	echo'}';
-	echo'</script>';
 	}
 ?>
-	
+	}
+	</script>
 
     <nav>
     	<ol class="nav_autoren">
