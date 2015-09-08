@@ -58,7 +58,7 @@ else {
       
       <h2>Orts&uuml;bersicht</h2>
       
-      <div id="overview_map"></div>
+      <div id="overview_map" style="width:100%; height: 500px;"></div>
       
     <noscript><b>Um unsere Kartenanwendung zu nutzen ben&ouml;tigen Sie JavaScript.</b> 
       JavaScript scheint in Ihrem Browser deaktiviert zu sein oder wird von diesem nicht unterst&uuml;tzt. 
@@ -86,7 +86,7 @@ else {
 		echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>";
 		
         echo"var marker = new google.maps.Marker({";
-         echo"position: {lat: ".substr($coord,0, 10).", lng: ".substr($coord,12, 21)."},";
+         echo"position: {lat: ".substr($coord,0, 9).", lng: ".substr($coord,11, 21)."},";
          echo"map: map,";
          echo"title: '".$name."'";
         echo"});";
@@ -132,7 +132,6 @@ else {
     	</ol>
     </nav>
 
-  </div>
 </div>
 	<script type="text/javascript">
     function attachInfoWindow(marker, info) {
