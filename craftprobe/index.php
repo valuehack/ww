@@ -19,7 +19,7 @@ $knowledge = $_POST['knowledge'];
 
 if ($ok) {
 
-$sql = "INSERT INTO cp_anmeldung (id, email, firstname, name, country, telephone, nationality, liveexperiance, knowdledge, skills, languages, drivers_licence, car_vienna, pref_lenght, pref_date, flexible, sub_date) 
+$sql = "INSERT INTO cp_anmeldung (id, email, firstname, name, country, telephone, nationality, liveexperiance, knowledge, skills, languages, drivers_licence, car_vienna, pref_lenght, pref_date, flexible, sub_date) 
 VALUES ('', '$email', '$firstname', '$name', '$country', '$telephone', '$nationality', '$liveexperiance', '$knowledge', '$skills', '$languages', '$drivers_licence', '$car_vienna', '$pref_lenght', '$pref_date', '$flexible', NOW())";
 
 $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
