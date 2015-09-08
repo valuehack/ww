@@ -145,7 +145,7 @@ else {
   },{
   }
 ], {
-	name: 'CustomStyle'
+	name: 'Custom Style'
 });
  var customMapTypeId = 'custom_style';
    		
