@@ -58,6 +58,21 @@ else {
       
       <h2>Orts&uuml;bersicht</h2>
       
+      <div id="overview_map"></div>
+      
+    <noscript><b>Um unsere Kartenanwendung zu nutzen ben&ouml;tigen Sie JavaScript.</b> 
+      JavaScript scheint in Ihrem Browser deaktiviert zu sein oder wird von diesem nicht unterst&uuml;tzt. 
+      Um unsere Kartenansischt sehen können, aktivieren Sie bitte JavaScript.
+    </noscript>
+    
+    <script type="text/javascript">
+      
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 50.0596696, lng: 14.4656239},
+            zoom: 5
+        });
 <?php
 	while($entry = mysql_fetch_array($result))
 	{
@@ -66,13 +81,21 @@ else {
   		$text = $entry[text];
   		$img = $entry[img];
   		$denker = $entry[denker];
-  		
-  		echo '<div>';
-		echo '<h2><a href="index.php?q='.$id.'">'.$name.'</a></h2>';
-		echo '<p>'.substr($text, 0, 200).'</p>';
-		echo '</div>';
+		$coord = $entry[geo];
+ 		
+		echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>";
+		
+        echo"var marker = new google.maps.Marker({";
+         echo"position: {lat: ".substr($coord,0, 10).", lng: ".substr($coord,12, 21)."},";
+         echo"map: map,";
+         echo"title: '".$name."'";
+        echo"});";
+       echo"attachInfoWindow(marker, info);";
+	
 	}
 ?>
+}
+</script>
     <nav>
     	<ol class="nav_autoren">
     		<li><a href="#a">A</a></li>
@@ -108,178 +131,29 @@ else {
     		<li>Z</li>
     	</ol>
     </nav>
-    <div class="autorenliste">
-<?php 
-  //while($entry = mysql_fetch_array($result))
-  //{	
-?>
-      <section>
-      <h2 id="a">A</h2>   
-        <dl>
-          <img src="<?=$img?>" alt="">
-    	  <dt><a href="?q=<?=$id?>"><?=$name?></a></dt>
-    	  <dd>
-    		<p><?=$shortbio?></p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="?q=<?=$id?>">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="b">B</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Eugen B&ouml;hm Ritter von Bawerk</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="f">F</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Frank Fetter</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="h">H</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Gottfried von Harberler</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Friedrich August von Hayek</a></dt>
-    	  <dd>
-    	    <p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    	    <p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    	    <p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    	    <p><a href="#">zum Autor</a></p>
-		  </dd>
-      	</dl>      
-      </section>
-      
-      <section>
-      <h2 id="l">L</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Ludwig Lachmann</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="m">M</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Fritz Machlup</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>        
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Carl Menger</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>             
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Ludwig von Mises</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="r">R</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Paul Narcyz Rosenstein-Rodan</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="s">S</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Emil Sax</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Hans Sennholz</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>  
-      </section>
-      
-      <section>
-      <h2 id="w">W</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Friedrich von Wieser</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
+
   </div>
 </div>
+	<script type="text/javascript">
+    function attachInfoWindow(marker, info) {
+        var infowindow = new google.maps.InfoWindow({
+        content: info
+        });
+        
+        marker.addListener('mouseover', function() {
+        infowindow.open(map, marker);
+        });
+        
+        marker.addListener('mouseout', function() {
+        infowindow.close(map, marker);
+        });
+    }
+    </script>
+    
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChP6VPcxuqcO5r8q7733mF7hzjNg4r9EY&callback=initMap">
+    </script>
+
 <?	
 	//}
 }
