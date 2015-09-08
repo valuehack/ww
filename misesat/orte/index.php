@@ -47,9 +47,9 @@ if(isset($_GET['q']))
 }
 else {
 	
-	$n = $_GET['n'];
+   $n = $_GET['n'];
 		
-   $sql="SELECT * from orte where n > $n order by id asc";
+   $sql="SELECT * from orte where n > '$n' order by id asc";
    $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
    
 ?>
