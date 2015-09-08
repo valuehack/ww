@@ -220,7 +220,8 @@ h1, h2 {
 	position: relative;
 }
 
-.logo img {
+.logo {
+	width: 50%;
 }
 
 .bannerms h1 {
