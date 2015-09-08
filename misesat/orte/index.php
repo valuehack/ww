@@ -47,7 +47,7 @@ if(isset($_GET['q']))
 }
 else {
 	
-   $sql="SELECT * from orte where n = 3 or n = 5 order by id asc";
+   $sql="SELECT * from orte where n > 10 and n < 20 order by id asc";
    $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
    
 ?>
@@ -85,9 +85,9 @@ else {
 		$lat = $entry[lat];
 		$lng = $entry[lng];
       		 		
-		$info = '<div><a href="index.php?q='.$id.'"><h1>'.$name.'</h1></a><p>'.substr($text, 0, 200).'</p></div>';
+		#$info = '<div><a href="index.php?q='.$id.'"><h1>'.$name.'</h1></a><p>'.substr($text, 0, 200).'</p></div>';
 		
-		echo"var info = '".$info."'";
+		echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div";
 		
         echo"var marker = new google.maps.Marker({";
          echo"position: {lat: ".$lat.", lng: ".$lng."},";
