@@ -70,6 +70,7 @@ else {
 	while($entry = mysql_fetch_array($result))
 	{
 		$id = $entry[id]; 
+		$n = $entry[n];
         $name = $entry[name];
   		$text = $entry[text];
   		$img = $entry[img];
