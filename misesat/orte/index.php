@@ -83,7 +83,7 @@ else {
       
     echo'var map;';
     echo'function initMap() {';
-        echo"map = new google.maps.Map(document.getElementById('map'), {";
+        echo"map = new google.maps.Map(document.getElementById('map".$n."'), {";
             echo'center: {lat: 50.0596696, lng: 14.4656239},';
             echo'zoom: 5';
         echo'});';
