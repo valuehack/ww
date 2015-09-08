@@ -92,7 +92,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             <div class="bannerms">
                 <!--<h1>craft<span>probe</span></h1>
                 <h2>...the Gap Year program to get real.</h2>-->
-                <img class="logo" src="img/cp_logo_white.svg" alt="">
+                <img class="logo" src="img/cp_logo_white.png" alt="">
             </div>
         </div>
         <div class="content">
