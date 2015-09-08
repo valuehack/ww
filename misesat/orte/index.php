@@ -47,7 +47,7 @@ if(isset($_GET['q']))
 }
 else {
 	
-   $sql="SELECT * from orte where n < 10 order by id asc";
+   $sql="SELECT * from orte where n < 20 order by id asc";
    $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
    
 ?>
