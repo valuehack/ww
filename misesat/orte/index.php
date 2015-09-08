@@ -58,21 +58,14 @@ else {
       
       <h2>Orts&uuml;bersicht</h2>
       
-      <div id="map" style="width:100%; height:500px;"></div>
+      
       
     <noscript><b>Um unsere Kartenanwendung zu nutzen ben&ouml;tigen Sie JavaScript.</b> 
       JavaScript scheint in Ihrem Browser deaktiviert zu sein oder wird von diesem nicht unterst&uuml;tzt. 
       Um unsere Kartenansischt sehen k&oouml;nnen, aktivieren Sie bitte JavaScript.
     </noscript>
     
-    <script type="text/javascript">
-      
-    var map;
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 50.0596696, lng: 14.4656239},
-            zoom: 5
-        });
+
 <?php
 	while($entry = mysql_fetch_array($result))
 	{
@@ -83,6 +76,18 @@ else {
   		$denker = $entry[denker];
 		$lat = $entry[lat];
 		$lng = $entry[lng];
+		echo '<h2>'.$name.'</h2>';
+		echo '<div id="map'.$n.'" style="width:100%; height:500px;"></div>';
+	echo '<script type="text/javascript">';
+      
+    echo'var map;';
+    echo'function initMap() {';
+        echo"map = new google.maps.Map(document.getElementById('map'), {";
+            echo'center: {lat: 50.0596696, lng: 14.4656239},';
+            echo'zoom: 5';
+        echo'});';
+		
+
  		
 		echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";
 		
@@ -92,11 +97,12 @@ else {
          echo"title: '".$name."'";
         echo"});";
        echo"attachInfoWindow(marker, info);";
-	
+	echo'}';
+	echo'</script>';
 	}
 ?>
-	}
-</script>
+	
+
     <nav>
     	<ol class="nav_autoren">
     		<li><a href="#a">A</a></li>
