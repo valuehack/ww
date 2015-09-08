@@ -47,7 +47,7 @@ if(isset($_GET['q']))
 }
 else {
 	
-   $sql="SELECT * from orte where n < 15 order by id asc";
+   $sql="SELECT * from orte order by id asc";
    $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
    
 ?>
@@ -81,12 +81,13 @@ else {
   		$text = $entry[text];
   		$img = $entry[img];
   		$denker = $entry[denker];
-		$coord = $entry[geo];
+		$lat = $entry[lat];
+		$lng = $entry[lng];
  		
 		echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";
 		
         echo"var marker = new google.maps.Marker({";
-         echo"position: {lat: ".substr($coord,0, 9).", lng: ".substr($coord,11, 21)."},";
+         echo"position: {lat: ".$lat.", lng: ".$lng."},";
          echo"map: map,";
          echo"title: '".$name."'";
         echo"});";
