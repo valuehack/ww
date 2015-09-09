@@ -99,7 +99,7 @@ else {
 ?>
 	var info = '<a href="index.php?q=wien"><h1>Test</h1></a><p>Text Text</p>';
 	
-	var marker = new.google.maps.Marker({
+	var marker = new google.maps.Marker({
 		position: {lat: 48.0596696, lng: 7.4656239},
 		map: map;
 		title: 'Test'
