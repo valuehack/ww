@@ -73,17 +73,40 @@ else {
             zoom: 5
         });
 
-	var info = 'Hallo';
-	
+<?php
+	while($entry = mysql_fetch_array($result))
+	{
+		$id = $entry[id]; 
+		$n = $entry[n];
+        $name = $entry[name];
+  		$text = $entry[text];
+  		$img = $entry[img];
+  		$denker = $entry[denker];
+		$lat = $entry[lat];
+		$lng = $entry[lng];
+     ?> 
+        		 			
+		var info = '<div><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><p><?=substr($text, 0, 200)?></p></div>';
+			
         var marker = new google.maps.Marker({
-            position: {lat: 48.2206849, lng: 16.3800599},
-            map: map,
-            title: 'Wien'
+         	position: {lat: <?=$lat?>, lng: <?=$lng?>},
+         	map: map,
+         	title: '<?=$name?>'
         });
         attachInfoWindow(marker, info);
-
-
-
+<?php       
+	}
+?>
+    	function attachInfoWindow(marker, info) {
+        	var infowindow = new google.maps.InfoWindow({
+        	content: info
+       		 });
+        
+       		marker.addListener('click', function() {
+        	infowindow.open(map, marker);
+        	});
+        
+    	}
 	}
 	</script>
 
