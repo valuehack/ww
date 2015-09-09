@@ -69,7 +69,7 @@ else {
     function initMap() {
 
      var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 50.0596696, lng: 14.4656239},
+            center: {lat: 48.0596696, lng: 14.4656239},
             zoom: 5
         });
 
@@ -86,17 +86,25 @@ else {
 		$lng = $entry[lng];
      ?> 
         		 			
-		var info = '<div><a href="index.php"><h1>Name</h1></a><p>Text</p></div>';
+		var info = '<div><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><p><?=substr($text, 0, 200)?></p></div>';
 			
         var marker = new google.maps.Marker({
          	position: {lat: <?=$lat?>, lng: <?=$lng?>},
          	map: map,
          	title: '<?=$name?>'
         });
-       attachInfoWindow(marker, info);
+        attachInfoWindow(marker, info);
 <?php       
 	}
 ?>
+	var info = '<a href="index.php?q=wien"><h1>Test</h1></a><p>Text Text</p>';
+	
+	var marker = new.google.maps.Marker({
+		position: {lat: 48.0596696, lng: 7.4656239},
+		map: map;
+		title: 'Test'
+	});
+	attachInfoWindow(marker,info);
 	}
 	</script>
 
