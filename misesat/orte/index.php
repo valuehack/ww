@@ -101,7 +101,7 @@ else {
 	
 	var marker = new google.maps.Marker({
 		position: {lat: 48.0596696, lng: 7.4656239},
-		map: map;
+		map: map,
 		title: 'Test'
 	});
 	attachInfoWindow(marker,info);
