@@ -82,30 +82,7 @@ else {
 	});
 	attachInfoWindow(marker, info);
 
-<?php
-	while($entry = mysql_fetch_array($result))
-	{
-		$id = $entry[id]; 
-		$n = $entry[n];
-        $name = $entry[name];
-  		$text = $entry[text];
-  		$img = $entry[img];
-  		$denker = $entry[denker];
-		$lat = $entry[lat];
-		$lng = $entry[lng];
-     ?> 
-        		 			
-		var info = '<div><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><p><?=substr($text, 0, 200)?></p></div>';
-			
-        var marker = new google.maps.Marker({
-         	position: {lat: <?=$lat?>, lng: <?=$lng?>},
-         	map: map,
-         	title: '<?=$name?>'
-        });
-        attachInfoWindow(marker, info);
-<?php       
-	}
-?>
+
 
 	}
 	</script>
