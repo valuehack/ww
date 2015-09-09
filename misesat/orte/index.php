@@ -72,7 +72,7 @@ else {
             center: {lat: 50.0596696, lng: 14.4656239},
             zoom: 5
         });
-        
+
 <?php
 	while($entry = mysql_fetch_array($result))
 	{
@@ -84,11 +84,10 @@ else {
   		$denker = $entry[denker];
 		$lat = $entry[lat];
 		$lng = $entry[lng];
-     ?> 		 		
+     ?> 
+        		 		
 		var info = '<div><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><p><?=substr($text, 0, 200)?></p></div>';
-		
-		//echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";
-		
+			
         var marker = new google.maps.Marker({
          	position: {lat: ".$lat.", lng: ".$lng."},
          	map: map,
@@ -100,6 +99,8 @@ else {
 ?>
 	}
 	</script>
+
+		<!--echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";-->
 
     <nav>
     	<ol class="nav_autoren">
