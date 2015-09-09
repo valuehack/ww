@@ -73,7 +73,7 @@ else {
             zoom: 5
         });
 
-	var info = '<a href="index.php?q=wien"><h1>Test</h1></a><p>Text Text</p>';
+	var info = 'Hallo';
 	
         var marker = new google.maps.Marker({
             position: {lat: 48.2206849, lng: 16.3800599},
