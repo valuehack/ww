@@ -154,7 +154,6 @@ em {
 	padding-bottom: 16px;
 }
 
-
 /*==================================================*/
 /*                 Content General                  */
 /*==================================================*/
@@ -172,7 +171,7 @@ em {
     font-size: 28pt;
     font-weight: normal;
     line-height: 1.2;
-    color: rgb(46,74,98);
+    color: rgb(28,109,186);
     margin: 20px 0 40px 0;
 }
 
@@ -458,9 +457,14 @@ img.denker {
 	color: rgb(28,109,186);	
 }
 
+.map_info h1:hover{
+	color: rgb(150,150,150);
+}
+
 .map_info h2 {
 	font-size: 14pt;
 	color: rgb(28,109,186);	
+	margin: 0;
 }
 
 .map_info a {
@@ -473,7 +477,7 @@ img.denker {
 }
 
 .map_info p {
-    font-size:  11pt;
+    font-size: 11pt;
     line-height: 1.6;
     margin: 20px 0;
 }
