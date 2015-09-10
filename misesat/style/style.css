@@ -464,7 +464,6 @@ img.denker {
 
 .map_info a:hover {
 	color: rgb(150,150,150);
-	border-bottom: 1px solid rgb(150,150,150);
 }
 
 .map_info p {
@@ -475,9 +474,9 @@ img.denker {
 
 .map_info img {
 	float: right;
-	margin: 0 5px;
+	margin-left: 20px;
+	max-height: 125px;
 }
-
 /*==================================================*/
 /*                   Footer                    		*/
 /*==================================================*/

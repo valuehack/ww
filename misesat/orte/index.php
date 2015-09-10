@@ -86,7 +86,7 @@ else {
 		$lng = $entry[lng];
      ?> 
         		 			
-		var info = '<div class="map_info"><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><img src="<?=$img?>" alt=""><p><?=substr($text, 0, 200)?></p><p><?=$denker?></p></div>';
+		var info = '<div class="map_info"><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><img src="<?=$img?>" alt=""><p><?=substr($text, 0, 180)?> ... <a href="index.php?q=<?=$id?>">Mehr</a></p><p><?=$denker?></p></div>';
 			
         var marker = new google.maps.Marker({
          	position: {lat: <?=$lat?>, lng: <?=$lng?>},
