@@ -444,86 +444,38 @@ img.denker {
 
 /*==================== Karten ======================*/
 
-.maps {
-	background: rgb(46, 74, 98);
-	width: 880px;
-	padding: 20px;
-	margin-bottom: 20px;
+#map {
+	width: 100%;
+	height: 500px;
 }
 
-.maps p {
-    color: rgb(250,250,250);
-    font-size: 12pt;
-    line-height: 1.5;
+.map_info {
+	margin: 20px;
 }
 
-.maps img {
-	border: 20px solid rgb(255,255,255);
-	float: right;
-	margin: 10px 0 20px 20px;
+.map_info h1 {
+	font-size: 16pt;	
 }
 
-.maps h3 {
-	font-size: 16pt;
-	color: rgb(250,250,250);
-	text-shadow: 0 0 1px;
-}
-
-.map {
-	width: 870px;
-	height: 806px;
-	border: 20px solid rgb(46, 74, 98);
-	margin-bottom: 20px;
-	background: url(../orte/friedhof2.png) rgb(46, 74, 98) no-repeat 0 0;
-}
-
-.map img {
-	border: 20px solid rgb(46, 74, 98);
-	max-width: 870px;
-}
-
-/*Detail Pop-Up*/
-
-a.map_detail {
-	position: relative;
-	z-index: 1;
-	color: #2e4a62;
+.map_info a {
 	text-decoration: none;
+	color: rgb(46, 74, 98);
 }
 
-a:hover.map_detail {
-	z-index: 2;
+.map_info a:hover {
+	color: rgb(150,150,150);
+	border-bottom: 1px solid rgb(150,150,150);
 }
 
-a.map_detail span {
-	display: none;
+.map_info p {
+    font-size:  11pt;
+    line-height: 1.6;
+    margin: 20px 0;
 }
 
-a:hover.map_detail span {
-	display: block;
-	position: absolute;
-	top: 10px;
-	left: -200px;
-	width: 700px;
-	border: 1px solid #2d495e;
-	background-color: rgba(250,250,250,0.8);
-	color: #2e4a62;
-	box-shadow: 5px 5px 10px rgb(80,80,80);
-	text-align: justify;
-	padding: 10px;
-	margin: 10px;
-	font-size: 10pt;
-	line-height: 1.4;
-} 
-a.map_detail img {
-	float: none;
-	margin-right: 10px;
-	width: 150px;
-	border: 0;
-}
-
-a.map_detail h4 {
-	margin-top: 0px;
+.map_info img {
+	float: right;
+	margin: 0 5px;
 }
 
 /*==================================================*/

@@ -86,7 +86,7 @@ else {
 		$lng = $entry[lng];
      ?> 
         		 			
-		var info = '<div><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><p><?=substr($text, 0, 200)?></p></div>';
+		var info = '<div class="map_info"><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><p><?=substr($text, 0, 200)?></p></div>';
 			
         var marker = new google.maps.Marker({
          	position: {lat: <?=$lat?>, lng: <?=$lng?>},
@@ -149,19 +149,7 @@ else {
     </nav>
 
 </div>
-	<script type="text/javascript">
-    function attachInfoWindow(marker, info) {
-        var infowindow = new google.maps.InfoWindow({
-        content: info
-        });
-        
-        marker.addListener('click', function() {
-        infowindow.open(map, marker);
-        });
-        
-    }
-    </script>
-    
+
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChP6VPcxuqcO5r8q7733mF7hzjNg4r9EY&callback=initMap">
     </script>
