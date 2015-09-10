@@ -103,7 +103,7 @@ if(isset($_POST['checkout'])) {
 
     else
     	{
-        foreach ($items as $code => $$quantity)
+        foreach ($items as $code => $quantity)
                 {					    
                     $length = strlen($code) - 1;
 
