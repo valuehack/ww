@@ -454,12 +454,18 @@ img.denker {
 }
 
 .map_info h1 {
-	font-size: 22pt;	
+	font-size: 22pt;
+	color: rgb(28,109,186);	
+}
+
+.map_info h2 {
+	font-size: 14pt;
+	color: rgb(28,109,186);	
 }
 
 .map_info a {
 	text-decoration: none;
-	color: rgb(46, 74, 98);
+	color: rgb(203,44,52);
 }
 
 .map_info a:hover {
