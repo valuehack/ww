@@ -71,7 +71,7 @@ else {
 	var MisesAustriaMapStyle = new google.maps.StyledMapType([
       {
       	      }
-    ], {name: 'Wohnorte und Wirkst&auml;tten Wiener &Ouml;konomen'});
+    ], {name: 'Wohnorte und Wirkst%E4tten Wiener %D6konomen'});
     
      var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 48.0596696, lng: 14.4656239},
