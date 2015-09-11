@@ -198,7 +198,7 @@ em {
 	font-family: 'EB Garamond', serif;
 }
 
-.index p {
+.index {
 	text-align: left;
 	margin-bottom: 25px;
 	color: rgb(175,175,175) !important;
@@ -492,6 +492,10 @@ img.denker {
 
 .map_info a:hover {
 	color: rgb(150,150,150);
+}
+
+.map_info a:visited {
+	color: rgb(203,44,52);
 }
 
 .map_info p {

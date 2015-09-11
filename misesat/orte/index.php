@@ -71,7 +71,7 @@ else {
 	var MisesAustriaMapStyle = new google.maps.StyledMapType([
       {
       	      }
-    ], {name: 'Wohnorte und Wirkstätten Wiener Ökonomen'});
+    ], {name: 'Wohnorte und Wirkst&auml;tten Wiener &Ouml;konomen'});
     
      var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 48.0596696, lng: 14.4656239},
@@ -97,7 +97,7 @@ else {
 		$lng = $entry[lng];
      ?> 
         		 			
-		var info = '<div class="map_info"><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><img src="<?=$img?>" alt=""><p><?=substr($text, 0, 180)?> ... <a href="index.php?q=<?=$id?>">Mehr</a></p><h2>Wirkende Denker</h2><p><?=$denker?></p></div>';
+		var info = '<div class="map_info"><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><img src="<?=$img?>" alt=""><p><?=substr($text, 0, 180)?> ... <a href="index.php?q=<?=$id?>">Mehr</a></p><h2>Denker die hier gelebt und gewirkt haben</h2><p><?=$denker?></p></div>';
 			
         var marker = new google.maps.Marker({
          	position: {lat: <?=$lat?>, lng: <?=$lng?>},
