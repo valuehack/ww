@@ -68,10 +68,21 @@ else {
 
     function initMap() {
 
+	var OrteWienerSchule = new google.maps.StyledMapType([
+      {
+      	      }
+    ], {name: 'Wohnorte und Wirkstätten Wiener Ökonomen'});
+    
      var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 48.0596696, lng: 14.4656239},
-            zoom: 5
+            zoom: 5,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'misesat_map']
+            }
         });
+        
+        map.mapTypes.set('misesat_map', MisesAustriaMapStyle);
+        map.setMapTypeId('misesat_map');
 
 <?php
 	while($entry = mysql_fetch_array($result))

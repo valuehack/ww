@@ -8,6 +8,7 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
     <link rel="stylesheet" href="../style/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300|EB+Garamond' rel='stylesheet' type='text/css'>
        
     <title><?=$title?> | Mises Austria</title>
     

@@ -54,9 +54,7 @@ table {
 
 body {
 	background: rgb(242,242,242);
-	font-family:  Arial, Helvetica, sans-serif;
 	color: rgb(70,70,70);
-    font-weight: 500; 
 }
 
 p {
@@ -167,7 +165,8 @@ em {
 }
 
 .content h2 {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
     font-size: 28pt;
     font-weight: normal;
     line-height: 1.2;
@@ -176,7 +175,8 @@ em {
 }
 
 .content h3 {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
     font-size: 24pt;
     font-weight: normal;
     line-height: 1.1;
@@ -193,6 +193,7 @@ em {
 	font-size: 13pt;
 	line-height: 1.8;
 	margin: 0 0 40px 0;
+	font-family: 'EB Garamond', serif;
 }
 
 .index p {
@@ -230,6 +231,7 @@ em {
 	color: rgb(160,160,160);
 	line-height: 1.4;
 	margin: 0;
+	font-family: 'EB Garamond', serif;
 }
 
 .booksource a {
@@ -358,7 +360,6 @@ em {
 /*=================== Denker ======================*/
 
 .denker {
-	font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
 }
 
 .denker h1 {	
@@ -366,6 +367,8 @@ em {
 	line-height: 1.2;
 	color: rgb(46,74,98);
 	margin: 20px 0px 40px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
 }
 
 .denker h2 {
@@ -373,12 +376,15 @@ em {
 	line-height: 1.1;
 	color: rgb(46,74,98);
 	margin: 10px 0px 40px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
 }
 
 .denker p {
 	text-align: justify;
 	font-size: 12pt;
 	line-height: 1.8;
+	font-family: 'EB Garamond', serif;
 }
 
 img.denker {
@@ -398,18 +404,22 @@ img.denker {
 	line-height: 1.4;
 	margin: 10px 0px 40px;
 	display: block;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
 }
 
 .works_sub {
 	float: left;
 	width: 30%;
 	margin: 0 2%;
+	font-family: 'EB Garamond', serif;
 }
 
 .works_sub_m {
 	float: left;
 	width: 30%;
 	margin: 0 1%;
+	font-family: 'EB Garamond', serif;
 }
 
 .works ul {
@@ -454,7 +464,9 @@ img.denker {
 
 .map_info h1 {
 	font-size: 22pt;
-	color: rgb(28,109,186);	
+	color: rgb(28,109,186);
+	font-weight: 300;
+	font-family: 'Raleway', sans-serif;
 }
 
 .map_info h1:hover{
@@ -465,6 +477,8 @@ img.denker {
 	font-size: 14pt;
 	color: rgb(28,109,186);	
 	margin: 0;
+	font-weight: 300;
+	font-family: 'Raleway', sans-serif;
 }
 
 .map_info a {
@@ -480,6 +494,7 @@ img.denker {
     font-size: 11pt;
     line-height: 1.6;
     margin: 20px 0;
+    font-family: 'EB Garamond', serif;
 }
 
 .map_info img {
@@ -494,8 +509,8 @@ img.denker {
 footer {
 	background: rgb(46, 74, 98);
 	width: 100%;
-	font-family: Verdana, Tahoma, sans-serif;
-	font-weight: 600;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
 	margin-bottom: 0;
 	padding: 20px 0;
 	bottom: 0;
