@@ -206,7 +206,7 @@ function checkMe() {
             }
             //$download_link = downloadurl('http://scholarium.at/secdown/sec_files/'.$key.'.pdf\','.$key);
 
-            echo "<td>".ucfirst($itemsExtraArray[type])."</td>";
+            echo "<td>".ucfirst(substr($itemsExtraArray[type],6))."</td>";
             echo "<td>".$itemsExtraArray[title]."<br><i>";
             switch ($format) {
                 case 1: echo "pdf"; break;
