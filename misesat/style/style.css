@@ -122,6 +122,8 @@ em {
 	height: 122.5px;
    	display: block;
    	transition: all 0.2s ease 0s;
+   	font-family: 'Raleway', sans-serif;
+   	font-weight: 300;
 }
 
 .nav li:hover {
@@ -201,6 +203,8 @@ em {
 	margin-bottom: 25px;
 	color: rgb(175,175,175) !important;
 	font-size: 10pt;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
 }
 
 .index a {

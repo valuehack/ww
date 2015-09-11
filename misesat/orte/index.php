@@ -68,7 +68,7 @@ else {
 
     function initMap() {
 
-	var OrteWienerSchule = new google.maps.StyledMapType([
+	var MisesAustriaMapStyle = new google.maps.StyledMapType([
       {
       	      }
     ], {name: 'Wohnorte und Wirkstätten Wiener Ökonomen'});
