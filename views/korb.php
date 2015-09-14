@@ -116,14 +116,6 @@ if(isset($_POST['checkout'])) {
                         case 4: $format = "Druck"; break;
                         default: $format = NULL; break;
                     }
-
-                    if (substr($itemsPriceArray[type],0,5)=='media'||$itemsPriceArray[type]=='analyse'||$itemsPriceArray[type]=='scholie'||$itemsPriceArray[type]=='buch')
-        			{
-        			//check if already downloaded    
-        			$check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
-        			$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
-        			$checkPriceArray = mysql_fetch_array($check_price_result);
-					}
 					
                     $checkout_query = "INSERT INTO registration (event_id, user_id, quantity, format, reg_datetime) VALUES ('$key', '$user_id', '$quantity', '$format', NOW())";
                     mysql_query($checkout_query);
@@ -202,6 +194,14 @@ function checkMe() {
             $key = substr($code,0,$length);
             $format = substr($code,-1,1);
 
+			if (substr($itemsPriceArray[type],0,5)=='media'||$itemsPriceArray[type]=='analyse'||$itemsPriceArray[type]=='scholie'||$itemsPriceArray[type]=='buch')
+        	{
+        	//check if already downloaded    
+        	$check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
+        	$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
+        	$checkPriceArray = mysql_fetch_array($check_price_result);
+			}
+
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
@@ -217,7 +217,7 @@ function checkMe() {
             }
             //$download_link = downloadurl('http://scholarium.at/secdown/sec_files/'.$key.'.pdf\','.$key);
 
-            if($itemExtraArray[type]=='media%'){
+            if(substr($itemExtraArray[type],0,5)=='media'){
 				$type2 = ucfirst(substr($itemsExtraArray[type],6));
 			}            
 			else {
@@ -399,6 +399,14 @@ function checkMe() {
             $key = substr($code,0,$length);
             $format = substr($code,-1,1);
 
+			if (substr($itemsPriceArray[type],0,5)=='media'||$itemsPriceArray[type]=='analyse'||$itemsPriceArray[type]=='scholie'||$itemsPriceArray[type]=='buch')
+        	{
+        	//check if already downloaded    
+        	$check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
+        	$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
+        	$checkPriceArray = mysql_fetch_array($check_price_result);
+			}
+
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
@@ -413,7 +421,7 @@ function checkMe() {
                 $sum = $quantity*$itemsExtraArray[price];
             }
 
-			if($itemExtraArray[type]=='media%'){
+			if(substr($itemExtraArray[type],0,5)=='media'){
 				$type2= ucfirst(substr($itemsExtraArray[type],6));
 			}            
 			else {
