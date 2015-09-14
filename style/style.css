@@ -1344,6 +1344,14 @@ a.socialimg:visited {
 	background: rgb(30,48,64);
 }
 
+.salon_reservation_inputbutton:disabled {
+	background: rgb(200,200,200);
+}
+
+.salon_reservation_inputbutton.disabled[value] {
+	background: rgb(100,100,100);
+}
+
 .salon_reservation_span_a {
 	font-size: 22pt;
 	margin: 10px;
