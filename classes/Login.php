@@ -1256,7 +1256,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
         </ul></p>
 
 
-        <p><b>Bitte verwenden Sie als Sie als Zahlungsreferenz/Betreff unbedingt &quot;Mitglied Nr.".$user_id."&quot;</b></p>
+        <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;Spende Nr. ".$user_id."&quot;</b></p>
         ";
 
             break;
