@@ -217,7 +217,14 @@ function checkMe() {
             }
             //$download_link = downloadurl('http://scholarium.at/secdown/sec_files/'.$key.'.pdf\','.$key);
 
-            echo "<td>".ucfirst(substr($itemsExtraArray[type],6))."</td>";
+            if($itemExtraArray[type]=='media%'){
+				$type2 = ucfirst(substr($itemsExtraArray[type],6));
+			}            
+			else {
+				$type2 = ucfirst($itemsExtraArray[type]);
+			}
+            
+            echo "<td>".$type2."</td>";
             echo "<td>".$itemsExtraArray[title]."<br><i>";
             switch ($format) {
                 case 1: echo "pdf"; break;
@@ -399,7 +406,7 @@ function checkMe() {
             if ($format == 4 && $itemsExtraArray[price_book]) {
                 $sum = $quantity*$itemsExtraArray[price_book];
             }
-			elseif($checkPriceArray[quantity]==1){
+			if($checkPriceArray[quantity]==1){
 				$sum = 0;
 			}
             else {
@@ -407,14 +414,14 @@ function checkMe() {
             }
 
 			if($itemExtraArray[type]=='media%'){
-				$type_mail = ucfirst(substr($itemsExtraArray[type],6));
+				$type2= ucfirst(substr($itemsExtraArray[type],6));
 			}            
 			else {
-				$type_mail = ucfirst($itemsExtraArray[type]);
+				$type2 = ucfirst($itemsExtraArray[type]);
 			}
 			
             $body = $body. "<tr><td>".$itemsExtraArray[n]."&nbsp;</td>";
-            $body = $body. "<td><i>".$type_mail."</i> ".$itemsExtraArray[title]." <i>";
+            $body = $body. "<td><i>".$type2."</i> ".$itemsExtraArray[title]." <i>";
             switch ($format) {
                 case 1: $body = $body. "PDF"; break;
                 case 2: $body = $body. "ePub"; break;
