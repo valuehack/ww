@@ -194,6 +194,8 @@ function checkMe() {
             $key = substr($code,0,$length);
             $format = substr($code,-1,1);
 
+			$checkPriceArray[quantity] = 0;
+
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
@@ -398,6 +400,8 @@ function checkMe() {
 
             $key = substr($code,0,$length);
             $format = substr($code,-1,1);
+
+			$checkPriceArray[quantity] = 0;
 
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
