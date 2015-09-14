@@ -1207,8 +1207,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
             <br>            
             Lieber Gast,
             <br><br>
-            Vielen Dank f&uuml;r Ihre Unterst&uuml;tzung! Sie sind nun <b>'.$level_html.'</b>.<br>
-            Sie werden eine weitere Nachricht von uns erhalten, wenn Ihre Zahlung best&auml;tigt wurde. 
+            Vielen Dank f&uuml;r Ihre Unterst&uuml;tzung! Sie sind nun <b>'.$level_html.'</b>.<br> 
             <br>';
 
 
@@ -1252,7 +1251,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
         <ul>
         <li>Scholarium</li>
         <li>Erste Bank, Wien/&Ouml;sterreich</li>
-        <li>IBAN: AT112011182715898500</li>
+        <li>IBAN: AT112011182715898501</li>
         <li>BIC: GIBAATWWXXX</li>
         </ul></p>
 
