@@ -201,6 +201,9 @@ function checkMe() {
             if ($format == 4 && $itemsExtraArray[price_book]) {
                 $sum = $quantity*$itemsExtraArray[price_book];
             }
+			elseif($checkPriceArray[quantity]==1){
+				$sum = 0;
+			}
             else {
                 $sum = $quantity*$itemsExtraArray[price];
             }
