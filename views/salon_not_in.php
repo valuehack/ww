@@ -52,8 +52,14 @@ if(isset($_GET['q']))
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		<div class="centered">
 			<div class="salon_reservation">
-  				<!-- Button trigger modal -->
-  				<input type="button" class="salon_reservation_inputbutton" value="Reservieren" data-toggle="modal" data-target="#myModal">  
+				<?
+				if ($spots_available == 0){
+  					echo '<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht.</span><br>';
+  				}
+				?>  
+    			<!--Button trigger modal-->
+    			<input class="salon_reservation_inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal" <?if($spots_available == 0){echo 'disabled';}?>>
+ 
     		</div>
     	</div>
     </div>

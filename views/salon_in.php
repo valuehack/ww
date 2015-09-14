@@ -94,9 +94,14 @@ if(isset($_GET['q']))
   		<div class="centered">
     		<div class="salon_reservation">
 <?php
-  if ($_SESSION['Mitgliedschaft'] == 1) {  
-    //Button trigger modal
-    echo '<input class="salon_reservation_inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal">';
+  if ($_SESSION['Mitgliedschaft'] == 1) {
+  	if ($spots_available == 0){
+  		echo '<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht.</span><br>';
+  	}
+	?>  
+    <!--Button trigger modal-->
+    <input class="salon_reservation_inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal" <?if($spots_available == 0){echo 'disabled';}?>>
+    <?
   }  
   elseif ($spots_available >= 5){
     ?>
