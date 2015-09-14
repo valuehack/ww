@@ -117,6 +117,14 @@ if(isset($_POST['checkout'])) {
                         default: $format = NULL; break;
                     }
 
+                    if (substr($itemsPriceArray[type],0,5)=='media'||$itemsPriceArray[type]=='analyse'||$itemsPriceArray[type]=='scholie'||$itemsPriceArray[type]=='buch')
+        			{
+        			//check if already downloaded    
+        			$check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
+        			$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
+        			$checkPriceArray = mysql_fetch_array($check_price_result);
+					}
+					
                     $checkout_query = "INSERT INTO registration (event_id, user_id, quantity, format, reg_datetime) VALUES ('$key', '$user_id', '$quantity', '$format', NOW())";
                     mysql_query($checkout_query);
 
@@ -398,8 +406,15 @@ function checkMe() {
                 $sum = $quantity*$itemsExtraArray[price];
             }
 
+			if($itemExtraArray[type]=='media%'){
+				$type_mail = ucfirst(substr($itemsExtraArray[type],6));
+			}            
+			else {
+				$type_mail = ucfirst($itemsExtraArray[type]);
+			}
+			
             $body = $body. "<tr><td>".$itemsExtraArray[n]."&nbsp;</td>";
-            $body = $body. "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>";
+            $body = $body. "<td><i>".$type_mail."</i> ".$itemsExtraArray[title]." <i>";
             switch ($format) {
                 case 1: $body = $body. "PDF"; break;
                 case 2: $body = $body. "ePub"; break;
