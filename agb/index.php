@@ -62,7 +62,7 @@ if ($login->isUserLoggedIn() == true) {
 
 			<h2>2. Unterst&uuml;tzungsbeitr&auml;ge und Spenden</h2>
 
-          	<p>Die Unterst&uuml;tzungsbeitr&auml;ge und Spenden an die scholarium GmbH (Gast, Teilnehmer, Scholar, Partner) erm&ouml;glichen den Bezug von Scholien, Schriften, digitalen Medien sowie die Teilnahme an Veranstaltungen, stellen jedoch keinen unmittelbaren Anspruch auf Gegenleistung dar. Erst der Bezug der genannten Produkte/Dienstleistungen konstituiert einen Vertragsabschluss mit Lieferverpflichtung seitens der scholarium GmbH.</p>
+          	<p>Die Unterst&uuml;tzungsbeitr&auml;ge und Spenden an die scholarium GmbH (Gast, Teilnehmer, Scholar, Partner, Beirat, Ehrenpr&auml;sident) erm&ouml;glichen den Bezug von Scholien, Schriften, digitalen Medien sowie die Teilnahme an Veranstaltungen, stellen jedoch keinen unmittelbaren Anspruch auf Gegenleistung dar. Erst der Bezug der genannten Produkte/Dienstleistungen konstituiert einen Vertragsabschluss mit Lieferverpflichtung seitens der scholarium GmbH.</p>
 
           	<h2>3. Anmeldung, Zahlungskonditionen f&uuml;r Veranstaltungen</h2>
 
