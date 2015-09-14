@@ -388,6 +388,9 @@ function checkMe() {
             if ($format == 4 && $itemsExtraArray[price_book]) {
                 $sum = $quantity*$itemsExtraArray[price_book];
             }
+			elseif($checkPriceArray[quantity]==1){
+				$sum = 0;
+			}
             else {
                 $sum = $quantity*$itemsExtraArray[price];
             }
@@ -410,7 +413,8 @@ function checkMe() {
                             $body = $body. "<td>&nbsp; &nbsp;".$quantity."</td>";
                         }
             if ($format == 4) {$preis=$itemsExtraArray[price_book];}
-            else {$preis=$itemsExtraArray[price];}            
+			elseif ($checkPriceArray[quantity]==1){$preis = 0;}
+			else {$preis=$itemsExtraArray[price];}          
             $body = $body. "<td>&nbsp; &nbsp;".$preis."</td>";
             $body = $body. "<td><i>".$sum."</i></td></tr>";
 
@@ -495,11 +499,22 @@ if($_SESSION['basket']) {
         $type = $itemsExtraArray[type];
         $id = $itemsExtraArray[id];
 
+		if (substr($type,0,5)=='media'||$type=='analyse'||$type=='scholie'||$type=='buch')
+        {
+        //check if already downloaded    
+        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
+        $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
+        $checkPriceArray = mysql_fetch_array($check_price_result);        
+		}
+		
         if ($format == 4 && $itemsExtraArray[price_book]) {
             $sum = $quantity*$itemsExtraArray[price_book];
         }
+		elseif ($checkPriceArray[quantity]==1) {
+			 $sum = 0; 
+		}
         else {
-            $sum = $quantity*$itemsExtraArray[price];
+             $sum = $quantity*$itemsExtraArray[price];
         }
         
 		if ($type == 'buch' || $type == 'analyse' || $type == 'scholie') {
@@ -565,7 +580,13 @@ if($_SESSION['basket']) {
                             echo $quantity;
                         }
        					else {
+       						if($checkPriceArray[quantity]==1) {
+       							$preis = 0;
+								echo $preis;
+       						}
+							else {
            		 			echo $itemsExtraArray[price];
+							}
         				}
 					?>				
 				</span>
