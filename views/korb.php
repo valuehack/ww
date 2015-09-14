@@ -194,7 +194,7 @@ function checkMe() {
             $key = substr($code,0,$length);
             $format = substr($code,-1,1);
 
-			$checkPriceArray[quantity] = 0;
+			$checkPrice = 0;
 
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
@@ -206,12 +206,14 @@ function checkMe() {
         	$check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
         	$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
         	$checkPriceArray = mysql_fetch_array($check_price_result);
+			
+			$checkPrice = $checkPriceArray[quantity];
 			}
 
             if ($format == 4 && $itemsExtraArray[price_book]) {
                 $sum = $quantity*$itemsExtraArray[price_book];
             }
-			elseif($checkPriceArray[quantity]==1){
+			elseif($checkPrice==1){
 				$sum = 0;
 			}
             else {
@@ -401,7 +403,7 @@ function checkMe() {
             $key = substr($code,0,$length);
             $format = substr($code,-1,1);
 
-			$checkPriceArray[quantity] = 0;
+			$checkPrice = 0;
 
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
@@ -413,12 +415,14 @@ function checkMe() {
         	$check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
         	$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
         	$checkPriceArray = mysql_fetch_array($check_price_result);
+			
+			$checkPrice = $checkPriceArray[quantity];
 			}
 
             if ($format == 4 && $itemsExtraArray[price_book]) {
                 $sum = $quantity*$itemsExtraArray[price_book];
             }
-			if($checkPriceArray[quantity]==1){
+			if($checkPrice == 1){
 				$sum = 0;
 			}
             else {
