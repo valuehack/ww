@@ -209,12 +209,13 @@ function checkMe() {
 			
 			$timestamp = time();
 
-			$reg_datetime = $checkPriceArray[reg_datetime];
+			$reg_datetime = strtotime($checkPriceArray[reg_datetime]);
 			$red_datetime = $timestamp-120;        
 			}
 			
 			echo "Reg: ".$reg_datetime;
 			echo "Red: ".$red_datetime;
+			echo "RegPure: ".$checkPriceArray[reg_datetime];
 			
        		if ($format == 4 && $itemsExtraArray[price_book]) {
             	$sum = $quantity*$itemsExtraArray[price_book];
