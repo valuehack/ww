@@ -2711,6 +2711,11 @@ img.projekte_coin2  {
 	font-family: "Futura Book", Helvetica, Arial, Sans-serif;
 }
 
+.history {
+	width: 70%;
+	padding: 50px 12.5%;
+}
+
 /*==================================================*/
 /*                   Footer                    		*/
 /*==================================================*/
