@@ -207,20 +207,12 @@ function checkMe() {
         	$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
         	$checkPriceArray = mysql_fetch_array($check_price_result);
 			
-			$timestamp = time();
-
-			$reg_datetime = strtotime($checkPriceArray[reg_datetime]);
-			$red_datetime = $timestamp-120;        
-			}
-			
-			echo "Reg: ".$reg_datetime;
-			echo "Red: ".$red_datetime;
-			echo "RegPure: ".$checkPriceArray[reg_datetime];
+			}		
 			
        		if ($format == 4 && $itemsExtraArray[price_book]) {
             	$sum = $quantity*$itemsExtraArray[price_book];
         	}
-			elseif ($checkPriceArray[quantity] == 1 && $reg_datetime <= $red_datetime) {
+			elseif ($checkPriceArray[quantity]) {
 			 	$sum = 0; 
 			}
         	else {
@@ -436,7 +428,7 @@ function checkMe() {
                 $sum = $quantity*$itemsExtraArray[price];
             }
 
-			if(substr($itemExtraArray[type],0,5)=='media'){
+			if(substr($itemsExtraArray[type],0,5)=='media'){
 				$type2= ucfirst(substr($itemsExtraArray[type],6));
 			}            
 			else {
