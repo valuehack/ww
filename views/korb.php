@@ -205,13 +205,15 @@ function checkMe() {
         	//check if already downloaded    
         	$check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
         	$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
-        	$checkPriceArray = mysql_fetch_array($check_price_result);        
+        	$checkPriceArray = mysql_fetch_array($check_price_result);
+			
+			echo "RegTime:".$checkPriceArray[reg_time];        
 			}
 		
        		if ($format == 4 && $itemsExtraArray[price_book]) {
             	$sum = $quantity*$itemsExtraArray[price_book];
         	}
-			elseif ($checkPriceArray[quantity] == 1) {
+			elseif ($checkPriceArray[quantity] == 1 && $checkPriceArray[reg_time]) {
 			 	$sum = 0; 
 			}
         	else {
@@ -602,8 +604,8 @@ if($_SESSION['basket']) {
 		
         ?>
         		<form class="basket_body_remove" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-                	<input type="hidden" name="remove" value="<?php echo $code ?>" />
-                    <? if ($itemsExtraArray[type] == 'projekt') {echo '<input type="hidden" name="projekt" value="1" />';} ?>
+                	<input type="hidden" name="remove" value="<?php echo $code ?>">
+                    <? if ($itemsExtraArray[type] == 'projekt') {echo '<input type="hidden" name="projekt" value="1">';} ?>
                 	<input class="basket_body_remove_button" type="submit" value="Entfernen" onClick="return checkMe()">
             	</form>
         	</div>
