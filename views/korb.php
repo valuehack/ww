@@ -209,7 +209,7 @@ function checkMe() {
 			
 			$timestamp = time();
 
-			$reg_datetime = strtotime($checkPriceArray[reg_datetime]);
+			$reg_datetime = $checkPriceArray[reg_datetime];
 			$red_datetime = $timestamp-120;        
 			}
 			
