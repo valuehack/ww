@@ -13,6 +13,7 @@ if(isset($_GET['q']))
   $sql="SELECT * from produkte WHERE type LIKE 'salon' AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
+  $spots_available=$entry3[spots]-$entry3[spots_sold];
   
     	//check, if there is a image in the salon folder
 	$img = 'http://scholarium.at/salon/'.$id.'.jpg';
