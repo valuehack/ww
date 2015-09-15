@@ -194,34 +194,32 @@ function checkMe() {
             $key = substr($code,0,$length);
             $format = substr($code,-1,1);
 
-			$checkPrice = 0;
-
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
             
-            if (substr($itemsExtraArray[type],0,5)=='media'||$itemsExtraArray[type]=='analyse'||$itemsExtraArray[type]=='scholie'||$itemsExtraArray[type]=='buch')
-        	{
+            $type = $itemsExtraArray[type];
+
+			if (substr($type,0,5)=='media'||$type=='analyse'||$type=='scholie'||$type=='buch')
+       		{
         	//check if already downloaded    
         	$check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
         	$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
-        	$checkPriceArray = mysql_fetch_array($check_price_result);
-			
-			$checkPrice = $checkPriceArray[quantity];
+        	$checkPriceArray = mysql_fetch_array($check_price_result);        
 			}
-
-            if ($format == 4 && $itemsExtraArray[price_book]) {
-                $sum = $quantity*$itemsExtraArray[price_book];
-            }
-			elseif($checkPrice==1){
-				$sum = 0;
+		
+       		if ($format == 4 && $itemsExtraArray[price_book]) {
+            	$sum = $quantity*$itemsExtraArray[price_book];
+        	}
+			elseif ($checkPriceArray[quantity] == 1) {
+			 	$sum = 0; 
 			}
-            else {
-                $sum = $quantity*$itemsExtraArray[price];
-            }
+        	else {
+             	$sum = $quantity*$itemsExtraArray[price];
+        	}
             //$download_link = downloadurl('http://scholarium.at/secdown/sec_files/'.$key.'.pdf\','.$key);
 
-            if(substr($itemsExtraArray[type],0,5)=='media'){
+            if(substr($itemsExtraArray[type],0,5) == 'media'){
 				$type2 = ucfirst(substr($itemsExtraArray[type],6));
 			}            
 			else {
@@ -551,7 +549,7 @@ if($_SESSION['basket']) {
         if ($format == 4 && $itemsExtraArray[price_book]) {
             $sum = $quantity*$itemsExtraArray[price_book];
         }
-		elseif ($checkPriceArray[quantity]==1) {
+		elseif ($checkPriceArray[quantity] == 1) {
 			 $sum = 0; 
 		}
         else {
@@ -621,7 +619,7 @@ if($_SESSION['basket']) {
                             echo $quantity;
                         }
        					else {
-       						if($checkPriceArray[quantity]==1) {
+       						if($checkPriceArray[quantity] == 1) {
        							$preis = 0;
 								echo $preis;
        						}
