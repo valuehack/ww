@@ -1251,7 +1251,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
         <ul>
         <li>Scholarium</li>
         <li>Erste Bank, Wien/&Ouml;sterreich</li>
-        <li>IBAN: AT112011182715898501</li>
+        <li>IBAN: AT812011182715898501</li>
         <li>BIC: GIBAATWWXXX</li>
         </ul></p>
 
