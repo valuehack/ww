@@ -2408,6 +2408,20 @@ img.projekte_coin2  {
 	font-size: 16pt;
 }
 
+.basket_body_col_c a {
+	color: rgb(46,74,98);
+	text-decoration: none; 
+	font-size: 14pt;
+}
+
+.basket_body_col_c a:hover {
+	text-decoration: underline;	
+}
+
+.basket_body_col_c a:visited {
+	color: rgb(46,74,98);
+}
+
 .basket_shipping {
 	padding: 50px 0 70px 0;
 }
