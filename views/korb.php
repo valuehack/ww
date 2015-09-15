@@ -220,7 +220,7 @@ function checkMe() {
        		if ($format == 4 && $itemsExtraArray[price_book]) {
             	$sum = $quantity*$itemsExtraArray[price_book];
         	}
-			elseif ($checkPriceArray[quantity] == 1 && $reg_datetime >= $red_datetime) {
+			elseif ($checkPriceArray[quantity] == 1 && $reg_datetime <= $red_datetime) {
 			 	$sum = 0; 
 			}
         	else {
