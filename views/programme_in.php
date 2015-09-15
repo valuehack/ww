@@ -83,9 +83,9 @@ if(isset($_GET['q']))
         <option value="4">4</option>
         <option value="5">5</option>        
       </select> 
-      <input class="medien_inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
+      <input class="medien_inputbutton" type="submit" value="Ausw&auml;hlen"><span class="projekte_invest_span"><?php echo $price; ?> <img class='projekte_coin2' src='../style/gfx/coin.png'></span>    
     </form>
-    <span class="projekte_invest_span"><?php echo $price; ?> <img class='projekte_coin2' src='../style/gfx/coin.png'></span>
+    
     	
       </div>
       <div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Programmen</a></div>

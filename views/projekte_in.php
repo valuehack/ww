@@ -5,6 +5,12 @@ include ("_header_in.php");
 
 ?>
 
+<script>
+function changePrice(totalQuantity, price){
+    document.getElementById("change").innerHTML = (totalQuantity * price);
+}
+</script>
+
 <div class="content">
 
 <?php 
