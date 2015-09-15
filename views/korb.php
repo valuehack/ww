@@ -207,14 +207,17 @@ function checkMe() {
         	$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
         	$checkPriceArray = mysql_fetch_array($check_price_result);
 			
-			$reg_datetime = strtotime($checkPriceArray[reg_datetime]) - 30;
-			        
+			date_default_timezone_set("Europe/Berlin");
+			$timestamp = time();
+
+			$reg_datetime = strtotime($checkPriceArray[reg_datetime]);
+			$red_datetime = $timestamp-60;        
 			}
 		
        		if ($format == 4 && $itemsExtraArray[price_book]) {
             	$sum = $quantity*$itemsExtraArray[price_book];
         	}
-			elseif ($checkPriceArray[quantity] == 1 && $checkPriceArray[reg_datetime] >= $reg_datetime) {
+			elseif ($checkPriceArray[quantity] == 1 && $reg_datetime >= $red_datetime) {
 			 	$sum = 0; 
 			}
         	else {
