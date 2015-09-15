@@ -59,7 +59,9 @@ if(isset($_GET['q']))
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $title=$entry3[title];
-  $spots_available=$entry3[spots]-$entry3[spots_sold];
+  $spots_total=$entry3[spots];
+  $spots_sold=$entry3[spots_sold];
+  $spots_available=$spots_total-$spots_sold;
   $n=$entry3[n];
 ?>
   
