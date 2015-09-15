@@ -72,11 +72,11 @@ if(isset($_GET['q']))
     }
     else {
     ?>
-		<div class="programm_centered">
-		<div class="programm_order">
+	<div class="projekte_invest">
+
     <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
-      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      <select class="project_invest_select" name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')">
       	<option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -85,9 +85,9 @@ if(isset($_GET['q']))
       </select> 
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen"><br>     
     </form>
-	<div class='salon_price_list'><li id="change" class="order_span"><?php echo $price; ?></li><li class='coin'><img src="../style/gfx/coin.png"></li></div>
+    <span class="projekte_invest_span"><?php echo $price; ?> <img class='projekte_coin2' src='../style/gfx/coin.png'></span>
+    	
       </div>
-     </div>
       <div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Programmen</a></div>
     <?php
     }
