@@ -2730,6 +2730,24 @@ img.projekte_coin2  {
 	padding: 50px 12.5%;
 }
 
+.history_body_title {
+	display: block;
+	font-size: 18pt;
+	padding-bottom: 20px;
+}
+
+.history_body_title a {
+	color: rgb(46,74,98);
+	text-decoration: none;
+}
+
+.history_body_type {
+	font-size: 12pt;
+	margin-bottom: 10px;
+	display: block;
+}
+
+
 /*==================================================*/
 /*                   Footer                    		*/
 /*==================================================*/

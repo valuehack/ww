@@ -57,19 +57,24 @@ $user_items_result_b = mysql_query($user_items_query_b) or die("Failed Query of 
 			<div class="basket_body">
 				<div class="basket_body_col_a">
 					<div class="basket_body_col_a_1">
-						<img src="<?=$url?>" alt="">
+						<img src="<?=$url?>" style="max-width:100px;max-height:100px;" alt="">
 					</div>		
 					<div class="basket_body_col_a_2">
-						<span class="basket_body_type"><?=ucfirst($type)?></span>
-						<span class="basket_body_title"><a href="../<?=$url2?>/index.php?q=<?=$id?>"><?=$title?></a></span>
+						<span class="history_body_type"><?=ucfirst($type)?></span>
+						<span class="history_body_title"><a href="../<?=$url2?>/index.php?q=<?=$id?>"><?=$title?></a></span>
 					</div>
         		</div>	
 				<div class="basket_body_col_b">
-					<p>Reserviert</p>
+					<p>Reserviert <img src="../style/gfx/checkmark.png" style="max-width:10px;"></p>
 					<a href="../tickets/ticket_<?=$user_id?>_<?=$type?>_<?=$n?>.pdf">Ihr Ticket</a>
 				</div>
 				<div class="basket_body_col_c">
-					<p><?=$quantity?></p>
+					<p>
+						<?
+						if ($quantity == 1) echo "1 Platz";
+						if ($quantity > 1) echo $quantity." Pl&auml;tze";
+						?>
+					</p>
 				</div>
 			</div>
 		<?
@@ -121,11 +126,11 @@ $user_items_result_b = mysql_query($user_items_query_b) or die("Failed Query of 
 			<div class="basket_body">
 				<div class="basket_body_col_a">
 					<div class="basket_body_col_a_1">
-						<img src="<?=$url?>" alt="">
+						<img src="<?=$url?>" style="max-width:100px;max-height:100px;" alt="">
 					</div>		
 					<div class="basket_body_col_a_2">
-						<span class="basket_body_type"><?=ucfirst($type)?></span>
-						<span class="basket_body_title"><a href="../<?=$url2?>/index.php?q=<?=$id?>"><?=$title?></a></span>
+						<span class="history_body_type"><?=ucfirst($type)?></span>
+						<span class="history_body_title"><a href="../<?=$url2?>/index.php?q=<?=$id?>"><?=$title?></a></span>
 					</div>
         		</div>	
 				<div class="basket_body_col_b">
