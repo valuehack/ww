@@ -2408,6 +2408,11 @@ img.projekte_coin2  {
 	font-size: 16pt;
 }
 
+.basket_body_col_c p {
+	font-size: 14pt;
+	margin: 10px 0;
+}
+
 .basket_body_col_c a {
 	color: rgb(46,74,98);
 	text-decoration: none; 
@@ -2747,6 +2752,15 @@ img.projekte_coin2  {
 	display: block;
 }
 
+.history_reservation {
+	font-size: 12pt;
+}
+
+.history_reservation:after {
+	background: url(gfx/checkmark.png);
+	max-width: 15px;
+	padding-left: 5px;
+}
 
 /*==================================================*/
 /*                   Footer                    		*/
