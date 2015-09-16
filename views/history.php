@@ -26,7 +26,7 @@ $user_items_result_b = mysql_query($user_items_query_b) or die("Failed Query of 
 			<div class="basket_head">
 				<div class="basket_head_col_a"></div>
 				<div class="basket_head_col_b">Status</div>
-				<div class="basket_head_col_c">Menge</div>
+				<div class="basket_head_col_c">Pl&auml;tze</div>
 			</div>
 			<?php
 			while($userItemsArray_a = mysql_fetch_array($user_items_result_a)){
@@ -65,16 +65,16 @@ $user_items_result_b = mysql_query($user_items_query_b) or die("Failed Query of 
 					</div>
         		</div>	
 				<div class="basket_body_col_b">
-					<p>Reserviert <img src="../style/gfx/checkmark.png" style="max-width:10px;"></p>
-					<a href="../tickets/ticket_<?=$user_id?>_<?=$type?>_<?=$n?>.pdf">Ihr Ticket</a>
-				</div>
-				<div class="basket_body_col_c">
 					<p>
 						<?
 						if ($quantity == 1) echo "1 Platz";
 						if ($quantity > 1) echo $quantity." Pl&auml;tze";
 						?>
 					</p>
+				</div>
+				<div class="basket_body_col_c">
+					<p><span>Reserviert</span> <img src="../style/gfx/checkmark.png" style="max-width:15px;"></p>
+					<p><a href="../tickets/ticket_<?=$user_id?>_<?=ucfirst($type)?>_<?=$n?>.pdf">Ihr Ticket</a></p>							
 				</div>
 			</div>
 		<?
