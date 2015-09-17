@@ -104,7 +104,7 @@ if(isset($_POST['checkout'])) {
     else
     	{
 
-        $tickets_array = [];    
+        // $tickets_array = [];    
         foreach ($items as $code => $quantity)
                 {	
 
