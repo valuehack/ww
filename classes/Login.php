@@ -173,6 +173,7 @@ class Login
         // checking if user requested a password reset mail
         if (isset($_POST["request_password_reset"]) && isset($_POST['user_email'])) {
             $this->setPasswordResetDatabaseTokenAndSendMail($_POST['user_email']);
+
         } elseif (isset($_GET["user_email"]) && isset($_GET["verification_code"])) {
             $this->checkIfEmailVerificationCodeIsValid($_GET["user_email"], $_GET["verification_code"]);
         } elseif (isset($_POST["submit_new_password"])) {
@@ -1751,7 +1752,7 @@ user_plz
                 // check if exactly one row was successfully changed:
                 if ($query_update->rowCount() == 1) {
                     // send a mail to the user, containing a link with that token hash string
-                    $this->sendPasswordResetMail($user_email, $result_row->user_email, $user_password_reset_hash);
+                    $this->sendPasswordResetMail($user_email, $user_password_reset_hash);
                     return true;
                 } else {
                     $this->errors[] = MESSAGE_DATABASE_ERROR;
@@ -1767,7 +1768,7 @@ user_plz
     /**
      * Sends the password-reset-email.
      */
-    public function sendPasswordResetMail($user_email, $user_email, $user_password_reset_hash)
+/*    public function sendPasswordResetMail($user_email, $user_email, $user_password_reset_hash)
     {
         $mail = new PHPMailer;
 
@@ -1852,6 +1853,91 @@ user_plz
             $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
             return true;
         }
+    }*/
+
+    /**
+     * Sends the password-reset-email using sendgrid.
+     */
+    public function sendPasswordResetMail($user_email, $user_password_reset_hash)
+    {
+        //consturct email body
+        $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
+        
+        $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
+
+        $body = $body.'
+                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <!--#/image#-->
+                    </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    <!--#loopsplit#-->
+                    <table class="editable text" border="0" width="100%">
+                    <tbody>
+                    <tr>
+                    <td valign="top">
+                    <div style="text-align: justify;">
+                    <h2></h2>
+                    <!--#html #-->
+                    <span style="font-family: times new roman,times;">
+                    <span style="font-size: 12pt;">
+                    <span style="color: #000000;">
+                    <!--#/html#-->
+                    <br>            
+                    Bitte klicken Sie auf den Link unterhalb, um Ihr Passwort zur&uuml;ckzusetzen. 
+                        ';
+
+        $body = $body.'
+                    <table cellspacing="0" cellpadding="0"> <tr>
+                    <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
+                    <a href="'.$link.'" style="font-size:10px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
+                    <span style="color: #000000">
+                    Passwort zur&uuml;cksetzen
+                    </span>
+                    </a></td></tr></table> 
+                    ';
+
+
+        $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
+
+
+        //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENGRID_API_KEY));
+
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => $user_email,
+            //'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
+            'subject' => 'scholarium.at passwort zurücksetzen',
+            'html' => $body,
+            'from' => 'info@scholarium.at',
+            'fromname' => 'scholarium'
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+        //TODO - add here current
+        if(empty($response))die("Error: No response.");
+        else
+        {
+            $json = json_decode($response);
+            // print_r($json->access_token);
+            // print_r($response);
+            // echo "<br>";
+        }
+
+        curl_close($ch);
     }
 
     /**

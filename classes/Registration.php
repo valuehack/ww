@@ -312,8 +312,124 @@ class Registration
     }
 
     #-------------------------------------
-    //send an email to a newly subscribed member, containing password and activation link
+    #sendgrid
+    #send an email to a newly subscribed member, containing password and activation link
     public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password)
+    {
+
+        #---------------------------------------------------------------------------------------------
+        #------------------HTML-BODY------------------------------------------------------------------
+        #---------------------------------------------------------------------------------------------
+
+        #verification link
+        $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
+
+        #read header from file
+        $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
+
+        $body = $body.'
+                <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                <!--#/image#-->
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                <!--#loopsplit#-->
+                <table class="editable text" border="0" width="100%">
+                <tbody>
+                <tr>
+                <td valign="top">
+                <div style="text-align: justify;">
+                <h2></h2>
+                <!--#html #-->
+                <span style="font-family: times new roman,times;">
+                <span style="font-size: 12pt;">
+                <span style="color: #000000;">
+                <!--#/html#-->
+                <br>            
+                Lieber Gast,
+                <br>
+                vielen Dank f&uuml;r Ihr Interesse!
+                <br>';
+
+        $body = $body.'
+                Bitte klicken Sie unterhalb, um Zugang zu scholarium.at zu erhalten.
+                <p align="center"><table cellspacing="0" cellpadding="0"> <tr>
+                <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
+                <a href="'.$link.'" style="font-size:16px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
+                <span style="color: #000000">
+                Hier klicken, um den Zugang zu aktivieren!
+                </span></a></td></tr></table></p>
+                <br><strong>Ihr vorl&auml;ufiges Passwort ist: </strong>'.$user_password.'<br>
+                Herzliche Gr&uuml;&szlig;e aus Wien!';
+
+
+        $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
+
+        #---------------------------------------------------------------------------------------------
+        #------------------END HTML-BODY--------------------------------------------------------------
+        #---------------------------------------------------------------------------------------------
+
+
+        //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENGRID_API_KEY));
+
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => $user_email,
+            //'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
+            'subject' => 'Herzlich willkommen',
+            'html' => $body,
+            'from' => 'info@scholarium.at',
+            'fromname' => 'scholarium'
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+
+        if(empty($response))
+        {
+            #die("Error: No response."); 
+            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+            return false;
+        }
+        else
+        {
+            $json = json_decode($response);
+            return true;
+            // print_r($json->access_token);
+            // print_r($response);
+            // echo "<br>";
+        }
+
+
+        curl_close($ch);
+
+/*            if(!$mail->Send()) {
+                $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED . $mail->ErrorInfo;
+                return false;
+            } else {
+                // $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
+                #$this->messages[] = "Please check your inbox.";
+                return true;
+            }*/
+    }
+#-------------------------------------
+
+
+ #-------------------------------------
+    //send an email to a newly subscribed member, containing password and activation link
+/*    public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password)
     {
         $mail = new PHPMailer;
 
@@ -424,8 +540,7 @@ class Registration
                 return true;
             }
         }
-    #-------------------------------------
-
+    #-------------------------------------*/
 
     #-------------------------------------
     //send an email to a newly subscribed member, containing password and activation link
