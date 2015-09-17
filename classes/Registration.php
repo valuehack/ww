@@ -723,7 +723,7 @@ class Registration
             $_SESSION['user_id'] = $user_id;
 
             //if entry in first registration exist, then register in the main registration database
-            if (  !is_null($the_row->first_reg)  ) 
+            if (is_numeric($the_row->first_reg)) 
             {
 
             $reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id) VALUES (:event_id, :user_id)');
