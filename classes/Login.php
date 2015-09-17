@@ -1905,7 +1905,7 @@ user_plz
         //create curl resource
         $ch = curl_init();
 
-        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENGRID_API_KEY));
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENGDRID_API_KEY));
 
         //set url
         curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");

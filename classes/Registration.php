@@ -72,7 +72,6 @@ class Registration
             //use function for editing profile
             $this->addPersonalData($profile);
 
-
             $this->sendNewPayingUserEmailToInstitute($user_email);
 
             //only redirect after registration was successfully finished
@@ -374,7 +373,7 @@ class Registration
         //create curl resource
         $ch = curl_init();
 
-        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENGRID_API_KEY));
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
 
         //set url
         curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
@@ -546,6 +545,59 @@ class Registration
     //send an email to a newly subscribed member, containing password and activation link
     public function sendNewPayingUserEmailToInstitute($user_email)
     {
+        //construct body
+        $body = "Check database, there is a new paying member ".$user_email;
+
+        //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => 'info@scholarium.at',
+            'bcc' => TEST_EMAIL,
+            //'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
+            'subject' => 'New Paying User',
+            'html' => $body,
+            'from' => 'no-reply@scholarium.at'
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+
+        if(empty($response))
+        {
+            die("Error: No response.");
+            return false;
+        }
+        else
+        {
+            $json = json_decode($response);
+            // print_r($json->access_token);
+            // print_r($response);
+            // echo "<br>";
+            return true;
+        }
+
+        curl_close($ch);
+
+    }
+    #-------------------------------------
+
+    /*#-------------------------------------
+    //send an email to a newly subscribed member, containing password and activation link
+    public function sendNewPayingUserEmailToInstitute($user_email)
+    {
+
         $mail = new PHPMailer;
 
         // please look into the config/config.php for much more info on how to use this!
@@ -592,7 +644,7 @@ class Registration
             }
         }
     #-------------------------------------
-
+*/
     
     /**
      * checks the id/verification code combination and set the user's activation status to true (=1) in the database
@@ -669,8 +721,6 @@ class Registration
 
             $user_id = $this->db_connection->lastInsertId();
             $_SESSION['user_id'] = $user_id;
-
-
 
             //if entry in first registration exist, then register in the main registration database
             if (  !is_null($the_row->first_reg)  ) 

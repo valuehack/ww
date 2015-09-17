@@ -329,41 +329,7 @@ function checkMe() {
         //delete bought items from session variable
         unset($_SESSION['basket']);
 
-
-        //send email
-
-        $mail = new PHPMailer;
-
-        $user_email = $_SESSION['user_email'];
-
-         if (EMAIL_USE_SMTP) {
-            // Set mailer to use SMTP
-            $mail->IsSMTP();
-            //useful for debugging, shows full SMTP errors
-            $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-            // Enable SMTP authentication
-            $mail->SMTPAuth = EMAIL_SMTP_AUTH;
-            // Enable encryption, usually SSL/TLS
-            if (defined(EMAIL_SMTP_ENCRYPTION)) {
-                $mail->SMTPSecure = EMAIL_SMTP_ENCRYPTION;
-            }
-            // Specify host server
-            $mail->Host = EMAIL_SMTP_HOST;
-            $mail->Username = EMAIL_SMTP_USERNAME;
-            $mail->Password = EMAIL_SMTP_PASSWORD;
-            $mail->Port = EMAIL_SMTP_PORT;
-        } else {
-            $mail->IsMail();
-        }
-
-        $mail->From = EMAIL_PASSWORDRESET_FROM;
-        $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
-        $mail->AddAddress($user_email);
-        $mail->Subject = 'Bestellung';
-        // $mail->addAttachment("ticket_123456971_Salon_144.pdf"); 
-        $mail->addAttachment($ticket_location); 
-
-
+        //email to  user
  
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
@@ -481,17 +447,67 @@ function checkMe() {
 
         $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
 
-        $mail->Body = $body;
+        // $mail->Body = $body;
 
-        $mail->isHTML(true);
+        // $mail->isHTML(true);
 
-        if(!$mail->Send()) {
-            // here come error message when not sent.
-            return false;
-        } else {
-            // email successfully sent
-            return true;
-        }
+
+            //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => $user_email,
+            // 'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
+            'subject' => 'Bestellung',
+            'html' => $body,
+            'from' => 'info@scholarium.at',
+            'fromname' => 'scholarium',
+            'files' => $ticket_location
+            );
+/*
+
+
+        $mail->From = EMAIL_PASSWORDRESET_FROM;
+        $mail->FromName = EMAIL_PASSWORDRESET_FROM_NAME;
+        $mail->AddAddress($user_email);
+        $mail->Subject = 'Bestellung';
+        // $mail->addAttachment("ticket_123456971_Salon_144.pdf"); 
+        $mail->addAttachment($ticket_location); */
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+        //TODO - add here current
+        // if(empty($response))
+        // {
+        //     die("Error: No response.");
+        //     return false;
+        // }
+        // else
+        // {
+        //     $json = json_decode($response);
+        //     return true;
+        // }
+
+        curl_close($ch);
+
+        // if(!$mail->Send()) {
+        //     // here come error message when not sent.
+        //     return false;
+        // } else {
+        //     // email successfully sent
+        //     return true;
+        // }
 
     }
 }
