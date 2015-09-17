@@ -473,14 +473,14 @@ function checkMe() {
             'subject' => 'Bestellung',
             'html' => $body,
             'from' => 'info@scholarium.at',
-            'fromname' => 'scholarium'
-            // 'files[ticket.jpg]' => $ticket_locatio
+            'fromname' => 'scholarium',
+            'files[ticket.pdf]' => "@".'/home/content/56/6152056/html/production/tickets/ticket_606_Salon_142.pdf'
 
             );
 
-        foreach ($tickets_array as $key => $value) {
-            $post_data['files['. $key .']'] = "@".$value;
-        }
+        // foreach ($tickets_array as $key => $value) {
+        //     $post_data['files['. $key .']'] = "@".$value;
+        // }
 
 /*
 
