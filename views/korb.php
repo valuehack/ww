@@ -103,8 +103,12 @@ if(isset($_POST['checkout'])) {
 
     else
     	{
+
+        $tickets_array = [];    
         foreach ($items as $code => $quantity)
-                {					    
+                {	
+
+
                     $length = strlen($code) - 1;
 
                     $key = substr($code,0,$length);
@@ -469,9 +473,15 @@ function checkMe() {
             'subject' => 'Bestellung',
             'html' => $body,
             'from' => 'info@scholarium.at',
-            'fromname' => 'scholarium',
-            'files' => $ticket_location
+            'fromname' => 'scholarium'
+            // 'files[ticket.jpg]' => $ticket_locatio
+
             );
+
+        foreach ($tickets_array as $key => $value) {
+            $post_data['files['. $key .']'] = "@".$value;
+        }
+
 /*
 
 
