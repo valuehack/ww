@@ -83,7 +83,8 @@
   file_put_contents("../tickets/ticket_".$user_id."_".$type."_".$key.".pdf", $pdf);
 
   $ticket_name = "ticket_".$user_id."_".$type."_".$key.".pdf";
-  $ticket_location = "../tickets/".$ticket_name;
+
+  $ticket_location = "/home/content/56/6152056/html/production/tickets/".$ticket_name;
   $tickets_array[$ticket_name] = $ticket_location;
 
 ?>
