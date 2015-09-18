@@ -2734,14 +2734,25 @@ img.projekte_coin2  {
 }
 
 .history {
-	width: 70%;
+	width: 75%;
 	padding: 50px 12.5%;
+}
+
+.history h1 {
+	font-size: 34pt;
+	text-align: center;
+}
+
+.history h2 {
+	font-size: 20pt;
+	text-align: left;
+	margin-top: 40px;
 }
 
 .history_body_title {
 	display: block;
 	font-size: 18pt;
-	padding-bottom: 20px;
+	text-align: left;
 }
 
 .history_body_title a {

@@ -13,14 +13,19 @@ $user_items_result_a = mysql_query($user_items_query_a) or die("Failed Query of 
 $user_items_query_b = "SELECT * from registration WHERE `user_id`=$user_id";
 $user_items_result_b = mysql_query($user_items_query_b) or die("Failed Query of " . $user_items_query_b. mysql_error());
 
+$user_items_query_c = "SELECT * from registration WHERE `user_id`=$user_id";
+$user_items_result_c = mysql_query($user_items_query_c) or die("Failed Query of " . $user_items_query_c. mysql_error());
+
+$user_items_query_d = "SELECT * from registration WHERE `user_id`=$user_id";
+$user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of " . $user_items_query_d. mysql_error());
 
 ?> 
 	<div class="content">
-		<div class="profil">
-			<h1>Ihre K&auml;ufe</h1>
+		<div class="history">
+			<h1>&Uuml;bersicht Ihrer K&auml;ufe</h1>
 		</div>
 		<div class="medien_seperator">
-			<h1>Ihre gebuchten Veranstaltungen</h1>
+			<h1>Ihre Veranstaltungen</h1>
 		</div>
 		<div class="history">
 			<div class="basket_head">
@@ -57,7 +62,7 @@ $user_items_result_b = mysql_query($user_items_query_b) or die("Failed Query of 
 			<div class="basket_body">
 				<div class="basket_body_col_a">
 					<div class="basket_body_col_a_1">
-						<img src="<?=$url?>" style="max-width:100px;max-height:100px;" alt="">
+						<img src="<?=$url?>" style="max-width:75px;max-height:75px;" alt="">
 					</div>		
 					<div class="basket_body_col_a_2">
 						<span class="history_body_type"><?=ucfirst($type)?></span>
@@ -83,7 +88,7 @@ $user_items_result_b = mysql_query($user_items_query_b) or die("Failed Query of 
 		?>
 		</div>
 		<div class="medien_seperator">
-			<h1>Ihre gekauften Schriften und Medien</h1>
+			<h1>Ihre Schriften und Medien</h1>
 		</div>
 		<div class="history">
 			<div class="basket_head">
@@ -126,7 +131,7 @@ $user_items_result_b = mysql_query($user_items_query_b) or die("Failed Query of 
 			<div class="basket_body">
 				<div class="basket_body_col_a">
 					<div class="basket_body_col_a_1">
-						<img src="<?=$url?>" style="max-width:100px;max-height:100px;" alt="">
+						<img src="<?=$url?>" style="max-width:75px;max-height:75px;" alt="">
 					</div>		
 					<div class="basket_body_col_a_2">
 						<span class="history_body_type"><?=ucfirst($type)?></span>
@@ -137,13 +142,116 @@ $user_items_result_b = mysql_query($user_items_query_b) or die("Failed Query of 
 					&nbsp;
 				</div>
 				<div class="basket_body_col_c">
-					<a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href)";>Herunterladen</a>
+					<p><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href)";>Herunterladen</a></p>
 				</div>
 			</div>
 		<?
 			}
 		}
 		?>
+		</div>
+		<div class="medien_seperator">
+			<h1>Ihre Spenden und Programme</h1>
 		</div>	
+		<div class="history">
+			<h2>Spenden</h2>			
+			<div class="basket_head">
+				<div class="basket_head_col_a"></div>
+				<div class="basket_head_col_b">Status</div>
+				<div class="basket_head_col_c">Ihre Spende</div>
+			</div>
+			<?php
+			while($userItemsArray_c = mysql_fetch_array($user_items_result_c)){
+			
+			$n = $userItemsArray_c[event_id];
+			
+			$user_donations_query = "SELECT * from produkte WHERE `n` LIKE '$n' ORDER BY start DESC";
+        	$user_donations_result = mysql_query($user_donations_query) or die("Failed Query of " . $user_donations_query. mysql_error());
+        	$userDonationsArray = mysql_fetch_array($user_donations_result);
+			
+			$title = $userDonationsArray[title];
+			$type = $userDonationsArray[type];
+			$id = $userProductsArray[id];
+			$donation = $userItemsArray_c[quantity];
+			$donated = $userDonationsArray[spots_sold];
+			$needed = $userDonationsArray[spots];
+			
+				if ($type == 'projekt') {
+					$url2 = 'projekte';
+			?>
+			<div class="basket_body">
+				<div class="basket_body_col_a">
+					<div class="basket_body_col_a_1">
+					</div>		
+					<div class="basket_body_col_a_2">
+						<span class="history_body_title"><a href="../<?=$url2?>/index.php?q=<?=$id?>"><?=$title?></a></span>
+					</div>
+        		</div>	
+				<div class="basket_body_col_b">
+					<?=$donation?>					
+				</div>
+				<div class="basket_body_col_c">
+					<? 
+					if ($donated == $needed) {
+						echo $donated." / ".$needed."<br>Projekt in Umsetzung";
+					}
+					else {
+						echo $donated." / ".$needed;
+					}
+					?>					
+				</div>
+			</div>
+		<?
+			}
+		}
+		?>
+			<h2>Programme</h2>
+			<div class="basket_head">
+				<div class="basket_head_col_a"></div>
+				<div class="basket_head_col_b">Status</div>
+				<div class="basket_head_col_c">Preis</div>
+			</div>
+			<?php
+			while($userItemsArray_d = mysql_fetch_array($user_items_result_d)){
+			
+			$n = $userItemsArray_d[event_id];
+			$quantity = $userItemsArray_d[quantity]/100;
+			
+			$user_programs_query = "SELECT * from produkte WHERE `n` LIKE '$n' ORDER BY start DESC";
+        	$user_programs_result = mysql_query($user_programs_query) or die("Failed Query of " . $user_programs_query. mysql_error());
+        	$userProgramsArray = mysql_fetch_array($user_programs_result);
+			
+			$title = $userProgramsArray[title];
+			$type = $userProgramsArray[type];
+			$id = $userProgramsArray[id];
+			
+				if ($type == 'programm') {
+					$url2 = 'programme';
+			?>
+			<div class="basket_body">
+				<div class="basket_body_col_a">
+					<div class="basket_body_col_a_1">
+					</div>		
+					<div class="basket_body_col_a_2">
+						<span class="history_body_title"><a href="../<?=$url2?>/index.php?q=<?=$id?>"><?=$title?></a></span>
+					</div>
+        		</div>	
+				<div class="basket_body_col_b">
+					<p>
+						<?
+						if ($quantity == 1) echo "1 Platz";
+						if ($quantity > 1) echo $quantity." Pl&auml;tze";
+						?>
+					</p>					
+				</div>
+				<div class="basket_body_col_c">
+					Gebucht			
+				</div>
+			</div>
+		<?
+			}
+		}
+		?>
+		</div>
 	</div>
 <?php include('_footer.php'); ?>

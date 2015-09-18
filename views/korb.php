@@ -231,6 +231,7 @@ function checkMe() {
 				$type2 = ucfirst($itemsExtraArray[type]);
 			}
             
+			echo "<tr>";
             echo "<td>".$type2."</td>";
             echo "<td>".$itemsExtraArray[title]."<br><i>";
             switch ($format) {
