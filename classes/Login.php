@@ -1928,14 +1928,20 @@ user_plz
         $response = curl_exec($ch);
 
         //TODO - add here current
-        if(empty($response))die("Error: No response.");
+        if(empty($response))
+        {
+            die("Error: No response.");
+            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+        }
         else
         {
             $json = json_decode($response);
             // print_r($json->access_token);
-            // print_r($response);
+            //print_r($response);
             // echo "<br>";
             $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
+            file_put_contents('log.txt', $response);
+            //$this->messages[] = $json;
         }
 
         curl_close($ch);
