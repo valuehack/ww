@@ -1768,7 +1768,7 @@ user_plz
     /**
      * Sends the password-reset-email.
      */
-/*    public function sendPasswordResetMail($user_email, $user_email, $user_password_reset_hash)
+    public function sendPasswordResetMail($user_email, $user_email, $user_password_reset_hash)
     {
         $mail = new PHPMailer;
 
@@ -1853,99 +1853,99 @@ user_plz
             $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
             return true;
         }
-    }*/
+    }
 
     /**
      * Sends the password-reset-email using sendgrid.
      */
-    public function sendPasswordResetMail($user_email, $user_password_reset_hash)
-    {
-        //consturct email body
-        $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
+    // public function sendPasswordResetMail($user_email, $user_password_reset_hash)
+    // {
+    //     //consturct email body
+    //     $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         
-        $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
+    //     $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
-        $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
-                    <!--#/image#-->
-                    </td>
-                    </tr>
-                    </tbody>
-                    </table>
-                    <!--#loopsplit#-->
-                    <table class="editable text" border="0" width="100%">
-                    <tbody>
-                    <tr>
-                    <td valign="top">
-                    <div style="text-align: justify;">
-                    <h2></h2>
-                    <!--#html #-->
-                    <span style="font-family: times new roman,times;">
-                    <span style="font-size: 12pt;">
-                    <span style="color: #000000;">
-                    <!--#/html#-->
-                    <br>            
-                    Bitte klicken Sie auf den Link unterhalb, um Ihr Passwort zur&uuml;ckzusetzen. 
-                        ';
+    //     $body = $body.'
+    //                 <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+    //                 <!--#/image#-->
+    //                 </td>
+    //                 </tr>
+    //                 </tbody>
+    //                 </table>
+    //                 <!--#loopsplit#-->
+    //                 <table class="editable text" border="0" width="100%">
+    //                 <tbody>
+    //                 <tr>
+    //                 <td valign="top">
+    //                 <div style="text-align: justify;">
+    //                 <h2></h2>
+    //                 <!--#html #-->
+    //                 <span style="font-family: times new roman,times;">
+    //                 <span style="font-size: 12pt;">
+    //                 <span style="color: #000000;">
+    //                 <!--#/html#-->
+    //                 <br>            
+    //                 Bitte klicken Sie auf den Link unterhalb, um Ihr Passwort zur&uuml;ckzusetzen. 
+    //                     ';
 
-        $body = $body.'
-                    <table cellspacing="0" cellpadding="0"> <tr>
-                    <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
-                    <a href="'.$link.'" style="font-size:10px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
-                    <span style="color: #000000">
-                    Passwort zur&uuml;cksetzen
-                    </span>
-                    </a></td></tr></table> 
-                    ';
-
-
-        $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
+    //     $body = $body.'
+    //                 <table cellspacing="0" cellpadding="0"> <tr>
+    //                 <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
+    //                 <a href="'.$link.'" style="font-size:10px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
+    //                 <span style="color: #000000">
+    //                 Passwort zur&uuml;cksetzen
+    //                 </span>
+    //                 </a></td></tr></table> 
+    //                 ';
 
 
-        //create curl resource
-        $ch = curl_init();
+    //     $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
 
-        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGDRID_API_KEY));
 
-        //set url
-        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+    //     //create curl resource
+    //     $ch = curl_init();
 
-        //return the transfer as a string
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //     curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGDRID_API_KEY));
 
-        $post_data = array(
-            'to' => $user_email,
-            //'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
-            'subject' => 'scholarium.at passwort zurücksetzen',
-            'html' => $body,
-            'from' => 'info@scholarium.at',
-            'fromname' => 'scholarium'
-            );
+    //     //set url
+    //     curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
 
-        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+    //     //return the transfer as a string
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        // $output contains the output string
-        $response = curl_exec($ch);
+    //     $post_data = array(
+    //         'to' => $user_email,
+    //         //'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
+    //         'subject' => 'scholarium.at passwort zurücksetzen',
+    //         'html' => $body,
+    //         'from' => 'info@scholarium.at',
+    //         'fromname' => 'scholarium'
+    //         );
 
-        //TODO - add here current
-        if(empty($response))
-        {
-            die("Error: No response.");
-            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
-        }
-        else
-        {
-            $json = json_decode($response);
-            // print_r($json->access_token);
-            //print_r($response);
-            // echo "<br>";
-            $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
-            file_put_contents('log.txt', $response);
-            //$this->messages[] = $json;
-        }
+    //     curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
 
-        curl_close($ch);
-    }
+    //     // $output contains the output string
+    //     $response = curl_exec($ch);
+
+    //     //TODO - add here current
+    //     if(empty($response))
+    //     {
+    //         die("Error: No response.");
+    //         $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+    //     }
+    //     else
+    //     {
+    //         $json = json_decode($response);
+    //         // print_r($json->access_token);
+    //         //print_r($response);
+    //         // echo "<br>";
+    //         $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
+    //         file_put_contents('log.txt', $response);
+    //         //$this->messages[] = $json;
+    //     }
+
+    //     curl_close($ch);
+    // }
 
     /**
      * Checks if the verification string in the account verification mail is valid and matches to the user.
