@@ -1768,7 +1768,7 @@ user_plz
     /**
      * Sends the password-reset-email.
      */
-    public function sendPasswordResetMail($user_email, $user_email, $user_password_reset_hash)
+    public function sendPasswordResetMail($user_email, $user_password_reset_hash)
     {
         $mail = new PHPMailer;
 
