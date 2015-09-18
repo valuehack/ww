@@ -175,7 +175,7 @@ em {
     color: rgb(28,109,186);
     margin: 20px 0 40px 0;
 }
-
+/*
 .content h3 {
 	font-family: 'Raleway', sans-serif;
 	font-weight: 300;
@@ -196,12 +196,12 @@ em {
 	line-height: 1.8;
 	margin: 0 0 40px 0;
 	font-family: 'EB Garamond', serif;
-}
+}*/
 
 .index {
 	text-align: left;
 	margin-bottom: 25px;
-	color: rgb(175,175,175) !important;
+	color: rgb(150,150,150) !important;
 	font-size: 10pt;
 	font-family: 'Raleway', sans-serif;
 	font-weight: 300;
@@ -216,7 +216,55 @@ em {
 }
 
 .index a:visited {
-	color: rgb(175,175,175);
+	color: rgb(150,150,150);
+}
+
+/*==================================================*/
+/*                 Item List                   		*/
+/*==================================================*/
+
+.itm-list {
+	margin: 5px 0;
+	padding: 10px 0;
+	display: inline-block;
+	border-bottom: 1px solid rgb(210,210,210);
+}
+
+.itm-list:hover {
+	background: rgb(240,240,240);
+}
+
+
+.itm-list-cola {
+	width: 30%;
+	float: left;
+}
+
+.itm-list-cola img {
+	max-width: 100px;
+}
+
+.itm-list-colb {
+	width: 70%;
+	float: right;
+}
+
+.itm-list-colb h3 a {
+	font-size: 16pt;
+	color: rgb(28,109,186);
+	text-decoration: none;
+	font-family: 'Raleway', sans-serif;
+	line-height: 2;
+}
+
+.itm-list-colb h3 a:hover {
+	border-bottom: 1px solid rgb(28,109,186);
+}
+
+.itm-list-colb p {
+	font-size: 12pt;
+	line-height: 1.4;
+	margin: 10px 0;
 }
 
 /*================== Buchquelle ====================*/

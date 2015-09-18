@@ -108,10 +108,18 @@ else {
   		$bio = $entry[bio];
   		$img = $entry[img];
   		
-  		echo '<div>';
-		echo '<h2><a href="index.php?q='.$id.'">'.$name.'</a></h2>';
-		echo '<p>'.substr($bio, 0, 200).'</p>';
-		echo '</div>';
+		?>
+		
+		<div class="itm-list">
+			<div class="itm-list-cola">
+				<img src="<?=$img?>" alt="">
+			</div>
+			<div class="itm-list-colb">
+				<h3><a href="index.php?q=<?=$id?>"><?=$name?></a></h3>
+				<p><? echo substr($bio, 0, 200)?></p>
+			</div>
+		</div>
+		<?
 	}
 ?>      
     <nav>
