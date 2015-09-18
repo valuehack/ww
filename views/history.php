@@ -73,7 +73,7 @@ $user_items_result_b = mysql_query($user_items_query_b) or die("Failed Query of 
 					</p>
 				</div>
 				<div class="basket_body_col_c">
-					<span class="history_reservation">Reserviert</span> <img src="../style/gfx/checkmark.png" style="max-width:15px;">
+					<span class="history_reservation">Reserviert</span>
 					<p><a href="../tickets/ticket_<?=$user_id?>_<?=ucfirst($type)?>_<?=$n?>.pdf">Ihr Ticket</a></p>							
 				</div>
 			</div>
