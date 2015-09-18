@@ -719,6 +719,7 @@ class Registration
             $query_update_user->execute();
             */
 
+
             $user_id = $this->db_connection->lastInsertId();
             $_SESSION['user_id'] = $user_id;
 
@@ -726,7 +727,11 @@ class Registration
             if (is_numeric($the_row->first_reg)) 
             {
 
-            $reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id) VALUES (:event_id, :user_id)');
+            date_default_timezone_set('Europe/Vienna'); // set timezone in php
+            mysql_query("SET `time_zone` = '".date('P')."'"); // set timezone in MySQL
+            mysql_query("SET time_zone = 'Europe/Vienna'");
+
+            $reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, reg_datetime ) VALUES (:event_id, :user_id, NOW())');
             $reg_query->bindValue(':event_id', $the_row->first_reg, PDO::PARAM_INT);
             $reg_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
             $reg_query->execute();
