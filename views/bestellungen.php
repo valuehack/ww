@@ -209,7 +209,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			<div class="basket_head">
 				<div class="basket_head_col_a"></div>
 				<div class="basket_head_col_b">Status</div>
-				<div class="basket_head_col_c">Preis</div>
+				<div class="basket_head_col_c">Pl$auml;tze</div>
 			</div>
 			<?php
 			while($userItemsArray_d = mysql_fetch_array($user_items_result_d)){
