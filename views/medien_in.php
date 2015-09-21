@@ -39,9 +39,17 @@ if(isset($_GET['q']))
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $n = $entry3[n];
-  
+  $preis = $entry3[price];
+
+  //Userdetails
+  $user_items_query = "SELECT * from registration WHERE `user_id`=$user_id and event_id='$n'";
+  $user_items_result = mysql_query($user_items_query) or die("Failed Query of " . $user_items_query. mysql_error());
+  $userItemsArray = mysql_fetch_array($user_items_result);
+
+  $bought = $userItemsArray[quantity];
+    
   				//Change button-value according to media type
- $btn_value = "Herunterladen";
+  $btn_value = "Herunterladen";
   //	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
   //  if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
 
@@ -64,20 +72,23 @@ if(isset($_GET['q']))
 		<div class="schriften_bestellen">
 			<?
 			if ($_SESSION['Mitgliedschaft'] == 1) {
+				if ($bought >= 1) {
+    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits erworben.</span>';
+    				}
 				echo '<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';
 			}
 			else { 
-			
-			//check if already downloaded    
-        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$n' AND `user_id`=".$_SESSION['user_id'];
-        $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
-        $checkPriceArray = mysql_fetch_array($check_price_result);
-        
-        if ($checkPriceArray[quantity]==1) { $preis = "0 (bereits beglichen)"; }
-        else { $preis=$entry3[price]; }
-        
+		         if ($bought >= 1){
+		    ?>
+		    	<span class="schriften_price">Sie haben diesen Artikel bereits erworben.</span>
+		    <?     	
+		         }
+				 else {
 			?>
 				<span class='coin'><img src="../style/gfx/coin.png"></span><span class="schriften_price"><?php echo $preis; ?></span> 
+			<?
+				 }
+			?>
 				<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       				<input type="hidden" name="add" value="<?php echo $n; ?>" />
      				<!--<select name="quantity">
@@ -88,7 +99,7 @@ if(isset($_GET['q']))
         				<option value="5">5</option>        
       				</select> -->
       				<input type="hidden" name="quantity" value="1">
-              <input type="submit" class="inputbutton" value="<?echo $btn_value;?>">
+              <input type="submit" class="inputbutton" value="<?echo $btn_value;?>" <? if($bought >= 1) echo "disabled"?>>
     			</form>
     		<?
 			}

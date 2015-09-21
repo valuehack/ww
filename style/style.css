@@ -1286,6 +1286,11 @@ a.socialimg:visited {
 	line-height: 1.6;
 }
 
+.salon_content li {
+	font-size: 14pt;
+	line-height: 1.6;
+}
+
 .salon_type {
 	text-align: center;
 	font-size: 18pt;

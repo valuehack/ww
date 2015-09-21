@@ -67,7 +67,14 @@ if(isset($_GET['q']))
   $n = $entry3[n];
   $type=$entry3[type];
   $title=$entry3[title];
-  
+
+  //Userdetails
+  $user_items_query = "SELECT * from registration WHERE `user_id`=$user_id and event_id='$n'";
+  $user_items_result = mysql_query($user_items_query) or die("Failed Query of " . $user_items_query. mysql_error());
+  $userItemsArray = mysql_fetch_array($user_items_result);
+
+  $bought = $userItemsArray[quantity];
+    
           	//check, if there is a image in the salon folder
 	$img = 'http://www.scholarium.at/schriften/'.$id.'.jpg';
 
@@ -87,9 +94,12 @@ if(isset($_GET['q']))
 			<?php
 			  echo '<span class="schriften_type">'.ucfirst($entry3[type]).'</span>';
 			  if ($_SESSION['Mitgliedschaft'] == 1) {
-			  	  
-   					 //Button trigger modal
-    				echo '<input type="button" value="Bestellen und Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';  
+			  	if ($bought >= 1) {
+    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits erworben.</span>';
+    				}
+			  	?>     					 
+    		<input type="button" value="Bestellen und Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal" <? if($bought >= 1) echo "disabled"?>>
+    		<?  
   			  }
   			  else {
     				$pdf = substr($entry3[format],0,1);
@@ -99,20 +109,37 @@ if(isset($_GET['q']))
 
     				$price = $entry3[price];
     				$price_book = $entry3[price_book];
+					
+					if ($bought >= 1) {
+						$disabled = "disabled";
+					}
+					else {
+						$disabled = "";
+					}
     			?>
     		<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       			<input type="hidden" name="add" value="<?php echo $n; ?>" />
      
     		<?php
     			if ($entry3[format] == '0001') {
-    				echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="total2" class="schriften_price">'.$entry3[price].' </span>';
-					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
+    				if ($bought >= 1) {
+    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits erworben.</span>';
+    				}
+					else {
+    					echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="total2" class="schriften_price">'.$entry3[price].' </span>';
+					}
+					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"'. $disabled.'><br>';
 				}
 				else {
+					if ($bought >= 1) {
+    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits erworben.</span>';
+    				}
+					else {
 					echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="price" class="schriften_price">' .$entry3[price].' </span>';
-					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
+					}
+					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"'. $disabled.'><br>';
 				}
-				echo '<span class="schriften_format">Format: <select name="format"';
+				echo '<span class="schriften_format">Format: <select '. $disabled.' name="format"';
 				
 					if ($entry3[format] == '0001') {
 						echo '>';
@@ -129,7 +156,7 @@ if(isset($_GET['q']))
 				
         echo '<span class="schriften_quantity">Anzahl: ';
         if ($entry3[format] == '0001') {
-				echo '<input type="number" name="quantity" onchange="changeprice_book(this.value,'.$price_book.')" value="1" min="1" max="100">';
+				echo '<input type="number" name="quantity" onchange="changeprice_book(this.value,'.$price_book.')" value="1" min="1" max="100" '. $disabled.'>';
 					}
         else {
 						echo '<span id="quantity"><input type="hidden" name="quantity" value="1"><input type="number" name="quantity2" value="1" disabled></span>';
