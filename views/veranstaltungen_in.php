@@ -4,11 +4,33 @@ $title="Veranstaltungen";
 include "_header_in.php"; 
 ?>
 	<div class="content">
-    <div class="salon_content">
   <?php
   $sql = "SELECT * from produkte WHERE (type='salon' or type='lehrgang' or type='seminar' or type='kurs') and (start > NOW()) and (status = 1) order by start asc, n asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	
+//für Interessenten (Mitgliedschaft 1) Erklärungstext oben
+  if ($_SESSION['Mitgliedschaft'] == 1) {
+  	echo "<div class='salon_info'>";
+			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
+			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry4 = mysql_fetch_array($result);
+			
+		    $sql = "SELECT * from static_content WHERE (page LIKE 'seminare')";
+			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry5 = mysql_fetch_array($result);
+	
+				echo $entry4[info];	
+				echo $entry5[info];
+	?>
+			<div class="centered">
+				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+			</div>		
+   </div>
+	<?
+  }
+  else {
+  	echo '<div class="salon_content">';
+	  
   while($entry = mysql_fetch_array($result))
   {
     $id = $entry[id];
@@ -52,6 +74,9 @@ include "_header_in.php";
   }
   ?>
 			</div>
+	<?
+	}
+	?>
 	</div>
 	
 <? include "_footer.php"; ?>
