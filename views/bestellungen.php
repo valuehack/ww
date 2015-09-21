@@ -22,7 +22,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 ?> 
 	<div class="content">
 		<div class="history">
-			<h1>&Uuml;bersicht Ihrer K&auml;ufe</h1>
+			<h1>&Uuml;bersicht Ihrer Bestellungen</h1>
 		</div>
 		<div class="medien_seperator">
 			<h1>Ihre Veranstaltungen</h1>

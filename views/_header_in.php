@@ -213,16 +213,26 @@ while ($entry = mysql_fetch_array($result))
                             <li class="dropdown-header dropdown_level"><? echo $Mitgliedschaft;?></li>
                 			<li><a href="/abo/profil.php">Profil</a></li>
                 			<li><a href="/abo/">Unterst&uuml;tzen</a></li>
+                			<? 
+                			if ($mitgliedschaft >= 2){
+                			?>
                 			<li class="divider"></li>
                       <li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry[credits_left];?> <img class='dropdown_coin' src="../style/gfx/coin.png"></li>
                 			<li><a href="/abo/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></li> 
                 			<li><a href="/abo/bestellungen.php">Bestellungen</a></li>
                 			<li class="divider"></li>
+                			<?
+                			}
+                			?>
                 			<li><a href="/logout.php?logout">Abmelden</a></li>        			               		
                 		</ul>
                 	</div>
+                			<? 
+                			if ($mitgliedschaft >= 2){
+                			?>
                 	<div class="login_basket"><a href="../abo/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></div>
 <?
+							}
 	#isset and while-loop
 		}
 	}
