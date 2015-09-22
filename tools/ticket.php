@@ -26,11 +26,18 @@
 	else 
 		$date = "Der Termin wird in K&uuml;rze bekannt gegeben.";
 
+  $ticket_name = "ticket_".$user_id."_".$type."_".$key.".pdf";
+
   $html = '
   <html lang="de">
       <head>
           <title>Ticket</title>        
           <link rel="stylesheet" type="text/css" href="../style/ticket_style.css">
+          
+          <meta name="Content-Disposition" content="attachment; filename='.$ticket_name.'">
+          <meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8" />
+
+
       </head>
       <body>
           <div class="ticket_content">
@@ -82,7 +89,7 @@
 
   file_put_contents("../tickets/ticket_".$user_id."_".$type."_".$key.".pdf", $pdf);
 
-  $ticket_name = "ticket_".$user_id."_".$type."_".$key.".pdf";
+  
 
   $ticket_location = "/home/content/56/6152056/html/production/tickets/".$ticket_name;
   $tickets_array[$ticket_name] = $ticket_location;
