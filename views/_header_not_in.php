@@ -157,7 +157,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
             <div class="nav">
                 <div class="navi">
                 	<ul id="nav">
-                    	<li id="navelm"><a class="navelm" href="http://scholarium.at/fragen.php">H&auml;fige Fragen</a></li>
+                    	<li id="navelm"><a class="navelm" href="http://scholarium.at/fragen.php">H&auml;ufige Fragen</a></li>
                     	<!-- <li id="navelm"><a class="navelm" href="http://scholarium.at/mitwirkende.php">Mitwirkende</a></li> -->
                     	<li id="navelm"><a class="navelm" href="http://scholarium.at/abo/">F&uuml;r B&uuml;rger</a></li>
                     	<li id="navelm"><a class="navelm" href="http://craftprobe.com">F&uuml;r Studenten</a></li>
