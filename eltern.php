@@ -56,14 +56,14 @@ if ($login->isUserLoggedIn() == true) {
 				echo $entry[info];			
 			?>
 		
-			<div class="centered">
+		<!--	<div class="centered">
 				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
   					<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
   					<!-- make sure that value is changed in here if form is copied/ captures the place of first reg -->
   					<input type=hidden name="first_reg" value="eltern">
   					<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
 				</form>
-			</div>
+			</div> -->
 		</div>		
 	</div>
 </div>
