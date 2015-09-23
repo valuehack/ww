@@ -43,7 +43,7 @@ if ($login->isUserLoggedIn() == true) {
 <div class="content">
 	<div class="blog">
 		<header>
-			<h1>H&auml;fige Fragen</h1>
+			<h1>H&auml;ufige Fragen</h1>
 		</header>
 		<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>
 		<div class="blog_text">
