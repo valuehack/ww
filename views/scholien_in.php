@@ -29,7 +29,7 @@ if(isset($_GET['q']))
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://scholarium.at/scholien/default.jpg";
+	    $img_url = "http://craftprobe.com/img/1.jpg";
 	}
 
 	include('_header_in.php'); 
