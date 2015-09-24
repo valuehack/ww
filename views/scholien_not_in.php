@@ -29,13 +29,13 @@ if(isset($_GET['q']))
 	$description_fb = preg_replace('/^(.*?)\0(.*)$/is', '$1', $description_fb0);
 	
 	//check, if there is a image in the blog/gfx folder
-	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
+/*	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
 	    $img_url = "http://craftprobe.com/img/1.jpg";
-	}
+	} */
 
 		include('_header_not_in.php');
 		
