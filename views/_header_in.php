@@ -12,7 +12,7 @@
 		<meta property="og:type" content="article">
 		<meta property="og:title" content="<?=$title?>">
 		<meta property="og:url" content="http://www.scholarium.at/">
-		<meta property="og:image" content="<?=$img_url?>">
+		<meta property="og:image" content="http://craftprobe.com/img/1.jpg">
 		<meta property="og:description" content="<?=$description_fb?>">
 		<meta property="og:site_name" content="Scholarium">
 		<meta property="og:locale" content="de_DE">
