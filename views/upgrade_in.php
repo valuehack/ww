@@ -189,7 +189,7 @@ include('_header_in.php');
                 <td>
                     <ul>
                         <li>Vorteile von Gast, Teilnehmer, Scholar, Partner und Beirat</li>
-                        <li>Einmal im Jahr zu Ihrem Wunschtermin private Campusf&uuml;hrung durch den Rektor mit tief gehender Vorstellung und Reflexion unserer Arbeit und Erkenntnisse, sowie einem exklusiven Mittagessen</li>
+                        <li>Zus&auml;tzlich bestimmen Sie bis zu zweimal pro Jahr ein Thema f&uuml;r das <i>scholarium</i>, das gemeinsam mit den Studenten bearbeitet wird. Die Ergebnisse besprechen Sie bei einem exklusiven Mittagessen mit dem Rektor. Sie w&auml;hlen ein Thema, zu dem Sie selbst Inputs suchen, oder eines, das Sie f&uuml;r junge Menschen f&uuml;r besonders wichtig halten.</li>
                     </ul>
                 </td>
                 </tr><tr>

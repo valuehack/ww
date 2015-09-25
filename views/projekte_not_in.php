@@ -338,11 +338,11 @@ else {
 			</div>
 			</div>
               <div class="projekte_investment">
-              <input type="radio" class="projekte_investment_radio" name="betrag" value="150" required>150&euro;: Sie erhalten Zugriff auf die Scholien.<br><br>
-              <input type="radio" class="projekte_investment_radio" name="betrag" value="300">300&euro;: Ab diesem Beitrag erhalten Sie Zugriff auf digitale Inhalte in unserer Bibliothek.<br><br>
-              <input type="radio" class="projekte_investment_radio" name="betrag" value="600">600&euro;: Ab diesem Beitrag werden Sie Partner, wir f&uuml;hren Sie (au&szlig;er anders gew&uuml;nscht) pers&ouml;nlich mit Link auf unserer Seite an und laden Sie zu einem exklusiven Abendessen ein (oder Sie erhalten einen Geschenkkorb).<br><br>
+              <input type="radio" class="projekte_investment_radio" name="betrag" value="150" required>150&euro;: Sie erhalten Zugriff auf die Scholien und andere Inhalte.<br><br>
+              <input type="radio" class="projekte_investment_radio" name="betrag" value="300">300&euro;: Ab diesem Beitrag haben Sie als Scholar vollen Zugang zu allen unseren Inhalten und Veranstaltungen.<br><br>
+              <input type="radio" class="projekte_investment_radio" name="betrag" value="600">600&euro;: Ab diesem Beitrag werden Sie Partner, wir f&uuml;hren Sie (au&szlig;er anders gew&uuml;nscht) pers&ouml;nlich mit Link auf unserer Seite an und laden Sie zu einem exklusiven Abendessen ein (oder Sie erhalten einen Geschenkkorb)<br><br>
               <input type="radio" class="projekte_investment_radio" name="betrag" value="1200">1200&euro;: Ab diesem Beitrag nehmen wir Sie als Beirat auf und laden Sie zu unserer Strategieklausur ein.<br><br>
-              <input type="radio" class="projekte_investment_radio" name="betrag" value="2400">2400&euro;: Ab diesem Beitrag werden Sie Ehrenpr&auml;sident und wir laden Sie zu einer privaten Campusf&uuml;hrung mit einem exklusiven Mittagessen ein.<br>
+              <input type="radio" class="projekte_investment_radio" name="betrag" value="2400">2400&euro;: Ab diesem Beitrag werden Sie Ehrenpr&auml;sident und bestimmen bis zu zweimal im Jahr ein Thema f&uuml;r das <i>scholarium</i>.<br>
         	</div>
 
         <div class="centered">
