@@ -32,7 +32,7 @@ define("MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT", "\"Passwort zur&uuml;cks
 define("MESSAGE_PASSWORD_TOO_SHORT", "Passwort muss mindestens 6 Zeichen haben");
 define("MESSAGE_PASSWORD_WRONG", "Passwort falsch. <a href='/password_reset.php'>Passwort vergessen?</a>");
 define("MESSAGE_PASSWORD_WRONG_3_TIMES", "Passwort wurde dreimal falsch eingegeben. Bitte warten Sie 30 Sekunden, um es noch einmal zu probieren.");
-define("MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL", "Aktivierung leider fehlgeschlagen. Haben Sie anderes Konto angelegt?");
+define("MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL", "Leider haben wir noch ein technisches Problem, Sie erhalten bald eine Nachricht mit einem neuen Zugangslink.");
 define("MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL", "Aktivierung war erfolgreich!");
 define("MESSAGE_REGISTRATION_FAILED", "Verzeihen sie bitte, ihre Registrierung ist fehlgeschlagen. Bitte versuchen sie es erenut.");
 define("MESSAGE_RESET_LINK_HAS_EXPIRED", "Ihr R&uuml;cksetzungs-link ist abgelaufen. Bitte benutzen sie den Link innerhalb einer Stunde");
