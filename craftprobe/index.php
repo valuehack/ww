@@ -16,11 +16,12 @@ $pref_lenght = $_POST['pref_lenght'];
 $pref_date = $_POST['pref_date'];
 $flexible = $_POST['flexible'];
 $knowledge = $_POST['knowledge'];
+$found_us = $_POST['foundus'];
 
 if ($ok) {
 
-$sql = "INSERT INTO cp_anmeldung (id, email, firstname, name, country, telephone, nationality, liveexperiance, knowledge, skills, languages, drivers_licence, car_vienna, pref_lenght, pref_date, flexible, sub_date) 
-VALUES ('', '$email', '$firstname', '$name', '$country', '$telephone', '$nationality', '$liveexperiance', '$knowledge', '$skills', '$languages', '$drivers_licence', '$car_vienna', '$pref_lenght', '$pref_date', '$flexible', NOW())";
+$sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, country, telephone, nationality, liveexperiance, knowledge, skills, languages, drivers_licence, car_vienna, pref_lenght, pref_date, flexible, found_us, sub_date) 
+VALUES ('', '$email', '$firstname', '$name', '$country', '$telephone', '$nationality', '$liveexperiance', '$knowledge', '$skills', '$languages', '$drivers_licence', '$car_vienna', '$pref_lenght', '$pref_date', '$flexible', '$found_us', NOW())";
 
 $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
 
@@ -180,13 +181,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 
                 <p class="crew_levels">Captain</p>
                 
-            	<?php
-            	
-                require_once('../config/config.php');
-
-                @$con=mysql_connect(DB_WERTE_HOST,DB_WERTE_USER,DB_WERTE_PASS) or die ("cannot connect to MySQL");
-                mysql_select_db(DB_WERTE_NAME);
-   
+            	<?php               
 
 				$sql = "SELECT * from crew WHERE level='1'";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
@@ -403,6 +398,8 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					<span class="inputlabel">Earliest possible boarding time:*</span>
 					<input class="inputfield bottom_border" type="date" name="pref_date" placeholder=" e.g. 2015-09-01" required><br>
 					<input type="checkbox" name="flexible" value="1"><span class="inputlabel2">I am flexible.</span><br>
+					<span class="inputlabel">How did you find us?*</span>
+					<textarea name="found_us" class="inputarea" placeholder="" rows="4" required></textarea><br>
 					<input class="inputfield" type="text" name="firstname" placeholder=" First Name" required><br>
         			<input class="inputfield" type="text" name="name" placeholder=" Surname" required><br>
         			<input class="inputfield" type="email" name="email" placeholder=" e-mail" required><br> 
