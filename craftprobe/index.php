@@ -16,7 +16,7 @@ $pref_lenght = $_POST['pref_lenght'];
 $pref_date = $_POST['pref_date'];
 $flexible = $_POST['flexible'];
 $knowledge = $_POST['knowledge'];
-$found_us = $_POST['foundus'];
+$found_us = $_POST['found_us'];
 
 if ($ok) {
 
@@ -390,6 +390,8 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 									4) perfect<br>
 									5) native</span>
 					<textarea name="languages" class="inputarea" placeholder="e.g. English (4)" rows="10" required></textarea><br>
+					<span class="inputlabel">How did you find us?*</span>
+					<textarea name="found_us" class="inputarea" placeholder="Tell us" rows="10" required></textarea><br>
 					<input type="checkbox" name="drivers_licence" value="1"><span class="inputlabel2">I have a driving license.</span><input type="checkbox" name="car_vienna" value="1"><span class="inputlabel2">I would have a car in Vienna.</span><br>
 					<span class="inputlabel">Preferred length of your voyage:*</span>
 					<input type="radio" name="pref_lenght" value="2" required><span class="inputlabel2">two months</span>&nbsp;&nbsp;
@@ -398,8 +400,6 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					<span class="inputlabel">Earliest possible boarding time:*</span>
 					<input class="inputfield bottom_border" type="date" name="pref_date" placeholder=" e.g. 2015-09-01" required><br>
 					<input type="checkbox" name="flexible" value="1"><span class="inputlabel2">I am flexible.</span><br>
-					<span class="inputlabel">How did you find us?*</span>
-					<textarea name="found_us" class="inputarea" placeholder="" rows="4" required></textarea><br>
 					<input class="inputfield" type="text" name="firstname" placeholder=" First Name" required><br>
         			<input class="inputfield" type="text" name="name" placeholder=" Surname" required><br>
         			<input class="inputfield" type="email" name="email" placeholder=" e-mail" required><br> 
