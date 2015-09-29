@@ -69,7 +69,7 @@ if ($login->isUserLoggedIn() == true) {
 				echo "<tr>";
 				echo "<td>";
 				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
+				echo "<img src='http://craftprobe.com/img/".$entry[id].".jpg'>";
 				echo "</div>";
 				echo "<div class='crew_link'>";
 				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
@@ -92,7 +92,7 @@ if ($login->isUserLoggedIn() == true) {
                       
         
                 
-                <p class="crew_levels">Gründer</p>
+                <p class="crew_levels">Gr@uuml;nder</p>
                 
                                 
                 <?php
@@ -106,7 +106,7 @@ if ($login->isUserLoggedIn() == true) {
 				echo "<tr>";
 				echo "<td>";
 				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
+				echo "<img src='http://craftprobe.com/img/".$entry[id].".jpg'>";
 				echo "</div>";
 				echo "<div class='crew_link'>";
 				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
@@ -136,7 +136,7 @@ if ($login->isUserLoggedIn() == true) {
 				echo "<tr>";
 				echo "<td>";
 				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
+				echo "<img src='http://craftprobe.com/img/".$entry[id].".jpg'>";		
 				echo "</div>";
 				echo "<div class='crew_link'>";
 				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
@@ -166,7 +166,7 @@ if ($login->isUserLoggedIn() == true) {
 				echo "<tr>";
 				echo "<td>";
 				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
+				echo "<img src='http://craftprobe.com/img/".$entry[id].".jpg'>";
 				echo "</div>";
 				echo "<div class='crew_link'>";
 				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
@@ -183,7 +183,7 @@ if ($login->isUserLoggedIn() == true) {
 	}			
 				?>
 				
-				<p class="crew_levels">Ehrenpräsidenten</p>
+				<p class="crew_levels">Ehrenpr@auml;sidenten</p>
                                       
             	<?php
               
@@ -196,7 +196,7 @@ if ($login->isUserLoggedIn() == true) {
 				echo "<tr>";
 				echo "<td>";
 				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
+				echo "<img src='http://craftprobe.com/img/".$entry[id].".jpg'>";
 				echo "</div>";
 				echo "<div class='crew_link'>";
 				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
@@ -214,7 +214,7 @@ if ($login->isUserLoggedIn() == true) {
 				?>
 								
               
-				<p class="crew_levels">Beiräte</p>
+				<p class="crew_levels">Beir@auml;te</p>
                                       
             	<?php
               
@@ -227,7 +227,7 @@ if ($login->isUserLoggedIn() == true) {
 				echo "<tr>";
 				echo "<td>";
 				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
+				echo "<img src='http://craftprobe.com/img/".$entry[id].".jpg'>";
 				echo "</div>";
 				echo "<div class='crew_link'>";
 				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
@@ -283,7 +283,7 @@ if ($login->isUserLoggedIn() == true) {
 				echo "<tr>";
 				echo "<td>";
 				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
+				echo "<img src='http://craftprobe.com/img/".$entry[id].".jpg'>";
 				echo "</div>";
 				echo "<div class='crew_link'>";
 				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
