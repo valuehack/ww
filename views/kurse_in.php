@@ -57,6 +57,7 @@ if(isset($_GET['q']))
   $spots_total=$entry3[spots];
   $spots_sold=$entry3[spots_sold];
   $spots_available=$spots_total-$spots_sold;
+  $status = $entry3[status];
   
   //Userdetails
   $user_items_query = "SELECT * from registration WHERE `user_id`=$user_id and event_id='$n'";
@@ -65,6 +66,10 @@ if(isset($_GET['q']))
 
   //$bought = $userItemsArray[quantity];
   
+  if ($status == 0) {
+  	echo '<div class="salon_head"><p class="salon_date">Es wurde keine Veranstaltung gefunden.</p></div>';
+  }
+  else {
 ?>
   	<div class="salon_head">
  	 	<h1><?=ucfirst($entry3[type])." ".$entry3[title]?></h1>
@@ -277,8 +282,7 @@ elseif ($spots_available == 4) {
     </form>
 	<div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
 <?php
-	}
-	
+	}	
   }
 ?>
 			</div>
@@ -309,6 +313,7 @@ elseif ($spots_available == 4) {
 	</div>
 	
 <?php
+	}
 }
   else { 
   if ($_SESSION['Mitgliedschaft'] == 1) {

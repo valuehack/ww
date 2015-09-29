@@ -51,6 +51,7 @@ if(isset($_GET['q']))
   $spots_total=$entry3[spots];
   $spots_sold=$entry3[spots_sold];
   $spots_available=$spots_total-$spots_sold;
+  $status = $entry3[status];
 
   //Userdetails
   $user_items_query = "SELECT * from registration WHERE `user_id`=$user_id and event_id='$n'";
@@ -66,7 +67,12 @@ if(isset($_GET['q']))
 	    $img_url = $img;
 	} else {
 	    $img_url = "http://scholarium.at/salon/default.jpg";
-	}  
+	}
+	
+	if ($status == 0) {
+  	echo '<div class="salon_head"><p class="salon_date">Es wurde keine Veranstaltung gefunden.</p></div>';
+    }
+    else {  
 ?>
   <div class="content">
   	<div class="salon_head">
@@ -288,6 +294,7 @@ elseif ($spots_available == 4) {
 		</div>
 	</div>
 <?php
+	}
 }
 
 else {

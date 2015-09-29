@@ -14,7 +14,7 @@ if(isset($_GET['q']))
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $spots_available=$entry3[spots]-$entry3[spots_sold];
-  
+  $status = $entry3[status];
     	//check, if there is a image in the salon folder
 	$img = 'http://scholarium.at/salon/'.$id.'.jpg';
 
@@ -23,6 +23,10 @@ if(isset($_GET['q']))
 	} else {
 	    $img_url = "http://scholarium.at/salon/default.jpg";
 	}
+  if ($status == 0) {
+  	echo '<div class="salon_head"><p class="salon_date">Es wurde keine Veranstaltung gefunden.</p></div>';
+  }
+  else {
 ?>
 	<div class="salon_head">
   		<h1><?echo $entry3[title]?></h1>
@@ -88,6 +92,7 @@ if(isset($_GET['q']))
     	</div>
 	</div>
 <?php
+	}
 }
          
 else { 

@@ -217,7 +217,6 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			$n = $userItemsArray_d[event_id];
 			$quantity = $userItemsArray_d[quantity];
 
-			
 			$user_programs_query = "SELECT * from produkte WHERE `n` LIKE '$n' ORDER BY start DESC";
         	$user_programs_result = mysql_query($user_programs_query) or die("Failed Query of " . $user_programs_query. mysql_error());
         	$userProgramsArray = mysql_fetch_array($user_programs_result);

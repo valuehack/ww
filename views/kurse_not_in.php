@@ -55,7 +55,7 @@ if(isset($_GET['q']))
   $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE (type='lehrgang' or type='seminar' or type='kurs') AND id='$id'";
+  $sql="SELECT * from produkte WHERE (type='lehrgang' or type='seminar' or type='kurs') AND id='$id' AND (status = 1)";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $title=$entry3[title];
@@ -63,6 +63,12 @@ if(isset($_GET['q']))
   $spots_sold=$entry3[spots_sold];
   $spots_available=$spots_total-$spots_sold;
   $n=$entry3[n];
+  $status = $entry3[status];
+  
+    if ($status == 0) {
+  	echo '<div class="salon_head"><p class="salon_date">Es wurde keine Veranstaltung gefunden.</p></div>';
+  }
+  else {
 ?>
   
   	<div class="salon_head">
@@ -128,6 +134,7 @@ if(isset($_GET['q']))
           </form> 
   </div>
 <?php
+	}
 }
 
 else {
