@@ -24,7 +24,7 @@
             src: url('http://www.scholarium.at/style/font/garamond_regular.otf') format('opentype');
 			}
             .content {
-                width: 21cm;
+                width: 17cm;
                 padding: 2cm;
             }
             .logo {
