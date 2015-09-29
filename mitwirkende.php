@@ -92,7 +92,7 @@ if ($login->isUserLoggedIn() == true) {
                       
         
                 
-                <p class="crew_levels">Gr@uuml;nder</p>
+                <p class="crew_levels">Gr&uuml;nder</p>
                 
                                 
                 <?php
@@ -183,7 +183,7 @@ if ($login->isUserLoggedIn() == true) {
 	}			
 				?>
 				
-				<p class="crew_levels">Ehrenpr@auml;sidenten</p>
+				<p class="crew_levels">Ehrenpr&auml;sidenten</p>
                                       
             	<?php
               
@@ -214,7 +214,7 @@ if ($login->isUserLoggedIn() == true) {
 				?>
 								
               
-				<p class="crew_levels">Beir@auml;te</p>
+				<p class="crew_levels">Beir&auml;te</p>
                                       
             	<?php
               
