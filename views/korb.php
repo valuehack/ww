@@ -336,7 +336,7 @@ function checkMe() {
                     <span style="font-size: 12pt;">
                     <span style="color: #000000;">
                     <!--#/html#-->
-                    <br>Sie haben folgende Bestellungen get&auml;tigt (Dateien k&ouml;nnen nur auf der unmittelbar angezeigten Bestellseite heruntergeladen werden):';           
+                    <br>Sie haben folgende Bestellungen get&auml;tigt:';           
       
 
         $body = $body. "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>
