@@ -42,7 +42,6 @@ if(isset($_POST['checkout'])) {
 
     mysql_query("SET time_zone = 'Europe/Vienna'");
 
-    $itemsPrice = 0;
     foreach ($items as $code => $quantity)
     {
         $length = strlen($code) - 1;
@@ -55,16 +54,6 @@ if(isset($_POST['checkout'])) {
         $itemsPriceArray = mysql_fetch_array($items_price_result);
         
         $preis=$itemsPriceArray[price];
-        
-        if (substr($itemsPriceArray[type],0,5)=='media'||$itemsPriceArray[type]=='analyse'||$itemsPriceArray[type]=='scholie'||$itemsPriceArray[type]=='buch')
-        {
-        //check if already downloaded    
-        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
-        $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
-        $checkPriceArray = mysql_fetch_array($check_price_result);
-        
-        if ($checkPriceArray[quantity]==1) { $preis = 0; }
-        }
         
         if ($format == 4 && $itemsPriceArray[price_book]) { $preis = $itemsPriceArray[price_book]; }
         
@@ -182,7 +171,7 @@ function checkMe() {
 			echo '<div class="basket">';
 			
 				
-        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als E-Mail zugesandt. <b>Achtung: Bestellte Dateien k&ouml;nnen Sie nur von dieser Seite direkt herunterladen (rechts unterhalb f&uuml;r jede bestellte Datei &bdquo;Herunterladen&ldquo; anklicken). Laden Sie die Dateien bitte gleich herunter, bevor Sie diese Seite schlie&szlig;en.</b></p></div>";
+        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als E-Mail zugesandt. Sie k&ouml;nnen Ihre Bestellungen auch in <a href='../abo/bestellungen.php'>Ihrer Bestell&uuml;bersicht</a> einsehen und gekaufte Artikel und Tickets dort herunterladen.</p></div>";
 		echo "<div class='basket_summary'>";
         echo "<table><tr>";
 		echo "<td style='width:10%'>&nbsp;</td>";
@@ -202,23 +191,12 @@ function checkMe() {
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
             
-            $type = $itemsExtraArray[type];
-
-			if (substr($type,0,5)=='media'||$type=='analyse'||$type=='scholie'||$type=='buch')
-       		{
-        	//check if already downloaded    
-        	$check_price_query = "SELECT * from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
-        	$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
-        	$checkPriceArray = mysql_fetch_array($check_price_result);
-			
-			}		
+            $type = $itemsExtraArray[type];		
 			
        		if ($format == 4 && $itemsExtraArray[price_book]) {
             	$sum = $quantity*$itemsExtraArray[price_book];
         	}
-			elseif ($checkPriceArray[quantity]) {
-			 	$sum = 0; 
-			}
+
         	else {
              	$sum = $quantity*$itemsExtraArray[price];
         	}
@@ -378,23 +356,11 @@ function checkMe() {
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
-            
-            if (substr($itemsExtraArray[type],0,5)=='media'||$itemsExtraArray[type]=='analyse'||$itemsExtraArray[type]=='scholie'||$itemsPriceArray[type]=='buch')
-        	{
-        	//check if already downloaded    
-        	$check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
-        	$check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
-        	$checkPriceArray = mysql_fetch_array($check_price_result);
-			
-			$checkPrice = $checkPriceArray[quantity];
-			}
 
             if ($format == 4 && $itemsExtraArray[price_book]) {
                 $sum = $quantity*$itemsExtraArray[price_book];
             }
-			if($checkPrice == 1){
-				$sum = 0;
-			}
+
             else {
                 $sum = $quantity*$itemsExtraArray[price];
             }
@@ -424,7 +390,6 @@ function checkMe() {
                             $body = $body. "<td>&nbsp; &nbsp;".$quantity."</td>";
                         }
             if ($format == 4) {$preis=$itemsExtraArray[price_book];}
-			elseif ($checkPriceArray[quantity]==1){$preis = 0;}
 			else {$preis=$itemsExtraArray[price];}          
             $body = $body. "<td>&nbsp; &nbsp;".$preis."</td>";
             $body = $body. "<td><i>".$sum."</i></td></tr>";
@@ -565,21 +530,10 @@ if($_SESSION['basket']) {
         
         $type = $itemsExtraArray[type];
         $id = $itemsExtraArray[id];
-
-		if (substr($type,0,5)=='media'||$type=='analyse'||$type=='scholie'||$type=='buch')
-        {
-        //check if already downloaded    
-        $check_price_query = "SELECT quantity from registration WHERE `event_id` LIKE '$key' AND `user_id`=$user_id";
-        $check_price_result = mysql_query($check_price_query) or die("Failed Query of " . $check_price_query. mysql_error());
-        $checkPriceArray = mysql_fetch_array($check_price_result);        
-		}
 		
         if ($format == 4 && $itemsExtraArray[price_book]) {
             $sum = $quantity*$itemsExtraArray[price_book];
         }
-		elseif ($checkPriceArray[quantity] == 1) {
-			 $sum = 0; 
-		}
         else {
              $sum = $quantity*$itemsExtraArray[price];
         }
@@ -647,13 +601,7 @@ if($_SESSION['basket']) {
                             echo $quantity;
                         }
        					else {
-       						if($checkPriceArray[quantity] == 1) {
-       							$preis = 0;
-								echo $preis;
-       						}
-							else {
-           		 			echo $itemsExtraArray[price];
-							}
+           		 			echo $itemsExtraArray[price];							
         				}
 					?>				
 				</span>
