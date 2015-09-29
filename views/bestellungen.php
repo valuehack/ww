@@ -115,8 +115,8 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
             		$url2 = 'schriften';
 					if ($userItemsArray_b[format] == 'PDF') $extension = '.pdf';
-					if ($userItemsArray_b[format] == 'MOBI') $extension = '.mobi';
-					if ($userItemsArray_b[format] == 'EPUB') $extension = '.epub';
+					if ($userItemsArray_b[format] == 'kindle') $extension = '.mobi';
+					if ($userItemsArray_b[format] == 'ePub') $extension = '.epub';
 					}
 					elseif (substr($type,0,5) == 'media') {
 					$url = 'http://scholarium.at/medien/'.$id.'.jpg';
