@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>Event&uuml;bersicht</title>
+        
+        <style>
+            @font-face {
+            font-family: 'Futura Book';
+            src: url('http://www.scholarium.at/style/font/futura_bock_regular.ttf') format('truetype');
+            }
+            
+            @font-face {
+            font-family: 'Garamond';
+            src: url('http://www.scholarium.at/style/font/garamond_regular.otf') format('opentype');
+}
+            .content {
+                width: 21cm;
+                padding: 2cm;
+            }
+            .logo {
+                text-align: right;
+            }
+            .logo img {
+                width: 7cm;
+                margin: 0cm 1cm 1cm 0cm;
+            }
+            h1 {
+                font-size: 26pt;
+                text-align: center;
+                font-weight: normal;
+                font-family: "Futura Book", Georgia, Arial, Helvetica, sans-serif;
+            }
+            .datum  {
+                font-size: 14pt;
+                text-align: center;
+                font-family: "Garamond", Times, serif;
+                margin-bottom: 1cm;                                
+            }
+            .teilnehmer {
+                width: 100%;
+            }
+            .teilnehmer th {
+                font-family: "Futura Book", Georgia, Arial, Helvetica, sans-serif;
+                font-weight: normal;
+                border-bottom: 1px solid #000;
+                width: 7cm;
+                padding: 5px;
+            }
+            .teilnehmer td {
+                font-family: "Garamond", Times, serif;
+                width: 7cm;
+                padding: 5px;
+            }
+            .bottom td {
+                border-top: 1px solid #000;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <div class="content">
+            <div class="logo">
+                <img src="../style/gfx/ticket_logo.png">
+            </div>
+            <h1>Veranstaltungstitel</h1>
+            <p class="datum">2015-10-11 bis 2015-1013</p>
+            <div>
+                <table class="teilnehmer">
+                    <tr>
+                        <th>Vorname</th>
+                        <th>Nachname</th>
+                        <th>Anzahl Pl&auml;tze</th>
+                    </tr>
+                    <tr>
+                        <td>Hans</td>
+                        <td>Mann</td>
+                        <td>1</td>                        
+                    </tr>
+                    <tr>
+                        <td>Hans</td>
+                        <td>Mann</td>
+                        <td>1</td>                        
+                    </tr>
+                    <tr>
+                        <td>Hans</td>
+                        <td>Mann</td>
+                        <td>1</td>                        
+                    </tr>
+                    <tr>
+                        <td>Hans</td>
+                        <td>Mann</td>
+                        <td>1</td>                        
+                    </tr>
+                    <tr class="bottom">
+                        <td>&nbsp;</td>
+                        <td>Anzahl Teilnehmer:</td>
+                        <td>5</td>                        
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
