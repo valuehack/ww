@@ -33,7 +33,8 @@ if(isset($_POST['checkout'])) {
     $userCreditsArray = mysql_fetch_array($user_credits_result);
 
 	$user_name = $userCreditsArray['Vorname'];
-	$user_surname = $userCreditsArray['Nachname'];
+	$user_surname = $userCreditsArray['Nachname'];	
+	$user_email = $userCreditsArray['email'];
 
     //check, if enough credits
     $userCredits = $userCreditsArray[credits_left];
@@ -351,12 +352,17 @@ function checkMe() {
             $key = substr($code,0,$length);
             $format = substr($code,-1,1);
 
-			$checkPrice = 0;
-
             $items_extra_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
 
+            if ($itemsExtraArray[type] == 'programm') {
+			//Email an Uns
+
+			mail ("info@scholarium.at","Anmeldung Programm $itemsExtraArray[title]","$user_name, $user_surname, $user_email hat sich fur das Programm $itemsExtraArray[id] eingetragen","From: $email\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
+			}
+            
+            
             if ($format == 4 && $itemsExtraArray[price_book]) {
                 $sum = $quantity*$itemsExtraArray[price_book];
             }
