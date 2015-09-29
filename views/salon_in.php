@@ -57,7 +57,7 @@ if(isset($_GET['q']))
   $user_items_result = mysql_query($user_items_query) or die("Failed Query of " . $user_items_query. mysql_error());
   $userItemsArray = mysql_fetch_array($user_items_result);
 
-  $bought = $userItemsArray[quantity];
+  //$bought = $userItemsArray[quantity];
     
   	//check, if there is a image in the salon folder
 	$img = 'http://scholarium.at/salon/'.$id.'.jpg';

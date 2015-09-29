@@ -63,7 +63,7 @@ if(isset($_GET['q']))
   $user_items_result = mysql_query($user_items_query) or die("Failed Query of " . $user_items_query. mysql_error());
   $userItemsArray = mysql_fetch_array($user_items_result);
 
-  $bought = $userItemsArray[quantity];
+  //$bought = $userItemsArray[quantity];
   
 ?>
   	<div class="salon_head">
@@ -102,9 +102,9 @@ if(isset($_GET['q']))
     if ($spots_available == 0){
     	echo '<p class="salon_reservation_span_d">Die Veranstaltung ist leider ausgebucht.</p>';
 	}
-	elseif ($bought >= 1) {
-		echo '<p class="salon_reservation_span_a">Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.</p>';
-	}
+	//elseif ($bought >= 1) {
+		//echo '<p class="salon_reservation_span_a">Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.</p>';
+	//}
 	else {    
     	echo '<p class="salon_reservation_span_d">150&euro; pro Teilnehmer</p>';
 	}
