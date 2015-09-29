@@ -450,9 +450,12 @@ function checkMe() {
 
             );
 
-        foreach ($tickets_array as $key => $value) {
-            $post_data['files['. $key .']'] = "@".$value;
-        }
+            if (!( is_null($tickets_array) ))
+            {
+                foreach ($tickets_array as $key => $value) {
+                    $post_data['files['. $key .']'] = "@".$value;
+                }
+            }
 
 /*
 

@@ -37,7 +37,6 @@
           <meta name="Content-Disposition" content="attachment; filename='.$ticket_name.'">
           <meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8" />
 
-
       </head>
       <body>
           <div class="ticket_content">
@@ -88,8 +87,6 @@
   // to the client.
 
   file_put_contents("../tickets/ticket_".$user_id."_".$type."_".$key.".pdf", $pdf);
-
-  
 
   $ticket_location = "/home/content/56/6152056/html/production/tickets/".$ticket_name;
   $tickets_array[$ticket_name] = $ticket_location;

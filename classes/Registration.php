@@ -682,13 +682,17 @@ class Registration
 
         */
 
+        date_default_timezone_set('Europe/Vienna');
+        $query_time_zone = $this->db_connection->prepare("SET time_zone = 'Europe/Vienna'");
+        $query_time_zone->execute();
+
 
             //copy data to the main database
             $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
                 mitgliederExt 
                 (user_email, Mitgliedschaft, Vorname, Nachname, Land, Ort, Strasse, PLZ, first_reg, credits_left, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
                 VALUES
-                (:user_email, :Mitgliedschaft, :name, :surname, :country, :city, :street, :plz, :first_reg, :credits_left, :user_password_hash, :user_registration_ip, :user_active, now())');
+                (:user_email, :Mitgliedschaft, :name, :surname, :country, :city, :street, :plz, :first_reg, :credits_left, :user_password_hash, :user_registration_ip, :user_active, NOW())');
 
             $query_move_to_main->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':Mitgliedschaft', $the_row->Mitgliedschaft, PDO::PARAM_STR);
