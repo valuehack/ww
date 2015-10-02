@@ -133,6 +133,7 @@ if(isset($_GET['q']))
 	echo '<div>';
 	echo '<table class="teilnehmer">';
 		echo '<tr>';
+echo '<th>ID</th>';		
 			echo '<th>Vorname</th>';
 			echo '<th>Nachname</th>';
 			echo '<th>Anzahl Pl&auml;tze</th>';
@@ -154,6 +155,7 @@ if(isset($_GET['q']))
 		$name = $userEntry[Vorname];
 		
 		echo '<tr>';
+		echo '<td>'.$user_id.'</td>';
 			echo '<td>'.$name.'</td>';
 			echo '<td>'.$surname.'</td>';
 			echo '<td>'.$quantity.'</td>';
@@ -163,6 +165,7 @@ if(isset($_GET['q']))
 	
 		echo '<tr class="bottom">';
 			echo '<td>&nbsp;</td>';
+			echo '<td>&nbsp;</td>';			
 			echo '<td>Anzahl Teilnehmer</td>';
 			echo '<td>'.$spots_sold.'</td>';
 		echo '</tr>';
