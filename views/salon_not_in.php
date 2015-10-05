@@ -128,7 +128,7 @@ else {
         <h2 class="modal-title" id="myModalLabel">Reservierung</h2>
       </div>
       <div class="modal-body">
-        <p>Wir freuen uns, dass Sie Interesse an einer Teilnahme haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten einer Teilnahme zu erfahren:</p>
+        <p>Wir freuen uns, dass Sie Interesse an einer Teilnahme haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten einer Teilnahme zu erfahren (falls Sie sich schon einmal eingetragen haben, bitte um Login &uuml;ber den Link &quot;Anmelden&quot; oben rechts auf der Seite):</p>
         <div class="subscribe">
           <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail-Adresse" name="user_email"r equired>
