@@ -307,11 +307,11 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 	}			
 				?>
 								
-              <!--<p class="crew_levels">Sailors</p>
+              <p class="crew_levels">Sailors</p>
                              
             	<?php
             
-				$sql = "SELECT * from crew WHERE level='5' order by id asc";
+				$sql = "SELECT * from crew WHERE level='8' order by id asc";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				
 				while ($entry= mysql_fetch_array($result)) {
@@ -335,7 +335,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				echo "</tr>";			
 				echo "</table>";		
 	}			
-				?>-->
+				?>
 				            
                     <p><a href="#top">Back to the top</a></p>
             </section>
