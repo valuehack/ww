@@ -68,13 +68,25 @@ if(isset($_GET['q']))
   $type=$entry3[type];
   $title=$entry3[title];
 
+  $m = 0;
+
   //Userdetails
   $user_items_query = "SELECT * from registration WHERE `user_id`=$user_id and event_id='$n'";
   $user_items_result = mysql_query($user_items_query) or die("Failed Query of " . $user_items_query. mysql_error());
-  $userItemsArray = mysql_fetch_array($user_items_result);
+  while ($userItemsArray = mysql_fetch_array($user_items_result)){
 
-  $bought = $userItemsArray[quantity];
-    
+  	$quantity_bought[$m] = $userItemsArray[quantity];
+  	$format_bought[$m] = $userItemsArray[format];
+  	
+  	$m++;
+  }
+  
+  $bought = $quantity_bought[0] + $quantity_bought[1] + $quantity_bought[2] + $quantity_bought[3];
+  
+  if ($format_bought[0] == 'PDF' OR $format_bought[1] == 'PDF' OR $format_bought[2] == 'PDF' OR $format_bought[3] == 'PDF') $bought_pdf = 'PDF';
+  if ($format_bought[0] == 'ePub' OR $format_bought[1] == 'ePub' OR $format_bought[2] == 'ePub' OR $format_bought[3] == 'ePub') $bought_epub = 'ePub';
+  if ($format_bought[0] == 'Kindle' OR $format_bought[1] == 'Kindle' OR $format_bought[2] == 'Kindle' OR $format_bought[3] == 'Kindle') $bought_kindle = 'Kindle';
+  
           	//check, if there is a image in the salon folder
 	$img = 'http://www.scholarium.at/schriften/'.$id.'.jpg';
 
@@ -95,7 +107,12 @@ if(isset($_GET['q']))
 			  echo '<span class="schriften_type">'.ucfirst($entry3[type]).'</span>';
 			  if ($_SESSION['Mitgliedschaft'] == 1) {
 			  	if ($bought >= 1) {
-    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits erworben.</span>';
+    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits als ';
+    					if (isset($format_bought[0])) echo $format_bought[0];
+						if (isset($format_bought[1])) echo ', '.$format_bought[1];
+						if (isset($format_bought[2])) echo ', '.$format_bought[2];
+						if (isset($format_bought[3])) echo ', '.$format_bought[3];
+    					echo ' erworben.</span>';
     				}
 			  	?>     					 
     		<input type="button" value="Bestellen und Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal" <? if($bought >= 1) echo "disabled"?>>
@@ -110,36 +127,30 @@ if(isset($_GET['q']))
     				$price = $entry3[price];
     				$price_book = $entry3[price_book];
 					
-					if ($bought >= 1) {
-						$disabled = "disabled";
-					}
-					else {
-						$disabled = "";
-					}
     			?>
     		<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       			<input type="hidden" name="add" value="<?php echo $n; ?>" />
      
     		<?php
     			if ($entry3[format] == '0001') {
-    				if ($bought >= 1) {
-    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits erworben.</span>';
-    				}
-					else {
-    					echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="total2" class="schriften_price">'.$entry3[price].' </span>';
-					}
-					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"'. $disabled.'><br>';
+    				echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="total2" class="schriften_price">'.$entry3[price].' </span>';
+					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				else {
 					if ($bought >= 1) {
-    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits erworben.</span>';
+    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits als ';
+    					if (isset($format_bought[0])) echo $format_bought[0];
+						if (isset($format_bought[1])) echo ', '.$format_bought[1];
+						if (isset($format_bought[2])) echo ', '.$format_bought[2];
+						if (isset($format_bought[3])) echo ', '.$format_bought[3];
+    					echo ' erworben.</span>';
     				}
-					else {
+
 					echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="price" class="schriften_price">' .$entry3[price].' </span>';
-					}
-					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"'. $disabled.'><br>';
+					
+					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
-				echo '<span class="schriften_format">Format: <select '. $disabled.' name="format"';
+				echo '<span class="schriften_format">Format: <select name="format"';
 				
 					if ($entry3[format] == '0001') {
 						echo '>';
@@ -147,16 +158,28 @@ if(isset($_GET['q']))
 					}
 					else {
 						echo ' id="change" onchange="changeView('.$price.','.$price_book.')">';
-							if ($pdf == 1) echo '<option value="1">PDF</option>';
-        					if ($epub == 1) echo '<option value="2">ePub</option>';
-        					if ($kindle == 1) echo '<option value="3">Kindle</option>';
+							if ($pdf == 1) {
+								echo '<option value="1"';
+								if ($bought_pdf == 'PDF') echo 'disabled';
+								echo '>PDF</option>';
+							}
+        					if ($epub == 1) {
+        						echo '<option value="2"';
+								if ($bought_epub == 'ePub') echo 'disabled';
+        						echo '>ePub</option>';
+							}
+        					if ($kindle == 1) {
+        						 echo '<option value="3"';
+        						 if ($bought_kindle == 'Kindle') echo 'disabled';
+        						 echo '>Kindle</option>';
+        					}
         					if ($druck == 1) echo '<option value="4">Druck</option>'; 
 						}					
 				echo '</select></span>';
 				
         echo '<span class="schriften_quantity">Anzahl: ';
         if ($entry3[format] == '0001') {
-				echo '<input type="number" name="quantity" onchange="changeprice_book(this.value,'.$price_book.')" value="1" min="1" max="100" '. $disabled.'>';
+				echo '<input type="number" name="quantity" onchange="changeprice_book(this.value,'.$price_book.')" value="1" min="1" max="100">';
 					}
         else {
 						echo '<span id="quantity"><input type="hidden" name="quantity" value="1"><input type="number" name="quantity2" value="1" disabled></span>';

@@ -2812,6 +2812,14 @@ img.projekte_coin2  {
 	display: block;
 }
 
+.history_body_format {
+	font-size: 10pt;
+	font-style: italic;
+	margin-top: 10px;
+	display: block;
+	float: left;
+}
+
 .history_reservation {
 	font-size: 12pt !important;
 }

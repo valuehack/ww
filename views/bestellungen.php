@@ -100,6 +100,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			while($userItemsArray_b = mysql_fetch_array($user_items_result_b)){
 			
 			$n = $userItemsArray_b[event_id];
+			$format =$userItemsArray_b[format];
 			
 			$user_products_query = "SELECT * from produkte WHERE `n` LIKE '$n' ORDER BY start DESC";
         	$user_products_result = mysql_query($user_products_query) or die("Failed Query of " . $user_products_query. mysql_error());
@@ -109,14 +110,15 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			$type = $userProductsArray[type];
 			$id = $userProductsArray[id];
 			
+			
 				if ($type == 'scholie' || $type == 'analyse' || $type == 'buch' || substr($type,0,5) == 'media'){
 			
 					if ($type == 'scholie' || $type == 'analyse' || $type == 'buch') {
 					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
             		$url2 = 'schriften';
-					if ($userItemsArray_b[format] == 'PDF') $extension = '.pdf';
-					if ($userItemsArray_b[format] == 'Kindle') $extension = '.mobi';
-					if ($userItemsArray_b[format] == 'ePub') $extension = '.epub';
+					if ($format == 'PDF') $extension = '.pdf';
+					if ($format == 'Kindle') $extension = '.mobi';
+					if ($format == 'ePub') $extension = '.epub';
 					}
 					elseif (substr($type,0,5) == 'media') {
 					$url = 'http://scholarium.at/medien/'.$id.'.jpg';
@@ -136,13 +138,22 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 					<div class="basket_body_col_a_2">
 						<span class="history_body_type"><?=ucfirst($type)?></span>
 						<span class="history_body_title"><a href="../<?=$url2?>/index.php?q=<?=$id?>"><?=$title?></a></span>
+						<span class="history_body_format"><?=$format?></span>
 					</div>
         		</div>	
 				<div class="basket_body_col_b">
 					&nbsp;
 				</div>
 				<div class="basket_body_col_c">
+					<?php
+					if ($format == 'Druck'){
+						echo '&nbsp;';
+					}
+					else {?>					
 					<p><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href)";>Herunterladen</a></p>
+					<?php
+					}
+					?>
 				</div>
 			</div>
 		<?
