@@ -719,9 +719,9 @@ class Registration
             if (is_numeric($the_row->first_reg)) 
             {
 
-            date_default_timezone_set('Europe/Vienna'); // set timezone in php
-            mysql_query("SET `time_zone` = '".date('P')."'"); // set timezone in MySQL
-            mysql_query("SET time_zone = 'Europe/Vienna'");
+            // date_default_timezone_set('Europe/Vienna'); // set timezone in php
+            // mysql_query("SET `time_zone` = '".date('P')."'"); // set timezone in MySQL
+            // mysql_query("SET time_zone = 'Europe/Vienna'");
 
             $reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, reg_datetime ) VALUES (:event_id, :user_id, NOW())');
             $reg_query->bindValue(':event_id', $the_row->first_reg, PDO::PARAM_INT);
