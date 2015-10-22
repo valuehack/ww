@@ -45,55 +45,61 @@ class Registration
         } else if (isset($_GET["id"]) && isset($_GET["verification_code"])) {
             $this->verifyNewUser($_GET["id"], $_GET["verification_code"]);
 
-
-//old - ajax login form handle
-/*        } elseif (isset($_POST["fancy_ajax_form_submit"]) and ($_POST["fancy_ajax_form_submit"] === "Eintragen" )) {
-        //} elseif (isset($_POST["fancy_ajax_form_submit"]) and (trim($_POST["user_password"]) === "" )) {
-
-            $this->subscribeNewUser($_POST['user_email']);
-        }*/
-
         #eintragen_submit is a button submit from registration forms
         } elseif (isset($_POST["eintragen_submit"])) {
 
             $_SESSION['first_reg'] = $_POST['first_reg'];
             $this->subscribeNewUser($_POST['user_email']);
         }
-        #registrationform variable is only used for for notloggedin member in kurse
-        elseif (isset($_POST["register_from_outside_submit"])) {
+        #registration of not logged in users that provide data
+        elseif (isset($_POST["upgrade_user_account"])) {
 
-            //grab post here and send it over to other functions
+
+            //grab post here and send it over to other functions              
+            $profile = $_POST["profile"];
+            $_SESSION["profile"] = $profile;
+
+            $user_email = $profile[user_email];
+            
+            #if $user_email is unique -> then continue with registration
+            #if already exist - direct to login 
+
+            if ($this->registration_successful){
+                $this->addPersonalData($profile);
+                $this->sendNewPayingUserEmailToInstitute($user_email);
+
+                //only redirect after registration was successfully finished
+                header("Location: ../abo/zahlung.php");     
+            }
+
+            //send out email while still in grey to make sure user is being tracked and emailed in case of troubles
+            
+        }
+        #registration for seminars from outside
+        elseif (isset($_POST["register_seminar_from_outside_submit"])) {
+
+            //grab post here and send it over to other functions              
             $profile = $_POST["seminar_profile"];
             $_SESSION["seminar_profile"] = $profile;
 
             $user_email = $profile[user_email];
+            
+            #if $user_email is unique -> then continue with registration
+            #if already exist - direct to login 
+
             $this->subscribeNewUser($user_email);
             
-            //use function for editing profile
-            $this->addPersonalData($profile);
+            if ($this->registration_successful){
+                $this->addPersonalData($profile);
+                $this->sendNewPayingUserEmailToInstitute($user_email);
 
-            $this->sendNewPayingUserEmailToInstitute($user_email);
-
-            //only redirect after registration was successfully finished
-            header("Location: ../abo/zahlung.php");
-
+                //only redirect after registration was successfully finished
+                header("Location: ../abo/zahlung.php");     
+            }
             //send out email while still in grey to make sure user is being tracked and emailed in case of troubles
             
-
-            /*
-            if set post where user has registered - then add it to first registration column
-            */
-
- 
-
         }
-
-
-
-
-
     }
-
 
     /**
      * Checks if database connection is opened and open it if not
@@ -205,21 +211,18 @@ class Registration
                 $_SESSION['Mitgliedschaft'] = 1;
 
 
-
-
-
                 // id of new user
                 $grey_user_id = $this->db_connection->lastInsertId();
                 $_SESSION['grey_user_id'] = $grey_user_id;
 
-               if ($query_new_user_insert) {
-                   // send a verification email
-                   if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password)) {
+                if ($query_new_user_insert) {
+                    // send a verification email
+                    if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password)) {
                        // when mail has been send successfully
                        $this->messages[] = MESSAGE_VERIFICATION_MAIL_SENT;
                        $this->registration_successful = true;
 
-                   } else {
+                    } else {
                        // delete this users account immediately, as we could not send a verification email
                        $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
                        $query_delete_user->bindValue(':user_email', $user_email, PDO::PARAM_INT);
@@ -227,24 +230,9 @@ class Registration
 
                        $this->errors[] = MESSAGE_VERIFICATION_MAIL_ERROR;
                    }
-               } else {
-                   $this->errors[] = MESSAGE_REGISTRATION_FAILED;
-               }
-
-
-                #TO-DO: exchange with a custom function to have control over email content
-                #$this->subscriptionVerification($user_id,$user_email,$user_activation_hash);
-
-                if ($query_new_user_insert) 
-                {
-                    #$this->errors[] = "Successfully registered.";
-                    // $this->messages[] =
-
-                } else 
-                {
+                } else {
                     $this->errors[] = MESSAGE_REGISTRATION_FAILED;
                 }
-
             }
         }
     }

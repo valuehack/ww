@@ -438,7 +438,7 @@ else {
                     <option value="Zentralafrikanische Republik">Zentralafrikanische Republik</option>
                     <option value="Zypern">Zypern</option></select><br> 
 		</div>
-    	        <input type="submit" class="inputbutton_login" name="register_from_outside_submit" value="Anmelden">
+    	        <input type="submit" class="inputbutton_login" name="register_seminar_from_outside_submit" value="Anmelden">
 
     </form>
         
