@@ -8,7 +8,7 @@
 		if ($type == 'blog'){
 			?>
     	<meta name="twitter:card" content="summary">
-		<meta name="twitter:site" content="@wertewirtschaft">
+		<meta name="twitter:site" content="@scholarium_at">
 		<meta name="author" content="scholarium">
 		<meta property="og:type" content="article">
 		<meta property="og:title" content="<?=$title?>">
