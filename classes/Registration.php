@@ -54,7 +54,6 @@ class Registration
         #registration of not logged in users that provide data
         elseif (isset($_POST["register_from_outside_submit"])) {
 
-
             //grab post here and send it over to other functions              
             $profile = $_POST["profile"];
             $_SESSION["profile"] = $profile;
@@ -64,7 +63,7 @@ class Registration
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
             $this->subscribeNewUser($user_email);
-            
+
             if ($this->registration_successful){
                 $this->addPersonalData($profile);
                 $this->sendNewPayingUserEmailToInstitute($user_email);
