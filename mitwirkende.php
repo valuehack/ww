@@ -183,34 +183,40 @@ if ($login->isUserLoggedIn() == true) {
 	}			
 				?>
 				
-				<p class="crew_levels">Ehrenpr&auml;sidenten</p>
+				
                                       
             	<?php
               
 				$sql = "SELECT * from crew WHERE level='5' order by id asc";
 				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 				
-				while ($entry= mysql_fetch_array($result)) {
-
-                echo "<table>";
-				echo "<tr>";
-				echo "<td>";
-				echo "<div class='crew_image'>";
-				echo "<img src='http://craftprobe.com/img/".$entry[id].".jpg'>";
-				echo "</div>";
-				echo "<div class='crew_link'>";
-				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
-				echo "</div>";
-				echo "<td>";
-				echo "<div class='crew_name'>";
-				echo "$entry[name]<br>";
-				echo "</div>";
-				echo "<div class='crew_text'>";
-				echo "$entry[text_de]</td>";
-				echo "</div>";
-				echo "</tr>";			
-				echo "</table>";	
-	}			
+				while ($entry= mysql_fetch_array($result)) 
+					{ 
+					$counter= $counter+1;
+					IF ($counter==1) 
+				    	{ ?>
+				    	<p class="crew_levels">Ehrenpr&auml;sidenten</p>
+				    	<? 
+				    	}	
+                	echo "<table>";
+					echo "<tr>";
+					echo "<td>";
+					echo "<div class='crew_image'>";
+					echo "<img src='http://craftprobe.com/img/".$entry[id].".jpg'>";
+					echo "</div>";
+					echo "<div class='crew_link'>";
+					echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
+					echo "</div>";
+					echo "<td>";
+					echo "<div class='crew_name'>";
+					echo "$entry[name]<br>";
+					echo "</div>";
+					echo "<div class='crew_text'>";
+					echo "$entry[text_de]</td>";
+					echo "</div>";
+					echo "</tr>";			
+					echo "</table>";	
+					}			
 				?>
 								
               
