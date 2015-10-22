@@ -53,14 +53,14 @@ class Registration
             $this->subscribeNewUser($_POST['user_email']);
         }*/
 
-        //register new user
+        #eintragen_submit is a button submit from registration forms
         } elseif (isset($_POST["eintragen_submit"])) {
 
             $_SESSION['first_reg'] = $_POST['first_reg'];
             $this->subscribeNewUser($_POST['user_email']);
         }
-        //registrationform variable is only used for for notloggedin member in kurse
-        elseif (isset($_POST["registrationform"])) {
+        #registrationform variable is only used for for notloggedin member in kurse
+        elseif (isset($_POST["register_from_outside_submit"])) {
 
             //grab post here and send it over to other functions
             $profile = $_POST["seminar_profile"];

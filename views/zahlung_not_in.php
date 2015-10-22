@@ -413,7 +413,7 @@ elseif(isset($_POST['pay'])) {
 
 			<p>Mit dem klick auf <i>Weiter</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 
-    		<input type="submit" class="profil_inputbutton" name="upgrade_user_account" value="Weiter">
+    		<input type="submit" class="profil_inputbutton" name="register_from_outside_submit" value="Weiter">
 		</form>
 		</div>
 <?php
