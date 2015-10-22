@@ -157,7 +157,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
             <div class="nav">
                 <div class="navi">
                 	<ul id="nav">
-                    	<li id="navelm"><a class="navelm" href="<?php BASE_URL ?>/fragen.php">H&auml;ufige Fragen</a></li>f
+                    	<li id="navelm"><a class="navelm" href="<?php BASE_URL ?>/fragen.php">H&auml;ufige Fragen</a></li>
                     	<li id="navelm"><a class="navelm" href="<?php BASE_URL ?>/mitwirkende.php">Mitwirkende</a></li>
                     	<li id="navelm"><a class="navelm" href="<?php BASE_URL ?>/abo/">F&uuml;r B&uuml;rger</a></li>
                     	<li id="navelm"><a class="navelm" href="http://craftprobe.com">F&uuml;r Studenten</a></li>
