@@ -52,7 +52,7 @@ class Registration
             $this->subscribeNewUser($_POST['user_email']);
         }
         #registration of not logged in users that provide data
-        elseif (isset($_POST["upgrade_user_account"])) {
+        elseif (isset($_POST["register_from_outside_submit"])) {
 
 
             //grab post here and send it over to other functions              
@@ -68,8 +68,8 @@ class Registration
                 $this->addPersonalData($profile);
                 $this->sendNewPayingUserEmailToInstitute($user_email);
 
-                //only redirect after registration was successfully finished
-                header("Location: ../abo/zahlung.php");     
+               //only redirect after registration was successfully finished
+ 
             }
 
             //send out email while still in grey to make sure user is being tracked and emailed in case of troubles
