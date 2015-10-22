@@ -63,7 +63,8 @@ class Registration
             
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-
+            $this->subscribeNewUser($user_email);
+            
             if ($this->registration_successful){
                 $this->addPersonalData($profile);
                 $this->sendNewPayingUserEmailToInstitute($user_email);
