@@ -723,9 +723,10 @@ class Registration
             // mysql_query("SET `time_zone` = '".date('P')."'"); // set timezone in MySQL
             // mysql_query("SET time_zone = 'Europe/Vienna'");
 
-            $reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, reg_datetime ) VALUES (:event_id, :user_id, NOW())');
+            $reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime ) VALUES (:event_id, :user_id, :quantity, NOW())');
             $reg_query->bindValue(':event_id', $the_row->first_reg, PDO::PARAM_INT);
             $reg_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+            $reg_query->bindValue(':quantity', '1', PDO::PARAM_STR);
             $reg_query->execute();
 
             }
