@@ -506,7 +506,7 @@ elseif (isset($_POST['ok']))
       <li>BIC: GIBAATWW</li>
       </ul></p>
 
-      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;Spende Nr. <?php echo $_SESSION['profile']['user_email'] ?>&quot;</b></p>
+      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;<?php echo $_SESSION['profile']['user_email'] ?>&quot;</b></p>
 
 
     
