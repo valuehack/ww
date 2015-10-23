@@ -341,7 +341,7 @@ class Registration
 
         $body = $body.'
                 Bitte klicken Sie unterhalb, um Zugang zu scholarium.at zu erhalten.
-                <br>'.$link.'
+                <br><a href="'.$link.'">'.$link.'</a>
 
                 <br><strong>Ihr vorl&auml;ufiges Passwort ist: </strong>'.$user_password.'<br>
                 Herzliche Gr&uuml;&szlig;e aus Wien!';
