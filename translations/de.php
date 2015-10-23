@@ -7,7 +7,7 @@
  */
 
 // login & registration classes
-define("MESSAGE_ACCOUNT_NOT_ACTIVATED", "Ihr Account wurde noch nicht aktiviert. Bitte klicken Sie auf den Best&auml;tigungslink in der E-Mail.");
+define("MESSAGE_ACCOUNT_NOT_ACTIVATED", "Ihr Zugang wurde noch nicht aktiviert. Bitte klicken Sie auf den Best&auml;tigungslink in der E-Mail.");
 define("MESSAGE_CAPTCHA_WRONG", "Captcha falsch!");
 define("MESSAGE_COOKIE_INVALID", "Ung&uuml;ltiger Cookie");
 define("MESSAGE_DATABASE_ERROR", "Verbindung zur Datenbank fehlgeschlagen!");
@@ -36,9 +36,9 @@ define("MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL", "Fehler bei Aktivierung
 define("MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL", "Aktivierung war erfolgreich!");
 define("MESSAGE_REGISTRATION_FAILED", "Verzeihen sie bitte, ihre Registrierung ist fehlgeschlagen. Bitte versuchen sie es erenut.");
 define("MESSAGE_RESET_LINK_HAS_EXPIRED", "Ihr R&uuml;cksetzungs-link ist abgelaufen. Bitte benutzen sie den Link innerhalb einer Stunde");
-define("MESSAGE_VERIFICATION_MAIL_ERROR", "Verzeihen sie bitte, wir konnten ihnen keine Best&auml;tigungs-E-mail senden. Ihr Account wurde NICHT erstellt.");
+define("MESSAGE_VERIFICATION_MAIL_ERROR", "Verzeihen sie bitte, wir konnten ihnen keine Best&auml;tigungs-E-mail senden. Ihr Zugang wurde NICHT erstellt.");
 define("MESSAGE_VERIFICATION_MAIL_NOT_SENT", "Best&auml;tigungs-E-mail konnte NICHT erfolgreich gesendet werden! Fehler: ");
-define("MESSAGE_VERIFICATION_MAIL_SENT", "Ihr Account wurde erfolgreich erstellt. Bitte pr&uuml;fen Sie Ihren Posteingang.");
+define("MESSAGE_VERIFICATION_MAIL_SENT", "Ihr Zugang wurde erfolgreich erstellt. Bitte pr&uuml;fen Sie Ihren Posteingang.");
 define("MESSAGE_USER_DOES_NOT_EXIST", "Der Nutzer existiert nicht.");
 define("MESSAGE_USERNAME_BAD_LENGTH", "Ihr Benutzername darf weder k&uuml;rzer als 2, noch l&auml;nger als 64 Zeichen sein");
 define("MESSAGE_USERNAME_CHANGE_FAILED", "Verzeihen sie bitte, die Umbenennung ihres Benutzernamens ist ung&uuml;ltig");

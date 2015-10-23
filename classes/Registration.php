@@ -340,7 +340,7 @@ class Registration
                 <br>';
 
         $body = $body.'
-                Bitte klicken Sie unterhalb, um Ihre Eintragung abzuschlie&szlig;en.
+                Bitte klicken Sie auf den Link unterhalb, um Ihre Eintragung abzuschlie&szlig;en. (Falls der Link nicht anklickbar ist, bitte die Adresse des Links in die Adresszeile Ihres Browsers kopieren.)
                 <br><a href="'.$link.'">'.$link.'</a>
 
                 <br><strong>Ihr vorl&auml;ufiges Passwort ist: </strong>'.$user_password.'<br>
