@@ -124,26 +124,16 @@ class Login
  
                 $this->editUserLevel($_POST['user_level']);               
             }
-
-
-            #here comes another check for upgrade functions
-
-     
-
-        
-
         }
         // login with cookie
         elseif (isset($_POST['user_rememberme'])) {
             $this->newRememberMeCookie();
-            #header("Location:http://scholarium.at/");
 
             #used to refresh page for logging in with a cookie
             #please define REFRESH_URL in your local config file
+            #..or just go back to localhost and it should be working
             header("Location:http://scholarium.at/");
-       
         }
-        
 
         // if user just submitted a login form
         // registerform comes from this single ajax form
@@ -160,9 +150,7 @@ class Login
             // if (isset($_POST['user_email']) and !(trim($_POST['user_password']) === "")) {
             $this->loginWithPostData($_POST['user_email'], $_POST['user_password'], 1);
             // }
-            
         } 
-
         #elseif (true) {  
         elseif (isset($_COOKIE['rememberme'])) {  
             $this->loginWithCookieData();
@@ -176,6 +164,7 @@ class Login
 
         } elseif (isset($_GET["user_email"]) && isset($_GET["verification_code"])) {
             $this->checkIfEmailVerificationCodeIsValid($_GET["user_email"], $_GET["verification_code"]);
+
         } elseif (isset($_POST["submit_new_password"])) {
             $this->editNewPassword($_POST['user_email'], $_POST['user_password_reset_hash'], $_POST['user_password_new'], $_POST['user_password_repeat']);
         }
@@ -203,7 +192,15 @@ class Login
                 // @see http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers#Connecting_to_MySQL says:
                 // "Adding the charset to the DSN is very important for security reasons,
                 // most examples you'll see around leave it out. MAKE SURE TO INCLUDE THE CHARSET!"
-                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=latin1', DB_USER, DB_PASS);
+                #$this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=latin1', DB_USER, DB_PASS);
+
+                #using utf8 charset instead of latin1
+                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
+                
+                #query sets timezone for the database
+                $query_time_zone = $this->db_connection->prepare("SET time_zone = 'Europe/Vienna'");
+                $query_time_zone->execute();
+                
                 return true;
             } catch (PDOException $e) {
                 $this->errors[] = MESSAGE_DATABASE_ERROR . $e->getMessage();
@@ -213,7 +210,6 @@ class Login
         // default return
         return false;
     }
-
 
 /*
 Old school database connect
@@ -349,6 +345,13 @@ GET user data using old database connection
                         $this->user_email = $result_row->user_email;
                         $this->user_is_logged_in = true;
 
+                        $user_email = $result_row->user_email;
+
+                        #update last_login_time to now
+                        $query_login_time = $this->db_connection->prepare('UPDATE mitgliederExt SET last_login_time = NOW() WHERE user_email = :user_email LIMIT 1');
+                        $query_login_time->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+                        $query_login_time->execute();
+
                         // Cookie token usable only once
                         $this->newRememberMeCookie();
                         return true;
@@ -421,6 +424,8 @@ GET user data using old database connection
             
             
             } else {
+                #this is a successful login
+
                 // write user data into PHP SESSION [a file on your server]
                 $_SESSION['user_id'] = $result_row->user_id;
                 #$_SESSION['user_name'] = $result_row->user_name;
@@ -437,20 +442,29 @@ GET user data using old database connection
                 $this->user_email = $result_row->user_email;
                 $this->user_is_logged_in = true;
 
+                #update last_login_time to now
+                $query_login_time = $this->db_connection->prepare('UPDATE mitgliederExt '
+                        . 'SET last_login_time = NOW()'
+                        . 'WHERE user_email = :user_email LIMIT 1');
+                $query_login_time->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+                $query_login_time->execute();
+
                 // reset the failed login counter for that user
                 $sth = $this->db_connection->prepare('UPDATE mitgliederExt '
                         . 'SET user_failed_logins = 0, user_last_failed_login = NULL '
                         . 'WHERE user_id = :user_id AND user_failed_logins != 0');
                 $sth->execute(array(':user_id' => $result_row->user_id));
 
+                #every successful login with post data creates a cookie
+
                 // if user has check the "remember me" checkbox, then generate token and write cookie
-                if (isset($user_rememberme)) {
-                    $this->newRememberMeCookie();
-                    #$this->errors[] = "A new cookie has been created.";
-                } else {
-                    // Reset remember-me token
-                    $this->deleteRememberMeCookie();
-                }
+                // if (isset($user_rememberme)) {
+                       $this->newRememberMeCookie();
+                //     #$this->errors[] = "A new cookie has been created.";
+                // } else {
+                //     // Reset remember-me token
+                //     $this->deleteRememberMeCookie();
+                // }
 
                 // OPTIONAL: recalculate the user's password hash
                 // DELETE this if-block if you like, it only exists to recalculate users's hashes when you provide a cost factor,
@@ -520,7 +534,7 @@ GET user data using old database connection
         }
 
         // set the rememberme-cookie to ten years ago (3600sec * 365 days * 10).
-        // that's obivously the best practice to kill a cookie via php
+        // that's obviously the best practice to kill a cookie via php
         // @see http://stackoverflow.com/a/686166/1114320
 
         #setcookie('rememberme', false, time() - (3600 * 3650), '/', COOKIE_DOMAIN);
