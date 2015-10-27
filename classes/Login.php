@@ -502,7 +502,8 @@ GET user data using old database connection
 
             // set cookie
             #setcookie('rememberme', $cookie_string, time() + 3600, "/", COOKIE_DOMAIN);
-            setcookie('rememberme', $cookie_string, time() + 3600, "/");
+            #cookie expiration is set to 3 years (seconds*minutes*hoursday*daysinayear*years)
+            setcookie('rememberme', $cookie_string, time() + (60*60*24*365*3), "/");
         }
     }
 
