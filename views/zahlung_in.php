@@ -75,11 +75,11 @@ if (!isset($_COOKIE['gaveCredits'])) {
                 <input id="user_telefon" type="tel" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
 
         		<label for="user_street">Stra&szlig;e</label>
-        		<input id="user_street" type="text" class="profil_inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]"><br>
+        		<input id="user_street" type="text" class="profil_inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]" required><br>
         		<label for="user_plz">PLZ</label>
-        		<input id="user_plz" type="text" class="profil_inputfield" value="<?php echo $plz; ?>" name="profile[user_plz]"><br>
+        		<input id="user_plz" type="text" class="profil_inputfield" value="<?php echo $plz; ?>" name="profile[user_plz]" required><br>
         		<label for="user_city">Ort</label>
-        		<input id="user_city" type="text" class="profil_inputfield" value="<?php echo $ort; ?>" name="profile[user_city]"><br>
+        		<input id="user_city" type="text" class="profil_inputfield" value="<?php echo $ort; ?>" name="profile[user_city]" required><br>
         		<label for="user_country">Land</label>
 
         		<select id="user_country" name="profile[user_country]">
