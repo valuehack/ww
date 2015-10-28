@@ -55,169 +55,440 @@ table {
 body {
 	background: rgb(150,150,150);
 	color: rgb(70,70,70);
+	font-size: 14px;
 }
 
-p {
-	text-align: justify;
+h1, h2, h3, h4, h5 {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
 }
 
-a:link {
-	color: rgb(46,74,98);
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:visited {
-	color: rgba(46,74,98,0.2);
+p, .list {
+	font-family: 'EB Garamond', serif;
 }
 
 .clear {
 	clear: both;
 }
 
-em {
+.centered {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.greybg {
+	background: rgb(70,70,70);
+}
+
+em, .italic {
 	font-style: italic;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+/*==================================================*/
+/*==================================================*/
+/*												    */
+/*      Default Style (Small Screens < 768px)       */
+/*												    */
+/*==================================================*/
+/*==================================================*/
+
+h1 {
+    font-size: 2.5em;
+    line-height: 1.1;
+    color: rgb(28,109,186);
+    padding: 1em;
+}
+
+h2 {
+	font-size: 2em;
+    line-height: 1.1;
+    color: rgb(28,109,186);
+    padding: 0.75em;
+}
+
+h4 {
+	font-size: 1.5em;
+    line-height: 1.1;
+    padding: 0.75em;
+}
+
+h5 {
+	font-size: 1.5em;
+	color: rgb(255,255,255);
+    line-height: 1.1;
+    padding: 0.75em;
+    background: rgb(28,109,186);
+}
+
+.img {
+	min-height: 15em;
+	max-height: 20em;
+}
+
+h1, h2, h3, h4, h5, .text p, .list {
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
 }
 
 /*==================================================*/
 /*                   Header                    		*/
 /*==================================================*/
 
-.header {
+#header {
 	background: rgb(46, 74, 98);
-	width: 100%;
-	height: 122.5px;
-    border-bottom: 10px solid rgb(28,109,186);
+	width: calc(100%-2em);
+	min-height: 4em;
+    border-bottom: 0.5em solid rgb(28,109,186);
+    padding: 1em;
 }
 
 .logo {
 	float: left;
-	width: 30%;
-	margin-left: 125px;
-	padding: 30px 0 0 0;
 }
 
 .logo img {
-	height: 80px;	
+	height: 4em;	
 }
 
 /*================  Main Navigation  ===============*/
 
-.nav {
-	position: relative;
-   	right: 0;
-   	margin: 0 auto;
-   	padding: 0;
-	text-align: center;
-	font-size: 14pt;
-	font-weight: 100;
-	margin-left: 35%;
+.nav-trigger {
+	right: 0;
+	float: right;
 }
 
-.nav li {
-	list-style: none;
-   	float: left; 
-	height: 122.5px;
+.nav-trigger__icon {
+	padding: 1em 0.5em;
+	width: 2.1em;
+}
+
+.nav-trigger__icon img {
+	height: 1.75em;
+}
+
+#nav {
+	clear: both;
+	display: none;
+}
+
+#nav li {
+	list-style: none; 
    	display: block;
-   	transition: all 0.2s ease 0s;
    	font-family: 'Raleway', sans-serif;
    	font-weight: 300;
+   	font-size: 1.75em;
+   	margin: 0 -1em;
 }
 
-.nav li:hover {
+#nav li:hover, #nav li:active {
 	background: rgb(255,255,255);
-	border-bottom: 10px solid rgb(203,44,52);
+	margin: 0 -1em;
 }
 
-.nav li a {
+#nav li a {
 	display: block;
 	text-decoration: none;
-	padding: 88px 20px 20px 20px;
+	padding: 0.75em 0 0.75em 2em;
 	color: rgb(255,255,255);
 }
 
-.nav li a:active {
-	color: rgb(225,225,225);
-}
-
-.nav li a:hover {
+#nav li a:hover, #nav li a:active {
 	color: rgb(150,150,150);
-}
-
-#nav li a.active {
-	text-decoration: none; 
-   	color: rgb(150,150,150); 
-	background: rgb(255,255,255);
-	border-bottom: 10px solid rgb(203,44,52);
-	padding-bottom: 16px;
 }
 
 /*==================================================*/
 /*                 Content General                  */
 /*==================================================*/
 
-.content {
-	margin: 60px auto;
-	padding: 15px 2.5% 50px 2.5%;
-	width: 65%;
+#content {
+	width: 100%;
 	background: rgb(255,255,255);
-	/*box-shadow: 4px 4px 3px rgb(220,220,220), -4px 4px 3px rgb(220,220,220);*/
 }
 
-.content h2 {
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
-    font-size: 28pt;
-    font-weight: normal;
-    line-height: 1.2;
-    color: rgb(28,109,186);
-    margin: 20px 0 40px 0;
-}
-/*
-.content h3 {
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
-    font-size: 24pt;
-    font-weight: normal;
-    line-height: 1.1;
-    color: rgb(46,74,98);
-    margin: 10px 0 40px 0;
-}
-
-.content h4 {
-    font-size: 16pt;
-	margin: 25px 0 15px 0;
-}
-
-.content p {
-	font-size: 13pt;
-	line-height: 1.8;
-	margin: 0 0 40px 0;
-	font-family: 'EB Garamond', serif;
-}*/
+/*=====================  Index  ====================*/
 
 .index {
-	text-align: left;
-	margin-bottom: 25px;
-	color: rgb(150,150,150) !important;
-	font-size: 10pt;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
+	display: none;
 }
 
-.index a {
+/*==================================================*/
+/*                     Modules                  	*/
+/*==================================================*/
+
+/*===================  Item List  ==================*/
+
+.itm-list {
+	width: 100%;
+}
+
+.itm-list__row {
+	border-bottom: 0.1em solid rgb(200,200,200);
+	clear: both;
+}
+
+.itm-list__row a {
+	display: block;
+	font-size: 1.5em;
+	font-family: 'Raleway', sans-serif;
+	color: rgb(28,109,186);
+	font-weight: 100;
+	text-decoration: none;
+	line-height: 2;
+}
+
+.itm-list__row img {
+	height: 3em;
+	float: left;
+	padding: 0 30%;
+}
+
+.itm-list__row p {
+	display: none;
+}
+
+.itm-list__row-col-1, .itm-list__row-col-2, .itm-list__row-col-3, .itm-list__row-col-4 {
+	float: left;
+	padding: 20px 0;
+}
+	
+.itm-list__row-col-1 {
+	width: 25%;
+}
+
+.itm-list__row-col-2 {
+	width: 50%;
+}
+
+.itm-list__row-col-3 {
+	width: 75%;
+}
+
+.itm-list__row-col-4 {
+	width: 100%;
+}
+
+.itm-list__row-col-content {
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+}
+
+/*======================  Text  ====================*/
+
+.text {
+	margin-bottom: 3em;
+}
+
+.text p {
+	font-size: 1.5em;
+	line-height: 1.5em;
+	padding: 1em inherit;
+}
+
+/*======================  List  ====================*/
+
+.list {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.list li {
+	font-size: 1.5em;
+	line-height: 1.25em;
+	display: block;
+	margin: 0.75em 0;
+}
+
+.list li a {
+	text-decoration: none;
+	display: block;
+	color: rgb(70,70,70); 
+}
+
+.list--none {
+	list-style-type: none;
+}
+
+.list--numbers {
+	list-style-type: decimal;
+}
+
+.list--disc {
+	list-style-type: disc;
+}
+
+/*======================    ====================*/
+
+.subinfo {
+	font-family: 'EB Garamond', serif;
+	font-size: 1.25em;
+	padding: 0.5em 0;
+	display: block;
+}
+
+/*==================================================*/
+/*                   Footer                    		*/
+/*==================================================*/
+
+#footer {
+	background: rgb(46,74,98);
+	width: 100%;
+	font-weight: 300;
+	margin-bottom: 0;
+	bottom: 0;
+	position: relative;
+}
+
+#footer p {
+	padding: 2em;
+	font-size: 1em;
+}
+
+#footer p, #footer a, #footer a:visited {
+	line-height: 2;
+	text-align: center;
+	color: rgb(255,255,255);	
+	font-family: 'Raleway', sans-serif;
+}
+
+#footer a, #footer a:visited {
+	text-decoration: none;
+}
+
+#footer a:hover {
+	text-decoration: underline;
+}
+
+
+/*=================================================*/
+/*=================================================*/
+/*												   */
+/*      Desktop Style (Large Screens < 1024px)     */
+/*												   */
+/*=================================================*/
+/*=================================================*/
+
+@media screen and (min-width: 48em) {
+
+/*==================================================*/
+/*                   Header                    		*/
+/*==================================================*/
+
+#header {
+	background: rgb(46, 74, 98);
+	width: 100%;
+	height: 122.5px;
+    border-bottom: 10px solid rgb(28,109,186);
+    padding: 0;
+}
+
+.logo {
+	float: left;
+	margin-left: 5%;
+	padding: 30px 2.5% 0 0;
+}
+
+.logo img {
+	height: 70px;	
+}
+
+/*================  Main Navigation  ===============*/
+
+.nav-trigger {
+	display: none;
+}
+
+#nav {
+	position: relative;
+   	right: 0;
+   	margin: 0 auto;
+   	padding: 0;
+	text-align: center;
+	margin-left: 35%;
+	clear: none;
+	display: block;
+}
+
+#nav li {
+	list-style: none;
+   	float: left; 
+	height: 122.5px;
+   	display: block;
+   	transition: all 0.2s ease 0s;
+   	font-family: 'Raleway', sans-serif;
+   	font-size: 14pt;
+   	font-weight: 300;
+   	margin: 0;
+}
+
+#nav li:hover, #nav li:active {
+	background: rgb(255,255,255);
+	border-bottom: 10px solid rgb(203,44,52);
+	margin: 0;
+}
+
+#nav li a {
+	display: block;
+	text-decoration: none;
+	padding: 88px 20px 16px;
+	color: rgb(255,255,255);
+}
+
+#nav li a:hover, #nav li a:active {
+	color: rgb(150,150,150);
+}
+
+.nav--active {
+   	color: rgb(150,150,150) !important; 
+	background: rgb(255,255,255);
+	border-bottom: 10px solid rgb(203,44,52);
+}
+
+/*==================================================*/
+/*                 Content General                  */
+/*==================================================*/
+
+#content {
+	margin: 60px auto;
+	width: 65%;
+	background: rgb(255,255,255);
+}
+
+/*================      Index      ===============*/
+
+.index {
+	margin: 2em;
+	display: inline-block;
+}
+
+.index-link {
+	text-align: left;
+	color: rgb(150,150,150) !important;
+	font-size: 0.9em;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
 	text-decoration: none;	
 }
 
-.index a:hover {
+.index-link:hover {
 	color: rgb(100,100,100) !important;
 }
 
-.index a:visited {
+.index-link:visited {
 	color: rgb(150,150,150);
 }
+
+/*==================================================*/
+/*                Modular Parts                 	*/
+/*==================================================*/
+
 
 /*==================================================*/
 /*                 Item List                   		*/
@@ -265,6 +536,7 @@ em {
 	font-size: 12pt;
 	line-height: 1.4;
 	margin: 10px 0;
+	display: block;
 }
 
 /*================== Buchquelle ====================*/
@@ -303,207 +575,12 @@ em {
 	height: 180px;
 }
 
-/*==================================================*/
-/*                   Denker                    		*/
-/*==================================================*/
-
-/*==================== Liste =======================*/
-
-.nav_autoren {
-	margin: 20px 0;
-	padding: 5px 0;
-	border-top: 1px solid rgb(46,74,98);
-	border-bottom: 1px solid rgb(46,74,98);
-	text-align: center;
-	list-style: none;
-}
-
-.nav_autoren li {
-	color: rgb(135,135,135);
-	text-transform: uppercase;
-	display: inline;
-	padding: 10px 8.5px;
-	font-size: 125%;
-	font-weight: 400;
-	line-height: 1.4;
-}
-
-.autorenliste section {
-    margin: 0px 0px 20px;
-    padding: 0px 0px 10px;
-    border-bottom: 4px solid rgb(240, 240, 240);
-}
-   
-.autorenliste h2 {
-	color: rgb(46,74,98);
-    font-size: 100px;
-    font-weight: 400;
-    line-height: 1.65;
-    cursor: default;
-    float: left;
-    margin: -35px 0px 0px;
-    text-decoration: none;
-    width: 145px;
-    clear: both;
-}
-
-.autorenliste dl {
-	position: relative;
-	display: block;
-	margin: 0px 15px 10px 160px;
-	padding: 10px 10px 10px 200px;
-    width: 530px;
-}
-
-.autorenliste dl:hover {
-	background: none repeat scroll 0% 0% rgb(238, 238, 238);
-}
-
-.autorenliste dl img {
-	position: absolute;
-    z-index: 1;
-    margin-top: -10px;
-    top: auto;
-    right: 355px;
-    opacity: 0;
-    transition: right 0.4s ease-in-out, opacity 0.6s ease-in-out;
-}
-
-.autorenliste dl:hover img {
-	right: 550px;
-    opacity: 1;
-}
-
-.autorenliste dt {
-	text-transform: uppercase;
-	font-weight: bold;
-	padding-bottom: 5px;
-	width: 530px;
-}
-
-.autorenliste dt a:link {
-	text-decoration: none;
-	color: rgb(70,70,70);
-}
-
-.autorenliste dt a:active, a:hover {
-	color: rgb(135,135,135);
-}
-
-.autorenliste dt a:visited {
-	color: rgb(110,110,110);
-}
-
-.autorenliste dd {
-	margin-bottom: 0.8em;
-	min-height: 185px;
-}
-
-.autorenliste dd p {
-	margin: 4px 0px 10px;
-	line-height: 1.4;
-}
-
-.autorenliste dd p a {
-	padding-left: 428px;
-	line-height: 1.4;
-}
-
-/*=================== Denker ======================*/
-
-.denker {
-}
-
-.denker h1 {	
-	font-size: 36pt;
-	line-height: 1.2;
-	color: rgb(46,74,98);
-	margin: 20px 0px 40px;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
-}
-
-.denker h2 {
-	font-size: 22pt;
-	line-height: 1.1;
-	color: rgb(46,74,98);
-	margin: 10px 0px 40px;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
-}
-
-.denker p {
-	text-align: justify;
-	font-size: 12pt;
-	line-height: 1.8;
-	font-family: 'EB Garamond', serif;
-}
-
-img.denker {
-	max-width: 250px;
-	float: right;
-	margin: 10px 0 10px 20px;
-}
-
-.works {
-	margin: 30px 0px 10px;
-	display: inline-block;
-	width: 100%;
-}
-
-.works h1 {
-	font-size: 24pt;
-	line-height: 1.4;
-	margin: 10px 0px 40px;
-	display: block;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
-}
-
-.works_sub {
-	float: left;
-	width: 30%;
-	margin: 0 2%;
-	font-family: 'EB Garamond', serif;
-}
-
-.works_sub_m {
-	float: left;
-	width: 30%;
-	margin: 0 1%;
-	font-family: 'EB Garamond', serif;
-}
-
-.works ul {
-	list-style: square;
-	padding-left: 15px;
-}
-
-.works li {
-	line-height: 1.8;
-	font-size: 12pt;
-} 
-
-.works li a {
-	text-decoration: none;
-}
-
-.works li a:hover {
-	text-decoration: none;
-	color: rgb(175,175,175);
-}
-
-.works h4 {
-	margin-top: 10px;
-	text-shadow: 0 0 0;
-	text-align: left;	
-}
 
 /*==================================================*/
-/*                   Orte                   		*/
+/*                  Map Styles                 		*/
 /*==================================================*/
 
-/*==================== Karten ======================*/
+/*=============== Overview Places ==================*/
 
 #map {
 	width: 100%;
@@ -558,11 +635,12 @@ img.denker {
 	margin-left: 20px;
 	max-height: 125px;
 }
+
 /*==================================================*/
 /*                   Footer                    		*/
 /*==================================================*/
 
-footer {
+#footer {
 	background: rgb(46, 74, 98);
 	width: 100%;
 	font-family: 'Raleway', sans-serif;
@@ -573,7 +651,7 @@ footer {
 	position: relative;
 }
 
-footer a:link, footer a:visited {
+#footer a:link, footer a:visited {
 	font-size: 10pt;
 	line-height: 20px;
 	text-align: center;
@@ -581,86 +659,15 @@ footer a:link, footer a:visited {
 	text-decoration: none;
 }
 
-footer a:hover {
+#footer a:hover {
 	text-decoration: underline;
 }
 
-footer p {
+#footer p {
 	font-size: 10pt;
 	line-height: 20px;
 	text-align: center;
 	color: rgb(255,255,255);
 }
 
-/*=======================================*/
-/*========= Erweiterter Footer ==========*/
-/*=======================================*/
-
-.section_footer {
-	width: 600px;
-	margin: 0 auto;
-	padding: 10px 200px;
-	/*background: #000;*/
-}
-
-.nav_footer {
-	/*background: #ccc;*/
-	width: 265px;
-	margin: 0 15px;
-	float: left;
-}
-
-.nav_footer ul {
-	padding-left: 25px;
-}
-
-.nav_footer ul a {
-	text-shadow: 1px 1px 1px rgb(71, 95, 117);
-	font-size: 11pt;
-	line-height: 20px;
-	text-decoration: none;
-}
-
-.nav_footer ul a:link, a:visited {
-	color: rgb(28, 45, 59);
-}
-
-.nav_footer ul a:hover, a:active {
-	color: rgb(23, 37, 49);
-}
-
-.nav_footer_item span {
-	font-size: 10pt;
-	line-height: 20px;
-	text-shadow: 1px 1px 1px rgb(71, 95, 117);
-	color: rgb(28, 45, 59);
-	padding-left: 15px;
-}
-
-.nav_footer_item a {
-	display: block;
-	text-indent: -7000px;
-	margin: 10px 0;
-}
-
-a.nav_footer_iww:link, a.nav_footer_iww:visited {
-    background: transparent url("iww_logo_a.png") no-repeat 0;
-    width: 250px;
-    height: 65px;
-}
-
-a.nav_footer_iww:hover, a.nav_footer_iww:active {
-    background: transparent url("iww_logo_b.png") no-repeat 0;
-    width: 250px;
-    height: 65px;
-}
-.nav_footer_copy {
-	clear: both;
-	text-align: center;
-}
-.nav_footer_copy p {
-	font-size: 10pt;
-	line-height: 20px;
-	text-align: center;
-	color: rgb(255,255,255);
 }

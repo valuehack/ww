@@ -6,8 +6,8 @@
 	include "header2.inc.php";
 ?>
 
-    <div class="content">
-		<h1>Mises Austria Startseite</h1>
+    <div id="content">
+		<h1>Willkommen bei Mises Austria</h1>
     </div>    
 
 <?	

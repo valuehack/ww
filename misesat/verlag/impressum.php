@@ -8,9 +8,9 @@
 
 <!--Content-->
 
-    <div class="content">
-      <article class="denker">
-      	<div class="index"><p><a href="">Mises Austria</a> / <a href="">Impressum</a></p></div>
+    <div id="content">
+      <article>
+      	<div class="index"><a class="index-link" href="">Mises Austria</a> / <a class="index-link" href="">Impressum</a></div>
       
       	<h1>Impressum</h1>
       	

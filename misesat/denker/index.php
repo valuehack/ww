@@ -1,337 +1,128 @@
 <? 
-	include "../config/header1.inc.php";
+	require_once "../../config/config.php";
+	include "../config/db.php";
 
 	$title="Denker";
 
 	include "../page/header2.inc.php";
-	
+?>
+		<div id="content">
+<?php	
 if(isset($_GET['q']))
 {
   $id = $_GET['q'];
 
   //Autorendetails
-  $sql="SELECT * from denker WHERE id='$id'";
-  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-  $entry = mysql_fetch_array($result);
-  $name = $entry[name];
-  $bio = $entry[bio];
-  $img = $entry[img];
+  $sql = $pdocon->db_connection->prepare("SELECT * from denker WHERE id='$id'");
+  $sql->execute();
+  $result = $sql->fetchAll();
+
+  $name = $result[0]['name'];
+  $bio = $result[0]['bio'];
+  $img = $result[0]['img'];
     
 ?>
 <!--Denker-->
-<!--Content-->
-
-    <div class="content">
-      <article class="denker">
-      	<div class="index"><p><a href="../index.php">Wiener Schule</a> / <a href="index.php">Denker</a> / <a href=""><?=$name?></a></p></div>
+<!--Content-->    
+      <article>
+      	<div class="index"><p><a class="index-link" href="../index.php">Wiener Schule</a> / <a class="index-link" href="index.php">Denker</a> / <a class="index-link" href=""><?=$name?></a></p></div>
       
       	<h1><?=$name?></h1>
-      	     
-      	<section>
-      	<h2>Leben</h2>
-      
-      <?php
-      	if ($img !== "" OR $img !== 0) { 
-      	echo '<img src="'.$img.'" class="denker" alt="Portr&auml;t von '.$name.'">';
-		}
-      ?>
-      	<p><?=$bio?></p>
-      	</section>
-     	<section class="works">
-     	
-     		<h1>Werke</h1>
-     	
-     		<span class="works_sub">
-          		<h4>B&uuml;cher</h4>
-          		<ul>
+      	
+      	<?php
+      		if ($img !== "" OR $img !== 0) { 
+      			echo '<div class="centered greybg"><img src="'.$img.'" class="img" alt="Portr&auml;t von '.$name.'"></div>';
+			}
+      	?>
+      	  
+      	<section class="text">
+      		<h2>Leben</h2>      		    
+      		<p><?=$bio?></p>
+      	</section>      	
+      	
+     	<section class="text">
+			<h2>Werke</h2>
+
+          		<h5>B&uuml;cher</h5>
+          		<div class="list list--none">
+          			<ul>
           		<?php
-   				$sql3 = "SELECT * from buecher WHERE autor='$name'";
-		        $result3 = mysql_query($sql3) or die("Failed Query of " . $sql3. " - ". mysql_error());         		
-          		while($entry3 = mysql_fetch_array($result3)) {
-          			echo '<li><a href="'.$entry3[link].'" target="_blank">'.$entry3[titel].'</a>';
+   				$sql_buch = $pdocon->db_connection->prepare("SELECT * from buecher WHERE autor='$name' order by n asc");
+				$sql_buch->execute();
+		        $result_buch = $sql_buch->fetchAll();
+				
+				for ($i = 0; $i < count($result_buch); $i++) {				       		
+          			echo '<li><a href="'.$result_buch[$i]['link'].'" target="_blank">'.$result_buch[$i]['titel'].'</a>';
           		}
 				?>
-          		</ul>
-       		</span>
+          			</ul>
+      			</div>
         
-        	<span class="works_sub_m">
-          		<h4>Artikel</h4>
-            	<ul>
+          		<h5>Artikel</h5>
+          		<div class="list list--none">
+            		<ul>
           		<?php
-   				$sql2 = "SELECT * from artikel WHERE autor='$name'";
-		        $result2 = mysql_query($sql2) or die("Failed Query of " . $sql2. " - ". mysql_error());         		
-          		while($entry2 = mysql_fetch_array($result2)) {
-          			echo '<li><a href="'.$entry2[link].'" target="_blank">'.$entry2[titel].'</a>';
+   				$sql_art = $pdocon->db_connection->prepare("SELECT * from artikel WHERE autor='$name' order by n asc");
+				$sql_art->execute();
+				$result_art = $sql_art->fetchAll();
+
+        		for ($i = 0; $i < count($result_art); $i++) {
+          			echo '<li><a href="'.$result_art[$i]['link'].'" target="_blank">'.$result_art[$i]['titel'].'</a>';
           		}
 				?>
-            	</ul>
-       		</span>
-        
-        	<span class="works_sub">
-          		<h4>Biografien</h4>
-     
-           		<ul>
-          		<?php
-   				//$sql4 = "SELECT * from biografie WHERE autor='$name'";
-		        //$result4 = mysql_query($sql4) or die("Failed Query of " . $sql4. " - ". mysql_error());         		
-          		//while($entry4 = mysql_fetch_array($result4)) {
-          		//	echo '<li><a href="'.$entry4[link].'">'.$entry4[title].'</a>';
-          		//}
-				?>
-            	</ul>
-        	</span>
+            		</ul>
+       			</div>        
         </section>
         <div class="clear"></div>
-        <?	
-		include "../page/booksource.php";
-		?>
        </article>
     </div>
 <?php
 }
 else {
 	
-   $sql="SELECT * from denker order by id asc";
-   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+    $sql = $pdocon->db_connection->prepare("SELECT * from denker order by id asc");
+	$sql->execute();
+    $result = $sql->fetchAll();
 ?>
 <!--Denkerliste-->	
-<div class="content">
   	
-  	  <p class="index"><a class="index" href="../index.php">Wiener Schule</a> / <a class="index" href="">Denker</a></p>
+			<div class="index"><a class="index-link" href="../index.php">Wiener Schule</a> / <a class="index-link" href="">Denker</a></div>
       
-      <h2>Autoren&uuml;bersicht</h2>
+      		<h1>Autoren&uuml;bersicht</h1>
+      
+      		<div class="itm-list">
 <?php
-	while($entry = mysql_fetch_array($result))
+	for ($i = 0; $i < count($result); $i++) 
 	{
-		$id = $entry[id]; 
-        $name = $entry[name];
-  		$bio = $entry[bio];
-  		$img = $entry[img];
+		$id = $result[$i]['id']; 
+        $name = $result[$i]['name'];
+  		$bio = $result[$i]['bio'];
+  		$img = $result[$i]['img'];
   		
 		?>
 		
-		<div class="itm-list">
-			<div class="itm-list-cola">
-				<img src="<?=$img?>" alt="">
-			</div>
-			<div class="itm-list-colb">
-				<h3><a href="index.php?q=<?=$id?>"><?=$name?></a></h3>
-				<p><? echo substr($bio, 0, 200)?></p>
-			</div>
-		</div>
+				<div class="itm-list__row">
+					<div class="itm-list__row-col-1">
+						<div class="itm-list__row-col-content">
+							<img src="<?=$img?>" alt="">
+						</div>
+					</div>
+					<div class="itm-list__row-col-3">
+						<div class="itm-list__row-col-content">
+							<a href="index.php?q=<?=$id?>"><?=$name?></a>
+							<p><? echo substr(strip_tags($bio), 0, 200)?></p>
+						</div>
+					</div>
+				</div>
 		<?
 	}
-?>      
-    <nav>
-    	<ol class="nav_autoren">
-    		<li><a href="#a">A</a></li>
-    		<li><a href="#b">B</a></li>
-    		<li>C</li>
-    		<li>D</li>
-    		<li>E</li>
-    		
-    		<li><a href="#f">F</a></li>
-    		<li>G</li>
-    		<li><a href="#h">H</a></li>
-    		<li>I</li>
-    		<li>J</li>
-    		
-    		<li>K</li>
-    		<li><a href="#l">A</a></li>
-    		<li><a href="#m">M</a></li>
-    		<li>N</li>
-    		<li>O</li>
-    		
-    		<li>P</li>
-    		<li>Q</li>
-    		<li><a href="#r">R</a></li>
-    		<li><a href="#s">S</a></li>
-    		<li>T</li>
-    		
-    		<li>U</li>
-    		<li>V</li>
-    		<li><a href="#w">W</a></li>
-    		<li>X</li>
-    		<li>Y</li>
-    		
-    		<li>Z</li>
-    	</ol>
-    </nav>
-    <div class="autorenliste">
-<?php 
-  //while($entry = mysql_fetch_array($result))
-  //{	
-?>
-      <section>
-      <h2 id="a">A</h2>   
-        <dl>
-          <img src="<?=$img?>" alt="">
-    	  <dt><a href="?q=<?=$id?>"><?=$name?></a></dt>
-    	  <dd>
-    		<p><?=$shortbio?></p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="?q=<?=$id?>">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="b">B</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Eugen B&ouml;hm Ritter von Bawerk</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="f">F</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Frank Fetter</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="h">H</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Gottfried von Harberler</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Friedrich August von Hayek</a></dt>
-    	  <dd>
-    	    <p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    	    <p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    	    <p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    	    <p><a href="#">zum Autor</a></p>
-		  </dd>
-      	</dl>      
-      </section>
-      
-      <section>
-      <h2 id="l">L</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Ludwig Lachmann</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="m">M</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Fritz Machlup</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>        
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Carl Menger</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>             
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Ludwig von Mises</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="r">R</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Paul Narcyz Rosenstein-Rodan</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-      
-      <section>
-      <h2 id="s">S</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Emil Sax</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Hans Sennholz</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>  
-      </section>
-      
-      <section>
-      <h2 id="w">W</h2>   
-        <dl>
-          <img src="../style/mises_scetch.jpg" alt="" />
-    	  <dt><a href="#">Friedrich von Wieser</a></dt>
-    	  <dd>
-    		<p>Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.Biografie Übersicht.</p>
-    		<p>Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.Hauptwerke. Hauptwerke. Hauptwerke.</p>
-    		<p>Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld. Hauptforschungsfeld.</p>
-    		<p><a href="#">zum Autor</a></p>
-    	  </dd>
-        </dl>
-      </section>
-  </div>
-</div>
-
+?>   
+			</div>
+			<div class="clear"></div>   
 <?	
-	//}
 }
+?>
+		</div>
+<?php
 	include "../page/footer.inc.php";
 ?>

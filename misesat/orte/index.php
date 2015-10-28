@@ -1,5 +1,6 @@
 <? 
-	include "../config/header1.inc.php";
+	require_once "../../config/config.php";
+	include "../config/db.php";
 
 	$title="Orte";
 
@@ -10,21 +11,22 @@ if(isset($_GET['q']))
   $id = $_GET['q'];
 
   //Autorendetails
-  $sql="SELECT * from orte WHERE id='$id'";
-  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-  $entry = mysql_fetch_array($result);
-  $name = $entry[name];
-  $text = $entry[text];
-  $img = $entry[img];
-  $denker = $entry[denker];
-    
+  $sql = $pdocon->db_connection->prepare("SELECT * from orte WHERE id='$id'");
+  $sql->execute();
+  $result = $sql->fetchAll();
+
+  $name = $result[0]['name'];
+  $text = $result[0]['text'];
+  $img = $result[0]['img'];
+  $denker = $result[0]['denker'];
+      
 ?>
 <!--Orte-->
 <!--Content-->
 
-    <div class="content">
-      <article class="denker">
-      	<div class="index"><p><a href="../index.php">Wiener Schule</a> / <a href="index.php">Orte</a> / <a href=""><?=$name?></a></p></div>
+    <div id="content">
+      <article>
+      	<div class="index"><p><a class="index-link" href="../index.php">Wiener Schule</a> / <a class="index-link" href="index.php">Orte</a> / <a class="index-link" href=""><?=$name?></a></p></div>
       
       	<h1><?=$name?></h1>
       	     
@@ -33,7 +35,7 @@ if(isset($_GET['q']))
       
       <?php
       	if ($img !== "" OR $img !== 0) { 
-      	echo '<img src="'.$img.'" class="denker" alt="Portr&auml;t von '.$name.'">';
+      	echo '<img src="'.$img.'" class="denker" alt="Portr&auml;t von '.$name.'">&nbsp;';
 		}
       ?>
       	<p><?=$text?></p>
@@ -47,14 +49,15 @@ if(isset($_GET['q']))
 }
 else {
 			
-   $sql="SELECT * from orte order by id asc";
-   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+    $sql = $pdocon->db_connection->prepare("SELECT * from orte order by id asc");
+	$sql->execute();
+    $result = $sql->fetchAll();
    
 ?>
 <!--Ortsliste-->	
-<div class="content">
+<div id="content">
   	
-  	  <p class="index"><a class="index" href="../index.php">Wiener Schule</a> / <a class="index" href="">Orte</a></p>
+  	  <div class="index"><a class="index-link" href="../index.php">Wiener Schule</a> / <a class="index-link" href="">Orte</a></div>
       
       <h2>Orts&uuml;bersicht</h2>
       
@@ -71,7 +74,7 @@ else {
 	var MisesAustriaMapStyle = new google.maps.StyledMapType([
       {
       	      }
-    ], {name: 'Wohnorte und Wirkst%E4tten Wiener %D6konomen'});
+    ], {name: 'Wohnorte und Wirkstaetten Wiener Oekonomen'});
     
      var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 48.0596696, lng: 14.4656239},
@@ -85,16 +88,16 @@ else {
         map.setMapTypeId('misesat_map');
 
 <?php
-	while($entry = mysql_fetch_array($result))
+	for ($i = 0; $i < count($result); $i++)
 	{
-		$id = $entry[id]; 
-		$n = $entry[n];
-        $name = $entry[name];
-  		$text = $entry[text];
-  		$img = $entry[img];
-  		$denker = $entry[denker];
-		$lat = $entry[lat];
-		$lng = $entry[lng];
+		$id = $result[$i]['id']; 
+		$n = $result[$i]['n'];
+        $name = $result[$i]['name'];
+  		$text = $result[$i]['text'];
+  		$img = $result[$i]['img'];
+  		$denker = $result[$i]['denker'];
+		$lat = $result[$i]['lat'];
+		$lng = $result[$i]['lng'];
      ?> 
         		 			
 		var info = '<div class="map_info"><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><img src="<?=$img?>" alt=""><p><?=substr($text, 0, 180)?> ... <a href="index.php?q=<?=$id?>">Mehr</a></p><h2>Denker die hier gelebt und gewirkt haben</h2><p><?=$denker?></p></div>';
@@ -122,42 +125,6 @@ else {
 	</script>
 
 		<!--echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";-->
-
-    <nav>
-    	<ol class="nav_autoren">
-    		<li><a href="#a">A</a></li>
-    		<li><a href="#b">B</a></li>
-    		<li>C</li>
-    		<li>D</li>
-    		<li>E</li>
-    		
-    		<li><a href="#f">F</a></li>
-    		<li>G</li>
-    		<li><a href="#h">H</a></li>
-    		<li>I</li>
-    		<li>J</li>
-    		
-    		<li>K</li>
-    		<li><a href="#l">A</a></li>
-    		<li><a href="#m">M</a></li>
-    		<li>N</li>
-    		<li>O</li>
-    		
-    		<li>P</li>
-    		<li>Q</li>
-    		<li><a href="#r">R</a></li>
-    		<li><a href="#s">S</a></li>
-    		<li>T</li>
-    		
-    		<li>U</li>
-    		<li>V</li>
-    		<li><a href="#w">W</a></li>
-    		<li>X</li>
-    		<li>Y</li>
-    		
-    		<li>Z</li>
-    	</ol>
-    </nav>
 
 </div>
 
