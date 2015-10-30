@@ -150,7 +150,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 						echo '&nbsp;';
 					}
 					else {?>					
-					<p><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href)";>Herunterladen</a></p>
+					<p><a href="<?php downloadurl($file_path,$id); ?>" onclick="updateReferer(this.href)";>Herunterladen</a></p>
 					<?php
 					}
 					?>

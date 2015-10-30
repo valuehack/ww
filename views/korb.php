@@ -261,7 +261,7 @@ function checkMe() {
                 if (($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'media-vorlesung' || $type == 'media-vortrag' || $type == 'media-salon') && $format != 4) {
 
                 ?>
-                <td><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href);">Herunterladen</a></td>
+                <td><a href="<?php downloadurl($file_path,$id); ?>" onclick="updateReferer(this.href);">Herunterladen</a></td>
                 </tr>
 
                 <?php
