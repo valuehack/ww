@@ -524,7 +524,7 @@ elseif (isset($_POST['ok']))
     <div class="centered">
     	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" name="paypal">
     		<input type="hidden" name="cmd" value="_xclick">
-    		<input type="hidden" name="business" value="info@wertewirtschaft.org">
+    		<input type="hidden" name="business" value="info@scholarium.at">
     		<input type="hidden" name="item_name" value="Mitglied Nr.<?php echo $user_id ?>">
     		<input type="hidden" name="amount" value="<?=$betrag?>">
     		<input type="hidden" name="shipping" value="0">
