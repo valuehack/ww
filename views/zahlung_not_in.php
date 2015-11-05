@@ -406,6 +406,7 @@ elseif(isset($_POST['pay'])) {
     		<input type="hidden" name="ok" value="1">
     		<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
     		<input type="hidden" name="level" value="<?php echo $level; ?>">
+            <input type="hidden" name="profile[first_reg]" value="upgrade_buerger">
 
     		<input type="radio" class="profil_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
     		<input type="radio" class="profil_radio" name="zahlung" value="kredit">Paypal<br>

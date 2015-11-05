@@ -91,7 +91,6 @@ class Login
 
                 $this->editProfile($_POST['profile']);
 
-
             // user try to change his email
             } elseif (isset($_POST["user_edit_submit_email"])) {
                 // function below uses use $_SESSION['user_id'] et $_SESSION['user_email']

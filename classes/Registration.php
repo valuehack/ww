@@ -52,9 +52,9 @@ class Registration
             $this->subscribeNewUser($_POST['user_email']);
         }
         #registration of not logged in users that provide data
+        #
         elseif (isset($_POST["register_from_outside_submit"])) {
-
-            //grab post here and send it over to other functions              
+        
             $profile = $_POST["profile"];
             $_SESSION["profile"] = $profile;
 
@@ -65,11 +65,9 @@ class Registration
             $this->subscribeNewUser($user_email);
 
             if ($this->registration_successful){
-                $this->addPersonalData($profile);
+                $this->addPersonalDataForUserReg($profile, $_POST["betrag"]);
                 $this->sendNewPayingUserEmailToInstitute($user_email);
 
-               //only redirect after registration was successfully finished
- 
             }
 
             //send out email while still in grey to make sure user is being tracked and emailed in case of troubles
@@ -97,7 +95,9 @@ class Registration
                 header("Location: ../abo/zahlung.php");     
             }
             //send out email while still in grey to make sure user is being tracked and emailed in case of troubles
-            
+
+            #betrag, level
+
         }
     }
 
@@ -118,7 +118,13 @@ class Registration
                 // @see http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers#Connecting_to_MySQL says:
                 // "Adding the charset to the DSN is very important for security reasons,
                 // most examples you'll see around leave it out. MAKE SURE TO INCLUDE THE CHARSET!"
-                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=latin1', DB_USER, DB_PASS);
+                #$this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=latin1', DB_USER, DB_PASS);
+                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
+
+                #query sets timezone for the database
+                $query_time_zone = $this->db_connection->prepare("SET time_zone = 'Europe/Vienna'");
+                $query_time_zone->execute();
+
                 return true;
             // If an error is catched, database connection failed
             } catch (PDOException $e) {
@@ -251,7 +257,66 @@ class Registration
     }
 
     #-------------------------------------
-    //add extra info from seminare
+    public function addPersonalDataForUserReg($profile, $betrag)
+    {  
+
+        $user_email = $profile[user_email];
+        $name = $profile[user_first_name];
+        $surname = $profile[user_surname];
+        $street = $profile[user_street];
+        $city = $profile[user_city];
+        $country = $profile[user_country];
+        $plz = $profile[user_plz];
+
+        $event_id = $profile[event_id];
+        #$credits = $profile[credits];
+
+        if (isset($profile[event_id])) $first_reg = $profile[event_id];  
+        if (isset($profile[first_reg])) $first_reg = $profile[first_reg];
+
+        $anrede = $profile[user_anrede];
+        $telefon = $profile[user_telefon];
+
+        $Mitgliedschaft = 0;
+        if (isset($betrag))
+        {
+            switch ($betrag) {
+            case 75:
+                $Mitgliedschaft = 2;
+                break;
+            case 150:
+                $Mitgliedschaft = 3;
+                break;
+            case 300:
+                $Mitgliedschaft = 4;
+                break;
+            case 600:
+                $Mitgliedschaft = 5;
+                break;
+            case 1200:
+                $Mitgliedschaft = 6;
+                break;
+            case 2400:
+                $Mitgliedschaft = 7;
+                break;
+            default: 
+                $Mitgliedschaft = 1;
+                break;
+            }
+
+        }
+        
+        #counter=counter+1
+
+        $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
+        $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
+
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', credits_left = credits_left+'$betrag', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
+        $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
+     
+    }
+
+    #-------------------------------------
     public function addPersonalData($profile)
     {  
 
@@ -266,36 +331,18 @@ class Registration
         $event_id = $profile[event_id];
         $credits = $profile[credits];
 
+        if (isset($profile[event_id])) $first_reg = $profile[event_id];  
+        if (isset($profile[first_reg])) $first_reg = $profile[first_reg];
+
         $anrede = $profile[user_anrede];
         $telefon = $profile[user_telefon];
-        
-
-        // $name = substr(trim($name), 0, 64);
-        // $surname = substr(trim($surname), 0, 64);
-        // $country = substr(trim($country), 0, 64);
-        // $city = substr(trim($city), 0, 64);
-        // $street = substr(trim($street), 0, 64);
-        // $plz = substr(trim($plz), 0, 64);
-
-        // $name = addslashes($name);
-        // $surname = addslashes($surname);
-        // $country = addslashes($country);
-        // $city = addslashes($city);
-        // $street = addslashes($street);
-        // $plz = addslashes($plz);
-        
-
-
+             
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$event_id', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$first_reg', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
-        // print_r($_SESSION);echo "<br>";
-        // $this->editUserEmail($profile[user_email]);
-        // print_r($_SESSION);
-
     }
 
     #-------------------------------------
@@ -671,12 +718,16 @@ class Registration
         $query_time_zone->execute();
 
 
+#
+#        $upgrade_query = "UPDATE mitgliederExt SET Mitgliedschaft = '$Mitgliedschaft', Ablauf = DATE_ADD(CURDATE(), INTERVAL 1 YEAR)  WHERE `user_email` LIKE '$user_email'";
+#
+
             //copy data to the main database
             $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
                 mitgliederExt 
-                (user_email, Mitgliedschaft, Vorname, Nachname, Land, Ort, Strasse, PLZ, first_reg, credits_left, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
+                (user_email, Mitgliedschaft, Vorname, Nachname, Land, Ort, Strasse, PLZ, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
                 VALUES
-                (:user_email, :Mitgliedschaft, :name, :surname, :country, :city, :street, :plz, :first_reg, :credits_left, :user_password_hash, :user_registration_ip, :user_active, NOW())');
+                (:user_email, :Mitgliedschaft, :name, :surname, :country, :city, :street, :plz, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
 
             $query_move_to_main->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':Mitgliedschaft', $the_row->Mitgliedschaft, PDO::PARAM_STR);
@@ -726,6 +777,8 @@ class Registration
             $reg_query->execute();
 
             }
+
+            #if #
 
 
             $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
