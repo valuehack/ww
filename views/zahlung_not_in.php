@@ -133,8 +133,8 @@ elseif(isset($_POST['pay'])) {
 		<p>Bitte geben Sie Ihre Daten ein:</p>
 
 			<label for="user_email">E-Mail</label>
-        		<input id="user_email" type="email" class="profil_inputfield" value="<?php echo $_SESSION['user_email']; ?>"  name="profile[user_email]" required><br>
-
+        		<input id="ajax_email_exists" type="email" class="profil_inputfield" value="<?php echo $_SESSION['user_email']; ?>"  name="profile[user_email]" required><br>
+                <div id="ajax_email_exists_error"></div><br><br>
                 <label for="user_anrede">Anrede</label>
                 <select id="user_anrede" name="profile[user_anrede]" required>
                 	<option value="Herr" <?if ($anrede=='Herr'){echo "selected";}?>>Herr</option>
@@ -414,7 +414,7 @@ elseif(isset($_POST['pay'])) {
 
 			<p>Mit dem klick auf <i>Weiter</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 
-    		<input type="submit" class="profil_inputbutton" name="register_from_outside_submit" value="Weiter">
+    		<input id="weiter_button" type="submit" class="profil_inputbutton" name="register_from_outside_submit" value="Weiter">
 		</form>
 		</div>
 <?php
