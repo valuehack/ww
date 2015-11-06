@@ -1,9 +1,123 @@
 <?php 
 include_once("../down_secure/functions.php");
 dbconnect();
+include("_db.php");
 // require_once('../classes/Login.php');
 $title="Ihre K&auml;ufe";
 include('_header_in.php');
+
+if(isset($_POST['delete'])) {
+	$user_id = $_SESSION['user_id'];
+	$user_email = $_SESSION['user_email'];
+	$n = $_POST['event_id'];
+	$quantity = $_POST['quantity'];
+	$credits_add = $_POST['creditsadd'];
+	$storno_time = $_POST['stornotime'];
+
+	$delete = $pdocon->db_connection->prepare("UPDATE registration SET reg_notes = 'Cancel' WHERE user_id=$user_id and event_id=$n");
+	//$delete->execute();
+
+	$update_spots_sold = $pdocon->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold - $quantity WHERE n=$n");
+	//$update_spots_sold->execute();
+
+	$update_user_credit = $pdocon->db_connection->prepare("UPDATE mitgliederExt SET credits_left = credits_left + $credits_add WHERE user_id=$user_id");
+	//$update_user_credit->execute();
+	
+	function sendStornoConfirmation($user_email)
+    {
+        //consturct email body
+        $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
+
+        $body = $body.'
+                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <!--#/image#-->
+                    </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    <!--#loopsplit#-->
+                    <table class="editable text" border="0" width="100%">
+                    <tbody>
+                    <tr>
+                    <td valign="top">
+                    <div style="text-align: justify;">
+                    <h2></h2>
+                    <!--#html #-->
+                    <span style="font-family: times new roman,times;">
+                    <span style="font-size: 12pt;">
+                    <span style="color: #000000;">
+                    <!--#/html#-->
+                    <br>            
+                    Sie haben Ihre Buchung erfolgreich stoniert. 
+                        ';
+
+        $body = $body.'
+                    <table cellspacing="0" cellpadding="0"><tr></tr></table> 
+                    ';
+
+
+        $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
+
+
+        //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => $user_email,
+            //'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
+            'subject' => 'scholarium.at Stornierung Ihrer Veranstaltung',
+            'html' => $body,
+            'from' => 'info@scholarium.at',
+            'fromname' => 'scholarium'
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+        if($response === '{"message":"success"}')
+        {
+            $that->messages[] = MESSAGE_STORNO_CONFIRMATION_MAIL_SUCCESSFULLY_SENT;
+
+        }else 
+        {
+            $that->errors[] = MESSAGE_STORNO_CONFIRMATION_MAIL_FAILED; 
+        }
+
+
+        // //TODO - add here current
+        // if(empty($response))
+        // {
+        //     die("Error: No response.");
+        //     $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+        // }
+        // elseif ('{"message":"success"}')
+        // {
+        //     $json = json_decode($response);
+        //     // print_r($json->access_token);
+        //     print_r(SENDGRID_API_KEY);
+        //     // echo "<br>";
+        //     $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
+        //     file_put_contents('log.txt', $response);
+        //     //$this->messages[] = $json;
+        // }
+
+        curl_close($ch);
+    }
+		
+	sendStornoConfirmation($user_email);
+}
 
 $user_id = $_SESSION['user_id'];
 
@@ -45,7 +159,8 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			
 			$title = $userEventsArray[title];
 			$type = $userEventsArray[type];
-			$id = $userEventsArray[id];			 
+			$id = $userEventsArray[id];	
+			$price = $userEventsArray[price];		 
 			
 				if ($type == 'seminar' || $type == 'kurs' || $type == 'salon'){
 			
@@ -56,7 +171,28 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 					elseif ($type == 'salon') {
 					$url = 'http://scholarium.at/salon/'.$id.'.jpg';
             		$url2 = 'salon';
-					}			
+					}
+			
+			$event_start = $userEventsArray[start];
+			$storno_time = strtotime($event_start)-time();
+			$storno_time = $storno_time/86400;
+			
+			$checkMessage = "Sind Sie sicher? Mit einem Klick auf OK wird Ihre Buchung stoniert.";
+			
+			if ($storno_time > 14) {$credits_add = $price*$quantity;}
+			if ($storno_time <= 14 && $storno_time > 7) {
+				$credits_add = ($price*$quantity)*0.7;
+				$checkMessage = $checkMessage."\n\nFür die Stornierung fällt eine Gebühr von 30% des Veranstaltungspreises an.";
+			}
+			if ($storno_time <= 7 && $storno_time > 2) {
+				$credits_add = ($price*$quantity)*0.5;
+			$checkMessage = $checkMessage."\n\nFür die Stornierung fällt eine Gebühr von 50% des Veranstaltungspreises an.";
+			}
+			if ($storno_time <= 2) {
+				$credits_add = 0;
+				$checkMessage = $checkMessage."\n\nFür die Stornierung fällt eine Gebühr von 100% des Veranstaltungspreises an.";
+			}
+											
 			?>
 
 			<div class="basket_body">
@@ -79,7 +215,17 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 				</div>
 				<div class="basket_body_col_c">
 					<span class="history_reservation">Reserviert</span>
-					<p><a href="../tickets/ticket_<?=$user_id?>_<?=ucfirst($type)?>_<?=$n?>.pdf">Ihr Ticket</a></p>							
+					<p><a href="../tickets/ticket_<?=$user_id?>_<?=ucfirst($type)?>_<?=$n?>.pdf">Ihr Ticket</a></p>
+					<p>
+						<form action="<?echo htmlentities($_SERVER['PHP_SELF']);?>" method="post">
+							<input type="hidden" name="delete" value="1">
+							<input type="hidden" name="event_id" value="<?=$n?>">
+							<input type="hidden" name="quantity" value="<?=$quantity?>">
+							<input type="hidden" name="creditsadd" value="<?=$credits_add?>">
+							<input type="hidden" name="stornotime" value="<?=$storno_time?>">
+							<!--<input class="history-btn--plain" type="submit" value="Reservierung stornieren" onClick="return checkMe()">-->
+						</form>
+					</p>							
 				</div>
 			</div>
 		<?
@@ -150,7 +296,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 						echo '&nbsp;';
 					}
 					else {?>					
-					<p><a href="<?php downloadurl($file_path, $id); ?>" onclick="updateReferer(this.href)";>Herunterladen</a></p>
+					<p><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href)";>Herunterladen</a></p>
 					<?php
 					}
 					?>
@@ -266,3 +412,15 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 		</div>
 	</div>
 <?php include('_footer.php'); ?>
+
+<script type="text/javascript">
+
+function checkMe() {
+    if (confirm("<?echo $checkMessage;?>")) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+</script>

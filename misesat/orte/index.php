@@ -30,7 +30,7 @@ if(isset($_GET['q']))
       
       	<h1><?=$name?></h1>
       	     
-      	<section>
+      	<section class="text">
       	<h2>Beschreibung</h2>
       
       <?php
@@ -57,16 +57,18 @@ else {
 <!--Ortsliste-->	
 <div id="content">
   	
-  	  <div class="index"><a class="index-link" href="../index.php">Wiener Schule</a> / <a class="index-link" href="">Orte</a></div>
+		<div class="index"><a class="index-link" href="../index.php">Wiener Schule</a> / <a class="index-link" href="">Orte</a></div>
       
-      <h2>Orts&uuml;bersicht</h2>
+      	<h1>Orts&uuml;bersicht</h2>
       
-    <noscript><b>Um unsere Kartenanwendung zu nutzen ben&ouml;tigen Sie JavaScript.</b> 
-      JavaScript scheint in Ihrem Browser deaktiviert zu sein oder wird von diesem nicht unterst&uuml;tzt. 
-      Um unsere Kartenansischt sehen k&oouml;nnen, aktivieren Sie bitte JavaScript.
-    </noscript>
+    	<noscript><b>Um unsere Kartenanwendung zu nutzen ben&ouml;tigen Sie JavaScript.</b> 
+     	 JavaScript scheint in Ihrem Browser deaktiviert zu sein oder wird von diesem nicht unterst&uuml;tzt. 
+     	 Um unsere Kartenansischt sehen k&oouml;nnen, aktivieren Sie bitte JavaScript.
+    	</noscript>
     
-	<div id="map" style="width:100%; height:500px;"></div>
+    	<div class="map">
+			<div id="map" class="map__map"></div>
+		</div>
 	<script type="text/javascript">
 
     function initMap() {
@@ -100,7 +102,7 @@ else {
 		$lng = $result[$i]['lng'];
      ?> 
         		 			
-		var info = '<div class="map_info"><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><img src="<?=$img?>" alt=""><p><?=substr($text, 0, 180)?> ... <a href="index.php?q=<?=$id?>">Mehr</a></p><h2>Denker die hier gelebt und gewirkt haben</h2><p><?=$denker?></p></div>';
+		var info = '<div class="map-info"><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><img src="<?=$img?>" alt=""><p><?=substr($text, 0, 180)?> ... <a href="index.php?q=<?=$id?>">Mehr</a></p><h2>Denker die hier gelebt und gewirkt haben</h2><p><?=$denker?></p></div>';
 			
         var marker = new google.maps.Marker({
          	position: {lat: <?=$lat?>, lng: <?=$lng?>},

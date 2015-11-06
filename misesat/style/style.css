@@ -303,7 +303,8 @@ h1, h2, h3, h4, h5, .text p, .list {
 	font-size: 1.5em;
 	line-height: 1.25em;
 	display: block;
-	margin: 0.75em 0;
+	padding: 0.85em 0;
+	border-bottom: 1px solid rgb(150,150,150);
 }
 
 .list li a {
@@ -331,6 +332,61 @@ h1, h2, h3, h4, h5, .text p, .list {
 	font-size: 1.25em;
 	padding: 0.5em 0;
 	display: block;
+}
+
+/*==================================================*/
+/*                  Map Styles                 		*/
+/*==================================================*/
+
+/*=============== Overview Places ==================*/
+
+.map {
+	padding-bottom: 1.5em;
+}
+
+.map__map {
+	width: 100%;
+	height: 160px;
+}
+
+.map-info {
+}
+
+.map-info h1 {
+	font-size: 22pt;
+	color: rgb(28,109,186);
+	font-weight: 300;
+	font-family: 'Raleway', sans-serif;
+}
+
+.map-info h2 {
+	font-size: 14pt;
+	color: rgb(28,109,186);	
+	margin: 0;
+	font-weight: 300;
+	font-family: 'Raleway', sans-serif;
+}
+
+.map-info a {
+	text-decoration: none;
+	color: rgb(203,44,52);
+}
+
+.map-info a:visited {
+	color: rgb(203,44,52);
+}
+
+.map-info p {
+    font-size: 11pt;
+    line-height: 1.6;
+    margin: 20px 0;
+    font-family: 'EB Garamond', serif;
+}
+
+.map-info img {
+	float: right;
+	margin-left: 20px;
+	max-height: 125px;
 }
 
 /*==================================================*/
