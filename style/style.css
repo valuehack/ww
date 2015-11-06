@@ -3046,7 +3046,8 @@ button.close {
   	outline: 0;
 }
 
-.modal.fade .modal-dialog {
+/*commented out by Dainius*/
+/*.modal.fade .modal-dialog {
   	-webkit-transition: -webkit-transform .3s ease-out;
        	 -o-transition:      -o-transform .3s ease-out;
           	transition:         transform .3s ease-out;
@@ -3054,25 +3055,27 @@ button.close {
       	-ms-transform: translate(0, -25%);
       	 -o-transform: translate(0, -25%);
           	transform: translate(0, -25%);
-}
+}*/
 
-.modal.in .modal-dialog {
+/*commented out by Dainius*/
+/*.modal.in .modal-dialog {
   	-webkit-transform: translate(0, 0);
       	-ms-transform: translate(0, 0);
        	 -o-transform: translate(0, 0);
 	        transform: translate(0, 0);
-}
+}*/
 
 .modal-open .modal {
   	overflow-x: hidden;
   	overflow-y: auto;
 }
 
-.modal-dialog {
+/*commented out by Dainius*/
+/*.modal-dialog {
   	position: relative;
   	width: 60%;
   	margin: 50px auto;
-}
+}*/
 
 .modal-dialog-login {
 	position: relative;
