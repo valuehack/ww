@@ -3144,6 +3144,10 @@ button.close {
   	margin: 50px auto;
 }
 
+.modal-form-width {
+	width: 720px !important;
+}
+
 .modal-content {
   	position: relative;
   	background-color: #fff;

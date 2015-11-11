@@ -164,7 +164,7 @@ else {
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog-login">
+  <div class="modal-dialog-login modal-form-width">
     <div class="modal-content-login">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -172,29 +172,39 @@ else {
       </div>
       <div class="modal-body">
     	<!-- <form method="post" action="../abo/zahlung.php" name="user_create_profile_form"> -->
-      <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">
       
-        		<input type="hidden" name="seminar_profile[event_id]" value="<?php echo $n ?>">
-        		<input type="hidden" name="seminar_profile[title]" value="<?php echo $title ?>">
-            	<input type="hidden" name="seminar_profile[credits]" value="25">
+      	<div class="profil payment_width">
+      	<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form" accept-charset="UTF-8">
+      
+        	<input type="hidden" name="seminar_profile[event_id]" value="<?php echo $n ?>">
+        	<input type="hidden" name="seminar_profile[title]" value="<?php echo $title ?>">
+            <input type="hidden" name="seminar_profile[credits]" value="25">
 				
-				<div class="salon_input">
-        			<input class="salon_inputfield" id="user_email" type="email" name="seminar_profile[user_email]" placeholder="E-Mail" required><br> 
-        			<select class="salon_inputfield_select" id="user_anrede" name="profile[user_anrede]" required>
-        				<option value="Herr">Herr</option>
-        				<option value="Frau">Frau</option>
-        			</select>
-        			
-        			<input class="salon_inputfield" id="user_first_name" type="text" name="seminar_profile[user_first_name]" placeholder=" Vorname" required><br>
-        			<input class="salon_inputfield" id="user_surname" type="text" name="seminar_profile[user_surname]" placeholder=" Nachname" required><br>
-        			<input class="salon_inputfield" id="user_telefon" type="tel"  name="profile[user_telefon]" placeholder=" Telefonnummer"><br>
-        			<input class="salon_inputfield" id="user_street" type="text" name="seminar_profile[user_street]" placeholder=" Stra&szlig;e und Hausnummer" required><br> 
-        			<input class="salon_inputfield" id="user_plz" type="text" name="seminar_profile[user_plz]" placeholder=" Postleitzahl" required><br>
-        			<input class="salon_inputfield" id="user_city" type="text" name="seminar_profile[user_city]" placeholder=" Stadt" required><br>
+			<label for="user_email">E-Mail</label>
+        	<input id="ajax_email_exists" type="email" class="profil_inputfield" name="seminar_profile[user_email]" required><br>
+        	<div id="ajax_email_exists_error"></div><br><br>
+        	
+        	<label for="user_anrede">Anrede</label> 
+        	<select id="user_anrede" name="profile[user_anrede]" required>
+        		<option value="Herr">Herr</option>
+        		<option value="Frau">Frau</option>
+        	</select>
+        	<label for="user_first_name">Vorname</label>		
+        	<input class="profil_inputfield" id="user_first_name" type="text" name="seminar_profile[user_first_name]" required><br>
+        	<label for="user_surname">Nachname</label>
+        	<input class="profil_inputfield" id="user_surname" type="text" name="seminar_profile[user_surname]" required><br>
+        	<label for="user_telefon">Telefon</label>
+        	<input class="profil_inputfield" id="user_telefon" type="tel"  name="profile[user_telefon]"><br>
+        	<label for="user_street">Stra&szlig;e</label>
+        	<input class="profil_inputfield" id="user_street" type="text" name="seminar_profile[user_street]" required><br>
+        	<label for="user_plz">PLZ</label> 
+        	<input class="profil_inputfield" id="user_plz" type="text" name="seminar_profile[user_plz]" required><br>
+        	<label for="user_city">Ort</label>
+        	<input class="profil_inputfield" id="user_city" type="text" name="seminar_profile[user_city]" required><br>
 
-        			<select class="salon_inputfield_select" id="user_country" name="seminar_profile[user_country]" placeholder=" Land" required>
-        			<option value="<?php echo $result_row->Land; ?>"><?php if ($result_row->Land) echo $result_row->Land; ?></option>
-        			<option value="&Ouml;sterreich" selected>&Ouml;sterreich</option>
+			<label for="user_country">Land</label>
+        	<select id="user_country" name="seminar_profile[user_country]" required>
+        			<option value="&Ouml;sterreich">&Ouml;sterreich</option>
         			<option value="Deutschland">Deutschland</option>
         			<option value="Schweiz">Schweiz</option>
         			<option value="Liechtenstein">Liechtenstein</option>
@@ -436,11 +446,24 @@ else {
                     <option value="Wei&szlig;russland">Wei&szlig;russland</option>
                     <option value="Westsahara">Westsahara</option>
                     <option value="Zentralafrikanische Republik">Zentralafrikanische Republik</option>
-                    <option value="Zypern">Zypern</option></select><br> 
-		</div>
-    	        <input type="submit" class="inputbutton_login" name="register_seminar_from_outside_submit" value="Anmelden">
+                    <option value="Zypern">Zypern</option></select>
+                    
+            <p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p> 
+                
+			<input type="hidden" name="ok" value="1">
+    		<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
+    		<input type="hidden" name="level" value="<?php echo $level; ?>">
+            <input type="hidden" name="profile[first_reg]" value="upgrade_buerger">
 
+    		<input type="radio" class="profil_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
+    		<input type="radio" class="profil_radio" name="zahlung" value="kredit">Paypal<br>
+    		<input type="radio" class="profil_radio" name="zahlung" value="bar">Bar<br>
+
+			<p>Mit dem klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+			
+    	    <input type="submit" class="profil_inputbutton" name="register_seminar_from_outside_submit" value="Anmelden">
     </form>
+    </div>
         
     </div>
     </div>
