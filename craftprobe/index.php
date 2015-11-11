@@ -1,5 +1,6 @@
 <?php include "header.php";
-
+	  include "../views/_db.php";
+	  
 $ok = $_POST['ok'];
 $email = $_POST['email'];
 $firstname = $_POST['firstname'];
@@ -177,166 +178,91 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             
             <section  id="crew"  class="s3">
                 <h1>crew</h1>
-                
-                
-                <p class="crew_levels">Captain</p>
-                
-            	<?php               
 
-				$sql = "SELECT * from crew WHERE level='1'";
-				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-				
-				
-				while ($entry= mysql_fetch_array($result)) {
-
-
-				echo "<table>";
-				echo "<tr>";
-				echo "<td>";
-				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
-				echo "</div>";
-				echo "<div class='crew_link'>";
-				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
-				echo "</div>";
-				echo "<td>";
-				echo "<div class='crew_name'>";
-				echo "$entry[name]<br>";
-				echo "</div>";
-				echo "<div class='crew_text'>";
-				echo "$entry[text_en]</td>";
-				echo "</div>";
-				echo "</tr>";			
-            
+<?php		
+		$get_crew = $pdocon->db_connection->prepare("SELECT * from crew order by level asc");
+		$get_crew->execute();
+		$crew_result = $get_crew->fetchAll();
+	
+		$check_lvl1 = 0;
+		$check_lvl2 = 0;
+		$check_lvl3 = 0;
+		$check_lvl4 = 0;
+		$check_lvl5 = 0;
+		$check_lvl6 = 0;
+		$check_lvl7 = 0;
+		$check_lvl8 = 0;
 		
-				echo "</table>";
+		for ($i=0; $i < count($crew_result); $i++) {
 				
-	}		
-				
-			?>
-                      
-        
-                
-                <p class="crew_levels">Admiralty</p>
-                
-                <?php
-                
-                $sql = "SELECT * from crew WHERE level='2' order by id asc";
-				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-
-				while ($entry= mysql_fetch_array($result)) {
-
-				echo "<table>";
-				echo "<tr>";
-				echo "<td>";
-				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
-				echo "</div>";
-				echo "<div class='crew_link'>";
-				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
-				echo "</div>";
-				echo "<td>";
-				echo "<div class='crew_name'>";
-				echo "$entry[name]<br>";
-				echo "</div>";
-				echo "<div class='crew_text'>";
-				echo "$entry[text_en]</td>";
-				echo "</div>";
-				echo "</tr>";						
-				echo "</table>";				
-    }                          		
-			?>
-                
-               <p class="crew_levels">Officers</p>
-                                        
-            	<?php
-                        
-				$sql = "SELECT * from crew WHERE level='3' order by id asc";
-				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-								
-				while ($entry= mysql_fetch_array($result)) {
-				
- 				echo "<table>";
-				echo "<tr>";
-				echo "<td>";
-				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
-				echo "</div>";
-				echo "<div class='crew_link'>";
-				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
-				echo "</div>";
-				echo "<td>";
-				echo "<div class='crew_name'>";
-				echo "$entry[name]<br>";
-				echo "</div>";
-				echo "<div class='crew_text'>";
-				echo "$entry[text_en]</td>";
-				echo "</div>";
-				echo "</tr>";			
-				echo "</table>";				
-      }              
-               ?>
-                              
-               <p class="crew_levels">Mates</p>
-                                      
-            	<?php
-              
-				$sql = "SELECT * from crew WHERE level='4' order by id asc";
-				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-				
-				while ($entry= mysql_fetch_array($result)) {
-
-                echo "<table>";
-				echo "<tr>";
-				echo "<td>";
-				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
-				echo "</div>";
-				echo "<div class='crew_link'>";
-				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
-				echo "</div>";
-				echo "<td>";
-				echo "<div class='crew_name'>";
-				echo "$entry[name]<br>";
-				echo "</div>";
-				echo "<div class='crew_text'>";
-				echo "$entry[text_en]</td>";
-				echo "</div>";
-				echo "</tr>";			
-				echo "</table>";	
-	}			
-				?>
-								
-              <p class="crew_levels">Sailors</p>
-                             
-            	<?php
-            
-				$sql = "SELECT * from crew WHERE level='8' order by id asc";
-				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-				
-				while ($entry= mysql_fetch_array($result)) {
-
-                echo "<table>";
-				echo "<tr>";
-				echo "<td>";
-				echo "<div class='crew_image'>";
-				echo "<img src='img/".$entry[id].".jpg'>";
-				echo "</div>";
-				echo "<div class='crew_link'>";
-				echo "<br><a href='http://$entry[link]'>$entry[link]</a></td>";
-				echo "</div>";
-				echo "<td>";
-				echo "<div class='crew_name'>";
-				echo "$entry[name]<br>";
-				echo "</div>";
-				echo "<div class='crew_text'>";
-				echo "$entry[text_en]</td>";
-				echo "</div>";
-				echo "</tr>";			
-				echo "</table>";		
-	}			
-				?>
-				            
+			$level = $crew_result[$i]['level'];
+			$id = $crew_result[$i]['id'];
+			$link = $crew_result[$i]['link'];
+			$name = $crew_result[$i]['name'];
+			$text_en = $crew_result[$i]['text_en'];
+			
+			if ($level == 1){
+				if ($check_lvl1 == 0){
+					$check_lvl1 = 1;
+					echo '<p class="crew_levels">Captain</p>'; 
+				}
+			}
+			if ($level == 2){
+				if ($check_lvl2 == 0){
+					$check_lvl2 = 1;
+					echo '<p class="crew_levels">Admiralty</p>'; 
+				}
+			}
+			if ($level == 3){
+				if ($check_lvl3 == 0){
+					$check_lvl3 = 1;
+					echo '<p class="crew_levels">Officers</p>'; 
+				}
+			}
+			if ($level == 4){
+				if ($check_lvl4 == 0){
+					$check_lvl4 = 1;
+					echo '<p class="crew_levels">Mates</p>'; 
+				}
+			}
+			if ($level == 5){
+				if ($check_lvl5 == 0){
+					$check_lvl5 = 1;
+					echo '<p class="crew_levels">Ehrenpr&auml;sidenten</p>'; 
+				}
+			}
+			if ($level == 6){
+				if ($check_lvl6 == 0){
+					$check_lvl6 = 1;
+					echo '<p class="crew_levels">Beir&auml;te</p>'; 
+				}
+			}
+			if ($level == 7){
+				if ($check_lvl7 == 0){
+					$check_lvl7 = 1;
+					echo '<p class="crew_levels">Partner</p>'; 
+				}
+			}
+			if ($level == 8){
+				if ($check_lvl8 == 0){
+					$check_lvl8 = 1;
+					echo '<p class="crew_levels">Sailors</p>'; 
+				}
+			}
+?>			
+			<div class="crew">
+				<div class="crew__col-1">
+					<img src="http://craftprobe.com/img/<?=$id?>.jpg">
+					<a href="http://<?=$link?>"><?=$link?></a>
+				</div>
+				<div class="crew__col-4">
+					<h1><?=$name?></h1>
+					<p><?=$text_en?></p>
+				</div>
+			</div>
+<?php
+		}
+?>	                                             				            
                     <p><a href="#top">Back to the top</a></p>
             </section>
             
