@@ -156,7 +156,7 @@ if(isset($_POST['checkout'])) {
 					
 					//Prepare Book Order eMail
 					
-					if ($format = 'Buch'){
+					if ($format == 'Buch'){
 						$buch_array[] = array($title2, $quantity);
 					}							
 				
