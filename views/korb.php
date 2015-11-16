@@ -201,7 +201,7 @@ if(isset($_POST['checkout'])) {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $post_data = array(
-            'to' => 'um@scholarium.at',
+            'to' => 'info@scholarium.at',
             'subject' => 'scholarium.at Buchbestellung',
             'html' => $body,
             'from' => 'info@scholarium.at',
