@@ -161,13 +161,17 @@ while ($entry = mysql_fetch_array($result))
 	$mitgliedschaft = $entry[Mitgliedschaft];
 	
 	$test = $entry[test];
+	
+	$expired = strtotime($entry['Ablauf']);
 ?>
 
 <body>
 <!-- Layout-->
         <header class="header">
             <div class="login">   
-
+				<div class="github">
+					<a href="https://github.com/valuehack/ww">Unsere Webprojekte sind Open Source</a>
+				</div>	
                 <?php
 
                   // show potential errors / feedback (from login object)
@@ -235,10 +239,9 @@ while ($entry = mysql_fetch_array($result))
 ?>
             </div>
             <div class="logo">
-                <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>
-                 
-
+                <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>                 
             </div>
+            
             <div class="nav">
                 <div class="navi">
                 <ul id="nav">

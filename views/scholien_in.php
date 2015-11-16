@@ -57,7 +57,7 @@ if(isset($_GET['q']))
 	$result2 = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	$entry4 = mysql_fetch_array($result2);
 
-	if ($_SESSION['Mitgliedschaft'] == 1) { 
+	if ($_SESSION['Mitgliedschaft'] == 1 OR $expired < time()) { 
 		echo "<div class='blog_info'>";
 				
 				echo $entry4[info1];			

@@ -407,28 +407,42 @@ img.dropdown_coin {
 	border-bottom: 1px solid rgb(46,74,98);
 }
 
-.error {
+.error, .message {
 	float: left;
 	margin-left: 17%;
-	padding: 3px 3px;
-	border: 1px solid #EBCCD1;
+	padding: 3px 3px;	
 	border-radius: 4px;
 	box-shadow: 0 0 1px 0 transparent;
+	
+}
+
+.error {
+	border: 1px solid #EBCCD1;
 	color: #A94442;
 	background-color: #F2DEDE;
 }
 
 .message {
-	float: left;
-	margin-left: 17%;
-	padding: 3px 3px;
 	border: 1px solid #D6E9C6;
-	border-radius: 4px;
-	box-shadow: 0 0 1px 0 transparent;
 	color: #468847;
 	background-color: #DFF0D8;
 }
 
+.github {
+	float: left;
+	margin-left: 10%;
+	padding: 3px 0;
+}
+
+.github a, github a:visited {
+	text-decoration: none;
+	color: rgb(46,74,98);
+	font-family: 'Garamond', Georgia, Times, sans-serif;
+}
+
+.github a:hover, .github a:active {
+	text-decoration: underline;
+}
 /*================  Main Navigation  ===============*/
 
 .nav {
