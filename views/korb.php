@@ -34,7 +34,7 @@ if(isset($_POST['checkout'])) {
 
 	$user_name = $userCreditsArray['Vorname'];
 	$user_surname = $userCreditsArray['Nachname'];	
-	$user_email = $userCreditsArray['email'];
+	$user_email = $userCreditsArray['user_email'];
 	
 	$user_street = $userCreditsArray['Strasse'];
 	$user_plz = $userCreditsArray['PLZ'];

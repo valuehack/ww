@@ -716,6 +716,7 @@ a.subnav_head:hover {
 	text-align: left !important;
 	font-size: 16pt !important;
 	line-height: 24pt;
+	text-shadow: 0 0 0 !important;
 }
 
 .crew p {
