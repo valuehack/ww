@@ -584,10 +584,6 @@ a.subnav_head:hover {
 	width: 100%;
 	margin: 0 auto;
 	text-align: justify;
-	-ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto
 }
 
 .article {
@@ -631,21 +627,6 @@ a.subnav_head:hover {
 }
 .article li {
 	padding-bottom: 0.75em;
-}
-
-.article footer img {
-}
-
-.article footer a:link, a:hover, a:visited {
-}
-
-.article footer p {
-}
-
-.article footer p a:link {
-}
-
-.article footer p a:hover, a:visited {
 }
 
 .inputfield {

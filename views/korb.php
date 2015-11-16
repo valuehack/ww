@@ -35,6 +35,11 @@ if(isset($_POST['checkout'])) {
 	$user_name = $userCreditsArray['Vorname'];
 	$user_surname = $userCreditsArray['Nachname'];	
 	$user_email = $userCreditsArray['email'];
+	
+	$user_street = $userCreditsArray['Strasse'];
+	$user_plz = $userCreditsArray['PLZ'];
+	$user_city = $userCreditsArray['Ort'];
+	$user_country = $userCreditsArray['Land'];
 
     //check, if enough credits
     $userCredits = $userCreditsArray[credits_left];
@@ -148,8 +153,82 @@ if(isset($_POST['checkout'])) {
 
 						include ('../tools/ticket.php');
 					}
+					
+					//Prepare Book Order eMail
+					
+					if ($format = 'Buch'){
+						$buch_array[] = array($title2, $quantity);
+					}							
 				
                 }
+
+		//Send Book Order eMail
+		function sendBookOrder($user_name, $user_surname, $user_email, $user_id, $user_street, $user_plz, $user_city, $user_country, $buch_array)
+    	{
+        //consturct email body
+        $body = '<h3>Buchbestellung</h3>
+        		<b>Kundeninformationen</b><br>
+        		'.$user_name.' '.$user_surname.'<br>
+        		E-Mail: '.$user_email.'<br>
+        		User ID: '.$user_id.'<br>
+        		<br>
+        		Adresse:<br>
+        		'.$user_street.'<br>
+        		'.$user_plz.' '.$user_city.'<br>
+        		'.$user_country.'<br>
+        		<br>
+        		<b>Bestellung</b><br>';
+				
+				$i = 0;
+				
+				while ($i < count($buch_array)){
+					$body = $body.'Titel:'.$buch_array[$i][0].'<br>
+							Menge: '.$buch_array[$i][1].'<br><br>';
+					$i++;
+				}
+        		                   
+        //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => 'um@scholarium.at',
+            'subject' => 'scholarium.at Buchbestellung',
+            'html' => $body,
+            'from' => 'info@scholarium.at',
+            'fromname' => 'scholarium'
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+        if($response === '{"message":"success"}')
+        {
+            $that->messages[] = MESSAGE_STORNO_CONFIRMATION_MAIL_SUCCESSFULLY_SENT;
+
+        }else 
+        {
+            $that->errors[] = MESSAGE_STORNO_CONFIRMATION_MAIL_FAILED; 
+        }
+
+        curl_close($ch);
+    }
+	
+	if (isset($buch_array)){
+	sendBookOrder($user_name, $user_surname, $user_email, $user_id, $user_street, $user_plz, $user_city, $user_country, $buch_array);
+	}
+					
         
         include('_header_in.php');
 ?>
@@ -306,9 +385,7 @@ function checkMe() {
 		echo "</div>";
 ?>
 			<div class="centered"><p class="linie"><img src="../style/gfx/linie.png" alt=""></p></div>
-		</div>
-	</div>
-<?php include('_footer.php'); 
+<?
 
         //delete bought items from session variable
         unset($_SESSION['basket']);
@@ -662,7 +739,9 @@ if($_SESSION['basket']) {
     			<input class="basket_pay_button_clear" type="submit" name="delete" value="Korb leeren" onClick="return checkMe()">
     		</form>
     	</div>
-
+		</div>
+	</div>
+<?php include('_footer.php'); ?>
 <?php
 /* possibility 2
 //check, if there are enough credits
@@ -751,7 +830,10 @@ else {
 <?		
         echo "<div class='basket_no_items'><p>Keine Bestellungen.</p></div>"; 
     }
-    
+?>
+    		</div>
+	</div>
+<?php include('_footer.php');
 }
 ?>
 
@@ -779,6 +861,6 @@ else {
 
 <!-- backlink
 		<a href="index.php"><?php echo WORDING_BACK_TO_LOGIN; ?></a>-->
-		</div>
+<!--		</div>
 	</div>
-<?php include('_footer.php'); ?>
+<?php //include('_footer.php'); ?>-->
