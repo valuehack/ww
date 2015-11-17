@@ -1,0 +1,132 @@
+@font-face {
+	font-family: 'Garamond';
+	src: url('garamond_regular.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Garamond';
+	src: url('garamond_italic.otf') format('opentype');
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Futura';
+	src: url('futura_regular.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Futura';
+	src: url('futura_italic.otf') format('opentype');
+	font-style: italic;
+}
+
+p {
+	margin: 0;
+}
+
+h1 {
+	display: block;
+}
+
+.invoice-info {
+	width: 25%;
+	float: right;
+}
+
+.invoice-logo {
+	margin: 1.75cm 0 4cm;
+	text-align: right;
+	position: relative;
+	right: 0;
+}
+
+.invoice-logo img {
+	width: 7cm;
+	height: 1.75cm;
+}
+
+.invoice-scholarium {
+	font-family: 'Futura', Helvetica, Arial, sans-serif;
+	font-size: 9pt;
+	padding: 0 1cm;
+}
+
+.invoice-content {
+	width: 75%;
+	margin: 6cm 0 2.5cm;
+	font-family: 'Garamond', Georgia, Times, serif;
+	font-size: 12pt;
+	float: right;
+}
+
+.invoice-address, .invoice-date, .invoice-title, .invoice-detail, .invoice-payment, .invoice-ending {
+	margin: 2em 0 2em 2.5cm;
+}
+
+.invoice-address {
+	font-family: 'Futura', Helvetica, Arial, sans-serif;
+}
+
+.invoice-date {
+	text-align: right;
+}
+
+.invoice-title {
+
+}
+
+.invoice-title h1 {
+	font-size: 16pt;
+	line-height: 1.5;
+	font-family: 'Futura', Helvetica, Arial, sans-serif;
+	font-weight: normal;
+}
+
+.invoice-detail__table {
+	width: 100%;
+	margin: 1.5em 0;
+	font-family: 'Futura', Helvetica, Arial, sans-serif;
+	font-size: 9pt;
+}
+
+.invoice-detail__table th {
+	border-bottom: 1px solid #000;
+	padding-right: 2%;
+	text-align: left;
+	font-weight: normal;
+}
+
+.invoice-detail__col1, .invoice-detail__col2, .invoice-detail__col3 {
+	line-height: 1.5;
+	padding: 0.75em 2% 0.75em 0;
+}
+
+.invoice-detail__col1 {
+	width: 10%;
+}
+
+.invoice-detail__col2 {
+	width: 52%;
+}
+
+.invoice-detail__col3 {
+	width: 16%;
+}
+
+.invoice-detail__col4 {
+	width: 16%;
+}
+
+.invoice-detail__last-row {
+	border-top: 1px solid #000;
+	font-weight: bold;
+}
+
+.invoice-payment {
+	line-height: 1.5;
+	text-align: justify;
+}
+
+.invoice-ending {
+	line-height: 2;
+}
