@@ -61,7 +61,7 @@ if(isset($_POST['checkout'])) {
         
         $preis=$itemsPriceArray[price];
         
-        if ($format == 4 && $itemsPriceArray[price_book]) { $preis = $itemsPriceArray[price_book]; }
+        if ($format == 4 && $itemsPriceArray[price_book]) { $preis = $itemsPriceArray[price_book];}
         
         $itemsPriceSum = $quantity * $preis;
         $itemsPrice += $itemsPriceSum;
@@ -140,17 +140,11 @@ if(isset($_POST['checkout'])) {
 						$start = $itemsTicketArray[start];
 						$end = $itemsTicketArray[end];
 						$type = $itemsTicketArray[type];
-						$price = $itemsTicketArray[price];
-
+						$price = $itemsTicketArray[price];												
+						
 					if ($type == 'kurs' || $type == 'seminar' || $type == 'lehrgang' || $type == 'salon') {
 
-						$quantity = $quantity;
 						$type = ucfirst($type);
-
-						$user_id = $user_id;
-						$user_name = $user_name;
-						$user_surname = $user_surname;
-
 						include ('../tools/ticket.php');
 					}
 					

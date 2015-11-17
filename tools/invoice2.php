@@ -14,7 +14,7 @@
           <title>Rechnung $invoice_number</title>        
           <link rel="stylesheet" type="text/css" href="../style/invoice_style.css">
           
-          <meta name="Content-Disposition" content="attachment; filename='.$invoice_name.'">
+          <meta name="Content-Disposition" content="attachment; filename='.$ticket_name.'">
           <meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8" />
 
       </head>
@@ -36,18 +36,18 @@
           <div class="invoice-content">
               <div class="invoice-address"> 
                   <p>
-                      '.$user_name.' '.$user_surename.'<br>
-                      '.$user_street.'<br>
-                      '.$user_plz.' '.$user_city.'<br>
+                      $name $surename<br>
+                      $street<br>
+                      $plz $city<br>
                   </p>
               </div>
               
               <div class="invoice-date">
-                  <p>Wien, '.$now.'</p>
+                  <p>Wien, $now</p>
               </div>
               
               <div class="invoice-title">
-                  <h1>RECHNUNG '.$invoice_number.'</h1>
+                  <h1>RECHNUNG $invoice_number</h1>
               </div>
               
               <div class="invoice-detail">
@@ -65,58 +65,37 @@
                           <td class="invoice-detail__col4 invoice-detail__first-row">
                               Gesamtpreis
                           </td>
-                      </tr>';
-					  $i = 0;
-					  while ($i < count($invoice_info)){					  	
-                      $price_total = $invoice_info[$i]['quantity']*$invoice_info[$i]['betrag'];
-					  
-					  $html = $html.'
+                      </tr>
                       <tr>
                          <td class="invoice-detail__col1">
-                             '.$invoice_info[$i]['quantity'].'
+                             1
                          </td>
                          <td class="invoice-detail__col2">
-                             '.$invoice_info[$i]['description'].'
+                             F&ouml;rdermitgliedschaft II vom 01.01.2016 - 31.12.2016
                          </td>
                          <td class="invoice-detail__col3">
-                             &euro; '.$invoice_info[$i]['betrag'].',-
+                             &euro; 300,-
                          </td>
                          <td class="invoice-detail__col3">
-                             &euro; '.$price_total.',-
+                             &euro; 300,-
                          </td> 
-                      </tr>';
-                      $total = $total + $price_total;
-                      $i++;
-                      }
-					  $html = $html.'
+                      </tr>
                       <tr>
                           <td class="invoice-detail__col1 invoice-detail__last-row">&nbsp;</td>
                           <td class="invoice-detail__col2 invoice-detail__last-row">&nbsp;</td>
                           <td class="invoice-detail__col3 invoice-detail__last-row">Gesamtbetrag</td>
-                          <td class="invoice-detail__col4 invoice-detail__last-row">&euro; '.$total.',-</td>
+                          <td class="invoice-detail__col4 invoice-detail__last-row">&euro; 300,-</td>
                       </tr>
                   </table>
               </div>
               
-              <div class="invoice-payment">';
-              if ($zahlung == 'bank'){
-			 	  $html = $html.'
-                  <p>Bitte überweisen Sie den Gesamtbetrag mit Angabe der Rechnungsnummer und Mitgliedernummer (Nr. '.$user_id.') innerhalb von 14 Tagen auf unser folgendes Konto:<br>
+              <div class="invoice-payment">
+                  <p>Bitte überweisen Sie den Gesamtbetrag mit Angabe der Rechnungsnummer und Mitgliedernummer (Nr. $user_id) innerhalb von 14 Tagen auf unser folgendes Konto:<br>
                       <br>
                 scholarium GmbH<br>
                 IBAN: AT812011182715898501<br>
                 BIC: GIBAATWWXXX<br>
-                  </p>';
-                  }
-			  if ($zahlung == 'kredit'){
-				  $html = $html.'
-				  <p>Sie haben diese Rechnung bereits mit paypal beglichen.</p>';
-				  }   
-			  if ($zahlung == 'bar'){
-				  $html = $html.'
-				  <p>Bitte schicken Sie uns den gew&auml;hlten Betrag von $betrag &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das scholarium, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>';
-				  }
-			  $html = $html.'
+                  </p>
               </div>
               
               <div class="invoice-ending">

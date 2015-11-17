@@ -1,44 +1,33 @@
 @font-face {
-	font-family: 'Baskerville';
-	src: url('baskerville_regular.otf') format('opentype');
-}
-
-@font-face {
-	font-family: 'Baskerville';
-	src: url('baskerville_italic.otf') format('opentype');
-	font-style: italic;
+	font-family: 'Garamond';
+	src: url('font/garamond_regular.otf') format('opentype');
 }
 
 @font-face {
 	font-family: 'Garamond';
-	src: url('garamond_regular.otf') format('opentype');
-}
-
-@font-face {
-	font-family: 'Garamond';
-	src: url('garamond_italic.otf') format('opentype');
+	src: url('font/garamond_italic.ttf') format('opentype');
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Futura';
-	src: url('futura_regular.otf') format('opentype');
+	src: url('font/futura_regular.ttf') format('opentype');
 }
 
 @font-face {
 	font-family: 'Futura';
-	src: url('futura_italic.otf') format('opentype');
+	src: url('futura_italic.ttf') format('opentype');
 	font-style: italic;
 }
 
 p {
 	margin: 0;
-	font-family: "Baskerville", Georgia, Times, serif;
+	font-family: "Garamond", Georgia, Times, serif;
 }
 
 h1 {
 	font-weight: normal;
-	font-family: "Baskerville", Georgia, Times, serif;
+	font-family: "Garamond", Georgia, Times, serif;
 	display: block;
 }
 

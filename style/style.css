@@ -43,24 +43,24 @@
 
 @font-face {
 	font-family: 'Futura Book';
-	src: url('http://www.scholarium.at/style/font/futura_bock_regular.ttf') format('truetype');
+	src: url('http://www.scholarium.at/style/font/futura_regular.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: 'Futura Book';
-	src: url('http://www.scholarium.at/style/font/futura_bock_italic.ttf') format('truetype');
+	src: url('http://www.scholarium.at/style/font/futura_italic.ttf') format('truetype');
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Futura Book';
-	src: url('http://www.scholarium.at/style/font/futura_bock_bold.ttf') format('truetype');
+	src: url('http://www.scholarium.at/style/font/futura_bold.ttf') format('truetype');
 	font-weight: bold;
 }
 
 @font-face {
 	font-family: 'Futura Book';
-	src: url('http://www.scholarium.at/style/font/futura_bock_bold-italic.ttf') format('truetype');
+	src: url('http://www.scholarium.at/style/font/futura_bold-italic.ttf') format('truetype');
 	font-style: italic;
 	font-weight: bold;
 }
