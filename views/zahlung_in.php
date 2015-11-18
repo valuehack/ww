@@ -4,14 +4,11 @@ require_once('../classes/Login.php');
 
 $title="Zahlung";
 
-include('_header_in.php');
-
 if (!isset($_COOKIE['gaveCredits'])) {
 
   if(isset($_POST['pay'])) {
       $betrag = $_POST['betrag'];
       $source = $_POST['pay'];
-
 
       switch ($betrag) {
           case 75:
