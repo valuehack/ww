@@ -1,21 +1,22 @@
 <?php
 
-//code insert for invoice generation
+//insert code for invoice generation
 
-  $invoice_number = 1;
+  $now = date('d.m.Y', time());  
+  $year = date('Y', time());
 
-  $invoice_name = "invoice_".$user_id."_".$invoice_number.".pdf";
+  $invoice_number = 'userID-'.$year.'-no';
 
-  $now = date("d.m.Y", time());
+  $invoice_name = 'Rechnung_'.$invoice_number.'.pdf';
 
   $html = '
   <html lang="de">
       <head>
-          <title>Rechnung $invoice_number</title>        
+          <title>Rechnung '.$invoice_number.'</title>        
           <link rel="stylesheet" type="text/css" href="../style/invoice_style.css">
           
           <meta name="Content-Disposition" content="attachment; filename='.$invoice_name.'">
-          <meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8" />
+          <meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8">
 
       </head>
       <body>
@@ -36,9 +37,10 @@
           <div class="invoice-content">
               <div class="invoice-address"> 
                   <p>
-                      '.$user_name.' '.$user_surename.'<br>
+                      '.$user_name.' '.$user_surname.'<br>
                       '.$user_street.'<br>
                       '.$user_plz.' '.$user_city.'<br>
+                      '.$user_country.'<br>
                   </p>
               </div>
               
@@ -68,7 +70,7 @@
                       </tr>';
 					  $i = 0;
 					  while ($i < count($invoice_info)){					  	
-                      $price_total = $invoice_info[$i]['quantity']*$invoice_info[$i]['betrag'];
+                      $price_total = $invoice_info[$i]['quantity']*$invoice_info[$i]['price'];
 					  
 					  $html = $html.'
                       <tr>
@@ -79,7 +81,7 @@
                              '.$invoice_info[$i]['description'].'
                          </td>
                          <td class="invoice-detail__col3">
-                             &euro; '.$invoice_info[$i]['betrag'].',-
+                             &euro; '.$invoice_info[$i]['price'].',-
                          </td>
                          <td class="invoice-detail__col3">
                              &euro; '.$price_total.',-
@@ -101,7 +103,7 @@
               <div class="invoice-payment">';
               if ($zahlung == 'bank'){
 			 	  $html = $html.'
-                  <p>Bitte überweisen Sie den Gesamtbetrag mit Angabe der Rechnungsnummer und Mitgliedernummer (Nr. '.$user_id.') innerhalb von 14 Tagen auf unser folgendes Konto:<br>
+                  <p>Bitte überweisen Sie den Gesamtbetrag mit Angabe der Rechnungsnummer innerhalb von 14 Tagen auf unser folgendes Konto:<br>
                       <br>
                 scholarium GmbH<br>
                 IBAN: AT812011182715898501<br>
@@ -114,7 +116,7 @@
 				  }   
 			  if ($zahlung == 'bar'){
 				  $html = $html.'
-				  <p>Bitte schicken Sie uns den gew&auml;hlten Betrag von $betrag &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das scholarium, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>';
+				  <p>Bitte schicken Sie uns den gew&auml;hlten Betrag von '.$total.' &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das scholarium, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>';
 				  }
 			  $html = $html.'
               </div>
@@ -134,14 +136,14 @@
   $dompdf->load_html($html);
   $dompdf->set_paper("a4", 'portrait');
   $dompdf->render();
-  $dompdf->stream($invoice_name);
+  //$dompdf->stream($invoice_name);
 
   // The next call will store the entire PDF as a string in $pdf
-  //$pdf = $dompdf->output();
+  $pdf = $dompdf->output();
 
   // You can now write $pdf to disk, store it in a database or stream it
   // to the client.
 
-  //file_put_contents("../rechnungen/invoice_".$user_id."_".$invoice_number.".pdf", $pdf);
+  file_put_contents('../rechnungen/'.$invoice_name.'.pdf', $pdf);
 
 ?>

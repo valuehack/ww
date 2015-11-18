@@ -770,6 +770,24 @@ a.subnav_head:hover {
 	display: inline-block;
 }
 
+.startpage-livestream {
+	display: inline-block;
+	background: rgb(46,74,98) none repeat scroll 0% 0%;
+	padding: 20px 0 !important;
+	margin: 30px 15% -30px 15%;
+	font-size: 16pt;
+	text-align: center;
+}
+
+.startpage-livestream a,  .startpage-livestream a:hover, .startpage-livestream a:visited {
+	color: rgb(255,255,255) !important;
+	text-decoration: none;
+}
+
+.startpage-livestream:hover {
+	background: rgb(30,48,64);
+}
+
 .startpage_section_last_scholie {
 	padding: 40px 15%;
 	width: 70%;
@@ -1384,6 +1402,23 @@ a.socialimg:visited {
 	font-size: 18pt !important;
 	margin: 10px 0 30px 0;
 	text-align: center !important;
+}
+
+.salon_livestream {
+	display: inline-block;
+	background: rgb(46,74,98) none repeat scroll 0% 0%;
+	padding: 20px 50px;
+	color: rgb(255, 255, 255);
+	border-radius: 2px;	
+}
+
+.salon_livestream a,  .salon_livestream a:hover, .salon_livestream a:visited {
+	color: rgb(255,255,255);
+	text-decoration: none;
+}
+
+.salon_livestream:hover {
+	background: rgb(30,48,64);
 }
 
 .salon_dates {

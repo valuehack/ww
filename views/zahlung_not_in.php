@@ -4,16 +4,6 @@
 
 $title="Zahlung";
 
-include('../views/_header_not_in.php'); 
-
-?>
-
-<div class="content">
-	<div class="payment">
-		<h1>Zahlung</h1>
-		
-<?php
-
 //payments coming from kurse_not_in using session var
 if (isset($_SESSION["seminar_profile"])) {
     
@@ -37,7 +27,12 @@ if (isset($_POST["registrationform"])) {
     $profile = $_POST['profile'];
     $user_email = $profile[user_email];*/
 
+    include('../views/_header_not_in.php'); 		
 ?>		
+	<div class="content">
+		<div class="payment">
+		<h1>Zahlung</h1>
+		
 		<p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>
 		
 		<div class="payment_form">
@@ -49,7 +44,7 @@ if (isset($_POST["registrationform"])) {
     			<input type="hidden" name="event_id" value="<?php echo $event_id; ?>">
     			<input type="hidden" name="title" value="<?php echo $title; ?>">
     			<input type="hidden" name="email" value="<?php echo $user_email; ?>">
-    			<input type="hidden" name="profile" value="<?php echo $profile; ?>">
+    			<input type="hidden" name="profile" value="<?php echo $profile; ?>">    		    			
 
     			<input type="radio" class="payment_form_radio" name="zahlung" value="bank" required>&Uuml;berweisung<br>
     			<input type="radio" class="payment_form_radio" name="zahlung" value="kredit">Paypal<br>
@@ -94,7 +89,11 @@ if (isset($_POST["donationform"])) {
     $profile = $_POST['profile'];
     $user_email = $profile[user_email];
 
+	include('../views/_header_not_in.php'); 
 ?>    
+	<div class="content">
+		<div class="payment">
+		<h1>Zahlung</h1>
     <p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>
     
     <div class="payment_form">
@@ -126,7 +125,11 @@ elseif(isset($_POST['pay'])) {
     $level = $_POST['level'];
     $betrag = $_POST['betrag'];
 
+	include('../views/_header_not_in.php');
 ?>
+	<div class="content">
+		<div class="payment">
+		<h1>Zahlung</h1>
 		<div class="profil payment_width">
 		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account" accept-charset="UTF-8">
 
@@ -427,11 +430,51 @@ elseif (isset($_POST['ok']))
     $zahlung = $_POST['zahlung'];
     
     //after user is created, SESSION variables should be set in Login.php
-    $user_id = $_SESSION['user_id'];
+    //$user_id = $_SESSION['user_id'];
 
     $user_email = $_POST['email'];
     $id = $_POST['event_id'];
     $title = $_POST['title'];
+
+	require_once('../config/config.php');
+	include('../views/_db.php');
+	
+	$user_sql = $pdocon->db_connection->prepare("SELECT * from grey_user WHERE `user_email` LIKE '$user_email' ");
+	$user_sql->execute();
+	$user_info = $user_sql->fetchAll();
+
+	$user_name = $user_info[0]['Vorname'];
+	$user_surname = $user_info[0]['Nachname'];
+	$user_street = $user_info[0]['Strasse'];
+	$user_plz = $user_info[0]['PLZ'];
+	$user_city = $user_info[0]['Ort'];
+	$user_country = $user_info[0]['Land'];
+
+	$membership_start = date('d.m.Y', time());	
+	$membership_end = date('d.m.Y', time()+31536000);
+
+    //Invoice Generation
+    if ($_POST['ok'] == 2) {
+      $invoice_info[] = array("price" => $betrag, "quantity" => 1, "description" => "Seminar: ".ucfirst($title));
+	  $invoice_info[] = array("price" => 0, "quantity" => 1, "description" => "Einj&auml;hrige Mitgliedschaft - &quot;Kursteilnehmer&quot; (".$membership_start." - ".$membership_end.")");
+	}
+	elseif ($_POST['ok'] == 3) {
+	  $invoice_info[] = array("price" => $betrag, "quantity" => 1, "description" => "Projekt: ".ucfirst($title));
+	  $invoice_info[] = array("price" => 0, "quantity" => 1, "description" => "Einj&auml;hrige Mitgliedschaft - &quot;".$level."&quot; (".$membership_start." - ".$membership_end.")");
+	}
+	else {
+	  $invoice_info[] = array("price" => $betrag, "quantity" => 1, "description" => "Einj&auml;hrige Mitgliedschaft - &quot;".$level."&quot; (".$membership_start." - ".$membership_end.")");
+	}
+	//include("../tools/invoice.php");
+
+	include('../views/_header_not_in.php');
+
+	//after user is created, SESSION variables should be set in Login.php
+    $user_id = $_SESSION['user_id'];
+	
+	echo '<div class="content">';
+	echo '<div class="payment">';
+	echo '<h1>Zahlung</h1>'	;
 
     //register for the event
     //payments coming from kurse_not_in
@@ -457,7 +500,7 @@ elseif (isset($_POST['ok']))
   
       $space_query = "UPDATE produkte SET spots_sold = spots_sold + 1 WHERE `n` LIKE '$id'";
       mysql_query($space_query);
-                   
+             	        
       //TO DO: send email, create user first 
     }
 
@@ -493,7 +536,6 @@ elseif (isset($_POST['ok']))
         echo '<div class="payment_success>"<p><b>Vielen Dank f&uuml;r Ihre Unterst&uuml;tzung!</b></p>';
 
         echo "<p>Sie haben das Unterst&uuml;tzungs-Niveau ".$level." gew&auml;hlt.</p></div>";
-
     }
    
     if ($zahlung=="bank") {
@@ -508,8 +550,6 @@ elseif (isset($_POST['ok']))
       </ul></p>
 
       <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;<?php echo $_SESSION['profile']['user_email'] ?>&quot;</b></p>
-
-
     
     <?php
     }

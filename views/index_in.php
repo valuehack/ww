@@ -17,6 +17,23 @@ include ("_header_in.php");
 
         <div class="content">
             
+            <?php
+            $livestream_sql = $pdocon->db_connection->prepare("SELECT * from produkte WHERE  livestream != '' and end > NOW() and status = 1 order by start asc LIMIT 1");
+			$livestream_sql->execute();
+			$livestream_result = $livestream_sql->fetchAll();
+			
+			$livestream_url = $livestream_result[0][livestream];
+			$livestream_title = $livestream_result[0][title];
+			$livestream_type = $livestream_result[0][type];
+			
+			if ($livestream_url != '' && $mitgliedschaft >=2){
+            ?>
+            <div class="startpage_section_last_scholie startpage-livestream">
+            	<a href="<?=$livestream_url?>">Sehen unseren <?=ucfirst($livestream_type)?> <em><?=$livestream_title?></em> im Livestream</a>
+            </div>
+			<?php            
+            }
+			?>
             <div class="startpage_section_last_scholie">
 			            	
             		<?php
@@ -68,7 +85,8 @@ while($entry = mysql_fetch_array($result))
   				} 		
                 echo "<p>"; 
 				echo "<a href='/$type/index.php?q=$id'>";
-              	echo "$entry[title]</a><br>";
+              	echo "$entry[title]</a>";
+				echo "<br>";
 				echo date("d.m.Y",strtotime($entry[start]));
               	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end])); 
 				echo "<span>".ucfirst($entry[type])."</span>";

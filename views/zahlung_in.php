@@ -4,7 +4,7 @@ require_once('../classes/Login.php');
 
 $title="Zahlung";
 
-include('_header_in.php'); 
+include('_header_in.php');
 
 if (!isset($_COOKIE['gaveCredits'])) {
 
@@ -37,6 +37,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
       $event_id = $_POST['event_id'];
       $title = $_POST['title'];
 
+	  include('_header_in.php');
     ?>
     <div class="content">
     	<div class="profil">
@@ -361,6 +362,39 @@ if (!isset($_COOKIE['gaveCredits'])) {
       $user_email = $_SESSION['user_email'];
       $id = $_POST['event_id'];
       $title = $_POST['title'];
+      
+    require_once('../config/config.php');
+	include('../views/_db.php');
+	
+	$user_sql = $pdocon->db_connection->prepare("SELECT * from grey_user WHERE `user_email` LIKE '$user_email' ");
+	$user_sql->execute();
+	$user_info = $user_sql->fetchAll();
+
+	$user_name = $user_info[0]['Vorname'];
+	$user_surname = $user_info[0]['Nachname'];
+	$user_street = $user_info[0]['Strasse'];
+	$user_plz = $user_info[0]['PLZ'];
+	$user_city = $user_info[0]['Ort'];
+	$user_country = $user_info[0]['Land'];
+
+	$membership_start = date('d.m.Y', time());
+	$membership_end = date('d.m.Y', time()+31536000);
+
+    //Invoice Generation
+    if ($source == 2) {
+      $invoice_info[] = array("price" => $betrag, "quantity" => 1, "description" => "Seminar: ".ucfirst($title));
+	  $invoice_info[] = array("price" => 0, "quantity" => 1, "description" => "Einj&auml;hrige Mitgliedschaft - &quot;Kursteilnehmer&quot; (".$membership_start." - ".$membership_end.")");
+	}
+	elseif ($source == 3) {
+	  $invoice_info[] = array("price" => $betrag, "quantity" => 1, "description" => "Projekt: ".ucfirst($title));
+	  $invoice_info[] = array("price" => 0, "quantity" => 1, "description" => "Einj&auml;hrige Mitgliedschaft - &quot;".$level."&quot (".$membership_start." - ".$membership_end.")");
+	}
+	else {
+	  $invoice_info[] = array("price" => $betrag, "quantity" => 1, "description" => "Einj&auml;hrige Mitgliedschaft - &quot;".$level."&quot (".$membership_start." - ".$membership_end.")");
+	}
+	//include("../tools/invoice.php");
+      
+    include('_header_in.php');
   ?>    
 
   <div class="content">

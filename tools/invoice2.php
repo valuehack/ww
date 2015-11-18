@@ -3,6 +3,7 @@
 //code insert for invoice generation
 
   $invoice_number = 1;
+  $user_id = 99999;
 
   $invoice_name = "invoice_".$user_id."_".$invoice_number.".pdf";
 
@@ -14,7 +15,7 @@
           <title>Rechnung $invoice_number</title>        
           <link rel="stylesheet" type="text/css" href="../style/invoice_style.css">
           
-          <meta name="Content-Disposition" content="attachment; filename='.$ticket_name.'">
+          <meta name="Content-Disposition" content="attachment; filename='.$invoice_name.'">
           <meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8" />
 
       </head>
@@ -113,14 +114,15 @@
   $dompdf->load_html($html);
   $dompdf->set_paper("a4", 'portrait');
   $dompdf->render();
-  $dompdf->stream($invoice_name);
+  //$dompdf->stream($invoice_name);
 
   // The next call will store the entire PDF as a string in $pdf
-  //$pdf = $dompdf->output();
+  $pdf = $dompdf->output();
 
   // You can now write $pdf to disk, store it in a database or stream it
   // to the client.
 
   //file_put_contents("../rechnungen/invoice_".$user_id."_".$invoice_number.".pdf", $pdf);
+  file_put_contents("../rechnungen/invoice.pdf", $pdf);
 
 ?>

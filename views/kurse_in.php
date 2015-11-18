@@ -58,6 +58,7 @@ if(isset($_GET['q']))
   $spots_sold=$entry3[spots_sold];
   $spots_available=$spots_total-$spots_sold;
   $status = $entry3[status];
+  $livestream = $entry3[livestream];
   
   //Userdetails
   $user_items_query = "SELECT * from registration WHERE `user_id`=$user_id and event_id='$n'";
@@ -98,6 +99,17 @@ if(isset($_GET['q']))
       }
       else echo "Der Termin wird in K&uuml;rze bekannt gegeben."; ?>
   			</p>
+<?php
+	  if ($livestream != '' && $mitgliedschaft >= 2){
+?>
+	<div class="centered">
+	<p class="salon_date salon_livestream">
+		<a href="<?=$livestream?>">Sehen Sie dieses Seminar im Livestream</a>
+	</p>
+	</div>
+<?php	  	
+	  }
+?> 
 		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		
 		<div class="centered">
