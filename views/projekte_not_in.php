@@ -1,5 +1,5 @@
 <?php 
-require_once('../classes/Login.php');
+#require_once('../classes/Login.php');
 $title="Projekte";
 include ("_header_not_in.php"); 
 ?>
@@ -73,7 +73,7 @@ else {
         <h2 class="modal-title" id="myModalLabel">Investieren</h2>
       </div>
       <div class="modal-body">
-        <form method="post" action="../abo/zahlung.php" name="user_create_profile_form">
+        <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">
             <input type="hidden" name="event_id" value="<?php echo $n ?>" />
             <input type="hidden" name="title" value="<?php echo $title ?>" />
         
@@ -345,8 +345,19 @@ else {
               <input type="radio" class="projekte_investment_radio" name="projekte_profile[betrag]" value="2400">2400&euro;: Ab diesem Beitrag werden Sie Ehrenpr&auml;sident und bestimmen bis zu zweimal im Jahr ein Thema f&uuml;r das <i>scholarium</i>.<br>
         	</div>
 
+            <p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p> 
+
+            <input type="hidden" name="ok" value="1">
+
+            <input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="bank" required>&Uuml;berweisung<br>
+            <input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="kredit">Paypal<br>
+            <input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="bar">Bar<br>
+
+            <p>Mit dem klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+
         <div class="centered">
           <input type=hidden name="projekte_profile[first_reg]" value="projekte">
+
           <input type="submit" class="inputbutton_login" name="register_projekte_from_outside_submit" value="Investieren"/>
         </div>
     </form>

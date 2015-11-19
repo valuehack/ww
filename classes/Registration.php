@@ -113,7 +113,7 @@ class Registration
 
                 //only redirect after registration was successfully finished
                 #form action already directs to abo zahlung
-                header("Location: ../abo/zahlung.php");     
+                header("Location: ../views/zahlung_info.php");     
             }
         }
     }
