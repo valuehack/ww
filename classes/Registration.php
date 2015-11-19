@@ -44,7 +44,7 @@ class Registration
         // if we have such a GET request, call the verifyNewUser() method
         } else if (isset($_GET["id"]) && isset($_GET["verification_code"])) {
             $this->verifyNewUser($_GET["id"], $_GET["verification_code"]);
-
+ 
         #eintragen_submit is a button submit from registration forms
         } elseif (isset($_POST["eintragen_submit"])) {
 
@@ -84,7 +84,6 @@ class Registration
             
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-
             $this->subscribeNewUser($user_email);
             
             if ($this->registration_successful){
@@ -94,11 +93,47 @@ class Registration
                 //only redirect after registration was successfully finished
                 header("Location: ../abo/zahlung.php");     
             }
-            //send out email while still in grey to make sure user is being tracked and emailed in case of troubles
+        }        
+        #registration for projekte from outside
+        elseif (isset($_POST["register_projekte_from_outside_submit"])) {
 
-            #betrag, level
+            //grab post here and send it over to other functions              
+            $profile = $_POST["projekte_profile"];
+            $_SESSION["projekte_profile"] = $profile;
 
+            $user_email = $profile[user_email];
+            
+            #if $user_email is unique -> then continue with registration
+            #if already exist - direct to login 
+            $this->subscribeNewUser($user_email);
+            
+            if ($this->registration_successful){
+                $this->addPersonalDataForUserReg($profile, $profile[betrag]);
+                $this->sendNewPayingUserEmailToInstitute($user_email);
+
+                //only redirect after registration was successfully finished
+                #form action already directs to abo zahlung
+                header("Location: ../abo/zahlung.php");     
+            }
         }
+    }
+
+    public function processSofortSuccess($profile)
+    {
+
+            $_SESSION["profile"] = $profile;
+
+            $user_email = $profile[user_email];    
+            $this->subscribeNewUser($user_email);
+
+            if ($this->registration_successful){
+                
+                // it sends betrag additionally, but not necessary as betrag was added later and done in a rush to make it working. change it! 
+                $this->addPersonalDataForUserReg($profile, $profile[betrag]);
+                
+                // uncomment for production
+                #$this->sendNewPayingUserEmailToInstitute($user_email);
+            }
     }
 
     /**
