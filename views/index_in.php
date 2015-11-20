@@ -29,7 +29,7 @@ include ("_header_in.php");
 			if ($livestream_url != '' && $mitgliedschaft >=2){
             ?>
             <div class="startpage_section_last_scholie startpage-livestream">
-            	<a href="<?=$livestream_url?>">Sehen unseren <?=ucfirst($livestream_type)?> <em><?=$livestream_title?></em> im Livestream</a>
+            	<a href="<?=$livestream_url?>">Sehen Sie unseren <?=ucfirst($livestream_type)?> <em><?=$livestream_title?></em> im Livestream</a>
             </div>
 			<?php            
             }

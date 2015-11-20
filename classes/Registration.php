@@ -62,7 +62,7 @@ class Registration
             
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-            $this->subscribeNewUser($user_email);
+            $this->subscribeNewUser($user_email, $_POST["betrag"]);
 
             if ($this->registration_successful){
                 $this->addPersonalDataForUserReg($profile, $_POST["betrag"]);
@@ -81,10 +81,11 @@ class Registration
             $_SESSION["seminar_profile"] = $profile;
 
             $user_email = $profile[user_email];
-            
+            $betrag = 150;
+						
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-            $this->subscribeNewUser($user_email);
+            $this->subscribeNewUser($user_email, $betrag);
             
             if ($this->registration_successful){
                 $this->addPersonalData($profile);
@@ -102,13 +103,13 @@ class Registration
             $_SESSION["projekte_profile"] = $profile;
 
             $user_email = $profile[user_email];
-            
+            						
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-            $this->subscribeNewUser($user_email);
+            $this->subscribeNewUser($user_email, $_POST["betrag"]);
             
             if ($this->registration_successful){
-                $this->addPersonalDataForUserReg($profile, $profile[betrag]);
+                $this->addPersonalDataForUserReg($profile, $profile["betrag"]);
                 $this->sendNewPayingUserEmailToInstitute($user_email);
 
                 //only redirect after registration was successfully finished
@@ -172,7 +173,7 @@ class Registration
 
     //main function to deal with registration of new users
     //initiated when only email is provided
-    private function subscribeNewUser($user_email)
+    private function subscribeNewUser($user_email, $betrag)
     {
         // we just remove extra space on email
         $user_email = trim($user_email);
@@ -228,6 +229,31 @@ class Registration
                 $query_delete_user->bindValue(':user_email', $user_email, PDO::PARAM_INT);
                 $query_delete_user->execute();
 
+				$level = 0;
+				
+            	switch ($betrag) {
+            	case 75:
+                	$level = 2;
+                	break;
+            	case 150:
+               		$level = 3;
+                	break;
+           		case 300:
+                	$level = 4;
+                	break;
+            	case 600:
+                	$level = 5;
+                	break;
+            	case 1200:
+                	$level = 6;
+                	break;
+            	case 2400:
+                	$level = 7;
+                	break;
+            	default: 
+                	$level = 1;
+                break;
+            }
 
                 // write new users data into database                
                 $query_new_user_insert = $this->db_connection->prepare('INSERT INTO grey_user (user_email, Mitgliedschaft, first_reg, user_password_hash, user_activation_hash, user_registration_ip, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :first_reg, :user_password_hash, :user_activation_hash, :user_registration_ip, now())');
@@ -243,14 +269,13 @@ class Registration
                 $query_new_user_insert->bindValue(':user_email', $user_email, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':first_reg', $_SESSION['first_reg'], PDO::PARAM_STR);
                 //$query_new_user_insert->bindValue(':first_reg', "eltern", PDO::PARAM_STR);
-                $query_new_user_insert->bindValue(':Mitgliedschaft', '1', PDO::PARAM_STR);
+                $query_new_user_insert->bindValue(':Mitgliedschaft', $level, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_activation_hash', $user_activation_hash, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
                 $query_new_user_insert->execute();
 
-                $_SESSION['Mitgliedschaft'] = 1;
-
+                $_SESSION['Mitgliedschaft'] = $level;
 
                 // id of new user
                 $grey_user_id = $this->db_connection->lastInsertId();
@@ -258,7 +283,7 @@ class Registration
 
                 if ($query_new_user_insert) {
                     // send a verification email
-                    if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password)) {
+                    if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password, $level)) {
                        // when mail has been send successfully
                        $this->messages[] = MESSAGE_VERIFICATION_MAIL_SENT;
                        $this->registration_successful = true;
@@ -381,13 +406,39 @@ class Registration
     #-------------------------------------
     #sendgrid
     #send an email to a newly subscribed member, containing password and activation link
-    public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password)
+    public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password, $level)
     {
 
         #---------------------------------------------------------------------------------------------
         #------------------HTML-BODY------------------------------------------------------------------
         #---------------------------------------------------------------------------------------------
 
+        #membership level
+        
+        switch ($level) {
+        case 2:
+            $mitgliedschaft = 'Gast';
+            break;
+        case 3:
+            $mitgliedschaft = 'Teilnehmer';
+            break;
+        case 4:
+            $mitgliedschaft = 'Scholar';
+            break;
+        case 5:
+            $mitgliedschaft = 'Partner';
+            break;
+        case 6:
+            $mitgliedschaft = 'Beirat';
+            break;
+		case 7: 
+            $mitgliedschaft = 'Ehrenpr&auml;sident';
+            break;
+		default:
+            $mitgliedschaft = 'Interessent';
+            break;
+        }
+        
         #verification link
         $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
 
@@ -414,7 +465,7 @@ class Registration
                 <span style="color: #000000;">
                 <!--#/html#-->
                 <br>            
-                Lieber Gast,
+                Lieber '.$mitgliedschaft.',
                 <br>
                 vielen Dank f&uuml;r Ihr Interesse!
                 <br>';

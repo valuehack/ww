@@ -435,7 +435,7 @@ elseif (isset($_POST['ok']))
     $user_email = $_POST['email'];
     $id = $_POST['event_id'];
     $title = $_POST['title'];
-
+?><!--
 	require_once('../config/config.php');
 	include('../views/_db.php');
 	
@@ -466,7 +466,7 @@ elseif (isset($_POST['ok']))
 	  $invoice_info[] = array("price" => $betrag, "quantity" => 1, "description" => "Einj&auml;hrige Mitgliedschaft - &quot;".$level."&quot; (".$membership_start." - ".$membership_end.")");
 	}
 	//include("../tools/invoice.php");
-
+--><?
 	include('../views/_header_not_in.php');
 
 	//after user is created, SESSION variables should be set in Login.php

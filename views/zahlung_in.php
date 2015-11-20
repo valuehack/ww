@@ -359,7 +359,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
       $user_email = $_SESSION['user_email'];
       $id = $_POST['event_id'];
       $title = $_POST['title'];
-      
+?><!--      
     require_once('../config/config.php');
 	include('../views/_db.php');
 	
@@ -390,7 +390,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
 	  $invoice_info[] = array("price" => $betrag, "quantity" => 1, "description" => "Einj&auml;hrige Mitgliedschaft - &quot;".$level."&quot (".$membership_start." - ".$membership_end.")");
 	}
 	//include("../tools/invoice.php");
-      
+--><?      
     include('_header_in.php');
   ?>    
 

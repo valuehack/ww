@@ -15,6 +15,7 @@ if ($id = $_GET["q"])
   $title=$entry[title];
   $avail=$entry[spots]-$entry[spots_sold];
   $text=$entry[text];
+  $n=$entry[n];
 ?>
 	<div class="medien_head">
   		<h1><?echo $title?></h1>
