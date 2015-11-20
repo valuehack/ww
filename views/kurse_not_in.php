@@ -111,7 +111,7 @@ if(isset($_GET['q']))
 	?>
   				<!-- Button trigger modal -->
   				<input type="button" class="salon_reservation_inputbutton" value="Anmelden" data-toggle="modal" data-target="#myModal" <?if($spots_available == 0){echo 'disabled';}?>>
-  				<p class="salon_reservation_span_c">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r das Seminar, sondern auch Zugang zu unserem weiteren Angebot. (u.a. Scholien, unserem Salon, Schriften, Medien)</p>
+  				<p class="salon_reservation_span_c">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r das Seminar, sondern auch Zugang zu unserem weiteren Angebot (u.a. Scholien, unserem Salon, Schriften, Medien).</p>
     		</div>
     	</div>
     </div>
@@ -458,7 +458,7 @@ else {
     		<input type="radio" class="profil_radio" name="zahlung" value="kredit">Paypal<br>
     		<input type="radio" class="profil_radio" name="zahlung" value="bar">Bar<br>
 
-			<p>Mit dem klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+			<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 			
     	    <input type="submit" class="profil_inputbutton" name="register_seminar_from_outside_submit" value="Anmelden">
     </form>
