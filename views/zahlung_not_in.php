@@ -36,7 +36,7 @@ if (isset($_POST["registrationform"])) {
 		<p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>
 		
 		<div class="payment_form">
-			<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account" accept-charset="UTF-8">
+			<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account">
                 
     			<input type="hidden" name="ok" value="2">
     			<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
@@ -97,7 +97,7 @@ if (isset($_POST["donationform"])) {
     <p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>
     
     <div class="payment_form">
-      <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account" accept-charset="UTF-8">
+      <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account">
                 
           <input type="hidden" name="ok" value="3">
           <input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
@@ -435,7 +435,8 @@ elseif (isset($_POST['ok']))
     $user_email = $_POST['email'];
     $id = $_POST['event_id'];
     $title = $_POST['title'];
-?><!--
+
+	/*
 	require_once('../config/config.php');
 	include('../views/_db.php');
 	
@@ -466,7 +467,7 @@ elseif (isset($_POST['ok']))
 	  $invoice_info[] = array("price" => $betrag, "quantity" => 1, "description" => "Einj&auml;hrige Mitgliedschaft - &quot;".$level."&quot; (".$membership_start." - ".$membership_end.")");
 	}
 	//include("../tools/invoice.php");
---><?
+*/
 	include('../views/_header_not_in.php');
 
 	//after user is created, SESSION variables should be set in Login.php
@@ -481,7 +482,7 @@ elseif (isset($_POST['ok']))
     if ($_POST['ok'] == 2) { 
 
       echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Kursteilnehmer&quot;</b> freigeschalten und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
-
+	  /*
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
       $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
 
@@ -490,7 +491,7 @@ elseif (isset($_POST['ok']))
 
       $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
       mysql_query($registration_query);
-
+	  */
       /* moved to Login.php - upgradeUserAccount
       $credits_left = 25;
 
@@ -510,6 +511,7 @@ elseif (isset($_POST['ok']))
            
       echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschalten.</p></div>';
 
+      /*
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
       $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
 
@@ -518,7 +520,7 @@ elseif (isset($_POST['ok']))
 
       $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
       mysql_query($registration_query);
-
+	  */
       /*
       $credits_left = 0;
 

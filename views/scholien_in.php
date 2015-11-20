@@ -57,7 +57,7 @@ if(isset($_GET['q']))
 	$result2 = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	$entry4 = mysql_fetch_array($result2);
 
-	if ($_SESSION['Mitgliedschaft'] == 1 OR $expired < time()) { 
+	if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div class='blog_info'>";
 				
 				echo $entry4[info1];			
@@ -96,6 +96,47 @@ if(isset($_GET['q']))
 		<footer class="blog_footer">
 		<p><a href="index.php">Alle Scholien</a></p>
 <?
+	}
+
+	elseif ($expired < time()) {
+		echo "<div class='blog_info'>";
+				
+				echo $entry4[info2];			
+		
+		echo "</div>";
+		echo "<header>";
+		echo "<h1>$title</h1>";
+		echo "</header>";	
+		
+		"<p class='blogdate'>".date('d.m.Y', strtotime($publ_date))."</p>";
+		?>
+		<!--<img class="blog_img" src="<?echo $img_url;?>" rel="image_src" alt="<?echo $id;?>">-->
+		<div class='blog_text'>			
+		<?php
+		echo $public;
+		echo "</div>";
+		
+		if ($l>10)
+		{
+		echo '<div class="blog_upgrade">';
+		echo $entry4[mehr_lesen1];
+			?>
+
+		<script type="text/javascript">
+			function length() {
+				document.getElementById('length').innerHTML = <?php echo json_encode($length) ?>
+			}
+			window.open = length();
+		</script>
+			
+
+		<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+		</div>
+		<? }
+		?>
+		<footer class="blog_footer">
+		<p><a href="index.php">Alle Scholien</a></p>
+<?php
 	}
 
 	else {
