@@ -131,7 +131,7 @@ elseif(isset($_POST['pay'])) {
 		<div class="payment">
 		<h1>Zahlung</h1>
 		<div class="profil payment_width">
-		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account" accept-charset="UTF-8">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="upgrade_user_account">
 
 		<p>Bitte geben Sie Ihre Daten ein:</p>
 
