@@ -2006,13 +2006,12 @@ a:visited.medien_title_list {
 }
 
 .projekte_investment {
-	font-size: 12pt;
 	line-height: 1.5;
-	margin-bottom: 40px;
+	margin: 40px 0;
 }
 
 .projekte_investment_radio {
-	margin: 10px;
+	margin: 0 10px 0 0;
 }
 
 img.projekte_coin  {

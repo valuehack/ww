@@ -174,7 +174,7 @@ else {
     	<!-- <form method="post" action="../abo/zahlung.php" name="user_create_profile_form"> -->
       
       	<div class="profil payment_width">
-      	<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form" accept-charset="UTF-8">
+      	<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">
       
         	<input type="hidden" name="seminar_profile[event_id]" value="<?php echo $n ?>">
         	<input type="hidden" name="seminar_profile[title]" value="<?php echo $title ?>">

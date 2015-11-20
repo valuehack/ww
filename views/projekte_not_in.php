@@ -67,33 +67,44 @@ else {
 </div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <div class="modal-dialog-login modal-form-width">
+    <div class="modal-content-login">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h2 class="modal-title" id="myModalLabel">Investieren</h2>
       </div>
       <div class="modal-body">
-        <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">
-            <input type="hidden" name="event_id" value="<?php echo $n ?>" />
-            <input type="hidden" name="title" value="<?php echo $title ?>" />
-        
-        <div class="centered">
-        <div class="salon_input">
-              <input class="salon_inputfield" id="user_email" type="email" name="projekte_profile[user_email]" placeholder=" E-Mail" required><br> 
-              <select class="salon_inputfield_select" id="user_anrede" name="projekte_profile[user_anrede]" required>
-        			<option value="Herr">Herr</option>
-        			<option value="Frau">Frau</option>
-        	  </select>
-              <input class="salon_inputfield" id="user_first_name" type="text" name="projekte_profile[user_first_name]" placeholder=" Vorname" required><br>
-              <input class="salon_inputfield" id="user_surname" type="text" name="projekte_profile[user_surname]" placeholder=" Nachname" required><br>
-              <input class="salon_inputfield" id="user_telefon" type="tel"  name="projekte_profile[user_telefon]" placeholder=" Telefonnummer"><br>
-              <input class="salon_inputfield" id="user_street" type="text" name="projekte_profile[user_street]" placeholder=" Stra&szlig;e und Hausnummer" required><br> 
-              <input class="salon_inputfield" id="user_plz" type="text" name="projekte_profile[user_plz]" placeholder=" Postleitzahl" required><br>
-              <input class="salon_inputfield" id="user_city" type="text" name="projekte_profile[user_city]" placeholder=" Stadt" required><br>
-              <select class="salon_inputfield_select" id="user_country" name="projekte_profile[user_country]" placeholder=" Land" required>
-              	<option value="<?php echo $result_row->Land; ?>"><?php if ($result_row->Land) echo $result_row->Land; ?></option>
-        			<option value="&Ouml;sterreich" selected>&Ouml;sterreich</option>
+      	<div class="profil payment_width">
+      		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">
+      
+            <input type="hidden" name="event_id" value="<?php echo $n ?>">
+            <input type="hidden" name="title" value="<?php echo $title ?>">
+				
+			<label for="user_email">E-Mail</label>
+        	<input id="ajax_email_exists" type="email" class="profil_inputfield" name="projekte_profile[user_email]" required><br>
+        	<div id="ajax_email_exists_error"></div><br><br>
+        	
+        	<label for="user_anrede">Anrede</label> 
+        	<select id="user_anrede" name="profile[user_anrede]" required>
+        		<option value="Herr">Herr</option>
+        		<option value="Frau">Frau</option>
+        	</select>
+        	<label for="user_first_name">Vorname</label>		
+        	<input class="profil_inputfield" id="user_first_name" type="text" name="projekte_profile[user_first_name]" required><br>
+        	<label for="user_surname">Nachname</label>
+        	<input class="profil_inputfield" id="user_surname" type="text" name="projekte_profile[user_surname]" required><br>
+        	<label for="user_telefon">Telefon</label>
+        	<input class="profil_inputfield" id="user_telefon" type="tel"  name="projekte_profile[user_telefon]"><br>
+        	<label for="user_street">Stra&szlig;e</label>
+        	<input class="profil_inputfield" id="user_street" type="text" name="projekte_profile[user_street]" required><br>
+        	<label for="user_plz">PLZ</label> 
+        	<input class="profil_inputfield" id="user_plz" type="text" name="projekte_profile[user_plz]" required><br>
+        	<label for="user_city">Ort</label>
+        	<input class="profil_inputfield" id="user_city" type="text" name="projekte_profile[user_city]" required><br>
+
+			<label for="user_country">Land</label>
+        	<select id="user_country" name="projekte_profile[user_country]" required>
+        			<option value="&Ouml;sterreich">&Ouml;sterreich</option>
         			<option value="Deutschland">Deutschland</option>
         			<option value="Schweiz">Schweiz</option>
         			<option value="Liechtenstein">Liechtenstein</option>
@@ -335,38 +346,36 @@ else {
                     <option value="Wei&szlig;russland">Wei&szlig;russland</option>
                     <option value="Westsahara">Westsahara</option>
                     <option value="Zentralafrikanische Republik">Zentralafrikanische Republik</option>
-                    <option value="Zypern">Zypern</option></select><br> 
-			</div>
-			</div>
+                    <option value="Zypern">Zypern</option></select>
+                
               <div class="projekte_investment">
               <input type="radio" class="projekte_investment_radio" name="projekte_profile[betrag]" value="150" required>150&euro;: Sie erhalten Zugriff auf die Scholien und andere Inhalte.<br><br>
               <input type="radio" class="projekte_investment_radio" name="projekte_profile[betrag]" value="300">300&euro;: Ab diesem Beitrag haben Sie als Scholar vollen Zugang zu allen unseren Inhalten und Veranstaltungen.<br><br>
               <input type="radio" class="projekte_investment_radio" name="projekte_profile[betrag]" value="600">600&euro;: Ab diesem Beitrag werden Sie Partner, wir f&uuml;hren Sie (au&szlig;er anders gew&uuml;nscht) pers&ouml;nlich mit Link auf unserer Seite an und laden Sie zu einem exklusiven Abendessen ein (oder Sie erhalten einen Geschenkkorb)<br><br>
               <input type="radio" class="projekte_investment_radio" name="projekte_profile[betrag]" value="1200">1200&euro;: Ab diesem Beitrag nehmen wir Sie als Beirat auf und laden Sie zu unserer Strategieklausur ein.<br><br>
-              <input type="radio" class="projekte_investment_radio" name="projekte_profile[betrag]" value="2400">2400&euro;: Ab diesem Beitrag werden Sie Ehrenpr&auml;sident und bestimmen bis zu zweimal im Jahr ein Thema f&uuml;r das <i>scholarium</i>.<br>
-        	</div>
-
+              <input type="radio" class="projekte_investment_radio" name="projekte_profile[betrag]" value="2400">2400&euro;: Ab diesem Beitrag werden Sie Ehrenpr&auml;sident und bestimmen bis zu zweimal im Jahr ein Thema f&uuml;r das <i>scholarium</i>.<br>  
+               </div>
             <p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p> 
+                
+			<input type="hidden" name="ok" value="1">
+    		<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
+    		<input type="hidden" name="level" value="<?php echo $level; ?>">
 
-            <input type="hidden" name="ok" value="1">
+    		<input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="bank" required>&Uuml;berweisung<br>
+    		<input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="kredit">Paypal<br>
+    		<input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="bar">Bar<br>
 
-            <input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="bank" required>&Uuml;berweisung<br>
-            <input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="kredit">Paypal<br>
-            <input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="bar">Bar<br>
-
-            <p>Mit dem Klick auf <i>Investieren</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a><br>
-            	Nachdem Sie Ihre Anmeldung &uuml;ber den Link in der Ihnen zugesandten E-Mail abgeschlossen haben, k&ouml;nnen Sie unter Projekte das von Ihnen pr&auml;ferierte Projekt unterst&uuml;tzen. Vielen Dank!
-            </p>
-
-        <div class="centered">
-          <input type=hidden name="projekte_profile[first_reg]" value="projekte">
-
-          <input type="submit" class="inputbutton_login" name="register_projekte_from_outside_submit" value="Investieren"/>
-        </div>
+			<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+			
+			<input type=hidden name="projekte_profile[first_reg]" value="projekte">
+			<input type="submit" class="profil_inputbutton" name="register_projekte_from_outside_submit" value="Investieren">
+          
     </form>
+            
     <!--TO DO: Create account when registering for the event -->
         </div>
     </div>
+  </div>
   </div>
 </div>
 
