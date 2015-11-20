@@ -44,7 +44,7 @@ $zahlung = $profile[zahlung];
     #$result_row = $login->getUserData(trim($_SESSION['user_email']));
 
     ?>
-    <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <b><?=$betrag?></b> per Paypal: Einfach auf das Symbol unterhalb klicken, Ihre Kreditkartennummer eingeben, fertig. Unser Partner PayPal garantiert eine schnelle, einfache und sichere Zahlung (an Geb&uuml;hren fallen 2-3% vom Betrag an). Sie m&uuml;ssen kein eigenes Konto bei PayPal einrichten, die Eingabe Ihrer Kreditkartendaten reicht.</p>
+    <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <b><?php echo $profile[betrag] ?></b> per Paypal: Einfach auf das Symbol unterhalb klicken, Ihre Kreditkartennummer eingeben, fertig. Unser Partner PayPal garantiert eine schnelle, einfache und sichere Zahlung (an Geb&uuml;hren fallen 2-3% vom Betrag an). Sie m&uuml;ssen kein eigenes Konto bei PayPal einrichten, die Eingabe Ihrer Kreditkartendaten reicht.</p>
 
     <div class="centered">
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" name="paypal">
