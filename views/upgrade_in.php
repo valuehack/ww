@@ -213,6 +213,7 @@ include('_header_in.php');
 			echo $op6;
 		}
 		if ($mitgliedschaft == 2) {
+			echo $op1;
 			echo $op2;
 			echo $op3;
 			echo $op4;
@@ -220,6 +221,7 @@ include('_header_in.php');
 			echo $op6;
 		}
 		if ($mitgliedschaft == 3) {
+			echo $op1;
 			echo $op2;
 			echo $op3;
 			echo $op4;
@@ -227,6 +229,7 @@ include('_header_in.php');
 			echo $op6;
 		}
 		if ($mitgliedschaft == 4) {
+			echo $op2;
 			echo $op3;
 			echo $op4;
 			echo $op5;
