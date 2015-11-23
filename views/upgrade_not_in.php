@@ -81,7 +81,7 @@ $(document).ready(function(){
                     <td class="pay_option_form" colspan="2">
                         <form method="post" action="zahlung.php">
                             <input type="hidden" name="betrag" value="150">
-                            <input type="hidden" name="level" value="Kursteilnehmer">
+                            <input type="hidden" name="level" value="Teilnehmer">
                             <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Teilnehmer">
                         </form>   
                     </td>

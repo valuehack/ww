@@ -380,7 +380,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
     //Invoice Generation
     if ($source == 2) {
       $invoice_info[] = array("price" => $betrag, "quantity" => 1, "description" => "Seminar: ".ucfirst($title));
-	  $invoice_info[] = array("price" => 0, "quantity" => 1, "description" => "Einj&auml;hrige Mitgliedschaft - &quot;Kursteilnehmer&quot; (".$membership_start." - ".$membership_end.")");
+	  $invoice_info[] = array("price" => 0, "quantity" => 1, "description" => "Einj&auml;hrige Mitgliedschaft - &quot;Teilnehmer&quot; (".$membership_start." - ".$membership_end.")");
 	}
 	elseif ($source == 3) {
 	  $invoice_info[] = array("price" => $betrag, "quantity" => 1, "description" => "Projekt: ".ucfirst($title));
@@ -403,7 +403,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
           // payments coming from kurse_in (Membership 1)
       if ($source == 2) { 
       
-        echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Kursteilnehmer&quot;</b> freigeschalten und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
+        echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Teilnehmer&quot;</b> freigeschaltet und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
 
         $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
         $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
@@ -430,7 +430,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
           // payments coming from projekte_in (Membership 1)
       elseif ($source == 3) { 
 
-        echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschalten.</p></div>';
+        echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschaltet.</p></div>';
 
         $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
         $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());

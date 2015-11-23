@@ -820,7 +820,7 @@ class Registration
             $query_move_to_main->bindValue(':surname', $the_row->Nachname, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':country', $the_row->Land, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':city', $the_row->Ort, PDO::PARAM_STR);
-            $query_move_to_main->bindValue(':street', $the_row->Ort, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':street', $the_row->Strasse, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':plz', $the_row->PLZ, PDO::PARAM_STR);
 
             $query_move_to_main->bindValue(':first_reg', $the_row->first_reg, PDO::PARAM_STR);
