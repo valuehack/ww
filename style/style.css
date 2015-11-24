@@ -1879,6 +1879,18 @@ a:visited.medien_title_list {
 	display: block;
 }
 
+.schriften-price--small {
+	font-size: 16pt !important;
+	margin: 0 5px 25px 0;
+	display: block;
+	line-height: 1.4;
+	text-align: justify;
+	-ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto
+}
+
 .schriften_type {
 	font-size: 12pt;
 	font-style: italic;

@@ -49,7 +49,10 @@ class Registration
         } elseif (isset($_POST["eintragen_submit"])) {
 
             $_SESSION['first_reg'] = $_POST['first_reg'];
-            $this->subscribeNewUser($_POST['user_email']);
+			$user_anrede = '';
+			$user_surname = '';
+			$betrag = 1;
+            $this->subscribeNewUser($_POST['user_email'], $betrag, $user_anrede, $user_surname);
         }
         #registration of not logged in users that provide data
         #
@@ -59,10 +62,12 @@ class Registration
             $_SESSION["profile"] = $profile;
 
             $user_email = $profile[user_email];
-            
+            $user_anrede = $profile[user_anrede];
+			$user_surname = $profile[user_surname];
+						
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-            $this->subscribeNewUser($user_email, $_POST["betrag"], $profile['user_anrede'], $profile['user_surename']);
+            $this->subscribeNewUser($user_email, $_POST["betrag"], $user_anrede, $user_surname);
 
             if ($this->registration_successful){
                 $this->addPersonalDataForUserReg($profile, $_POST["betrag"]);
@@ -78,7 +83,7 @@ class Registration
 
             //grab post here and send it over to other functions              
             $profile = $_POST["seminar_profile"];
-            $_SESSION["seminar_profile"] = $profile;			
+            $_SESSION["seminar_profile"] = $profile;
 
             $user_email = $profile[user_email];
 			$user_anrede = $profile[user_anrede];
@@ -128,7 +133,7 @@ class Registration
 
             $_SESSION["profile"] = $profile;
 
-            $user_email = $profile[user_email];    
+            $user_email = $profile[user_email];
             $this->subscribeNewUser($user_email);
 
             if ($this->registration_successful){
@@ -181,7 +186,6 @@ class Registration
     {
         // we just remove extra space on email
         $user_email = trim($user_email);
-		$user_anrede = $user_anrede;
 
         // check provided data validity
         // TODO: check for "return true" case early, so put this first
@@ -424,10 +428,16 @@ class Registration
         if ($user_anrede == 'Frau'){
         	$anrede = 'Sehr geehrte Frau';
         }
-		else {
+		elseif ($user_anrede == 'Herr') {
 			$anrede = 'Sehr geehrter Herr';
 		}
+		else {
+			$anrede = 'Lieber';
+		}
         
+		if ($user_surname == ''){
+			$user_surname = 'Gast';
+		}
         /*#membership level
         
         switch ($level) {

@@ -24,7 +24,7 @@ function changePrice(totalQuantity, price_book){
 }
 
 function changeprice_book(totalQuantity, price_book){
-    document.getElementById("total2").innerHTML = (totalQuantity * price_book);
+    document.getElementById("price").innerHTML = (totalQuantity * price_book);
 }
 </script>
 
@@ -107,15 +107,15 @@ if(isset($_GET['q']))
 			  echo '<span class="schriften_type">'.ucfirst($entry3[type]).'</span>';
 			  if ($_SESSION['Mitgliedschaft'] == 1) {
 			  	if ($bought >= 1) {
-    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits als ';
-    					if (isset($format_bought[0])) echo $format_bought[0];
-						if (isset($format_bought[1])) echo ', '.$format_bought[1];
-						if (isset($format_bought[2])) echo ', '.$format_bought[2];
-						if (isset($format_bought[3])) echo ', '.$format_bought[3];
-    					echo ' erworben.</span>';
+    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits als ';
+    					if (isset($format_bought[0])) echo '<em>'.$format_bought[0].'</em>';
+						if (isset($format_bought[2])) echo ', <em>'.$format_bought[2].'</em>';
+						if (isset($format_bought[3])) echo ', <em>'.$format_bought[3].'</em>';
+						if (isset($format_bought[1])) echo ' und <em>'.$format_bought[1].'</em>';
+    					echo ' erworben. Sie k&ouml;nnen ihn unter <a href="../abo/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
     				}
 			  	?>     					 
-    		<input type="button" value="Bestellen und Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal" <? if($bought >= 1) echo "disabled"?>>
+    		<input type="button" value="Bestellen" class="inputbutton" data-toggle="modal" data-target="#myModal" <? if($bought >= 1) echo "disabled"?>>
     		<?  
   			  }
   			  else {
@@ -129,23 +129,23 @@ if(isset($_GET['q']))
 					
     			?>
     		<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-      			<input type="hidden" name="add" value="<?php echo $n; ?>" />
+      			<input type="hidden" name="add" value="<?php echo $n; ?>">
      
     		<?php
     			if ($entry3[format] == '0001') {
-    				echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="total2" class="schriften_price">'.$entry3[price].' </span>';
+    				echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="total2" class="schriften_price">'.$entry3[price_book].' </span>';
 					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				else {
-					if ($bought >= 1) {
-    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits als ';
-    					if (isset($format_bought[0])) echo $format_bought[0];
-						if (isset($format_bought[1])) echo ', '.$format_bought[1];
-						if (isset($format_bought[2])) echo ', '.$format_bought[2];
-						if (isset($format_bought[3])) echo ', '.$format_bought[3];
-    					echo ' erworben.</span>';
-    				}
-
+			  		if ($bought >= 1) {
+    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits als ';
+    					if (isset($format_bought[0])) echo '<em>'.$format_bought[0].'</em>';
+						if (isset($format_bought[2])) echo ', <em>'.$format_bought[2].'</em>';
+						if (isset($format_bought[3])) echo ', <em>'.$format_bought[3].'</em>';
+						if (isset($format_bought[1])) echo ' und <em>'.$format_bought[1].'</em>';
+    					echo ' erworben. Sie k&ouml;nnen ihn unter <a href="../abo/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
+					}
+					
 					echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="price" class="schriften_price">' .$entry3[price].' </span>';
 					
 					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
@@ -178,7 +178,7 @@ if(isset($_GET['q']))
 				echo '</select></span>';
 				
         echo '<span class="schriften_quantity">Anzahl: ';
-        if ($entry3[format] == '0001') {
+        if ($entry3[format] == '0001' OR $entry3[format] == '0011' OR $entry3[format] == '0111' OR $entry3[format] == '1111' OR $entry3[format] == '1001' OR $entry3[format] == '1011' OR $entry3[format] == '1101' OR $entry3[format] == '0101') {
 				echo '<input type="number" name="quantity" onchange="changeprice_book(this.value,'.$price_book.')" value="1" min="1" max="100">';
 					}
         else {
