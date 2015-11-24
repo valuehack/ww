@@ -169,9 +169,6 @@ while ($entry = mysql_fetch_array($result))
 <!-- Layout-->
         <header class="header">
             <div class="login">   
-				<div class="github">
-					<a href="https://github.com/valuehack/ww">Unsere Webprojekte sind Open Source</a>
-				</div>	
                 <?php
 
                   // show potential errors / feedback (from login object)

@@ -150,14 +150,14 @@ if(isset($_POST['checkout'])) {
 					
 					//Prepare Book Order eMail
 					
-					if ($format == 'Buch'){
-						$buch_array[] = array($title2, $quantity);
+					if ($format == 'Druck'){
+						$druck_array[] = array($title2, $quantity);
 					}							
 				
                 }
 
 		//Send Book Order eMail
-		function sendBookOrder($user_name, $user_surname, $user_email, $user_id, $user_street, $user_plz, $user_city, $user_country, $buch_array)
+		function sendBookOrder($user_name, $user_surname, $user_email, $user_id, $user_street, $user_plz, $user_city, $user_country, $druck_array)
     	{
         //consturct email body
         $body = '<h3>Buchbestellung</h3>
@@ -175,9 +175,9 @@ if(isset($_POST['checkout'])) {
 				
 				$i = 0;
 				
-				while ($i < count($buch_array)){
-					$body = $body.'Titel:'.$buch_array[$i][0].'<br>
-							Menge: '.$buch_array[$i][1].'<br><br>';
+				while ($i < count($druck_array)){
+					$body = $body.'Titel:'.$druck_array[$i][0].'<br>
+							Menge: '.$druck_array[$i][1].'<br><br>';
 					$i++;
 				}
         		                   
@@ -219,8 +219,8 @@ if(isset($_POST['checkout'])) {
         curl_close($ch);
     }
 	
-	if (isset($buch_array)){
-	sendBookOrder($user_name, $user_surname, $user_email, $user_id, $user_street, $user_plz, $user_city, $user_country, $buch_array);
+	if (isset($druck_array)){
+	sendBookOrder($user_name, $user_surname, $user_email, $user_id, $user_street, $user_plz, $user_city, $user_country, $druck_array);
 	}
 					
         

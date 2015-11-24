@@ -19,6 +19,7 @@
         				<li>E-Mail:&nbsp;<a href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;</a></li>
 					</ul>
 					<p><a href="../agb/">AGB</a></p> 
+					<!--<p><a href="">Unsere Projekte sind Open Source</a></p>-->
         		</div>
         	</div>
         	<div class="footer_section">
