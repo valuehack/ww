@@ -62,7 +62,7 @@ class Registration
             
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-            $this->subscribeNewUser($user_email, $_POST["betrag"], $profile['user_anrede']);
+            $this->subscribeNewUser($user_email, $_POST["betrag"], $profile['user_anrede'], $profile['user_surename']);
 
             if ($this->registration_successful){
                 $this->addPersonalDataForUserReg($profile, $_POST["betrag"]);
@@ -82,11 +82,12 @@ class Registration
 
             $user_email = $profile[user_email];
 			$user_anrede = $profile[user_anrede];
+			$user_surname = $profile[user_surname];
             $betrag = 150;
 						
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-            $this->subscribeNewUser($user_email, $betrag, $user_anrede);
+            $this->subscribeNewUser($user_email, $betrag, $user_anrede, $user_surname);
             
             if ($this->registration_successful){
                 $this->addPersonalData($profile);
@@ -105,10 +106,11 @@ class Registration
 
             $user_email = $profile[user_email];
 			$user_anrede = $profile[user_anrede];
+			$user_surname = $profile[user_surname];
             						
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-            $this->subscribeNewUser($user_email, $_POST["betrag"], $user_anrede);
+            $this->subscribeNewUser($user_email, $_POST["betrag"], $user_anrede, $user_surname);
             
             if ($this->registration_successful){
                 $this->addPersonalDataForUserReg($profile, $_POST["betrag"]);
@@ -175,7 +177,7 @@ class Registration
 
     //main function to deal with registration of new users
     //initiated when only email is provided
-    private function subscribeNewUser($user_email, $betrag, $user_anrede)
+    private function subscribeNewUser($user_email, $betrag, $user_anrede, $user_surname)
     {
         // we just remove extra space on email
         $user_email = trim($user_email);
@@ -287,7 +289,7 @@ class Registration
 
                 if ($query_new_user_insert) {
                     // send a verification email
-                    if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level)) {
+                    if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level, $user_surname)) {
                        // when mail has been send successfully
                        $this->messages[] = MESSAGE_VERIFICATION_MAIL_SENT;
                        $this->registration_successful = true;
@@ -410,7 +412,7 @@ class Registration
     #-------------------------------------
     #sendgrid
     #send an email to a newly subscribed member, containing password and activation link
-    public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level)
+    public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level, $user_surname)
     {
 
         #---------------------------------------------------------------------------------------------
@@ -420,12 +422,13 @@ class Registration
         #anrede
         
         if ($user_anrede == 'Frau'){
-        	$anrede = 'Liebe';
+        	$anrede = 'Sehr geehrte Frau';
         }
 		else {
-			$anrede = 'Lieber';
+			$anrede = 'Sehr geehrter Herr';
 		}
-        #membership level
+        
+        /*#membership level
         
         switch ($level) {
         case 2:
@@ -484,7 +487,7 @@ class Registration
             	$mitgliedschaft = 'Interessent';
 			}
             break;
-        }
+        }*/
         
         #verification link
         $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
@@ -512,7 +515,7 @@ class Registration
                 <span style="color: #000000;">
                 <!--#/html#-->
                 <br>            
-                '.$anrede.' '.$mitgliedschaft.',
+                '.$anrede.' '.$user_surname.',
                 <br>
                 vielen Dank f&uuml;r Ihr Interesse!
                 <br>';
