@@ -185,7 +185,7 @@ else {
         	<div id="ajax_email_exists_error"></div><br><br>
         	
         	<label for="user_anrede">Anrede</label> 
-        	<select id="user_anrede" name="profile[user_anrede]" required>
+        	<select id="user_anrede" name="seminar_profile[user_anrede]" required>
         		<option value="Herr">Herr</option>
         		<option value="Frau">Frau</option>
         	</select>
@@ -194,7 +194,7 @@ else {
         	<label for="user_surname">Nachname</label>
         	<input class="profil_inputfield" id="user_surname" type="text" name="seminar_profile[user_surname]" required><br>
         	<label for="user_telefon">Telefon</label>
-        	<input class="profil_inputfield" id="user_telefon" type="tel"  name="profile[user_telefon]"><br>
+        	<input class="profil_inputfield" id="user_telefon" type="tel"  name="seminar_profile[user_telefon]"><br>
         	<label for="user_street">Stra&szlig;e</label>
         	<input class="profil_inputfield" id="user_street" type="text" name="seminar_profile[user_street]" required><br>
         	<label for="user_plz">PLZ</label> 

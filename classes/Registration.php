@@ -81,7 +81,7 @@ class Registration
             $_SESSION["seminar_profile"] = $profile;			
 
             $user_email = $profile[user_email];
-			$user_anrede = $_POST['profile']['user_anrede'];
+			$user_anrede = $profile[user_anrede];
             $betrag = 150;
 						
             #if $user_email is unique -> then continue with registration
@@ -856,19 +856,21 @@ class Registration
             //copy data to the main database
             $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
                 mitgliederExt 
-                (user_email, Mitgliedschaft, Vorname, Nachname, Land, Ort, Strasse, PLZ, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
+                (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
                 VALUES
-                (:user_email, :Mitgliedschaft, :name, :surname, :country, :city, :street, :plz, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
+                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
 
             $query_move_to_main->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':Mitgliedschaft', $the_row->Mitgliedschaft, PDO::PARAM_STR);
 
             $query_move_to_main->bindValue(':name', $the_row->Vorname, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':surname', $the_row->Nachname, PDO::PARAM_STR);
+			$query_move_to_main->bindValue(':anrede', $the_row->Anrede, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':country', $the_row->Land, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':city', $the_row->Ort, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':street', $the_row->Strasse, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':plz', $the_row->PLZ, PDO::PARAM_STR);
+			$query_move_to_main->bindValue(':telefon', $the_row->Telefon, PDO::PARAM_STR);
 
             $query_move_to_main->bindValue(':first_reg', $the_row->first_reg, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':credits_left', $the_row->credits_left, PDO::PARAM_STR);
