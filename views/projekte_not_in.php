@@ -85,7 +85,7 @@ else {
         	<div id="ajax_email_exists_error"></div><br><br>
         	
         	<label for="user_anrede">Anrede</label> 
-        	<select id="user_anrede" name="profile[user_anrede]" required>
+        	<select id="user_anrede" name="projekte_profile[user_anrede]" required>
         		<option value="Herr">Herr</option>
         		<option value="Frau">Frau</option>
         	</select>

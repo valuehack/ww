@@ -62,7 +62,7 @@ class Registration
             
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-            $this->subscribeNewUser($user_email, $_POST["betrag"]);
+            $this->subscribeNewUser($user_email, $_POST["betrag"], $profile['user_anrede']);
 
             if ($this->registration_successful){
                 $this->addPersonalDataForUserReg($profile, $_POST["betrag"]);
@@ -78,14 +78,15 @@ class Registration
 
             //grab post here and send it over to other functions              
             $profile = $_POST["seminar_profile"];
-            $_SESSION["seminar_profile"] = $profile;
+            $_SESSION["seminar_profile"] = $profile;			
 
             $user_email = $profile[user_email];
+			$user_anrede = $_POST['profile']['user_anrede'];
             $betrag = 150;
 						
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-            $this->subscribeNewUser($user_email, $betrag);
+            $this->subscribeNewUser($user_email, $betrag, $user_anrede);
             
             if ($this->registration_successful){
                 $this->addPersonalData($profile);
@@ -103,13 +104,14 @@ class Registration
             $_SESSION["projekte_profile"] = $profile;
 
             $user_email = $profile[user_email];
+			$user_anrede = $profile[user_anrede];
             						
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
-            $this->subscribeNewUser($user_email, $_POST["betrag"]);
+            $this->subscribeNewUser($user_email, $_POST["betrag"], $user_anrede);
             
             if ($this->registration_successful){
-                $this->addPersonalDataForUserReg($profile, $profile["betrag"]);
+                $this->addPersonalDataForUserReg($profile, $_POST["betrag"]);
                 $this->sendNewPayingUserEmailToInstitute($user_email);
 
                 //only redirect after registration was successfully finished
@@ -173,10 +175,11 @@ class Registration
 
     //main function to deal with registration of new users
     //initiated when only email is provided
-    private function subscribeNewUser($user_email, $betrag)
+    private function subscribeNewUser($user_email, $betrag, $user_anrede)
     {
         // we just remove extra space on email
         $user_email = trim($user_email);
+		$user_anrede = $user_anrede;
 
         // check provided data validity
         // TODO: check for "return true" case early, so put this first
@@ -276,14 +279,15 @@ class Registration
                 $query_new_user_insert->execute();
 
                 $_SESSION['Mitgliedschaft'] = $level;
-
+				
+				
                 // id of new user
                 $grey_user_id = $this->db_connection->lastInsertId();
                 $_SESSION['grey_user_id'] = $grey_user_id;
 
                 if ($query_new_user_insert) {
                     // send a verification email
-                    if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password, $level)) {
+                    if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level)) {
                        // when mail has been send successfully
                        $this->messages[] = MESSAGE_VERIFICATION_MAIL_SENT;
                        $this->registration_successful = true;
@@ -406,36 +410,79 @@ class Registration
     #-------------------------------------
     #sendgrid
     #send an email to a newly subscribed member, containing password and activation link
-    public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password, $level)
+    public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level)
     {
 
         #---------------------------------------------------------------------------------------------
         #------------------HTML-BODY------------------------------------------------------------------
         #---------------------------------------------------------------------------------------------
 
+        #anrede
+        
+        if ($user_anrede == 'Frau'){
+        	$anrede = 'Liebe';
+        }
+		else {
+			$anrede = 'Lieber';
+		}
         #membership level
         
         switch ($level) {
         case 2:
-            $mitgliedschaft = 'Gast';
+        	if ($user_anrede == 'Frau'){
+        		$mitgliedschaft = 'G&auml;stin';
+        	}
+			else {
+            	$mitgliedschaft = 'Gast';
+			}
             break;
         case 3:
-            $mitgliedschaft = 'Teilnehmer';
+			if ($user_anrede == 'Frau'){
+        		$mitgliedschaft = 'Teilnehmerin';
+        	}
+			else {
+            	$mitgliedschaft = 'Teilnehmer';
+			}
             break;
         case 4:
-            $mitgliedschaft = 'Scholar';
+			if ($user_anrede == 'Frau'){
+        		$mitgliedschaft = 'Scholarin';
+        	}
+			else {
+            	$mitgliedschaft = 'Scholar';
+			}
             break;
         case 5:
-            $mitgliedschaft = 'Partner';
+			if ($user_anrede == 'Frau'){
+        		$mitgliedschaft = 'Partnerin';
+        	}
+			else {
+            	$mitgliedschaft = 'Partner';
+			}
             break;
         case 6:
-            $mitgliedschaft = 'Beirat';
+			if ($user_anrede == 'Frau'){
+        		$mitgliedschaft = 'Beir&auml;tin';
+        	}
+			else {
+            	$mitgliedschaft = 'Beirat';
+			}
             break;
-		case 7: 
-            $mitgliedschaft = 'Ehrenpr&auml;sident';
+		case 7:
+			if ($user_anrede == 'Frau'){
+        		$mitgliedschaft = 'Ehrenpr&auml;sidentin';
+        	}
+			else {
+            	$mitgliedschaft = 'Ehrenpr&auml;sident';
+			} 
             break;
 		default:
-            $mitgliedschaft = 'Interessent';
+			if ($user_anrede == 'Frau'){
+        		$mitgliedschaft = 'Interessentin';
+        	}
+			else {
+            	$mitgliedschaft = 'Interessent';
+			}
             break;
         }
         
@@ -465,7 +512,7 @@ class Registration
                 <span style="color: #000000;">
                 <!--#/html#-->
                 <br>            
-                Lieber '.$mitgliedschaft.',
+                '.$anrede.' '.$mitgliedschaft.',
                 <br>
                 vielen Dank f&uuml;r Ihr Interesse!
                 <br>';
