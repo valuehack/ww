@@ -369,7 +369,7 @@ else {
 
 		
 			<input type="hidden" name="projekte_profile[first_reg]" value="projekt_<?php echo $n; ?>">
-			<input type="submit" class="profil_inputbutton" name="register_projekte_from_outside_submit" value="Investieren">
+			<input id="weiter_button" type="submit" class="profil_inputbutton" name="register_projekte_from_outside_submit" value="Investieren">
           
     </form>
             
