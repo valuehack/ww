@@ -118,8 +118,8 @@ class Registration
             $this->subscribeNewUser($user_email, $_POST["betrag"], $user_anrede, $user_surname);
             
             if ($this->registration_successful){
-                $this->addPersonalDataForUserReg($profile, $_POST["betrag"]);
-                $this->sendNewPayingUserEmailToInstitute($user_email);
+                $this->addPersonalDataForProjekteReg($profile);
+                #$this->sendNewPayingUserEmailToInstitute($user_email);
 
                 //only redirect after registration was successfully finished
                 #form action already directs to abo zahlung
@@ -325,6 +325,67 @@ class Registration
 
         return $str;
     }
+     #-------------------------------------
+    public function addPersonalDataForProjekteReg($profile)
+    {  
+
+        $user_email = $profile[user_email];
+        $name = $profile[user_first_name];
+        $surname = $profile[user_surname];
+        $street = $profile[user_street];
+        $city = $profile[user_city];
+        $country = $profile[user_country];
+        $plz = $profile[user_plz];
+
+        $event_id = $profile[event_id];
+        #$credits = $profile[credits];
+
+        if (isset($profile[event_id])) $first_reg = $profile[event_id];  
+        if (isset($profile[first_reg])) $first_reg = $profile[first_reg];
+
+        $anrede = $profile[user_anrede];
+        $telefon = $profile[user_telefon];
+
+        $betrag = $profile[betrag];
+
+        $Mitgliedschaft = 0;
+        if (isset($betrag))
+        {
+            switch ($betrag) {
+            case 75:
+                $Mitgliedschaft = 2;
+                break;
+            case 150:
+                $Mitgliedschaft = 3;
+                break;
+            case 300:
+                $Mitgliedschaft = 4;
+                break;
+            case 600:
+                $Mitgliedschaft = 5;
+                break;
+            case 1200:
+                $Mitgliedschaft = 6;
+                break;
+            case 2400:
+                $Mitgliedschaft = 7;
+                break;
+            default: 
+                $Mitgliedschaft = 1;
+                break;
+            }
+
+        }
+        
+        $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
+        $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
+
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', Gesamt = $betrag, Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
+        $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
+     
+    }
+
+    #-------------------------------------
 
     #-------------------------------------
     public function addPersonalDataForUserReg($profile, $betrag)
@@ -346,6 +407,8 @@ class Registration
 
         $anrede = $profile[user_anrede];
         $telefon = $profile[user_telefon];
+
+        $betrag = $profile[betrag];
 
         $Mitgliedschaft = 0;
         if (isset($betrag))
@@ -924,8 +987,29 @@ class Registration
 
             }
 
-            #if #
 
+            #this bit catches first regs from projekte and registers to reg db
+            list($event_type, $event_id) = explode('_', $the_row->first_reg);
+
+            #use switch when moving on...
+            if ($event_type === 'projekt') {
+                
+                $reg_projekt_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime ) VALUES (:event_id, :user_id, :quantity, NOW())');
+                $reg_projekt_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+                $reg_projekt_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+                $reg_projekt_query->bindValue(':quantity', $the_row->Gesamt, PDO::PARAM_INT);
+                #$reg_projekt_query->bindValue(':quantity', "666", PDO::PARAM_INT);
+                $reg_projekt_query->execute();
+
+                #update
+                $projekt_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:betrag WHERE n LIKE :event_id");
+                $projekt_spots_sold_query->bindValue(':betrag', $the_row->Gesamt, PDO::PARAM_INT);
+                $projekt_spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_STR);
+                $projekt_spots_sold_query->execute();
+
+                #update spots_sold in here too
+
+            }
 
             $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
             $query_delete_user->bindValue(':user_email', $the_row->user_email, PDO::PARAM_INT);

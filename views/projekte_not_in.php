@@ -1,5 +1,5 @@
 <?php 
-#require_once('../classes/Login.php');
+
 $title="Projekte";
 include ("_header_not_in.php"); 
 ?>
@@ -7,6 +7,7 @@ include ("_header_not_in.php");
 <div class="content">
 
 <?php
+#retrieves info about the projekt from db
 if ($id = $_GET["q"])
 {
   $sql="SELECT * from produkte WHERE `type` LIKE 'projekt' AND id='$id'";
@@ -17,19 +18,21 @@ if ($id = $_GET["q"])
   $text=$entry[text];
   $n=$entry[n];
 ?>
+
 	<div class="medien_head">
-  		<h1><?echo $title?></h1>
+  	    <h1><?echo $title?></h1>
 	</div>
 	<div class="medien_seperator">
-		<h1>Inhalt und Informationen</h1>
+	    <h1>Inhalt und Informationen</h1>
 	</div>
 	<div class="medien_content">
-<?php
- 	if ($entry[img]) echo $entry[img];
+    
+    <?php
+    	if ($entry[img]) echo $entry[img];
 
-  	if ($entry[text]) echo $entry[text];
- 	if ($entry[text2]) echo $entry[text2];
-?>
+    	if ($entry[text]) echo $entry[text];
+    	if ($entry[text2]) echo $entry[text2];
+    ?>
    		<!-- Button trigger modal -->
    		<div class="centered">
     		<input type="button" value="Investieren" class="medien_inputbutton" data-toggle="modal" data-target="#myModal"> 
@@ -38,8 +41,10 @@ if ($id = $_GET["q"])
 	</div>
 
 <?php
+#end of if ($id = $_GET["q"])
 }
 
+#else of if ($id = $_GET["q"])
 else {
 ?>
 	<div class="medien_info">
@@ -76,10 +81,7 @@ else {
       <div class="modal-body">
       	<div class="profil payment_width">
       		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">
-      
-            <input type="hidden" name="event_id" value="<?php echo $n ?>">
-            <input type="hidden" name="title" value="<?php echo $title ?>">
-				
+
 			<label for="user_email">E-Mail</label>
         	<input id="ajax_email_exists" type="email" class="profil_inputfield" name="projekte_profile[user_email]" required><br>
         	<div id="ajax_email_exists_error"></div><br><br>
@@ -357,10 +359,6 @@ else {
                </div>
             <p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p> 
                 
-			<input type="hidden" name="ok" value="1">
-    		<input type="hidden" name="betrag" value="<?php echo $betrag; ?>">
-    		<input type="hidden" name="level" value="<?php echo $level; ?>">
-
     		<input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="bank" required>&Uuml;berweisung<br>
     		<input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="kredit">Paypal<br>
     		<input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="bar">Bar<br>
@@ -368,14 +366,14 @@ else {
 			<p>Mit dem Klick auf <i>Investieren</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a><br>
 				Nachdem Sie Ihre Anmeldung &uuml;ber den Link in der Ihnen zugesandten E-Mail abgeschlossen haben, k&ouml;nnen Sie unter Projekte das von Ihnen pr&auml;ferierte Projekt unterst&uuml;tzen. Vielen Dank!
 			</p>
-			
-			<input type="hidden" name="projekte_profile[first_reg]" value="projekte">
+
+		
+			<input type="hidden" name="projekte_profile[first_reg]" value="projekt_<?php echo $n; ?>">
 			<input type="submit" class="profil_inputbutton" name="register_projekte_from_outside_submit" value="Investieren">
           
     </form>
             
-    <!--TO DO: Create account when registering for the event -->
-        </div>
+       </div>
     </div>
   </div>
   </div>
