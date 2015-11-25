@@ -39,10 +39,14 @@ class Registration
         session_start();
 
         // if we have such a POST request, call the registerNewUser() method
-        if (isset($_POST["register"])) {
+        #this is not in use - main function that deals with it is now subscribe new user
+        if (isset($_POST["register"])) 
+        {
             $this->registerNewUser($_POST['user_email'], $_POST['user_password_new'], $_POST['user_password_repeat'], $_POST["captcha"]);
+
         // if we have such a GET request, call the verifyNewUser() method
-        } else if (isset($_GET["id"]) && isset($_GET["verification_code"])) {
+        } else if (isset($_GET["id"]) && isset($_GET["verification_code"])) 
+        {
             $this->verifyNewUser($_GET["id"], $_GET["verification_code"]);
  
         #eintragen_submit is a button submit from registration forms
@@ -54,8 +58,9 @@ class Registration
 			$betrag = 1;
             $this->subscribeNewUser($_POST['user_email'], $betrag, $user_anrede, $user_surname);
         }
+
         #registration of not logged in users that provide data
-        #
+        #coming from fur buerger
         elseif (isset($_POST["register_from_outside_submit"])) {
         
             $profile = $_POST["profile"];
@@ -66,7 +71,7 @@ class Registration
 			$user_surname = $profile[user_surname];
 						
             #if $user_email is unique -> then continue with registration
-            #if already exist - direct to login 
+            #TODO - if already exist - direct to login 
             $this->subscribeNewUser($user_email, $_POST["betrag"], $user_anrede, $user_surname);
 
             if ($this->registration_successful){
@@ -119,10 +124,12 @@ class Registration
             
             if ($this->registration_successful){
                 $this->addPersonalDataForProjekteReg($profile);
-                #$this->sendNewPayingUserEmailToInstitute($user_email);
+
+                #comment this out when testing
+                $this->sendNewPayingUserEmailToInstitute($user_email);
 
                 //only redirect after registration was successfully finished
-                #form action already directs to abo zahlung
+                #zahlung_info.php displays extra info for selected payment method
                 header("Location: ../abo/zahlung_info.php");     
             }
         }
@@ -266,18 +273,9 @@ class Registration
 
                 // write new users data into database                
                 $query_new_user_insert = $this->db_connection->prepare('INSERT INTO grey_user (user_email, Mitgliedschaft, first_reg, user_password_hash, user_activation_hash, user_registration_ip, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :first_reg, :user_password_hash, :user_activation_hash, :user_registration_ip, now())');
-                #$query_new_user_insert->bindValue(':user_name', $user_name, PDO::PARAM_STR);
-
-
-/*                //if session var exists then first reg is that, if not then add NA
-                if ( !($_SESSION['first_reg'] === "") )
-                {
-                    $first_reg = $_SESSION['first_reg']
-                }*/
 
                 $query_new_user_insert->bindValue(':user_email', $user_email, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':first_reg', $_SESSION['first_reg'], PDO::PARAM_STR);
-                //$query_new_user_insert->bindValue(':first_reg', "eltern", PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':Mitgliedschaft', $level, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_activation_hash', $user_activation_hash, PDO::PARAM_STR);
@@ -325,7 +323,10 @@ class Registration
 
         return $str;
     }
-     #-------------------------------------
+
+    #-------------------------------------
+    #this is temp to keep projekt registration working
+    #difference is that it does not add credits to the user 
     public function addPersonalDataForProjekteReg($profile)
     {  
 
@@ -338,7 +339,6 @@ class Registration
         $plz = $profile[user_plz];
 
         $event_id = $profile[event_id];
-        #$credits = $profile[credits];
 
         if (isset($profile[event_id])) $first_reg = $profile[event_id];  
         if (isset($profile[first_reg])) $first_reg = $profile[first_reg];
@@ -388,6 +388,7 @@ class Registration
     #-------------------------------------
 
     #-------------------------------------
+    #this mostly deals with seminar registrations
     public function addPersonalDataForUserReg($profile, $betrag)
     {  
 
@@ -448,6 +449,7 @@ class Registration
     }
 
     #-------------------------------------
+    #this is used for fuer buerger form
     public function addPersonalData($profile)
     {  
 
@@ -481,10 +483,6 @@ class Registration
     #send an email to a newly subscribed member, containing password and activation link
     public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level, $user_surname)
     {
-
-        #---------------------------------------------------------------------------------------------
-        #------------------HTML-BODY------------------------------------------------------------------
-        #---------------------------------------------------------------------------------------------
 
         #anrede
         
@@ -603,11 +601,6 @@ class Registration
 
         $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
 
-        #---------------------------------------------------------------------------------------------
-        #------------------END HTML-BODY--------------------------------------------------------------
-        #---------------------------------------------------------------------------------------------
-
-
         //create curl resource
         $ch = curl_init();
 
@@ -644,9 +637,6 @@ class Registration
         {
             $json = json_decode($response);
             return true;
-            // print_r($json->access_token);
-            // print_r($response);
-            // echo "<br>";
         }
 
 
@@ -661,123 +651,6 @@ class Registration
                 return true;
             }*/
     }
-#-------------------------------------
-
-
- #-------------------------------------
-    //send an email to a newly subscribed member, containing password and activation link
-/*    public function sendSubscriptionMail($user_id, $user_email, $user_activation_hash, $user_password)
-    {
-        $mail = new PHPMailer;
-
-        // please look into the config/config.php for much more info on how to use this!
-        // use SMTP or use mail()
-        if (EMAIL_USE_SMTP) {
-            // Set mailer to use SMTP
-            $mail->IsSMTP();
-            //useful for debugging, shows full SMTP errors
-            //$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-            // Enable SMTP authentication
-            $mail->SMTPAuth = EMAIL_SMTP_AUTH;
-            // Enable encryption, usually SSL/TLS
-            if (defined(EMAIL_SMTP_ENCRYPTION)) {
-                $mail->SMTPSecure = EMAIL_SMTP_ENCRYPTION;
-            }
-            // Specify host server
-            $mail->Host = EMAIL_SMTP_HOST;
-            $mail->Username = EMAIL_SMTP_USERNAME;
-            $mail->Password = EMAIL_SMTP_PASSWORD;
-            $mail->Port = EMAIL_SMTP_PORT;
-        } else {
-            $mail->IsMail();
-        }
-
-        $mail->From = "info@scholarium.at";
-        $mail->FromName = "scholarium";
-        $mail->AddAddress($user_email);
-        $mail->Subject = "Herzlich willkommen";
-
-        #verification link
-        $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
-
-
-        // the link to your register.php, please set this value in config/email_verification.php
-        $mail->Body = EMAIL_VERIFICATION_CONTENT.' '.$link.' Password: '.$user_password;
-
-
-        #password reset link
-        #$link = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
-
-
-        // $mail->Body = EMAIL_PASSWORDRESET_CONTENT . ' ' . $link;
-
-    #---------------------------------------------------------------------------------------------
-    #------------------HTML-BODY------------------------------------------------------------------
-    #---------------------------------------------------------------------------------------------
-
-
-    // $mail->Body = include();
-
-    $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
-
-    $body = $body.'
-                <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
-                <!--#/image#-->
-                </td>
-                </tr>
-                </tbody>
-                </table>
-                <!--#loopsplit#-->
-                <table class="editable text" border="0" width="100%">
-                <tbody>
-                <tr>
-                <td valign="top">
-                <div style="text-align: justify;">
-                <h2></h2>
-                <!--#html #-->
-                <span style="font-family: times new roman,times;">
-                <span style="font-size: 12pt;">
-                <span style="color: #000000;">
-                <!--#/html#-->
-                <br>            
-                Lieber Gast,
-                <br>
-                vielen Dank f&uuml;r Ihr Interesse!
-                <br>';
-
-    $body = $body.'
-                Bitte klicken Sie unterhalb, um Zugang zu scholarium.at zu erhalten.
-                <p align="center"><table cellspacing="0" cellpadding="0"> <tr>
-                <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
-                <a href="'.$link.'" style="font-size:16px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
-                <span style="color: #000000">
-                Hier klicken, um den Zugang zu aktivieren!
-                </span></a></td></tr></table></p>
-                <br><strong>Ihr vorl&auml;ufiges Passwort ist: </strong>'.$user_password.'<br>
-                Herzliche Gr&uuml;&szlig;e aus Wien!';
-
-
-    $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
-
-    $mail->Body = $body;
-
-
-    $mail->isHTML(true);
-    #---------------------------------------------------------------------------------------------
-    #------------------END HTML-BODY--------------------------------------------------------------
-    #---------------------------------------------------------------------------------------------
-
-
-            if(!$mail->Send()) {
-                $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED . $mail->ErrorInfo;
-                return false;
-            } else {
-                // $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
-                #$this->messages[] = "Please check your inbox.";
-                return true;
-            }
-        }
-    #-------------------------------------*/
 
     #-------------------------------------
     //send an email to a newly subscribed member, containing password and activation link
@@ -820,9 +693,6 @@ class Registration
         else
         {
             $json = json_decode($response);
-            // print_r($json->access_token);
-            // print_r($response);
-            // echo "<br>";
             return true;
         }
 
@@ -831,6 +701,7 @@ class Registration
     }
     #-------------------------------------
 
+    ##OLD PHPMAILER to send emails... keeping just in case
     /*#-------------------------------------
     //send an email to a newly subscribed member, containing password and activation link
     public function sendNewPayingUserEmailToInstitute($user_email)
@@ -902,32 +773,13 @@ class Registration
             $the_row = $verify_user->fetchObject();
 
 
-/*        $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
-        $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
+            #sets php timezone to Europe/Vienna
+            #does the same for mysql in PDO way
+            #this could be better in the header...
+            date_default_timezone_set('Europe/Vienna');
+            $query_time_zone = $this->db_connection->prepare("SET time_zone = 'Europe/Vienna'");
+            $query_time_zone->execute();
 
-
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz' WHERE user_email LIKE '$user_email'";
-        $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
-
-
-        $user_email = $profile[user_email];
-        $name = $profile[user_first_name];
-        $surname = $profile[user_surname];
-        $street = $profile[user_street];
-        $city = $profile[user_city];
-        $country = $profile[user_country];
-        $plz = $profile[user_plz];
-
-        */
-
-        date_default_timezone_set('Europe/Vienna');
-        $query_time_zone = $this->db_connection->prepare("SET time_zone = 'Europe/Vienna'");
-        $query_time_zone->execute();
-
-
-#
-#        $upgrade_query = "UPDATE mitgliederExt SET Mitgliedschaft = '$Mitgliedschaft', Ablauf = DATE_ADD(CURDATE(), INTERVAL 1 YEAR)  WHERE `user_email` LIKE '$user_email'";
-#
 
             //copy data to the main database
             $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
@@ -951,27 +803,17 @@ class Registration
             $query_move_to_main->bindValue(':first_reg', $the_row->first_reg, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':credits_left', $the_row->credits_left, PDO::PARAM_STR);
         
-
             $query_move_to_main->bindValue(':user_password_hash', $the_row->user_password_hash, PDO::PARAM_STR);
-            //$query_move_to_main->bindValue(':user_activation_hash', $the_row->user_activation_hash, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
             $query_move_to_main->bindValue(':user_active', '1', PDO::PARAM_STR);
             $query_move_to_main->execute();
 
-
-
-            /*
-            $query_update_user = $this->db_connection->prepare('UPDATE mitgliederExt SET user_active = 1, user_activation_hash = NULL WHERE user_id = :user_id AND user_activation_hash = :user_activation_hash');
-            $query_update_user->bindValue(':user_id', intval(trim($user_id)), PDO::PARAM_INT);
-            $query_update_user->bindValue(':user_activation_hash', $user_activation_hash, PDO::PARAM_STR);
-            $query_update_user->execute();
-            */
-
-
+            #capture the final user_id which will be in mitgliederExt
             $user_id = $this->db_connection->lastInsertId();
             $_SESSION['user_id'] = $user_id;
 
-            //if entry in first registration exist, then register in the main registration database
+            //if first_reg is numeric then it is assumed it is a seminar
+            //change it to be similar as projekte
             if (is_numeric($the_row->first_reg)) 
             {
 
@@ -987,8 +829,8 @@ class Registration
 
             }
 
-
-            #this bit catches first regs from projekte and registers to reg db
+            #first_reg carry type of event and event id  
+            #this bit catches first_reg from projekte and registers to reg db
             list($event_type, $event_id) = explode('_', $the_row->first_reg);
 
             #use switch when moving on...
@@ -998,23 +840,19 @@ class Registration
                 $reg_projekt_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
                 $reg_projekt_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
                 $reg_projekt_query->bindValue(':quantity', $the_row->Gesamt, PDO::PARAM_INT);
-                #$reg_projekt_query->bindValue(':quantity', "666", PDO::PARAM_INT);
                 $reg_projekt_query->execute();
 
-                #update
+                #$the_row->Gesamt is being used temporarily as it only exist in grey user
+                #$the_row->Gesamt is not being copied to mitgliederExt
                 $projekt_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:betrag WHERE n LIKE :event_id");
                 $projekt_spots_sold_query->bindValue(':betrag', $the_row->Gesamt, PDO::PARAM_INT);
                 $projekt_spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_STR);
                 $projekt_spots_sold_query->execute();
-
-                #update spots_sold in here too
-
             }
 
             $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
             $query_delete_user->bindValue(':user_email', $the_row->user_email, PDO::PARAM_INT);
             $query_delete_user->execute();
-
 
             if ($verify_user->rowCount() > 0) {
                 $this->verification_successful = true;
