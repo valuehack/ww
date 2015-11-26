@@ -103,7 +103,7 @@ class Registration
                 $this->addPersonalData($profile);
 
                 #comment this out when testing
-                #$this->sendNewPayingUserEmailToInstitute($user_email);
+                $this->sendNewPayingUserEmailToInstitute($user_email);
 
                 //only redirect after registration was successfully finished
                 #header("Location: ../abo/zahlung.php");     
