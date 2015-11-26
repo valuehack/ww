@@ -101,10 +101,14 @@ class Registration
             
             if ($this->registration_successful){
                 $this->addPersonalData($profile);
-                $this->sendNewPayingUserEmailToInstitute($user_email);
+
+                #comment this out when testing
+                #$this->sendNewPayingUserEmailToInstitute($user_email);
 
                 //only redirect after registration was successfully finished
-                header("Location: ../abo/zahlung.php");     
+                #header("Location: ../abo/zahlung.php");     
+                header("Location: ../abo/zahlung_info.php");     
+
             }
         }        
         #registration for projekte from outside

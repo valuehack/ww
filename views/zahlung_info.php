@@ -1,5 +1,7 @@
  <?php  ?>
- <?php  
+ <?php 
+
+## this page only displays the extra information 
 session_start();
 include('../views/_header_not_in.php');         
 require_once('../config/config.php');
@@ -13,8 +15,14 @@ include('../views/_db.php');
  
  <?php
 
-#echo "hello";
-$profile = $_SESSION["projekte_profile"];
+if (isset($_SESSION["projekte_profile"]))
+{
+    $profile = $_SESSION["projekte_profile"];
+}
+else if (isset($_SESSION["seminar_profile"]))
+{
+    $profile = $_SESSION["seminar_profile"];
+}
 
 $user_email = $profile[user_email];
 $zahlung = $profile[zahlung];
@@ -32,7 +40,7 @@ $zahlung = $profile[zahlung];
       <li>BIC: GIBAATWW</li>
       </ul></p>
 
-      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;<?php echo $profile[user_email] ?>&quot;</b></p>
+      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;<?php echo strtr($profile[user_email], array("@" => "[at]")) ?>&quot;</b></p>
     
     <?php
     }
