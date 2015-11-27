@@ -40,7 +40,7 @@ $zahlung = $profile[zahlung];
       <li>BIC: GIBAATWW</li>
       </ul></p>
 
-      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;<?php echo strtr($profile[user_email], array("@" => "[at]")) ?>&quot;</b></p>
+      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;<?php echo strtr($profile[user_email], array("@" => "(at)")) ?>&quot;</b></p>
     
     <?php
     }
