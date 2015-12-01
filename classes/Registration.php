@@ -831,6 +831,12 @@ class Registration
             $reg_query->bindValue(':quantity', '1', PDO::PARAM_STR);
             $reg_query->execute();
 
+            #for now event id is first reg
+            $seminare_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:spot WHERE n LIKE :event_id");
+            $seminare_spots_sold_query->bindValue(':spot', '1', PDO::PARAM_INT);
+            $seminare_spots_sold_query->bindValue(':event_id', $the_row->first_reg, PDO::PARAM_INT);
+            $seminare_spots_sold_query->execute();
+
             }
 
             #first_reg carry type of event and event id  
