@@ -39,4 +39,4 @@ if(isset($error)){                              //show no permissions page.
 include('no-permissions.php');
 }
 #php end tag deleted
-
+?>
