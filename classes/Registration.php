@@ -49,7 +49,7 @@ class Registration
         {
             $this->verifyNewUser($_GET["id"], $_GET["verification_code"]);
  
-        #eintragen_submit is a button submit from registration forms
+        #eintragen_submit is a button submit from subscription forms
         } elseif (isset($_POST["eintragen_submit"])) {
 
             $_SESSION['first_reg'] = $_POST['first_reg'];
@@ -61,7 +61,8 @@ class Registration
 
         #registration of not logged in users that provide data
         #coming from fur buerger
-        elseif (isset($_POST["register_from_outside_submit"])) {
+        elseif (isset($_POST["register_from_outside_submit"])) 
+        {
         
             $profile = $_POST["profile"];
             $_SESSION["profile"] = $profile;
@@ -74,7 +75,8 @@ class Registration
             #TODO - if already exist - direct to login 
             $this->subscribeNewUser($user_email, $_POST["betrag"], $user_anrede, $user_surname);
 
-            if ($this->registration_successful){
+            if ($this->registration_successful)
+            {
                 $this->addPersonalDataForUserReg($profile, $_POST["betrag"]);
                 $this->sendNewPayingUserEmailToInstitute($user_email);
 
@@ -84,7 +86,8 @@ class Registration
             
         }
         #registration for seminars from outside
-        elseif (isset($_POST["register_seminar_from_outside_submit"])) {
+        elseif (isset($_POST["register_seminar_from_outside_submit"])) 
+        {
 
             //grab post here and send it over to other functions              
             $profile = $_POST["seminar_profile"];
@@ -99,7 +102,8 @@ class Registration
             #if already exist - direct to login 
             $this->subscribeNewUser($user_email, $betrag, $user_anrede, $user_surname);
             
-            if ($this->registration_successful){
+            if ($this->registration_successful)
+            {
                 $this->addPersonalData($profile);
 
                 #comment this out when testing
@@ -112,21 +116,23 @@ class Registration
             }
         }        
         #registration for projekte from outside
-        elseif (isset($_POST["register_projekte_from_outside_submit"])) {
+        elseif (isset($_POST["register_projekte_from_outside_submit"])) 
+        {
 
             //grab post here and send it over to other functions              
             $profile = $_POST["projekte_profile"];
             $_SESSION["projekte_profile"] = $profile;
 
             $user_email = $profile[user_email];
-			$user_anrede = $profile[user_anrede];
-			$user_surname = $profile[user_surname];
-            						
+            $user_anrede = $profile[user_anrede];
+            $user_surname = $profile[user_surname];
+                                    
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
             $this->subscribeNewUser($user_email, $_POST["betrag"], $user_anrede, $user_surname);
             
-            if ($this->registration_successful){
+            if ($this->registration_successful)
+            {
                 $this->addPersonalDataForProjekteReg($profile);
 
                 #comment this out when testing
@@ -137,7 +143,38 @@ class Registration
                 header("Location: ../abo/zahlung_info.php");     
             }
         }
-    }
+        #registration for offene salon from outside
+        elseif (isset($_POST["register_o_salon_from_outside_submit"])) 
+        {
+
+            //grab post here and send it over to other functions              
+            $profile = $_POST["profile"];
+            #$_SESSION["profile"] = $profile;
+
+            $user_email = $profile[user_email];
+			$user_anrede = $profile[user_anrede];
+			$user_surname = $profile[user_surname];
+            						
+            #if $user_email is unique -> then continue with registration
+            #TODO if already exists - direct to login 
+            $this->subscribeNewUser($user_email, $_POST["betrag"], $user_anrede, $user_surname);
+            #TODO transition to pass an array with all values - call it registerNewUser
+
+            # $registration_successful is set to true if registration was succesfull
+            if ($this->registration_successful)
+            {
+                $this->addPersonalDataForProjekteReg($profile);
+
+                #comment this out when testing
+                $this->sendNewPayingUserEmailToInstitute($user_email);
+
+                //only redirect after registration was successfully finished
+                #zahlung_info.php displays extra info for selected payment method
+                header("Location: ../abo/zahlung_info.php");     
+            }
+        }
+
+    }#end of constructor
 
     public function processSofortSuccess($profile)
     {
@@ -454,7 +491,37 @@ class Registration
 
     #-------------------------------------
     #this is used for fuer buerger form
+    #update grey_user database with the info collected from the form
     public function addPersonalData($profile)
+    {  
+
+        $user_email = $profile[user_email];
+        $name = $profile[user_first_name];
+        $surname = $profile[user_surname];
+        $street = $profile[user_street];
+        $city = $profile[user_city];
+        $country = $profile[user_country];
+        $plz = $profile[user_plz];
+
+        $event_id = $profile[event_id];
+        $credits = $profile[credits];
+
+        if (isset($profile[event_id])) $first_reg = $profile[event_id];  
+        if (isset($profile[first_reg])) $first_reg = $profile[first_reg];
+
+        $anrede = $profile[user_anrede];
+        $telefon = $profile[user_telefon];
+             
+        $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
+        $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
+
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$first_reg', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
+        $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
+     
+    }
+    
+    #
+    public function addPersonalDataGeneric($profile)
     {  
 
         $user_email = $profile[user_email];
