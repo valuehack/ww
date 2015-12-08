@@ -895,7 +895,7 @@ class Registration
             #updates relevant dbs for open salons
             if ($event_type === 'osalon') {
                 
-                $reg_o_salon_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, reg_datetime ) VALUES (:event_id, :user_id, NOW())');
+                $reg_o_salon_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES (:event_id, :user_id, :quantity, NOW() )');
                 $reg_o_salon_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
                 $reg_o_salon_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
                 $reg_o_salon_query->bindValue(':quantity', 1, PDO::PARAM_INT);
