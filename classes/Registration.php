@@ -166,7 +166,7 @@ class Registration
                 $this->addPersonalDataGeneric($profile);
 
                 #comment this out when testing
-                #$this->sendNewPayingUserEmailToInstitute($user_email);
+                $this->sendNewPayingUserEmailToInstitute($user_email);
 
                 //only redirect after registration was successfully finished
                 #zahlung_info.php displays extra info for selected payment method
