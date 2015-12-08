@@ -15,6 +15,9 @@ include('../views/_db.php');
  
  <?php
 
+#get rid of differentiating the profiles
+$profile = $_SESSION["profile"];
+
 if (isset($_SESSION["projekte_profile"]))
 {
     $profile = $_SESSION["projekte_profile"];

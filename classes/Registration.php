@@ -149,24 +149,24 @@ class Registration
 
             //grab post here and send it over to other functions              
             $profile = $_POST["profile"];
-            #$_SESSION["profile"] = $profile;
+            $_SESSION["profile"] = $profile;
 
             $user_email = $profile[user_email];
 			$user_anrede = $profile[user_anrede];
 			$user_surname = $profile[user_surname];
             						
             #if $user_email is unique -> then continue with registration
-            #TODO if already exists - direct to login 
+            #this is extra step to ajax duplicate check
             $this->subscribeNewUser($user_email, $_POST["betrag"], $user_anrede, $user_surname);
             #TODO transition to pass an array with all values - call it registerNewUser
 
             # $registration_successful is set to true if registration was succesfull
             if ($this->registration_successful)
             {
-                $this->addPersonalDataForProjekteReg($profile);
+                $this->addPersonalDataGeneric($profile);
 
                 #comment this out when testing
-                $this->sendNewPayingUserEmailToInstitute($user_email);
+                #$this->sendNewPayingUserEmailToInstitute($user_email);
 
                 //only redirect after registration was successfully finished
                 #zahlung_info.php displays extra info for selected payment method
@@ -519,33 +519,52 @@ class Registration
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
-    
-    #
+
+    #from now on use this function only to update the generic user profile info to grey user db
+    #use extra helper function for extra actions
+    #consider one big sql query vs many small...
     public function addPersonalDataGeneric($profile)
     {  
 
-        $user_email = $profile[user_email];
-        $name = $profile[user_first_name];
-        $surname = $profile[user_surname];
-        $street = $profile[user_street];
-        $city = $profile[user_city];
-        $country = $profile[user_country];
-        $plz = $profile[user_plz];
+      ### DO NOT ADD EXTRA FIELDS FOR DB UPDATE IN HERE. USE SEPARATE FUNCTIONS!!!  
 
-        $event_id = $profile[event_id];
-        $credits = $profile[credits];
+    /*Anrede = :anrede,
+    Vorname = :name,
+    Nachname = :surname,
+    Telefon = :telefon,
+    Strasse = :street,
+    PLZ = :plz,
+    Ort = :city,
+    Land = :country,
+    first_reg = :first_reg*/
 
-        if (isset($profile[event_id])) $first_reg = $profile[event_id];  
-        if (isset($profile[first_reg])) $first_reg = $profile[first_reg];
+    $update_profile_query = $this->db_connection->prepare(
+    "UPDATE grey_user   
+        SET Anrede = :anrede,
+            Vorname = :name,
+            Nachname = :surname,
+            Telefon = :telefon,
+            Strasse = :street,
+            PLZ = :plz,
+            Ort = :city,
+            Land = :country,
+            first_reg = :first_reg
+      WHERE user_email = :user_email"
+    );
 
-        $anrede = $profile[user_anrede];
-        $telefon = $profile[user_telefon];
-             
-        $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
-        $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
+    $update_profile_query->bindValue(':anrede', $profile[user_anrede], PDO::PARAM_STR);
+    $update_profile_query->bindValue(':name', $profile[user_first_name], PDO::PARAM_STR);
+    $update_profile_query->bindValue(':surname', $profile[user_surname], PDO::PARAM_STR);
+    $update_profile_query->bindValue(':telefon', $profile[user_telefon], PDO::PARAM_STR);
+    $update_profile_query->bindValue(':street', $profile[user_street], PDO::PARAM_STR);
+    $update_profile_query->bindValue(':plz', $profile[user_plz], PDO::PARAM_STR);
+    $update_profile_query->bindValue(':city', $profile[user_city], PDO::PARAM_STR);
+    $update_profile_query->bindValue(':country', $profile[user_country], PDO::PARAM_STR);
+    $update_profile_query->bindValue(':first_reg', $profile[first_reg], PDO::PARAM_STR);
+    $update_profile_query->bindValue(':user_email', $profile[user_email], PDO::PARAM_STR);
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$first_reg', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
-        $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
+    $update_profile_query->execute();
+
      
     }
 
@@ -770,62 +789,7 @@ class Registration
         curl_close($ch);
 
     }
-    #-------------------------------------
-
-    ##OLD PHPMAILER to send emails... keeping just in case
-    /*#-------------------------------------
-    //send an email to a newly subscribed member, containing password and activation link
-    public function sendNewPayingUserEmailToInstitute($user_email)
-    {
-
-        $mail = new PHPMailer;
-
-        // please look into the config/config.php for much more info on how to use this!
-        // use SMTP or use mail()
-        if (EMAIL_USE_SMTP) {
-            // Set mailer to use SMTP
-            $mail->IsSMTP();
-            //useful for debugging, shows full SMTP errors
-            //$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-            // Enable SMTP authentication
-            $mail->SMTPAuth = EMAIL_SMTP_AUTH;
-            // Enable encryption, usually SSL/TLS
-            if (defined(EMAIL_SMTP_ENCRYPTION)) {
-                $mail->SMTPSecure = EMAIL_SMTP_ENCRYPTION;
-            }
-            // Specify host server
-            $mail->Host = EMAIL_SMTP_HOST;
-            $mail->Username = EMAIL_SMTP_USERNAME;
-            $mail->Password = EMAIL_SMTP_PASSWORD;
-            $mail->Port = EMAIL_SMTP_PORT;
-        } else {
-            $mail->IsMail();
-        }
-
-        $mail->From = "info@scholarium.at";
-        $mail->FromName = "scholarium";
-        // make sure email is correct
-        $mail->AddAddress(EMAIL_INSTITUTE);
-        $mail->Subject = "New Paying User";
-
-
-        $body = "Check database, there is a new paying member ".$user_email;
-        $mail->Body = $body;
-
-        $mail->isHTML(false);
-
-            if(!$mail->Send()) {
-                $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED . $mail->ErrorInfo;
-                return false;
-            } else {
-                // $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
-                #$this->messages[] = "Please check your inbox.";
-                return true;
-            }
-        }
-    #-------------------------------------
-*/
-    
+      
     /**
      * checks the id/verification code combination and set the user's activation status to true (=1) in the database
      */
@@ -910,6 +874,7 @@ class Registration
             #this bit catches first_reg from projekte and registers to reg db
             list($event_type, $event_id) = explode('_', $the_row->first_reg);
 
+#o_salon
             #use switch when moving on...
             if ($event_type === 'projekt') {
                 
@@ -923,6 +888,21 @@ class Registration
                 #$the_row->Gesamt is not being copied to mitgliederExt
                 $projekt_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:betrag WHERE n LIKE :event_id");
                 $projekt_spots_sold_query->bindValue(':betrag', $the_row->Gesamt, PDO::PARAM_INT);
+                $projekt_spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_STR);
+                $projekt_spots_sold_query->execute();
+            }
+
+            #updates relevant dbs for open salons
+            if ($event_type === 'osalon') {
+                
+                $reg_o_salon_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, reg_datetime ) VALUES (:event_id, :user_id, NOW())');
+                $reg_o_salon_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+                $reg_o_salon_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+                $reg_o_salon_query->bindValue(':quantity', 1, PDO::PARAM_INT);
+                $reg_o_salon_query->execute();
+
+                $projekt_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:spots_sold, spots = spots - :spots_sold WHERE n LIKE :event_id");
+                $projekt_spots_sold_query->bindValue(':spots_sold', 1, PDO::PARAM_INT);
                 $projekt_spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_STR);
                 $projekt_spots_sold_query->execute();
             }

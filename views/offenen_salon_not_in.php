@@ -149,6 +149,7 @@ else {
 	
 			echo $entry4[info];			
 			?>
+
 				<div class="centered">
 					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
 						<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
@@ -216,7 +217,7 @@ else {
           <!-- additional hidden fields -->
       		<input type="hidden" name="profile[betrag]" value="<?php echo $event_price; ?>">
           <?php #o_salon + echo $n is used at verification to register to an event?>
-          <input type="hidden" name="profile[first_reg]" value="o_salon<?php echo $n; ?>">
+          <input type="hidden" name="profile[first_reg]" value="osalon_<?php echo $n; ?>">
       		
           <!-- <input type="hidden" name="profile[event_id]" value="<?php echo $n ?>"> -->
           <!-- <input type="hidden" name="profile[title]" value="<?php echo $title ?>"> -->
