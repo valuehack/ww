@@ -114,12 +114,9 @@ $offenen_salon = $offenen_salon_query->fetch(PDO::FETCH_ASSOC);
 	</div>
 	<div class="salon_content">
 <?  
-  #if not really neccessary as it would output nothing 
-  // if ($offenen_salon[text]) echo "<p>$offenen_salon[text]</p>";
-  // if ($offenen_salon[text2]) echo "<p>$offenen_salon[text2]</p>";
-
-  echo "<p>$offenen_salon[text]</p>";
-  echo "<p>$offenen_salon[text2]</p>";
+  #if not really neccessary as it would output nothing - it would output the <p> and then we have an empty space thats not supposed to be there
+  if ($offenen_salon[text]) echo "<p>$offenen_salon[text]</p>";
+  if ($offenen_salon[text2]) echo "<p>$offenen_salon[text2]</p>";
 
 ?>
 		<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Seminaren</a></div>
@@ -181,7 +178,7 @@ else {
       <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">
 
           <!-- ajax_email_exists checks if user email is already registered -->
-			    <label for="user_email">E-Mail</label>
+			<label for="user_email">E-Mail</label>
         	<input id="ajax_email_exists" type="email" class="profil_inputfield" name="profile[user_email]" required><br>
         	<div id="ajax_email_exists_error"></div><br><br>
         	
@@ -211,11 +208,11 @@ else {
           <!-- end of user profile -->
           
           <!-- payment methods  -->
-          <p>Zahlungsmethode: nur</p> 
-          <input type="radio" class="profil_radio" name="profile[zahlung]" value="bar" checked>Bar<br>
+          <p>Die Zahlung von 5&euro; erfolgt in Bar im Scholarium am Abend des Offenen Salons.</p> 
+          <input type="hidden" name="profile[zahlung]" value="bar">
 
           <!-- additional hidden fields -->
-      		<input type="hidden" name="profile[betrag]" value="<?php echo $event_price; ?>">
+      	  <input type="hidden" name="profile[betrag]" value="<?php echo $event_price; ?>">
           <?php #o_salon + echo $n is used at verification to register to an event?>
           <input type="hidden" name="profile[first_reg]" value="osalon_<?php echo $n; ?>">
       		

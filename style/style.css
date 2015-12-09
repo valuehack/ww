@@ -2820,6 +2820,18 @@ img.projekte_coin2  {
 	text-align: center;
 }
 
+.profil a, .profil a:visited, .profil a:hover {
+	color: rgb(46,74,98);
+	text-decoration: none;	
+}
+.profil a, .profil a:visited {
+	border-bottom: 1px dotted rgb(46,74,98);
+}
+
+.profil a:hover {
+	border-bottom: 1px solid rgb(46,74,98);
+}
+
 .profil label {
 	font-size: 12pt;
 	color: rgb(150,150,150);

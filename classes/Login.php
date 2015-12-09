@@ -121,7 +121,10 @@ class Login
                 $this->editUserAddress($_POST['user_country'], $_POST['user_city'],$_POST['user_street'], $_POST['user_plz']);               
             }elseif (isset($_POST["user_edit_form_level"])) {
  
-                $this->editUserLevel($_POST['user_level']);               
+                $this->editUserLevel($_POST['user_level']);
+            }elseif (isset($_POST['register_open_salon'])) {
+            	
+				$this->register_open_salon($_POST['profile'], $_POST['profile']['event_id'], $_POST['profile']['quantity']);
             }
         }
         // login with cookie
@@ -1134,7 +1137,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
 
             $userCreditsArray = mysql_fetch_array($user_credits_result);
             $userCredits = $userCreditsArray[credits_left];
-            $newCredits = $userCredits + $betrag;  
+            $newCredits = $userCredits + $betrag;
         }
         
 //date from now - 1 year
@@ -2116,5 +2119,196 @@ user_plz
 
         // the image url like above but with an additional <img src .. /> around
         $this->user_gravatar_image_tag = $url;
+    }
+	
+	public function registerEvent ($user_id, $event_id, $quantity) {
+	    	
+    		#enter into event registration
+		    $reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime ) VALUES (:event_id, :user_id, :quantity, NOW())');
+            $reg_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+            $reg_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+            $reg_query->bindValue(':quantity', $quantity, PDO::PARAM_INT);
+            $reg_query->execute();
+
+            #update spots sold in produkte
+            $spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:spot WHERE n LIKE :event_id");
+            $spots_sold_query->bindValue(':spot', $quantity, PDO::PARAM_INT);
+            $spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+            $spots_sold_query->execute();
+
+    }
+	
+	public function register_open_salon ($profile, $event_id, $quantity) {
+		$profile = $_POST['profile'];
+		$user_id = $_SESSION['user_id'];
+		$mitgliedschaft = $_SESSION['Mitgliedschaft'];
+		
+		if ($mitgliedschaft == 1) {		
+			$this->editProfile($profile);
+		}
+		
+		$this->registerEvent($user_id, $event_id, $quantity);
+		
+		//email to user
+		//$this->openSalonUserEmail($_SESSION['user_email'], $profile[user_anrede], $profile[user_surname]);
+		//$this->openSalonScholariumEmail($_SESSION['user_email'], $profile[user_first_name], $profile[user_surname]);
+		
+		return true;
+	}
+	
+	public function openSalonUserEmail ($user_email, $user_anrede, $user_surname){
+		#anrede
+        
+        if ($user_anrede == 'Frau'){
+        	$anrede = 'Sehr geehrte Frau';
+        }
+		if ($user_anrede == 'Herr') {
+			$anrede = 'Sehr geehrter Herr';
+		}
+      
+        #read header from file
+        $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
+
+        $body = $body.'
+                <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                <!--#/image#-->
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                <!--#loopsplit#-->
+                <table class="editable text" border="0" width="100%">
+                <tbody>
+                <tr>
+                <td valign="top">
+                <div style="text-align: justify;">
+                <h2></h2>
+                <!--#html #-->
+                <span style="font-family: times new roman,times;">
+                <span style="font-size: 12pt;">
+                <span style="color: #000000;">
+                <!--#/html#-->
+                <br>            
+                '.$anrede.' '.$user_surname.',
+                <br>
+                vielen Dank f&uuml;r Ihr Interesse an userem Offenen Salon!
+                <br><br>
+                Wir haben die gew&uuml;nschten Pl&auml;tze f&uuml;r Sie reserviert.<br>
+                <br>
+                Die Zahlungvon 5&euro; pro Teilnehmer erfolgt am Abend des Salons vor Ort im Scholarium.<br>
+                <br>
+                Wir freuen uns darauf Sie kennenzulernen oder wiederzusehen.<br>
+                <br>
+                Herzliche Gr&uuml;&szlig;e aus Wien!';
+
+        $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
+
+        //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => $user_email,
+            'subject' => 'Anmeldung zum Offenen Salon',
+            'html' => $body,
+            'from' => 'info@scholarium.at',
+            'fromname' => 'scholarium'
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+
+        if(empty($response))
+        {
+            #die("Error: No response."); 
+            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+            return false;
+        }
+        else
+        {
+            $json = json_decode($response);
+            return true;
+        }
+
+
+        curl_close($ch);
+
+/*            if(!$mail->Send()) {
+                $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED . $mail->ErrorInfo;
+                return false;
+            } else {
+                // $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
+                #$this->messages[] = "Please check your inbox.";
+                return true;
+            }*/
+    }
+
+	public function openSalonScholariumEmail ($user_email, $user_name, $user_surname){
+     
+        $body = '
+				Neue Anmeldung zum Offenen Salon:<br>
+				<br>'
+				.$user_name.' '.$user_surname.'<br>'
+				.$user_email.'<br>
+                ';
+
+        //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => 'info@scholarium.at',
+            'subject' => 'Neue Anmeldung zum Offenen Salon',
+            'html' => $body,
+            'from' => 'info@scholarium.at',
+            'fromname' => 'scholarium'
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+
+        if(empty($response))
+        {
+            #die("Error: No response."); 
+            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+            return false;
+        }
+        else
+        {
+            $json = json_decode($response);
+            return true;
+        }
+
+
+        curl_close($ch);
+
+/*            if(!$mail->Send()) {
+                $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED . $mail->ErrorInfo;
+                return false;
+            } else {
+                // $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
+                #$this->messages[] = "Please check your inbox.";
+                return true;
+            }*/
     }
 }

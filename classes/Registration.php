@@ -170,7 +170,7 @@ class Registration
 
                 //only redirect after registration was successfully finished
                 #zahlung_info.php displays extra info for selected payment method
-                header("Location: ../abo/zahlung_info.php");     
+                header("Location: ../abo/zahlung_info.php");
             }
         }
 
