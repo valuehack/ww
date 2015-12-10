@@ -9,7 +9,7 @@
     	<![endif]-->
     	<link rel="stylesheet" href="../style/style.css">
     	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300|EB+Garamond' rel='stylesheet' type='text/css'>
-    	<title>Willkommen | Mises Austria</title>
+    	<title>Willkommen | mises.at</title>
     	<style>
     		body {
     			background: rgb(255,255,255);
@@ -47,8 +47,9 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<img src="../style/ma_logo.svg"">
-		</div> 	
+			<img src="../style/ma_logo.png"">
+		</div>
+		 	
     </body>
 </html>   
 
