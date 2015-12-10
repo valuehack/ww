@@ -20,6 +20,7 @@
     			padding: 40% 0;
     			text-align: center;
     		}
+<!-- 
     		@media screen and (min-width: 410px) {
     			.wrapper {
     				padding: 20% 0;
@@ -43,13 +44,13 @@
     				width: 40%;
     			}
     		}
+-->
     	</style>
 	</head>
 	<body>
 		<div class="wrapper">
 			<img src="../style/ma_logo.png"">
-		</div>
-		 	
+		</div> 	
     </body>
 </html>   
 
