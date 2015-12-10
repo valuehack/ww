@@ -36,12 +36,12 @@
     		}
     		@media screen and (min-width: 410px) {
     			img {
-    				width: 70%;
+    				width: 114px;
     			}
     		}
     		@media screen and (min-width: 50em) {
     			img {
-    				width: 40%;
+    				width: 114px;
     			}
     		}
 -->
