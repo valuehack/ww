@@ -20,7 +20,31 @@
     			padding: 40% 0;
     			text-align: center;
     		}
-
+<!-- 
+    		@media screen and (min-width: 410px) {
+    			.wrapper {
+    				padding: 20% 0;
+    			}
+    		}
+    		@media screen and (min-width: 50em) {
+    			.wrapper {
+    				padding: 15% 0;
+    			}
+    		}
+    		img {
+    			width: 114px;
+    		}
+    		@media screen and (min-width: 410px) {
+    			img {
+    				width: 70%;
+    			}
+    		}
+    		@media screen and (min-width: 50em) {
+    			img {
+    				width: 40%;
+    			}
+    		}
+-->
     	</style>
 	</head>
 	<body>
