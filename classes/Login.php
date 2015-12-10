@@ -124,7 +124,7 @@ class Login
                 $this->editUserLevel($_POST['user_level']);
             }elseif (isset($_POST['register_open_salon'])) {
             	
-				$this->register_open_salon($_POST['profile'], $_POST['profile']['event_id'], $_POST['profile']['quantity']);
+				$this->registerOpenSalon($_POST['profile'], $_POST['profile']['event_id'], $_POST['profile']['quantity']);
             }
         }
         // login with cookie
@@ -2138,11 +2138,27 @@ user_plz
 
     }
 	
-	public function register_open_salon ($profile, $event_id, $quantity) {
-		$profile = $_POST['profile'];
+	public function registerOpenSalon ($profile, $event_id, $quantity) {
 		$user_id = $_SESSION['user_id'];
 		$mitgliedschaft = $_SESSION['Mitgliedschaft'];
 		
+		#get user information from the form post
+		if ($mitgliedschaft == 1) {
+			$profile = $_POST['profile'];
+			$anrede = $profile[user_anrede];
+			$user_name = $profile[user_first_name];
+			$user_surname = $profile[user_surname];
+		}
+				
+		#get user information from database
+		if($mitgliedschaft > 1) {
+			$result_row = $this->getUserData(trim($_SESSION['user_email']));
+			$anrede = trim($result_row->Anrede);
+        	$user_name = trim($result_row->Vorname);
+        	$user_surname = trim($result_row->Nachname);
+		}
+		
+		#update profile of Gast members
 		if ($mitgliedschaft == 1) {		
 			$this->editProfile($profile);
 		}
@@ -2150,8 +2166,8 @@ user_plz
 		$this->registerEvent($user_id, $event_id, $quantity);
 		
 		//email to user
-		//$this->openSalonUserEmail($_SESSION['user_email'], $profile[user_anrede], $profile[user_surname]);
-		//$this->openSalonScholariumEmail($_SESSION['user_email'], $profile[user_first_name], $profile[user_surname]);
+		$this->openSalonUserEmail($_SESSION['user_email'], $anrede, $user_surname);
+		$this->openSalonScholariumEmail($_SESSION['user_email'], $user_name, $user_surname);
 		
 		return true;
 	}
@@ -2274,7 +2290,7 @@ user_plz
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $post_data = array(
-            'to' => 'info@scholarium.at',
+            'to' => 'bartholos@web.de',
             'subject' => 'Neue Anmeldung zum Offenen Salon',
             'html' => $body,
             'from' => 'info@scholarium.at',
