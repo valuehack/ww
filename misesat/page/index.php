@@ -48,7 +48,7 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<img src="../style/ma_logo.png"">
+			<img src="../style/ma_logo.png">
 		</div> 	
 		<h1>Verlagsprogramm</h1>
 		<div align="center"><table style="width:80%;"><tr><td valign="top"><a rel="nofollow" href="http://www.amazon.de/gp/product/3902639296/ref=as_li_tl?ie=UTF8&camp=1638&creative=6742&creativeASIN=3902639296&linkCode=as2&tag=scholarium-21"><img border="0" src="http://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=3902639296&Format=_SL250_&ID=AsinImage&MarketPlace=DE&ServiceVersion=20070822&WS=1&tag=scholarium-21" ></a><img src="http://ir-de.amazon-adsystem.com/e/ir?t=scholarium-21&l=as2&o=3&a=3902639296" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />

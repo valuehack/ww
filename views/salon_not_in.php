@@ -13,8 +13,10 @@ if(isset($_GET['q']))
   $sql="SELECT * from produkte WHERE type LIKE 'salon' AND id='$id'";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
+  $spots_total = $entry3[spots];
   $spots_available=$entry3[spots]-$entry3[spots_sold];
   $status = $entry3[status];
+  $n = $entry3[n];
     	//check, if there is a image in the salon folder
 	$img = 'http://scholarium.at/salon/'.$id.'.jpg';
 
@@ -61,6 +63,9 @@ if(isset($_GET['q']))
 				if ($spots_available == 0){
   					echo '<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht.</span><br>';
   				}
+				if ($spots_total > 59){
+					echo '<span class="salon_reservation_span_a">Unser Offener Salon steht allen offen die uns pers&ouml;nlich kennenlernen m&ouml;chten. Der Kostenbeitrag betr&auml;gt <b>5&euro;</b> und kann nur vor Ort in bar gezahlt werden.</span><br><br>';
+				}
 				?>  
     			<!--Button trigger modal-->
     			<input class="salon_reservation_inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal" <?if($spots_available == 0){echo 'disabled';}?>>
@@ -121,21 +126,32 @@ else {
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <div class="modal-dialog-login modal-form-width">
+    <div class="modal-content-login">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h2 class="modal-title" id="myModalLabel">Reservierung</h2>
       </div>
       <div class="modal-body">
+      	<?php
+        	if ($spots_total > 59){
+        		$pass_to = 'register_open_salon_from_outside'; //Register from level 0
+      			$submit = 'register_open_salon_from_outside'; //Register from level 0
+        		include ('../tools/open_salon_form.php');
+        	}  
+			else {
+		?>
         <p>Wir freuen uns, dass Sie Interesse an einer Teilnahme haben. Bitte tragen Sie hier Ihre E-Mail-Adresse ein, um mehr &uuml;ber die M&ouml;glichkeiten einer Teilnahme zu erfahren (falls Sie sich schon einmal eingetragen haben, bitte um Login &uuml;ber den Link &quot;Anmelden&quot; oben rechts auf der Seite):</p>
         <div class="subscribe">
           <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
-          	<input class="inputfield" type="email" placeholder=" E-Mail-Adresse" name="user_email"r equired>
-          	<input type=hidden name="first_reg" value="salon">
-            <input class="inputbutton" id="inputbutton" type="submit" name="eintragen_submit" value="Eintragen" />
+          	<input class="inputfield" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
+          	<input type="hidden" name="first_reg" value="salon">
+            <input class="inputbutton" id="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
           </form>
         </div>
+        <?php
+		  }
+		?>
       </div>
     </div>
   </div>

@@ -144,7 +144,7 @@ class Registration
             }
         }
         #registration for offene salon from outside
-        elseif (isset($_POST["register_o_salon_from_outside_submit"])) 
+        elseif (isset($_POST["register_open_salon_from_outside"])) 
         {
 
             //grab post here and send it over to other functions              
@@ -163,11 +163,11 @@ class Registration
             # $registration_successful is set to true if registration was succesfull
             if ($this->registration_successful)
             {
-                $this->addPersonalDataGeneric($profile);
-
+                //$this->addPersonalDataGeneric($profile);
+				$this->addPersonalDataForUserReg($profile, $_POST["betrag"]);
                 #comment this out when testing
-                $this->sendNewPayingUserEmailToInstitute($user_email);
-
+                //$this->sendNewPayingUserEmailToInstitute($user_email);
+                				
                 //only redirect after registration was successfully finished
                 #zahlung_info.php displays extra info for selected payment method
                 header("Location: ../abo/zahlung_info.php");
@@ -381,15 +381,16 @@ class Registration
 
         $event_id = $profile[event_id];
 
-        if (isset($profile[event_id])) $first_reg = $profile[event_id];  
+        if (isset($profile[event_id])) $first_reg = $profile[event_id];
         if (isset($profile[first_reg])) $first_reg = $profile[first_reg];
 
         $anrede = $profile[user_anrede];
         $telefon = $profile[user_telefon];
 
         $betrag = $profile[betrag];
+		$quantity = $profile[betrag];
 
-        $Mitgliedschaft = 0;
+        $Mitgliedschaft = 1;
         if (isset($betrag))
         {
             switch ($betrag) {
@@ -421,7 +422,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', Gesamt = $betrag, Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', quantity = '$quantity', Gesamt = '$betrag', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -444,15 +445,16 @@ class Registration
         $event_id = $profile[event_id];
         #$credits = $profile[credits];
 
-        if (isset($profile[event_id])) $first_reg = $profile[event_id];  
+        if (isset($profile[event_id])) $first_reg = $profile[event_id];
         if (isset($profile[first_reg])) $first_reg = $profile[first_reg];
 
         $anrede = $profile[user_anrede];
         $telefon = $profile[user_telefon];
 
-        $betrag = $profile[betrag];
+		$quantity = $profile[quantity];
+        //$betrag = $profile[betrag];
 
-        $Mitgliedschaft = 0;
+        $Mitgliedschaft = 1;
         if (isset($betrag))
         {
             switch ($betrag) {
@@ -484,7 +486,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', credits_left = credits_left+'$betrag', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', quantity = '$quantity', credits_left = credits_left+'$betrag', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -505,8 +507,9 @@ class Registration
 
         $event_id = $profile[event_id];
         $credits = $profile[credits];
+        $quantity = $profile[quantity];
 
-        if (isset($profile[event_id])) $first_reg = $profile[event_id];  
+        if (isset($profile[event_id])) $first_reg = $profile[event_id];
         if (isset($profile[first_reg])) $first_reg = $profile[first_reg];
 
         $anrede = $profile[user_anrede];
@@ -515,7 +518,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$first_reg', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$first_reg', quantity = '$quantity', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -859,12 +862,12 @@ class Registration
             $reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime ) VALUES (:event_id, :user_id, :quantity, NOW())');
             $reg_query->bindValue(':event_id', $the_row->first_reg, PDO::PARAM_INT);
             $reg_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
-            $reg_query->bindValue(':quantity', '1', PDO::PARAM_STR);
+            $reg_query->bindValue(':quantity', $the_row->quantity, PDO::PARAM_STR);
             $reg_query->execute();
 
             #for now event id is first reg
             $seminare_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:spot WHERE n LIKE :event_id");
-            $seminare_spots_sold_query->bindValue(':spot', '1', PDO::PARAM_INT);
+            $seminare_spots_sold_query->bindValue(':spot', $the_row->quantity, PDO::PARAM_INT);
             $seminare_spots_sold_query->bindValue(':event_id', $the_row->first_reg, PDO::PARAM_INT);
             $seminare_spots_sold_query->execute();
 
@@ -892,7 +895,7 @@ class Registration
                 $projekt_spots_sold_query->execute();
             }
 
-            #updates relevant dbs for open salons
+            /*#updates relevant dbs for open salons
             if ($event_type === 'osalon') {
                 
                 $reg_o_salon_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES (:event_id, :user_id, :quantity, NOW() )');
@@ -905,7 +908,7 @@ class Registration
                 $projekt_spots_sold_query->bindValue(':spots_sold', 1, PDO::PARAM_INT);
                 $projekt_spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_STR);
                 $projekt_spots_sold_query->execute();
-            }
+            }*/
 
             $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
             $query_delete_user->bindValue(':user_email', $the_row->user_email, PDO::PARAM_INT);
@@ -917,7 +920,11 @@ class Registration
                 
                 $_POST['user_rememberme'] = 1;
                 $_SESSION['user_id'] = $user_id;
-
+				
+				//temporary email for open salon
+				if ($event_id > 999){
+					openSalonUserEmail($the_row->user_email, $the_row->Anrede, $the_row->Nachname);
+				}
             } else {
                 $this->errors[] = MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL;
             }

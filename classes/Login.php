@@ -2290,7 +2290,7 @@ user_plz
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $post_data = array(
-            'to' => 'bartholos@web.de',
+            'to' => 'info@scholarium.de',
             'subject' => 'Neue Anmeldung zum Offenen Salon',
             'html' => $body,
             'from' => 'info@scholarium.at',

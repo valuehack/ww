@@ -3,16 +3,17 @@
       	//$submit = 'register_o_salon_from_outside_submit';//Register from Outside 
       	
       	//TODO change the submit name      	
-      	
-      	$result_row = $login->getUserData(trim($_SESSION['user_email']));
+      	if (isset($_SESSION['user_id'])) {
+      		$result_row = $login->getUserData(trim($_SESSION['user_email']));
 
-		$anrede = trim($result_row->Anrede);
-        $vorname = trim($result_row->Vorname);
-        $nachname = trim($result_row->Nachname);
-        $land = trim($result_row->Land);
-        $ort = trim($result_row->Ort);
-        $strasse = trim($result_row->Strasse);
-        $plz = trim($result_row->PLZ);
+			$anrede = trim($result_row->Anrede);
+       		$vorname = trim($result_row->Vorname);
+        	$nachname = trim($result_row->Nachname);
+        	$land = trim($result_row->Land);
+        	$ort = trim($result_row->Ort);
+        	$strasse = trim($result_row->Strasse);
+        	$plz = trim($result_row->PLZ);
+		}
       ?>
       <div class="profil payment_width">
       <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="<?=$pass_to?>">
@@ -88,7 +89,7 @@
       	  
       	  <!-- Open Salon -->
           <?php #o_salon + echo $n is used at verification to register to an event?>
-          <input type="hidden" name="profile[first_reg]" value="osalon_<?=$n?>">
+          <!--<input type="hidden" name="profile[first_reg]" value="<?=$n?>">-->
       		
       	  <!-- Seminar -->
       	  <!-- Projekte -->
