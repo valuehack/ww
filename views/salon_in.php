@@ -14,9 +14,6 @@ function changePrice(totalQuantity, price){
 
 <?
 
-/*if(registerOpenSalon($profile, $event_id, $quantity) == true){
-	echo "<div class='basket_message'>Registrierung erfolgreich. Sie sollten in K&uuml;rze eine Best&auml;tigungsemail erhalten.</div>";
-}*/
 //print_r($_SESSION);
 
 //Inserted from catalog.php
@@ -241,6 +238,7 @@ else {
 ?>		
 	<div class="content">
 		<?
+		
 //für Interessenten (Mitgliedschaft 1) Erklärungstext oben
   if ($_SESSION['Mitgliedschaft'] == 1) {
   	echo "<div class='salon_info'>";

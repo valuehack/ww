@@ -2169,7 +2169,8 @@ user_plz
 		$this->openSalonUserEmail($_SESSION['user_email'], $anrede, $user_surname);
 		$this->openSalonScholariumEmail($_SESSION['user_email'], $user_name, $user_surname);
 		
-		return true;
+		//display success message
+		header ("Location: ../salon/anmeldung_erfolgreich.php");
 	}
 	
 	public function openSalonUserEmail ($user_email, $user_anrede, $user_surname){
@@ -2290,7 +2291,7 @@ user_plz
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $post_data = array(
-            'to' => 'info@scholarium.de',
+            'to' => 'um@scholarium.at',
             'subject' => 'Neue Anmeldung zum Offenen Salon',
             'html' => $body,
             'from' => 'info@scholarium.at',

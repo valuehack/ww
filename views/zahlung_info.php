@@ -1,4 +1,3 @@
- <?php  ?>
  <?php 
 
 ## this page only displays the extra information 
