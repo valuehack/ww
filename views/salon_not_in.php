@@ -136,7 +136,7 @@ else {
       	<?php
         	if ($spots_total > 59){
         		$pass_to = 'register_open_salon_from_outside'; //Register from level 0
-      			$submit = 'register_open_salon_from_outside'; //Register from level 0
+        		$submit = 'register_open_salon_from_outside'; //Register from level 0
         		include ('../tools/open_salon_form.php');
         	}  
 			else {

@@ -203,6 +203,18 @@ h3 {
 }
 
 
+.info {
+	/*position: fixed;*/
+	top: 0px;
+	width: 90%;
+	height: 27px;
+	background: rgba(255,255,255,0.8);
+	padding: 4px 10% 4px 0;
+	text-align: right;
+	box-shadow: 0 0 10px 0 rgb(20,20,20);
+	z-index: 1000;
+}
+
 /*================= Login/Profil ===================*/
 
 .login {
@@ -409,7 +421,7 @@ img.dropdown_coin {
 
 .error, .message {
 	float: left;
-	margin-left: 17%;
+	margin-left: 5%;
 	padding: 3px 3px;	
 	border-radius: 4px;
 	box-shadow: 0 0 1px 0 transparent;

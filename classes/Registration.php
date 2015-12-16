@@ -953,7 +953,7 @@ class Registration
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $post_data = array(
-            'to' => 'um@scholarium.at',
+            'to' => 'info@scholarium.at',
             'subject' => 'Neue Anmeldung zum Offenen Salon',
             'html' => $body,
             'from' => 'info@scholarium.at',

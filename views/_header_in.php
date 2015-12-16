@@ -61,6 +61,7 @@
    			popup.focus();
 			}
 		</script>
+		
 	</head>
 
 <?php
@@ -168,9 +169,14 @@ while ($entry = mysql_fetch_array($result))
 <body>
 <!-- Layout-->
         <header class="header">
+
             <div class="login">   
                 <?php
-
+			  if ($expired < time()) {
+      			?>
+        		<p class="error">Ihre Mitgliedschaft ist abgelaufen. Um unsere Angebote wieder komplett nutzen zu k&ouml;nnen, <a href="../abo/">erneuern Sie bitte Ihre Mitgliedschaft.</a></p>
+        	<?php
+			}
                   // show potential errors / feedback (from login object)
               if (isset($login)) {
                   if ($login->errors) {
