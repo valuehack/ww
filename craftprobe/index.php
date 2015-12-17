@@ -1,6 +1,5 @@
 <?php include "header.php";
-	  include "../views/_db.php";
-	  
+	 	  
 $ok = $_POST['ok'];
 $email = $_POST['email'];
 $firstname = $_POST['firstname'];
