@@ -1,6 +1,9 @@
       <?php
       	//$passed_from = Where was the form included?
       	//$pass_to = To what function should the form be send?
+      	
+      	//profile[] = personal information, name, e-mail, adress
+      	//product[] = product information, betrag, quantity
       	  	
       	if (isset($_SESSION['user_id'])) {
       		$result_row = $login->getUserData(trim($_SESSION['user_email']));
@@ -79,15 +82,15 @@
 		  if ($passed_from == 'projekt'){
 		  ?>
 		  <div class="projekte_investment">
-              <input type="radio" class="projekte_investment_radio" name="product[quantity]" value="150" required>
+              <input type="radio" class="projekte_investment_radio" name="profile[level]" value="3" required>
               150&euro;: Sie erhalten Zugriff auf die Scholien und andere Inhalte.<br><br>
-              <input type="radio" class="projekte_investment_radio" name="product[quantity]" value="300">
+              <input type="radio" class="projekte_investment_radio" name="profile[level]" value="4">
               300&euro;: Ab diesem Beitrag haben Sie als Scholar vollen Zugang zu allen unseren Inhalten und Veranstaltungen.<br><br>
-              <input type="radio" class="projekte_investment_radio" name="product[quantity]" value="600">
+              <input type="radio" class="projekte_investment_radio" name="profile[level]" value="5">
               600&euro;: Ab diesem Beitrag werden Sie Partner, wir f&uuml;hren Sie (au&szlig;er anders gew&uuml;nscht) pers&ouml;nlich mit Link auf unserer Seite an und laden Sie zu einem exklusiven Abendessen ein (oder Sie erhalten einen Geschenkkorb)<br><br>
-              <input type="radio" class="projekte_investment_radio" name="product[quantity]" value="1200">
+              <input type="radio" class="projekte_investment_radio" name="profile[level]" value="6">
               1200&euro;: Ab diesem Beitrag nehmen wir Sie als Beirat auf und laden Sie zu unserer Strategieklausur ein.<br><br>
-              <input type="radio" class="projekte_investment_radio" name="product[quantity]" value="2400">
+              <input type="radio" class="projekte_investment_radio" name="profile[level]" value="7">
               2400&euro;: Ab diesem Beitrag werden Sie Ehrenpr&auml;sident und bestimmen bis zu zweimal im Jahr ein Thema f&uuml;r das <i>scholarium</i>.<br>  
           </div>
           <?php
@@ -97,7 +100,7 @@
 		  if ($passed_from == 'seminar'){
 		  ?>
 		  <label for="quantity">Tickets</label>
-		  <select id="quantity" name="product[quantity]">
+		  <select id="quantity" name="product[quantity]" onchange="changePrice(this.value,'<?=$event_price?>')">
 		  		<?php
 		  		if ($spots_available == 0){echo '<option value="0" disabled>0</option>';}
 		  		if ($spots_available >= 1){echo '<option value="1" selected>1</option>';}
@@ -107,13 +110,17 @@
 		  		if ($spots_available >= 5){echo '<option value="5">5</option>';}
 		  		?>
 		  </select>
+		  <!-- The js price change needs testing -->
+		  <p>
+		  	<span id="change"><?=$event_price?></span>&euro;
+		  </p>
 		  <?php
 		  }
 		  
 		  #quantity for upgrade
 		  if ($passed_from == 'upgrade'){
 		  ?>
-		  <p>Sie haben das Beitragslevel &quot;<?=$level?>&quot; mit einem Jahresbeitrag von <?=$betrag?> gew&auml;hlt.</p>
+		  <p>Sie haben das Beitragslevel &quot;<?=$level['mitgliedschaft']?>&quot; mit einem Jahresbeitrag von <?=$level['betrag']?> gew&auml;hlt.</p>
 		  <?php
 		  }
 		  ?>
@@ -129,45 +136,32 @@
 		  
           <!-- hidden fields -->
           <!-- general -->
-          <input type="hidden" name="product[event_id]" value="<?=$n?>">
-      	  <input type="hidden" name="product[betrag]" value="<?=$event_price?>">
-      	  <input type="hidden" name="product[title]" value="<?=$title?>">
-      	        		
+      	        	  
       	  <?php
-      	  #hidden fields for open salon
-      	  if ($passed_from == 'open_salon') {
-      	  ?>
-      	  <!--o_salon + echo $n is used at verification to register to an event-->
-      	  <!--<input type="hidden" name="profile[first_reg]" value="<?=$n?>">-->	
-      	  ?>
-      	  <?php
-		  }
-      	  #hidden field for seminare
-      	  if ($passed_from == 'seminar') {
-      	  ?>
-          <input type="hidden" name="profile[credits]" value="25">
-          <input type="hidden" name="profile[first_reg]" value="seminar_<?=$n?>">
-          <?php
-		  }
-		  
-		  #hidden fields for upgrade
-		  if ($passed_from == 'upgrade') {
-      	  ?>
-    	  <input type="hidden" name="profile[level]" value="<?=$level?>">
-          <input type="hidden" name="profile[first_reg]" value="upgrade_buerger">
-      	  <?php
-		  }
-		  
-		  #hidden fields for projekte
-		  if ($passed_from == 'projekt') {
-      	  ?>
-      	  <input type="hidden" name="profile[first_reg]" value="projekt_<?=$n?>">
-      	  <?php
-		  }
-		  ?>
+      	  #swich first_reg
+      	  switch ($passed_from){
+		  	case 'open_salon':
+		  		$first_reg = 'opensalon_'.$n;
+				break;
+			case 'seminar':
+				$first_reg = 'seminar_'.$n;
+				break;
+			case 'projekt':
+				$first_reg = 'projekt_'.$n;
+				break;
+			case 'upgrade':
+				$first_reg = 'upgrade_buerger';
+				echo '<input type="hidden" name="profile[level]" value="'.$level['level'].'">';
+				break;
+			default:
+				$first_reg = 'unbekannt';
+      	  }
+  		 ?>
+  		 
+  		 <input type="hidden" name="profile[first_reg]" value="<?=$first_reg?>">
           
-		  <p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+		 <p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 			
-    	  <input type="submit" class="profil_inputbutton" name="<?=$pass_to?>" value="Anmelden" <?if ($spots_available == 0){echo 'disabled';}?>>
+    	 <input type="submit" class="profil_inputbutton" name="<?=$pass_to?>" value="Anmelden" <?if ($spots_available == 0){echo 'disabled';}?>>
       </form>
       </div>

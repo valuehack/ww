@@ -2,7 +2,7 @@
 
 //insert code for invoice generation
 
-  $now = date('d.m.Y', time());  
+  $now = date('d.m.Y', time());
   $year = date('Y', time());
 
   $invoice_number = 'userID-'.$year.'-no';

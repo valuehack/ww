@@ -140,7 +140,7 @@ class Registration
 
                 //only redirect after registration was successfully finished
                 #zahlung_info.php displays extra info for selected payment method
-                header("Location: ../abo/zahlung_info.php");     
+                header("Location: ../abo/zahlung_info.php");
             }
         }
         #registration for open salon from outside
@@ -174,6 +174,161 @@ class Registration
                 header("Location: ../salon/anmeldung_erfolgreich.php");
             }
         }
+
+		#Not in use yet. General function for all registrations only with email
+		elseif(isset($_POST['submit_email'])) {
+			
+			#grab user email and first_reg
+			$user_email = $_POST['user_email'];
+			$first_reg = $_POST['first_reg'];
+			
+			#set user_level to 1 "Interessent" for all 
+			$user_level = 1;
+			
+			$this->subscribeNewUser1($user_email, $user_level, $first_reg);
+			
+			# $registration_successful is set to true if registration was succesfull
+            if ($this->registration_successful)
+            {
+				
+				//grab info from subcribeNewUser and send verification email to user
+				$grey_user_id = $reg_info['grey_user_id'];
+				$user_activation_hash = $reg_info['user_activation_hash'];
+				$user_password = $reg_info['user_password'];
+				
+				if ($email->sendVerificationMinimal($grey_user_id, $user_email, $user_activation_hash, $user_password)) {
+					
+					#comment this out when testing
+               		$email->sendScholariumEmailMinimal($user_email);
+                				
+                	//only redirect after registration was successfully finished
+                	#displays sucess message
+                	#TODO make generic sucess page or show msg in the specific page
+                	header("Location: ../salon/anmeldung_erfolgreich.php");
+					// OR
+					$this->messages[] = MESSAGE_VERIFICATION_MAIL_SENT;
+
+                } else {
+                    // delete this users account immediately, as we could not send a verification email
+                    $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
+                    $query_delete_user->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+                    $query_delete_user->execute();
+
+                    $this->errors[] = MESSAGE_VERIFICATION_MAIL_ERROR;
+				}
+								
+            }
+		}
+		
+		#Not in use yet. General function for all registrations with information
+		elseif(isset($_POST['submit_full_info'])) {
+			
+			#grab personal information
+			$profile = $_POST['profile'];
+			$_SESSION['profile'] = $profile;
+			
+			$user_email = $profile[user_email];
+			$user_anrede = $profile[user_anrede];
+			$user_surname = $profile[user_surname];
+			$user_name = $profile[user_name];
+			$first_reg = $profile[first_reg];
+			$user_level = $profile[level];
+			
+			#grab product information
+			$product = $_POST['product'];
+			$_SESSION['product'] = $product;
+			
+			$quantity = $product[quantity];
+			
+			list($event_type, $event_id) = explode('_', $first_reg);
+			
+			#I decided to work directly with the user level because coding it in $betrag is confusing, $betrag is theerefore not needed anymore because if we need it (e.g. for email) we can calculate it from the level or by $quantity*$price. I think this makes the code more clear and understanable.
+						
+			#define specific values for different product types			
+			switch($event_type) {
+				#set user_level to 3 "Kursteilnehmer" for all seminars
+				case 'seminar':
+					$user_level = 3;
+					break;
+				#set user_level to 1 "Interesset" for open salons
+				case 'opensalon':
+					$user_level = 1;
+					break;
+				case 'upgrade':
+					$user_level = $user_level;
+					break;
+				case 'projekt':
+					$user_level = $user_level;
+					
+					#get $quantity for projekte from user_level because it is not passed from the form anymore
+					switch($user_level) {
+						case 3:
+							$quantity = 150;
+							break;
+						case 4:
+							$quantity = 300;
+							break;
+						case 5:
+							$quantity = 600;
+							break;
+						case 6:
+							$quantity = 1200;
+							break;
+						case 7:
+							$quantity = 2400;
+							break;
+						default:
+							$quantity = 150;
+					}
+					
+					break;
+				default:
+					$user_level = 1;
+					break;
+			}
+			
+			
+			#add quantity to first_reg because it can't be added in the form
+			$first_reg = $first_reg.'_'.$quantity;
+			$profile[first_reg] = $first_reg;
+
+			$this->subscribeNewUser1($user_email, $user_level, $first_reg);
+			
+			# $registration_successful is set to true if registration was succesfull
+            if ($this->registration_successful)
+            {
+				
+				//grab info from subcribeNewUser and send verification email to user
+				$grey_user_id = $reg_info['grey_user_id'];
+				$user_activation_hash = $reg_info['user_activation_hash'];
+				$user_password = $reg_info['user_password'];
+				
+				if ($email->sendVerificationFull($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level, $user_surname)) {
+					
+					//add adtional user data
+					$this->addPersonalDataGeneric($profile);
+
+					#comment this out when testing TODO think about if we need this because more information is send to scholarium after verification
+               		$email->sendScholariumEmailFull($user_email, $user_name, $user_surname);
+                				
+                	//only redirect after registration was successfully finished
+                	#displays sucess message
+                	#TODO make generic sucess page or show msg in the specific page
+                	header("Location: ../salon/anmeldung_erfolgreich.php");
+					// OR
+					$this->messages[] = MESSAGE_VERIFICATION_MAIL_SENT;
+
+                } else {
+                    // delete this users account immediately, as we could not send a verification email
+                    $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
+                    $query_delete_user->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+                    $query_delete_user->execute();
+
+                    $this->errors[] = MESSAGE_VERIFICATION_MAIL_ERROR;
+				}
+								
+            }
+		}
 
     }#end of constructor
 
@@ -341,7 +496,7 @@ class Registration
                     } else {
                        // delete this users account immediately, as we could not send a verification email
                        $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
-                       $query_delete_user->bindValue(':user_email', $user_email, PDO::PARAM_INT);
+                       $query_delete_user->bindValue(':user_email', $user_email, PDO::PARAM_STR);
                        $query_delete_user->execute();
 
                        $this->errors[] = MESSAGE_VERIFICATION_MAIL_ERROR;
@@ -356,7 +511,7 @@ class Registration
     #-------------------------------------
     //generates a random string of 6 characters used for temporary passwords
     private function randomPasswordGenerator() {
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";  
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
         $size = strlen( $chars );
         for( $i = 0; $i < 6; $i++ ) {
@@ -569,7 +724,6 @@ class Registration
 
     $update_profile_query->execute();
 
-     
     }
 
     #-------------------------------------
@@ -1086,5 +1240,85 @@ class Registration
                 #$this->messages[] = "Please check your inbox.";
                 return true;
             }*/
+    }
+
+	private function subscribeNewUser1($user_email, $user_level, $first_reg)
+    {
+        // we just remove extra space on email
+        $user_email = trim($user_email);
+
+        // check provided data validity
+        // TODO: check for "return true" case early, so put this first
+        if (empty($user_email)) {
+           $this->errors[] = MESSAGE_EMAIL_EMPTY;
+          } elseif (strlen($user_email) > 64) {
+            $this->errors[] = MESSAGE_EMAIL_TOO_LONG;
+        } elseif (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
+            $this->errors[] = MESSAGE_EMAIL_INVALID;       
+
+        // finally if all the above checks are ok
+        } elseif ($this->databaseConnection()) {
+            // check if email already exists
+            $query_check_user_email = $this->db_connection->prepare('SELECT user_email FROM mitgliederExt WHERE user_email=:user_email');
+            $query_check_user_email->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+            $query_check_user_email->execute();
+            $result = $query_check_user_email->fetchAll();
+
+			if ($result[0]['user_email'] == $user_email) {
+				$this->errors[] =  MESSAGE_EMAIL_ALREADY_EXISTS;
+
+            } else {
+                // check if we have a constant HASH_COST_FACTOR defined (in config/hashing.php),
+                // if so: put the value into $hash_cost_factor, if not, make $hash_cost_factor = null
+                #$hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
+
+                // crypt the user's password with the PHP 5.5's password_hash() function, results in a 60 character hash string
+                // the PASSWORD_DEFAULT constant is defined by the PHP 5.5, or if you are using PHP 5.3/5.4, by the password hashing
+                // compatibility library. the third parameter looks a little bit shitty, but that's how those PHP 5.5 functions
+                // want the parameter: as an array with, currently only used with 'cost' => XX.
+                
+                //generate a new password
+                $user_password = $this->randomPasswordGenerator();
+
+                //encrypt password for storage in the database, so no one would see it in plain text
+                $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => $hash_cost_factor));
+
+                // generate random hash for email verification (40 char string)
+                $user_activation_hash = sha1(uniqid(mt_rand(), true));
+
+                //in case user has lost email with verification, this will allow to attempt registration
+                $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
+                $query_delete_user->bindValue(':user_email', $user_email, PDO::PARAM_INT);
+                $query_delete_user->execute();
+				
+                // write new users data into database                
+                $query_new_user_insert = $this->db_connection->prepare('INSERT INTO grey_user (user_email, Mitgliedschaft, first_reg, user_password_hash, user_activation_hash, user_registration_ip, user_registration_datetime) VALUES(:user_email, :Mitgliedschaft, :first_reg, :user_password_hash, :user_activation_hash, :user_registration_ip, now())');
+
+                $query_new_user_insert->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+                $query_new_user_insert->bindValue(':first_reg', $first_reg, PDO::PARAM_STR);
+                $query_new_user_insert->bindValue(':Mitgliedschaft', $user_level, PDO::PARAM_STR);
+                $query_new_user_insert->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
+                $query_new_user_insert->bindValue(':user_activation_hash', $user_activation_hash, PDO::PARAM_STR);
+                $query_new_user_insert->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
+                $query_new_user_insert->execute();
+
+                $_SESSION['Mitgliedschaft'] = $user_level;
+						
+				$reg_info['user_activation_hash'] = $user_activation_hash;
+				$reg_info['user_password']	= $user_password;			
+                // id of new user
+                $reg_info['grey_user_id'] = $this->db_connection->lastInsertId();
+                $_SESSION['grey_user_id'] = $reg_info['grey_user_id'];
+
+                if ($query_new_user_insert) {
+                	//if info is successfully entered proceed
+                	$this->$registration_sucessful = true;
+                	return $reg_info;
+
+                } else {
+                    $this->errors[] = MESSAGE_REGISTRATION_FAILED;
+                }
+            }
+        }
     }
 }

@@ -127,10 +127,10 @@ if(isset($_GET['q']))
 	}
 	?>
     <form method="post" action="../abo/zahlung.php" name="user_create_profile_form">
-      <input type="hidden" name="event_id" value="<?php echo $n ?>" />
-      <input type="hidden" name="title" value="<?php echo $title ?>" />
-      <input type="hidden" name="pay" value="2" />
-      <input type="hidden" name="betrag" value='150' />
+      <input type="hidden" name="event_id" value="<?php echo $n ?>">
+      <input type="hidden" name="title" value="<?php echo $title ?>">
+      <input type="hidden" name="pay" value="2">
+      <input type="hidden" name="betrag" value='150'>
       <input class="inputbutton" type="submit" value="Anmelden" <?if($spots_available == 0 || $bought >= 1){echo 'disabled';}?>><br>
     </form>
     <p class="salon_reservation_span_c">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r das Seminar, sondern auch Zugang zu unserem weiteren Angebot (u.a. Scholien, unserem Salon, Schriften, Medien).</p>
