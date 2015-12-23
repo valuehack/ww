@@ -5,7 +5,7 @@
   $now = date('d.m.Y', time());
   $year = date('Y', time());
 
-  $invoice_number = 'userID-'.$year.'-no';
+  $invoice_number = $year.'-'.$number;
 
   $invoice_name = 'Rechnung_'.$invoice_number.'.pdf';
 

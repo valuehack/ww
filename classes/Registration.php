@@ -303,13 +303,14 @@ class Registration
 				$user_activation_hash = $reg_info['user_activation_hash'];
 				$user_password = $reg_info['user_password'];
 				
-				if ($email->sendVerificationFull($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level, $user_surname)) {
+				//if ($email->sendVerificationFull($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level, $user_surname)) {
+				if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $user_level, $user_surname)) {
 					
 					//add adtional user data
 					$this->addPersonalDataGeneric($profile);
 
 					#comment this out when testing TODO think about if we need this because more information is send to scholarium after verification
-               		$email->sendScholariumEmailFull($user_email, $user_name, $user_surname);
+               		//$email->sendScholariumEmailFull($user_email, $user_name, $user_surname);
                 				
                 	//only redirect after registration was successfully finished
                 	#displays sucess message
@@ -1312,12 +1313,130 @@ class Registration
 
                 if ($query_new_user_insert) {
                 	//if info is successfully entered proceed
-                	$this->$registration_sucessful = true;
+                	$this->registration_successful = true;
                 	return $reg_info;
 
                 } else {
                     $this->errors[] = MESSAGE_REGISTRATION_FAILED;
                 }
+            }
+        }
+    }
+
+	public function verifyNewUser1($user_id, $user_activation_hash)
+    {
+            // if database connection opened
+            if ($this->databaseConnection()) {
+
+            //verify user - get data that will be inserted in the main database
+            $verify_user = $this->db_connection->prepare('SELECT * FROM grey_user WHERE user_id = :user_id AND user_activation_hash = :user_activation_hash');
+            $verify_user->bindValue(':user_id', intval(trim($user_id)), PDO::PARAM_INT);
+            $verify_user->bindValue(':user_activation_hash', $user_activation_hash, PDO::PARAM_STR);
+            $verify_user->execute();
+
+            // get result row (as an object)
+            $the_row = $verify_user->fetchObject();
+
+			#first_reg carries event type, event id and quantity 	
+			list($product_type, $product_id, $quantity) = explode('_', $the_row->first_reg);
+			
+			#set credits for seminare and upgrade, projekte and open salon don't get any
+			if ($product_type === 'seminar') {
+				$credits_left = 25;
+			}
+			if ($product_type === 'upgrade') {
+				switch($the_row->Mitgliedschaft) {
+					case 2:
+						$credits_left = 75;
+						break;
+					case 3:
+						$credits_left = 150;
+						break;
+					case 4:
+						$credits_left = 300;
+						break;
+					case 5:
+						$credits_left = 600;
+						break;
+					case 6:
+						$credits_left = 1200;
+						break;
+					case 7:
+						$credits_left = 2400;
+						break;
+					default:
+						$credits_left = 0;
+						break;																														
+				}
+			}
+
+            #sets php timezone to Europe/Vienna
+            #does the same for mysql in PDO way
+            #this could be better in the header...
+            date_default_timezone_set('Europe/Vienna');
+            $query_time_zone = $this->db_connection->prepare("SET time_zone = 'Europe/Vienna'");
+            $query_time_zone->execute();
+
+            //copy data to the main database
+            $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
+                mitgliederExt 
+                (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
+                VALUES
+                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
+
+            $query_move_to_main->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':Mitgliedschaft', $the_row->Mitgliedschaft, PDO::PARAM_INT);
+
+            $query_move_to_main->bindValue(':name', $the_row->Vorname, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':surname', $the_row->Nachname, PDO::PARAM_STR);
+			$query_move_to_main->bindValue(':anrede', $the_row->Anrede, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':country', $the_row->Land, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':city', $the_row->Ort, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':street', $the_row->Strasse, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':plz', $the_row->PLZ, PDO::PARAM_INT);
+			$query_move_to_main->bindValue(':telefon', $the_row->Telefon, PDO::PARAM_STR);
+
+            $query_move_to_main->bindValue(':first_reg', $the_row->first_reg, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':credits_left', $credits_left, PDO::PARAM_INT);
+        
+            $query_move_to_main->bindValue(':user_password_hash', $the_row->user_password_hash, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':user_active', '1', PDO::PARAM_INT);
+            $query_move_to_main->execute();
+
+            #capture the final user_id which will be in mitgliederExt
+            $user_id = $this->db_connection->lastInsertId();
+            $_SESSION['user_id'] = $user_id;
+     		
+			if ($product_type === 'seminar' || $product_type === 'projekt' || $product_id > 999) {
+				
+				#update registration and produkte
+				$newclass->registerEvent($user_id, $product_id, $quantity);
+				
+				#ticket generation
+				$newclass->generateTicket($user_id, $the_row->Vorname, $the_row->Nachname, $product_id, $quantity);
+			}
+			if ($product_type === 'seminar' || $product_type === 'projekt' || $event_type === 'upgrade') {
+				
+				#invoice generation
+				$newclass->generateInvoice($user_id, $product_id, $product_type, $the_row->Mitgliedschaft, $quantity);
+			}
+
+            $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
+            $query_delete_user->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
+            $query_delete_user->execute();
+
+            if ($verify_user->rowCount() > 0) {
+                $this->verification_successful = true;
+                $this->messages[] = MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL;
+                
+                $_POST['user_rememberme'] = 1;
+				
+				$email->sendConfirmationUser($user_email);
+				#another email to scholarium needed?
+				
+            } else {
+                $this->errors[] = MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL;
             }
         }
     }

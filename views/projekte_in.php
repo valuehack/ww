@@ -122,7 +122,7 @@ else {
      First get total number of rows in data table. 
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
-  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status > 0";
+  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status = 1";
   $total_pages = mysql_fetch_array(mysql_query($query));
   $total_pages = $total_pages[num];
   
@@ -136,7 +136,7 @@ else {
     $start = 0;               //if no page var is given, set start to 0
   
   /* Get data. */
-  $sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status > 0 order by n asc LIMIT $start, $limit";
+  $sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status = 1 order by n asc LIMIT $start, $limit";
   
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   

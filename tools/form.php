@@ -30,7 +30,7 @@
         	<select id="user_anrede" name="profile[user_anrede]" required>
         		<option value="Herr" <?if ($anrede=='Herr'){echo "selected";}?>>Herr</option>
         		<option value="Frau" <?if ($anrede=='Frau'){echo "selected";}?>>Frau</option>
-        	</select>
+        	</select><br>
         	<label for="user_first_name">Vorname</label>		
         	<input class="profil_inputfield" id="user_first_name" type="text" name="profile[user_first_name]" value="<?=$vorname?>" required><br>
         	<label for="user_surname">Nachname</label>
@@ -48,7 +48,7 @@
         	<select id="user_country" name="profile[user_country]" required>        		
             <!-- this content is static and just takes too much space -->
             <?php include("_country_list.html") ?>
-            </select>
+         	</select><br>
           <!-- end of user profile -->
           
           <!-- payment methods  -->
@@ -141,13 +141,13 @@
       	  #swich first_reg
       	  switch ($passed_from){
 		  	case 'open_salon':
-		  		$first_reg = 'opensalon_'.$n;
+		  		$first_reg = 'opensalon_'.$event_id;
 				break;
 			case 'seminar':
-				$first_reg = 'seminar_'.$n;
+				$first_reg = 'seminar_'.$event_id;
 				break;
 			case 'projekt':
-				$first_reg = 'projekt_'.$n;
+				$first_reg = 'projekt_'.$event_id;
 				break;
 			case 'upgrade':
 				$first_reg = 'upgrade_buerger';
@@ -165,3 +165,9 @@
     	 <input type="submit" class="profil_inputbutton" name="<?=$pass_to?>" value="Anmelden" <?if ($spots_available == 0){echo 'disabled';}?>>
       </form>
       </div>
+
+<script>
+function changePrice(totalQuantity, price){
+    document.getElementById("change").innerHTML = (totalQuantity * price);
+}
+</script>

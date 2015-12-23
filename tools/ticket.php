@@ -23,9 +23,10 @@
 		$date = $tage[$tag]." ";
 		$date = $date. strftime("%d.%m.%Y %H:%M Uhr", strtotime($start));
 		}
-	else 
+	else {
 		$date = "Der Termin wird in K&uuml;rze bekannt gegeben.";
-
+		}
+	
   $ticket_name = "ticket_".$user_id."_".$type."_".$key.".pdf";
 
   $html = '
