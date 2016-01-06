@@ -130,7 +130,7 @@ class General {
                   				<img src="/home/content/56/6152056/html/production/style/gfx/ticket_logo.png" style="width:300px;margin-bottom:50px;">
               				</div>
               				<div class="ticket_event">
-                  				<p><i>'.$event_type.'</i></p>
+                  				<p><i>'.ucfirst($event_type).'</i></p>
                   				<h1>'.$event_title.'</h1>
                   				<p>
                       				<span class="ticket_date">'.$date.'</span>
@@ -173,12 +173,12 @@ class General {
 			$tickets_array[$ticket_name] = $ticket_location;
 	}
 	
-	public function generateInvoice($user_id, $product_id, $product_type, $quantity, $user_level) {
+	public function generateInvoice($user_id, $product_id, $product_type, $user_level, $quantity, $zahlung) {
 		
 			#automated invoice generation both for outsiders and insiders
 			
 			#get user information
-			$user_query = $this->db_connection->prepare('SELECT * FROM mitgliederExt WHERE n = :user_id');
+			$user_query = $this->db_connection->prepare('SELECT * FROM mitgliederExt WHERE user_id = :user_id');
 			$user_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 			$user_query->execute();
 			$user_result = $user_query->fetchObject();
@@ -192,12 +192,12 @@ class General {
 			
 			#get event information
 			$event_query = $this->db_connection->prepare('SELECT * FROM produkte WHERE n = :event_id');
-			$event_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+			$event_query->bindValue(':event_id', $product_id, PDO::PARAM_INT);
 			$event_query->execute();
 			$event_result = $event_query->fetchObject();
 			
-			$event_title = $event_result->Titel;
-			$event_price = $event_result->Price;
+			$event_title = $event_result->title;
+			$event_price = $event_result->price;
 			
 			$year = date('Y', time());
 			$now = date('d.m.Y', time());
@@ -217,8 +217,8 @@ class General {
 			$number = sprintf('%04d', $num_of_invoices);
 
 			$invoice_number = $year.'-'.$number;
-
-			$invoice_name = 'Rechnung_'.$invoice_number.'.pdf';
+			
+			$invoice_name = 'Rechnung_'.$invoice_number;
 			
 			switch ($user_level) {
 				case 2:
@@ -396,12 +396,13 @@ class General {
 
 				#save invoice on sever
 				$invoice_location = '/home/content/56/6152056/html/production/rechnungen/'.$invoice_name.'.pdf';
-				file_put_contents($invoice_location, $pdf);
+				file_put_contents('/home/content/56/6152056/html/production/rechnungen/'.$invoice_name.'.pdf', $pdf);
 				
 				#put invoice into database
-				$invoice_query = $this->db_connection->prepare('INSERT INTO rechnungen (user_id, date, nummer, pdf) VALUES (:suer_id, NOW(), :nummer, :pdf');
+				$invoice_query = $this->db_connection->prepare('INSERT INTO rechnungen (user_id, nummer, zahlungsart, pdf, date) VALUES (:user_id, :nummer, :zahlung, :pdf, NOW()');
 				$invoice_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 				$invoice_query->bindValue(':nummer', $invoice_number, PDO::PARAM_STR);
+				$invoice_query->bindValue(':zahlung', $zahlung, PDO::PARAM_STR);
 				$invoice_query->bindValue(':pdf', $invoice_location, PDO::PARAM_STR);
 				$invoice_query->execute();
 		}

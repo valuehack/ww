@@ -31,10 +31,11 @@ require_once('../libraries/PHPMailer.php');
 // load the login class
 require_once('../classes/General.php');
 require_once('../classes/Email.php');
-require_once('../classes/Login.php');
-require_once('../classes/Registration.php');
 
 $general = new General();
+
+require_once('../classes/Login.php');
+require_once('../classes/Registration.php');
 
 // create a login object. when this object is created, it will do all login/logout stuff automatically
 // so this single line handles the entire login process.

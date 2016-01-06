@@ -45,10 +45,17 @@ class Registration
             $this->registerNewUser($_POST['user_email'], $_POST['user_password_new'], $_POST['user_password_repeat'], $_POST["captcha"]);
 
         // if we have such a GET request, call the verifyNewUser() method
-        } else if (isset($_GET["id"]) && isset($_GET["verification_code"])) 
+        } elseif (isset($_GET["id"]) && isset($_GET["verification_code"]) && !isset($_GET["test"])) 
         {
             $this->verifyNewUser($_GET["id"], $_GET["verification_code"]);
- 
+			
+		} elseif (isset($_GET["id"]) && isset($_GET["verification_code"]) && $_GET["test"] == 1) 
+		{
+			$user_id = $_GET["id"];
+			$user_activation_hash = $_GET["verification_code"];
+			$test = $_GET["test"];
+			$this->verifyNewUser1($user_id, $user_activation_hash);
+			
         #eintragen_submit is a button submit from subscription forms
         } elseif (isset($_POST["eintragen_submit"])) {
 
@@ -199,7 +206,7 @@ class Registration
 				if ($email->sendVerificationMinimal($grey_user_id, $user_email, $user_activation_hash, $user_password)) {
 					
 					#comment this out when testing
-               		$email->sendScholariumEmailMinimal($user_email);
+               		$email->sendScholariumMinimal($user_email);
                 				
                 	//only redirect after registration was successfully finished
                 	#displays sucess message
@@ -239,6 +246,7 @@ class Registration
 			$_SESSION['product'] = $product;
 			
 			$quantity = $product[quantity];
+			$zahlung = $_POST['zahlung'];
 			
 			list($event_type, $event_id) = explode('_', $first_reg);
 			
@@ -250,7 +258,7 @@ class Registration
 				case 'seminar':
 					$user_level = 3;
 					break;
-				#set user_level to 1 "Interesset" for open salons
+				#set user_level to 1 "Interessent" for open salons
 				case 'opensalon':
 					$user_level = 1;
 					break;
@@ -292,7 +300,7 @@ class Registration
 			$first_reg = $first_reg.'_'.$quantity;
 			$profile[first_reg] = $first_reg;
 
-			$this->subscribeNewUser1($user_email, $user_level, $first_reg);
+			$reg_info = $this->subscribeNewUser1($user_email, $user_level, $first_reg);
 			
 			# $registration_successful is set to true if registration was succesfull
             if ($this->registration_successful)
@@ -303,14 +311,15 @@ class Registration
 				$user_activation_hash = $reg_info['user_activation_hash'];
 				$user_password = $reg_info['user_password'];
 				
-				//if ($email->sendVerificationFull($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level, $user_surname)) {
-				if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $user_level, $user_surname)) {
+				if ($email->sendVerificationFull($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level, $user_surname)) {
+				//if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $user_level, $user_surname)) {
 					
 					//add adtional user data
 					$this->addPersonalDataGeneric($profile);
+					$this->addPaymentData($zahlung, $user_email);
 
 					#comment this out when testing TODO think about if we need this because more information is send to scholarium after verification
-               		//$email->sendScholariumEmailFull($user_email, $user_name, $user_surname);
+               		$email->sendScholariumFull($user_email, $user_name, $user_surname, $event_type, $event_id, $quantity, $user_level);
                 				
                 	//only redirect after registration was successfully finished
                 	#displays sucess message
@@ -724,6 +733,22 @@ class Registration
     $update_profile_query->bindValue(':user_email', $profile[user_email], PDO::PARAM_STR);
 
     $update_profile_query->execute();
+
+    }
+    
+    public function addPaymentData($zahlung, $email)
+    {  
+
+    $update_payment_query = $this->db_connection->prepare(
+    "UPDATE grey_user   
+        SET Zahlungsart = :zahlung
+      WHERE user_email = :user_email"
+    );
+
+    $update_payment_query->bindValue(':zahlung', $zahlung, PDO::PARAM_STR);
+    $update_payment_query->bindValue(':user_email', $email, PDO::PARAM_STR);
+
+    $update_payment_query->execute();
 
     }
 
@@ -1328,9 +1353,11 @@ class Registration
             // if database connection opened
             if ($this->databaseConnection()) {
 
+			$general = new General();
+
             //verify user - get data that will be inserted in the main database
             $verify_user = $this->db_connection->prepare('SELECT * FROM grey_user WHERE user_id = :user_id AND user_activation_hash = :user_activation_hash');
-            $verify_user->bindValue(':user_id', intval(trim($user_id)), PDO::PARAM_INT);
+            $verify_user->bindValue(':user_id', intval(trim($user_id)), PDO::PARAM_STR);
             $verify_user->bindValue(':user_activation_hash', $user_activation_hash, PDO::PARAM_STR);
             $verify_user->execute();
 
@@ -1339,6 +1366,8 @@ class Registration
 
 			#first_reg carries event type, event id and quantity 	
 			list($product_type, $product_id, $quantity) = explode('_', $the_row->first_reg);
+						
+			$credits_left = 0;
 			
 			#set credits for seminare and upgrade, projekte and open salon don't get any
 			if ($product_type === 'seminar') {
@@ -1411,15 +1440,17 @@ class Registration
 			if ($product_type === 'seminar' || $product_type === 'projekt' || $product_id > 999) {
 				
 				#update registration and produkte
-				$newclass->registerEvent($user_id, $product_id, $quantity);
+				$general->registerEvent($user_id, $product_id, $quantity);
 				
-				#ticket generation
-				$newclass->generateTicket($user_id, $the_row->Vorname, $the_row->Nachname, $product_id, $quantity);
+				if ($product_type === 'seminar') {				
+					#ticket generation
+					$general->generateTicket($user_id, $the_row->Vorname, $the_row->Nachname, $product_id, $quantity);
+				}
 			}
-			if ($product_type === 'seminar' || $product_type === 'projekt' || $event_type === 'upgrade') {
+			if ($product_type === 'seminar' || $product_type === 'projekt' || $product_type === 'upgrade') {
 				
 				#invoice generation
-				$newclass->generateInvoice($user_id, $product_id, $product_type, $the_row->Mitgliedschaft, $quantity);
+				$general->generateInvoice($user_id, $product_id, $product_type, $the_row->Mitgliedschaft, $quantity, $the_row->Zahlungsart);
 			}
 
             $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
