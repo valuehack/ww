@@ -1,11 +1,12 @@
 <?php 
 session_start();
 
-echo "Here is some data for from Paypal:<br>";
+echo "Data from paypal is set to a session var:<br>";
 
 // $_SESSION[ipn_post_data] = "test";
 
-$_SESSION[ipn_post_data] = $_POST;
+// $_POST['text'] = 'another value';
 
+$_SESSION[ipn_post_data] = $_POST;
 
 ?>
