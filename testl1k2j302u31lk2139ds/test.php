@@ -1,0 +1,6 @@
+sveikas
+
+<?php 
+
+
+?>
