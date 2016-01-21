@@ -1,3 +1,4 @@
+hi
 <?php 
 
 	require_once('../config/config.php');
@@ -37,5 +38,26 @@
     $txn_id_test_query->bindValue(':user_email', 'dzainius@gmail.com', PDO::PARAM_STR);
 
     $txn_id_test_query->execute();
+
+
+    //----------------------------------------
+    // LOG
+
+    $log  = 
+    	"TEST".
+    	"-------------------------".PHP_EOL;
+
+    	// "User: ".$_SERVER['REMOTE_ADDR'].' - '.date("F j, Y, g:i a").PHP_EOL.
+     //    "Attempt: ".($result[0]['success']=='1'?'Success':'Failed').PHP_EOL.
+     //    "User: ".$username.PHP_EOL.
+     //    "Pass: ".$password.PHP_EOL.
+     //    "-------------------------".PHP_EOL;
+
+	//Save string to log, use FILE_APPEND to append.
+	// file_put_contents('log.txt', $log, FILE_APPEND);
+
+	file_put_contents('log.txt', 'hello');
+
+	echo $log;	
 
 ?>
