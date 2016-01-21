@@ -25,7 +25,7 @@
 
 
 
-    $txn_id_test_query = $this->db_connection->prepare(
+    $txn_id_test_query = $db_connection->prepare(
     "UPDATE grey_user   
         SET Notiz = :txn_id
       WHERE user_email = :user_email"
