@@ -10,6 +10,8 @@
 
 	$ipn_post_data = $_POST;
 
+	// $ipn_post_data['txn_id'] = "test";
+
 	// $ipn_post_data['txn_id'];
 
 
@@ -26,7 +28,7 @@
 
 
     $txn_id_test_query = $db_connection->prepare(
-    "UPDATE grey_user   
+    "UPDATE mitgliederExt   
         SET Notiz = :txn_id
       WHERE user_email = :user_email"
     );
@@ -35,6 +37,5 @@
     $txn_id_test_query->bindValue(':user_email', 'dzainius@gmail.com', PDO::PARAM_STR);
 
     $txn_id_test_query->execute();
-
 
 ?>
