@@ -1,5 +1,10 @@
-hi
 <?php 
+
+
+	$ipn_post_data = $_POST;
+
+	// define("LOG_FILE", "./listener.log");
+	// error_log(date('[Y-m-d H:i e] '). "$ipn_post_data[test]". PHP_EOL, 3, LOG_FILE);
 
 	require_once('../config/config.php');
 
@@ -7,9 +12,7 @@ hi
 
 
 	// txn_id=1VM04871B73394130
-
-
-	$ipn_post_data = $_POST;
+	
 
 	// $ipn_post_data['txn_id'] = "test";
 
@@ -27,37 +30,17 @@ hi
 	}
 
 
-
     $txn_id_test_query = $db_connection->prepare(
     "UPDATE mitgliederExt   
         SET Notiz = :txn_id
       WHERE user_email = :user_email"
     );
 
-    $txn_id_test_query->bindValue(':txn_id', $ipn_post_data['txn_id'], PDO::PARAM_STR);
+    $txn_id_test_query->bindValue(':txn_id', $ipn_post_data[test], PDO::PARAM_STR);
     $txn_id_test_query->bindValue(':user_email', 'dzainius@gmail.com', PDO::PARAM_STR);
 
     $txn_id_test_query->execute();
 
-
-    //----------------------------------------
-    // LOG
-
-    $log  = 
-    	"TEST".
-    	"-------------------------".PHP_EOL;
-
-    	// "User: ".$_SERVER['REMOTE_ADDR'].' - '.date("F j, Y, g:i a").PHP_EOL.
-     //    "Attempt: ".($result[0]['success']=='1'?'Success':'Failed').PHP_EOL.
-     //    "User: ".$username.PHP_EOL.
-     //    "Pass: ".$password.PHP_EOL.
-     //    "-------------------------".PHP_EOL;
-
-	//Save string to log, use FILE_APPEND to append.
-	// file_put_contents('log.txt', $log, FILE_APPEND);
-
-	file_put_contents('log.txt', 'hello');
-
-	echo $log;	
-
+    // echo "...";
 ?>
+
