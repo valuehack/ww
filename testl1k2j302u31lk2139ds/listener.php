@@ -36,7 +36,7 @@
       WHERE user_email = :user_email"
     );
 
-    $txn_id_test_query->bindValue(':txn_id', $ipn_post_data[test], PDO::PARAM_STR);
+    $txn_id_test_query->bindValue(':txn_id', $ipn_post_data[txn_id], PDO::PARAM_STR);
     $txn_id_test_query->bindValue(':user_email', 'dzainius@gmail.com', PDO::PARAM_STR);
 
     $txn_id_test_query->execute();
