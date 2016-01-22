@@ -52,7 +52,7 @@
 	// Execute request and get response and status code
 	$response = curl_exec($request);
 	$status   = curl_getinfo($request, CURLINFO_HTTP_CODE);
-	$curl_error = curl_error($request);
+	$curl_error = curl_errno($request);
 
 	
 	if($status == 200 && $response == 'VERIFIED')
