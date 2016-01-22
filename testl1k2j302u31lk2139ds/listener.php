@@ -47,6 +47,9 @@
 	    CURLOPT_POSTFIELDS => http_build_query(array('cmd' => '_notify-validate') + $ipn_post_data),
 	    CURLOPT_RETURNTRANSFER => TRUE,
 	    CURLOPT_HEADER => FALSE,
+
+	    CURLOPT_SSL_VERIFYPEER => TRUE, // Verify peers
+    	CURLOPT_CAINFO => 'cacert.pem' // Path to file with certificates
 	));
 
 	// Execute request and get response and status code
@@ -54,7 +57,7 @@
 	$status   = curl_getinfo($request, CURLINFO_HTTP_CODE);
 	$curl_error = curl_errno($request);
 
-	
+
 	if($status == 200 && $response == 'VERIFIED')
 	{
 	    // All good! Proceed...
@@ -85,8 +88,6 @@
 	    $txn_id_test_query->bindValue(':user_email', 'dzainius@gmail.com', PDO::PARAM_STR);
 
 	    $txn_id_test_query->execute();
-
-
 
 	}
 
