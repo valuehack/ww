@@ -52,12 +52,9 @@
 	// Execute request and get response and status code
 	$response = curl_exec($request);
 	$status   = curl_getinfo($request, CURLINFO_HTTP_CODE);
+	$curl_error = curl_error($request);
 
-	// Close connection
-	curl_close($request);
-
-
-
+	
 	if($status == 200 && $response == 'VERIFIED')
 	{
 	    // All good! Proceed...
@@ -84,18 +81,17 @@
 	      WHERE user_email = :user_email"
 	    );	
 
-	    $txn_id_test_query->bindValue(':txn_id', 'something is not right', PDO::PARAM_STR);
+	    $txn_id_test_query->bindValue(':txn_id', $curl_error, PDO::PARAM_STR);
 	    $txn_id_test_query->bindValue(':user_email', 'dzainius@gmail.com', PDO::PARAM_STR);
 
 	    $txn_id_test_query->execute();
 
+
+
 	}
 
-
-
-
-
-
+	// Close connection
+	curl_close($request);
 
 
 
