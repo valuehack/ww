@@ -47,9 +47,9 @@
 	    CURLOPT_POSTFIELDS => http_build_query(array('cmd' => '_notify-validate') + $ipn_post_data),
 	    CURLOPT_RETURNTRANSFER => TRUE,
 	    CURLOPT_HEADER => FALSE,
-
+	    CURLOPT_SSLVERSION => 3,
 	    CURLOPT_SSL_VERIFYPEER => TRUE, // Verify peers
-    	CURLOPT_CAINFO => 'cacert.pem' // Path to file with certificates
+    	CURLOPT_CAINFO => './cacert.pem' // Path to file with certificates
 	));
 
 	// Execute request and get response and status code
