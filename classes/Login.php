@@ -2208,15 +2208,15 @@ user_plz
                 <br>            
                 '.$anrede.' '.$user_surname.',
                 <br>
-                vielen Dank f&uuml;r Ihr Interesse an userem Offenen Salon!
+                vielen Dank f&uuml;r Ihr Interesse an unserem Offenen Salon!
                 <br><br>
-                Wir haben die gew&uuml;nschten Pl&auml;tze f&uuml;r Sie reserviert.<br>
+                Wir haben Ihre Reservierung entgegengenommen.<br>
                 <br>
-                Die Zahlungvon 5&euro; pro Teilnehmer erfolgt am Abend des Salons vor Ort im Scholarium.<br>
+                Die Zahlung von 5&euro; pro Teilnehmer erfolgt am Abend des Salons vor Ort im scholarium.<br>
                 <br>
-                Wir freuen uns darauf Sie kennenzulernen oder wiederzusehen.<br>
+                Wir freuen uns darauf, Sie kennenzulernen oder wiederzusehen.<br>
                 <br>
-                Herzliche Gr&uuml;&szlig;e aus Wien!';
+                Herzliche Gr&uuml;&szlig;e aus dem scholarium!';
 
         $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
 
