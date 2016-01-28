@@ -111,7 +111,7 @@ h1 {
 	border-bottom: 1px solid #000;
 }
 
-.invoice-detail__col1, .invoice-detail__col2, .invoice-detail__col3 {
+.invoice-detail__col1, .invoice-detail__col2, .invoice-detail__col3, .invoice-detail__col4 {
 	line-height: 1.5;
 	padding: 0.75em 2% 0.75em 0;
 }
@@ -135,12 +135,14 @@ h1 {
 .invoice-detail__last-row {
 	border-top: 1px solid #000;
 	font-weight: bold;
+	padding-bottom: 0em;
 }
 
 .invoice-payment {
-	line-height: 1.5;
+	line-height: 1.25;
 	text-align: justify;
 	font-family: 'Garamond', Georgia, Times, serif;
+	margin: 1em 0 2em 2.5cm;
 }
 
 .invoice-ending {

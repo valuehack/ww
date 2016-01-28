@@ -27,7 +27,7 @@ p {
 
 h1 {
 	font-weight: normal;
-	font-family: "Garamond", Georgia, Times, serif;
+	font-family: "Futura", Helvetica, Arial, sans-serif;
 	display: block;
 }
 
@@ -37,6 +37,7 @@ h1 {
 
 .ticket_event {
 	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
 	padding: 15px 0;
 }
 
@@ -59,35 +60,34 @@ h1 {
 
 .ticket_object {
 	font-size: 8pt;
+	display: inline-block;
+	width: 1px;
 }
 
 .ticket_value {
 	font-size: 18pt;
 	line-height: 140%;
-	margin-left: 120px;
+	margin: 0 100px 0 120px;	
 }
 
 .ticket_user {
-	border-top: 1px solid #000;
 	padding: 20px 0;
+	display: inline-block;
 }
 
 .ticket_user_name {
-	font-size: 12pt;
-	text-transform: uppercase;
-	display: block;
-	float: left;
+	font-size: 16pt;
 }
 
 .ticket_user_no {
-	font-size: 8pt;
-	display: block;
-	float: left;
+	font-size: 10pt;
 	padding: 4px 0;
 }
 
 .ticket_location {
 	margin-top: 5px;
+	border-top: 1px solid #000;
+	padding-top: 15px;
 }
 
 .ticket_location h1 {
@@ -98,7 +98,7 @@ h1 {
 
 .ticket_location p {
 	font-size: 10pt;
-	line-height: 160%;
+	line-height: 1.4;
 	margin-bottom: 40px;
 }
 

@@ -18,7 +18,7 @@ class Email {
 	 	* Sending verification code and tempory password to users only providing email
 	 	*/
 		
-		$subject = 'Herzlich willkommen';
+		$subject = 'Herzlich Willkommen';
 		
 		#verification link
         $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
@@ -61,7 +61,12 @@ class Email {
 
         $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
 		
-		$this->sendEmail('info@scholarium.at', 'scholarium', $user_email, $subject, $body);
+		if ($this->sendEmail('info@scholarium.at', 'scholarium', $user_email, $subject, $body)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 		
 	}
 	
@@ -71,7 +76,7 @@ class Email {
 	 	* Sending verification code and tempory password to users with full info
 	 	*/
 		
-		$subject = 'Herzlich willkommen';
+		$subject = 'Herzlich Willkommen';
 		
 		#verification link
         $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
@@ -124,14 +129,29 @@ class Email {
 
         $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
 		
-		$this->sendEmail('info@scholarium.at', 'scholarium', $user_email, $subject, $body);
+		if ($this->sendEmail('info@scholarium.at', 'scholarium', $user_email, $subject, $body)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
-	public function sendConfirmation ($user_email, $user_surname, $user_anrede) {
+	public function sendConfirmation ($user_email, $user_surname, $user_anrede, $user_level, $files, $product_type, $zahlung) {
 		
 		/*
 		 * Confirmation email after verification is a success, invoices and tickets will be attched here
 		 */ 
+		
+		switch($user_level) {
+			case 2: $membership = "Gast"; break;
+			case 3: $membership = "Teilnehmer"; break;
+			case 4: $membership = "Scholar"; break;
+			case 5: $membership = "Partner"; break;
+			case 6: $membership = "Beirat"; break;
+			case 7: $membership = "Ehrenpr&auml;sident"; break;
+			default: $membership = "Interessent"; break;
+		}
 		
 		$subject = 'Anmeldung erfolgreich';
 		
@@ -167,7 +187,7 @@ class Email {
                 <br>            
                 '.$anrede.' '.$user_surname.',
                 <br><br>
-                Wir freuen uns Sie als '.$membership.' begr&uuml;&szlig;en zu d&uuml;rfen!
+                Wir freuen uns Sie als <i>'.$membership.'</i> begr&uuml;&szlig;en zu d&uuml;rfen!
                 <br><br>
                 Anbei finden Sie Ihre Rechnung
                 ';
@@ -187,19 +207,19 @@ class Email {
 		}
 		
 		if ($zahlung === 'kredit') {
-			$body = $body.'Sie haben diese Rechnung bereits mit paypal beglichen.';
+			$body = $body.'Sie haben diese Rechnung bereits mit paypal beglichen.<br>';
 		}
 		
 		if ($zahlung === 'bar') {
-			$body = $body.'Bitte schicken Sie uns den Gesamtbetrag in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das scholarium, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.';
+			$body = $body.'Bitte schicken Sie uns den Gesamtbetrag in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das scholarium, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.<br>';
 		}
 
+		$body = $body.'<br>Viele Gr&uuml;&szlig;e aus Wien<br>Ihr Scholarium';
 		
 		$body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
 		
-		$this->sendEmail('info@scholarium.at', 'scholarium', $user_email, $subject, $body);
-		
-		
+		$this->sendEmailWithFiles('info@scholarium.at', 'scholarium', $user_email, $subject, $body, $files);
+				
 	}
 	
 	public function sendUpgrade () {
@@ -237,9 +257,10 @@ class Email {
 		 $subject = 'Neues zahlendendes Mitglied:';
 		 
 		 $body = $user_name.' '.$user_surname.'<br>
-		 		 E-Mail: '.$user_mail.'<br>
-		 		 Produkt: '.ucfirst($event_type).' ID:'.$event_id.'<br>
-		 		 Menge: '.$quantity.'
+		 		 E-Mail: '.$user_email.'<br><br>
+		 		 Produkt: '.ucfirst($event_type).'<br>
+		 		 ID:'.$event_id.'<br>
+		 		 Menge: '.$quantity.'<br><br>
 		 		 Mitgliedschaft: '.$user_level
 				 ;
 		 
@@ -297,7 +318,63 @@ class Email {
 
         if(empty($response))
         {
-            #die("Error: No response."); 
+            //die("Error: No response.");
+            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+            return false;
+        }
+        else
+        {
+            $json = json_decode($response);
+            return true;
+        }
+
+        curl_close($ch);
+		
+	}
+
+public function sendEmailWithFiles($from, $fromname, $to, $subject, $body, $files) {
+		
+	/*
+	 * $from = where should the email be comming from? normally info@scholarium.at, however maybe somedays from somewhere else to, stay flexible
+	 * $fromname = name of the source of the email. normally scholarium but who knows?
+	 * $to = who should the email be send to? user email or info@scholarium.at
+	 * $body = to be constructed in the functions above
+	 * $files = array of files that should be attached
+	 */
+
+        //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => $to,
+            'subject' => $subject,
+            'html' => $body,
+            'from' => $from,
+            'fromname' => $fromname,
+            );
+		
+		if (!(is_null($files))) {
+			foreach ($files as $filename => $location) {
+				$post_data['files['. $filename .']'] = "@".$location;
+			}
+		}
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+
+        if(empty($response))
+        {
+        	//die("Error: No response.");
             $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
             return false;
         }
@@ -309,19 +386,9 @@ class Email {
 
 
         curl_close($ch);
-
-/*            if(!$mail->Send()) {
-                $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED . $mail->ErrorInfo;
-                return false;
-            } else {
-                // $this->messages[] = MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT;
-                #$this->messages[] = "Please check your inbox.";
-                return true;
-            }*/
 		
 	}
 	
 }
 
 ?>
-		
