@@ -208,7 +208,7 @@ else {
           <!-- end of user profile -->
           
           <!-- payment methods  -->
-          <p>Die Zahlung von 5&euro; erfolgt in Bar im Scholarium am Abend des Offenen Salons.</p> 
+          <p>Die Zahlung von 5&euro; erfolgt in bar im scholarium am Abend des Offenen Salons.</p> 
           <input type="hidden" name="profile[zahlung]" value="bar">
 
           <!-- additional hidden fields -->

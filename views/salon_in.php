@@ -142,7 +142,7 @@ if(isset($_GET['q']))
 		<?php 
 		#information for Offener Salon
 		if($spots_total > 59) {
-			echo 'F&uuml;r unseren Offenen Salon ist nur Barzahlung vor Ort m&ouml;glich. Mit dem Klick auf &quot;Reseverieren&quot; werden Sie unmittelbar eingetragen.<br><br>';
+			echo 'F&uuml;r unseren Offenen Salon ist nur Barzahlung vor Ort m&ouml;glich. Mit dem Klick auf &quot;Reservieren&quot; werden Sie unmittelbar eingetragen.<br><br>';
 		}
 		if($bought >= 1) {
 			echo 'Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.<br><br>';
