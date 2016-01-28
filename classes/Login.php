@@ -1659,7 +1659,7 @@ user_plz
 
             // if this email exists
             if (isset($result_row->user_id) and ($_SESSION['user_id'] !== ($result_row->user_id)) ) {
-                $this->errors[] = "Diese Email-Adresse wird bereits verwendet.";
+                $this->errors[] = "Diese E-Mmail-Adresse wird bereits verwendet.";
             } else {
                 // write users new data into database
                 $query_edit_user_email = $this->db_connection->prepare('UPDATE mitgliederExt SET user_email = :user_email WHERE user_id = :user_id');
