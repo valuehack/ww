@@ -230,6 +230,8 @@ class Registration
 		#Not in use yet. General function for all registrations with information
 		elseif(isset($_POST['submit_full_info'])) {
 			
+			$email = new Email();
+			
 			#grab personal information
 			$profile = $_POST['profile'];
 			$_SESSION['profile'] = $profile;
@@ -237,7 +239,7 @@ class Registration
 			$user_email = $profile[user_email];
 			$user_anrede = $profile[user_anrede];
 			$user_surname = $profile[user_surname];
-			$user_name = $profile[user_name];
+			$user_name = $profile[user_first_name];
 			$first_reg = $profile[first_reg];
 			$user_level = $profile[level];
 			
@@ -311,7 +313,7 @@ class Registration
 				$user_activation_hash = $reg_info['user_activation_hash'];
 				$user_password = $reg_info['user_password'];
 				
-				if ($email->sendVerificationFull($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $level, $user_surname)) {
+				if ($email->sendVerificationFull($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $user_surname)) {
 				//if ($this->sendSubscriptionMail($grey_user_id, $user_email, $user_activation_hash, $user_password, $user_anrede, $user_level, $user_surname)) {
 					
 					//add adtional user data
@@ -588,7 +590,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', quantity = '$quantity', Gesamt = '$betrag', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', Gesamt = '$betrag', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -652,7 +654,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', quantity = '$quantity', credits_left = credits_left+'$betrag', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', credits_left = credits_left+'$betrag', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -684,7 +686,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$first_reg', quantity = '$quantity', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$first_reg', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -1354,6 +1356,7 @@ class Registration
             if ($this->databaseConnection()) {
 
 			$general = new General();
+			$email = new Email();
 
             //verify user - get data that will be inserted in the main database
             $verify_user = $this->db_connection->prepare('SELECT * FROM grey_user WHERE user_id = :user_id AND user_activation_hash = :user_activation_hash');
@@ -1375,27 +1378,13 @@ class Registration
 			}
 			if ($product_type === 'upgrade') {
 				switch($the_row->Mitgliedschaft) {
-					case 2:
-						$credits_left = 75;
-						break;
-					case 3:
-						$credits_left = 150;
-						break;
-					case 4:
-						$credits_left = 300;
-						break;
-					case 5:
-						$credits_left = 600;
-						break;
-					case 6:
-						$credits_left = 1200;
-						break;
-					case 7:
-						$credits_left = 2400;
-						break;
-					default:
-						$credits_left = 0;
-						break;																														
+					case 2: $credits_left = 75; break;
+					case 3: $credits_left = 150; break;
+					case 4: $credits_left = 300; break;
+					case 5: $credits_left = 600; break;
+					case 6: $credits_left = 1200; break;
+					case 7: $credits_left = 2400; break;
+					default: $credits_left = 0; break;
 				}
 			}
 
@@ -1441,16 +1430,18 @@ class Registration
 				
 				#update registration and produkte
 				$general->registerEvent($user_id, $product_id, $quantity);
-				
+								
 				if ($product_type === 'seminar') {				
 					#ticket generation
-					$general->generateTicket($user_id, $the_row->Vorname, $the_row->Nachname, $product_id, $quantity);
+					$ticket_name = 'Ticket_'.$user_id.'_'.ucfirst($product_type).'_'.$product_id.'.pdf';
+					$files[$ticket_name] = $general->generateTicket($user_id, $the_row->Vorname, $the_row->Nachname, $product_id, $quantity);
 				}
 			}
 			if ($product_type === 'seminar' || $product_type === 'projekt' || $product_type === 'upgrade') {
 				
 				#invoice generation
-				$general->generateInvoice($user_id, $product_id, $product_type, $the_row->Mitgliedschaft, $quantity, $the_row->Zahlungsart);
+				$invoice_name = 'Rechnung_'.$user_id.'.pdf';
+				$files[$invoice_name]  = $general->generateInvoice($user_id, $product_id, $product_type, $the_row->Mitgliedschaft, $quantity, $the_row->Zahlungsart);
 			}
 
             $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
@@ -1463,9 +1454,8 @@ class Registration
                 
                 $_POST['user_rememberme'] = 1;
 				
-				$email->sendConfirmationUser($user_email);
-				#another email to scholarium needed?
-				
+				$email->sendConfirmation($the_row->user_email, $the_row->Nachname, $the_row->Anrede, $the_row->Mitgliedschaft, $files, $product_type, $the_row->Zahlungsart);
+
             } else {
                 $this->errors[] = MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL;
             }

@@ -112,7 +112,10 @@ class General {
 			#prepare the date-string
 			$event_date = $this->getDate($event_start, $event_end);
 
-			$ticket_name = 'ticket_'.$user_id.'_'.$event_type.'_'.$event_id.'.pdf';
+			$ticket_name = 'Ticket_'.$user_id.'_'.$event_type.'_'.$event_id;
+			$ticket_pdf = 'ticket_'.$user_id.'_'.$event_type.'_'.$event_id.'.pdf';
+			
+			$total = $event_price*$quantity;
 			
 			#prepare the ticket content with html and css
 			$html = '
@@ -121,7 +124,7 @@ class General {
           				<title>'.$ticket_name.'</title>        
           				<link rel="stylesheet" type="text/css" href="/home/content/56/6152056/html/production/style/ticket_style.css">
           
-          				<meta name="Content-Disposition" content="attachment; filename='.$ticket_name.'">
+          				<meta name="Content-Disposition" content="attachment; filename='.$ticket_pdf.'">
           				<meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8">
       				</head>
       				<body>
@@ -135,12 +138,14 @@ class General {
                   				<p>
                       				<span class="ticket_date">'.$date.'</span>
                       				<span class="ticket_object">Anzahl</span> <span class="ticket_value">'.$quantity.'</span><br>
-                      				<span class="ticket_object">Preis</span> <span class="ticket_value">'.$event_price.' &euro;</span>                       
+                      				<span class="ticket_object">Preis</span> <span class="ticket_value">'.$event_price.' &euro;</span>
+                      				<span class="ticket_object">Gesamtpreis</span> <span class="ticket_value">'.$total.' &euro;</span>                       
                   				</p>   
               				</div>
               				<div class="ticket_user">
                   				<p>
-                      				<span class="ticket_user_name">'.$user_name.' '.$user_surname.'</span> <span class="ticket_user_no">Kundennummer: '.$user_id.'</span> 
+                      				<span class="ticket_user_name">'.$user_name.' '.$user_surname.'</span><br>
+                      				<span class="ticket_user_no">Kundennummer: '.$user_id.'</span> 
                   				</p>
               				</div>              
               				<div class="ticket_location">  
@@ -165,12 +170,12 @@ class General {
   			#dompdf output is saved as a string
   			$pdf = $dompdf->output();
 
-			#save ticket on sever and prepare attachment
-  			file_put_contents('/home/content/56/6152056/html/production/tickets/'.$ticket_name, $pdf);
+			$ticket_location = '/home/content/56/6152056/html/production/tickets/'.$ticket_pdf;
 
-			#TODO this part needs to be moved to email class
-  			$ticket_location = '/home/content/56/6152056/html/production/tickets/'.$ticket_name;
-			$tickets_array[$ticket_name] = $ticket_location;
+			#save ticket on sever and prepare attachment
+  			file_put_contents($ticket_location, $pdf);
+
+			return $ticket_location;
 	}
 	
 	public function generateInvoice($user_id, $product_id, $product_type, $user_level, $quantity, $zahlung) {
@@ -206,49 +211,30 @@ class General {
 			$membership_end = date('d.m.Y', time()+31536000);
 			
 			#get number of invoices from the current year
-			$get_invoices = $this->db_connection->prepare('SELECT COUNT(*) as num FROM rechnungen WHERE date LIKE :year');
-			$get_invoices->bindValue(':year', $year, PDO::PARAM_INT);
+			$get_invoices = $this->db_connection->prepare('SELECT * FROM rechnungen WHERE date LIKE :year');
+			$get_invoices->bindValue(':year', $year.'%', PDO::PARAM_INT);
 			$get_invoices->execute();
-			$num_of_invoices = $get_invoices->fetchObject();
+			$num_of_invoices = $get_invoices->rowCount();
 			
 			#add one (this invoice) to the total
-			$num_of_invoices = $num_of_invoices->num + 1;
+			$num_of_invoices = $num_of_invoices + 1;
 			#add zeros on the left hand side to a fixed 4 digit number (e.g. 0001)
 			$number = sprintf('%04d', $num_of_invoices);
 
 			$invoice_number = $year.'-'.$number;
 			
 			$invoice_name = 'Rechnung_'.$invoice_number;
-			
+			$invoice_pdf = 'Rechnung_'.$invoice_number.'.pdf';
+								
+			#
 			switch ($user_level) {
-				case 2:
-					$product_price = 75;
-					$membership = 'Gast';
-					break;
-				case 3:
-					$product_price = 150;
-					$membership = 'Teilnehmer';
-					break;
-				case 4:
-					$product_price = 300;
-					$membership = 'Scholar';
-					break;
-				case 5:
-					$product_price = 600;
-					$membership = 'Partner';
-					break;
-				case 6:
-					$product_price = 1200;
-					$membership = 'Beirat';
-					break;
-				case 7:
-					$product_price = 2400;
-					$membership = 'Gr&uuml;nder';
-					break;
-				default:
-					$product_price = 75;
-					$membership = 'Gast';
-					break;
+				case 2: $product_price = 75; $membership = 'Gast'; break;
+				case 3: $product_price = 150; $membership = 'Teilnehmer'; break;
+				case 4: $product_price = 300; $membership = 'Scholar'; break;
+				case 5: $product_price = 600; $membership = 'Partner'; break;
+				case 6: $product_price = 1200; $membership = 'Beirat'; break;
+				case 7: $product_price = 2400; $membership = 'Gr&uuml;nder'; break;
+				default: $product_price = 75; $membership = 'Gast'; break;
 			}
 			
 			if ($product_type === 'seminar') {
@@ -269,7 +255,7 @@ class General {
           				<title>Rechnung '.$invoice_number.'</title>        
           				<link rel="stylesheet" type="text/css" href="/home/content/56/6152056/html/production/style/invoice_style.css">
           
-          				<meta name="Content-Disposition" content="attachment; filename='.$invoice_name.'">
+          				<meta name="Content-Disposition" content="attachment; filename='.$invoice_pdf.'">
           				<meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8">
 					</head>
       				<body>
@@ -383,28 +369,30 @@ class General {
       			</body>
   				</html>';
 
-				#render the invoice using dompdf
-				require_once('/home/content/56/6152056/html/production//dompdf/dompdf_config.inc.php');
+			#render the invoice using dompdf
+			require_once('/home/content/56/6152056/html/production//dompdf/dompdf_config.inc.php');
 
-				$dompdf = new DOMPDF();
-				$dompdf->load_html($html);
-				$dompdf->set_paper('a4', 'portrait');
-				$dompdf->render();
+			$dompdf = new DOMPDF();
+			$dompdf->load_html($html);
+			$dompdf->set_paper('a4', 'portrait');
+			$dompdf->render();
 
-				#dompdf output is saved as a string
-				$pdf = $dompdf->output();
+			#dompdf output is saved as a string
+			$pdf = $dompdf->output();
 
-				#save invoice on sever
-				$invoice_location = '/home/content/56/6152056/html/production/rechnungen/'.$invoice_name.'.pdf';
-				file_put_contents('/home/content/56/6152056/html/production/rechnungen/'.$invoice_name.'.pdf', $pdf);
-				
-				#put invoice into database
-				$invoice_query = $this->db_connection->prepare('INSERT INTO rechnungen (user_id, nummer, zahlungsart, pdf, date) VALUES (:user_id, :nummer, :zahlung, :pdf, NOW()');
-				$invoice_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-				$invoice_query->bindValue(':nummer', $invoice_number, PDO::PARAM_STR);
-				$invoice_query->bindValue(':zahlung', $zahlung, PDO::PARAM_STR);
-				$invoice_query->bindValue(':pdf', $invoice_location, PDO::PARAM_STR);
-				$invoice_query->execute();
+			#save invoice on sever
+			$invoice_location = '/home/content/56/6152056/html/production/rechnungen/'.$invoice_pdf;
+			file_put_contents($invoice_location, $pdf);
+			
+			#put invoice into database
+			$invoice_query = $this->db_connection->prepare('INSERT INTO rechnungen (user_id, nummer, date, zahlungsart, pdf) VALUES (:user_id, :nummer, NOW(), :zahlung, :pdf)');
+			$invoice_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+			$invoice_query->bindValue(':nummer', $invoice_number, PDO::PARAM_STR);
+			$invoice_query->bindValue(':zahlung', $zahlung, PDO::PARAM_STR);
+			$invoice_query->bindValue(':pdf', $invoice_location, PDO::PARAM_STR);
+			$invoice_query->execute();
+
+			return $invoice_location;
 		}
 }
 
