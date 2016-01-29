@@ -33,6 +33,7 @@ require_once('../classes/General.php');
 require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
 require_once('../classes/Email.php');
+require_once('../classes/Transaction.php');
 
 $general = new General();
 
@@ -42,6 +43,8 @@ $login = new Login();
 //TODO Login and Email don't work together because of header send issues. It might be better to generate the email object wihtin he other functions to avoid this
 $email = new Email();
 $registration = new Registration();
+$transaction = new Transaction();
+
 
 
 
