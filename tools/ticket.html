@@ -1,0 +1,39 @@
+<html lang="de">
+                    <head>
+                        <title>'.$ticket_name.'</title>        
+                        <link rel="stylesheet" type="text/css" href="../style/ticket_style.css">
+          
+                        <meta name="Content-Disposition" content="attachment; filename='.$ticket_pdf.'">
+                        <meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8">
+                    </head>
+                    <body>
+                        <div class="ticket_content">
+                            <div>
+                                <img src="../style/gfx/ticket_logo.png" style="width:300px;margin-bottom:50px;">
+                            </div>
+                            <div class="ticket_event">
+                                <p><i>'.ucfirst($event_type).'</i></p>
+                                <h1>'.$event_title.'</h1>
+                                <p>
+                                    <span class="ticket_date">'.$date.'</span>
+                                    <span class="ticket_object">Anzahl</span> <span class="ticket_value">'.$quantity.'</span><br>
+                                    <span class="ticket_object">Einzelpreis</span> <span class="ticket_value">'.$event_price.' &euro;</span>
+                                    <span class="ticket_object">Gesamtpreis</span> <span class="ticket_value">'.$total.' &euro;</span>                       
+                                </p>   
+                            </div>
+                            <div class="ticket_user">
+                                <p>
+                                    <span class="ticket_user_name">'.$user_name.' '.$user_surname.'</span><br> 
+                                    <span class="ticket_user_no">Kundennummer: '.$user_id.'</span> 
+                                </p>
+                            </div>              
+                            <div class="ticket_location">  
+                                <h1>Veranstaltungsort</h1>
+                                <p>Schl&ouml;sselgasse 19/2/18<br>A-1080 Wien, &Ouml;sterreich</p>
+                                <div>
+                                    <img src="../style/gfx/ticket_map.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>        
+                    </body>
+                    </html>

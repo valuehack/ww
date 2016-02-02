@@ -42,6 +42,7 @@
 		
 <?php
 			$pass_to = 'submit_full_info';
+			$action = htmlentities($_SERVER['PHP_SELF']);
 		
 			if ($event_type === 'seminar') {
 				$passed_from = 'seminar';
@@ -50,6 +51,62 @@
 				$passed_from = 'projekt';
 			}
 				
+			include('../tools/form.php');
+			
+?>
+		<div class="profil">
+		<form method="post" action="<?=htmlspecialchars('../abo/zahlung_neu.php?q=userinfo');?>">
+<?php			
+		if ($event_type === 'seminar') {
+?>		
+			<label for="quantity">Tickets</label>
+		  	<select id="quantity" name="product[quantity]">
+		  		<?php
+		  		if ($spots_available == 0){echo '<option value="0" disabled>0</option>';}
+		  		if ($spots_available >= 1){echo '<option value="1" selected>1</option>';}
+		  		if ($spots_available >= 2){echo '<option value="2">2</option>';}
+		  		if ($spots_available >= 3){echo '<option value="3">3</option>';}
+		  		if ($spots_available >= 4){echo '<option value="4">4</option>';}
+		  		if ($spots_available >= 5){echo '<option value="5">5</option>';}
+		  		?>
+		  	</select>
+<?php
+		}
+		if ($event_type === 'projekt') {
+?>
+			<div class="projekte_investment">
+            	<input type="radio" class="projekte_investment_radio" name="profile[level]" value="3" required>
+              	150&euro;: Sie erhalten Zugriff auf die Scholien und andere Inhalte.<br><br>
+              	<input type="radio" class="projekte_investment_radio" name="profile[level]" value="4">
+              	300&euro;: Ab diesem Beitrag haben Sie als Scholar vollen Zugang zu allen unseren Inhalten und Veranstaltungen.<br><br>
+              	<input type="radio" class="projekte_investment_radio" name="profile[level]" value="5">
+              	600&euro;: Ab diesem Beitrag werden Sie Partner, wir f&uuml;hren Sie (au&szlig;er anders gew&uuml;nscht) pers&ouml;nlich mit Link auf unserer Seite an und laden Sie zu einem exklusiven Abendessen ein (oder Sie erhalten einen Geschenkkorb)<br><br>
+              	<input type="radio" class="projekte_investment_radio" name="profile[level]" value="6">
+              	1200&euro;: Ab diesem Beitrag nehmen wir Sie als Beirat auf und laden Sie zu unserer Strategieklausur ein.<br><br>
+              	<input type="radio" class="projekte_investment_radio" name="profile[level]" value="7">
+              	2400&euro;: Ab diesem Beitrag werden Sie Ehrenpr&auml;sident und bestimmen bis zu zweimal im Jahr ein Thema f&uuml;r das <i>scholarium</i>.<br>  
+          	</div>
+<?php
+		}	  
+?>	
+			<input type="hidden" name="event_id" value="<?=$event_id?>">
+			<input type="hidden" name="passed_from" value="<?=$passed_from?>">
+			<input type="submit" class="profil_inputbutton" name="zahlung" value="Zur Zahlung">
+		</form>
+		</div>
+<?php
+		}
+
+		elseif ($_GET['r'] == 'upgrade') {
+			
+			$pass_to = 'submit_full_info';
+			$spots_available = 1;
+			$passed_from = 'upgrade';
+			
+			$level[level] = $_GET['level'];
+			
+			echo $level[level];
+			
 			include('../tools/form.php');
 		}
 		
@@ -74,6 +131,11 @@
 				
 				<?php
 			}
+			?>
+			<div>
+				<h1><a href="index.php?r=upgrade">Upgrade</a></h1>
+			</div>
+			<?php
 		}
 ?>
 		

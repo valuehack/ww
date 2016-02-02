@@ -5,7 +5,7 @@
       	//profile[] = personal information, name, e-mail, adress
       	//product[] = product information, betrag, quantity
       	  	
-      	if (isset($_SESSION['user_id'])) {
+      	if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
       		$result_row = $login->getUserData(trim($_SESSION['user_email']));
 
 			$anrede = trim($result_row->Anrede);
@@ -18,7 +18,7 @@
 		}
       ?>
       <div class="profil payment_width">
-      <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="<?=$pass_to?>">
+      <form method="post" action="<?=$action?>" name="<?=$pass_to?>">
 
 		  <!-- user profile -->
           <!-- ajax_email_exists checks if user email is already registered -->
@@ -99,6 +99,7 @@
 		  #quantity for seminare
 		  if ($passed_from == 'seminar'){
 		  ?>
+		  <p>W&auml;hlen Sie</p>
 		  <label for="quantity">Tickets</label>
 		  <select id="quantity" name="product[quantity]" onchange="changePrice(this.value,'<?=$event_price?>')">
 		  		<?php
@@ -110,7 +111,6 @@
 		  		if ($spots_available >= 5){echo '<option value="5">5</option>';}
 		  		?>
 		  </select>
-		  <!-- The js price change needs testing -->
 		  <p>
 		  	<span id="change"><?=$event_price?></span>&euro;
 		  </p>
@@ -124,11 +124,10 @@
 		  <?php
 		  }
 		  ?>
-		  
+				  
 		  <!-- payment general -->
-		  <input type="radio" class="profil_radio" name="zahlung" value="bank" required><span class="profil_radio_label">&Uuml;berweisung</span><br>
-      	  <input type="radio" class="profil_radio" name="zahlung" value="kredit"><span class="profil_radio_label">Paypal</span><br>
-      	  <input type="radio" class="profil_radio" name="zahlung" value="bar"><span class="profil_radio_label">Bar</span><br>		  
+		  <input type="radio" class="profil_radio" name="zahlung" value="sofort" required><span class="profil_radio_label">SOFORT</span><br>
+      	  <input type="radio" class="profil_radio" name="zahlung" value="paypal"><span class="profil_radio_label">PayPal</span><br>	  
 		  <?php
 		  }
 		  ?>		  		  
@@ -160,9 +159,19 @@
   		 
   		 <input type="hidden" name="profile[first_reg]" value="<?=$first_reg?>">
           
+<?php	
+		 if (isset($passed_from)) {
+?>
+         <input type="hidden" name="passed_from" value="<?=$passed_from?>">
+		 <input type="hidden" name="product[event_id]" value="<?=$event_id?>">
+		 <input type="hidden" name="product[quantity]" value="<?=$quantity?>">
+		 <input type="hidden" name="profile[level]" value="<?=$level?>">
+<?php
+		 }
+?>
 		 <p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 			
-    	 <input type="submit" class="profil_inputbutton" name="<?=$pass_to?>" value="Anmelden" <?if ($spots_available == 0){echo 'disabled';}?>>
+    	 <input type="submit" class="profil_inputbutton" name="<?=$pass_to?>" value="Anmelden" <?//if ($spots_available == 0){echo 'disabled';}?>>
       </form>
       </div>
 
