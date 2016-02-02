@@ -1,6 +1,8 @@
       <?php
       	//$passed_from = Where was the form included?
       	//$pass_to = To what function should the form be send?
+        # $pass_to - name of the form submit value
+      	# working example in /test/
       	
       	//profile[] = personal information, name, e-mail, adress
       	//product[] = product information, betrag, quantity
@@ -46,15 +48,16 @@
 
 			<label for="user_country">Land</label>
         	<select id="user_country" name="profile[user_country]" required>        		
-            <!-- this content is static and just takes too much space -->
+            <!-- List of countries -->
             <?php include("_country_list.html") ?>
          	</select><br>
-          <!-- end of user profile -->
+            <!-- end of user profile -->
           
           <!-- payment methods  -->
                     
           <!-- payment for open salon -->
           <?php
+          # more than 59 available spots is an indicator of an open salon
           if ($spots_total > 59){
           ?>
           	<p>Die Zahlung von 5&euro; pro Teilnehmer erfolgt in bar im Scholarium am Abend des Offenen Salons.</p> 
@@ -126,14 +129,23 @@
 		  ?>
 				  
 		  <!-- payment general -->
-		  <input type="radio" class="profil_radio" name="zahlung" value="sofort" required><span class="profil_radio_label">SOFORT</span><br>
-      	  <input type="radio" class="profil_radio" name="zahlung" value="paypal"><span class="profil_radio_label">PayPal</span><br>	  
+		  <input type="radio" class="profil_radio" name="payment_option" value="sofort" required><span class="profil_radio_label">SOFORT</span><br>
+      	  <input type="radio" class="profil_radio" name="payment_option" value="paypal"><span class="profil_radio_label">PayPal</span><br>	  
+
+		  <!-- payment options -->
+		  <input type="radio" class="profil_radio" name="zahlung" value="bank" required><span class="profil_radio_label">&Uuml;berweisung</span><br>
+      	  <input type="radio" class="profil_radio" name="zahlung" value="kredit"><span class="profil_radio_label">Old Paypal</span><br>
+      	  <input type="radio" class="profil_radio" name="zahlung" value="bar"><span class="profil_radio_label">Bar</span><br>	
+
+		  <!-- end payment options -->
+
+		  <!-- hidden fields -->
+		  <input type="hidden" name="amount" value="20">
+
 		  <?php
 		  }
 		  ?>		  		  
-		  <!-- end payment methods -->
 		  
-          <!-- hidden fields -->
           <!-- general -->
       	        	  
       	  <?php

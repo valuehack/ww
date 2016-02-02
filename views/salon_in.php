@@ -142,7 +142,7 @@ if(isset($_GET['q']))
 		<?php 
 		#information for Offener Salon
 		if($spots_total > 59) {
-			echo 'F&uuml;r unseren Offenen Salon ist nur Barzahlung vor Ort m&ouml;glich. Mit dem Klick auf &quot;Reservieren&quot; werden Sie unmittelbar eingetragen.<br><br>';
+			echo 'F&uuml;r unseren Offenen Salon ist nur Barzahlung vor Ort m&ouml;glich. Der Eintritt kostet 5&euro; pro Teilnehmer. Mit dem Klick auf &quot;Reservieren&quot; werden Sie unmittelbar eingetragen.<br><br>';
 		}
 		if($bought >= 1) {
 			echo 'Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.<br><br>';
@@ -175,11 +175,6 @@ if(isset($_GET['q']))
       			</select> 
       			<input class="inputbutton" type="submit" name="register_open_salon" value="Reservieren" <? if($bought >= 1 || $spots_available == 0) echo "disabled"?>><br>     
     		</form>
-  			<div class='salon_price_list'>
-  				<li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li>
-  				<li class='salon_coin'><img src="../style/gfx/coin.png"></li>
-  			</div>
-  
 		<?php 
 		}
 		#normal form
