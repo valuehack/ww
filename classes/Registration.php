@@ -413,7 +413,7 @@ class Registration
             $this->errors[] = MESSAGE_EMAIL_INVALID;       
 
         // finally if all the above checks are ok
-        } else if ($this->databaseConnection()) {
+        } elseif ($this->databaseConnection()) {
             // check if username or email already exists
             $query_check_user_email = $this->db_connection->prepare('SELECT user_email FROM mitgliederExt WHERE user_email=:user_email');
             #$query_check_user_name->bindValue(':user_name', $user_name, PDO::PARAM_STR);
