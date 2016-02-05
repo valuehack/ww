@@ -70,7 +70,7 @@
 			
 ?>
 		<div class="profil">
-		<form method="post" action="<?=htmlspecialchars('../abo/zahlung_neu.php?q=userinfo');?>">
+		<form method="post" action="<?=htmlspecialchars('../zahlung/index.php?q=user_info');?>">
 <?php			
 		if ($event_type === 'seminar') {
 ?>		
@@ -104,9 +104,9 @@
 <?php
 		}	  
 ?>	
-			<input type="hidden" name="event_id" value="<?=$event_id?>">
+			<input type="hidden" name="product[event_id]" value="<?=$event_id?>">
 			<input type="hidden" name="passed_from" value="<?=$passed_from?>">
-			<input type="submit" class="profil_inputbutton" name="zahlung" value="Zur Zahlung">
+			<input type="submit" class="profil_inputbutton" name="payment_user_info" value="Zur Zahlung">
 		</form>
 		</div>
 <?php

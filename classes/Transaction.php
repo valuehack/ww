@@ -30,18 +30,29 @@ class Transaction
 
         #set on payment function
         #set session vars for confirmation page and redirect
-        if (isset($_POST["payment_submit"])) 
+        if (isset($_POST["payment_user_info"])) 
+        {
+        	$_SESSION['profile'] = $_POST['profile'];
+            $_SESSION['product'] = $_POST['product'];
+        	$_SESSION['payment_page'] = 'user_info';
+			$_SESSION['passed_from'] = $_POST['passed_from'];
+			
+			header('Location: ../zahlung/index.php?q=user_info');
+        }
+        
+		elseif (isset($_POST["payment_submit"])) 
         {
             #record post to session
             $_SESSION['profile'] = $_POST['profile'];
             $_SESSION['product'] = $_POST['product'];
+			$_SESSION['passed_from'] = $_POST['passed_from'];
             $_SESSION['payment_page'] = 'show_summary';
             #show_summary form must set confirmed_submit var if user confirms the data
 
             #redirect to confirmation page
             #TODO add PAYMENT_PAGE url to the server
-            header('Location: '.PAYMENT_PAGE);
-
+            #header('Location: '.PAYMENT_PAGE);
+			header('Location: ../zahlung/index.php?q=summary');
         }
 
         #user wants to change the data
@@ -51,8 +62,8 @@ class Transaction
             $_SESSION['payment_page'] = 'edit_info';
 
             #user is redirected to PAYMENT_PAGE
-            header('Location: '.PAYMENT_PAGE);
-
+            #header('Location: '.PAYMENT_PAGE);
+			header('Location: ../zahlung/index.php?q=edit');
         }
 
         #user has confirmed the data, db write, process the payment

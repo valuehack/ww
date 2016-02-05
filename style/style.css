@@ -2954,6 +2954,96 @@ img.projekte_coin2  {
 	background: transparent url(gfx/checkmark.png); no-repeat;
 }
 
+.content-area {
+	margin: 50px 15%;
+	display: inline-block;
+}	
+
+.h1, .h2, .h3, .h1__sub, .h2__sub {
+	font-family: "Futura Book", Helvetica, Arial, serif;
+}
+
+.h1 {
+	font-size: 20pt;
+	line-height: 2;
+}
+
+.h1__sub {
+	font-size: 12pt;
+	line-height: 2em;
+}
+
+.h3 {
+	font-size: 14pt;
+	line-height: 1.4;
+}
+
+.row-group {
+	margin: 1em 0;
+}
+
+.row {
+	clear: both;
+	height: 1em;
+	padding: 0.5em 0;
+}
+
+.row__head {
+	border-bottom: 1px solid rgb(125,125,125);
+	color: rgb(125,125,125);
+}
+
+.row__body {
+}
+
+.row__foot {
+	border-top: 1px solid rgb(125,125,125);
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8 {
+	float: left;
+}
+
+.col-1 {
+	width: 12.5%;
+}
+
+.col-2 {
+	width: 25%;
+}
+
+.col-3 {
+	width: 37.5%;
+}
+
+.col-4 {
+	width: 50%;
+}
+
+.col-5 {
+	width: 62.5%;
+}
+
+.col-6 {
+	width: 75%;
+}
+
+.col-7 {
+	width: 87.5%;
+}
+
+.col-8 {
+	width: 100%;
+}
+
+.col__content {
+	line-height: 1.15;
+}
+
+.clear {
+	clear: both;
+}
+
 /*==================================================*/
 /*                   Footer                    		*/
 /*==================================================*/

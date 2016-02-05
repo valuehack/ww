@@ -53,13 +53,13 @@ if ($login->isUserLoggedIn() == true)
 {
     // the user is logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are logged in" view.
-	include("../views/test_in.php");
+	include("../views/zahlung_in.php");
 
 } 
 else {
     // the user is not logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are not logged in" view.
-    include("../views/test_not_in.php");
+    include("../views/zahlung_neu_not_in.php");
     // echo "hello";
     #include("views/header2.inc.php");
     

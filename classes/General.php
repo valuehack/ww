@@ -76,6 +76,53 @@ class General {
 			return $date;
 	}
 
+	public function getProduct ($id, $status=1) {
+		# $status: 0 = not active, 1 = active, 2 = test
+		
+		$product_query = $this->db_connection->prepare('SELECT * FROM produkte WHERE n LIKE :id AND status = :status');
+		$product_query->bindValue(':id', $id, PDO::PARAM_INT);
+		$product_query->bindValue(':status', $status, PDO::PARAM_INT);
+		$product_query->execute();
+		
+		$product_result = $product_query->fetchObject();
+		
+		return $product_result;
+		
+	}
+	public function getProducts ($id, $type='all', $status=1, $show_passed=false, $show_soldout=true) {
+		# WORK in PROGRESS
+		# $type has to be empty (all) or an array of the types that should be selected
+		# $status: 0 = not active, 1 = active, 2 = test
+		
+		$select = 'SELECT * FROM produkte WHERE type LIKE :type AND status = :status';
+		
+		$product_query = $this->db_connection->prepare($select);
+		$product_query->bindValue(':id', $id, PDO::PARAM_STR);
+		$product_query->bindValue(':status', $status, PDO::PARAM_INT);
+		$product_query->execute();
+		
+		return $event_query->fetchObject();
+	}
+	
+	public function getUserInfo ($id, $grey=false) {
+		
+		#check if the identification used is id/n or email
+		if(is_numeric($id)) {$ident = 'id';}
+		if(!is_numeric($id)) {$ident = 'email';}
+		
+		#check if normal or grey user db should be selected
+		if ($grey === true) {$table = 'grey_user';}
+		if ($grey === false) {$table = 'mitgliederExt';}
+		
+		$user_query = $this->db_connection->prepare('SELECT * FROM :table WHERE :ident LIKE :id');
+		$user_query->bindValue(':table', $table, PDO::PARAM_STR);
+		$user_query->bindValue(':ident', $ident, PDO::PARAM_STR);
+		$user_query->bindValue(':id', $id, PDO::PARAM_STR);
+		$user_query->execute();
+		
+		return $user_query->fetchObject();
+	}
+
 	public function registerEvent ($user_id, $event_id, $quantity) {
 	    			    				
     		#enter into event registration
