@@ -158,10 +158,15 @@ class Registration
             $profile = $_POST["profile"];
             $_SESSION["profile"] = $profile;
 
+			$quantity = $profile['quantity'];
+			$event_id = $profile['event_id'];
+			
+			$profile['first_reg'] = $event_id.'_'.$quantity;
+
             $user_email = $profile[user_email];
 			$user_anrede = $profile[user_anrede];
 			$user_surname = $profile[user_surname];
-			$user_name = $profile[user_name];
+			$user_name = $profile[user_first_name];
             						
             #if $user_email is unique -> then continue with registration
             #this is extra step to ajax duplicate check
@@ -178,7 +183,7 @@ class Registration
                 				
                 //only redirect after registration was successfully finished
                 #displays sucess message
-                header("Location: ../salon/anmeldung_erfolgreich.php");
+                header("Location: ../salon/anmeldung_erfolgreich.php?q=new");
             }
         }
 
@@ -1078,20 +1083,21 @@ class Registration
                 $projekt_spots_sold_query->execute();
             }
 
-            /*#updates relevant dbs for open salons
-            if ($event_type === 'osalon') {
+            #updates relevant dbs for open salons
+            #workaround for open salons $event_type = $event_id and $event_id = $quantity
+            if (is_numeric($event_type)) {
                 
                 $reg_o_salon_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES (:event_id, :user_id, :quantity, NOW() )');
-                $reg_o_salon_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+                $reg_o_salon_query->bindValue(':event_id', $event_type, PDO::PARAM_INT);
                 $reg_o_salon_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
-                $reg_o_salon_query->bindValue(':quantity', 1, PDO::PARAM_INT);
+                $reg_o_salon_query->bindValue(':quantity', $event_id, PDO::PARAM_INT);
                 $reg_o_salon_query->execute();
 
-                $projekt_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:spots_sold, spots = spots - :spots_sold WHERE n LIKE :event_id");
-                $projekt_spots_sold_query->bindValue(':spots_sold', 1, PDO::PARAM_INT);
-                $projekt_spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_STR);
+                $projekt_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:spots_sold WHERE n LIKE :event_id");
+                $projekt_spots_sold_query->bindValue(':spots_sold', $event_id, PDO::PARAM_INT);
+                $projekt_spots_sold_query->bindValue(':event_id', $event_type, PDO::PARAM_STR);
                 $projekt_spots_sold_query->execute();
-            }*/
+            }
 
             $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
             $query_delete_user->bindValue(':user_email', $the_row->user_email, PDO::PARAM_INT);

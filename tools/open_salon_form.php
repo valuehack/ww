@@ -55,7 +55,7 @@
           <?php
           if ($spots_total > 59){
           ?>
-          	<p>Die Zahlung von 5&euro; pro Teilnehmer erfolgt in bar im Scholarium am Abend des Offenen Salons.</p> 
+          	<p>Die Zahlung von 5&euro; pro Teilnehmer erfolgt in bar im scholarium am Abend des Offenen Salons.</p> 
          	<input type="hidden" name="profile[zahlung]" value="bar">
 
 		  	<label for="quantity">Tickets</label>
@@ -84,7 +84,7 @@
 		  
           <!-- hidden fields -->
           <!-- general -->
-          <input type="hidden" name="profile[event_id]" value="<?=$n?>">
+          <input type="hidden" name="profile[event_id]" value="<?=$event_id?>">
       	  <input type="hidden" name="profile[betrag]" value="<?=$event_price?>">
       	  
       	  <!-- Open Salon -->

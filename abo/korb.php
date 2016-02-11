@@ -17,8 +17,13 @@ require_once('../translations/de.php');
 // include the PHPMailer library
 require_once('../libraries/PHPMailer.php');
 
+require_once('../classes/General.php');
+require_once('../classes/Email.php');
 // load the login class
 require_once('../classes/Login.php');
+
+$general = new General();
+$email = new Email();
 
 // create a login object. when this object is created, it will do all login/logout stuff automatically
 // so this single line handles the entire login process.

@@ -13,16 +13,8 @@
 		if(isset($_GET['q'])) 
 		{
   			$id = $_GET['q'];
-			
-			#this block would be happier in General class
-			#$general->getEventData($id);
-			$event_query = $general->db_connection->prepare('SELECT * FROM produkte WHERE id LIKE :id AND status = :status');
-			$event_query->bindValue(':id', $id, PDO::PARAM_STR);
-			$event_query->bindValue(':status', 2, PDO::PARAM_INT);
-			$event_query->execute();
-			
-			$event_result = $event_query->fetchObject();
-			#
+						
+			$event_result = $general->getProduct($id);
 
 			$event_id = $event_result->n;
 			$event_title = $event_result->title;

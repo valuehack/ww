@@ -24,11 +24,16 @@
     	<link rel="stylesheet" type="text/css" href="../style/style.css">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="../js/general.js"></script>
 
 		<!-- Bootstrap -->
 		<!--<link href="../style/modal.css" rel="stylesheet">-->
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../tools/bootstrap.js"></script>
+
+		<!-- PHP FreeChat -->
+		<link rel="stylesheet" type="text/css" href="../phpfreechat/client/themes/scholarium/jquery.phpfreechat.css">
+  		<script src="../phpfreechat/client/jquery.phpfreechat.js" type="text/javascript"></script>
 
 		<!-- Google Analytics Code -->
 		<script type="text/javascript">
@@ -41,27 +46,7 @@
     			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   			})();
-
-           function setActive() {
-              aObj = document.getElementById('navelm').getElementsByTagName('a');
-              for(i=0;i<aObj.length;i++) { 
-                if(document.location.href.indexOf(aObj[i].href)>=0) {
-                  aObj[i].className='active';
-                }
-              }
-            }
-
-            window.onload = setActive;
 		</script>
-		
-		<!-- Social Links PopUp -->
-		<script type="text/javascript">
-			function openpopup (url) {
-   			popup = window.open(url, "popup1", "width=640,height=480,status=yes,scrollbars=yes,resizable=yes");
-   			popup.focus();
-			}
-		</script>
-		
 	</head>
 
 <?php

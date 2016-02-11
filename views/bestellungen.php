@@ -152,6 +152,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			
 			$n = $userItemsArray_a[event_id];
 			$quantity = $userItemsArray_a[quantity];
+			$format = $userItemsArray_a[format];
 			
 			$user_events_query = "SELECT * from produkte WHERE `n` LIKE '$n' ORDER BY start DESC";
         	$user_events_result = mysql_query($user_events_query) or die("Failed Query of " . $user_events_query. mysql_error());
@@ -159,8 +160,9 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			
 			$title = $userEventsArray[title];
 			$type = $userEventsArray[type];
-			$id = $userEventsArray[id];	
-			$price = $userEventsArray[price];		 
+			$id = $userEventsArray[id];
+			$price = $userEventsArray[price];
+			
 			
 				if ($type == 'seminar' || $type == 'kurs' || $type == 'salon'){
 			
@@ -203,6 +205,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 					<div class="basket_body_col_a_2">
 						<span class="history_body_type"><?=ucfirst($type)?></span>
 						<span class="history_body_title"><a href="../<?=$url2?>/index.php?q=<?=$id?>"><?=$title?></a></span>
+						<?php if($type == 'salon') echo '<span class="history_body_format">'.$format.'</span>';?>
 					</div>
         		</div>	
 				<div class="basket_body_col_b">
@@ -215,7 +218,16 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 				</div>
 				<div class="basket_body_col_c">
 					<span class="history_reservation">Reserviert</span>
-					<p><a href="../tickets/ticket_<?=$user_id?>_<?=ucfirst($type)?>_<?=$n?>.pdf">Ihr Ticket</a></p>
+					<p>
+<?php
+					if($format == 'Stream') {
+						echo '<a href="../salon/index.php?q='.$id.'&stream=true">Zum Stream</a>';
+					}
+					else {
+						echo '<a href="../tickets/ticket_'.$user_id.'_'.ucfirst($type).'_'.$n.'.pdf">Ihr Ticket</a>';
+					}
+?>
+					</p>
 					<p>
 						<form action="<?echo htmlentities($_SERVER['PHP_SELF']);?>" method="post">
 							<input type="hidden" name="delete" value="1">

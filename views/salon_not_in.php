@@ -9,56 +9,47 @@ if(isset($_GET['q']))
 {
   $id = $_GET['q'];
 
-  //Termindetails
-  $sql="SELECT * from produkte WHERE type LIKE 'salon' AND id='$id'";
-  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-  $entry3 = mysql_fetch_array($result);
-  $spots_total = $entry3[spots];
-  $spots_available=$entry3[spots]-$entry3[spots_sold];
-  $status = $entry3[status];
-  $n = $entry3[n];
-    	//check, if there is a image in the salon folder
-	$img = 'http://scholarium.at/salon/'.$id.'.jpg';
-
-	if (@getimagesize($img)) {
-	    $img_url = $img;
-	} else {
-	    $img_url = "http://scholarium.at/salon/default.jpg";
-	}
+  //Termindetails	
+  $salon_info = $general->getProduct($id);
+  
+  $event_id = $salon_info->n;
+  $title = $salon_info->title;
+  $price = $salon_info->price;
+  $price2 = $salon_info->price_book;
+  $spots_total = $salon_info->spots;
+  $spots_available = $spots_total - $salon_info->spots_sold;
+  $livestream = $salon_info->livestream;
+  $status = $salon_info->status;
+    
+  $date = $general->getDate($salon_info->start, $salon_info->end);
+	
   if ($status == 0) {
   	echo '<div class="salon_head"><p class="salon_date">Es wurde keine Veranstaltung gefunden.</p></div>';
   }
   else {
 ?>
 	<div class="salon_head">
-  		<h1><?echo $entry3[title]?></h1>
-  		<p class="salon_date"><?
-      if ($entry3[start] != NULL && $entry3[end] != NULL)
-        {
-        $tag=date("w",strtotime($entry3[start]));
-        $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
-        echo $tage[$tag]." ";
-        echo strftime("%d.%m.%Y %H:%M", strtotime($entry3[start]));
-        if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
-          {
-          echo " Uhr &ndash; ";
-          $tag=date("w",strtotime($entry3[end]));
-          echo $tage[$tag];
-          echo strftime(" %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
-          }
-        else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry3[end]));
-      }
-      elseif ($entry3[start]!= NULL)
-        {
-        $tag=date("w",strtotime($entry3[start]));
-        echo $tage[$tag]." ";
-        echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
-      }
-      else echo "Der Termin wird in K&uuml;rze bekannt gegeben."; ?>
-    </p>
-  		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
-		<div class="centered">
-			<div class="salon_reservation">
+  		<h1><?=$title?></h1>
+  		<p class="salon_date"><?=$date?></p>
+	</div>
+
+	<div class="salon_seperator">
+		<h1>Inhalt und Informationen</h1>
+	</div>
+	
+	<div class="salon_content">
+	
+  <?php
+  if ($salon_info->text) echo "<p>$salon_info->text</p>";
+  if ($salon_info->text2) echo "<p>$salon_info->text2</p>";
+  
+			$static_info = $general->getStaticInfo('salon');
+			echo $static_info->info		
+			?>
+			<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Salons</a></div>
+			
+			<div class="centered">
+				<div class="salon_reservation">
 				<?
 				if ($spots_available == 0){
   					echo '<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht.</span><br>';
@@ -70,30 +61,8 @@ if(isset($_GET['q']))
     			<!--Button trigger modal-->
     			<input class="salon_reservation_inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal" <?if($spots_available == 0){echo 'disabled';}?>>
  
+    			</div>
     		</div>
-    	</div>
-    </div>
-	<div class="salon_seperator">
-		<h1>Inhalt und Informationen</h1>
-	</div>
-	<div class="salon_content">
-	
-  <?php
-  /* weekdays don't work
-    $day=date("w",strtotime($entry3[start]));
-    if ($day==0) $day=7;
-    echo Phrase('day'.$day).", ";
-    */  
-  if ($entry3[text]) echo "<p>$entry3[text]</p>";
-  if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
-  
-			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[info];			
-			?>
-			<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Salons</a></div>
     	</div>
 	</div>
 <?php
@@ -106,11 +75,8 @@ else {
 		<h1>Salon</h1>
 		
 		<?php
-			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[info];	
+			$static_info = $general->getStaticInfo('salon');
+			echo $static_info->info	
 		?>
 				<div class="centered">
 					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">

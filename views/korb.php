@@ -33,7 +33,7 @@ if(isset($_POST['checkout'])) {
     $userCreditsArray = mysql_fetch_array($user_credits_result);
 
 	$user_name = $userCreditsArray['Vorname'];
-	$user_surname = $userCreditsArray['Nachname'];	
+	$user_surname = $userCreditsArray['Nachname'];
 	$user_email = $userCreditsArray['user_email'];
 	
 	$user_street = $userCreditsArray['Strasse'];
@@ -62,6 +62,7 @@ if(isset($_POST['checkout'])) {
         $preis=$itemsPriceArray[price];
         
         if ($format == 4 && $itemsPriceArray[price_book]) { $preis = $itemsPriceArray[price_book];}
+		if ($itemsPriceArray[type] == 'salon' && $format == 2 && $itemsPriceArray[price_book]) $preis = $itemsPriceArray[price_book];
         
         $itemsPriceSum = $quantity * $preis;
         $itemsPrice += $itemsPriceSum;
@@ -102,20 +103,31 @@ if(isset($_POST['checkout'])) {
         // $tickets_array = [];    
         foreach ($items as $code => $quantity)
                 {	
-
-
                     $length = strlen($code) - 1;
 
                     $key = substr($code,0,$length);
                     $format = substr($code,-1,1);
-                    switch ($format) {
-                        case 1: $format = "PDF"; break;
-                        case 2: $format = "ePub"; break;
-                        case 3: $format = "Kindle"; break;
-                        case 4: $format = "Druck"; break;
-                        default: $format = NULL; break;
-                    }
 					
+					$getType = $general->getProduct($key);
+					$type = $getType->type;
+										
+					if ($type == 'salon') {
+						switch($format) {
+							case 1: $format = 'vorOrt'; break;
+							case 2: $format = 'Stream'; break;
+							default: NULL; break;
+						}
+					}
+					else {
+        				switch ($format) {
+            				case 1: $format = 'PDF'; break;
+                        	case 2: $format = 'ePub'; break;
+                        	case 3: $format = 'Kindle'; break;
+                        	case 4: $format = 'Druck'; break;
+                        	default: $format = NULL; break;
+						}
+        			}
+
                     $checkout_query = "INSERT INTO registration (event_id, user_id, quantity, format, reg_datetime) VALUES ('$key', '$user_id', '$quantity', '$format', NOW())";
                     mysql_query($checkout_query);
 
@@ -123,31 +135,33 @@ if(isset($_POST['checkout'])) {
 
                     $left_credits_query = "UPDATE mitgliederExt SET credits_left='$credits_left' WHERE `user_id` LIKE '$user_id'";
                     mysql_query($left_credits_query) or die("Failed Query of " . $left_credits_query. mysql_error());
-
-                    $space_query = "UPDATE produkte SET spots_sold = spots_sold + '$quantity' WHERE `n` LIKE '$key'";
-                    mysql_query($space_query);
-
+					
 					$last_donation_query = "UPDATE produkte SET last_donation = NOW() WHERE `n` LIKE '$key'";
 					mysql_query($last_donation_query);
 
-					//Ticket Generation
+					if($format != 'Stream') {
+                    	$space_query = "UPDATE produkte SET spots_sold = spots_sold + '$quantity' WHERE `n` LIKE '$key'";
+                    	mysql_query($space_query);					
 
-					$items_ticket_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
-            		$items_ticket_result = mysql_query($items_ticket_query) or die("Failed Query of " . $items_ticket_query. mysql_error());
-            		$itemsTicketArray = mysql_fetch_array($items_ticket_result);
+						//Ticket Generation
 
-						$title2 = $itemsTicketArray[title];
-						$start = $itemsTicketArray[start];
-						$end = $itemsTicketArray[end];
-						$type = $itemsTicketArray[type];
-						$price = $itemsTicketArray[price];												
-						
-					if ($type == 'kurs' || $type == 'seminar' || $type == 'lehrgang' || $type == 'salon') {
+						$items_ticket_query = "SELECT * from produkte WHERE `n` LIKE '$key' ORDER BY start DESC";
+            			$items_ticket_result = mysql_query($items_ticket_query) or die("Failed Query of " . $items_ticket_query. mysql_error());
+            			$itemsTicketArray = mysql_fetch_array($items_ticket_result);
 
-						$type = ucfirst($type);
-						include ('../tools/ticket.php');
-					}
+							$title2 = $itemsTicketArray[title];
+							$start = $itemsTicketArray[start];
+							$end = $itemsTicketArray[end];
+							$type = $itemsTicketArray[type];
+							$price = $itemsTicketArray[price];
+
+						if ($type == 'kurs' || $type == 'seminar' || $type == 'lehrgang' || $type == 'salon') {
+
+							$type = ucfirst($type);
+							include ('../tools/ticket.php');
+						}
 					
+					}
 					//Prepare Book Order eMail
 					
 					if ($format == 'Druck'){
@@ -265,12 +279,14 @@ function checkMe() {
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
             
-            $type = $itemsExtraArray[type];		
+            $type = $itemsExtraArray[type];
 			
        		if ($format == 4 && $itemsExtraArray[price_book]) {
             	$sum = $quantity*$itemsExtraArray[price_book];
         	}
-
+			elseif ($itemsExtraArray[type] == 'salon' && $format == 2 && $itemsExtraArray[price_book]) {
+				$sum = $quantity*$itemsExtraArray[price_book];
+			}
         	else {
              	$sum = $quantity*$itemsExtraArray[price];
         	}
@@ -285,19 +301,31 @@ function checkMe() {
             
 			echo "<tr>";
             echo "<td>".$type2."</td>";
-            echo "<td>".$itemsExtraArray[title]."<br><i>";
-            switch ($format) {
-                case 1: echo "pdf"; break;
-                case 2: echo "ePub"; break;
-                case 3: echo "kindle"; break;
-                case 4: echo "Druck"; break;
-                default: NULL; break;
-            }
-            echo "</i><br>";
-            // TO DO: Find better solution to display the relevant information for different product categories  
+            echo "<td>".$itemsExtraArray[title].' - ';
             if (!(is_null($itemsExtraArray[start]))) {
-                echo date("d.m.Y",strtotime($itemsExtraArray[start]))."</td>";
-            }       
+                echo date("d.m.Y",strtotime($itemsExtraArray[start]));
+            }   
+            echo "<br><i>";
+            
+			if ($type == 'salon') {
+				switch($format) {
+					case 1: echo 'vor Ort'; break;
+					case 2: echo 'Stream'; break;
+					default: NULL; break;
+				}
+			}
+			else {
+        		switch ($format) {
+            		case 1: echo 'pdf'; break;
+            		case 2: echo "ePub"; break;
+            		case 3: echo "kindle"; break;
+            		case 4: echo "Druck"; break;
+            		default: NULL; break;
+				}
+        	}
+            echo "</i><br></td>";
+            // TO DO: Find better solution to display the relevant information for different product categories  
+                
             echo "<td>&nbsp; &nbsp;";
             if ($itemsExtraArray[type] == 'projekt') {
                             echo '1';
@@ -407,8 +435,8 @@ function checkMe() {
                     <span style="font-size: 12pt;">
                     <span style="color: #000000;">
                     <!--#/html#-->
-                    <br>Sie haben folgende Bestellungen get&auml;tigt:';           
-      
+                    <br>Sie haben folgende Bestellungen get&auml;tigt:';
+
 
         $body = $body. "<hr><table style='width:100%'><tr><td style='width:5%'><b>ID</b></td>
                         <td style='width:55%'><b>Name</b></td>
@@ -437,7 +465,9 @@ function checkMe() {
             if ($format == 4 && $itemsExtraArray[price_book]) {
                 $sum = $quantity*$itemsExtraArray[price_book];
             }
-
+			elseif ($itemsExtraArray[type] == 'salon' && $format == 2 && $itemsExtraArray[price_book]) {
+				$sum = $quantity*$itemsExtraArray[price_book];
+			}
             else {
                 $sum = $quantity*$itemsExtraArray[price];
             }
@@ -451,13 +481,24 @@ function checkMe() {
 			
             $body = $body. "<tr><td>".$itemsExtraArray[n]."&nbsp;</td>";
             $body = $body. "<td><i>".$type2."</i> ".$itemsExtraArray[title]." <i>";
-            switch ($format) {
-                case 1: $body = $body. "PDF"; break;
-                case 2: $body = $body. "ePub"; break;
-                case 3: $body = $body. "Kindle"; break;
-                case 4: $body = $body. "Druck"; break;
-                default: NULL; break;
-            }
+			
+			if ($type == 'salon') {
+				switch($format) {
+					case 1: $body = $body.'vor Ort'; break;
+					case 2: $body = $body.'Stream'; break;
+					default: NULL; break;
+				}
+			}
+			else {
+        		switch ($format) {
+                	case 1: $body = $body. 'PDF'; break;
+                	case 2: $body = $body. 'ePub'; break;
+                	case 3: $body = $body. 'Kindle'; break;
+                	case 4: $body = $body. 'Druck'; break;
+                	default: NULL; break;
+				}
+        	}
+			
             $body = $body. "</i></td>";
            
             if ($itemsExtraArray[type] == 'projekt') {
@@ -467,6 +508,7 @@ function checkMe() {
                             $body = $body. "<td>&nbsp; &nbsp;".$quantity."</td>";
                         }
             if ($format == 4) {$preis=$itemsExtraArray[price_book];}
+			elseif ($itemsExtraArray[type] == 'salon' && $format == 2) $preis=$itemsExtraArray[price_book];
 			else {$preis=$itemsExtraArray[price];}          
             $body = $body. "<td>&nbsp; &nbsp;".$preis."</td>";
             $body = $body. "<td><i>".$sum."</i></td></tr>";
@@ -614,6 +656,9 @@ if($_SESSION['basket']) {
         if ($format == 4 && $itemsExtraArray[price_book]) {
             $sum = $quantity*$itemsExtraArray[price_book];
         }
+		elseif ($itemsExtraArray[type] == 'salon' && $format == 2 && $itemsExtraArray[price_book]) {
+			$sum = $quantity*$itemsExtraArray[price_book];
+		}
         else {
              $sum = $quantity*$itemsExtraArray[price];
         }
@@ -646,21 +691,32 @@ if($_SESSION['basket']) {
 		echo "<span class='basket_body_type'>".ucfirst($type)."</span>";
 		echo "<span class='basket_body_title'>";
 		echo "<a href='../".$url2."/index.php?q=".$id."'>".$itemsExtraArray[title]."</a></span>";
+		if (!(is_null($itemsExtraArray[start]))) {
+            echo "<span class='basket_body_date'>".date("d.m.Y",strtotime($itemsExtraArray[start]));
+            	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
+				echo "</span>";
+        }
+			   
 		echo "<span class='basket_body_format'>";
-        switch ($format) {
-            case 1: echo "pdf"; break;
-            case 2: echo "ePub"; break;
-            case 3: echo "kindle"; break;
-            case 4: echo "Druck"; break;
-            default: NULL; break;
+		if ($type == 'salon') {
+			switch($format) {
+				case 1: echo 'Vor Ort'; break;
+				case 2: echo 'Stream'; break;
+				default: NULL; break;
+			}
+		}
+		else {
+        	switch ($format) {
+            	case 1: echo 'pdf'; break;
+            	case 2: echo "ePub"; break;
+            	case 3: echo "kindle"; break;
+            	case 4: echo "Druck"; break;
+            	default: NULL; break;
+			}
         }
 		echo "</span>";
 
-       if (!(is_null($itemsExtraArray[start]))) {
-            echo "<span class='basket_body_date'>".date("d.m.Y",strtotime($itemsExtraArray[start]));
-            if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
-			echo "</span>";
-        }
+
 		
         ?>
         		<form class="basket_body_remove" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
@@ -677,6 +733,9 @@ if($_SESSION['basket']) {
 	        			if ($format == 4 && $itemsExtraArray[price_book]) {
             				echo $itemsExtraArray[price_book];
         				}
+						elseif ($itemsExtraArray[type] == 'salon' && $format == 2 && $itemsExtraArray[price_book]) {
+            				echo $itemsExtraArray[price_book];
+						}
                         elseif ($itemsExtraArray[type] == 'projekt') {
                             echo $quantity;
                         }

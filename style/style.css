@@ -129,12 +129,13 @@ p, ul, ol {
 	font-family: "Garamond", Georgia, Times, sans-serif;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
 	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
-h2 {
-	font-family: "Futura Book", Helvetica, Arial, serif;
+h5 {
+	font-size: 16pt;
+	line-height: 2;
 }
 
 span {
@@ -2522,6 +2523,7 @@ img.projekte_coin2  {
 .basket_body_date {
 	font-size: 14pt;
 	font-style: italic;
+	display: block;
 }
 
 .basket_body_remove {
@@ -2864,6 +2866,15 @@ img.projekte_coin2  {
 	border: 1px solid #cfcfcf;
 }
 
+.profil_select {
+	padding: 10px;
+	font-size: 12pt;
+	height: 50px;
+	margin: 5px;
+	width: 292px;
+	border: 1px solid #cfcfcf;
+}
+
 .profil_inputfield {
 	padding: 0 14px;
 	background-color: #fff;
@@ -2957,6 +2968,7 @@ img.projekte_coin2  {
 .content-area {
 	margin: 50px 15%;
 	display: inline-block;
+	width: 70%;
 }	
 
 .h1, .h2, .h3, .h1__sub, .h2__sub {
@@ -3042,6 +3054,32 @@ img.projekte_coin2  {
 
 .clear {
 	clear: both;
+}
+
+.sinfo {
+	padding: 20px;
+	margin: 10px 0px;
+	border: 1px solid rgb(125, 125, 125);
+}
+
+.sinfo p {
+	margin: 5px 0;
+}
+
+.coin-span {
+	font-size: 18pt;
+}
+
+.coin-span__img {
+	width: 1.4em;
+	margin-left: 0.5em;
+	margin-bottom: -.4em;
+}
+
+.input-select {
+	padding: 10px;
+	font-size: 14pt;
+	height: 50px;
 }
 
 /*==================================================*/

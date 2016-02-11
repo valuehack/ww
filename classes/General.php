@@ -76,12 +76,18 @@ class General {
 			return $date;
 	}
 
-	public function getProduct ($id, $status=1) {
-		# $status: 0 = not active, 1 = active, 2 = test
+	public function getProduct ($id) {
 		
-		$product_query = $this->db_connection->prepare('SELECT * FROM produkte WHERE n LIKE :id AND status = :status');
-		$product_query->bindValue(':id', $id, PDO::PARAM_INT);
-		$product_query->bindValue(':status', $status, PDO::PARAM_INT);
+		if(is_numeric($id)) {
+			$id_num = $id;
+		}
+		else {
+			$id_text = $id;
+		}
+		
+		$product_query = $this->db_connection->prepare('SELECT * FROM produkte WHERE n LIKE :id_num OR id LIKE :id_text');
+		$product_query->bindValue(':id_num', $id_num, PDO::PARAM_INT);
+		$product_query->bindValue(':id_text', $id_text, PDO::PARAM_INT);
 		$product_query->execute();
 		
 		$product_result = $product_query->fetchObject();
@@ -89,6 +95,7 @@ class General {
 		return $product_result;
 		
 	}
+	
 	public function getProducts ($id, $type='all', $status=1, $show_passed=false, $show_soldout=true) {
 		# WORK in PROGRESS
 		# $type has to be empty (all) or an array of the types that should be selected
@@ -123,20 +130,40 @@ class General {
 		return $user_query->fetchObject();
 	}
 
+	public function getEventReg ($user_id, $event_id) {
+		#$event_id has to nummeric
+		
+		$reg_event_query = $this->db_connection->prepare('SELECT * FROM registration WHERE event_id = :event_id AND user_id = :user_id');
+		$reg_event_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+		$reg_event_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+		$reg_event_query->execute();
+		
+		return $reg_event_query->fetchObject();
+	}
+
+	public function getStaticInfo($page) {
+		
+		$static_query = $this->db_connection->prepare('SELECT * FROM static_content WHERE page LIKE :page');
+		$static_query->bindValue(':page', $page, PDO::PARAM_STR);
+		$static_query->execute();
+		
+		return $static_query->fetchObject();
+	}
+
 	public function registerEvent ($user_id, $event_id, $quantity) {
 	    			    				
-    		#enter into event registration
-		    $reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime ) VALUES (:event_id, :user_id, :quantity, NOW())');
-            $reg_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
-            $reg_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-            $reg_query->bindValue(':quantity', $quantity, PDO::PARAM_INT);
-            $reg_query->execute();
+    	#enter into event registration
+		$reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime ) VALUES (:event_id, :user_id, :quantity, NOW())');
+        $reg_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+        $reg_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        $reg_query->bindValue(':quantity', $quantity, PDO::PARAM_INT);
+        $reg_query->execute();
 
-            #update spots sold in produkte
-            $spots_sold_query = $this->db_connection->prepare('UPDATE produkte SET spots_sold = spots_sold+:spot WHERE n = :event_id');
-            $spots_sold_query->bindValue(':spot', $quantity, PDO::PARAM_INT);
-            $spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
-            $spots_sold_query->execute();
+        #update spots sold in produkte
+        $spots_sold_query = $this->db_connection->prepare('UPDATE produkte SET spots_sold = spots_sold+:spot WHERE n = :event_id');
+        $spots_sold_query->bindValue(':spot', $quantity, PDO::PARAM_INT);
+        $spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+        $spots_sold_query->execute();
 
     }
 	

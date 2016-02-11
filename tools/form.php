@@ -19,7 +19,7 @@
         	$plz = trim($result_row->PLZ);
 		}
       ?>
-      <div class="profil payment_width">
+      <div class="profil">
       <form method="post" action="<?=$action?>" name="<?=$pass_to?>">
 
 		  <!-- user profile -->
@@ -54,10 +54,11 @@
             <!-- end of user profile -->
           
           <!-- payment methods  -->
-                   				  
-		  <input type="radio" class="profil_radio" name="profile[payment_option]" value="sofort" required><span class="profil_radio_label">SOFORT</span><br>
-      	  <input type="radio" class="profil_radio" name="profile[payment_option]" value="paypal"><span class="profil_radio_label">PayPal</span><br>	  
-
+          <div class="">
+          	<p>W&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>  				  
+		  	<input type="radio" class="profil_radio" name="profile[payment_option]" value="sofort" required><span class="profil_radio_label">SOFORT</span><br>
+      	  	<input type="radio" class="profil_radio" name="profile[payment_option]" value="paypal"><span class="profil_radio_label">PayPal</span><br>	  
+		  </div> 
 		  <!-- end payment options -->
 
 		  <!-- hidden fields -->
@@ -98,9 +99,11 @@
 <?php
 		 }
 ?>
-		 <p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+		 <!--
+		 	Moved to the confirmation page
+		 	<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>-->
 			
-    	 <input type="submit" class="profil_inputbutton" name="<?=$pass_to?>" value="Anmelden" <?//if ($spots_available == 0){echo 'disabled';}?>>
+    	 <input type="submit" class="profil_inputbutton" name="<?=$pass_to?>" value="Weiter">
       </form>
       </div>
 

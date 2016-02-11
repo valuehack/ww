@@ -16,11 +16,9 @@
 		include('_header_not_in.php');
 	
 		echo '<div class="content">';
-		echo '<div class="profil">';
-		echo '<h1>Pers&ouml;nliche Informationen</h1>';
+		echo '<div class="content-area">';
+		echo '<div class="h1 centered">Pers&ouml;nliche Informationen</div>';
 		echo '</div>';
-		
-		echo $passed_from;
 		
 		$pass_to = 'payment_submit';
 		$action = htmlspecialchars('index.php?q=summary');
@@ -58,15 +56,14 @@
 		*/
 		
 		# event info 
-		# status = 2 selects test events
-		$product_info = $general->getProduct($event_id, 2);
+		$product_info = $general->getProduct($event_id);
 		$event_date = $general->getDate($product_info->start, $product_info->end);
 
 		if ($passed_from === 'seminar') {
 			$total = $quantity*$product_info->price;
 			$membership = 'Teilnehmer';
 		}
-		if ($passed_from === 'projekte' || $passed_from === 'upgrade') {
+		if ($passed_from === 'projekt' || $passed_from === 'upgrade') {
 			switch($level) {
 				case 3: $total = 150; $membership ='Teilnehmer'; break;
 				case 4: $total = 300; $membership ='Scholar'; break;
@@ -76,6 +73,11 @@
 				default: $total = 75; $membership ='Gast'; break;
 			}
 		}
+		
+		$now = date('d.m.Y', time());
+			
+		#membership ends one year (31536000 sec) from today 
+	    $membership_end = date('d.m.Y', time()+31536000);
 ?>
 		<div class="content">
 			<div class="content-area">
@@ -111,7 +113,7 @@
 					</div>
 					<div class="row row__body">
 						<div class="col-1">1</div>
-						<div class="col-5"><?=$membership?></div>
+						<div class="col-5">Einj&auml;hrige Mitgliedschaft <i><?=$membership?></i> (<?=$now?> - <?=$membership_end?>)</div>
 						<div class="col-1">0</div>
 						<div class="col-1">0</div>
 					</div>
@@ -122,7 +124,7 @@
 					</div>					
 <?php					
 					}
-					if ($passed_from === 'projekte') {
+					if ($passed_from === 'projekt') {
 ?>
 					<div class="row row__head">
 						<div class="col-1">Menge</div>
@@ -134,7 +136,7 @@
 						<div class="col-1"><?=$total?></div>
 						<div class="col-5">
 							<div class="col__content">
-								<?=ucfirst($product_info->$type)?> <?=$product_info->title?>
+								<?=ucfirst($product_info->type)?> <?=$product_info->title?>
 							</div>
 						</div>
 						<div class="col-1">1</div>
@@ -142,7 +144,7 @@
 					</div>
 					<div class="row row__body">
 						<div class="col-1">1</div>
-						<div class="col-5"><?=$membership?></div>
+						<div class="col-5">Einj&auml;hrige Mitgliedschaft <i><?=$membership?></i> (<?=$now?> - <?=$membership_end?>)</div>
 						<div class="col-1">0</div>
 						<div class="col-1">0</div>
 					</div>
@@ -166,7 +168,7 @@
 						<div class="col-1">1</div>
 						<div class="col-5">
 							<div class="col__content">
-								Abo: Mitgliedschaftslevel <i><?=$membership?></i>
+								Abo: Mitgliedschaftslevel <i><?=$membership?></i> (<?=$now?> - <?$membership_end?>)
 							</div>
 						</div>
 						<div class="col-1"><?=$total?></div>
@@ -190,6 +192,7 @@
 						<div class="col-4">
 							<p class="h3">Zahlung</p>
 						</div> 
+					</div>
 					<div class="row row__body">
 						<div class="col-4">
 							<div class="col__content">
@@ -201,7 +204,8 @@
 							</div>
 						</div>
 						<div class="col-4">								
-								<?=$_SESSION['profile']['payment_option']?>
+								<?if ($_SESSION['profile']['payment_option'] == 'paypal') echo 'PayPal'?>
+								<?if ($_SESSION['profile']['payment_option'] == 'sofort') echo 'SOFORT'?>
 						</div>
 					</div>
 				</div>
@@ -210,7 +214,7 @@
 						<div class="col-8">
 							<div class="col__content">
 								<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
-								<form method="post" action="">
+								<form method="post" action="<?=htmlentities('index.php')?>">
 									<input type="submit" class="profil_inputbutton" name="change_info_submit" value="Angaben &auml;ndern">
     	 							<input type="submit" class="profil_inputbutton" name="confirmed_submit" value="Verbindlich bestellen" disabled>
 								</form>
@@ -251,8 +255,7 @@
 		*/
 		
 		# event info 
-		# status = 2 selects test events
-		$product_info = $general->getProduct($event_id, 2);
+		$product_info = $general->getProduct($event_id);
 		$event_date = $general->getDate($product_info->start, $product_info->end);
 
 		$spots_available = $product_info->spots-$product_info->spots_sold;
@@ -261,7 +264,7 @@
 			$total = $quantity*$product_info->price;
 			$membership = 'Teilnehmer';
 		}
-		if ($passed_from === 'projekte' || $passed_from === 'upgrade') {
+		if ($passed_from === 'projekt' || $passed_from === 'upgrade') {
 			switch($level) {
 				case 3: $total = 150; $membership ='Teilnehmer'; break;
 				case 4: $total = 300; $membership ='Scholar'; break;
@@ -277,7 +280,7 @@
 				<div class="row-group">
 					<div class="row row__body">
 						<div class="col-8">
-							<p class="h1">&Uuml;bersicht Ihrer Bestellung</p>
+							<p class="h1">&Auml;nderung Ihrer Bestellung</p>
 							<p class="h1__sub">Bitte &uuml;berpr&uuml;fen Sie Ihre Angaben</p>
 						</div>
 					</div>
@@ -285,7 +288,7 @@
 				<div class="row-group">
 					<p class="h3">Produkt</p>
 					
-					<form method="post" action="">
+					<form method="post" action="<?=htmlentities('index.php?q=summary')?>">
 <?php
 					if ($passed_from === 'seminar') {
 ?>
@@ -336,7 +339,7 @@
 					</div>					
 <?php					
 					}
-					if ($passed_from === 'projekte') {
+					if ($passed_from === 'projekt') {
 ?>
 					<div class="row row__head">
 						<div class="col-1">Menge</div>
@@ -407,12 +410,12 @@
 								if($total == 1200) $selected1200 = ' selected';
 								if($total == 2400) $selected2400 = ' selected';
 								?>
-		  						<option value="75" <?=$selected75?>>Gast (75&euro;)</option>
-		  						<option value="150" <?=$selected150?>>Teilnehmer (150&euro;)</option>
-		  						<option value="300" <?=$selected300?>>Scholar (300&euro;)</option>
-		  						<option value="600" <?=$selected600?>>Partner (600&euro;)</option>
-		  						<option value="1200" <?=$selected1200?>>Beirat (1200&euro;)</option>
-		  						<option value="2400" <?=$selected2400?>>Ehrenpr&auml;sident (2400&euro;)</option>
+		  						<option value="75" <?=$selected75?>>Gast (6,25&euro;/Monat)</option>
+		  						<option value="150" <?=$selected150?>>Teilnehmer (12,50&euro;/Monat)</option>
+		  						<option value="300" <?=$selected300?>>Scholar (25&euro;/Monat)</option>
+		  						<option value="600" <?=$selected600?>>Partner (50&euro;/Monat)</option>
+		  						<option value="1200" <?=$selected1200?>>Beirat (100&euro;/Monat)</option>
+		  						<option value="2400" <?=$selected2400?>>Ehrenpr&auml;sident (200&euro;/Monat)</option>
 		  						
 		  					</select>
 							</div>
@@ -441,22 +444,22 @@
 					<div class="row row__body">
 						<div class="col-4">
 							<div class="col__content">
-								<select name="">
-									<option value="" <?if($_SESSION['profile']['user_anrede'] == 'Herr') echo 'selected'?>>Herr</option>
-									<option value="" <?if($_SESSION['profile']['user_anrede'] == 'Frau') echo 'selected'?>>Frau</option>
-								</select>
-								<input type="email" name="" value="<?=$_SESSION['profile']['user_first_name']?>"> 
-								<input type="text" name="" value="<?=$_SESSION['profile']['user_surname']?>"><br>
-								<input type="text" name="" value="<?=$_SESSION['profile']['user_email']?>"><br>
-								<input type="text" name="" value="<?=$_SESSION['profile']['user_street']?>"><br>
-								<input type="text" name="" value="<?=$_SESSION['profile']['user_plz']?>">
-								<input type="text" name="" value="<?=$_SESSION['profile']['user_city']?>"><br>
-								<input type="text" name="" value="<?=$_SESSION['profile']['user_country']?>"><br>
+								<select class="profil_select" name="profile[anrede]">
+									<option value="Herr"<?if($_SESSION['profile']['user_anrede'] == 'Herr') echo 'selected'?>>Herr</option>
+									<option value="Frau"<?if($_SESSION['profile']['user_anrede'] == 'Frau') echo 'selected'?>>Frau</option>
+								</select><br>
+								<input type="email" class="profil_inputfield" name="profile['user_first_name']" value="<?=$_SESSION['profile']['user_first_name']?>"><br> 
+								<input type="text" class="profil_inputfield" name="profile['user_surname']" value="<?=$_SESSION['profile']['user_surname']?>"><br> 
+								<input type="text" class="profil_inputfield" name="profile['user_email']" value="<?=$_SESSION['profile']['user_email']?>"><br> 
+								<input type="text" class="profil_inputfield" name="profile['user_street']" value="<?=$_SESSION['profile']['user_street']?>"><br> 
+								<input type="text" class="profil_inputfield" name="profile['user_plz']" value="<?=$_SESSION['profile']['user_plz']?>"><br> 
+								<input type="text" class="profil_inputfield" name="profile['user_city']" value="<?=$_SESSION['profile']['user_city']?>"><br> 
+								<input type="text" class="profil_inputfield" name="profile['user_country']" value="<?=$_SESSION['profile']['user_country']?>"><br> 
 							</div>
 						</div>
 						<div class="col-4">
-							<input type="radio" name="" value="paypal" <?if($_SESSION['profile']['payment_option'] == 'paypal') echo 'checked'?> required>PayPal<br>
-							<input type="radio" name="" value="sofort" <?if($_SESSION['profile']['payment_option'] == 'sofort') echo 'checked'?>>SOFORT		
+							<input type="radio" name="profile['payment_option']" value="paypal" <?if($_SESSION['profile']['payment_option'] == 'paypal') echo 'checked'?> required>PayPal<br>
+							<input type="radio" name="profile['payment_option']" value="sofort" <?if($_SESSION['profile']['payment_option'] == 'sofort') echo 'checked'?>>SOFORT		
 						</div>
 					</div>
 				</div>
