@@ -288,7 +288,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 #           Stream View             #
 #####################################
 
-elseif(isset($_GET['q']) && $_GET['stream'] == true) {
+elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 	
 	$id = $_GET['q'];
 	$salon_info = $general->getProduct($id);
@@ -297,15 +297,18 @@ elseif(isset($_GET['q']) && $_GET['stream'] == true) {
 
 ?>	
 	<div class="content-area">
-		<h2>Livestream</h2>
+		<div class="centered">
+			<h2><?=$salon_info->title?></h2>
+		</div>
 		<div class="centered">
 			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
 		</div>
-		<p>Chat</p>
-		<div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
-		<script type="text/javascript">
- 			 $('#mychat').phpfreechat({ serverUrl: '../phpfreechat/server' });
-		</script>
+		<div class="chat-wrapper">
+			<div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
+			<script type="text/javascript">
+ 				 $('#mychat').phpfreechat({ serverUrl: '../phpfreechat/server' });
+			</script>
+		</div>
 	</div>
 <?php	
 }

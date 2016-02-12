@@ -20,7 +20,7 @@ $event_reg = $general->getEventReg($_SESSION['user_id'],$event_id);
 	}
 }
 
-$title="Privatseminar";
+$title="Salon";
 include "_header_in.php";
 
 if(!isset($_SESSION['basket'])){
@@ -288,26 +288,55 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 #           Stream View             #
 #####################################
 
-elseif(isset($_GET['q']) && $_GET['stream'] == true) {
+elseif($_GET['stream'] === 'true') {
 	
-	$id = $_GET['q'];
-	$salon_info = $general->getProduct($id);
+	$now = date('d.m.Y H:M', time());
 	
-	$livestream = substr($salon_info->livestream,32);
+	$ps_query = $general->db_connection->prepare('SELECT * FROM producte WHERE type LIKE :type AND end > :end');
+	$ps_query->bindValue(':type', 'privatseminar', PDO::PARAM_STR);
+	$ps_query->bindValue(':end', $now, PDO::PARAM_STR);
+	$ps_query->execute();
+	$ps_info = $ps_query->fetchObject();
+	
+	$getEventReg = $general->getEventReg($_SESSION['user_id'], $ps_info->event_id);
+	
+	if ($getEventReg->format === 'Stream') {
+		
+		$ps_info = $general->getProduct($id);
+	
+		$livestream = substr($ps_info->livestream,32);
+
+		$begleit_pdf = 'http://www.scholarium.at/privatseminar/'.$id.'.pdf';
 
 ?>	
 	<div class="content-area">
-		<h2>Livestream</h2>
+		<div class="centered">
+			<h2><?=$ps_info->title?></h2>
+		</div>
 		<div class="centered">
 			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
 		</div>
-		<p>Chat</p>
-		<div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
-		<script type="text/javascript">
- 			 $('#mychat').phpfreechat({ serverUrl: '../phpfreechat/server' });
-		</script>
+<?php
+		if (file_exists($begleit_pdf)) {
+?>
+		<div class="sinfo">
+			<a href="<?=$begleit_pdf?>" target="_blank">Unterlagen zur Veranstaltung</a> 
+		</div>
+<?php
+		}
+?>
+		<div class="chat-wrapper">
+			<div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
+			<script type="text/javascript">
+ 				 $('#mychat').phpfreechat({ serverUrl: '../phpfreechat/server' });
+			</script>
+		</div>
 	</div>
-<?php	
+<?php
+	}
+	else {
+		header('Loaction: index.php');
+	}	
 }
 
 #####################################
@@ -318,83 +347,67 @@ else {
 ?>		
 	<div class="content">
 		<?
-		
-#für Interessenten (Mitgliedschaft 1) Erklärungstext oben
-  if ($_SESSION['Mitgliedschaft'] == 1) {
-  	echo "<div class='salon_info'>";
-	  		$static_info = $general->getStaticInfo('salon');
+		$static_info = $general->getStaticInfo('privatseminar');
+	#für Interessenten (Mitgliedschaft 1) Erklärungstext oben
+  	if ($_SESSION['Mitgliedschaft'] == 1) {
+  		echo "<div class='salon_info'>";
 			echo $static_info->info;	
 	?>
 			<div class="centered">
 				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
 			</div>		
-   </div>
+   		</div>
    <?
   }
   elseif ($_SESSION['Mitgliedschaft'] > 1) {
 ?>
-		<div class="salon_content">
-<?	
-  $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND start > NOW() AND status = 1 order by start asc, n asc";
-  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-
-
-  while($entry = mysql_fetch_array($result))
-  {
-    $id = $entry[id];
-	$date = $general->getDate($entry[start], $entry[end]);
-      ?>
-      
-<?php echo "<h1><a href='?q=$id'>".$entry[title]; ?></a></h1>
-		<div class="salon_dates">
-      <?=$date?>
+		<div class="salon_info">
+			<?=$static_info->info?>
 		</div>
-		<?php echo $entry[text]; ?> 
-			<!--<div class="salon_anmeldung"><a href="<? echo "?q=$id";?>">zur Anmeldung</a></div>-->
-			<div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
-  <?php
-  }
-  ?>
-  	</div>
-  </div>
+		<div class="salon_content">
+			<div class="centered content-elm">
+<?php
+			#Think about best way to show and secure the stream
+			if($ps_info->event_id && $format === 'Stream') {
+?>
+				<a href="index.php?stream=true">Zum Stream</a>
+<?php
+			}
+			else {
+?>
+				<input type="submit" class="inputbutton" name="" value="F&uuml;r den n&auml;chsten Stream anmelden (10 Coins)">
+<?php
+			}
+?>
+			</div>
+			<div>
+				<div class="centered">
+					<h3>Semester&uuml;bersicht</h3>
+				</div>
+				<ul class="list--none list">
+<?
+	$pss_query = $general->db_connection->prepare('SELECT * FROM produkte WHERE type LIKE :type AND start > NOW() AND status = :status ORDER by start asc');
+	$pss_query->bindValue(':type', 'privatseminar', PDO::PARAM_STR);
+	$pss_query->bindValue(':status', 1, PDO::PARAM_INT);
+	$pss_query->execute();
+	$pss_result = $pss_query->fetchAll();
+		
+	for ($i = 0; $i < count($pss_result); $i++) 
+	{	
+		$date = $general->getDate($pss_result[$i]['start'], $pss_result[$i]['end']);
+      ?>
+      				<li class="list-itm">
+      					<?=$date?>: <b><?=$pss_result[$i]['title']?></b>
+      				</li>
+<?php
+  	}
+?>
+				</ul>
+  			</div>
+  		</div>
   	<?php
   }
 }    
-  ?> 
-
- <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog-login modal-form-width">
-      <div class="modal-content-login">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h2 class="modal-title" id="myModalLabel">Reservieren</h2>
-        </div>
-        <div class="modal-body">
-        	<?php
-        	if ($spots_total > 59){
-        		$pass_to = 'register_open_salon'; //Register from level 1
-      			$submit = 'register_open_salon'; //Register from level 1
-        		include ('../tools/open_salon_form.php');
-				echo '</div>';
-        	}  
-			else {
-			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[modal];					
-			?>
-        </div>
-        <div class="modal-footer">
-			<a href="../abo/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
-        </div>
-        	<?php
-        	}
-			?>
-      </div>
-    </div>
-  </div>
-
+?> 
 
 <? include "_footer.php"; ?>
