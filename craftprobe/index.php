@@ -28,7 +28,7 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
 //Email an Interessenten
 
 $body = "Hello $firstname,\n\n
-We are glad that you are interested in joining our voyage and we will keep you updated on our preparations.\n\n
+We are glad that you are interested in joining our voyage and we will get back to you shortly.\n\n
 Looking forward to seeing you on board!\n
 The craftprobe crew\n\n
 -----------------\n
@@ -242,12 +242,12 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					echo '<p class="crew_levels">Partner</p>'; 
 				}
 			}
-			if ($level == 8){
+	/*		if ($level == 8){
 				if ($check_lvl8 == 0){
 					$check_lvl8 = 1;
 					echo '<p class="crew_levels">Sailors</p>'; 
 				}
-			}
+			} */
 ?>			
 			<div class="crew">
 				<div class="crew__col-1">
