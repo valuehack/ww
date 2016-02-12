@@ -179,7 +179,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 <h1>crew</h1>
 
 <?php		
-		$get_crew = $pdocon->db_connection->prepare("SELECT * from crew order by level asc");
+		$get_crew = $pdocon->db_connection->prepare("SELECT * from crew WHERE level <8 order by level asc");
 		$get_crew->execute();
 		$crew_result = $get_crew->fetchAll();
 	
@@ -242,12 +242,12 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					echo '<p class="crew_levels">Partner</p>'; 
 				}
 			}
-	/*		if ($level == 8){
+			if ($level == 8){
 				if ($check_lvl8 == 0){
 					$check_lvl8 = 1;
 					echo '<p class="crew_levels">Sailors</p>'; 
 				}
-			} */
+			}
 ?>			
 			<div class="crew">
 				<div class="crew__col-1">
