@@ -134,6 +134,7 @@ if(isset($_GET['q']))
 	echo '<table class="teilnehmer">';
 		echo '<tr>';
 echo '<th>ID</th>';		
+			echo '<th>E-Mail</th>';
 			echo '<th>Vorname</th>';
 			echo '<th>Nachname</th>';
 			echo '<th>Anzahl Pl&auml;tze</th>';
@@ -153,9 +154,11 @@ echo '<th>ID</th>';
 		
 		$surname = $userEntry[Nachname];
 		$name = $userEntry[Vorname];
+		$email = $userEntry[user_email];
 		
 		echo '<tr>';
 		echo '<td>'.$user_id.'</td>';
+			echo '<td>'.$email.'</td>';
 			echo '<td>'.$name.'</td>';
 			echo '<td>'.$surname.'</td>';
 			echo '<td>'.$quantity.'</td>';
