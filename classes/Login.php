@@ -2179,10 +2179,12 @@ user_plz
         if ($user_anrede == 'Frau'){
         	$anrede = 'Sehr geehrte Frau';
         }
-		if ($user_anrede == 'Herr') {
+		elseif ($user_anrede == 'Herr') {
 			$anrede = 'Sehr geehrter Herr';
 		}
-      
+		else {
+			$anrede = 'Lieber Interessent';
+		}
         #read header from file
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
@@ -2205,8 +2207,10 @@ user_plz
                 <span style="font-size: 12pt;">
                 <span style="color: #000000;">
                 <!--#/html#-->
-                <br>            
-                '.$anrede.' '.$user_surname.',
+                <br>';
+				if ($anrede == 'Lieber Interessent') {$body = $body.$anrede.',';}
+				else {$body = $body.$anrede.' '.$user_surname.',';}
+        $body = $body.'
                 <br>
                 vielen Dank f&uuml;r Ihr Interesse an unserem Offenen Salon!
                 <br><br>

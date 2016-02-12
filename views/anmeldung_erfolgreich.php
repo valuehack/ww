@@ -21,7 +21,7 @@ include('../views/_db.php');
 		if($_GET['q'] == 'new') {
 ?>
 			<p>Vielen Dank f&uuml;r Ihre Anmeldung zu unserem Offenen Salon!<br>
-			   Sie sollten in K&uuml;rze eine E-Mail erhalten. Bitte klicken Sie auf den dortigen Link um die Anmeldung abzuschlie&szlig;en.
+			   Sie sollten in K&uuml;rze eine E-Mail erhalten. Bitte klicken Sie auf den dortigen Link, um die Anmeldung abzuschlie&szlig;en.
 			</p>
 			<p>Die Zahlung erfolgt in bar am Abend des Salons.</p>
 <?php			
