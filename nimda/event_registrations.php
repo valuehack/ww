@@ -63,6 +63,7 @@
             }
             .bottom td {
                 border-top: 1px solid #000;
+                 width: 7cm;
             }
 			.list {
 				margin: 50px;
