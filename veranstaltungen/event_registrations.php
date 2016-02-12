@@ -168,6 +168,7 @@ echo '<th>ID</th>';
 	
 		echo '<tr class="bottom">';
 			echo '<td>&nbsp;</td>';
+			echo '<td>&nbsp;</td>';
 			echo '<td>&nbsp;</td>';			
 			echo '<td>Anzahl Teilnehmer</td>';
 			echo '<td>'.$spots_sold.'</td>';
