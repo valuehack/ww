@@ -111,19 +111,22 @@ class General {
 		return $event_query->fetchObject();
 	}
 	
-	public function getUserInfo ($id, $grey=false) {
+	public function getUserInfo ($id) {
+		
+		$table = 'mitgliederExt';
+		$ident = 'user_id';
 		
 		#check if the identification used is id/n or email
-		if(is_numeric($id)) {$ident = 'id';}
-		if(!is_numeric($id)) {$ident = 'email';}
+		//if(is_numeric($id)) {$ident = 'user_id';}
+		//if(!is_numeric($id)) {$ident = 'user_email';}
 		
 		#check if normal or grey user db should be selected
-		if ($grey === true) {$table = 'grey_user';}
-		if ($grey === false) {$table = 'mitgliederExt';}
+		//if ($grey === TRUE) {$table = 'grey_user';}
+		//if ($grey === FALSE) {$table = 'mitgliederExt';}
 		
-		$user_query = $this->db_connection->prepare('SELECT * FROM :table WHERE :ident LIKE :id');
-		$user_query->bindValue(':table', $table, PDO::PARAM_STR);
-		$user_query->bindValue(':ident', $ident, PDO::PARAM_STR);
+		$user_query = $this->db_connection->prepare('SELECT * FROM mitgliederExt WHERE user_id LIKE :id');
+		//$user_query->bindValue(':table', $table, PDO::PARAM_STR);
+		//$user_query->bindValue(':ident', $ident, PDO::PARAM_STR);
 		$user_query->bindValue(':id', $id, PDO::PARAM_STR);
 		$user_query->execute();
 		

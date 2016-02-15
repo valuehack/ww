@@ -2354,10 +2354,10 @@ user_plz
 		}
 		
 		$general->changeCredit($_SESSION['user_id'], $product['quantity'], $price);
-		#$general->registerEvent($_SESSION['user_id'], $product['event_id'], $product['quantity'], $product['format']);
+		$general->registerEvent($_SESSION['user_id'], $product['event_id'], $product['quantity'], $product['format']);
 		
-		
-		$email->sendOneClick($_SESSION['user_id'], $product['event_id'], $product['quantity'], $product['format']);
+		# Does not work yet but is not urgent either		
+		#$email->sendOneClick($_SESSION['user_id'], $product['event_id'], $product['quantity'], $product['format']);
 	}
 }
 

@@ -13,7 +13,7 @@ $ps_info = $ps_query->fetchObject();
 
 $getEventReg = $general->getEventReg($_SESSION['user_id'], $ps_info->n);
 
-$getUserInfo = $general->getUserInfo($_SESSION['user_id']);
+$user_info = $general->getUserInfo($_SESSION['user_id']);
 
 #####################################
 #           Stream View             #
@@ -21,8 +21,6 @@ $getUserInfo = $general->getUserInfo($_SESSION['user_id']);
 
 if($_GET['stream'] === 'true') {
 	
-	$now = date('d.m.Y H:M', time());
-
 	if ($getEventReg->format === 'Stream') {		
 	
 		$livestream = substr($ps_info->livestream,32);
@@ -65,8 +63,9 @@ if($_GET['stream'] === 'true') {
 			<p class="content-elm">Bitte reservieren Sie einen Platz um diesen Stream zu sehen.</p>
 <?php			
 			if ($user_info->credits_left < $ps_info->price) {
+				echo $user_info->credits_left;
 ?>				
-				<p class="content-elm">
+				<p class="content-elm error">
 				Leider reicht Ihr Guthaben nicht aus um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
 				</p>
 <?php
@@ -128,7 +127,7 @@ else {
 			else {
 				if ($user_info->credits_left < $ps_info->price) {
 ?>				
-				<p class="content-elm">
+				<p class="content-elm error">
 				Leider reicht Ihr Guthaben nicht aus um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
 				</p>
 <?php
