@@ -222,6 +222,60 @@ class Email {
 				
 	}
 	
+	public function sendOneClick ($user_id, $event_id, $quantity, $format) {
+		
+		$general = new General();
+		
+		$user_info = $general->getUserInfo($user_id);
+		$event_info = $general->getProduct($event_id);
+		
+		$date = $general->getDate($event_info->start, $event_info_>end);
+		
+		if ($user_info->Anrede == 'Frau'){
+        	$anrede = 'Sehr geehrte Frau';
+        	}
+		if ($user_info->Anrede == 'Herr') {
+			$anrede = 'Sehr geehrter Herr';
+			}
+
+		$subject = 'Buchungsbest&auml;tigung';
+		
+		#read header from file
+        $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
+		
+		$body = '<img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                <!--#/image#-->
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                <!--#loopsplit#-->
+                <table class="editable text" border="0" width="100%">
+                <tbody>
+                <tr>
+                <td valign="top">
+                <div style="text-align: justify;">
+                <h2></h2>
+                <!--#html #-->
+                <span style="font-family: times new roman,times;">
+                <span style="font-size: 12pt;">
+                <span style="color: #000000;">
+                <!--#/html#-->
+                <br>            
+                '.$anrede.' '.$user_surname.',
+                <br><br>
+                Ihre Anmeldung war erfolgreich.<br><br>
+                '.ucfirst($event_info->type).' '.$event_info->title.'<br>
+                '.$date.'<br>
+                '.$format.'<br>
+                <br>Viele Gr&uuml;&szlig;e aus Wien<br>Ihr Scholarium';
+		
+		$body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
+		
+		$this->sendEmail('info@scholarium.at', 'scholarium', $user_info->user_email, $subject, $body);
+		
+	}
+	
 	public function sendUpgrade () {
 		
 	}

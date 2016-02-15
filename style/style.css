@@ -3071,14 +3071,26 @@ img.projekte_coin2  {
 	margin: 5px 0;
 }
 
+.sinfo-link:link, .sinfo-link:active, .sinfo-link:hover, .sinfo-link:visited {
+	font-size: 14pt;
+	text-decoration: none;
+}
+
+.sinfo-link:link, .sinfo-link:visited {
+	border-bottom: 1px dotted rgb(46,74,98);
+}
+
+.sinfo-link:active, .sinfo-link:hover {
+	border-bottom: 1px solid rgb(46,74,98);
+}
+
 .coin-span {
 	font-size: 18pt;
 }
 
 .coin-span__img {
 	width: 1.4em;
-	margin-left: 0.5em;
-	margin-bottom: -.4em;
+	margin: 0.5em  0 -.4em 0.5em !important;
 }
 
 .input-select {

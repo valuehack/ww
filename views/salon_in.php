@@ -292,9 +292,11 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 	
 	$id = $_GET['q'];
 	$salon_info = $general->getProduct($id);
+	$reg_info = $general->getEventReg($_SESSION['user_id'], $salon_info->n);
 	
-	$livestream = substr($salon_info->livestream,32);
-
+	if ($reg_info->format === 'Stream') {
+			
+		$livestream = substr($salon_info->livestream,32);
 ?>	
 	<div class="content-area">
 		<div class="centered">
@@ -310,7 +312,20 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 			</script>
 		</div>
 	</div>
+<?php
+	}
+	else {
+?>
+	<div class="content-area">
+		<div class="centered content-elm">
+			<h2><?=$salon_info->title?></h2>
+		</div>
+		<div class="centered content-elm">
+			<p>Wir freuen uns, dass Sie an unserem Salon aus der Ferne teilnehmen m&ouml;chten. <a href="index.php?q=<?=$id?>">Bitte buchen Sie dazu zun&auml;chst einen Streamplatz.</a></p>
+		</div>
+	</div>
 <?php	
+	}	
 }
 
 #####################################

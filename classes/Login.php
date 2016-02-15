@@ -59,10 +59,12 @@ class Login
      * the function "__construct()" automatically starts whenever an object of this class is created,
      * you know, when you do "$login = new Login();"
      */
+
     public function __construct()
     {
         // create/read session
         session_start();
+
 
         // TODO: organize this stuff better and make the constructor very small
         // TODO: unite Login and Registration classes ?
@@ -125,7 +127,11 @@ class Login
             }elseif (isset($_POST['register_open_salon'])) {
             	
 				$this->registerOpenSalon($_POST['profile'], $_POST['profile']['event_id'], $_POST['profile']['quantity']);
+            }elseif (isset($_POST['oneClickReg'])) {
+            	$product = $_POST['product'];
+            	$this->oneClickReg($product);
             }
+			
         }
         // login with cookie
         elseif (isset($_POST['user_rememberme'])) {
@@ -2332,4 +2338,26 @@ user_plz
                 return true;
             }*/
     }
+
+	public function oneClickReg($product) {
+		
+		$general = new General();
+		$email = new Email();
+		
+		$event_info = $general->getProduct($product['event_id']);
+		
+		if ($product['format'] === 'Stream' && $event_info->price2 != '') {
+			$price = $event_info->price2;
+		}
+		else {
+			$price = $event_info->price;
+		}
+		
+		$general->changeCredit($_SESSION['user_id'], $product['quantity'], $price);
+		#$general->registerEvent($_SESSION['user_id'], $product['event_id'], $product['quantity'], $product['format']);
+		
+		
+		$email->sendOneClick($_SESSION['user_id'], $product['event_id'], $product['quantity'], $product['format']);
+	}
 }
+

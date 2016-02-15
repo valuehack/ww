@@ -150,23 +150,36 @@ class General {
 		return $static_query->fetchObject();
 	}
 
-	public function registerEvent ($user_id, $event_id, $quantity) {
+	public function registerEvent ($user_id, $event_id, $quantity, $format) {
 	    			    				
     	#enter into event registration
-		$reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime ) VALUES (:event_id, :user_id, :quantity, NOW())');
+		$reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, format, reg_datetime ) VALUES (:event_id, :user_id, :quantity, :format, NOW())');
         $reg_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
         $reg_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
         $reg_query->bindValue(':quantity', $quantity, PDO::PARAM_INT);
+		$reg_query->bindValue(':format', $format, PDO::PARAM_INT);
         $reg_query->execute();
 
-        #update spots sold in produkte
-        $spots_sold_query = $this->db_connection->prepare('UPDATE produkte SET spots_sold = spots_sold+:spot WHERE n = :event_id');
-        $spots_sold_query->bindValue(':spot', $quantity, PDO::PARAM_INT);
-        $spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
-        $spots_sold_query->execute();
+		if ($format != 'Stream') {
+        	#update spots sold in produkte
+        	$spots_sold_query = $this->db_connection->prepare('UPDATE produkte SET spots_sold = spots_sold+:spot WHERE n = :event_id');
+        	$spots_sold_query->bindValue(':spot', $quantity, PDO::PARAM_INT);
+        	$spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+        	$spots_sold_query->execute();
+		}
 
     }
-	
+
+	public function changeCredit ($user_id, $quantity, $price) {
+
+		$total = $quantity*$price;
+
+		$credit_change_query = $this->db_connection->prepare('UPDATE mitgliederExt SET credits_left = credits_left - :total WHERE user_id = :user_id');
+		$credit_change_query->bindValue(':total', $total, PDO::PARAM_INT);
+		$credit_change_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+		$credit_change_query->execute();
+	}
+
 	public function generateTicket ($user_id, $user_name, $user_surname, $event_id, $quantity) {
 		
 			#automated ticket generation for events both for outsiders and insiders
