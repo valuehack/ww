@@ -45,10 +45,11 @@ if($_GET['stream'] === 'true') {
 		}
 ?>
 		<div class="chat-wrapper">
-			<div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
+			<iframe src="../tools/chat.html" width="100%" height="600"></iframe>
+			<!--<div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
 			<script type="text/javascript">
  				 $('#mychat').phpfreechat({ serverUrl: '../phpfreechat/server' });
-			</script>
+			</script>-->
 		</div>
 	</div>
 <?php
@@ -137,7 +138,7 @@ else {
 				<input type="hidden" name="product[format]" value="Stream">
 				<input type="hidden" name="product[event_id]" value="<?=$ps_info->n?>">
 				<input type="hidden" name="product[quantity]" value="1">			 
-				<input type="submit" class="inputbutton" name="oneClickReg" value="F&uuml;r den n&auml;chsten Stream anmelden (<?=$ps_info->price?>) Guthabenpunkte." <?if ($user_info->credits_left < $ps_info->price) echo 'disabled'?>>
+				<input type="submit" class="inputbutton" name="oneClickReg" value="F&uuml;r den n&auml;chsten Stream anmelden (<?=$ps_info->price?> Guthabenpunkte)." <?if ($user_info->credits_left < $ps_info->price) echo 'disabled'?>>
 			</form>
 <?php
 			}

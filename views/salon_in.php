@@ -306,10 +306,11 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
 		</div>
 		<div class="chat-wrapper">
-			<div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
-			<script type="text/javascript">
- 				 $('#mychat').phpfreechat({ serverUrl: '../phpfreechat/server' });
-			</script>
+			<iframe src="../tools/chat.html" width="100%" height="600"></iframe>
+			<!--<div class="pfc-hook"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
+    			<script type="text/javascript">
+      				$('.pfc-hook').phpfreechat({ serverUrl: '../phpfreechat/server' });
+   				</script>-->
 		</div>
 	</div>
 <?php
