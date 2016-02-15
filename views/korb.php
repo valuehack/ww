@@ -367,9 +367,12 @@ function checkMe() {
 
                 <?php
                  }
-                elseif ($type == 'salon' || $type == 'lehrgang' || $type == 'seminar' || $type == 'kurs'|| $type == 'programm') {
+                elseif ($type == 'salon' && $format != 2 || $type == 'lehrgang' || $type == 'seminar' || $type == 'kurs'|| $type == 'programm') {
                     echo '<td>Reserviert</td></tr>';
                 }
+				elseif ($type == 'salon' && $format == 2) {
+					echo'<td><a href="../salon/index.php?q='.$id.'&stream=true">Zum Stream</a></td></tr>';
+				}
                 elseif ($format == 4) {
                     echo '<td>wird zugesandt</td></tr>';
                 }
