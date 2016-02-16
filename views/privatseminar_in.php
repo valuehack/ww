@@ -64,7 +64,6 @@ if($_GET['stream'] === 'true') {
 			<p class="content-elm">Bitte reservieren Sie einen Platz um diesen Stream zu sehen.</p>
 <?php			
 			if ($user_info->credits_left < $ps_info->price) {
-				echo $user_info->credits_left;
 ?>				
 				<p class="content-elm error">
 				Leider reicht Ihr Guthaben nicht aus um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
@@ -120,7 +119,7 @@ else {
 <?php
 			if($ps_info->n === $getEventReg->event_id && $getEventReg->format === 'Stream') {
 ?>
-			<form action="index.php?stream=true" method="post">
+			<form action="<?echo htmlentities('index.php?stream=true')?>" method="post">
 				<input type="submit" class="inputbutton" href="index.php?stream=true" value="Zum Stream">
 			</form>
 <?php
@@ -134,7 +133,7 @@ else {
 <?php
 				}
 ?>
-			<form method="post" action="<?echo htmlentities('index.php')?>">
+			<form method="post" action="<?echo htmlentities('index.php?stream=true')?>">
 				<input type="hidden" name="product[format]" value="Stream">
 				<input type="hidden" name="product[event_id]" value="<?=$ps_info->n?>">
 				<input type="hidden" name="product[quantity]" value="1">			 

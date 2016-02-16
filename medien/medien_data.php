@@ -14,7 +14,7 @@
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
  
-  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE '$type') AND status > 0";
+  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE '$type') AND status = 1";
   $total_pages = mysql_fetch_array(mysql_query($query));
   $total_pages = $total_pages[num];
   
@@ -29,7 +29,7 @@
   
   /* Get data. */
 
-  	$sql = "SELECT * from produkte WHERE (type LIKE '$type') AND status > 0 order by n desc LIMIT $start, $limit";
+  $sql = "SELECT * from produkte WHERE (type LIKE '$type') AND status = 1 order by n desc LIMIT $start, $limit";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   
 
@@ -62,7 +62,7 @@
         if ($counter == $page)
           $pagination.= "<span class=\"current\">$counter</span>";
         else
-          $pagination.= "<a href=\"$targetpage&page=$counter\">$counter</a>";         
+          $pagination.= "<a href=\"$targetpage&page=$counter\">$counter</a>";
       }
     }
     elseif($lastpage > 5 + ($adjacents * 2))  //enough pages to hide some
@@ -75,11 +75,11 @@
           if ($counter == $page)
             $pagination.= "<span class=\"current\">$counter</span>";
           else
-            $pagination.= "<a href=\"$targetpage&page=$counter\">$counter</a>";         
+            $pagination.= "<a href=\"$targetpage&page=$counter\">$counter</a>";
         }
         $pagination.= "...";
         $pagination.= "<a href=\"$targetpage&page=$lpm1\">$lpm1</a>";
-        $pagination.= "<a href=\"$targetpage&page=$lastpage\">$lastpage</a>";   
+        $pagination.= "<a href=\"$targetpage&page=$lastpage\">$lastpage</a>";
       }
       //in middle; hide some front and some back
       elseif($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2))
@@ -92,11 +92,11 @@
           if ($counter == $page)
             $pagination.= "<span class=\"current\">$counter</span>";
           else
-            $pagination.= "<a href=\"$targetpage&page=$counter\">$counter</a>";         
+            $pagination.= "<a href=\"$targetpage&page=$counter\">$counter</a>";
         }
         $pagination.= "...";
         $pagination.= "<a href=\"$targetpage&page=$lpm1\">$lpm1</a>";
-        $pagination.= "<a href=\"$targetpage&page=$lastpage\">$lastpage</a>";   
+        $pagination.= "<a href=\"$targetpage&page=$lastpage\">$lastpage</a>";
       }
       //close to end; only hide early pages
       else
@@ -109,7 +109,7 @@
           if ($counter == $page)
             $pagination.= "<span class=\"current\">$counter</span>";
           else
-            $pagination.= "<a href=\"$targetpage&page=$counter\">$counter</a>";         
+            $pagination.= "<a href=\"$targetpage&page=$counter\">$counter</a>";
         }
       }
     }
@@ -119,7 +119,7 @@
       $pagination.= "<a href=\"$targetpage&page=$next\">vor &raquo;</a>";
     else
       $pagination.= "<span class=\"disabled\">vor &raquo;</span>";
-    $pagination.= "</div>\n";   
+    $pagination.= "</div>\n";
   }
 ?>
 
@@ -129,21 +129,9 @@
 while($entry = mysql_fetch_array($result))
 {
 	$id = $entry[id];
-	
-		      	//check, if there is a image in the salon folder
-	$img = 'http://www.scholarium.at/medien/'.$id.'.jpg';
-
-	if (@getimagesize($img)) {
-	    $img_url = $img;
-	} else {
-	    $img_url = "http://www.scholarium.at/medien/default.jpg";
-	}
-	
+		
 ?>
-		<tr>
-			<td class="schriften_table_a">
-				<a href="<? echo "?q=$id";?>"><img src="<?echo $img_url;?>" alt=""></a>
-			</td>			
+		<tr>			
 			<td class="schriften_table_b">
 				<span><? echo ucfirst(substr($entry[type],6));?></span><br>
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
@@ -158,9 +146,6 @@ while($entry = mysql_fetch_array($result))
 					?>
 				</p>
 			</td>
-			<!--<td class="schriften_table_c">	
-				<input type="button" class="inputbutton" value="Bestellen / Herunterladen" data-toggle="modal" data-target="#myModal">
-			</td>-->
 		</tr>
 
     <tr><td colspan="3"> <div class="centered"><p class='linie'><img style='height: 35px' src='../style/gfx/linie.png' alt=''></p></div></td></tr>

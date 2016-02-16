@@ -1,5 +1,25 @@
 <?
 require_once('../classes/Login.php');
+
+#####################################
+#        Redirect to stream         #
+#####################################
+
+# if the user has bought the stream, directly redirect him to the stream view
+
+if($_GET['stream'] != true) {
+	
+$id = $_GET['q'];
+
+$product_info = $general->getProduct($id);
+$event_id = $product_info->n;
+$event_reg = $general->getEventReg($_SESSION['user_id'],$event_id);
+
+	if($event_reg->format == 'Stream') {
+		header('Location: index.php?q='.$id.'&stream=true');
+	}
+}
+
 $title="Medien";
 include "_header_in.php";
 
@@ -22,115 +42,173 @@ if(isset($_POST['add'])){
   echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>&raquo; zum Korb</a></div>";
 
   if (isset($_SESSION['basket'][$add_code])) {
-    $_SESSION['basket'][$add_code] += $add_quantity; 
+    $_SESSION['basket'][$add_code] += $add_quantity;
   }
   else {
-    $_SESSION['basket'][$add_code] = $add_quantity; 
+    $_SESSION['basket'][$add_code] = $add_quantity;
   }
 }
 
+#####################################
+# Single Event View + Registration  #
+#####################################
 
-if(isset($_GET['q']))
+if(isset($_GET['q']) && !isset($_GET['stream']))
 {
   $id = $_GET['q'];
 
   //Mediendetails
-  $sql="SELECT * from produkte WHERE (type LIKE 'media%') AND id = '$id'";
-  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-  $entry3 = mysql_fetch_array($result);
-  $n = $entry3[n];
-  $preis = $entry3[price];
+  $product_info = $general->getProduct($id);
 
   //Userdetails
-  $user_items_query = "SELECT * from registration WHERE `user_id`=$user_id and event_id='$n'";
-  $user_items_result = mysql_query($user_items_query) or die("Failed Query of " . $user_items_query. mysql_error());
-  $userItemsArray = mysql_fetch_array($user_items_result);
+  $user_info = $general->getUserInfo($user_id);
+  
+  //Registration details
+  $reg_info = $general->getEventReg($user_id, $product_info->n);    
 
-  $bought = $userItemsArray[quantity];
+	
+	################## No valid product ##################
     
-  				//Change button-value according to media type
-  $btn_value = "Herunterladen";
-  //	if ($entry3[type] == 'audio') { $btn_value = "Herunterladen";} 
-  //  if ($entry3[type] == 'video') { $btn_value = "Ansehen";}
-
-            	//check, if there is a image in the medien folder
-	$img = 'http://www.scholarium.at/medien/'.$id.'.jpg';
-
-	if (@getimagesize($img)) {
-	    $img_url = $img;
-	} else {
-	    $img_url = "http://www.scholarium.at/medien/default.jpg";
-	}
+	if ($product_info->status == 0) {
+  	echo '<div class="salon_head"><p class="salon_date">Diese Aufzeichnung wurde nicht gefunden.</p></div>';
+    }
+	
+	################### Valid product ####################
+	
+	else {
 	
 ?>
-  	<div class="medien_head">
-  		<h1><?=$entry3[title];?></h1>	
-		<div>
-  		<div class="schriften_img">
-			<img src="<?echo $img;?>" alt="">
-		</div>
-		<div class="schriften_bestellen">
-			<?
-			if ($_SESSION['Mitgliedschaft'] == 1) {
-				if ($bought >= 1) {
-    					echo '<span class="schriften_price">Sie haben diesen Artikel bereits erworben.</span>';
-    				}
-				echo '<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal">';
-			}
-			else { 
-		         if ($bought >= 1){
-		    ?>
-		    	<span class="schriften_price">Sie haben diesen Artikel bereits erworben.</span>
-		    <?     	
-		         }
-				 else {
-			?>
-				<span class='coin'><img src="../style/gfx/coin.png"></span><span class="schriften_price"><?php echo $preis; ?></span> 
-			<?
-				 }
-			?>
-				<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-      				<input type="hidden" name="add" value="<?php echo $n; ?>" />
-     				<!--<select name="quantity">
-        				<option value="1">1</option>
-        				<option value="2">2</option>
-        				<option value="3">3</option>
-        				<option value="4">4</option>
-        				<option value="5">5</option>        
-      				</select> -->
-      				<input type="hidden" name="quantity" value="1">
-              <input type="submit" class="inputbutton" value="<?echo $btn_value;?>" <? if($bought >= 1) echo "disabled"?>>
-    			</form>
-    		<?
-			}
-			?>
-		</div>
-		</div>
-	</div>
+  	<div class="content-area centered">
+  		<h2><?=$product_info->title?></h2>
+  	</div>	
+		
 	<div class="medien_seperator">
 		<h1>Inhalt</h1>
 	</div>
 	<div class="medien_content">
-<? 
-  if ($entry3[text]) echo "<p>".$entry3[text]."</p>";
-  if ($entry3[text2]) echo "<p>".$entry3[text2]."</p>";
+<?php 
+  		if ($product_info->text) echo "<p>".$product_info->text."</p>";
+  		if ($product_info->text2) echo "<p>".$product_info->text2."</p>";
+?>		
+		<div class="sinfo centered">
+			<?
+			if ($_SESSION['Mitgliedschaft'] == 1) {
+				if ($reg_info->quantity >= 1) {
+    					echo '<p class="content-elm">Sie haben diesen Artikel bereits erworben.</p>';
+    				}
+			?>
+				<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal" <?if ($reg_info->quantity >= 1) echo 'disabled'?>>
+			<?
+			}
+			else { 
+		         if ($reg_info->quantity >= 1){
+		    ?>
+		    	<p class="content-elm">Sie haben diesen Artikel bereits erworben.</p>
+		    <?     	
+		         }				 
+				 if ($product_info->type === 'media-privatseminar' || $product_info->livestream != '') {
+					if ($user_info->credits_left < $product_info->price) {
 ?>
-  	<div class="medien_anmeldung"><a href='<?echo htmlentities($_SERVER['PHP_SELF']);?>'>zur&uuml;ck zu den Medien</a></div>
+						<p class="content-elm error">
+							Leider reicht Ihr Guthaben nicht aus um diese Aufzeichnung zu erwerben. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
+						</p>
+<?php
+				 }
+?>
+				 <form method="post" action="<?echo htmlentities('index.php?q='.$id)?>">
+					<input type="hidden" name="product[format]" value="Stream">
+					<input type="hidden" name="product[event_id]" value="<?=$product_info->n?>">
+					<input type="hidden" name="product[quantity]" value="1">			 
+					<input type="submit" class="inputbutton" name="oneClickReg" value="Aufzeichnung ansehen (<?=$product_info->price?> Guthabenpunkte)" <?if ($user_info->credits_left < $product_info->price) echo 'disabled'?>>
+				 </form>
+<?php
+				 }
+				 else {
+			?>
+				<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      				<input type="hidden" name="add" value="<?=$product_info->n?>">
+      				<input type="hidden" name="quantity" value="1">
+              		<input type="submit" class="inputbutton" value="Herunterladen" <? if($reg_info->quantity >= 1) echo "disabled"?>>
+    			</form>   			    			
+    		<?
+				}
+?>
+				<span class="coin-span"><?=$product_info->price?></span><img class="coin-span__img" src="../style/gfx/coin.png">
+<?php
+			}
+			?>
+		</div>
+  		<div class="medien_anmeldung"><a href='<?echo htmlentities($_SERVER['PHP_SELF']);?>'>zur&uuml;ck zu den Medien</a></div>
 	</div>
 <?php
+	}
 }
-     
+
+#####################################
+#           Stream View             #
+#####################################
+
+elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
+	
+	$id = $_GET['q'];
+	$product_info = $general->getProduct($id);
+	$reg_info = $general->getEventReg($_SESSION['user_id'], $product_info->n);
+	
+	if ($product_info->livestream) {
+	
+		if ($reg_info->format === 'Stream') {
+			
+			$livestream = substr($product_info->livestream,32);
+			$begleit_pdf = '../privatseminar/'.$product_info_info->id.'.pdf';
+?>	
+	<div class="content-area">
+		<div class="centered">
+			<h2><?=$product_info->title?></h2>
+		</div>
+		<div class="centered">
+			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
+		</div>
+<?php
+		if (file_exists($begleit_pdf)) {
+?>
+		<div class="sinfo">
+			<a class="sinfo-link" href="<?=$begleit_pdf?>" onclick="openpopup(this.href); return false">Unterlagen zur Veranstaltung</a> 
+		</div>
+<?php
+		}
+?>
+	</div>
+<?php
+		}
+		else {
+?>
+	<div class="content-area">
+		<div class="centered content-elm">
+			<h2><?=$product_info->title?></h2>
+		</div>
+		<div class="centered content-elm">
+			<p>Wir freuen uns &uuml;ber Ihr Interesse an dieser Aufzeichnung. Diese steht Ihnen, <a href="index.php?q=<?=$id?>">nachdem Sie sie erworben haben</a> an dieser Stelle zur Verf&uuml;gung.</p>
+		</div>
+	</div>
+<?php	
+		}
+	}
+	else {
+?>
+		<div class="salon_head"><p class="salon_date">F&uuml;r diese Aufzeichnung gibt es keinen Livestream.</p></div>
+<?php
+		
+	}
+}    
 else {
 	
   if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>       
   	<div class='medien_info'>
   		<?php
-				$sql = "SELECT * from static_content WHERE (page LIKE 'medien')";
-				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-				$entry4 = mysql_fetch_array($result);
-				
-				echo $entry4[info];			
+				$static_info = $general->getStaticInfo('medien');
+
+				echo $static_info->text;		
 			?>
 		<div class="centered">
 			<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
@@ -159,7 +237,7 @@ else {
 	   First get total number of rows in data table. 
 	   If you have a WHERE clause in your query, make sure you mirror it here.
 	*/
-	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media%') AND status > 0";
+	$query = "SELECT COUNT(*) as num FROM $tbl_name WHERE (type LIKE 'media%') AND status = 1";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -173,12 +251,12 @@ else {
 		$start = 0;								//if no page var is given, set start to 0
 	
 	/* Get data. */
-	$sql = "SELECT * from produkte WHERE (type LIKE 'media%') AND status > 0 order by n desc LIMIT $start, $limit";
+	$sql = "SELECT * from produkte WHERE (type LIKE 'media%') AND status = 1 order by n desc LIMIT $start, $limit";
 	
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	
 
-		/* Setup page vars for display. */
+	/* Setup page vars for display. */
 	if ($page == 0) $page = 1;					//if no page var is given, default to 1.
 	$prev = $page - 1;							//previous page is page - 1
 	$next = $page + 1;							//next page is page + 1
@@ -207,7 +285,7 @@ else {
 				if ($counter == $page)
 					$pagination.= "<span class=\"current\">$counter</span>";
 				else
-					$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";					
+					$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";
 			}
 		}
 		elseif($lastpage > 2 + ($adjacents * 2))	//enough pages to hide some -5
@@ -220,11 +298,11 @@ else {
 					if ($counter == $page)
 						$pagination.= "<span class=\"current\">$counter</span>";
 					else
-						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";					
+						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";
 				}
 				$pagination.= "...";
 				$pagination.= "<a href=\"$targetpage?page=$lpm1\">$lpm1</a>";
-				$pagination.= "<a href=\"$targetpage?page=$lastpage\">$lastpage</a>";		
+				$pagination.= "<a href=\"$targetpage?page=$lastpage\">$lastpage</a>";
 			}
 			//in middle; hide some front and some back
 			elseif($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2))
@@ -237,11 +315,11 @@ else {
 					if ($counter == $page)
 						$pagination.= "<span class=\"current\">$counter</span>";
 					else
-						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";					
+						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";
 				}
 				$pagination.= "...";
 				$pagination.= "<a href=\"$targetpage?page=$lpm1\">$lpm1</a>";
-				$pagination.= "<a href=\"$targetpage?page=$lastpage\">$lastpage</a>";		
+				$pagination.= "<a href=\"$targetpage?page=$lastpage\">$lastpage</a>";
 			}
 			//close to end; only hide early pages
 			else
@@ -254,7 +332,7 @@ else {
 					if ($counter == $page)
 						$pagination.= "<span class=\"current\">$counter</span>";
 					else
-						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";					
+						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";
 				}
 			}
 		}
@@ -264,36 +342,16 @@ else {
 			$pagination.= "<a href=\"$targetpage?page=$next\">vor &raquo;</a>";
 		else
 			$pagination.= "<span class=\"disabled\">vor &raquo;</span>";
-		$pagination.= "</div>\n";		
+		$pagination.= "</div>\n";
 	}
-//$sql = "SELECT * from produkte WHERE (type LIKE 'paket' or type LIKE 'audio' or type LIKE 'video') AND status > 0 order by title asc, n asc";
-//$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 echo "<table class='schriften_table'>";
 
 while($entry = mysql_fetch_array($result))
 {
-  $id = $entry[id];
-  
-  	//Change button-value according to media type
-	 $btn_value = "Herunterladen"; 
-//    if ($entry[type] == 'audio') { $btn_value = "Herunterladen";} 
-//    if ($entry[type] == 'video') { $btn_value = "Ansehen";}
-  
-    //check, if there is a image in the medien folder
-	$img = 'http://www.scholarium.at/medien/'.$id.'.jpg';
-
-	if (@getimagesize($img)) {
-	    $img_url = $img;
-	} else {
-	    $img_url = "http://www.scholarium.at/medien/default.jpg";
-	}
-	
+  $id = $entry[id];    	
 ?>
-		<tr>
-			<td class="schriften_table_a">
-				<a href="<? echo "?q=$id";?>"><img src="<?echo $img_url;?>" alt=""></a>
-			</td>			
+		<tr>		
 			<td class="schriften_table_b">
 				<span><? echo ucfirst(substr($entry[type],6));?></span><br>
       			<? echo "<a href='?q=$id'>".$entry[title]." </a>"; ?>
@@ -336,30 +394,6 @@ while($entry = mysql_fetch_array($result))
 ?>
 
 	</div>
-<!--	<div class="medien_seperator">
-    	<h1>Video</h1>
-    </div>
-	<div class="medien_content"> -->
-<?php
-/*
-$sql = "SELECT * from produkte WHERE type LIKE 'video' AND status > 0 order by title asc, id asc";
-$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-
-while($entry = mysql_fetch_array($result))
-{
-  $video_id = $entry[id];
- 
-          echo "<a class='medien_title_list' href='?q=$video_id'>".$entry[title];"</a>"; 
-	}
-
-?>
-	</div>
-<?
-}
-*/
-?>
-
-<!-- </div> -->
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

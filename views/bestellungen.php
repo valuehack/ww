@@ -164,7 +164,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			$price = $userEventsArray[price];
 			
 			
-				if ($type == 'seminar' || $type == 'kurs' || $type == 'salon'){
+				if ($type == 'seminar' || $type == 'kurs' || $type == 'salon' || $type == 'privatseminar'){
 			
 					if ($type == 'seminar' || $type == 'kurs') {
 					$url = 'http://scholarium.at/seminare/'.$id.'.jpg';
@@ -173,6 +173,9 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 					elseif ($type == 'salon') {
 					$url = 'http://scholarium.at/salon/'.$id.'.jpg';
             		$url2 = 'salon';
+					}
+					elseif ($type =='privatseminar') {
+					$url2 = 'privatseminar';
 					}
 			
 			$event_start = $userEventsArray[start];
@@ -220,8 +223,11 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 					<span class="history_reservation">Reserviert</span>
 					<p>
 <?php
-					if($format == 'Stream') {
+					if($format == 'Stream' && $type == 'salon') {
 						echo '<a href="../salon/index.php?q='.$id.'&stream=true">Zum Stream</a>';
+					}
+					elseif ($format == 'Stream' && $type == 'privatseminar') {
+						echo '<a href="../privatseminar/index.php?stream=true">Zum Stream</a>';
 					}
 					else {
 						echo '<a href="../tickets/ticket_'.$user_id.'_'.ucfirst($type).'_'.$n.'.pdf">Ihr Ticket</a>';
@@ -306,6 +312,9 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 					<?php
 					if ($format == 'Druck'){
 						echo '&nbsp;';
+					}
+					elseif ($format == 'Stream') {
+						echo '<p><a href="../medien/index.php?q='.$id.'&stream=true">Zur Aufzeichnung</a></p>';
 					}
 					else {?>					
 					<p><a href="<?php downloadurl($file_path,$id);?>" onclick="updateReferer(this.href)";>Herunterladen</a></p>

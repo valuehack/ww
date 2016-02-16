@@ -25,7 +25,7 @@ class General {
                 #$this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=latin1', DB_USER, DB_PASS);
 
                 #using utf8 charset instead of latin1
-                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
+                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=latin1', DB_USER, DB_PASS);
                 
                 #query sets timezone for the database
                 $query_time_zone = $this->db_connection->prepare("SET time_zone = 'Europe/Vienna'");
