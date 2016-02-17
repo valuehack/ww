@@ -110,7 +110,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 					if ($user_info->credits_left < $product_info->price) {
 ?>
 						<p class="content-elm error">
-							Leider reicht Ihr Guthaben nicht aus um diese Aufzeichnung zu erwerben. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
+							Leider reicht Ihr Guthaben nicht aus, um diese Aufzeichnung zu erwerben. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
 						</p>
 <?php
 				 }
@@ -187,7 +187,7 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 			<h2><?=$product_info->title?></h2>
 		</div>
 		<div class="centered content-elm">
-			<p>Wir freuen uns &uuml;ber Ihr Interesse an dieser Aufzeichnung. Diese steht Ihnen, <a href="index.php?q=<?=$id?>">nachdem Sie sie erworben haben</a> an dieser Stelle zur Verf&uuml;gung.</p>
+			<p>Wir freuen uns &uuml;ber Ihr Interesse an dieser Aufzeichnung. Diese steht Ihnen, <a href="index.php?q=<?=$id?>">nachdem Sie sie erworben haben</a>, an dieser Stelle zur Verf&uuml;gung.</p>
 		</div>
 	</div>
 <?php	
