@@ -246,7 +246,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 					<p>
 <?php		
 						if($quantity >= 1 && $format == 'vorOrt') {
-							echo 'Sie haben bereits sich f&uuml;r diese Veranstaltung bereits registriert ('.$quantity.' Ticket(s)).<br><br>';
+							echo 'Sie haben sich f&uuml;r diese Veranstaltung bereits registriert ('.$quantity.' Ticket(s)).<br><br>';
 						}
 						if($spots_available == 0) {
   							echo 'Die Pl&auml;tze vor Ort sind leider ausgebucht, sie k&oumlnnen stattdessen per Livestream dazu kommen.';
