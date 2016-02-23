@@ -61,7 +61,7 @@ if($_GET['stream'] === 'true') {
 			<h2><?=$ps_info->title?></h2>
 		</div>
 		<div class="centered content-elm">
-			<p class="content-elm">Bitte reservieren Sie einen Platz um diesen Stream zu sehen.</p>
+			<p class="content-elm">Bitte reservieren Sie einen Platz, um diesen Stream zu sehen.</p>
 <?php			
 			if ($user_info->credits_left < $ps_info->price) {
 ?>				
