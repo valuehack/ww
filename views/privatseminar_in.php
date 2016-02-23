@@ -33,7 +33,7 @@ if($_GET['stream'] === 'true') {
 			<h2><?=$ps_info->title?></h2>
 		</div>
 		<div class="centered">
-			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$ps_info->livestream?>" frameborder="0" allowfullscreen></iframe>
+			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
 		</div>
 <?php
 		if (file_exists($begleit_pdf)) {
