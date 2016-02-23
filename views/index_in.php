@@ -18,7 +18,7 @@ include ("_header_in.php");
         <div class="content">
             
             <?php
-            $livestream_sql = $pdocon->db_connection->prepare("SELECT * from produkte WHERE  livestream != '' and end > NOW() and status = 1 order by start asc LIMIT 1");
+            $livestream_sql = $pdocon->db_connection->prepare("SELECT * from produkte WHERE type LIKE 'salon' and livestream != '' and end > NOW() and status = 1 order by start asc LIMIT 1");
 			$livestream_sql->execute();
 			$livestream_result = $livestream_sql->fetchObject();
 

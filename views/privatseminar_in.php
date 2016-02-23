@@ -35,7 +35,7 @@ if($_GET['stream'] === 'true') {
 			<h2><?=$ps_info->title?></h2>
 		</div>
 		<div class="centered">
-			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$ps_info->livestream?>" frameborder="0" allowfullscreen></iframe>
+			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
 		</div>
 <?php
 		if (file_exists($begleit_pdf)) {
@@ -63,6 +63,7 @@ if($_GET['stream'] === 'true') {
 			<h2><?=$ps_info->title?></h2>
 		</div>
 		<div class="centered content-elm">
+<<<<<<< HEAD
 <?php
 		if ($ps_info->livestream == '') {
 ?>
@@ -72,12 +73,20 @@ if($_GET['stream'] === 'true') {
 		else {
 ?>
 			<p class="content-elm">Bitte reservieren Sie einen Platz um diesen Stream zu sehen.</p>
+=======
+			<p class="content-elm">Bitte reservieren Sie einen Platz, um diesen Stream zu sehen.</p>
+>>>>>>> origin/master
 <?php			
 			if ($expired < time()) {
 ?>
 				<p class="content-elm error">
+<<<<<<< HEAD
 					Ihre Mitgliedschaft ist abgelaufen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft.</a> Anschließend k&ouml;nnen Sie diesen Stream buchen.
 				</p>				
+=======
+				Leider reicht Ihr Guthaben nicht aus, um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
+				</p>
+>>>>>>> origin/master
 <?php
 			}
 			elseif ($user_info->credits_left < $ps_info->price) {
