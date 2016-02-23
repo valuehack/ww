@@ -53,7 +53,6 @@ if(isset($_POST['add'])){
 if(isset($_GET['q']) && !isset($_GET['stream']))
 {
   $id = $_GET['q'];
-  $test = $_GET['test'];
 
   //Termindetails  	
   $salon_info = $general->getProduct($id);
@@ -128,7 +127,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 		
 		if($spots_total > 59) {
 			
-			if(isset($livestream)) {
+			/*if(isset($livestream)) {
 ?>
 				<div class="sinfo">
 					<h5>Im Stream</h5>
@@ -151,10 +150,10 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 
     			</div>
 <?php
-			}
+			}*/
 ?>
 			<div class="sinfo">
-				<h5>Vor Ort</h5>
+				<!--<h5>Vor Ort</h5>-->
 					
 					<p>
 <?php		
@@ -294,7 +293,7 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 	$salon_info = $general->getProduct($id);
 	$reg_info = $general->getEventReg($_SESSION['user_id'], $salon_info->n);
 	
-	if ($reg_info->format === 'Stream') {
+	if ($reg_info->format === 'Stream' || $salon_info->spots > 59) {
 			
 		$livestream = substr($salon_info->livestream,32);
 ?>	
@@ -368,8 +367,16 @@ else {
 		<div class="salon_dates">
       <?=$date?>
 		</div>
-		<?php echo $entry[text]; ?> 
-			<!--<div class="salon_anmeldung"><a href="<? echo "?q=$id";?>">zur Anmeldung</a></div>-->
+<?php 
+		if ($entry[spots] > 59 && $entry[livestream] != '') {
+?>
+		<div class="salon_dates">
+			<a href='?q=<?=$id?>&stream=true'>zum Stream</a>
+		</div>
+<?php
+}
+			echo $entry[text]; 
+?> 
 			<div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
   <?php
   }

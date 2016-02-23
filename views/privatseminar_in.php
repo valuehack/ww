@@ -15,6 +15,8 @@ $getEventReg = $general->getEventReg($_SESSION['user_id'], $ps_info->n);
 
 $user_info = $general->getUserInfo($_SESSION['user_id']);
 
+//$expired = strtotime($user_info->Ablauf);
+
 #####################################
 #           Stream View             #
 #####################################
@@ -61,22 +63,40 @@ if($_GET['stream'] === 'true') {
 			<h2><?=$ps_info->title?></h2>
 		</div>
 		<div class="centered content-elm">
+<?php
+		if ($ps_info->livestream == '') {
+?>
+			<p class="content-elm">F&uuml;r diesen Salon wird es leider keinen Stream geben.</p>
+<?php
+		}
+		else {
+?>
 			<p class="content-elm">Bitte reservieren Sie einen Platz um diesen Stream zu sehen.</p>
 <?php			
-			if ($user_info->credits_left < $ps_info->price) {
-?>				
+			if ($expired < time()) {
+?>
 				<p class="content-elm error">
-				Leider reicht Ihr Guthaben nicht aus um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
-				</p>
+					Ihre Mitgliedschaft ist abgelaufen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft.</a> Anschließend k&ouml;nnen Sie diesen Stream buchen.
+				</p>				
 <?php
+			}
+			elseif ($user_info->credits_left < $ps_info->price) {
+?>
+				<p class="content-elm error">
+					Leider reicht Ihr Guthaben nicht aus um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
+				</p>
+<?php				
 			}
 ?>
 			<form method="post" action="<?echo htmlentities('index.php')?>">
 				<input type="hidden" name="product[format]" value="Stream">
 				<input type="hidden" name="product[event_id]" value="<?=$ps_info->n?>">
 				<input type="hidden" name="product[quantity]" value="1">			 
-				<input type="submit" class="inputbutton" name="oneClickReg" value="F&uuml;r diesen Stream anmelden (<?=$ps_info->price?> Guthabenpunkte)" <?if ($user_info->credits_left < $ps_info->price) echo 'disabled'?>>
+				<input type="submit" class="inputbutton" name="oneClickReg" value="F&uuml;r diesen Stream anmelden (<?=$ps_info->price?> Guthabenpunkte)" <?if ($user_info->credits_left < $ps_info->price || $expired < time()) echo 'disabled'?>>
 			</form>
+<?php
+		}
+?>
 		</div>
 	</div>
 <?php		
@@ -125,21 +145,38 @@ else {
 <?php
 			}
 			else {
-				if ($user_info->credits_left < $ps_info->price) {
-?>				
-				<p class="content-elm error">
-				Leider reicht Ihr Guthaben nicht aus um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
+				if ($ps_info->livestream == '') {
+?>
+				<p class="content-elm">
+					F&uuml;r dieses Privatseminar wird es leider keinen Livestream geben.
 				</p>
 <?php
 				}
+				else {
+			
+					if ($expired < time()) {
 ?>
-			<form method="post" action="<?echo htmlentities('index.php?stream=true')?>">
-				<input type="hidden" name="product[format]" value="Stream">
-				<input type="hidden" name="product[event_id]" value="<?=$ps_info->n?>">
-				<input type="hidden" name="product[quantity]" value="1">			 
-				<input type="submit" class="inputbutton" name="oneClickReg" value="F&uuml;r den n&auml;chsten Stream anmelden (<?=$ps_info->price?> Guthabenpunkte)." <?if ($user_info->credits_left < $ps_info->price) echo 'disabled'?>>
-			</form>
+						<p class="content-elm error">
+							Ihre Mitgliedschaft ist abgelaufen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft.</a> Anschließend k&ouml;nnen Sie diesen Stream buchen.
+						</p>				
 <?php
+					}
+					elseif ($user_info->credits_left < $ps_info->price) {
+?>
+						<p class="content-elm error">
+							Leider reicht Ihr Guthaben nicht aus um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
+						</p>
+<?php				
+					}
+?>										
+					<form method="post" action="<?echo htmlentities('index.php?stream=true')?>">
+						<input type="hidden" name="product[format]" value="Stream">
+						<input type="hidden" name="product[event_id]" value="<?=$ps_info->n?>">
+						<input type="hidden" name="product[quantity]" value="1">			 
+						<input type="submit" class="inputbutton" name="oneClickReg" value="F&uuml;r den n&auml;chsten Stream anmelden (<?=$ps_info->price?> Guthabenpunkte)." <?if ($user_info->credits_left < $ps_info->price || $expired < time()) echo 'disabled'?>>
+					</form>
+<?php
+				}
 			}
 ?>
 			</div>

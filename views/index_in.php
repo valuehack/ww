@@ -20,13 +20,14 @@ include ("_header_in.php");
             <?php
             $livestream_sql = $pdocon->db_connection->prepare("SELECT * from produkte WHERE  livestream != '' and end > NOW() and status = 1 order by start asc LIMIT 1");
 			$livestream_sql->execute();
-			$livestream_result = $livestream_sql->fetchAll();
+			$livestream_result = $livestream_sql->fetchObject();
+
+			$livestream_title = $livestream_result->title;
+			$livestream_type = $livestream_result->type;
+			if ($livestream_type === 'seminare') $livestream_type = 'seminar';
+			$livestream_url = '../'.$livestream_type.'/index.php?q='.$livestream_result->id.'&stream=true';
 			
-			$livestream_url = $livestream_result[0][livestream];
-			$livestream_title = $livestream_result[0][title];
-			$livestream_type = $livestream_result[0][type];
-			
-			if ($livestream_url != '' && $mitgliedschaft >=2){
+			if ($livestream_url != '' && ($mitgliedschaft >=2 || $livestream_result->spots > 59)){
             ?>
             <div class="startpage_section_last_scholie startpage-livestream">
             	<a href="<?=$livestream_url?>">Sehen Sie unseren <?=ucfirst($livestream_type)?> <em><?=$livestream_title?></em> im Livestream</a>
