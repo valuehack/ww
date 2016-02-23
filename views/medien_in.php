@@ -208,7 +208,7 @@ else {
   		<?php
 				$static_info = $general->getStaticInfo('medien');
 
-				echo $static_info->text;		
+				echo $static_info->info;		
 			?>
 		<div class="centered">
 			<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
