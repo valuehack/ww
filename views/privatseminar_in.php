@@ -66,7 +66,7 @@ if($_GET['stream'] === 'true') {
 			if ($user_info->credits_left < $ps_info->price) {
 ?>				
 				<p class="content-elm error">
-				Leider reicht Ihr Guthaben nicht aus um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
+				Leider reicht Ihr Guthaben nicht aus, um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
 				</p>
 <?php
 			}
@@ -128,7 +128,7 @@ else {
 				if ($user_info->credits_left < $ps_info->price) {
 ?>				
 				<p class="content-elm error">
-				Leider reicht Ihr Guthaben nicht aus um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
+				Leider reicht Ihr Guthaben nicht aus, um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
 				</p>
 <?php
 				}
@@ -137,7 +137,7 @@ else {
 				<input type="hidden" name="product[format]" value="Stream">
 				<input type="hidden" name="product[event_id]" value="<?=$ps_info->n?>">
 				<input type="hidden" name="product[quantity]" value="1">			 
-				<input type="submit" class="inputbutton" name="oneClickReg" value="F&uuml;r den n&auml;chsten Stream anmelden (<?=$ps_info->price?> Guthabenpunkte)." <?if ($user_info->credits_left < $ps_info->price) echo 'disabled'?>>
+				<input type="submit" class="inputbutton" name="oneClickReg" value="F&uuml;r den n&auml;chsten Stream anmelden (<?=$ps_info->price?> Guthabenpunkte)" <?if ($user_info->credits_left < $ps_info->price) echo 'disabled'?>>
 			</form>
 <?php
 			}
