@@ -382,6 +382,11 @@ section li {
 	font-size: 20pt !important;
 }
 
+.info {
+	font-size: 16pt;
+	padding: 10px 0;
+}
+
 /*=========================================*/
 /*          Form                           */
 /*=========================================*/
@@ -513,7 +518,7 @@ section li {
 
 .inputarea {
 	border-top: 1px solid #dad8d8 !important;
-	border-bottom: 1px solid #dad8d8 !important;
+	/*border-bottom: 1px solid #dad8d8 !important;*/
 	width: 490px;
 	height: 200px;
 	box-shadow: 0 0 0 0 inset;
