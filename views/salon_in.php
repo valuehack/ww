@@ -170,7 +170,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 						}
 						if($spots_available == 0) {
 ?>
-  							Die Pl&auml;tze vor Ort sind leider ausgebucht, sie k&ouml;nnen stattdessen per <a href='?q=<?=$id?>&stream=true'>Livestream</a> dazukommen.;
+  							Die Pl&auml;tze vor Ort sind leider ausgebucht, sie k&ouml;nnen stattdessen per <a href='?q=<?=$id?>&stream=true'>Livestream</a> dazukommen.
 <?php					
 						}
 ?>					
