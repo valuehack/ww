@@ -108,6 +108,12 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 		</div>
 		<div class="salon_content">
   		<?php
+  			if ($spots_total > 59 && $livestream != '') {
+  		?>
+  				<p><a href='?q=<?=$id?>&stream=true'>&Uuml;ber diesen Link gelangen Sie zum Livestream des Offenen Salons.</a></p>
+		<?php	
+		}
+  		
   			if ($salon_info->text) echo "<p>$salon_info->text</p>";
   			if ($salon_info->text2) echo "<p>$salon_info->text2</p>";
 
@@ -163,7 +169,9 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 							echo 'Sie haben sich f&uuml;r diese Veranstaltung bereits registriert ('.$quantity.' Ticket(s)).<br><br>';
 						}
 						if($spots_available == 0) {
-  							echo 'Die Pl&auml;tze vor Ort sind leider ausgebucht, sie k&oumlnnen stattdessen per Livestream dazukommen.';
+?>
+  							Die Pl&auml;tze vor Ort sind leider ausgebucht, sie k&ouml;nnen stattdessen per <a href='?q=<?=$id?>&stream=true'>Livestream</a> dazukommen.;
+<?php					
 						}
 ?>					
 					</p>
