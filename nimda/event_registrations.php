@@ -154,7 +154,6 @@ echo '<th>ID</th>';
 		
 	$event_user_query = "SELECT * from registration WHERE event_id='$n'";
   	$event_user_result = mysql_query($event_user_query) or die("Failed Query of " . $event_user_query. mysql_error());
-	$i=0;
 	
   	while($eventUserQuery = mysql_fetch_array($event_user_result)) {
   		
