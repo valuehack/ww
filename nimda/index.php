@@ -11,7 +11,7 @@
 		<div style="padding:0 20%;">
 			<h1>Admin Panel</h1>
 			<a href="event_registrations.php">&Uuml;bersicht und Liste angemeldeter Teilnehmer</a></br>
-			<a href="event_cancel.php">Veranstaltungen absagen</a>
+			<a href="event_cancel.php">Veranstaltungen absagen</a></br>
 			<a href="mitglieder.php">Mitglieder&uuml;bersicht</a>
 		</div>
 	</body>

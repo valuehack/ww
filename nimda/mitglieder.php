@@ -87,6 +87,9 @@
 			.gelb {
 				background-color:rgba(255,255,0,0.3);
 			}
+			.gruen {
+				background-color:rgba(0,255,0,0.3);
+			}
 			.weiss {
 				background-color: white;
 			}
@@ -103,13 +106,14 @@
 	echo '<div>';
 	echo '<table class="teilnehmer">';
 		echo '<tr>';
-echo '<th>ID</th>';		
+			echo '<th>ID</th>';		
 			echo '<th>Name</th>';
 			echo '<th>Vorname</th>';
+			echo '<th>E-Mail</th>';
 			echo '<th>Stufe</th>';
 			echo '<th>Ablauf</th>';
 			echo '<th>Guthaben</th>';
-			echo '<th>Letzter Login</th>';
+			echo '<th>Tage seit letztem Login</th>';
 		echo '</tr>';
 		
 	$user_query = "SELECT * from mitgliederExt WHERE Mitgliedschaft > 1 || Zahlung != '' order by Nachname ASC";
@@ -124,7 +128,8 @@ echo '<th>ID</th>';
 		$stufe = $userEntry[Mitgliedschaft];
 		$ablauf = $userEntry[Ablauf];
 		$guthaben = $userEntry[credits_left];
-		$letzter_login = substr($userEntry[last_login_time],10);
+		$letzter_login = floor((abs(strtotime(date("Y-m-d")) - strtotime($userEntry[last_login_time]))/(60*60*24)));
+		if ($userEntry[last_login_time] == '') {$letzter_login = 'Nie';}
 		
 		
 		$diff_ablauf = floor((abs(strtotime(date("Y-m-d")) - strtotime($ablauf))/(60*60*24)));
@@ -132,6 +137,7 @@ echo '<th>ID</th>';
 		if (strtotime($ablauf) < time() && $ablauf !='') {$ablauf_bgc = 'rot';}
 		elseif ($diff_ablauf<30) {$ablauf_bgc = 'gelb';}
 		else {$ablauf_bgc = 'weiss';}
+		
 		echo '<tr>';
 		echo '<td>'.$user_id.'</td>';
 			echo '<td>'.$surname.'</td>';
