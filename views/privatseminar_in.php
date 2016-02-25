@@ -72,7 +72,7 @@ if($_GET['stream'] === 'true') {
 		}
 		else {
 ?>
-			<p class="content-elm">Bitte reservieren Sie einen Platz um diesen Stream zu sehen.</p>
+			<p class="content-elm">Bitte reservieren Sie einen Platz, um diesen Stream zu sehen.</p>
 =======
 			<p class="content-elm">Bitte reservieren Sie einen Platz, um diesen Stream zu sehen.</p>
 >>>>>>> origin/master
@@ -81,7 +81,7 @@ if($_GET['stream'] === 'true') {
 ?>
 				<p class="content-elm error">
 <<<<<<< HEAD
-					Ihre Mitgliedschaft ist abgelaufen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft.</a> Anschließend k&ouml;nnen Sie diesen Stream buchen.
+					Ihre Mitgliedschaft ist abgelaufen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft.</a> Anschlie&szlig;end k&ouml;nnen Sie diesen Stream buchen.
 				</p>				
 =======
 				Leider reicht Ihr Guthaben nicht aus, um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
@@ -92,7 +92,7 @@ if($_GET['stream'] === 'true') {
 			elseif ($user_info->credits_left < $ps_info->price) {
 ?>
 				<p class="content-elm error">
-					Leider reicht Ihr Guthaben nicht aus um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
+					Leider reicht Ihr Guthaben nicht aus, um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
 				</p>
 <?php				
 			}
@@ -166,14 +166,14 @@ else {
 					if ($expired < time()) {
 ?>
 						<p class="content-elm error">
-							Ihre Mitgliedschaft ist abgelaufen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft.</a> Anschließend k&ouml;nnen Sie diesen Stream buchen.
+							Ihre Mitgliedschaft ist abgelaufen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft.</a> Anschlie&szlig;end k&ouml;nnen Sie diesen Stream buchen.
 						</p>				
 <?php
 					}
 					elseif ($user_info->credits_left < $ps_info->price) {
 ?>
 						<p class="content-elm error">
-							Leider reicht Ihr Guthaben nicht aus um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte eneuern Sie Ihre Mitgliedschaft um weiteres Guthaben zu erhalten.</a>
+							Leider reicht Ihr Guthaben nicht aus, um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
 						</p>
 <?php				
 					}
@@ -182,7 +182,7 @@ else {
 						<input type="hidden" name="product[format]" value="Stream">
 						<input type="hidden" name="product[event_id]" value="<?=$ps_info->n?>">
 						<input type="hidden" name="product[quantity]" value="1">			 
-						<input type="submit" class="inputbutton" name="oneClickReg" value="F&uuml;r den n&auml;chsten Stream anmelden (<?=$ps_info->price?> Guthabenpunkte)." <?if ($user_info->credits_left < $ps_info->price || $expired < time()) echo 'disabled'?>>
+						<input type="submit" class="inputbutton" name="oneClickReg" value="F&uuml;r den n&auml;chsten Stream anmelden (<?=$ps_info->price?> Guthabenpunkte)" <?if ($user_info->credits_left < $ps_info->price || $expired < time()) echo 'disabled'?>>
 					</form>
 <?php
 				}

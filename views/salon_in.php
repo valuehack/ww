@@ -160,7 +160,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 						echo 'F&uuml;r unseren Offenen Salon ist nur Barzahlung vor Ort m&ouml;glich. Der Eintritt kostet 5&euro; pro Teilnehmer. Mit dem Klick auf &quot;Reservieren&quot; werden Sie unmittelbar eingetragen.<br><br>';
 
 						if($quantity >= 1 && $format == 'vorOrt') {
-							echo 'Sie haben bereits sich f&uuml;r diese Veranstaltung bereits registriert ('.$quantity.' Ticket(s)).<br><br>';
+							echo 'Sie haben sich f&uuml;r diese Veranstaltung bereits registriert ('.$quantity.' Ticket(s)).<br><br>';
 						}
 						if($spots_available == 0) {
   							echo 'Die Pl&auml;tze vor Ort sind leider ausgebucht, sie k&oumlnnen stattdessen per Livestream dazukommen.';
