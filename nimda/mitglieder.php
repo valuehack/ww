@@ -117,13 +117,14 @@ echo '<th>ID</th>';
 	
   	while($userEntry = mysql_fetch_array($user_result)) {
   		
-		$user_id = $userQuery[user_id];		
+		$user_id = $userEntry[user_id];	
+		$email = $userEntry[user_email];
 		$surname = $userEntry[Nachname];
 		$name = $userEntry[Vorname];
 		$stufe = $userEntry[Mitgliedschaft];
 		$ablauf = $userEntry[Ablauf];
 		$guthaben = $userEntry[credits_left];
-		$letzter_login = $userEntry[last_login_time];
+		$letzter_login = substr($userEntry[last_login_time],10);
 		
 		
 		$diff_ablauf = floor((abs(strtotime(date("Y-m-d")) - strtotime($ablauf))/(60*60*24)));
@@ -135,6 +136,7 @@ echo '<th>ID</th>';
 		echo '<td>'.$user_id.'</td>';
 			echo '<td>'.$surname.'</td>';
 			echo '<td>'.$name.'</td>';
+			echo '<td>'.$email.'</td>';
 			echo '<td>'.$stufe.'</td>';
 			echo '<td class='.$ablauf_bgc.'>'.$ablauf.'</td>';
 			echo '<td>'.$guthaben.'</td>';
