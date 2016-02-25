@@ -81,6 +81,15 @@
 			.list li a:hover {
 				text-decoration: underline;
 			}
+			.rot {
+				background-color:rgba(255,0,0,0.5);
+			}
+			.gelb {
+				background-color:rgba(255,255,0,0.3);
+			}
+			.weiss {
+				background-color: white;
+			}
 		</style>
 		
 	</head>
@@ -136,6 +145,8 @@ if(isset($_GET['q']))
 		echo '<tr>';
 echo '<th>ID</th>';		
 			echo '<th>E-Mail</th>';
+			echo '<th>Stufe</th>';
+			echo '<th>Ablauf</th>';
 			echo '<th>Vorname</th>';
 			echo '<th>Nachname</th>';
 			echo '<th>Anzahl Pl&auml;tze</th>';
@@ -143,7 +154,8 @@ echo '<th>ID</th>';
 		
 	$event_user_query = "SELECT * from registration WHERE event_id='$n'";
   	$event_user_result = mysql_query($event_user_query) or die("Failed Query of " . $event_user_query. mysql_error());
-  	
+	$i=0;
+	
   	while($eventUserQuery = mysql_fetch_array($event_user_result)) {
   		
 		$user_id = $eventUserQuery[user_id];
@@ -156,10 +168,18 @@ echo '<th>ID</th>';
 		$surname = $userEntry[Nachname];
 		$name = $userEntry[Vorname];
 		$email = $userEntry[user_email];
+		$stufe = $userEntry[Mitgliedschaft];
+		$ablauf = $userEntry[Ablauf];
+		$diff_ablauf = floor((abs(strtotime(date("Y-m-d")) - strtotime($ablauf))/(60*60*24)));
 		
+		if (strtotime($ablauf) < time() && $ablauf !='') {$ablauf_bgc = 'rot';}
+		elseif ($diff_ablauf<30) {$ablauf_bgc = 'gelb';}
+		else {$ablauf_bgc = 'weiss';}
 		echo '<tr>';
 		echo '<td>'.$user_id.'</td>';
 			echo '<td>'.$email.'</td>';
+			echo '<td>'.$stufe.'</td>';
+			echo '<td class='.$ablauf_bgc.'>'.$ablauf.'</td>';
 			echo '<td>'.$name.'</td>';
 			echo '<td>'.$surname.'</td>';
 			echo '<td>'.$quantity.'</td>';
@@ -170,7 +190,9 @@ echo '<th>ID</th>';
 		echo '<tr class="bottom">';
 			echo '<td>&nbsp;</td>';
 			echo '<td>&nbsp;</td>';
-			echo '<td>&nbsp;</td>';			
+			echo '<td>&nbsp;</td>';
+			echo '<td>&nbsp;</td>';
+			echo '<td>&nbsp;</td>';		
 			echo '<td>Anzahl Teilnehmer</td>';
 			echo '<td>'.$spots_sold.'</td>';
 		echo '</tr>';
