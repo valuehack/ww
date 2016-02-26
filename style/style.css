@@ -3104,10 +3104,9 @@ img.projekte_coin2  {
 }
 
 .chat-info {
-	font-family: "Garamond", Georgia, Times, sans-serif;
-	margin: 20px auto;
+	margin: 0 auto;
+	padding-bottom: 20px;
 	text-align: justify;
-	width: 70%;
 }
 
 .content-elm {
