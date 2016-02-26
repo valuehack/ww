@@ -315,6 +315,10 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 		<div class="centered">
 			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
 		</div>
+		<?php
+		if ($spots_total < 60) {
+		?>
+		<p>&Uuml;ber den unten stehenden Chat k&ouml;nnen Sie aus der Ferne mitdiskutieren. Hierzu einfach einen Namen in das Login-Feld eingeben und &bdquo;Sign In&ldquo; dr&uuml;cken. Wir werden dann auf Ihre Fragen und Kommentare live vor Ort eingehen.</p>
 		<div class="chat-wrapper">
 			<iframe src="../tools/chat.html" width="100%" height="600"></iframe>
 			<!--<div class="pfc-hook"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
@@ -322,6 +326,9 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
       				$('.pfc-hook').phpfreechat({ serverUrl: '../phpfreechat/server' });
    				</script>-->
 		</div>
+		<?php
+		}
+		?>
 	</div>
 <?php
 	}
