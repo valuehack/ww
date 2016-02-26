@@ -3103,6 +3103,13 @@ img.projekte_coin2  {
 	margin: 20px 0;
 }
 
+.chat-info {
+	font-family: "Garamond", Georgia, Times, sans-serif;
+	margin: 20px auto;
+	text-align: justify;
+	width: 70%;
+}
+
 .content-elm {
 	margin: 20px 0;
 }
