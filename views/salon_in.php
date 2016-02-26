@@ -124,7 +124,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 			echo $static_info->info			
 			?>
 			
-  			<div class="medien_anmeldung"><a href="<?php htmlentities($_SERVER['PHP_SELF'])?>">zur&uuml;ck zu den Salons</a></div>
+  			<div class="medien_anmeldung"><a href="http://www.scholarium.at/salon/index.php">zur&uuml;ck zu den Salons</a></div>
 	
   			<div class="centered">
     			<div class="salon_reservation">
