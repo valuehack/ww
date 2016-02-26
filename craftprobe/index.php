@@ -1,29 +1,37 @@
 <?php include "header.php";
-	 	  
+
 $ok = $_POST['ok'];
 $email = $_POST['email'];
 $firstname = $_POST['firstname'];
 $name = $_POST['name'];
+$street = $_POST['street'];
+$postal = $_POST['postal'];
+$city = $_POST['city'];
 $country = $_POST['country'];
 $telephone = $_POST['telephone'];
-$nationality = $_POST['nationality'];
-$liveexperiance = $_POST['liveexperiance'];
-$skills = $_POST['skills'];
-$languages = $_POST['languages'];
-$drivers_licence = $_POST['drivers_licence'];
-$car_vienna = $_POST['car_vienna'];
-$pref_lenght = $_POST['pref_lenght'];
-$pref_date = $_POST['pref_date'];
-$flexible = $_POST['flexible'];
-$knowledge = $_POST['knowledge'];
+$note = $_POST['note'];
 $found_us = $_POST['found_us'];
 
 if ($ok) {
 
-$sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, country, telephone, nationality, liveexperiance, knowledge, skills, languages, drivers_licence, car_vienna, pref_lenght, pref_date, flexible, found_us, sub_date) 
-VALUES ('', '$email', '$firstname', '$name', '$country', '$telephone', '$nationality', '$liveexperiance', '$knowledge', '$skills', '$languages', '$drivers_licence', '$car_vienna', '$pref_lenght', '$pref_date', '$flexible', '$found_us', NOW())";
+$sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, street, postal, city, country, telephone, found_us, sub_date, note) VALUES ('', '$email', '$firstname', '$name', '$street', '$postal', '$city', '$country', '$telephone', '$found_us', NOW(), '$note')";
 
 $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
+
+	/*$insert_query = $wwalt->db_connection->prepare('INSERT INTO cb_anmeldung (id, email, firstname, name, country, telephone, nationality, found_us, note, sub_date) VALUES (:email, :firstname, :name, :street, :postal, :city, :country, :telephone, :found_us, :note, NOW())');
+	
+	$insert_query->bindValue(':email', $email, PDO::PARAM_STR);
+	$insert_query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+	$insert_query->bindValue(':name', $name, PDO::PARAM_STR);
+	$insert_query->bindValue(':street', $street, PDO::PARAM_STR);
+	$insert_query->bindValue(':postal', $postal, PDO::PARAM_STR);
+	$insert_query->bindValue(':city', $city, PDO::PARAM_STR);
+	$insert_query->bindValue(':country', $country, PDO::PARAM_STR);
+	$insert_query->bindValue(':telephone', $telephone, PDO::PARAM_STR);
+	$insert_query->bindValue(':found_us', $found_us, PDO::PARAM_STR);
+	$insert_query->bindValue(':note', $note, PDO::PARAM_STR);
+
+	$insert_query->execute();*/
 
 //Email an Interessenten
 
@@ -69,8 +77,8 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 			
     </head>
     <body>
-		<span id="top" style="font-size:10px;text-align:right"><a href="http://scholarium.at/eltern.php">(&rarr;deutschsprachige Information f&uuml;r Eltern)</a></span>
-        <header class="header">
+    	<span id="top" style="font-size:10px;text-align:right"><a href="http://scholarium.at/eltern.php">(&rarr;deutschsprachige Information f&uuml;r Eltern)</a></span>
+        <header class="header" id="top">
             <p>craft<span>probe</span></p>
             <ul class="nav">
                 <li><a href="#about">About</a></li>
@@ -91,8 +99,6 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <div class="banner">
             <div class="bannerimg" style="background-image: url(img/ship11-1.jpg);"></div>
             <div class="bannerms">
-                <!--<h1>craft<span>probe</span></h1>
-                <h2>...the Gap Year program to get real.</h2>-->
                 <img class="logo" src="img/cp_logo_white.png" alt="">
             </div>
         </div>
@@ -294,41 +300,18 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <h2 class="modal-title" id="myModalLabel">Join our voyage</h2>
       </div>
       <div class="modal-body">
-		<form method="post" action="index.php" name="user_create_profile_form">
+		<form method="post" action="index_new.php" name="user_create_profile_form">
 				<p><span class="inputlabel2">Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</span></p>
 				<div class="input">
 					<input type="hidden" name="ok" value="1">
-					<span class="inputlabel">Tell us about your life and major experiences so far:*</span>
-					<textarea name="liveexperiance" class="inputarea" placeholder="Tell us" rows="10" required></textarea><br>
-					<span class="inputlabel">Which fields do you know more about than the average person? Which are your research/reading interests?*</span>
-					<textarea name="knowledge" class="inputarea" placeholder="Tell us" rows="10" required></textarea><br>
-					<span class="inputlabel">Skills:*<br>
-									1) I tried it and have some talent<br>
-									2) I am really good at it, it's a hobby<br>
-									3) I am a pro, I could teach it<br>
-									Examples: Writing, cooking, gardening/agriculture, drawing/painting, computer graphics, photography, survival, martial arts, first aid, electronics, sewing, woodwork, plumbing, masonry, PHP, CSS, Ruby, Java ...</span>
-					<textarea name="skills" class="inputarea" placeholder="e.g. photography (2), gardening (1)" rows="10" required></textarea><br>
-					<span class="inputlabel">Languages:*<br>
-									1) understand some<br>
-									2) can converse<br>
-									3) fluent<br>
-									4) perfect<br>
-									5) native</span>
-					<textarea name="languages" class="inputarea" placeholder="e.g. English (4)" rows="10" required></textarea><br>
-					<span class="inputlabel">How did you find us?*</span>
-					<textarea name="found_us" class="inputarea" placeholder="Tell us" rows="10" required></textarea><br>
-					<input type="checkbox" name="drivers_licence" value="1"><span class="inputlabel2">I have a driving license.</span><input type="checkbox" name="car_vienna" value="1"><span class="inputlabel2">I would have a car in Vienna.</span><br>
-					<span class="inputlabel">Preferred length of your voyage:*</span>
-					<input type="radio" name="pref_lenght" value="2" required><span class="inputlabel2">two months</span>&nbsp;&nbsp;
-					<input type="radio" name="pref_lenght" value="6" required><span class="inputlabel2">one term</span>&nbsp;&nbsp;
-					<input type="radio" name="pref_lenght" value="12" required><span class="inputlabel2">one year</span><br> 
-					<span class="inputlabel">Earliest possible boarding time:*</span>
-					<input class="inputfield bottom_border" type="date" name="pref_date" placeholder=" e.g. 2015-09-01" required><br>
-					<input type="checkbox" name="flexible" value="1"><span class="inputlabel2">I am flexible.</span><br>
+					
 					<input class="inputfield" type="text" name="firstname" placeholder=" First Name" required><br>
         			<input class="inputfield" type="text" name="name" placeholder=" Surname" required><br>
-        			<input class="inputfield" type="email" name="email" placeholder=" e-mail" required><br> 
+        			<input class="inputfield" type="email" name="email" placeholder=" Email" required><br> 
         			<input class="inputfield" type="tel" name="telephone" placeholder=" Telephone/ Mobile (e.g. +431234567)"><br>
+					<input class="inputfield" type="text" name="street" placeholder=" Street" required><br>
+					<input class="inputfield" type="text" name="postal" placeholder=" Postal Code" required><br>
+					<input class="inputfield" type="text" name="city" placeholder=" City" required><br>
 					 
         			<select class="inputfield_select" id="user_country" name="country" placeholder=" Country" required>
 <option value="Austria" selected>Austria</option>
@@ -581,7 +564,8 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 <option value="Zambia">Zambia</option>
 <option value="Zimbabwe">Zimbabwe</option>
 					</select><br>
-					<input class="inputfield bottom_border" type="text" name="nationality" placeholder=" Nationality" required><br>
+					<textarea name="note" class="inputarea" placeholder=" Do you have questions or comments?" rows="10" required></textarea><br>
+					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" How did you find us?"><br>					
 				</div>
     			<input type="submit" class="inputbutton_subscribe" name="registrationform" value="Boarding request">
 			</form>
