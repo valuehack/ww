@@ -97,6 +97,15 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 			<p class="salon_date">
       			<?=$date?>
       		</p>
+      	<?php
+  			if ($spots_total > 59 && $livestream != '') {
+  		?>
+  				<div class="startpage_section_last_scholie startpage-livestream">
+  				<p><a href='?q=<?=$id?>&stream=true'>&Uuml;ber diesen Link gelangen Sie zum Livestream des Offenen Salons</a></p>
+  				</div>  				
+		<?php	
+		}
+  		?>      	
       	</div>
       	
       	<?php
@@ -108,14 +117,6 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 		</div>
 		<div class="salon_content">
   		<?php
-  			if ($spots_total > 59 && $livestream != '') {
-  		?>
-  				<div class="startpage_section_last_scholie startpage-livestream">
-  				<p><a href='?q=<?=$id?>&stream=true'>&Uuml;ber diesen Link gelangen Sie zum Livestream des Offenen Salons</a></p>
-  				</div>  				
-		<?php	
-		}
-  		
   			if ($salon_info->text) echo "<p>$salon_info->text</p>";
   			if ($salon_info->text2) echo "<p>$salon_info->text2</p>";
 
