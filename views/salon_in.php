@@ -318,7 +318,9 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 		<?php
 		if ($salon_info->spots < 60) {
 		?>
+		<div class="salon-content">
 		<p>&Uuml;ber den unten stehenden Chat k&ouml;nnen Sie aus der Ferne mitdiskutieren. Hierzu einfach einen Namen in das Login-Feld eingeben und &bdquo;Sign In&ldquo; dr&uuml;cken. Wir werden dann auf Ihre Fragen und Kommentare live vor Ort eingehen.</p>
+		</div>
 		<div class="chat-wrapper">
 			<iframe src="../tools/chat.html" width="100%" height="600"></iframe>
 			<!--<div class="pfc-hook"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
