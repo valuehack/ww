@@ -110,7 +110,9 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
   		<?php
   			if ($spots_total > 59 && $livestream != '') {
   		?>
-  				<p><a href='?q=<?=$id?>&stream=true'>&Uuml;ber diesen Link gelangen Sie zum Livestream des Offenen Salons.</a></p>
+  				<div class="startpage_section_last_scholie startpage-livestream">
+  				<p><a href='?q=<?=$id?>&stream=true'>&Uuml;ber diesen Link gelangen Sie zum Livestream des Offenen Salons</a></p>
+  				</div>  				
 		<?php	
 		}
   		
