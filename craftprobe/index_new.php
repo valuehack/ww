@@ -77,6 +77,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 			
     </head>
     <body>
+    	<span id="top" style="font-size:10px;text-align:right"><a href="http://scholarium.at/eltern.php">(&rarr;deutschsprachige Information f&uuml;r Eltern)</a></span>
         <header class="header" id="top">
             <p>craft<span>probe</span></p>
             <ul class="nav">
