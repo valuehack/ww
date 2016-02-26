@@ -316,7 +316,7 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
 		</div>
 		<?php
-		if ($spots_total < 60) {
+		if ($salon_info->spots < 60) {
 		?>
 		<p>&Uuml;ber den unten stehenden Chat k&ouml;nnen Sie aus der Ferne mitdiskutieren. Hierzu einfach einen Namen in das Login-Feld eingeben und &bdquo;Sign In&ldquo; dr&uuml;cken. Wir werden dann auf Ihre Fragen und Kommentare live vor Ort eingehen.</p>
 		<div class="chat-wrapper">
