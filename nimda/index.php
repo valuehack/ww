@@ -12,7 +12,8 @@
 			<h1>Admin Panel</h1>
 			<a href="event_registrations.php">&Uuml;bersicht und Liste angemeldeter Teilnehmer</a></br>
 			<a href="event_cancel.php">Veranstaltungen absagen</a></br>
-			<a href="mitglieder.php">Mitglieder&uuml;bersicht</a>
+			<a href="mitglieder_nachname.php">Mitglieder&uuml;bersicht (nach Nachname sortiert)</a></br>
+			<a href="mitglieder_stufe.php">Mitglieder&uuml;bersicht (nach Mitgliedsstufe sortiert)</a>
 		</div>
 	</body>
 </html>
