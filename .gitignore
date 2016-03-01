@@ -16,3 +16,6 @@ word_count.php
 misesat/orte/map.html
 nimda/.htaccess
 *.htpasswd
+tools/ticket2.php
+tools/invoice2.html
+test/foreach.php

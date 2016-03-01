@@ -29,6 +29,7 @@ if($_GET['stream'] === 'true') {
 
 		$begleit_pdf = '../privatseminar/'.$ps_info->id.'.pdf';
 
+		$chat_loc = $general->createChat($ps_info->n, $ps_info->type);
 ?>	
 	<div class="content-area">
 		<div class="centered">
@@ -47,7 +48,7 @@ if($_GET['stream'] === 'true') {
 		}
 ?>
 		<div class="chat-wrapper">
-			<iframe src="../tools/chat.php" width="100%" height="600"></iframe>
+			<iframe src="<?=$chat_loc?>" width="100%" height="600"></iframe>
 			<!--<div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
 			<script type="text/javascript">
  				 $('#mychat').phpfreechat({ serverUrl: '../phpfreechat/server' });

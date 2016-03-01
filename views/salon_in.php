@@ -304,6 +304,8 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 	$salon_info = $general->getProduct($id);
 	$reg_info = $general->getEventReg($_SESSION['user_id'], $salon_info->n);
 	
+	$chat_loc = $general->createChat($salon_info->n, $salon_info->type);
+	
 	if ($reg_info->format === 'Stream' || $salon_info->spots > 59) {
 			
 		$livestream = substr($salon_info->livestream,32);
@@ -328,7 +330,7 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 		if ($salon_info->spots < 60) {
 		?>
 		<div class="chat-wrapper">
-			<iframe src="../tools/chat.html" width="100%" height="600"></iframe>
+			<iframe src="<?=$chat_loc?>" width="100%" height="600"></iframe>
 			<!--<div class="pfc-hook"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
     			<script type="text/javascript">
       				$('.pfc-hook').phpfreechat({ serverUrl: '../phpfreechat/server' });

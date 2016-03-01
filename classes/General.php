@@ -484,6 +484,56 @@ class General {
 
 			return $invoice_location;
 		}
+
+	public function createChat($n, $type) {
+			
+		$file = '../phpfreechat-1.7/chats/'.$type.'-'.$n.'.php';
+		
+		if (file_exists($file)) {
+			
+		}
+		else {
+			$handle = fopen($file, 'w') or die('Cannot open file:  '.$file);
+		
+			$chatid = $type.'-'.$n;
+		
+			$content = '<?php
+
+						require_once "../../phpfreechat-1.7/src/phpfreechat.class.php";
+
+						$params =  array("title"		  		=> "Diskussion",
+				 						 "max_msg"		 		=> 400,
+				 						 "max_text_len"	  		=> 2000,
+				 						 "max_displayed_lines"	=> 1000,
+				  						 "display_ping"   		=> true,
+                 						 "clock"          		=> true,
+                    					 "showsmileys"   		=> false,
+                 						 "startwithsound" 		=> false,
+                 						 "height"        		=> "200px",
+                 						 "language"		 		=> "de_DE-formal",
+                 						 "theme"		  		=> "scholarium",
+                 						 "serverid"       		=> '.$chatid.',
+				 						 "display_pfc_logo"		=> false,
+				 						 "showwhosonline" 		=> true,
+				 						 "admins"		  		=> array("scholarium" => "Werte333wirte"),
+				 						 "channels"		  		=> array("Chat"),
+				 						 "displaytabimage" 		=> false,
+				 						 "btn_sh_smileys" 		=> false,
+				 					 	 "nickmarker"	  		=> false,	 
+                 					);
+
+						$chat = new phpFreeChat($params);
+
+						$chat->printJavascript();
+						$chat->printStyle();
+
+						$chat->printChat();
+						?>';
+
+			fwrite($handle, $content);
+		}
+		return $file;
+	}
 }
 
 ?>

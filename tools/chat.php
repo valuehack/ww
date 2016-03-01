@@ -1,10 +1,8 @@
 <?php
 
-$title = $_GET['title'];
-
 require_once "../phpfreechat-1.7/src/phpfreechat.class.php"; // adjust to your own path
 
-$params =  array("title"		  => "",
+$params =  array("title"		  => "Diskussion",
 				 "max_msg"		  => 400,
 				 "max_text_len"	  => 2000,
 				 "max_displayed_lines"	=> 1000,
@@ -19,7 +17,7 @@ $params =  array("title"		  => "",
 				 "display_pfc_logo"	=> false,
 				 "showwhosonline" => true,
 				 "admins"		  => array("scholarium" => "Werte333wirte"),
-				 "channels"		  => array("Chat"),
+				 "channels"		  => array("$channel"),
 				 "displaytabimage" => false,
 				 "btn_sh_smileys" => false,
 				 "nickmarker"	  => false,	 
