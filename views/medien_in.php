@@ -59,6 +59,13 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 
   //Mediendetails
   $product_info = $general->getProduct($id);
+  
+  if ($product_info->price_book != '' && $product_info->livestream != '') {
+  	$price = $product_info->price_book;
+  }
+  else {
+  	$price = $product_info->price;
+  }
 
   //Userdetails
   $user_info = $general->getUserInfo($user_id);
@@ -107,7 +114,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 		    <?     	
 		         }				 
 				 if ($product_info->type === 'media-privatseminar' || $product_info->livestream != '') {
-					if ($user_info->credits_left < $product_info->price) {
+					if ($user_info->credits_left < $price) {
 ?>
 						<p class="content-elm error">
 							Leider reicht Ihr Guthaben nicht aus, um diese Aufzeichnung zu erwerben. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
@@ -119,7 +126,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 					<input type="hidden" name="product[format]" value="Stream">
 					<input type="hidden" name="product[event_id]" value="<?=$product_info->n?>">
 					<input type="hidden" name="product[quantity]" value="1">			 
-					<input type="submit" class="inputbutton" name="oneClickReg" value="Aufzeichnung ansehen (<?=$product_info->price?> Guthabenpunkte)" <?if ($user_info->credits_left < $product_info->price) echo 'disabled'?>>
+					<input type="submit" class="inputbutton" name="oneClickReg" value="Aufzeichnung ansehen (<?=$price?> Guthabenpunkte)" <?if ($user_info->credits_left < $price) echo 'disabled'?>>
 				 </form>
 <?php
 				 }
@@ -133,7 +140,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
     		<?
 				}
 ?>
-				<span class="coin-span"><?=$product_info->price?></span><img class="coin-span__img" src="../style/gfx/coin.png">
+				<span class="coin-span"><?=$price?></span><img class="coin-span__img" src="../style/gfx/coin.png">
 <?php
 			}
 			?>

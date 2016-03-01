@@ -63,10 +63,10 @@ var phpFreeChat = (function (pfc, $, window, undefined) {
     pfc.modalbox.open(
         '<form>'
       + '  <div class="popup-login">'
-      + '    <input type="text" name="login" placeholder="Login"/><br/>'
+      + '    <input type="text" name="login" placeholder="Name" /><br/>'
       //+ '  <input type="text" name="password" placeholder="Password"/><br/>'
       //+ '  <input type="text" name="email" placeholder="Email"/><br/>'
-      + '    <input type="submit" name="submit" value="Sign in" />'
+      + '    <input type="submit" name="submit" value="Anmelden" />'
       + (msg ? '<p>' + msg + '</p>' : '')
       + '  </div>'
       + '</form>'

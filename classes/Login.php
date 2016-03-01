@@ -2346,8 +2346,8 @@ user_plz
 		
 		$event_info = $general->getProduct($product['event_id']);
 		
-		if ($product['format'] === 'Stream' && $event_info->price2 != '') {
-			$price = $event_info->price2;
+		if ($product['format'] === 'Stream' && $event_info->price_book != '') {
+			$price = $event_info->price_book;
 		}
 		else {
 			$price = $event_info->price;

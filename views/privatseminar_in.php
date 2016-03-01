@@ -47,7 +47,7 @@ if($_GET['stream'] === 'true') {
 		}
 ?>
 		<div class="chat-wrapper">
-			<iframe src="../tools/chat.html" width="100%" height="600"></iframe>
+			<iframe src="../tools/chat.php" width="100%" height="600"></iframe>
 			<!--<div id="mychat"><a href="http://www.phpfreechat.net">Creating chat rooms everywhere - phpFreeChat</a></div>
 			<script type="text/javascript">
  				 $('#mychat').phpfreechat({ serverUrl: '../phpfreechat/server' });
@@ -63,7 +63,6 @@ if($_GET['stream'] === 'true') {
 			<h2><?=$ps_info->title?></h2>
 		</div>
 		<div class="centered content-elm">
-<<<<<<< HEAD
 <?php
 		if ($ps_info->livestream == '') {
 ?>
@@ -73,20 +72,12 @@ if($_GET['stream'] === 'true') {
 		else {
 ?>
 			<p class="content-elm">Bitte reservieren Sie einen Platz, um diesen Stream zu sehen.</p>
-=======
-			<p class="content-elm">Bitte reservieren Sie einen Platz, um diesen Stream zu sehen.</p>
->>>>>>> origin/master
 <?php			
 			if ($expired < time()) {
 ?>
 				<p class="content-elm error">
-<<<<<<< HEAD
 					Ihre Mitgliedschaft ist abgelaufen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft.</a> Anschlie&szlig;end k&ouml;nnen Sie diesen Stream buchen.
 				</p>				
-=======
-				Leider reicht Ihr Guthaben nicht aus, um an dieser Veranstaltung teilzunehmen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
-				</p>
->>>>>>> origin/master
 <?php
 			}
 			elseif ($user_info->credits_left < $ps_info->price) {
