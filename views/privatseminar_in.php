@@ -15,7 +15,7 @@ $getEventReg = $general->getEventReg($_SESSION['user_id'], $ps_info->n);
 
 $user_info = $general->getUserInfo($_SESSION['user_id']);
 
-//$expired = strtotime($user_info->Ablauf);
+$expired = strtotime($user_info->Ablauf);
 
 #####################################
 #           Stream View             #
