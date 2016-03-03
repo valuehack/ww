@@ -73,7 +73,8 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
   //Registration details
   $reg_info = $general->getEventReg($user_id, $product_info->n);    
 
-	
+  $expired = strtotime($user_info->Ablauf);
+  	
 	################## No valid product ##################
     
 	if ($product_info->status == 0) {
@@ -110,11 +111,18 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 			else { 
 		         if ($reg_info->quantity >= 1){
 		    ?>
-		    	<p class="content-elm">Sie haben diesen Artikel bereits erworben.</p>
+		    		<p class="content-elm">Sie haben diesen Artikel bereits erworben.</p>
 		    <?     	
 		         }				 
 				 if ($product_info->type === 'media-privatseminar' || $product_info->livestream != '') {
-					if ($user_info->credits_left < $price) {
+				 	if ($expired < time()) {
+?>
+						<p class="content-elm error">
+							Ihre Mitgliedschaft ist abgelaufen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft.</a> Anschlie&szlig;end k&ouml;nnen Sie diesen Stream buchen.
+						</p>
+<?php
+					}
+					elseif ($user_info->credits_left < $price) {
 ?>
 						<p class="content-elm error">
 							Leider reicht Ihr Guthaben nicht aus, um diese Aufzeichnung zu erwerben. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
