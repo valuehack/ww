@@ -854,6 +854,7 @@ a.subnav_head:hover {
 	text-transform: uppercase;
 	margin-right: 10px;
 	font-size: 12pt;
+	text-align: center;
 }
 
 .startpage_last_scholie p {
@@ -885,6 +886,7 @@ a.subnav_head:hover {
 	background: rgb(46,74,98);
 	padding: 10px;
 	font-family: "Futura Book", Helvetica, Arial, serif;
+	font-weight: normal !important;
 }
 
 .startpage_box_outer img {
