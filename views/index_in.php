@@ -27,7 +27,7 @@ include ("_header_in.php");
 			if ($livestream_type === 'seminare') $livestream_type = 'seminar';
 			$livestream_url = '../'.$livestream_type.'/index.php?q='.$livestream_result->id.'&stream=true';
 			
-			if ($livestream_url != '' && ($mitgliedschaft >=2 || $livestream_result->spots > 59)){
+			if ($livestream_result->livestream != '' && ($mitgliedschaft >=2 || $livestream_result->spots > 59)){
             ?>
             <div class="startpage_section_last_scholie startpage-livestream">
             	<a href="<?=$livestream_url?>">Sehen Sie unseren <?=ucfirst($livestream_type)?> <em><?=$livestream_title?></em> im Livestream</a>
