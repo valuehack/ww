@@ -17,6 +17,14 @@ $(document).ready(function(){
 });
 </script>
 
+<div class="content">
+	<div class="blog">
+		<header>
+			<h1>F&uuml;r B&uuml;rger</h1>
+		</header>
+	</div>
+</div>
+
 <div class="payment">
            <div class="payment_info">
            	<?php  
