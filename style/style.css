@@ -1052,7 +1052,7 @@ a.subnav_head:hover {
 }
 
 .blog_text h2 {
-	font-size: 20pt;
+	font-size: 18pt;
 	text-align: center;
 }
 
@@ -3443,7 +3443,7 @@ button.close {
 }
 
 .modal-title {
-	font-size: 22pt;
+	font-size: 18pt;
   	margin: 0;
   	line-height: 1.5;
 }
