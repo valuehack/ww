@@ -134,7 +134,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 					<input type="hidden" name="product[format]" value="Stream">
 					<input type="hidden" name="product[event_id]" value="<?=$product_info->n?>">
 					<input type="hidden" name="product[quantity]" value="1">			 
-					<input type="submit" class="inputbutton" name="oneClickReg" value="Aufzeichnung ansehen (<?=$price?> Guthabenpunkte)" <?if ($user_info->credits_left < $price) echo 'disabled'?>>
+					<input type="submit" class="inputbutton" name="oneClickReg" value="Aufzeichnung ansehen (<?=$price?> Guthabenpunkte)" <?if ($user_info->credits_left < $price || $expired < time()) echo 'disabled'?>>
 				 </form>
 <?php
 				 }
