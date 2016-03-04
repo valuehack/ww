@@ -48,6 +48,9 @@ if ($login->isUserLoggedIn() == true) {
 
 <div class="content">
 	<div class="blog">
+		<header>
+			<h1>Mitwirkende</h1>
+		</header>
 		<div class="blog_text">
 <?php			
 		$check_lvl1 = 0;
