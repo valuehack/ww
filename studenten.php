@@ -45,7 +45,6 @@ if ($login->isUserLoggedIn() == true) {
 		<header>
 			<h1>F&uuml;r Studenten</h1>
 		</header>
-		<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>
 		<div class="blog_text">
 			
 			<?php
