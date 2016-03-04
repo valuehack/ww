@@ -835,19 +835,19 @@ a.subnav_head:hover {
 }
 
 .startpage_last_scholie_ms h1 {
-	text-align: left;	
+	text-align: center;	
 	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
 .startpage_last_scholie_ms h1 a {
-	font-size: 36pt;
+	font-size: 20pt;
 	text-decoration: none;
 	margin-top: 65px;
 	color: rgb(20,20,20);
 }
 
 .startpage_last_scholie_ms h1 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .startpage_last_scholie span {
