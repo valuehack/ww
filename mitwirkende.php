@@ -48,10 +48,6 @@ if ($login->isUserLoggedIn() == true) {
 
 <div class="content">
 	<div class="blog">
-		<header>
-			<h1>Mitwirkende</h1>
-		</header>
-		<p class='linie'><img src='../style/gfx/linie.png' alt=''></p>
 		<div class="blog_text">
 <?php			
 		$check_lvl1 = 0;
