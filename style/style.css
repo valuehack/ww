@@ -1975,6 +1975,14 @@ a:visited.medien_title_list {
 	line-height: 140%;
 }
 
+.antiquariat_table_d {
+	width: 65%;
+	vertical-align: top !important;
+	padding-top: 0px !important;
+	text-align: center;
+	line-height: 140%;
+}
+
 .antiquariat_inputbutton {
 	vertical-align: top !important;
 	text-decoration: none;
