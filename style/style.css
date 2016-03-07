@@ -1967,6 +1967,14 @@ a:visited.medien_title_list {
 	line-height: 140%;
 }
 
+.antiquariat_table_c {
+	width: 65%;
+	vertical-align: top !important;
+	padding-top: 50px !important;
+	text-align: right;
+	line-height: 140%;
+}
+
 /* ============= Programme ============*/
 
 .programm_centered {
