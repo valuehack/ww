@@ -300,7 +300,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <h2 class="modal-title" id="myModalLabel">Join our voyage</h2>
       </div>
       <div class="modal-body">
-		<form method="post" action="index_new.php" name="user_create_profile_form">
+		<form method="post" action="index.php" name="user_create_profile_form">
 				<p><span class="inputlabel2">Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</span></p>
 				<div class="input">
 					<input type="hidden" name="ok" value="1">
