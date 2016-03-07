@@ -1976,6 +1976,7 @@ a:visited.medien_title_list {
 }
 
 .antiquariat_inputbutton {
+	vertical-align: top !important;
 	text-decoration: none;
 	background: rgb(46,74,98);
 	color: #fff;
