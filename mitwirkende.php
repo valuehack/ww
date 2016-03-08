@@ -40,7 +40,7 @@ if ($login->isUserLoggedIn() == true) {
     
 }
 
-	$get_crew = $pdocon->db_connection->prepare("SELECT * from crew order by level asc");
+	$get_crew = $pdocon->db_connection->prepare("SELECT * from crew WHERE level <8 order by level asc");
 	$get_crew->execute();
 	$crew_result = $get_crew->fetchAll();	
 
