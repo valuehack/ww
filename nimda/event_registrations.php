@@ -152,7 +152,7 @@ echo '<th>ID</th>';
 			echo '<th>Anzahl Pl&auml;tze</th>';
 		echo '</tr>';
 		
-	$event_user_query = "SELECT * from registration WHERE event_id='$n'";
+	$event_user_query = "SELECT * from registration WHERE event_id='$n' AND format !='Stream'";
   	$event_user_result = mysql_query($event_user_query) or die("Failed Query of " . $event_user_query. mysql_error());
 	
   	while($eventUserQuery = mysql_fetch_array($event_user_result)) {
