@@ -25,7 +25,7 @@ if(isset($_POST['delete'])) {
 	
 	function sendStornoConfirmation($user_email)
     {
-        //consturct email body
+        //construct email body
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
@@ -275,7 +275,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			$id = $userProductsArray[id];
 			
 			
-				if ($type == 'scholie' || $type == 'analyse' || $type == 'buch' || substr($type,0,5) == 'media'){
+				if ($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'antiquariat' || substr($type,0,5) == 'media'){
 			
 					if ($type == 'scholie' || $type == 'analyse' || $type == 'buch') {
 					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
