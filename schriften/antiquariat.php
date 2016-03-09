@@ -47,7 +47,7 @@ if ($login->isUserLoggedIn() == true)
             include("../views/antiquariat_not_in.php");
             break;
         case ($_SESSION['Mitgliedschaft'] >= 1):
-            include("../views/antiquariat_in2.php");
+            include("../views/antiquariat_in.php");
             break;
         default: 
             include("../views/antiquariat_not_in.php"); 
