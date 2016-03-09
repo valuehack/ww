@@ -252,6 +252,7 @@ while ($entry = mysql_fetch_array($result))
                     		<li><a href="/schriften/index.php?type=scholien">Scholien</a></li>
                     		<li><a href="/schriften/index.php?type=analysen">Analysen</a></li>
                     		<li><a href="/schriften/index.php?type=buecher">B&uuml;cher</a></li>
+                    		<li><a href="/schriften/antiquariat.php">Antiquariat</a></li>
                     	</ul>
                     	</div>
                     </li>
