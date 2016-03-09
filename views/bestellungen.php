@@ -277,7 +277,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			
 				if ($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'antiquariat' || substr($type,0,5) == 'media'){
 			
-					if ($type == 'scholie' || $type == 'analyse' || $type == 'buch'|| $type == 'antiquariat') {
+					if ($type == 'scholie' || $type == 'analyse' || $type == 'buch') {
 					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
             		$url2 = 'schriften';
 					if ($format == 'PDF') $extension = '.pdf';
