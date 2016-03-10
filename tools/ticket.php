@@ -51,14 +51,12 @@
                       <span class="ticket_date">'.$date.'</span>
                       
                       <span class="ticket_object">Anzahl</span> <span class="ticket_value">'.$quantity.'</span><br>
-                      
-                      <span class="ticket_object">Preis</span> <span class="ticket_value">'.$price.' &euro;</span>
                         
                   </p>   
               </div>
               <div class="ticket_user">
                   <p>
-                      <span class="ticket_user_name">'.$user_name.' '.$user_surname.'</span> <span class="ticket_user_no">Kundennummer: '.$user_id.'</span> 
+                      <span class="ticket_user_name">'.$user_name.' '.$user_surname.'</span>
                   </p>
               </div>
               
