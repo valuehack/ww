@@ -59,7 +59,7 @@ if ($login->isUserLoggedIn() == true) {
 				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="registerform">
   					<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail Adresse" name="user_email" required>
   					<input type=hidden name="first_reg" value="faq">
-  					<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+  					<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
 				</form>
 			</div> 
 		</div>		
