@@ -102,7 +102,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 			<?
 			if ($_SESSION['Mitgliedschaft'] == 1) {
 				if ($reg_info->quantity >= 1) {
-    					echo '<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../abo/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&oouml;nnen Sie Ihre vergangenen Bestellungen einsehen und gegebenenfalls nochmals herunterladen.</p>';
+    					echo '<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../abo/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&ouml;nnen Sie Ihre vergangenen Bestellungen einsehen und gegebenenfalls nochmals herunterladen.</p>';
     				}
 			?>
 				<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal" <?if ($reg_info->quantity >= 1) echo 'disabled'?>>
@@ -111,7 +111,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 			else { 
 		         if ($reg_info->quantity >= 1){
 		    ?>
-		    		<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../abo/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&oouml;nnen Sie Ihre Bestellungen einsehen und gegebenenfalls nochmals herunterladen</p>
+		    		<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../abo/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&ouml;nnen Sie Ihre Bestellungen einsehen und gegebenenfalls nochmals herunterladen.</p>
 		    <?     	
 		         }				 
 				 if ($product_info->type === 'media-privatseminar' || $product_info->livestream != '') {
