@@ -9,12 +9,10 @@
 <!--Content-->
 
     <div id="content">
-      <article>
-      	<div class="index"><a class="index-link" href="">Mises Austria</a> / <a class="index-link" href="">Verlag</a></div>
-      
-      	<h1>Verlag</h1>
-      	
-	  </article>
+      	<div class="container index-link"><p><a href="">Mises Austria</a> / Verlag</p></div>
+      	<div class="container">
+      		<h1>Verlag</h1>
+      	</div>      	      
 	</div>
 <?	
 	include "../page/footer.inc.php";

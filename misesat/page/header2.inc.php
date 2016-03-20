@@ -4,9 +4,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     	<meta name="description" content="Verlag und Kompendium zur &Ouml;stereichischen Schule der &Ouml;konomik">
     	<link rel="shortcut icon" href="../favicon.ico">
+    	
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<!--[if IE]>
       		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     	<![endif]-->
+    	
+    	<link rel="stylesheet" href="../style/normalize.css">
     	<link rel="stylesheet" href="../style/style.css">
     	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300|EB+Garamond' rel='stylesheet' type='text/css'>
        

@@ -25,25 +25,30 @@ if(isset($_GET['q']))
 <!--Content-->
 
     <div id="content">
-      <article>
-      	<div class="index"><p><a class="index-link" href="../index.php">Wiener Schule</a> / <a class="index-link" href="index.php">Orte</a> / <a class="index-link" href=""><?=$name?></a></p></div>
-      
-      	<h1><?=$name?></h1>
-      	     
-      	<section class="text">
-      	<h2>Beschreibung</h2>
-      
-      <?php
-      	if ($img !== "" OR $img !== 0) { 
-      	echo '<img src="'.$img.'" class="denker" alt="Portr&auml;t von '.$name.'">&nbsp;';
-		}
-      ?>
-      	<p><?=$text?></p>
+      	<div class="container index-link"><p><a href="../index.php">Wiener Schule</a> / <a href="index.php">Orte</a> / <?=$name?></p></div>
+      	<div class="container">
+      		<div class="row">
+      			<div class="two-thirds column">
+      				<h1><?=$name?></h1>
+      			</div>
+      			<div class="one-third column h-white">
+      				<?php
+      				if ($img !== "" OR $img !== 0) { 
+      				echo '<img src="'.$img.'" class="img--coat" alt=".">&nbsp;';
+					}
+      				?>
+      			</div>
+      		</div>
+      	</div>
       	
-      	<p><?=$denker?></p>
-      	</section>
-      	
-       </article>
+      	<div class="container text">
+      			<h2>Beschreibung</h2>
+      			<p><?=$text?></p>
+      	</div>
+      	<div class="container text">
+      			<h5>Denker die in <?=$name?> gelebt oder gewirkt haben</h5>
+				<p><?=$denker?></p>   	
+       </div>
     </div>
 <?php
 }
@@ -55,17 +60,17 @@ else {
    
 ?>
 <!--Ortsliste-->	
-<div id="content">
+	<div id="content">
   	
-		<div class="index"><a class="index-link" href="../index.php">Wiener Schule</a> / <a class="index-link" href="">Orte</a></div>
+		<div class="container index-link"><p><a href="../index.php">Wiener Schule</a> / Orte</p></div>
+      	<div class="container">
+      		<h1>Orts&uuml;bersicht</h2>
       
-      	<h1>Orts&uuml;bersicht</h2>
-      
-    	<noscript><b>Um unsere Kartenanwendung zu nutzen ben&ouml;tigen Sie JavaScript.</b> 
-     	 JavaScript scheint in Ihrem Browser deaktiviert zu sein oder wird von diesem nicht unterst&uuml;tzt. 
-     	 Um unsere Kartenansischt sehen k&oouml;nnen, aktivieren Sie bitte JavaScript.
-    	</noscript>
-    
+    		<noscript><b>Um unsere Kartenanwendung zu nutzen ben&ouml;tigen Sie JavaScript.</b> 
+     		JavaScript scheint in Ihrem Browser deaktiviert zu sein oder wird von diesem nicht unterst&uuml;tzt. 
+     	 	Um unsere Kartenansischt sehen k&oouml;nnen, aktivieren Sie bitte JavaScript.
+    		</noscript>
+    	</div>
     	<div class="map">
 			<div id="map" class="map__map"></div>
 		</div>
@@ -102,7 +107,7 @@ else {
 		$lng = $result[$i]['lng'];
      ?> 
         		 			
-		var info = '<div class="map-info"><a href="index.php?q=<?=$id?>"><h1><?=$name?></h1></a><img src="<?=$img?>" alt=""><p><?=substr($text, 0, 180)?> ... <a href="index.php?q=<?=$id?>">Mehr</a></p><h2>Denker die hier gelebt und gewirkt haben</h2><p><?=$denker?></p></div>';
+		var info = '<div class="map-info"><a href="index.php?q=<?=$id?>"><h2><?=$name?></h2></a><img src="<?=$img?>" alt="."><p><?=substr($text, 0, 180)?> ... <a href="index.php?q=<?=$id?>">Mehr</a></p><h6>Denker die hier gelebt und gewirkt haben</h6><p><?=$denker?></p></div>';
 			
         var marker = new google.maps.Marker({
          	position: {lat: <?=$lat?>, lng: <?=$lng?>},
@@ -127,8 +132,8 @@ else {
 	</script>
 
 		<!--echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";-->
-
-</div>
+		</div>
+	</div>
 
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChP6VPcxuqcO5r8q7733mF7hzjNg4r9EY&callback=initMap">

@@ -1,6 +1,13 @@
-/*==================================
- * CSS Reset
- ===================================*/
+/*
+ * mises.at
+ * Author: Ulrich Moller
+ * 
+ */
+
+/*==================================================*/
+/*                  CSS Reset		                */
+/*==================================================*/
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,59 +28,133 @@ time, mark, audio, video {
    font: inherit;
    vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-   display: block;
-}
-body {
-   line-height: 1;
-}
-ol, ul {
-   list-style: none;
-}
-blockquote, q {
-   quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-   content: '';
-   content: none;
-}
-table {
-   border-collapse: collapse;
-   border-spacing: 0;
+
+/*==================================================*/
+/*                  Grid		                    */
+/*==================================================*/
+
+.container {
+  position: relative;
+  width: 100%;
+  /*max-width: 960px;*/
+  margin: 0 auto;
+  padding: 0 20px 2em;
+  box-sizing: border-box; }
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; }
+
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+  .container {
+    width: 95%;
+    padding: 0; }
 }
 
-/*=========================================*/
+/* For devices larger than 550px */
+@media (min-width: 550px) {
+  .container {
+    width: 90%; }
+  .column,
+  .columns {
+    margin-left: 4%; }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
 
+  .one.column,
+  .one.columns                    { width: 4.66666666667%; }
+  .two.columns                    { width: 13.3333333333%; }
+  .three.columns                  { width: 22%;            }
+  .four.columns                   { width: 30.6666666667%; }
+  .five.columns                   { width: 39.3333333333%; }
+  .six.columns                    { width: 48%;            }
+  .seven.columns                  { width: 56.6666666667%; }
+  .eight.columns                  { width: 65.3333333333%; }
+  .nine.columns                   { width: 74.0%;          }
+  .ten.columns                    { width: 82.6666666667%; }
+  .eleven.columns                 { width: 91.3333333333%; }
+  .twelve.columns                 { width: 100%; margin-left: 0; }
+
+  .one-third.column               { width: 30.6666666667%; }
+  .two-thirds.column              { width: 65.3333333333%; }
+
+  .one-half.column                { width: 48%; }
+
+  /* Offsets */
+  .offset-by-one.column,
+  .offset-by-one.columns          { margin-left: 8.66666666667%; }
+  .offset-by-two.column,
+  .offset-by-two.columns          { margin-left: 17.3333333333%; }
+  .offset-by-three.column,
+  .offset-by-three.columns        { margin-left: 26%;            }
+  .offset-by-four.column,
+  .offset-by-four.columns         { margin-left: 34.6666666667%; }
+  .offset-by-five.column,
+  .offset-by-five.columns         { margin-left: 43.3333333333%; }
+  .offset-by-six.column,
+  .offset-by-six.columns          { margin-left: 52%;            }
+  .offset-by-seven.column,
+  .offset-by-seven.columns        { margin-left: 60.6666666667%; }
+  .offset-by-eight.column,
+  .offset-by-eight.columns        { margin-left: 69.3333333333%; }
+  .offset-by-nine.column,
+  .offset-by-nine.columns         { margin-left: 78.0%;          }
+  .offset-by-ten.column,
+  .offset-by-ten.columns          { margin-left: 86.6666666667%; }
+  .offset-by-eleven.column,
+  .offset-by-eleven.columns       { margin-left: 95.3333333333%; }
+
+  .offset-by-one-third.column,
+  .offset-by-one-third.columns    { margin-left: 34.6666666667%; }
+  .offset-by-two-thirds.column,
+  .offset-by-two-thirds.columns   { margin-left: 69.3333333333%; }
+
+  .offset-by-one-half.column,
+  .offset-by-one-half.columns     { margin-left: 52%; }
+
+}
 
 /*==================================================*/
 /*                  General		                    */
 /*==================================================*/
 
 body {
-	background: rgb(150,150,150);
+	background: rgb(230,230,230);
 	color: rgb(70,70,70);
-	font-size: 14px;
+	font-size: 16px;
+	line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, h6 {
 	font-family: 'Raleway', sans-serif;
 	font-weight: 300;
+	margin-top: 0;
+	margin-bottom: 2rem;
+}
+
+h1 {font-size: 2.5rem; color: rgb(28,109,186); line-height: 1.1; letter-spacing: 0;}
+h2 {font-size: 2rem; color: rgb(28,109,186); line-height: 1.1; letter-spacing: 0;}
+h3 {font-size: 1.75rem; color: rgb(28,109,186); line-height: 1.1; letter-spacing: 0;}
+h4 {font-size: 1.5rem; line-height: 1.1; letter-spacing: 0;}
+h5 {font-size: 1.25rem; line-height: 1.1; letter-spacing: 0;}
+h6 {font-size: 1rem; line-height: 1.1; letter-spacing: 0;}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.5rem; }
+  h3 { font-size: 2.25rem; }
+  h4 { font-size: 2rem; }
+  h5 { font-size: 1.75rem; }
+  h6 { font-size: 1.5rem; }
 }
 
 p, .list {
 	font-family: 'EB Garamond', serif;
-}
-
-.clear {
-	clear: both;
-}
-
-.centered {
-	text-align: center;
-	margin: 0 auto;
+	margin-top: 0;
 }
 
 .greybg {
@@ -84,12 +165,46 @@ em, .italic {
 	font-style: italic;
 }
 
-.left {
+a {
+	color: rgb(28,109,186);
+	font-weight: 100;
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	text-decoration: underline;
+}
+
+/*================ Little Helpers ===============*/
+
+.row::after,
+.h-clear {
+	clear: both;
+	content: "";
+	display: table;
+}
+
+.h-centered {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.h-fleft {
 	float: left;
 }
 
-.right {
+.h-fright {
 	float: right;
+}
+
+.h-white {
+	color: rgb(255,255,255);
+}
+
+/*================= Special Styles =================*/
+
+.style-bl--red {
+	border-bottom: 4px solid rgb(203,44,52);
 }
 
 /*==================================================*/
@@ -99,44 +214,6 @@ em, .italic {
 /*												    */
 /*==================================================*/
 /*==================================================*/
-
-h1 {
-    font-size: 2.5em;
-    line-height: 1.1;
-    color: rgb(28,109,186);
-    padding: 1em;
-}
-
-h2 {
-	font-size: 2em;
-    line-height: 1.1;
-    color: rgb(28,109,186);
-    padding: 0.75em;
-}
-
-h4 {
-	font-size: 1.5em;
-    line-height: 1.1;
-    padding: 0.75em;
-}
-
-h5 {
-	font-size: 1.5em;
-	color: rgb(255,255,255);
-    line-height: 1.1;
-    padding: 0.75em;
-    background: rgb(28,109,186);
-}
-
-.img {
-	min-height: 15em;
-	max-height: 20em;
-}
-
-h1, h2, h3, h4, h5, .text p, .list {
-	padding-left: 1.25rem;
-	padding-right: 1.25rem;
-}
 
 /*==================================================*/
 /*                   Header                    		*/
@@ -204,6 +281,69 @@ h1, h2, h3, h4, h5, .text p, .list {
 	color: rgb(150,150,150);
 }
 
+@media (min-width: 550px) {
+	#header {
+		background: rgb(46, 74, 98);
+		width: 100%;
+		height: 80px;
+    	border-bottom: 10px solid rgb(28,109,186);
+    	padding: 0;
+	}
+	.logo {
+		float: left;
+		margin-left: 5%;
+		padding: 10px 2.5% 0 0;
+	}
+	.logo img {
+		height: 60px;	
+	}
+	/*================  Main Navigation  ===============*/
+
+	.nav-trigger {
+		display: none;
+	}
+	#nav {
+		position: relative;
+   		right: 0;
+   		margin: 0 auto;
+   		padding: 0;
+		text-align: center;
+		margin-left: 35%;
+		clear: none;
+		display: block;
+	}
+	#nav li {
+		list-style: none;
+   		float: left; 
+		height: 80px;
+   		display: block;
+   		transition: all 0.2s ease 0s;
+   		font-family: 'Raleway', sans-serif;
+   		font-size: 14pt;
+   		font-weight: 300;
+   		margin: 0;
+	}
+	#nav li:hover, #nav li:active {
+		background: rgb(255,255,255);
+		border-bottom: 10px solid rgb(203,44,52);
+		margin: 0;
+	}
+	#nav li a {
+		display: block;
+		text-decoration: none;
+		padding: 48px 20px 4px;
+		color: rgb(255,255,255);
+	}
+	#nav li a:hover, #nav li a:active {
+		color: rgb(150,150,150);
+	}
+	.nav--active {
+   		color: rgb(150,150,150) !important; 
+		background: rgb(255,255,255);
+		border-bottom: 10px solid rgb(203,44,52);
+	}
+}
+
 /*==================================================*/
 /*                 Content General                  */
 /*==================================================*/
@@ -211,73 +351,98 @@ h1, h2, h3, h4, h5, .text p, .list {
 #content {
 	width: 100%;
 	background: rgb(255,255,255);
+	padding: 2em 0;
 }
 
+@media (min-width: 550px) {
+	#content {
+		margin: 60px auto;
+		width: 65%;
+		background: rgb(255,255,255);
+	}
+}
+
+.img--portrait {
+	max-width: 100%;
+}
+
+.img--coat {
+	max-width: 60%;
+}
 /*=====================  Index  ====================*/
 
-.index {
+.index-link {
 	display: none;
+}
+
+@media (min-width: 550px) {
+	.index-link {
+		margin-bottom: 2em;
+		display: block;
+	}
+	.index-link p {
+		font-size: 0.9em;
+		font-family: 'Raleway', sans-serif;
+		font-weight: 300;
+		text-align: left;
+	}
+	.index-link a {		
+		color: rgb(150,150,150) !important;
+		text-decoration: none;	
+	}
+	.index-link a:hover,  .index-link a:hover {
+		color: rgb(100,100,100) !important;
+	}
+	.index-link a:visited {
+		color: rgb(150,150,150);
+	}
 }
 
 /*==================================================*/
 /*                     Modules                  	*/
 /*==================================================*/
 
-/*===================  Item List  ==================*/
-
-.itm-list {
-	width: 100%;
-}
-
-.itm-list__row {
-	border-bottom: 0.1em solid rgb(200,200,200);
-	clear: both;
-}
-
-.itm-list__row a {
+.title-link {
 	display: block;
 	font-size: 1.5em;
 	font-family: 'Raleway', sans-serif;
 	color: rgb(28,109,186);
 	font-weight: 100;
 	text-decoration: none;
-	line-height: 2;
+	margin-bottom: 0.5em;
 }
 
-.itm-list__row img {
-	height: 3em;
-	float: left;
-	padding: 0 30%;
+.title-link:hover, .title-link:active {
+	text-decoration: none;
 }
 
-.itm-list__row p {
-	display: none;
+@media (min-width: 550px) {
+	.title-link {		
+		margin-top: 0.5em;
+	}
 }
 
-.itm-list__row-col-1, .itm-list__row-col-2, .itm-list__row-col-3, .itm-list__row-col-4 {
-	float: left;
-	padding: 20px 0;
-}
-	
-.itm-list__row-col-1 {
-	width: 25%;
+/*===================  Item List  ==================*/
+
+.list-row {
+	border-top: 4px solid rgb(203,44,52);
+	border-bottom: 1px solid rgb(200,200,200);
+	margin-bottom: 3em;
 }
 
-.itm-list__row-col-2 {
-	width: 50%;
+.list-itm {
+	padding-bottom: 1em;
 }
 
-.itm-list__row-col-3 {
-	width: 75%;
+.list-itm img {
+	max-height: 10em;
+	margin: 0 auto;
 }
 
-.itm-list__row-col-4 {
-	width: 100%;
-}
-
-.itm-list__row-col-content {
-	padding-left: 1.25rem;
-	padding-right: 1.25rem;
+@media (min-width: 550px) {
+	.list-itm img {
+	margin: 0;	
+	}
 }
 
 /*======================  Text  ====================*/
@@ -287,7 +452,7 @@ h1, h2, h3, h4, h5, .text p, .list {
 }
 
 .text p {
-	font-size: 1.5em;
+	font-size: 1.25em;
 	line-height: 1.5em;
 	padding: 1em inherit;
 }
@@ -295,12 +460,22 @@ h1, h2, h3, h4, h5, .text p, .list {
 /*======================  List  ====================*/
 
 .list {
-	padding-top: 1em;
 	padding-bottom: 1em;
+	margin-bottom: 3em;	
+}
+
+@media (min-width: 550px) {
+	.list {
+		margin: 0;
+	}
+}
+
+.list ul {
+	padding-left: 0;
 }
 
 .list li {
-	font-size: 1.5em;
+	font-size: 1em;
 	line-height: 1.25em;
 	display: block;
 	padding: 0.85em 0;
@@ -346,41 +521,25 @@ h1, h2, h3, h4, h5, .text p, .list {
 
 .map__map {
 	width: 100%;
-	height: 160px;
+	height: 400px;
 }
 
+@media (min-width: 550px) {
+	.map__map {
+		height: 500px;
+	}
+}
 .map-info {
+	padding: 1rem;
 }
-
-.map-info h1 {
-	font-size: 22pt;
-	color: rgb(28,109,186);
-	font-weight: 300;
-	font-family: 'Raleway', sans-serif;
-}
-
-.map-info h2 {
-	font-size: 14pt;
-	color: rgb(28,109,186);	
-	margin: 0;
-	font-weight: 300;
-	font-family: 'Raleway', sans-serif;
-}
-
-.map-info a {
-	text-decoration: none;
-	color: rgb(203,44,52);
-}
-
-.map-info a:visited {
-	color: rgb(203,44,52);
+.map-info h6 {
+	margin-bottom: 0.25rem;
 }
 
 .map-info p {
-    font-size: 11pt;
+    font-size: 1rem;
     line-height: 1.6;
-    margin: 20px 0;
-    font-family: 'EB Garamond', serif;
+    margin-bottom: 1.5rem;
 }
 
 .map-info img {
@@ -396,15 +555,13 @@ h1, h2, h3, h4, h5, .text p, .list {
 #footer {
 	background: rgb(46,74,98);
 	width: 100%;
-	font-weight: 300;
 	margin-bottom: 0;
 	bottom: 0;
 	position: relative;
 }
 
 #footer p {
-	padding: 2em;
-	font-size: 1em;
+	padding: 2em;	
 }
 
 #footer p, #footer a, #footer a:visited {
@@ -412,6 +569,8 @@ h1, h2, h3, h4, h5, .text p, .list {
 	text-align: center;
 	color: rgb(255,255,255);	
 	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+	font-size: 0.75rem;
 }
 
 #footer a, #footer a:visited {
@@ -420,310 +579,4 @@ h1, h2, h3, h4, h5, .text p, .list {
 
 #footer a:hover {
 	text-decoration: underline;
-}
-
-
-/*=================================================*/
-/*=================================================*/
-/*												   */
-/*      Desktop Style (Large Screens < 1024px)     */
-/*												   */
-/*=================================================*/
-/*=================================================*/
-
-@media screen and (min-width: 48em) {
-
-/*==================================================*/
-/*                   Header                    		*/
-/*==================================================*/
-
-#header {
-	background: rgb(46, 74, 98);
-	width: 100%;
-	height: 122.5px;
-    border-bottom: 10px solid rgb(28,109,186);
-    padding: 0;
-}
-
-.logo {
-	float: left;
-	margin-left: 5%;
-	padding: 30px 2.5% 0 0;
-}
-
-.logo img {
-	height: 70px;	
-}
-
-/*================  Main Navigation  ===============*/
-
-.nav-trigger {
-	display: none;
-}
-
-#nav {
-	position: relative;
-   	right: 0;
-   	margin: 0 auto;
-   	padding: 0;
-	text-align: center;
-	margin-left: 35%;
-	clear: none;
-	display: block;
-}
-
-#nav li {
-	list-style: none;
-   	float: left; 
-	height: 122.5px;
-   	display: block;
-   	transition: all 0.2s ease 0s;
-   	font-family: 'Raleway', sans-serif;
-   	font-size: 14pt;
-   	font-weight: 300;
-   	margin: 0;
-}
-
-#nav li:hover, #nav li:active {
-	background: rgb(255,255,255);
-	border-bottom: 10px solid rgb(203,44,52);
-	margin: 0;
-}
-
-#nav li a {
-	display: block;
-	text-decoration: none;
-	padding: 88px 20px 16px;
-	color: rgb(255,255,255);
-}
-
-#nav li a:hover, #nav li a:active {
-	color: rgb(150,150,150);
-}
-
-.nav--active {
-   	color: rgb(150,150,150) !important; 
-	background: rgb(255,255,255);
-	border-bottom: 10px solid rgb(203,44,52);
-}
-
-/*==================================================*/
-/*                 Content General                  */
-/*==================================================*/
-
-#content {
-	margin: 60px auto;
-	width: 65%;
-	background: rgb(255,255,255);
-}
-
-/*================      Index      ===============*/
-
-.index {
-	margin: 2em;
-	display: inline-block;
-}
-
-.index-link {
-	text-align: left;
-	color: rgb(150,150,150) !important;
-	font-size: 0.9em;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
-	text-decoration: none;	
-}
-
-.index-link:hover {
-	color: rgb(100,100,100) !important;
-}
-
-.index-link:visited {
-	color: rgb(150,150,150);
-}
-
-/*==================================================*/
-/*                Modular Parts                 	*/
-/*==================================================*/
-
-
-/*==================================================*/
-/*                 Item List                   		*/
-/*==================================================*/
-
-.itm-list {
-	margin: 5px 0;
-	padding: 10px 0;
-	display: inline-block;
-	border-bottom: 1px solid rgb(210,210,210);
-}
-
-.itm-list:hover {
-	background: rgb(240,240,240);
-}
-
-
-.itm-list-cola {
-	width: 30%;
-	float: left;
-}
-
-.itm-list-cola img {
-	max-width: 100px;
-}
-
-.itm-list-colb {
-	width: 70%;
-	float: right;
-}
-
-.itm-list-colb h3 a {
-	font-size: 16pt;
-	color: rgb(28,109,186);
-	text-decoration: none;
-	font-family: 'Raleway', sans-serif;
-	line-height: 2;
-}
-
-.itm-list-colb h3 a:hover {
-	border-bottom: 1px solid rgb(28,109,186);
-}
-
-.itm-list-colb p {
-	font-size: 12pt;
-	line-height: 1.4;
-	margin: 10px 0;
-	display: block;
-}
-
-/*================== Buchquelle ====================*/
-
-.booksource {
-	background: rgb(240,240,240);
-	min-height: 180px;
-	margin: 20px 0px;
-	padding: 2.5%;
-	width: 95%;
-	border-bottom: 10px solid rgb(203,44,52);
-}
-
-.booksource p {
-	font-size: 11pt;
-	color: rgb(160,160,160);
-	line-height: 1.4;
-	margin: 0;
-	font-family: 'EB Garamond', serif;
-}
-
-.booksource a {
-	color: rgb(203,44,52);
-	text-decoration: none;
-    border-bottom: 1px dotted rgb(203,44,52);
-}
-
-.booksource a:hover {
-	color: rgb(203,44,52);
-	border-bottom: 1px solid rgb(203,44,52);
-}
-
-.booksource img {
-	margin-right: 20px;
-	float: left;
-	height: 180px;
-}
-
-
-/*==================================================*/
-/*                  Map Styles                 		*/
-/*==================================================*/
-
-/*=============== Overview Places ==================*/
-
-#map {
-	width: 100%;
-	height: 500px;
-}
-
-.map_info {
-	margin: 20px;
-}
-
-.map_info h1 {
-	font-size: 22pt;
-	color: rgb(28,109,186);
-	font-weight: 300;
-	font-family: 'Raleway', sans-serif;
-}
-
-.map_info h1:hover{
-	color: rgb(150,150,150);
-}
-
-.map_info h2 {
-	font-size: 14pt;
-	color: rgb(28,109,186);	
-	margin: 0;
-	font-weight: 300;
-	font-family: 'Raleway', sans-serif;
-}
-
-.map_info a {
-	text-decoration: none;
-	color: rgb(203,44,52);
-}
-
-.map_info a:hover {
-	color: rgb(150,150,150);
-}
-
-.map_info a:visited {
-	color: rgb(203,44,52);
-}
-
-.map_info p {
-    font-size: 11pt;
-    line-height: 1.6;
-    margin: 20px 0;
-    font-family: 'EB Garamond', serif;
-}
-
-.map_info img {
-	float: right;
-	margin-left: 20px;
-	max-height: 125px;
-}
-
-/*==================================================*/
-/*                   Footer                    		*/
-/*==================================================*/
-
-#footer {
-	background: rgb(46, 74, 98);
-	width: 100%;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
-	margin-bottom: 0;
-	padding: 20px 0;
-	bottom: 0;
-	position: relative;
-}
-
-#footer a:link, footer a:visited {
-	font-size: 10pt;
-	line-height: 20px;
-	text-align: center;
-	color: rgb(255,255,255);
-	text-decoration: none;
-}
-
-#footer a:hover {
-	text-decoration: underline;
-}
-
-#footer p {
-	font-size: 10pt;
-	line-height: 20px;
-	text-align: center;
-	color: rgb(255,255,255);
-}
-
 }

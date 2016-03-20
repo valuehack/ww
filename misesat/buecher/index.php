@@ -9,28 +9,27 @@
 
 <!--Content-->
 
-    <div id="content">
-      <article>
-      	
+    <div id="content">      	
 <?
 	$sql_buch = $pdocon->db_connection->prepare("SELECT * from buecher order by id asc");
     $sql_buch->execute();
 	$result_buch = $sql_buch->fetchAll();
 	
 	$sql_art = $pdocon->db_connection->prepare("SELECT * from artikel order by id asc");
-	$sql_art->execute();	
+	$sql_art->execute();
     $result_art = $sql_art->fetchAll();
 	
 ?>
-      	<div class="index"><a class="index-link" href="">Mises Austria</a> / <a class="index-link" href="">B&uuml;cher</a></div>
-      
-      	<h1>B&uuml;cher</h1>
+      	<div class="container index-link"><a href="">Mises Austria</a> / <a href="">B&uuml;cher</a></div>
+      	<div class="container">
+      		<h1>B&uuml;cher</h1>
+      	</div>
       	
-      		<div class="itm-list">
+      	<div class="container">
 <?php
 	for ($i = 0; $i < count($result_buch); $i++)
 	{
-		$id_buch = $result_buch[$i]['id']; 
+		$id_buch = $result_buch[$i]['id'];
         $title_buch = $result_buch[$i]['titel'];
   		$autor_buch = $result_buch[$i]['autor'];
   		$lang_buch = $result_buch[$i]['sprache'];
@@ -38,27 +37,28 @@
   		
 		?>      	
 
-				<div class="itm-list__row">
-					<div class="itm-list__row-col-4">
-						<div class="itm-list__row-col-content">							
-							<a href="<?=$link_buch?>"><?=$title_buch?></a>	
-							<span class="subinfo"><?=$autor_buch?></span> 
-						</div>
+			<div class="row">
+				<div class="twelve columns">
+					<div class="list-itm">							
+						<a class="title-link" href="<?=$link_buch?>"><?=$title_buch?></a>	
+						<span class="subinfo"><?=$autor_buch?></span> 
 					</div>
 				</div>
+			</div>
 		<?
 	}
 ?>   
-			</div>
-			<div class="clear"></div>
+		</div>
 			
-      	<h1>Artikel</h1>
-      	
-      		<div class="itm-list">
+		<div class="container">
+      		<h1>Artikel</h1>
+      	</div>
+      	<div class="container">
+      		
 <?php
 	for ($i = 0; $i < count($result_art); $i++)
 	{
-		$id_art = $result_art[$i]['id']; 
+		$id_art = $result_art[$i]['id'];
         $title_art = $result_art[$i]['titel'];
   		$autor_art = $result_art[$i]['autor'];
   		$lang_art = $result_art[$i]['sprache'];
@@ -66,10 +66,10 @@
   		
 		?>      	
 
-				<div class="itm-list__row">
-					<div class="itm-list__row-col-4">
-						<div class="itm-list__row-col-content">							
-							<a href="<?=$link_art?>"><?=$title_art?></a>	
+				<div class="row">
+					<div class="twelve columns">
+						<div class="list-itm">							
+							<a class="title-link" href="<?=$link_art?>"><?=$title_art?></a>	
 							<span class="subinfo"><?=$autor_art?></span> 
 						</div>
 					</div>
@@ -77,9 +77,7 @@
 		<?
 	}
 ?>   
-			</div>
-			<div class="clear"></div>          	
-	  </article>
+		</div>        	
 	</div>
 <?	
 	include "../page/footer.inc.php";
