@@ -1,25 +1,34 @@
 <? 
-	require_once "../../config/config.php";
-	include "../config/db.php";
-
+	include "../config/header1.inc.php";
+	
 	$title="Orte";
 
 	include "../page/header2.inc.php";
 	
 if(isset($_GET['q']))
 {
-  $id = $_GET['q'];
+	$id = $_GET['q'];
 
-  //Autorendetails
-  $sql = $pdocon->db_connection->prepare("SELECT * from orte WHERE id='$id'");
-  $sql->execute();
-  $result = $sql->fetchAll();
+  	$orte_info = $general->getOrteInfo($id);
 
-  $name = $result[0]['name'];
-  $text = $result[0]['text'];
-  $img = $result[0]['img'];
-  $denker = $result[0]['denker'];
-      
+  	$name = $orte_info->name;
+  	$text = $orte_info->text;
+  	$img = $orte_info->img;
+  	$denker = $orte_info->denker;
+		
+	$denker_links = "";
+	$denker_links2 = "";
+	$denker_list = explode(", ", $denker);
+
+	foreach ($denker_list as $key => $denker_id) {
+		$denker_info = $general->getDenkerInfo($denker_id);
+		if (count($denker_list) > 1 && count($denker_list) != $key+1) {
+			$denker_links = $denker_links.'<a href="../denker/index.php?q='.$denker_info->id.'">'.$denker_info->name.'</a>, ';
+		}
+		else {
+			$denker_links = $denker_links.'<a href="../denker/index.php?q='.$denker_info->id.'">'.$denker_info->name.'</a>';
+		}   
+	}   
 ?>
 <!--Orte-->
 <!--Content-->
@@ -47,14 +56,14 @@ if(isset($_GET['q']))
       	</div>
       	<div class="container text">
       			<h5>Denker die in <?=$name?> gelebt oder gewirkt haben</h5>
-				<p><?=$denker?></p>   	
+				<p><?=$denker_links?></p>   	
        </div>
     </div>
 <?php
 }
 else {
 			
-    $sql = $pdocon->db_connection->prepare("SELECT * from orte order by id asc");
+    $sql = $general->db_connection->prepare("SELECT * from orte order by id asc");
 	$sql->execute();
     $result = $sql->fetchAll();
    
@@ -69,7 +78,7 @@ else {
     		<noscript><b>Um unsere Kartenanwendung zu nutzen ben&ouml;tigen Sie JavaScript.</b> 
      		JavaScript scheint in Ihrem Browser deaktiviert zu sein oder wird von diesem nicht unterst&uuml;tzt. 
      	 	Um unsere Kartenansischt sehen k&oouml;nnen, aktivieren Sie bitte JavaScript.
-    		</noscript>
+    		</noscript>   		
     	</div>
     	<div class="map">
 			<div id="map" class="map__map"></div>
@@ -97,17 +106,31 @@ else {
 <?php
 	for ($i = 0; $i < count($result); $i++)
 	{
-		$id = $result[$i]['id']; 
+		$id = $result[$i]['id'];
 		$n = $result[$i]['n'];
         $name = $result[$i]['name'];
   		$text = $result[$i]['text'];
   		$img = $result[$i]['img'];
-  		$denker = $result[$i]['denker'];
 		$lat = $result[$i]['lat'];
 		$lng = $result[$i]['lng'];
+		$denker = $result[$i]['denker'];
+		
+		$denker_links = "";
+		$denker_links2 = "";
+		$denker_list = explode(", ", $denker);
+
+		foreach ($denker_list as $key => $denker_id) {
+			$denker_info = $general->getDenkerInfo($denker_id);
+			if (count($denker_list) > 1 && count($denker_list) != $key+1) {
+				$denker_links = $denker_links.'<a href="../denker/index.php?q='.$denker_info->id.'">'.$denker_info->name.'</a>, ';
+			}
+			else {
+				$denker_links = $denker_links.'<a href="../denker/index.php?q='.$denker_info->id.'">'.$denker_info->name.'</a>';
+			}
+		}
      ?> 
         		 			
-		var info = '<div class="map-info"><a href="index.php?q=<?=$id?>"><h2><?=$name?></h2></a><img src="<?=$img?>" alt="."><p><?=substr($text, 0, 180)?> ... <a href="index.php?q=<?=$id?>">Mehr</a></p><h6>Denker die hier gelebt und gewirkt haben</h6><p><?=$denker?></p></div>';
+		var info = '<div class="map-info"><a href="index.php?q=<?=$id?>"><h2><?=$name?></h2></a><img src="<?=$img?>" alt="."><p><?=substr($text, 0, 180)?> ... <a href="index.php?q=<?=$id?>">Mehr</a></p><h6>Denker die hier gelebt und gewirkt haben</h6><p><?=$denker_links?></p></div>';
 			
         var marker = new google.maps.Marker({
          	position: {lat: <?=$lat?>, lng: <?=$lng?>},
