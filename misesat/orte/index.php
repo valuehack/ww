@@ -17,7 +17,6 @@ if(isset($_GET['q']))
   	$denker = $orte_info->denker;
 		
 	$denker_links = "";
-	$denker_links2 = "";
 	$denker_list = explode(", ", $denker);
 
 	foreach ($denker_list as $key => $denker_id) {
@@ -63,7 +62,7 @@ if(isset($_GET['q']))
 }
 else {
 			
-    $sql = $general->db_connection->prepare("SELECT * from orte order by id asc");
+    $sql = $general->db_connection->prepare("SELECT * FROM orte ORDER by id asc");
 	$sql->execute();
     $result = $sql->fetchAll();
    
@@ -116,7 +115,6 @@ else {
 		$denker = $result[$i]['denker'];
 		
 		$denker_links = "";
-		$denker_links2 = "";
 		$denker_list = explode(", ", $denker);
 
 		foreach ($denker_list as $key => $denker_id) {

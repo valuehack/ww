@@ -7,6 +7,7 @@
     	<!--[if IE]>
       		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     	<![endif]-->
+    	<link rel="sytlesheet" href="../style/normalize.css">
     	<link rel="stylesheet" href="../style/style.css">
     	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300|EB+Garamond' rel='stylesheet' type='text/css'>
     	<title>Willkommen | mises.at</title>
@@ -163,6 +164,8 @@ Es ist eines seiner leidenschaftlichsten B&uuml;cher: Mises zeigt auf, welche ve
 Mises begr&uuml;ndet als Essenz seines Lebenswerkes noch einmal in aller Klarheit die Alternative einer realistischen &Ouml;konomik als Wissenschaft vom menschlichen Handeln, abseits ideologischer Spekulation und pseudowissenschaftlicher Allmachtsanspr&uuml;che.
 Diese b&uuml;ndige, aber tiefgehende Darstellung der Irrwege moderner Wirtschaftswissenschaft und einer alternativen Perspektive, die dem Menschen in seiner Komplexit&auml;t und W&uuml;rde wirklich gerecht wird, k&ouml;nnte der Keim eines dringend n&ouml;tigen &ouml;konomischen Umdenkens sein. </td></tr></table>
      
-	</div></body>
+	</div>			
+	
+	</body>
 </html>   
 
