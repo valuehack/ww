@@ -59,10 +59,14 @@
 			}
 				
 			include('../tools/form.php');
+
+
 			
 ?>
+
+
 		<div class="profil">
-		<form method="post" action="<?=htmlspecialchars('../zahlung/index.php?q=user_info');?>">
+		<form method="post" action="<?=htmlspecialchars('../zahlung/index.php?q=summary');?>">
 <?php			
 		if ($event_type === 'seminar') {
 ?>		
@@ -77,6 +81,8 @@
 		  		if ($spots_available >= 5){echo '<option value="5">5</option>';}
 		  		?>
 		  	</select>
+		    <input type="hidden" name="profile[level]" value="3"> 
+
 <?php
 		}
 		if ($event_type === 'projekt') {

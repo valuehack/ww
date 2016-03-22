@@ -349,22 +349,290 @@ class Registration
 
     }#end of constructor
 
-    public function processSofortSuccess($profile)
+    private function addNewUser($profile)
+    {
+        #simple function to add a new entry in mitgliederEXT
+
+        $this->databaseConnection();
+
+        $qry_new_user = $this->db_connection->prepare(
+        'INSERT INTO mitgliederExt (
+            user_email, 
+            Mitgliedschaft, 
+            first_reg, 
+            user_registration_ip, 
+            user_registration_datetime) 
+        VALUES(
+            :user_email, 
+            :Mitgliedschaft, 
+            :first_reg, 
+            :user_registration_ip, 
+            now())');
+
+        $qry_new_user->bindValue(':user_email', $profile['user_email'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':first_reg', $profile['first_reg'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':Mitgliedschaft', $profile['level'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
+        $qry_new_user->execute();
+
+        $user_id = $this->db_connection->lastInsertId();
+        $_SESSION['profile']['user_id'] = $user_id;
+
+    }
+
+    public function addPersonalDataGeneric($profile)
+    {  
+
+        #from now on use this function only to update the generic user profile info to grey user db
+        #use extra helper function for extra actions
+        #consider one big sql query vs many small...
+
+        ### DO NOT ADD EXTRA FIELDS FOR DB UPDATE IN HERE. USE SEPARATE FUNCTIONS, so it would not break other instances depending on this function.  
+
+        /*Anrede = :anrede,
+        Vorname = :name,
+        Nachname = :surname,
+        Telefon = :telefon,
+        Strasse = :street,
+        PLZ = :plz,
+        Ort = :city,
+        Land = :country,
+        first_reg = :first_reg*/
+
+        $update_profile_query = $this->db_connection->prepare(
+        "UPDATE mitgliederExt   
+            SET Anrede = :anrede,
+                Vorname = :name,
+                Nachname = :surname,
+                Telefon = :telefon,
+                Strasse = :street,
+                PLZ = :plz,
+                Ort = :city,
+                Land = :country,
+                first_reg = :first_reg
+          WHERE user_email = :user_email"
+        );
+
+        $update_profile_query->bindValue(':anrede', $profile['user_anrede'], PDO::PARAM_STR);
+        $update_profile_query->bindValue(':name', $profile['user_first_name'], PDO::PARAM_STR);
+        $update_profile_query->bindValue(':surname', $profile['user_surname'], PDO::PARAM_STR);
+        $update_profile_query->bindValue(':telefon', $profile['user_telefon'], PDO::PARAM_STR);
+        $update_profile_query->bindValue(':street', $profile['user_street'], PDO::PARAM_STR);
+        $update_profile_query->bindValue(':plz', $profile['user_plz'], PDO::PARAM_STR);
+        $update_profile_query->bindValue(':city', $profile['user_city'], PDO::PARAM_STR);
+        $update_profile_query->bindValue(':country', $profile['user_country'], PDO::PARAM_STR);
+        $update_profile_query->bindValue(':first_reg', $profile['first_reg'], PDO::PARAM_STR);
+        $update_profile_query->bindValue(':user_email', $profile['user_email'], PDO::PARAM_STR);
+
+        $update_profile_query->execute();
+
+    }
+
+    
+    #private function returnConfirmationAndPasswordBody($profile)
+
+
+    private function sendConfirmationAndPasswordEmail($profile)
+    {
+        #generate a new password
+        $user_password = $this->randomPasswordGenerator();
+
+        #get email body
+
+        $subject = "testing";
+        $body = 
+        "Hi!<br>
+        This is a body of an email!<br>"
+        .$user_password;
+
+        #send email
+        $this->sendEmail('info@scholarium.at', 'scholarium', $profile[user_email], $subject, $body);
+
+        #write the password to the db
+            #if failed to send an email delete the entry in the db
+            #it would delete other info too. so dont delete. 
+
+        #encrypt password for storage in the database, so no one would see it in plain text
+        $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => $hash_cost_factor));
+
+    }
+
+    private function giveCredits($credits, $user_email)
+    {
+        #adds more credits to given user email
+
+        $give_credits_qry = $this->db_connection->prepare(
+        "UPDATE mitgliederExt   
+            SET credits_left = credits_left+:credits
+          WHERE user_email = :user_email"
+        );
+
+        $give_credits_qry->bindValue(':credits', $credits, PDO::PARAM_INT);
+        $give_credits_qry->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+
+        $give_credits_qry->execute();
+
+    }
+
+    private function registerSeminar($profile, $product)
     {
 
-            $_SESSION["profile"] = $profile;
+        #must have user_id at this point
+        #check if user_id exists as it is needed for the function
+        #give a person credits and membership
 
-            $user_email = $profile[user_email];
-            $this->subscribeNewUser($user_email);
+        #updates registration db
+        $reg_query = $this->db_connection->prepare(
+            'INSERT INTO registration (
+                event_id, 
+                user_id, 
+                quantity, 
+                reg_datetime ) 
+            VALUES (
+                :event_id, 
+                :user_id, 
+                :quantity, 
+                NOW())');
+        
+        $reg_query->bindValue(':event_id', $product['event_id'], PDO::PARAM_INT);
+        $reg_query->bindValue(':user_id', $_SESSION['profile']['user_id'], PDO::PARAM_STR);
+        $reg_query->bindValue(':quantity', $product['quantity'], PDO::PARAM_INT);
+        $reg_query->execute();
 
-            if ($this->registration_successful){
+        #updates produkte, increases spots sold by the quantity bought
+        $qry_spots_sold = $this->db_connection->prepare(
+            "UPDATE produkte 
+             SET spots_sold = spots_sold+:spot 
+             WHERE n LIKE :event_id");
+
+        $qry_spots_sold->bindValue(':spot', $product['quantity'], PDO::PARAM_INT);
+        $qry_spots_sold->bindValue(':event_id', $product['event_id'], PDO::PARAM_INT);
+        $qry_spots_sold->execute();
+
+        #gives user extra credits
+        #seminar registration get 25 = 150 - 125
+        $this->giveCredits(25, $profile['user_email']);
+
+    }
+
+    public function registerProjekt($profile, $product)
+    {
+
+        #$product['payment_total'] becomes quantity and spots sold respectively, because it is projekt
+
+        $reg_projekt_qry = $this->db_connection->prepare(
+            'INSERT INTO registration (
+                event_id, 
+                user_id, 
+                quantity, 
+                reg_datetime ) 
+            VALUES (
+                :event_id, 
+                :user_id, 
+                :quantity, 
+                NOW())');
+        $reg_projekt_qry->bindValue(':event_id', $product['event_id'], PDO::PARAM_INT);
+        $reg_projekt_qry->bindValue(':user_id', $_SESSION['profile']['user_id'], PDO::PARAM_INT);
+        $reg_projekt_qry->bindValue(':quantity', $product['payment_total'], PDO::PARAM_INT);
+        $reg_projekt_qry->execute();
+
+
+        #in projekte spots sold are incremented by total payment amount 
+        $spots_qry = $this->db_connection->prepare(
+            "UPDATE produkte 
+            SET spots_sold = spots_sold+:donation 
+            WHERE n LIKE :event_id");
+        $spots_qry->bindValue(':donation', $product['payment_total'], PDO::PARAM_INT);
+        $spots_qry->bindValue(':event_id', $product['event_id'], PDO::PARAM_INT);
+        $spots_qry->execute();
+
+    }
+
+    public function registerUpgrade($profile, $product)
+    {
+        #note when user has upgraded, keep the log of upgrades
+        #use registration db???
+
+    }
+
+
+    public function processSofortSuccess()
+    {
+
+        #because user has confirmed their email address and made a payment,
+        #it will be assumed that email is correct 
+        #note: set membership level here - 
+
+        $profile = $_SESSION['profile'];
+        $product = $_SESSION['product'];
+
+        #write user data to the database
+        $this->addNewUser($profile);
+        $this->addPersonalDataGeneric($profile);
+        
+        #commented out not to pollute with emails
+        // $this->sendConfirmationAndPasswordEmail($profile); 
+
+        #register for appropriate events
+
+        switch ($_SESSION['passed_from']) 
+        {
+            case 'seminar':
+
+                $this->registerSeminar($profile, $product);
+                break;
+
+            case 'projekt':
+                $this->registerProjekt($profile, $product);
+                break;
+
+            case 'upgrade':
+                $this->registerUpgrade($profile, $product);
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        
+
+        #generate a password and send an email with successful registration message, password
+
+
+        #redirect to a success page
+
+            // $_SESSION["profile"] = $profile;
+
+            // $user_email = $profile[user_email];
+            // $this->subscribeNewUser($user_email);
+
+            // if ($this->registration_successful){
                 
-                // it sends betrag additionally, but not necessary as betrag was added later and done in a rush to make it working. change it! 
-                $this->addPersonalDataForUserReg($profile, $profile[betrag]);
+            //     // it sends betrag additionally, but not necessary as betrag was added later and done in a rush to make it working. change it! 
+            //     $this->addPersonalDataForUserReg($profile, $profile[betrag]);
                 
-                // uncomment for production
-                #$this->sendNewPayingUserEmailToInstitute($user_email);
-            }
+            //     // uncomment for production
+            //     #$this->sendNewPayingUserEmailToInstitute($user_email);
+            // }
+
+        #header('Location: success.php');
+    }
+
+    public function addPaymentData($zahlung, $email)
+    {  
+
+    $update_payment_query = $this->db_connection->prepare(
+    "UPDATE grey_user   
+        SET Zahlungsart = :zahlung
+      WHERE user_email = :user_email"
+    );
+
+    $update_payment_query->bindValue(':zahlung', $zahlung, PDO::PARAM_STR);
+    $update_payment_query->bindValue(':user_email', $email, PDO::PARAM_STR);
+
+    $update_payment_query->execute();
+
     }
 
     /**
@@ -696,68 +964,6 @@ class Registration
      
     }
 
-    #from now on use this function only to update the generic user profile info to grey user db
-    #use extra helper function for extra actions
-    #consider one big sql query vs many small...
-    public function addPersonalDataGeneric($profile)
-    {  
-
-      ### DO NOT ADD EXTRA FIELDS FOR DB UPDATE IN HERE. USE SEPARATE FUNCTIONS!!!  
-
-    /*Anrede = :anrede,
-    Vorname = :name,
-    Nachname = :surname,
-    Telefon = :telefon,
-    Strasse = :street,
-    PLZ = :plz,
-    Ort = :city,
-    Land = :country,
-    first_reg = :first_reg*/
-
-    $update_profile_query = $this->db_connection->prepare(
-    "UPDATE grey_user   
-        SET Anrede = :anrede,
-            Vorname = :name,
-            Nachname = :surname,
-            Telefon = :telefon,
-            Strasse = :street,
-            PLZ = :plz,
-            Ort = :city,
-            Land = :country,
-            first_reg = :first_reg
-      WHERE user_email = :user_email"
-    );
-
-    $update_profile_query->bindValue(':anrede', $profile[user_anrede], PDO::PARAM_STR);
-    $update_profile_query->bindValue(':name', $profile[user_first_name], PDO::PARAM_STR);
-    $update_profile_query->bindValue(':surname', $profile[user_surname], PDO::PARAM_STR);
-    $update_profile_query->bindValue(':telefon', $profile[user_telefon], PDO::PARAM_STR);
-    $update_profile_query->bindValue(':street', $profile[user_street], PDO::PARAM_STR);
-    $update_profile_query->bindValue(':plz', $profile[user_plz], PDO::PARAM_STR);
-    $update_profile_query->bindValue(':city', $profile[user_city], PDO::PARAM_STR);
-    $update_profile_query->bindValue(':country', $profile[user_country], PDO::PARAM_STR);
-    $update_profile_query->bindValue(':first_reg', $profile[first_reg], PDO::PARAM_STR);
-    $update_profile_query->bindValue(':user_email', $profile[user_email], PDO::PARAM_STR);
-
-    $update_profile_query->execute();
-
-    }
-    
-    public function addPaymentData($zahlung, $email)
-    {  
-
-    $update_payment_query = $this->db_connection->prepare(
-    "UPDATE grey_user   
-        SET Zahlungsart = :zahlung
-      WHERE user_email = :user_email"
-    );
-
-    $update_payment_query->bindValue(':zahlung', $zahlung, PDO::PARAM_STR);
-    $update_payment_query->bindValue(':user_email', $email, PDO::PARAM_STR);
-
-    $update_payment_query->execute();
-
-    }
 
     #-------------------------------------
     #sendgrid
@@ -1218,7 +1424,7 @@ class Registration
                 <br><br>
                 Wir haben die gew&uuml;nschten Pl&auml;tze f&uuml;r Sie reserviert.<br>
                 <br>
-                Die Zahlungvon 5&euro; pro Teilnehmer erfolgt am Abend des Salons vor Ort im Scholarium.<br>
+                Die Zahlung von 5&euro; pro Teilnehmer erfolgt am Abend des Salons vor Ort im Scholarium.<br>
                 <br>
                 Wir freuen uns darauf Sie kennenzulernen oder wiederzusehen.<br>
                 <br>
@@ -1466,5 +1672,46 @@ class Registration
                 $this->errors[] = MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL;
             }
         }
+    }
+
+    private function sendEmail($from, $fromname, $to, $subject, $body) 
+    {
+        
+    /*
+     * $from = where should the email be comming from? normally info@scholarium.at, however maybe somedays from somewhere else to, stay flexible
+     * $fromname = name of the source of the email. normally scholarium but who knows?
+     * $to = who should the email be send to? user email or info@scholarium.at
+     * $body = to be constructed in the functions above
+     */
+
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => $to,
+            'subject' => $subject,
+            'html' => $body,
+            'from' => $from,
+            'fromname' => $fromname
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+        $response = curl_exec($ch);
+
+        if(empty($response))
+        {
+            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+            return false;
+        }
+        else
+        {
+            $json = json_decode($response);
+            return true;
+        }
+
+        curl_close($ch);
+        
     }
 }

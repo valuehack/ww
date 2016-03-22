@@ -57,19 +57,19 @@
           <div class="">
           	<p>W&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>  				  
 		  	<input type="radio" class="profil_radio" name="profile[payment_option]" value="sofort" required><span class="profil_radio_label">SOFORT</span><br>
-      	  	<input type="radio" class="profil_radio" name="profile[payment_option]" value="paypal"><span class="profil_radio_label">PayPal</span><br>	  
+      	<input type="radio" class="profil_radio" name="profile[payment_option]" value="paypal"><span class="profil_radio_label">PayPal</span><br>	  
 		  </div> 
 		  <!-- end payment options -->
 
 		  <!-- hidden fields -->
-		  <input type="hidden" name="amount" value="20">
+		  <!-- <input type="hidden" name="amount" value="20"> -->
 
           <!-- general -->
       	        	  
-      	  <?php
-      	  #swich first_reg
-      	  switch ($passed_from){
-		  	case 'open_salon':
+      <?php
+      #swich first_reg
+      switch ($passed_from){
+		  case 'open_salon':
 		  		$first_reg = 'opensalon_'.$event_id;
 				break;
 			case 'seminar':
@@ -92,7 +92,7 @@
 <?php	
 		 if (isset($passed_from)) {
 ?>
-         <input type="hidden" name="passed_from" value="<?=$passed_from?>">
+     <input type="hidden" name="passed_from" value="<?=$passed_from?>">
 		 <input type="hidden" name="product[event_id]" value="<?=$_SESSION['product']['event_id']?>">
 		 <input type="hidden" name="product[quantity]" value="<?=$_SESSION['product']['quantity']?>">
 		 <input type="hidden" name="profile[level]" value="<?=$level?>">

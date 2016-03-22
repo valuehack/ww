@@ -22,7 +22,9 @@
 		
 		$pass_to = 'payment_submit';
 		$action = htmlspecialchars('index.php?q=summary');
+		// payment_submit
 		
+		#include the form
 		include('../tools/form.php');
 	
 		echo '</div>';
@@ -59,12 +61,17 @@
 		$product_info = $general->getProduct($event_id);
 		$event_date = $general->getDate($product_info->start, $product_info->end);
 
-		if ($passed_from === 'seminar') {
+		if ($passed_from === 'seminar') 
+		{
 			$total = $quantity*$product_info->price;
 			$membership = 'Teilnehmer';
+			$level = 3;
+
 		}
+
 		if ($passed_from === 'projekt' || $passed_from === 'upgrade') {
-			switch($level) {
+			switch($level) 
+			{
 				case 3: $total = 150; $membership ='Teilnehmer'; break;
 				case 4: $total = 300; $membership ='Scholar'; break;
 				case 5: $total = 600; $membership ='Partner'; break;
@@ -72,7 +79,11 @@
 				case 7: $total = 2400; $membership ='Ehrenpr&auml;sident'; break;
 				default: $total = 75; $membership ='Gast'; break;
 			}
+
 		}
+
+		#set total and level values to session vars
+		$_SESSION['product']['payment_total'] = $total;
 		
 		$now = date('d.m.Y', time());
 			
@@ -216,7 +227,7 @@
 								<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 								<form method="post" action="<?=htmlentities('index.php')?>">
 									<input type="submit" class="profil_inputbutton" name="change_info_submit" value="Angaben &auml;ndern">
-    	 							<input type="submit" class="profil_inputbutton" name="confirmed_submit" value="Verbindlich bestellen" disabled>
+    	 							<input type="submit" class="profil_inputbutton" name="confirmed_submit" value="Verbindlich bestellen">
 								</form>
 							</div>
 						</div>				
@@ -224,6 +235,11 @@
 				</div>
 			</div>		
 		</div>
+
+<?php  
+#testing
+print_r($_SESSION);
+?>
 <?php
 	}
 		

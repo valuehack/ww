@@ -10,7 +10,7 @@
  * @license http://opensource.org/licenses/MIT MIT License
  */
 
-// check for minimum PHP version
+# check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
     echo PHP_VERSION;
     exit('Sorry, this script does not run on a PHP version smaller than 5.3.7 !');
@@ -19,7 +19,7 @@ if (version_compare(PHP_VERSION, '5.3.7', '<')) {
     // (this library adds the PHP 5.5 password hashing functions to older versions of PHP)
     require_once('../libraries/password_compatibility_library.php');
 }
-// include the config
+# include the config
 require_once('../config/config.php');
 
 // include the to-be-used language, english by default. feel free to translate your project and include something else
@@ -33,7 +33,6 @@ require_once('../classes/General.php');
 require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
 require_once('../classes/Email.php');
-require_once('../classes/Transaction.php');
 
 $general = new General();
 
@@ -43,9 +42,9 @@ $login = new Login();
 //TODO Login and Email don't work together because of header send issues. It might be better to generate the email object wihtin he other functions to avoid this
 $email = new Email();
 $registration = new Registration();
-$transaction = new Transaction();
 
-
+# includes transaction script that redirects to payment provider
+require_once('../tools/transaction.php');
 
 
 // ... ask if we are logged in here:
@@ -63,4 +62,7 @@ else {
     // echo "hello";
     #include("views/header2.inc.php");
     
+
+    #set vars here for the form 
+    #
 }
