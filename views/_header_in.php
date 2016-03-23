@@ -141,7 +141,7 @@ while ($entry = mysql_fetch_array($result))
             $Mitgliedschaft = 'Beirat';
             break;
         default: 
-            $Mitgliedschaft = 'Ehrenpr&auml;sident';
+            $Mitgliedschaft = 'Patron';
             break;
         }
 	$mitgliedschaft = $entry[Mitgliedschaft];

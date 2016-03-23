@@ -179,11 +179,11 @@ include('_header_in.php');
         $op6 = $op6.'<div id="op6" class="pay_option_box pay_option_box6">
             <table>
                 <tr><th rowspan="3">
-                    <h1>Ehrenpr&auml;sident</h1>
+                    <h1>Patron</h1>
                     <h2>200&euro;/Monat</h2>
                 </th>
                 <td class="pay_option_box_td_m">
-                    <p>Vielleicht w&auml;re das ja eine Aufgabe f&uuml;r Sie? Als Ehrenpr&auml;sident leisten Sie einen Beitrag, der das nachhaltige Bestehen des scholarium sichert. Ehrenpr&auml;sidenten sind unsere VIPs: Keine falsche Elite mit Anspr&uuml;chen, sondern eine wahre mit &uuml;berdurchschnittlicher Leistungs- und Verantwortungsbereitschaft.</p>
+                    <p>Vielleicht w&auml;re das ja eine Aufgabe f&uuml;r Sie? Als Patron leisten Sie einen Beitrag, der das nachhaltige Bestehen des scholarium sichert. Patrone sind unsere VIPs: Keine falsche Elite mit Anspr&uuml;chen, sondern eine wahre mit &uuml;berdurchschnittlicher Leistungs- und Verantwortungsbereitschaft.</p>
                 </td>
                 </tr><tr>
                 <td>
@@ -196,8 +196,8 @@ include('_header_in.php');
                 <td class="pay_option_form" colspan="2">
                     <form method="post" action="zahlung.php">
                         <input type="hidden" name="betrag" value="2400">
-                        <input type="hidden" name="level" value="Ehrenpr&auml;sident">
-                        <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Ehrenpr&auml;sident">
+                        <input type="hidden" name="level" value="Patron">
+                        <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Patron">
                     </form>   
                 </td>
                 </tr>

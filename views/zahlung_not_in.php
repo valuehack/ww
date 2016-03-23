@@ -80,7 +80,7 @@ if (isset($_POST["donationform"])) {
             $level = 'Beirat';
             break;
         case 2400:
-            $level = 'Ehrenpr&auml;sident';
+            $level = 'Patron';
             break;
         }
 

@@ -27,7 +27,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
               $level = 'Beirat';
               break;
           case 2400:
-              $level = 'Ehrenpr&auml;sident';
+              $level = 'Patron';
               break;
           }
       

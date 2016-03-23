@@ -75,8 +75,8 @@
 				case 3: $total = 150; $membership ='Teilnehmer'; break;
 				case 4: $total = 300; $membership ='Scholar'; break;
 				case 5: $total = 600; $membership ='Partner'; break;
-				case 6: $total = 1200; $membership ='beirat'; break;
-				case 7: $total = 2400; $membership ='Ehrenpr&auml;sident'; break;
+				case 6: $total = 1200; $membership ='Beirat'; break;
+				case 7: $total = 2400; $membership ='Patron'; break;
 				default: $total = 75; $membership ='Gast'; break;
 			}
 
@@ -286,7 +286,7 @@ print_r($_SESSION);
 				case 4: $total = 300; $membership ='Scholar'; break;
 				case 5: $total = 600; $membership ='Partner'; break;
 				case 6: $total = 1200; $membership ='Beirat'; break;
-				case 7: $total = 2400; $membership ='Ehrenpr&auml;sident'; break;
+				case 7: $total = 2400; $membership ='Patron'; break;
 				default: $total = 75; $membership ='Gast'; break;
 			}
 		}
@@ -431,7 +431,7 @@ print_r($_SESSION);
 		  						<option value="300" <?=$selected300?>>Scholar (25&euro;/Monat)</option>
 		  						<option value="600" <?=$selected600?>>Partner (50&euro;/Monat)</option>
 		  						<option value="1200" <?=$selected1200?>>Beirat (100&euro;/Monat)</option>
-		  						<option value="2400" <?=$selected2400?>>Ehrenpr&auml;sident (200&euro;/Monat)</option>
+		  						<option value="2400" <?=$selected2400?>>Patron (200&euro;/Monat)</option>
 		  						
 		  					</select>
 							</div>

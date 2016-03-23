@@ -1031,10 +1031,10 @@ class Registration
             break;
 		case 7:
 			if ($user_anrede == 'Frau'){
-        		$mitgliedschaft = 'Ehrenpr&auml;sidentin';
+        		$mitgliedschaft = 'Patronin';
         	}
 			else {
-            	$mitgliedschaft = 'Ehrenpr&auml;sident';
+            	$mitgliedschaft = 'Patron';
 			} 
             break;
 		default:

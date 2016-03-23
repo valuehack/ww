@@ -97,7 +97,7 @@ if ($login->isUserLoggedIn() == true) {
 			if ($level == 5){
 				if ($check_lvl5 == 0){
 					$check_lvl5 = 1;
-					echo '<p class="crew_levels">Ehrenpr&auml;sidenten</p>'; 
+					echo '<p class="crew_levels">Patron</p>'; 
 				}
 			}
 			if ($level == 6){

@@ -149,7 +149,7 @@ class Email {
 			case 4: $membership = "Scholar"; break;
 			case 5: $membership = "Partner"; break;
 			case 6: $membership = "Beirat"; break;
-			case 7: $membership = "Ehrenpr&auml;sident"; break;
+			case 7: $membership = "Patron"; break;
 			default: $membership = "Interessent"; break;
 		}
 		
