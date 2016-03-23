@@ -33,7 +33,7 @@ require_once('../classes/General.php');
 require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
 require_once('../classes/Email.php');
-require_once('../classes/Transaction.php');
+// require_once('../classes/Transaction.php');
 
 $general = new General();
 
