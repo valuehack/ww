@@ -160,7 +160,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                     <li id="navelm"><a class="navelm" href="/salon/">Salon</a></li>
                     <li id="navelm"><a class="navelm" href="/seminare/">Seminare</a></li>
     					<li id="navelm"><a class="navelm" href="/studium/">Studium</a></li>
-    					<li id="navelm"><a class="navelm" href="/buerger.php">Unterst&uuml;tzen</a></li>
+    					
                  </ul>
                 </div>
            </div>
