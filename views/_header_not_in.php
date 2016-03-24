@@ -156,10 +156,18 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
                 <div class="navi">
                   <ul id="nav">
                       <li id="navelm"><a class="navelm" href="<?php BASE_URL ?>/fragen.php">H&auml;ufige Fragen</a></li>
-                      <li id="navelm"><a class="navelm" href="<?php BASE_URL ?>/mitwirkende.php">Mitwirkende</a></li>
-                      <li id="navelm"><a class="navelm" href="<?php BASE_URL ?>/abo/">F&uuml;r B&uuml;rger</a></li>
-                      <li id="navelm"><a class="navelm" href="<?php BASE_URL ?>/studenten.php">F&uuml;r Studenten</a></li>
-                      <li id="navelm"><a class="navelm" href="<?php BASE_URL ?>/eltern.php">F&uuml;r Eltern</a></li>
+             <li id="navelm"><a class="navelm" href="/scholien/">Scholien</a></li>
+                    <li id="navelm"><a class="navelm" id="drop1" data-toggle="dropdown" href="/veranstaltungen/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Veranstaltungen</a>
+                    	<div class="subnav dropdown-menu" aria-labelledby="drop1">
+                    	<ul>
+                    		<li class="subnav_head"><a class="subnav_head" href="/veranstaltungen/">Veranstaltungen</a></li>
+                    		<li><a href="/veranstaltungen/">Alle</a></li>
+                    		<li><a href="/salon/">Salons</a></li>
+                    		<li><a href="/seminare/">Seminare</a></li>
+                    	</ul>
+                    	</div>
+                    </li>
+    					<li id="navelm"><a class="navelm" href="/studium/">Studium</a></li>
                       <li id="navelm"><a class="navelm" href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">Kontakt</a></li>
                  </ul>
                 </div>
