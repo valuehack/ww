@@ -499,7 +499,7 @@ img.dropdown_coin {
 
 #navelm {
 	float: left;
-	width: 20%; /*16.6667% with six fields*/
+	width: 16.6667%; /*20% with five fields*/
 	padding: 9px 0 4px;
 	height: 27px;
 	margin: 0;
