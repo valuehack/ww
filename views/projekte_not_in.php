@@ -55,15 +55,20 @@ else {
 			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 			$entry4 = mysql_fetch_array($result);
 	
-				echo $entry4[info];			
-			?>
-				<div class="centered">
-					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
-						<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
-  						<input type=hidden name="first_reg" value="projekte">
-  						<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
-					</form>
-				</div>
+				echo $entry4[info];	
+						
+	   echo "<div class='medien_info'>";
+
+			$sql = "SELECT * from static_content WHERE (page LIKE 'projekte')";
+			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+			$entry4 = mysql_fetch_array($result);
+	
+				echo $entry4[info];	
+	?>
+			<div class="centered">
+				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+			</div>		
+    </div>
 	</div>
 <?
 }
