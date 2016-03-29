@@ -140,9 +140,7 @@ if(isset($_GET['q']))
 
 else {
   ?>
-  		<h1>Seminare</h1>
-  		
- 	<div class="salon_content">
+	<div class="salon_content">
   <?
   
   $current_dateline=strtotime(date("Y-m-d"));
