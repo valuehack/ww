@@ -269,6 +269,7 @@ while ($entry = mysql_fetch_array($result))
                     	</div>
                     </li>
                     <li id="navelm"><a class="navelm" href="/studium/">Studium</a></li>
+                    <li id="navelm"><a class="navelm" href="/projekte/">Projekte</a></li>
                 </ul>
                 </div>
            </div>
