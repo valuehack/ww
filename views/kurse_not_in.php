@@ -140,28 +140,61 @@ if(isset($_GET['q']))
 
 else {
   ?>
-	<div class="salon_info">
   		<h1>Seminare</h1>
   		
-  		<?php  
-			$sql = "SELECT * from static_content WHERE (page LIKE 'seminare')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[info];			
-			?>
-				<div class="centered">
-					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
-						<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
-  						<input type=hidden name="first_reg" value="seminare">
-  						<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
-					</form>
-				</div>
+ 	<div class="salon_content">
+  <?
+  
+  $current_dateline=strtotime(date("Y-m-d"));
+  
+  $sql="SELECT * from produkte WHERE (UNIX_TIMESTAMP(start)>=$current_dateline) and (type='lehrgang' or type='seminar' or type='kurs') and status=1 order by start asc, n asc";
+  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+  
+  while($entry = mysql_fetch_array($result))
+  {
+    $found=1;
+    $id = $entry[id];
+    echo "<h1>";
+    echo "<a href='?q=$id'>";
+    echo $entry[title]."</a></h1>";
+     
+    echo "<div class='salon_dates'>";
+
+    if ($entry[start] != NULL && $entry[end] != NULL)
+      {
+      $tag=date("w",strtotime($entry[start]));
+      $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
+      echo $tage[$tag]." ";
+      echo strftime("%d.%m.%Y %H:%M", strtotime($entry[start]));
+      if (strftime("%d.%m.%Y", strtotime($entry[start]))!=strftime("%d.%m.%Y", strtotime($entry[end])))
+        {
+        echo " Uhr &ndash; ";
+        $tag=date("w",strtotime($entry[end]));
+        echo $tage[$tag];
+        echo strftime(" %d.%m.%Y %H:%M Uhr", strtotime($entry[end]));
+        }
+      else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry[end]));
+    }
+    elseif ($entry[start]!= NULL)
+      {
+      $tag=date("w",strtotime($entry[start]));
+      echo $tage[$tag]." ";
+      echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry[start]));
+    }
+    else echo "Der Termin wird in K&uuml;rze bekannt gegeben.";
+    echo "</div>";
+    echo "<p>";
+    //echo "<img src='$img_url' alt='$id'>";
+    echo $entry[text];
+    //echo "<div class='salon_anmeldung'><a href='?q=$id'>zur Anmeldung</a></div>";
+	echo "<div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>";
+  } 
+
     </div>
 <?
 }
 ?>
-	</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
