@@ -239,7 +239,7 @@ while ($entry = mysql_fetch_array($result))
                     	<ul>
                     		<li class="subnav_head"><a class="subnav_head" href="/veranstaltungen/">Veranstaltungen</a></li>
                     		<li><a href="/veranstaltungen/">Alle</a></li>
-                    		<li><a href="/salon/">Salons</a></li>
+                    		<li><a href="/salon/">Salon</a></li>
                     		<li><a href="/seminare/">Seminare</a></li>
                     	</ul>
                     	</div>
