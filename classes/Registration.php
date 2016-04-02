@@ -349,7 +349,7 @@ class Registration
 
     }#end of constructor
 
-    private function addNewUser($profile)
+   public function addNewUser($profile, $product)
     {
         #simple function to add a new entry in mitgliederEXT
 
@@ -358,20 +358,29 @@ class Registration
         $qry_new_user = $this->db_connection->prepare(
         'INSERT INTO mitgliederExt (
             user_email, 
-            Mitgliedschaft, 
+            Mitgliedschaft,
+            credits_left,
+            Ablauf, 
             first_reg, 
+            user_active,
             user_registration_ip, 
             user_registration_datetime) 
         VALUES(
             :user_email, 
             :Mitgliedschaft, 
+            :credits_left,
+            :Ablauf,
             :first_reg, 
+            :user_active,
             :user_registration_ip, 
             now())');
 
         $qry_new_user->bindValue(':user_email', $profile['user_email'], PDO::PARAM_STR);
         $qry_new_user->bindValue(':first_reg', $profile['first_reg'], PDO::PARAM_STR);
-        $qry_new_user->bindValue(':Mitgliedschaft', $profile['level'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':Mitgliedschaft', $product['level'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':credits_left', $product['credits'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':Ablauf', $product['membership_end'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':user_active', 1, PDO::PARAM_INT);
         $qry_new_user->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
         $qry_new_user->execute();
 
@@ -379,7 +388,7 @@ class Registration
         $_SESSION['profile']['user_id'] = $user_id;
 
     }
-
+    
     public function addPersonalDataGeneric($profile)
     {  
 
