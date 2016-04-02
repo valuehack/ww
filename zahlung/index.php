@@ -21,12 +21,12 @@ require_once('../config/config.php');
 require_once('../translations/de.php');
 
 # load the login class
-require_once('../classes/General.php');
+// require_once('../classes/General.php');
 require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
 require_once('../classes/Email.php');
 
-$general = new General();
+// $general = new General();
 $login = new Login();
 $email = new Email();
 $registration = new Registration();
