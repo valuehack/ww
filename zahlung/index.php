@@ -1,12 +1,12 @@
 <?php
-
+ob_start();
 #display all errors while developing
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-session_start();
+// session_start();
 
-header('Content-Type: text/html; charset=UTF-8');
+// header('Content-Type: text/html; charset=UTF-8');
 
 # check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
