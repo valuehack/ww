@@ -1,0 +1,276 @@
+{# 
+//if($_SESSION['payment_page'] == 'edit_info') {
+if($_GET['q'] == 'edit') {
+
+$title="Zahlung - &Auml;nderung";
+
+include('_header_not_in.php');
+
+/*
+$event_id = 666671;
+$passed_from = 'upgrade';
+$quantity = 2;
+$level = 4;
+$_SESSION['anrede'] = 'Herr';
+$_SESSION['name'] = 'Ulrich';
+$_SESSION['surname'] = 'Moller';
+$_SESSION['email'] = 'bartholos@web.de';
+$_SESSION['street'] = 'Jenzschstrasse 13';
+$_SESSION['plz'] = '99867';
+$_SESSION['city'] = 'Gotha';
+$_SESSION['country'] = 'Deutschland';
+$_SESSION['payment_option'] = 'sofort';
+*/
+
+# event info 
+$product_info = $general->getProduct($event_id);
+$event_date = $general->getDate($product_info->start, $product_info->end);
+
+$spots_available = $product_info->spots-$product_info->spots_sold;
+
+if ($passed_from === 'seminar') {
+$total = $quantity*$product_info->price;
+$membership = 'Teilnehmer';
+}
+if ($passed_from === 'projekt' || $passed_from === 'upgrade') {
+switch($level) {
+case 3: $total = 150; $membership ='Teilnehmer'; break;
+case 4: $total = 300; $membership ='Scholar'; break;
+case 5: $total = 600; $membership ='Partner'; break;
+case 6: $total = 1200; $membership ='Beirat'; break;
+case 7: $total = 2400; $membership ='Ehrenpr&auml;sident'; break;
+default: $total = 75; $membership ='Gast'; break;
+}
+}
+?> #}
+
+<div class="content">
+<div class="content-area">
+<div class="row-group">
+<div class="row row__body">
+<div class="col-8">
+<p class="h1">&Auml;nderung Ihrer Bestellung</p>
+<p class="h1__sub">Bitte &uuml;berpr&uuml;fen Sie Ihre Angaben</p>
+</div>
+</div>
+</div>
+<div class="row-group">
+<p class="h3">Produkt</p>
+
+<form method="post" action="/zahlung/?g=summary">
+
+
+{# seminar #}
+{% if product.event_type == 'seminar' %}
+
+
+<div class="row row__head">
+<div class="col-1">Menge</div>
+<div class="col-5">&nbsp;</div>
+<div class="col-1">Einzelpreis</div>
+<div class="col-1">Gesamtpreis</div>
+</div>
+<div class="row row__body">
+<div class="col-1">
+<select id="quantity" name="product[quantity]" onchange="changePrice(this.value,'<?=$product_info->price?>')">
+<?php
+if($quantity == 1) $selected1 = ' selected';
+if($quantity == 2) $selected2 = ' selected';
+if($quantity == 3) $selected3 = ' selected';
+if($quantity == 4) $selected4 = ' selected';
+if($quantity == 5) $selected5 = ' selected';
+
+if ($spots_available == 0){echo '<option value="0" disabled>0</option>';}
+if ($spots_available >= 1){echo '<option value="1"'.$selected1.'>1</option>';}
+if ($spots_available >= 2){echo '<option value="2"'.$selected2.'>2</option>';}
+if ($spots_available >= 3){echo '<option value="3"'.$selected3.'>3</option>';}
+if ($spots_available >= 4){echo '<option value="4"'.$selected4.'>4</option>';}
+if ($spots_available >= 5){echo '<option value="5"'.$selected5.'>5</option>';}
+?>
+</select>
+</div>
+<div class="col-5">
+<div class="col__content">
+<?=$product_info->title?><br>
+<?=$event_date?>
+</div>
+</div>
+<div class="col-1"><?=$product_info->price?></div>
+<div class="col-1"><span id="change"><?=$total?></span>&euro;</div>
+</div>
+<div class="row row__body">
+<div class="col-1">1</div>
+<div class="col-5"><?=$membership?></div>
+<div class="col-1">0</div>
+<div class="col-1">0</div>
+</div>
+<div class="row row__foot">
+<div class="col-6">&nbsp;</div>
+<div class="col-1">Gesamt:</div>
+<div class="col-1"><span id="change"><?=$total?></span>&euro;</div>
+</div>		
+
+{% endif %}{# seminar #} 
+
+
+{# projekt #}
+{% if product.event_type == 'projekt' %}			
+
+
+<div class="row row__head">
+<div class="col-1">Menge</div>
+<div class="col-5">&nbsp;</div>
+<div class="col-1">Einzelpreis</div>
+<div class="col-1">Gesamtpreis</div>
+</div>
+<div class="row row__body">
+<div class="col-1">
+<select id="quantity" name="product[total]" onchange="changePrice(this.value,'1')">
+<?php
+if($total == 75) $selected75 = ' selected';
+if($total == 150) $selected150 = ' selected';
+if($total == 300) $selected300 = ' selected';
+if($total == 600) $selected600 = ' selected';
+if($total == 1200) $selected1200 = ' selected';
+if($total == 2400) $selected2400 = ' selected';
+
+if ($spots_available == 0){echo '<option value="0" disabled>0</option>';}
+if ($spots_available >= 150){echo '<option value="150"'.$selected150.'>150</option>';}
+if ($spots_available >= 300){echo '<option value="300"'.$selected300.'>300</option>';}
+if ($spots_available >= 600){echo '<option value="600"'.$selected600.'>600</option>';}
+if ($spots_available >= 1200){echo '<option value="1200"'.$selected1200.'>1200</option>';}
+if ($spots_available >= 2400){echo '<option value="2400"'.$selected2400.'>2400</option>';}
+?>
+</select></div>
+<div class="col-5">
+<div class="col__content">
+<?=ucfirst($product_info->type)?> <?=$product_info->title?>
+</div>
+</div>
+<div class="col-1">1</div>
+<div class="col-1"><span id="change"><?=$total?></span>&euro;</div>
+</div>
+<div class="row row__body">
+<div class="col-1">1</div>
+<div class="col-5"><?=$membership?></div>
+<div class="col-1">0</div>
+<div class="col-1">0</div>
+</div>
+<div class="row row__foot">
+<div class="col-6">&nbsp;</div>
+<div class="col-1">Gesamt:</div>
+<div class="col-1"><span id="change"><?=$total?></span>&euro;</div>
+</div>
+
+{% endif %}{# projekt #} 	
+
+
+{# upgrade #}
+{% if product.type == 'upgrade' %}
+
+
+<div class="row row__head">
+<div class="col-1">Menge</div>
+<div class="col-5">&nbsp;</div>
+<div class="col-1">Einzelpreis</div>
+<div class="col-1">Gesamtpreis</div>
+</div>
+<div class="row row__body">
+<div class="col-1">1</div>
+<div class="col-5">
+<div class="col__content">
+Abo: Mitgliedschaftslevel
+<select id="quantity" name="product[what]" onchange="changePrice(this.value,'1')">
+
+{% if product.price == 75 %}
+	{% set selected75 = ' selected' %}
+{% elseif product.price == 150 %}
+	{% set selected150 = ' selected' %}
+{% elseif product.price == 300 %}
+	{% set selected300 = ' selected' %}
+{% elseif product.price == 600 %}
+	{% set selected600 = ' selected' %}
+{% elseif product.price == 1200 %}
+	{% set selected1200 = ' selected' %}
+{% elseif product.price == 2400 %}
+	{% set selected2400 = ' selected' %}
+{% endif %}
+
+{# <option value="75" {{selected75}}> Gast (6,25&euro;/Monat)</option>
+<option value="150" {{selected150}}> Teilnehmer (12,50&euro;/Monat)</option>
+<option value="300" {{selected300}}> Scholar (25&euro;/Monat)</option>
+<option value="600" {{selected600}}> Partner (50&euro;/Monat)</option>
+<option value="1200" {{selected1200}}> Beirat (100&euro;/Monat)</option>
+<option value="2400" {{selected2400}}> Ehrenpr&auml;sident (200&euro;/Monat)</option>
+ #}
+
+<option value="upgrade_2" {{selected75}}> Gast (6,25&euro;/Monat)</option>
+<option value="upgrade_3" {{selected150}}> Teilnehmer (12,50&euro;/Monat)</option>
+<option value="upgrade_4" {{selected300}}> Scholar (25&euro;/Monat)</option>
+<option value="upgrade_5" {{selected600}}> Partner (50&euro;/Monat)</option>
+<option value="upgrade_6" {{selected1200}}> Beirat (100&euro;/Monat)</option>
+<option value="upgrade_7" {{selected2400}}> Ehrenpr&auml;sident (200&euro;/Monat)</option>
+
+ 
+</select>
+</div>
+</div>
+<div class="col-1"><span id="change">{{product.price}}</span></div>
+<div class="col-1"><span id="change">{{product.price}}</span></div>
+</div>
+<div class="row row__foot">
+<div class="col-6">&nbsp;</div>
+<div class="col-1">Gesamt:</div>
+<div class="col-1"><span id="change">{{product.price}}</span></div>
+</div>
+
+{% endif %}{# upgrade #} 
+
+</div>
+<div class="row-group">
+<div class="row row__body">
+<div class="col-4">
+<p class="h3">Pers&ouml;nliche Informationen</p>
+</div>
+<div class="col-4">
+<p class="h3">Zahlung</p>
+</div> 
+<div class="row row__body">
+<div class="col-4">
+<div class="col__content">
+<select class="profil_select" name="profile[user_anrede]">
+
+<option value="Herr"{% if profile.user_anrede == "Herr" %}selected{% endif %}>Herr</option>
+<option value="Frau"{% if profile.user_anrede == "Frau" %}selected{% endif %}>Frau</option>
+
+</select><br>
+<input type="text" class="profil_inputfield" name="profile[user_first_name]" value="{{profile.user_first_name}}"><br> 
+<input type="text" class="profil_inputfield" name="profile[user_surname]" value="{{profile.user_surname}}"<br> 
+<input type="email" class="profil_inputfield" name="profile[user_email]" value="{{profile.user_email}}"><br> 
+<input type="text" class="profil_inputfield" name="profile[user_street]" value="{{profile.user_street}}"><br> 
+<input type="text" class="profil_inputfield" name="profile[user_plz]" value="{{profile.user_plz}}"><br> 
+<input type="text" class="profil_inputfield" name="profile[user_city]" value="{{profile.user_city}}"><br> 
+<input type="text" class="profil_inputfield" name="profile[user_country]" value="{{profile.user_country}}"><br> 
+</div>
+</div>
+<div class="col-4">
+
+
+<input type="radio" name="profile[payment_option]" value="paypal"{% if profile.payment_option == "paypal" %}checked{% endif %} required>PayPal<br>
+<input type="radio" name="profile[payment_option]" value="sofort" {% if profile.payment_option == "sofort" %}checked{% endif %}>SOFORT		
+</div>
+</div>
+</div>
+<div class="row-group">
+<div class="row row__body">
+<div class="col-8">
+<div class="col__content">
+<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+<input type="submit" class="profil_inputbutton" name="edit_form_submit" value="Verbindlich bestellen">
+</form>
+</div>
+</div>				
+</div>
+</div>
+</div>		
+</div>				
