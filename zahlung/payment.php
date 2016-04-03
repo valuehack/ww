@@ -99,7 +99,9 @@ function doPaypalPayment($profile, $product)
 
     #to be moved to config
     #secret
-    $query['notify_url'] = 'http://scholarium.at/testl1k2j302u31lk2139ds/working_listener_test.php';
+    // $query['notify_url'] = 'http://scholarium.at/testl1k2j302u31lk2139ds/working_listener_test.php';
+    $query['notify_url'] = 'http://scholarium.at/zahlung/paypal_listener.php';
+    
     $query['business'] = 'dainius.tol-facilitator@gmail.com';
     $query['hosted_button_id'] = 'VEP823EAZG9BA';
 

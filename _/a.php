@@ -1,8 +1,19 @@
 <?php 
 
 #display all errors while developing
-ini_set('display_errors',1);
-error_reporting(E_ALL);
+// ini_set('display_errors',1);
+// error_reporting(E_ALL);
+
+
+ini_set("log_errors" , "1");
+ini_set("error_log" , "Errors.log.txt");
+ini_set("display_errors" , "0");
+
+// error_log( "Hello, errors!", 3);
+
+// error_log( "Hello, as!" , 3);
+
+// error_log("You messed up!", 3, "php-error.log");
 
 
 	#response from paypal
@@ -90,7 +101,7 @@ error_reporting(E_ALL);
 	#get data from db transactional db 
 	$paypal_data_query = $db_connection->prepare(
 	"SELECT * FROM paypal_data_storage 
-	WHERE wrt_txn_id = :wrt_txn_id
+	WHER wrt_txn_id = :wrt_txn_id
 	");
 
 	$paypal_data_query->bindValue(':wrt_txn_id', $ipn_post_data['custom'], PDO::PARAM_STR);
