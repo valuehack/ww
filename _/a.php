@@ -163,3 +163,17 @@ ini_set("display_errors" , "0");
 
 // $registration->addNewUser($profile, $product);
 // $registration->addPersonalDataGeneric($profile);
+
+#writes serialized paypal response to db  
+#TESTING ONLY
+$ipn_post_data_serialized = serialize($_POST);
+
+$txn_id_test_query = $db_connection->prepare(
+"UPDATE paypal_data_storage   
+    SET Notiz = :txn_id
+  WHERE user_email = :user_email"
+);
+
+$txn_id_test_query->bindValue(':txn_id', $ipn_post_data_serialized, PDO::PARAM_STR);
+$txn_id_test_query->bindValue(':user_email', 'dzainius@gmail.com', PDO::PARAM_STR);
+$txn_id_test_query->execute();

@@ -1,12 +1,18 @@
 <?php
+
+#error log settings
+ini_set("log_errors" , "1");
+#php_listener_errors is a filename where errors are logged
+ini_set("error_log" , "./log/zahlung_index_errors");
+ini_set("display_errors" , "0");
+
 ob_start();
+
 #display all errors while developing
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-// session_start();
-
-// header('Content-Type: text/html; charset=UTF-8');
+//session_start();  
 
 # check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
@@ -21,7 +27,7 @@ require_once('../config/config.php');
 require_once('../translations/de.php');
 
 # load the login class
-// require_once('../classes/General.php');
+require_once('../classes/General.php');
 require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
 require_once('../classes/Email.php');
@@ -42,47 +48,16 @@ if ($login->isUserLoggedIn() == true)
 } 
 else 
 {
-    // include("../views/zahlung_neu_not_in.php");
 
-
-
-    // if (isset($_POST['submit_event_selection']))
+    #product selected, redirect to submit your data form
     if ($_GET["g"] === 'ihredaten')
     {
 
-        // if (isset($_POST['product'])) $_SESSION['product'] = $_POST['product'];
-
         updateProductSessionVarsAfterEdit($_POST['product']['what']);
-
-#grab post from product selection
-#pass var as idendifier which will act as first reg too
-
-#upgrade_3
-#seminar_2345
-#projekt_978712
-
-// <input type="hidden" name="product[event_type]" value="upgrade">
-// <input type="hidden" name="product[level]" value="3">
-
-#send to method to set relevant session vars...
-#reset???
-
-// if (isset($_POST['product']))
-
-        #event selected - forward to personal data entry form
-        
-        #set session var in case user accidentaly refreshed the form page
-        #save post to session
-
-
-        #new method set session vars based on returned... 
-
-
         getForm();
 
     }
-    // summary
-    // elseif (isset($_POST['the_form_submit']) or true) 
+    #redirect to summary page
     elseif ($_GET["g"] === 'summary')
     {
 
@@ -105,10 +80,6 @@ else
     }
     elseif ($_GET["g"] === 'edit')      
     {
-        #edit
-        #user want to edit the details, forward to summary/confirmation page
-        // if (isset($_POST['product'])) $_SESSION['product'] = $_POST['product'];
-        // if (isset($_POST['profile'])) $_SESSION['profile'] = $_POST['profile'];
 
         getEditPage();
 
@@ -120,17 +91,14 @@ else
         header('Location: ../zahlung/?g=edit');
 
     }
-    // elseif($_GET["g"] === 'pay')
     elseif (isset($_POST['confirmed_submit']))        
     {
         #confirmed - send to sofort/paypal
         #problem with namespaces
         #redirect to other file for a quick workaround
 
-
         $_SESSION['product']['credits'] = $_SESSION['product']['total'];
         $_SESSION['profile']['first_reg'] = $_SESSION['product']['what'];
-
 
         $user_email = $_SESSION['profile']['user_email'];
 
@@ -140,19 +108,13 @@ else
         #write paypal data to database
         if ($_SESSION['profile']['payment_option'] === 'paypal') writePaypalDataToDB($user_email, $wrt_txn_id);
 
-
-
         header('Location: payment.php');
     }
 
 
 
-
-
-
-
+#TESTING ONLY
 #var output block
-// print_r($_SESSION['product']);
 echo "<br>POST<br>";
 print_r($_POST);
 echo "<br>";
@@ -214,39 +176,38 @@ function getForm()
 function getSummary()
 {
  
-        #init methods for twig
-        require_once '../libraries/Twig-1.24.0/lib/Twig/Autoloader.php';
-        Twig_Autoloader::register();
-        $loader = new Twig_Loader_Filesystem('../templates');
-        $twig = new Twig_Environment($loader, array('cache' => false));
+    #init methods for twig
+    require_once '../libraries/Twig-1.24.0/lib/Twig/Autoloader.php';
+    Twig_Autoloader::register();
+    $loader = new Twig_Loader_Filesystem('../templates');
+    $twig = new Twig_Environment($loader, array('cache' => false));
 
-        #select a template
-        $formTemplate = $twig->loadTemplate('summary.html.twig');
+    #select a template
+    $formTemplate = $twig->loadTemplate('summary.html.twig');
 
-        #header
-        $title="Unterst&uuml;tzen";
-        include('../views/_header_not_in.php'); 
+    #header
+    $title="Unterst&uuml;tzen";
+    include('../views/_header_not_in.php'); 
 
-        $now = date('d.m.Y', time());
-        #membership ends one year (31536000 sec) from today 
-        $membership_end = date('d.m.Y', time()+31536000);
+    $now = date('d.m.Y', time());
+    #membership ends one year (31536000 sec) from today 
+    $membership_end = date('d.m.Y', time()+31536000);
 
-        $_SESSION['product']['membership_end'] = date('Y-m-d', time()+31536000);
+    $_SESSION['product']['membership_end'] = date('Y-m-d', time()+31536000);
 
-        #pass variables to template
-        echo $formTemplate->render(array(
-            'type' => "seminars",
-            
-            'profile' => $_SESSION['profile'],
+    #pass variables to template
+    echo $formTemplate->render(array(
+        'type' => "seminars",
+        
+        'profile' => $_SESSION['profile'],
 
-            // 'profile' => "safsadf",
-            'test' => "another",
-            'now' => $now,
-            'product' => $_SESSION['product'],
-            'membership_end' => $membership_end
+        // 'profile' => "safsadf",
+        'test' => "another",
+        'now' => $now,
+        'product' => $_SESSION['product'],
+        'membership_end' => $membership_end
 
-
-            ));
+        ));
 }
 
 
@@ -270,7 +231,6 @@ function getEditPage()
         #membership ends one year (31536000 sec) from today 
         $membership_end = date('d.m.Y', time()+31536000);
 
-
         #pass variables to template
         echo $formTemplate->render(array(
             'type' => "seminar",
@@ -286,6 +246,7 @@ function getEditPage()
 function updateProductSessionVarsAfterEdit($product_what)
 {
 
+    #sets 'what' to session as used by futher methods 
     $_SESSION['product']['what'] = $product_what;
 
     switch ($product_what)
@@ -340,6 +301,7 @@ function updateProductSessionVarsAfterEdit($product_what)
 
 function writePaypalDataToDB($user_email, $wrt_txn_id)
 {
+    #paypal data needs to be written to db as paypal only sends post to another script, not connected to a user session
 
     $serialized_session = serialize($_SESSION);    
 

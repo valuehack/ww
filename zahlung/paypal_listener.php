@@ -1,16 +1,16 @@
 <?php 
 
+#error log settings
 ini_set("log_errors" , "1");
-ini_set("error_log" , "php_listener_errors");
+#php_listener_errors is a filename where errors are logged
+ini_set("error_log" , "./log/php_listener_errors");
 ini_set("display_errors" , "0");
 
-	#response from paypal
+#response from paypal
 $ipn_post_data = $_POST;
 
+#log received post
 error_log( "POST FROM PAYPAL. TXN_ID: ".$ipn_post_data['txn_id'] ." WRT_TXN_ID: ".$ipn_post_data['custom']);
-
-// define("LOG_FILE", "./listener.log");
-// error_log(date('[Y-m-d H:i e] '). "$ipn_post_data[test]". PHP_EOL, 3, LOG_FILE);
 
 require_once('../config/config.php');
 require_once('../classes/Registration.php');
@@ -27,43 +27,27 @@ catch (PDOException $e)
     exit;
 }
 
-
-#writes serialized paypal responce to db  
-#TESTING ONLY
-$ipn_post_data_serialized = serialize($_POST);
-
-$txn_id_test_query = $db_connection->prepare(
-"UPDATE mitgliederExt   
-    SET Notiz = :txn_id
-  WHERE user_email = :user_email"
-);
-
-$txn_id_test_query->bindValue(':txn_id', $ipn_post_data_serialized, PDO::PARAM_STR);
-$txn_id_test_query->bindValue(':user_email', 'dzainius@gmail.com', PDO::PARAM_STR);
-$txn_id_test_query->execute();
-
-
-#get data from db transactional db 
+#get data from transactional db 
 $paypal_data_query = $db_connection->prepare(
 "SELECT * FROM paypal_data_storage 
 WHERE wrt_txn_id = :wrt_txn_id
 ");
 
 $paypal_data_query->bindValue(':wrt_txn_id', $ipn_post_data['custom'], PDO::PARAM_STR);
-// $paypal_data_query->bindValue(':wrt_txn_id', "0LbHNzBN6j24", PDO::PARAM_STR);
 $paypal_data_query->execute();
 
-#wrt_txn_id was not found in the db.
-#
+
 if ($paypal_data_query->rowCount() == 0) 
 {
-	error_log( "No entry in db for:  ".$ipn_post_data['custom']);
+	#wrt_txn_id was not found in the transactional db.
+	error_log( "CRITICAL: No entry in db for:  ".$ipn_post_data['custom']);
 
 }
 else
 {
 	$result_row = $paypal_data_query->fetchObject();
 
+	#session data in db is stored serialized
 	$txn_data = unserialize($result_row->data);
 
 	$profile = $txn_data['profile'];
