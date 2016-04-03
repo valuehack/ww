@@ -1,4 +1,4 @@
-<?php 
+		<?php 
 
 	#response from paypal
 	$ipn_post_data = $_POST;
@@ -44,8 +44,8 @@
 	WHERE wrt_txn_id = :wrt_txn_id
 	");
 
-	// $paypal_data_query->bindValue(':wrt_txn_id', $ipn_post_data[custom], PDO::PARAM_STR);
-	$paypal_data_query->bindValue(':wrt_txn_id', "0LbHNzBN6j24", PDO::PARAM_STR);
+	$paypal_data_query->bindValue(':wrt_txn_id', $ipn_post_data[custom], PDO::PARAM_STR);
+	// $paypal_data_query->bindValue(':wrt_txn_id', "0LbHNzBN6j24", PDO::PARAM_STR);
 	$paypal_data_query->execute();
 
 	$result_row = $paypal_data_query->fetchObject();
