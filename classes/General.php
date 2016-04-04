@@ -519,7 +519,10 @@ class General {
 				 						 "channels"		  		=> array("Chat"),
 				 						 "displaytabimage" 		=> false,
 				 						 "btn_sh_smileys" 		=> false,
-				 					 	 "nickmarker"	  		=> false,	 
+				 					 	 "nickmarker"	  		=> false,
+				 					 	 "refresh_delay"		=> 6000,
+				 					 	 "refresh_delay_steps" 	=> array(7000,20000,8000,60000,10000,120000,12000,240000),
+				 					 	 "time_offset"			=> 32400,	 
                  					);
 
 						$chat = new phpFreeChat($params);

@@ -156,7 +156,7 @@ pfcClient.prototype = {
     // build a dhtml prompt box
     var pfcp = this.getPrompt();//new pfcPrompt($('pfc_container'));
     pfcp.callback = function(v) { pfc.askNickResponse(v); }
-    pfcp.prompt((error_text != undefined ? '<span style="color:red">'+error_text+'</span><br/>' : '')+this.res.getLabel('Bitte geben Sie Ihren Nickname ein'), nickname);
+    pfcp.prompt((error_text != undefined ? '<span style="color:red">'+error_text+'</span><br/>' : '')+this.res.getLabel(' Bitte geben Sie Ihren Nickname ein '), nickname);
     pfcp.focus();
   },
   askNickResponse: function(newnick)
@@ -335,8 +335,8 @@ pfcClient.prototype = {
       }
       else if (resp == "isused")
       {
-        this.setError(this.res.getLabel('Chosen nickname is already used'), Array());
-        this.askNick(param,this.res.getLabel('Chosen nickname is already used'));
+        this.setError(this.res.getLabel('Dieser Benutzername ist bereits vergeben'), Array());
+        this.askNick(param,this.res.getLabel('Dieser Benutzername ist bereits vergeben'));
       }
       else if (resp == "notallowed")
       {
@@ -346,7 +346,7 @@ pfcClient.prototype = {
         // as long as the forced nickname is not changed.
 
         // display a message
-        this.setError(this.res.getLabel('Chosen nickname is not allowed'), Array());
+        this.setError(this.res.getLabel('Dieser Benutzername ist nicht erlaubt'), Array());
         // then stop chat updates
         this.updateChat(false);
         this.isconnected = false;

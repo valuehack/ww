@@ -32,7 +32,7 @@ pfcPrompt.prototype = {
       }
 
       var div = document.createElement('h2');
-      div.appendChild(document.createTextNode(pfc.res.getLabel('Input Required')));
+      div.appendChild(document.createTextNode(pfc.res.getLabel('Benutzername eingeben')));
       this.box.appendChild(div);
 
       this.prompt_title = document.createElement('p');
@@ -56,7 +56,7 @@ pfcPrompt.prototype = {
       var cancel = document.createElement('input');
       cancel.id = 'pfc_promptbox_cancel';
       cancel.type = 'button';
-      cancel.value = pfc.res.getLabel('Cancel');
+      cancel.value = pfc.res.getLabel('Abbrechen');
       cancel.pfc_prompt = this;
       cancel.onclick = function(evt) { return this.pfc_prompt._doSubmit(true); };
       form.appendChild(cancel);

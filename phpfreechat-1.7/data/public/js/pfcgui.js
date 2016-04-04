@@ -257,14 +257,14 @@ pfcGui.prototype = {
       a2.pfc_tabname = name;
       a2.pfc_tabtype = type;
       a2.onclick = function(){
-        var msg = (type == 'pv' ? 'Are you sure you want to close this tab ?' :
-                                  'Do you really want to leave this room ?');
+        var msg = (type == 'pv' ? 'M&uml;chten Sie diesen Tab wirklich schlie&szlig;en ?' :
+                                  'M&uml;chten Sie diesen Raum wirklich verlassen ?');
         var res = confirm(pfc.res.getLabel(msg));
         if (res == true)
           pfc.sendRequest('/leave',this.pfc_tabid);
         return false;
       }
-      a2.alt   = pfc.res.getLabel('Close this tab');
+      a2.alt   = pfc.res.getLabel('Diesen Tab schlie&szlig;en');
       a2.title = a2.alt;
       a2.setAttribute(className, 'pfc_tabclose');
       var img = document.createElement('img');
