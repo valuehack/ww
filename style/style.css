@@ -147,7 +147,7 @@ li {
 h2 {
 	font-size: 20pt;
 	line-height: 1;
-	text-shadow: 0 0 1px rgb(20,20,20);
+	text-shadow: 0 0 0px rgb(20,20,20);
 }
 
 h5 {
@@ -174,7 +174,7 @@ h3 {
 
 /* Class for div - centers everything within */
 .centered {
-	margin: 0 auto;
+	margin-bottom: 0px;
 	text-align: center;
 }
 
@@ -631,6 +631,7 @@ a.subnav_head:hover {
 
 .article {
 	padding: 25px;
+	margin: auto;
 	font-size: 20pt;
 }
 
@@ -643,7 +644,7 @@ a.subnav_head:hover {
 	text-align: center;
 	font-size: 72px;
 	text-transform: uppercase;
-	text-shadow: 0px 0px 1px #666;	
+	text-shadow: 0px 0px 0px #666;	
 	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
@@ -974,6 +975,8 @@ a.subnav_head:hover {
 .blog_entry {
 	margin: 100px 0 20px 0;
 	line-height: 1.6em;
+	text-shadow: 0px 0px 0px #666;
+	margin: auto;	
 }
 
 .blog_entry h2 {
@@ -981,7 +984,7 @@ a.subnav_head:hover {
 	color: #000;
 	margin: 40px 0 0 0;	
 	text-align: center;
-	text-shadow: 0px 0px 1px #666;
+	text-shadow: 0px 0px 0px #666;
 	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
@@ -1037,10 +1040,9 @@ a.subnav_head:hover {
 /* Individual Blog Article */
 
 .blog {
-	width: 70%;
-	padding: 25px 15%;
-	font-size: 20pt;
-	margin: 50px auto;
+	width: 800px;
+	padding-bottom: 30px;
+	margin: auto;
 }
 
 .blog_text p b {
@@ -1052,20 +1054,29 @@ a.subnav_head:hover {
 	font-family: "Garamond", Georgia, Times, sans-serif;
 }
 
-.blog_text h2 {
-	font-size: 18pt;
-	text-align: center;
-}
-
 .blog header {
 	margin: 30px 0;	
 }
 
 .blog h1 {
 	text-align: center;
-	font-size: 24px;
-	text-shadow: 0px 0px 1px #666;	
+	font-size: 20pt;
+	text-shadow: 0px 0px 0px #666;	
 	font-family: "Futura Book", Helvetica, Arial, serif;
+}
+
+.blog_text h2 {
+	font-size: 20pt;
+	text-shadow: 0px 0px 0px #666;	
+	text-align: center;
+}
+
+.blog_text_fragen h2 {
+	font-size: 20pt;
+	text-shadow: 0px 0px 0px #666;	
+	text-align: left;
+	font-family: "Garamond", Georgia, Times, sans-serif;
+	font-weight: normal;
 }
 
 .blogdate {
@@ -1083,8 +1094,8 @@ a.subnav_head:hover {
 
 .blog p {
 	line-height: 1.6em;
-	margin: 30px 0 50px;	
-	font-size: 14pt;
+	margin: 30px 0 30px;	
+	font-size: 16pt;
 }
 
 .blog a:link {
@@ -1308,22 +1319,22 @@ a.socialimg:visited {
 /*==================================================*/
 
 .salon_info {
-	width: 75%;
-	padding: 75px 12.5%;
+	width: 800px;
+	padding-top: 0px;
+	padding-bottom: 30px;
+	margin: auto;
 }
 
 .salon_info h1 {
 	font-size: 20pt;
 	color: rgba(0,0,0,0.9);
-	text-shadow: 0 0 1px 0 rgb(20,20,20);
-	margin: 30px 0 50px 0;
+	margin: 30px 0 30px 0;
 	text-align: center;
 }
 
 .salon_info p {
 	line-height: 1.6em;
-	font-size: 14pt;
-	font-style: italic;
+	font-size: 16pt;
 	text-align: justify;
 	margin: 20px 0;
 }
@@ -1332,7 +1343,9 @@ a.socialimg:visited {
 	box-shadow: 0 0 1px 0 rgba(0,0,0,0.6);
 	width: 100%;
 	text-align: center;
-	padding: 15px 0;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 30px;
 	background: rgb(250,250,250);
 }
 
@@ -1368,32 +1381,32 @@ a.socialimg:visited {
 }
 
 .salon_head {
-	width: 75%;
-	padding: 75px 12.5%;
+	width: 800px;
+	padding-bottom: 30px;
+	margin:auto;
 }
 
 .salon_head h1 {
 	text-align: center;
 	font-size: 20pt;
 	line-height: 1.2em;
-	text-shadow: 0px 0px 1px rgb(20,20,20);	
-	margin: 30px 0 80px 0;
 }
 
 .salon_content {
-	width: 75%;
-	padding: 75px 12.5%;
+	width: 800px;
+	padding-bottom: 30px;
+	margin: auto;
 }
 
 .salon_content a {
-	color: rgb(46,74,98);
+	color: rgb(0,0,0);
 	text-decoration: none;
-	border-bottom: 1px dotted rgb(46,74,98);
+	border-bottom: 0px dotted rgb(46,74,98);
 }
 
 .salon_content a:hover{
-	color: rgb(46,74,98);
-	border-bottom: 1px solid rgb(46,74,98);
+	color: rgb(0,0,0);
+	border-bottom: 0px solid rgb(46,74,98);
 }
 
 .salon_content img {
@@ -1402,7 +1415,7 @@ a.socialimg:visited {
 }
 
 .salon_content p {
-	font-size: 14pt;
+	font-size: 16pt;
 	margin: 15px 0;
 	text-align: justify;
 	line-height: 1.6;
@@ -1421,8 +1434,8 @@ a.socialimg:visited {
 
 .salon_content h1 {
 	font-size: 20pt;
-	text-shadow: 0px 0px 1px rgb(20,20,20);
-	margin: 15px 0 30px 0;
+	text-shadow: 0px 0px 0px rgb(20,20,20);
+	margin: 15px 0 10px 0;
 	text-align: center;
 }
 
@@ -1464,8 +1477,8 @@ a.socialimg:visited {
 
 .salon_reservation  {
 	text-align: center;
-	margin: 40px auto 30px auto;
-	padding: 30px;
+	margin: auto;
+	padding: auto;
     display: inline-block;
     position: relative;
 }
@@ -1514,7 +1527,7 @@ a.socialimg:visited {
 
 .salon_reservation_span_d {
 	font-size: 26pt;
-	margin: 20px 0 90px 0;
+	margin: 0px 0 40px 0;
 	line-height: 1.5em;
 }
 
@@ -1624,22 +1637,21 @@ a.socialimg:visited {
 /*==================================================*/
 
 .medien_info {
-	width: 75%;
-	padding: 75px 12.5%;
+	width: 800px;
+	padding-bottom: 30px;
+	margin: auto;
 }
 
 .medien_info h1 {
 	font-size: 20pt;
 	color: rgba(0,0,0,0.9);
-	text-shadow: 0 0 1px 0 rgb(20,20,20);
-	margin: 30px 0 50px 0;
+	margin: 30px 0 30px 0;
 	text-align: center;
 }
 
 .medien_info p {
 	line-height: 1.6em;
-	font-size: 14pt;
-	font-style: italic;
+	font-size: 16pt;
 	text-align: justify;
 	margin: 20px 0;
 }
@@ -1647,13 +1659,13 @@ a.socialimg:visited {
 .medien_info a {
 	color: rgb(46,74,98);
 	text-decoration: none;
-	border-bottom: 1px dotted rgb(46,74,98);
+	border-bottom: 0px dotted rgb(46,74,98);
 }
 
 .medien_info a:hover {
-	color: rgb(46,74,98);
+	color: rgb(0,0,0);
 	text-decoration: none !important;
-	border-bottom: 1px solid rgb(46,74,98);
+	border-bottom: 0px solid rgb(46,74,98);
 }
 
 .medien_info li {
@@ -1668,6 +1680,7 @@ a.socialimg:visited {
 	text-align: center;
 	padding: 15px 0;
 	background: rgb(250,250,250);
+	margin-top: 40px;
 }
 
 .medien_seperator h1 {
@@ -1684,16 +1697,42 @@ a.socialimg:visited {
 
 .medien_head h1 {
 	text-align: center;
-	font-size: 24pt;
+	font-size: 28pt;
 	line-height: 1.2em;
-	text-shadow: 0px 0px 1px rgb(20,20,20);	
-	margin: 30px 0 80px 0;
+	text-shadow: 0px 0px 0px rgb(20,20,20);	
+	margin: 0px 0 0px 0;
+}
+
+.medien_projekte {
+	width: 100%;
+	padding: auto;
+	margin: auto;
+	}
+	
+.medien_projekte p {
+	font-size: 16pt;
+	margin: 15px 0 30px 0;
+	text-align: justify;
+	line-height: 1.6em;  
+}
+
+.medien_projekte h1 {
+	font-size: 36pt;
+	margin: 30px 0 10px 0;
+	text-align: center;
+	text-decoration: none; 
+}
+
+.medien_projekte h1 a {
+	text-decoration: none;
+	color: rgb(0,0,0);
 }
 
 .medien_content {
-	width: 75%;
-	padding: 75px 12.5%;
-}
+	width: 800px;
+	padding: auto;
+	margin: auto;
+	}
 
 .medien_content img {
 	text-align: center;
@@ -1701,23 +1740,22 @@ a.socialimg:visited {
 }
 
 .medien_content p {
-	font-size: 14pt;
+	font-size: 16pt;
 	margin: 15px 0 30px 0;
 	text-align: justify;
-	line-height: 1.6em;
-    hyphens: auto
+	line-height: 1.6em;  
 }
 
 .medien_content h1 {
 	font-size: 36pt;
-	text-shadow: 0px 0px 1px rgb(20,20,20);
-	margin: 50px 0 10px 0;
+	margin: 30px 0 10px 0;
 	text-align: center;
+	text-decoration: none; 
 }
 
 .medien_content h1 a {
 	text-decoration: none;
-	color: rgb(46,74,98);
+	color: rgb(0,0,0);
 }
 
 .medien_content form {
@@ -1739,7 +1777,7 @@ a.socialimg:visited {
 }
 
 .medien_anmeldung a:hover{
-	color: rgb(46,74,98);
+	color: rgb(0,0,0);
 	border-bottom: 1px solid rgb(46,74,98);
 }
 
@@ -1810,7 +1848,7 @@ a:visited.medien_title_list {
 	font-size: 18pt;
 	vertical-align: top;
 	min-width: 220px;
-	padding: 30px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
 }
 
 .schriften_table_a {
@@ -1825,7 +1863,7 @@ a:visited.medien_title_list {
 .schriften_table_b {
 	width: 65%;
 	vertical-align: top !important;
-	padding-top: 50px !important;
+	padding-top: 0px !important;
 	text-align: center;
 	line-height: 140%;
 }
@@ -1853,6 +1891,7 @@ a:visited.medien_title_list {
 
 .schriften_table td a:hover {
 	text-decoration: none;
+	color: rgb(0,0,0);
 }
 
 .schriften_table_c  {
@@ -2031,20 +2070,24 @@ a:visited.medien_title_list {
 /* ============= Projekte ============*/
 
 .projekte {
-	margin: 0 15px;
+	width: 70%;
+	margin: auto;
 }
 
 .projekte h1 {
 	font-size: 20pt;
 	text-align: center;
+	margin: 0px;
 }
 
 .projekte h1 a {
 	text-decoration: none;
+	color: rgb(46,74,98);
 }
 
 .projekte h1 a:hover {
-	border-bottom: 1px solid rgb(46,74,98);
+	border-bottom: 0px solid rgb(46,74,98);
+	color: rgb(0,0,0);
 }
 
 .projekte p {
@@ -2108,7 +2151,7 @@ img.projekte_coin2  {
 }
 
 .projekte_padding {
-	padding: 75px 12.5% 0px !important ;
+	padding: auto;
 }
 /*==================================================*/
 /*                Upgrade - Payment	                */
@@ -3015,7 +3058,7 @@ img.projekte_coin2  {
 }
 
 .content-area {
-	margin: 50px 15%;
+	margin: 0px 15%;
 	display: inline-block;
 	width: 70%;
 }	
