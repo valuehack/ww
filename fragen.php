@@ -45,7 +45,7 @@ if ($login->isUserLoggedIn() == true) {
 		<header>
 			<h1>H&auml;ufige Fragen</h1>
 		</header>
-		<div class="blog_text">
+		<div class="blog_text_fragen">
 			
 			<?php
 				$sql = "SELECT * from static_content WHERE (page LIKE 'faq')";
