@@ -257,8 +257,8 @@ pfcGui.prototype = {
       a2.pfc_tabname = name;
       a2.pfc_tabtype = type;
       a2.onclick = function(){
-        var msg = (type == 'pv' ? 'M&uml;chten Sie diesen Tab wirklich schlie&szlig;en ?' :
-                                  'M&uml;chten Sie diesen Raum wirklich verlassen ?');
+        var msg = (type == 'pv' ? 'Möchten Sie diesen Tab wirklich schließen ?' :
+                                  'Möchten Sie diesen Raum wirklich verlassen ?');
         var res = confirm(pfc.res.getLabel(msg));
         if (res == true)
           pfc.sendRequest('/leave',this.pfc_tabid);

@@ -156,7 +156,7 @@ pfcClient.prototype = {
     // build a dhtml prompt box
     var pfcp = this.getPrompt();//new pfcPrompt($('pfc_container'));
     pfcp.callback = function(v) { pfc.askNickResponse(v); }
-    pfcp.prompt((error_text != undefined ? '<span style="color:red">'+error_text+'</span><br/>' : '')+this.res.getLabel(' Bitte geben Sie Ihren Nickname ein '), nickname);
+    pfcp.prompt((error_text != undefined ? '<span style="color:red">'+error_text+'</span><br/>' : '')+this.res.getLabel('Bitte geben Sie Ihren Nickname ein'), nickname);
     pfcp.focus();
   },
   askNickResponse: function(newnick)

@@ -29,7 +29,7 @@ pfcResource.prototype = {
       return String.sprintf2(this.getLabel.arguments);
     }
     else
-      return '_'+key+'_';
+      return ' '+key+' '; /*return '_'+key+'_';*/
   },
 
   setFileUrl: function(key, value)
