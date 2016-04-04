@@ -10,11 +10,8 @@ include('_header_not_in.php');
 			<h1>Bibliothek</h1>
 			
 			<?php
-				$sql = "SELECT * from static_content WHERE (page LIKE 'bibliothek')";
-				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-				$entry = mysql_fetch_array($result);
-				
-				echo $entry[info];			
+				$bib_info = $general->getStaticInfo('bibliothek');				
+				echo $bib_info->info;		
 			?>
 			
 			<p>Wenn Sie ein Zugang interessiert, hinterlassen Sie uns Ihre E-Mail-Adresse:</p>

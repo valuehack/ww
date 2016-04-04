@@ -28,9 +28,6 @@ function changeprice_book(totalQuantity, price_book){
 }
 </script>
 
-<div class="content">
-
-
 <?php 
 if(!isset($_SESSION['basket'])){
     $_SESSION['basket'] = array();
@@ -60,12 +57,9 @@ if(isset($_POST['add'])){
   ?>       
   	<div class='medien_info'>
   		<?php  
-			$sql = "SELECT * from static_content WHERE (page LIKE 'schriften')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[info];			
-			?>
+			$bib_info = $general->getStaticInfo('schriften');
+			echo $bib_info->info;
+		?>
 			<div class="centered">
 				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
 			</div>	  
@@ -75,18 +69,14 @@ if(isset($_POST['add'])){
   elseif ($_SESSION['Mitgliedschaft'] > 1){
 ?>
     <div class="medien_content">
-
+		<h1>Antiquariat</h1>
 <?php
 
 $sql = "SELECT * from produkte WHERE (type LIKE 'antiquariat') AND status = 1 AND (spots > spots_sold) order by title asc";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 	echo "<table class='schriften_table'>";
-?>
-		<header>
-			<h1>Antiquariat</h1>
-		</header>
-<?php
+
 while($entry = mysql_fetch_array($result))
 {
   $id = $entry[id];
@@ -134,10 +124,11 @@ while($entry = mysql_fetch_array($result))
 <?php
 	}
 	echo "</table>";
+	echo '</div>';
   }
 ?>
 
-</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

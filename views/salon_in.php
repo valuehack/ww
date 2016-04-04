@@ -318,7 +318,7 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 		if ($salon_info->spots < 60) {
 		?>
 		<div class="chat-info">
-			<p>&Uuml;ber den unten stehenden Chat k&ouml;nnen Sie aus der Ferne mitdiskutieren. Hierzu einfach einen Namen in das Login-Feld eingeben und &bdquo;Sign In&ldquo; dr&uuml;cken. Wir werden dann vor Ort auf Ihre Fragen und Kommentare eingehen.</p>
+			<p>&Uuml;ber den unten stehenden Chat k&ouml;nnen Sie aus der Ferne mitdiskutieren. Hierzu einfach einen Namen in das Login-Feld eingeben und &bdquo;Ok&ldquo; dr&uuml;cken. Wir werden dann vor Ort auf Ihre Fragen und Kommentare eingehen.</p>
 		</div>
 		<?php
 		}

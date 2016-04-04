@@ -23,11 +23,7 @@ $event_reg = $general->getEventReg($_SESSION['user_id'],$event_id);
 $title="Medien";
 include "_header_in.php";
 
-?>
 
-<div class="content">
-
-<?php 
 if(!isset($_SESSION['basket'])){
     $_SESSION['basket'] = array();
 }

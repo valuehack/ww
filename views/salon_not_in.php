@@ -2,9 +2,7 @@
 require_once('../classes/Login.php');
 $title="Salon";
 include "_header_not_in.php"; 
-?>
-	<div class="content">
-<?
+
 if(isset($_GET['q']))
 {
   $id = $_GET['q'];
@@ -89,6 +87,8 @@ else {
 <?php
 }
 ?> 
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -28,9 +28,6 @@ function changeprice_book(totalQuantity, price_book){
 }
 </script>
 
-<div class="content">
-
-
 <?php 
 if(!isset($_SESSION['basket'])){
     $_SESSION['basket'] = array();

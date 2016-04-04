@@ -58,11 +58,8 @@ else {
 		<h1>Schriften</h1>
 
 		<?php  
-			$sql = "SELECT * from static_content WHERE (page LIKE 'schriften')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[info];			
+			$bib_info = $general->getStaticInfo('schriften');
+			echo $bib_info->info;		
 			?>
 				<div class="centered">
 					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">

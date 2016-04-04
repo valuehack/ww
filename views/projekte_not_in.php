@@ -56,8 +56,9 @@ else {
 			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 			$entry4 = mysql_fetch_array($result);
 	
-				echo $entry4[info];			
+				echo $entry4[info];		
 ?>
+	</div>	
 	<div class="medien_content">
 <?php
 

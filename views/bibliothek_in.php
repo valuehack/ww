@@ -7,16 +7,13 @@ include('_header_in.php');
 
 <div class="content"></div>
 		<div class="medien_info">
-			<?php
-				$sql = "SELECT * from static_content WHERE (page LIKE 'bibliothek')";
-				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-				$entry = mysql_fetch_array($result);
-				
-				echo $entry[info];			
+<?php
+			$bib_info = $general->getStaticInfo('bibliothek');				
+			echo $bib_info->info;
 
 if ($_SESSION['Mitgliedschaft'] == 1) {
 	
-	echo $entry[info1];
+	echo $bib_info->info1;
 }
 
 ?>

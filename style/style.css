@@ -853,7 +853,7 @@ a.subnav_head:hover {
 .startpage_last_scholie span {
 	text-transform: uppercase;
 	font-size: 12pt;
-	text-align: center !important;
+	margin-right: 10px;
 }
 
 .startpage_last_scholie p {
@@ -3155,6 +3155,7 @@ img.projekte_coin2  {
 
 .content-elm {
 	margin: 20px 0;
+	font-size: 16pt;
 }
 
 .list {
