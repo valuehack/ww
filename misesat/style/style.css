@@ -394,7 +394,7 @@ a:hover, a:active {
 	#nav li a {
 		display: block;
 		text-decoration: none;
-		padding: 48px 20px 4px;
+		padding: 44px 20px 8px;
 		color: rgb(255,255,255);
 	}
 	#nav li a:hover, #nav li a:active {
@@ -505,15 +505,25 @@ a:hover, a:active {
 	padding-bottom: 1em;
 }
 
-.list-itm img {
+.list-itm_img--small,  .list-itm_img--big {
+	margin: 0 auto;	
+}	
+.list-itm_img--small {
 	max-height: 10em;
-	margin: 0 auto;
+}
+.list-itm_img--big {
+	max-height: 20em;
 }
 
 @media (min-width: 550px) {
-	.list-itm img {
+	.list-itm_img--small,  .list-itm_img--big{
 	margin: 0;	
 	}
+	.list-itm_img--big {	
+	width: 100%;
+	max-height: initial;
+}
+	
 }
 
 /*======================  Text  ====================*/
