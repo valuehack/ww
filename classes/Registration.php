@@ -598,7 +598,7 @@ class Registration
         // $email->sendSuccesfullPaymentConfirmationEmail();
 
         
-        //  header('Location: einvollererfolg.php');
+        header('Location: einvollererfolg.php');
     }
 
     public function addPaymentData($zahlung, $email)
