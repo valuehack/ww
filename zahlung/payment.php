@@ -72,7 +72,7 @@ function doPaypalPayment($profile, $product)
     $query['hosted_button_id'] = 'VEP823EAZG9BA';
 
     #return url
-    $query['return'] = 'http://scholarium.at/einvollererfolg.php';
+    $query['return'] = 'http://scholarium.at/zahlung/einvollererfolg.php';
 
 
     #generic
