@@ -523,14 +523,14 @@ a.navelm {
    	color: #fff;
 	padding: 3px 10px;
 	font-size: 17px;
-	text-shadow: 0px 0px 20px #fff;
+	text-shadow: 0px 0px 0px #fff;
 }
 
 a.navelm:hover {
   	text-decoration: none; 
 	padding: 3px 10px;
 	font-size: 17px;
-	text-shadow: 0 0px 0 rgba(0,0,0,0);
+	text-shadow: 0px 0px 20px #fff;
 }
 
 a.navelm:visited {
