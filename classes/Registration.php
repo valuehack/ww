@@ -572,30 +572,30 @@ class Registration
         $this->addNewUser($profile);
         $this->addPersonalDataGeneric($profile);
         
+        // #register for appropriate events
+        // switch ($_SESSION['passed_from']) 
+        // {
+        //     case 'seminar':
+
+        //         $this->registerSeminar($profile, $product);
+        //         break;
+
+        //     case 'projekt':
+        //         $this->registerProjekt($profile, $product);
+        //         break;
+
+        //     case 'upgrade':
+        //         $this->registerUpgrade($profile, $product);
+        //         break;
+
+        //     default:
+        //         # code...
+        //         break;
+        // }
 
 
-        #register for appropriate events
-        switch ($_SESSION['passed_from']) 
-        {
-            case 'seminar':
 
-                $this->registerSeminar($profile, $product);
-                break;
-
-            case 'projekt':
-                $this->registerProjekt($profile, $product);
-                break;
-
-            case 'upgrade':
-                $this->registerUpgrade($profile, $product);
-                break;
-
-            default:
-                # code...
-                break;
-        }
-
-        $email->sendSuccesfullPaymentConfirmationEmail()
+        // $email->sendSuccesfullPaymentConfirmationEmail();
 
         
         header('Location: einvollererfolg.php');
