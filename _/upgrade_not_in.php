@@ -94,7 +94,8 @@ $(document).ready(function(){
                     </td>
                     </tr><tr>
                     <td class="pay_option_form" colspan="2">
-                        <form method="post" action="zahlung.php">
+                        <form method="post" action="/zahlung/?g=ihredaten">
+                            <input type="hidden" name="product[what]" value="upgrade_3">
                             <input type="hidden" name="betrag" value="150">
                             <input type="hidden" name="level" value="Teilnehmer">
                             <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Teilnehmer">
@@ -125,7 +126,8 @@ $(document).ready(function(){
                 </td>
                 </tr><tr>
                 <td class="pay_option_form" colspan="2">
-                    <form method="post" action="zahlung.php">
+                    <form method="post" action="/zahlung/?g=ihredaten">
+                        <input type="hidden" name="product[what]" value="upgrade_4">
                         <input type="hidden" name="betrag" value="300">
                         <input type="hidden" name="level" value="Scholar">
                         <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Scholar">
@@ -155,7 +157,8 @@ $(document).ready(function(){
                 </td>
                 </tr><tr>
                 <td class="pay_option_form" colspan="2">
-                    <form method="post" action="zahlung.php">
+                    <form method="post" action="/zahlung/?g=ihredaten">
+                        <input type="hidden" name="product[what]" value="upgrade_5">
                         <input type="hidden" name="betrag" value="600">
                         <input type="hidden" name="level" value="Partner">
                         <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Partner">
@@ -184,7 +187,8 @@ $(document).ready(function(){
                 </td>
                 </tr><tr>
                 <td class="pay_option_form" colspan="2">
-                    <form method="post" action="zahlung.php">
+                    <form method="post" action="/zahlung/?g=ihredaten">
+                        <input type="hidden" name="product[what]" value="upgrade_6">
                         <input type="hidden" name="betrag" value="1200">
                         <input type="hidden" name="level" value="Beirat">
                         <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Beirat">
@@ -212,7 +216,8 @@ $(document).ready(function(){
                 </td>
                 </tr><tr>
                 <td class="pay_option_form" colspan="2">
-                    <form method="post" action="zahlung.php">
+                    <form method="post" action="/zahlung/?g=ihredaten">
+                        <input type="hidden" name="product[what]" value="upgrade_7">
                         <input type="hidden" name="betrag" value="2400">
                         <input type="hidden" name="level" value="Ehrenpr&auml;sident">
                         <input type="submit" class="pay_option_box_inputbutton" name="pay" value="Werden Sie jetzt Ehrenpr&auml;sident">

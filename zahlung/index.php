@@ -53,13 +53,15 @@ else
     if ($_GET["g"] === 'ihredaten')
     {
 
-        updateProductSessionVarsAfterEdit($_POST['product']['what']);
+        updateProductSessionVars($_POST['product']['what']);
         getForm();
 
     }
     #redirect to summary page
     elseif ($_GET["g"] === 'summary')
     {
+
+        #check if email is already registered       
 
         #here comes extra post from seminare and projekt, so set all session vars
         if (isset($_POST['product'])) $_SESSION['product'] = $_POST['product'];
@@ -69,7 +71,7 @@ else
         #its coming from edit page
         if (isset($_POST['edit_form_submit']))
         {
-            updateProductSessionVarsAfterEdit($_POST['product']['what']);
+            updateProductSessionVars($_POST['product']['what']);
         }
 
         $_SESSION['product']['total'] = $_SESSION['product']['price']; 
@@ -129,7 +131,7 @@ $test = str_replace(")", ")<br>", $test);
 echo $test;
 
     
-}
+}#end of else
 
 
 function getForm()
@@ -243,7 +245,7 @@ function getEditPage()
             ));
 }
 
-function updateProductSessionVarsAfterEdit($product_what)
+function updateProductSessionVars($product_what)
 {
 
     #sets 'what' to session as used by futher methods 
