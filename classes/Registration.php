@@ -569,8 +569,8 @@ class Registration
 
 
         #write user data to the database
-        $this->addNewUser($profile);
-        $this->addPersonalDataGeneric($profile);
+        $this->addNewUser($profile,$product);
+        $this->addPersonalDataGeneric($profile,$product);
         
         // #register for appropriate events
         // switch ($_SESSION['passed_from']) 
