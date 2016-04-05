@@ -564,26 +564,17 @@ class Registration
 
     }
 
-
-    public function processSofortSuccess()
+    public function processSuccessfulPayment($profile, $product)
     {
 
-        #because user has confirmed their email address and made a payment,
-        #it will be assumed that email is correct 
-        #note: set membership level here - 
-
-        $profile = $_SESSION['profile'];
-        $product = $_SESSION['product'];
 
         #write user data to the database
         $this->addNewUser($profile);
         $this->addPersonalDataGeneric($profile);
         
-        #commented out not to pollute with emails
-        // $this->sendConfirmationAndPasswordEmail($profile); 
+
 
         #register for appropriate events
-
         switch ($_SESSION['passed_from']) 
         {
             case 'seminar':
@@ -604,28 +595,10 @@ class Registration
                 break;
         }
 
+        $email->sendSuccesfullPaymentConfirmationEmail()
+
         
-
-        #generate a password and send an email with successful registration message, password
-
-
-        #redirect to a success page
-
-            // $_SESSION["profile"] = $profile;
-
-            // $user_email = $profile[user_email];
-            // $this->subscribeNewUser($user_email);
-
-            // if ($this->registration_successful){
-                
-            //     // it sends betrag additionally, but not necessary as betrag was added later and done in a rush to make it working. change it! 
-            //     $this->addPersonalDataForUserReg($profile, $profile[betrag]);
-                
-            //     // uncomment for production
-            //     #$this->sendNewPayingUserEmailToInstitute($user_email);
-            // }
-
-        #header('Location: success.php');
+        header('Location: einvollererfolg.php');
     }
 
     public function addPaymentData($zahlung, $email)

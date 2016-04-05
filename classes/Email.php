@@ -443,44 +443,17 @@ public function sendEmailWithFiles($from, $fromname, $to, $subject, $body, $file
 		
 	}
 
-	public function sendPaymentSuccessfullEmail($from, $fromname, $to, $subject, $body, $files) 
+	public function sendSuccesfullPaymentConfirmationEmail()
 	{
 
-		#init methods for twig
-	    require_once '../libraries/Twig-1.24.0/lib/Twig/Autoloader.php';
-	    Twig_Autoloader::register();
-	    $loader = new Twig_Loader_Filesystem('../templates');
-	    $twig = new Twig_Environment($loader, array('cache' => false));
 
-	    #values to ease the testing
-	    $profile = array(
-	        'user_email' => 'saltydillpickles@gmail.com',
-	        'user_anrede' => 'Herr',
-	        'user_first_name' => 'Denis',
-	        'user_surname' => 'Stankus',
-	        'user_telefon' => '123',
-	        'user_street' => 'Goodin Street 5',
-	        'user_plz' => '1050',
-	        'user_city' => 'Wien',
-	        'user_country' => 'Austria',
-	        'payment_option' => 'sofort'
-	        );
-
-	    #select a template
-	    $emailTemplate = $twig->loadTemplate('email.succesfullpayment.twig');
-
-
-
-	    #pass variables to and display the template
-	    $body = $emailTemplate->render(array(
-	            'type' => "type", 
-	            'product' => $_SESSION['product'],
-	            'profile' => $profile
-	            ));
-
-
+		sendEmail($from, $fromname, $to, $subject, $body);
 
 	}
+
+
+
+
 
 	
 }

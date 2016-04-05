@@ -71,6 +71,10 @@ function doPaypalPayment($profile, $product)
     $query['business'] = 'dainius.tol-facilitator@gmail.com';
     $query['hosted_button_id'] = 'VEP823EAZG9BA';
 
+    #return url
+    $query['return'] = 'http://scholarium.at/einvollererfolg.php';
+
+
     #generic
     $query['cmd'] = '_xclick';   
     $query['charset'] = 'utf-8';
