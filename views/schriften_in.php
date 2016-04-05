@@ -57,34 +57,30 @@ if(isset($_GET['q']))
 {
   $id = $_GET['q'];
 
-  //Termindetails
-  $sql="SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND id='$id'";
-  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-  $entry3 = mysql_fetch_array($result);
-  $n = $entry3[n];
-  $type=$entry3[type];
-  $title=$entry3[title];
+  //Product Infos
+  $itm_info = $general->getProduct($id);
+  
+  //User Reg Infos
+  //$user_itm = $general->getEventReg($user_id, $event_id);
 
-  $m = 0;
-
-  //Userdetails
-  $user_items_query = "SELECT * from registration WHERE `user_id`=$user_id and event_id='$n'";
+  $user_items_query = "SELECT * from registration WHERE `user_id`=$user_id and event_id='$itm_info->n'";
   $user_items_result = mysql_query($user_items_query) or die("Failed Query of " . $user_items_query. mysql_error());
+  
+  $m = 0;
   while ($userItemsArray = mysql_fetch_array($user_items_result)){
-
-  	$quantity_bought[$m] = $userItemsArray[quantity];
-  	$format_bought[$m] = $userItemsArray[format];
-  	
+  		if ($userItemsArray[format] != 'Druck') {
+  			$format_bought[$m] = $userItemsArray[format];
+			
+			if ($userItemsArray[format] == 'PDF') $bought_pdf = TRUE;
+			if ($userItemsArray[format] == 'ePub') $bought_epub = TRUE;
+			if ($userItemsArray[format] == 'Kindle') $bought_kindle = TRUE;
+		}
   	$m++;
   }
   
-  $bought = $quantity_bought[0] + $quantity_bought[1] + $quantity_bought[2] + $quantity_bought[3];
+  if (isset($format_bought[0])) $bought = TRUE;
   
-  if ($format_bought[0] == 'PDF' OR $format_bought[1] == 'PDF' OR $format_bought[2] == 'PDF' OR $format_bought[3] == 'PDF') $bought_pdf = 'PDF';
-  if ($format_bought[0] == 'ePub' OR $format_bought[1] == 'ePub' OR $format_bought[2] == 'ePub' OR $format_bought[3] == 'ePub') $bought_epub = 'ePub';
-  if ($format_bought[0] == 'Kindle' OR $format_bought[1] == 'Kindle' OR $format_bought[2] == 'Kindle' OR $format_bought[3] == 'Kindle') $bought_kindle = 'Kindle';
-  
-          	//check, if there is a image in the salon folder
+    //check, if there is a image in the schriften folder
 	$img = 'http://www.scholarium.at/schriften/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
@@ -94,88 +90,74 @@ if(isset($_GET['q']))
 	}
 ?>
   	<div class="medien_head">
-  		<h1><?echo $entry3[title]?></h1>
+  		<h1><?=$itm_info->title?></h1>
   		<div>
   		<div class="schriften_img">
-			<img src="<?echo $img;?>" alt="<?echo $id;?>">
+			<img src="<?=$img?>" alt="<?=$id?>">
 		</div>
 		<div class="schriften_bestellen">
 			<?php
-			  echo '<span class="schriften_type">'.ucfirst($entry3[type]).'</span>';
+			  echo '<span class="schriften_type">'.ucfirst($itm_info->type).'</span>';
 			  if ($_SESSION['Mitgliedschaft'] == 1) {
-			  	if ($bought >= 1) {
-    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits als ';
-    					if (isset($format_bought[0])) echo '<em>'.$format_bought[0].'</em>';
-						if (isset($format_bought[2])) echo ', <em>'.$format_bought[2].'</em>';
-						if (isset($format_bought[3])) echo ', <em>'.$format_bought[3].'</em>';
-						if (isset($format_bought[1])) echo ' und <em>'.$format_bought[1].'</em>';
-    					echo ' erworben. Sie k&ouml;nnen ihn unter <a href="../abo/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
+			  	if ($bought == TRUE) {
+    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits in einer digitalen Version erworben. Sie k&ouml;nnen ihn unter <a href="../abo/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
     				}
 			  	?>     					 
-    		<input type="button" value="Bestellen" class="inputbutton" data-toggle="modal" data-target="#myModal" <? if($bought >= 1) echo "disabled"?>>
+    		<input type="button" value="Bestellen" class="inputbutton" data-toggle="modal" data-target="#myModal" <? if($bought == TRUE) echo "disabled"?>>
     		<?  
   			  }
   			  else {
-    				$pdf = substr($entry3[format],0,1);
-    				$epub = substr($entry3[format],1,1);
-    				$kindle = substr($entry3[format],2,1);
-    				$druck = substr($entry3[format],3,1);
-
-    				$price = $entry3[price];
-    				$price_book = $entry3[price_book];
-					
+    				$pdf = substr($itm_info->format,0,1);
+    				$epub = substr($itm_info->format,1,1);
+    				$kindle = substr($itm_info->format,2,1);
+    				$druck = substr($itm_info->format,3,1);					
     			?>
     		<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-      			<input type="hidden" name="add" value="<?php echo $n; ?>">
+      			<input type="hidden" name="add" value="<?=$itm_info->n?>">
      
     		<?php
-    			if ($entry3[format] == '0001') {
-    				echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="total2" class="schriften_price">'.$entry3[price_book].' </span>';
+    			if ($itm_info->format == '0001') {
+    				echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="total2" class="schriften_price">'.$itm_info->price_book.' </span>';
 					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				else {
-			  		if ($bought >= 1) {
-    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits als ';
-    					if (isset($format_bought[0])) echo '<em>'.$format_bought[0].'</em>';
-						if (isset($format_bought[2])) echo ', <em>'.$format_bought[2].'</em>';
-						if (isset($format_bought[3])) echo ', <em>'.$format_bought[3].'</em>';
-						if (isset($format_bought[1])) echo ' und <em>'.$format_bought[1].'</em>';
-    					echo ' erworben. Sie k&ouml;nnen ihn unter <a href="../abo/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
+			  		if ($bought == TRUE) {
+    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits in einer digitalen Version erworben. Sie k&ouml;nnen ihn unter <a href="../abo/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
 					}
 					
-					echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="price" class="schriften_price">' .$entry3[price].' </span>';
+					echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="price" class="schriften_price">' .$itm_info->price.' </span>';
 					
 					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
 				}
 				echo '<span class="schriften_format">Format: <select name="format"';
 				
-					if ($entry3[format] == '0001') {
+					if ($itm_info->format == '0001') {
 						echo '>';
 						echo '<option value="4">Druck</option>';
 					}
 					else {
-						echo ' id="change" onchange="changeView('.$price.','.$price_book.')">';
+						echo ' id="change" onchange="changeView('.$itm_info->price.','.$itm_info->price_book.')">';
 							if ($pdf == 1) {
 								echo '<option value="1"';
-								if ($bought_pdf == 'PDF') echo 'disabled';
+								if ($bought_pdf == TRUE) echo 'disabled';
 								echo '>PDF</option>';
 							}
         					if ($epub == 1) {
         						echo '<option value="2"';
-								if ($bought_epub == 'ePub') echo 'disabled';
+								if ($bought_epub == TRUE) echo 'disabled';
         						echo '>ePub</option>';
 							}
         					if ($kindle == 1) {
         						 echo '<option value="3"';
-        						 if ($bought_kindle == 'Kindle') echo 'disabled';
+        						 if ($bought_kindle == TRUE) echo 'disabled';
         						 echo '>Kindle</option>';
         					}
-        					if ($druck == 1) echo '<option value="4">Druck</option>'; 
+        					if ($druck == 1) echo '<option value="4">Druck</option>';
 						}					
 				echo '</select></span>';
 				
         echo '<span class="schriften_quantity">Anzahl: ';
-        if ($entry3[format] == '0001' OR $entry3[format] == '0011' OR $entry3[format] == '0111' OR $entry3[format] == '1111' OR $entry3[format] == '1001' OR $entry3[format] == '1011' OR $entry3[format] == '1101' OR $entry3[format] == '0101') {
+        if ($itm_info->format == '0001' OR $itm_info->format == '0011' OR $itm_info->format == '0111' OR $itm_info->format == '1111' OR $itm_info->format == '1001' OR $itm_info->format == '1011' OR $itm_info->format == '1101' OR $itm_info->format == '0101') {
 				echo '<input type="number" name="quantity" onchange="changeprice_book(this.value,'.$price_book.')" value="1" min="1" max="100">';
 					}
         else {
@@ -192,9 +174,8 @@ if(isset($_GET['q']))
 	</div>
 	<div class="medien_content">
 <? 
-  if ($entry3[text]) echo $entry3[text];
-  if ($entry3[text2]) echo $entry3[text2];
-
+  if ($itm_info->text) echo $itm_info->text;
+  if ($itm_info->text2) echo $itm_info->text2;
 ?>
     	<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Schriften</a></div>
     </div>
@@ -208,11 +189,8 @@ else {
   ?>       
   	<div class='medien_info'>
   		<?php  
-			$sql = "SELECT * from static_content WHERE (page LIKE 'schriften')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[info];			
+			$schriften_info = $general->getStaticInfo('schriften');
+			echo $schriften_info->info;		
 			?>
 			<div class="centered">
 				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
