@@ -87,4 +87,5 @@ if ($login->isUserLoggedIn() == true) {
 
 			<p><a href="scholarium_agb.pdf">Eine pdf Version unserer AGB finden Sie hier.</a></p>
         </div>
+</div>  
 <? include "../views/_footer.php"; ?>
