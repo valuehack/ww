@@ -1909,7 +1909,7 @@ user_plz
                     <span style="color: #000000;">
                     <!--#/html#-->
                     <br>            
-                    Bitte klicken Sie auf den Link unterhalb, um Ihr Passwort zur&uuml;ckzusetzen. 
+                    Bitte klicken Sie unterhalb auf &bdquo;Passwort zur&uuml;cksetzen&ldquo;. 
                         ';
 
         $body = $body.'
