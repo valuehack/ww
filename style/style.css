@@ -1268,7 +1268,7 @@ a.blog_linkbutton:visited {
 .social {
 	position: fixed;
 	right: 40px;
-	bottom: 50px;
+	bottom: 10px;
 }
 
 .social ul {

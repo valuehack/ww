@@ -1,9 +1,4 @@
 <?php
-
-// Author: Bernhard Hegyi
-// Content: Blog with different views for members and non-members
-
-
 // check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
     exit('Sorry, this script does not run on a PHP version smaller than 5.3.7 !');
