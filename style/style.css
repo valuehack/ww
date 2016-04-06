@@ -174,7 +174,7 @@ h3 {
 
 /* Class for div - centers everything within */
 .centered {
-	margin: auto;
+	margin-top: 50px;
 	text-align: center;
 }
 
@@ -1383,7 +1383,7 @@ a.socialimg:visited {
 .salon_head {
 	width: 800px;
 	padding-bottom: 30px;
-	margin: 50px auto;
+	margin: auto;
 }
 
 .salon_head h1 {
@@ -3059,7 +3059,7 @@ img.projekte_coin2  {
 }
 
 .content-area {
-	margin: 50px auto;
+	margin: 0px 15%;
 	display: inline-block;
 	width: 70%;
 }	
