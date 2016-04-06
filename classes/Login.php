@@ -1942,7 +1942,7 @@ user_plz
         $post_data = array(
             'to' => $user_email,
             //'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
-            'subject' => 'scholarium.at passwort zurücksetzen',
+            'subject' => 'scholarium.at: Passwort zurücksetzen',
             'html' => $body,
             'from' => 'info@scholarium.at',
             'fromname' => 'scholarium'
