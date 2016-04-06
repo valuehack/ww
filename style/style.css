@@ -3192,9 +3192,14 @@ img.projekte_coin2  {
 }
 
 .chat-info {
-	margin: 0 auto;
-	padding-bottom: 20px;
+	width: 800px;
+	margin: 20 auto;
+	padding-bottom: 0px;
 	text-align: justify;
+}
+
+.chat-info p {
+	font-size: 14pt;
 }
 
 .content-elm {
