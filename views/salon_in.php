@@ -212,7 +212,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 				echo '<span class="salon_reservation_span_a">Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.</span><br>';
 			}	
   			if ($spots_available == 0){
-  				echo '<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht. Unsere Unterst&uuml;tzer k&ouml;nnen dennoch per Livestream dabei sein. <a href="../abo/">Unterst&uuml;tzer werden></a></span><br>';
+  				echo '<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht. Unsere Unterst&uuml;tzer k&ouml;nnen dennoch per Livestream dabei sein. <a href="../abo/">&rarr;Unterst&uuml;tzer werden</a></span><br>';
   			}
 			?>  
     		<!--Button trigger modal-->
