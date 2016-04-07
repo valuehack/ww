@@ -12,9 +12,9 @@ include('../views/_db.php');
 <div class="content"><div class="content-area"><div class="row-group">
 
 <div class="row row__body"><div class="col-8">
-THANKS A LOT FOR YOUR PAYMENT!
+Vielen Dank f&uuml;r Ihre Unterst&uuml;tzung. Die Zahlung wurde erfolgreich durchgef&uuml;hrt.
 
-Shortly you will receive an email with confirmation and futher details.
+In K&uuml;rze erhalten Sie eine Nachricht als Best&auml;tigung.
 <br>
 <br>
 <br>
