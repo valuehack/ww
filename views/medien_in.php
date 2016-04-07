@@ -114,14 +114,14 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 				 	if ($expired < time()) {
 ?>
 						<p class="content-elm error">
-							Ihre Mitgliedschaft ist abgelaufen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft.</a> Anschlie&szlig;end k&ouml;nnen Sie diesen Stream buchen.
+							Ihre letzte Unterst&uuml;tzung ist mehr als ein Jahr her. <a href="../abo/index.php">Bitte unterst&uuml;tzen Sie uns erneut.</a> Anschlie&szlig;end k&ouml;nnen Sie diesen Stream buchen.
 						</p>
 <?php
 					}
 					elseif ($user_info->credits_left < $price) {
 ?>
 						<p class="content-elm error">
-							Leider reicht Ihr Guthaben nicht aus, um diese Aufzeichnung zu erwerben. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
+							Leider reicht Ihr Guthaben nicht aus, um diese Aufzeichnung zu erwerben. <a href="../abo/index.php">Bitte unterst&uuml;tzen Sie uns erneut, um weiteres Guthaben zu erhalten.</a>
 						</p>
 <?php
 				 }
