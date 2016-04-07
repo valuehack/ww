@@ -159,7 +159,7 @@ while ($entry = mysql_fetch_array($result))
                 <?php
 			  if ($expired < time()) {
       			?>
-        		<p class="error">Ihre Mitgliedschaft ist abgelaufen. Um unsere Angebote wieder komplett nutzen zu k&ouml;nnen, <a href="../abo/">erneuern Sie bitte Ihre Mitgliedschaft.</a></p>
+        		<p class="error">Ihre letzte Unterst&uuml;tzung ist mehr als ein Jahr her, <a href="../abo/">bitte unterst&uuml;tzen Sie uns erneut</a>, um wieder vollen Zugriff zu erhalten.</p>
         	<?php
 			}
                   // show potential errors / feedback (from login object)
