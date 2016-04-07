@@ -1847,6 +1847,7 @@ user_plz
                     <span style="color: #000000;">
                     <!--#/html#-->
                     <br>            
+                    Um Ihr Passwort zur&uuml;ckzusetzen, klicken Sie bitte auf folgenden Link: <a href="'.$link.'">'.$link.'</a>
                     ';
 
 
@@ -1898,6 +1899,7 @@ user_plz
                     <span style="color: #000000;">
                     <!--#/html#-->
                     <br>            
+                    Um Ihr Passwort zur&uuml;ckzusetzen, klicken Sie bitte auf folgenden Link: <a href="'.$link.'">'.$link.'</a>
                     ';
 
 
