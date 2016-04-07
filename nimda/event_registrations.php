@@ -221,7 +221,7 @@ else {
 	echo '</div>';
 }
 ?>
-	<a href="index.php">Zur&uuml;ck zum Admin Panel</a>;
+	<a href="index.php">Zur&uuml;ck zum Admin Panel</a>
 	<a href="event_registrations.php">Zur Veranstaltungs&uuml;bersicht</a>
 		</div>
 	</body>
