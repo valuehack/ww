@@ -1251,7 +1251,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" name="paypal">
             <input type="hidden" name="cmd" value="_xclick">
             <input type="hidden" name="business" value="info@wertewirtschaft.org">
-            <input type="hidden" name="item_name" value="Mitglied Nr.'.$user_id.'">
+            <input type="hidden" name="item_name" value="Spende Nr.'.$user_id.'">
             <input type="hidden" name="amount" value="<?php=$betrag?>">
             <input type="hidden" name="shipping" value="0">
             <input type="hidden" name="no_shipping" value="1">
@@ -2224,7 +2224,7 @@ user_plz
                 <br>
                 Die Zahlung von 5&euro; pro Teilnehmer erfolgt am Abend des Salons vor Ort im scholarium.<br>
                 <br>
-                Wir freuen uns darauf, Sie kennenzulernen oder wiederzusehen.<br>
+                Wir freuen uns darauf, Sie kennenzulernen.<br>
                 <br>
                 Herzliche Gr&uuml;&szlig;e aus dem scholarium!';
 
