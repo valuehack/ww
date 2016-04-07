@@ -1847,17 +1847,6 @@ user_plz
                     <span style="color: #000000;">
                     <!--#/html#-->
                     <br>            
-                    Bitte klicken Sie unterhalb auf &bdquo;Passwort zur&uuml;cksetzen&ldquo;. 
-                        ';
-
-        $body = $body.'
-                    <table cellspacing="0" cellpadding="0"> <tr>
-                    <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
-                    <a href="'.$link.'" style="font-size:10px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
-                    <span style="color: #000000">
-                    Passwort zur&uuml;cksetzen
-                    </span>
-                    </a></td></tr></table> 
                     ';
 
 
@@ -1909,17 +1898,6 @@ user_plz
                     <span style="color: #000000;">
                     <!--#/html#-->
                     <br>            
-                    Bitte klicken Sie unterhalb auf &bdquo;Passwort zur&uuml;cksetzen&ldquo;. 
-                        ';
-
-        $body = $body.'
-                    <table cellspacing="0" cellpadding="0"> <tr>
-                    <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
-                    <a href="'.$link.'" style="font-size:10px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
-                    <span style="color: #000000">
-                    Passwort zur&uuml;cksetzen
-                    </span>
-                    </a></td></tr></table> 
                     ';
 
 
