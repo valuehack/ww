@@ -1244,7 +1244,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
 
         case "kredit":
 #this does not work in the email/ paypal complains
-        $body .="<p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR '.$payment_amount.' per Paypal.</p><br>"
+        $body .="<p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR ".$payment_amount." per Paypal.</p><br>";
 
 /*            <div align="center">
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" name="paypal">
