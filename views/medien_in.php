@@ -35,7 +35,7 @@ if(isset($_POST['add'])){
   $add_code = $add_id . "0";
   if ($add_quantity==1) $wort = "wurde";
   else $wort = "wurden";
-  echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>&raquo; zum Korb</a></div>";
+  echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../spende/korb.php'>&raquo; zum Korb</a></div>";
 
   if (isset($_SESSION['basket'][$add_code])) {
     $_SESSION['basket'][$add_code] += $add_quantity;
@@ -98,7 +98,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 			<?
 			if ($_SESSION['Mitgliedschaft'] == 1) {
 				if ($reg_info->quantity >= 1) {
-    					echo '<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../abo/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&ouml;nnen Sie Ihre vergangenen Bestellungen einsehen und gegebenenfalls nochmals herunterladen.</p>';
+    					echo '<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../spende/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&ouml;nnen Sie Ihre vergangenen Bestellungen einsehen und gegebenenfalls nochmals herunterladen.</p>';
     				}
 			?>
 				<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal" <?if ($reg_info->quantity >= 1) echo 'disabled'?>>
@@ -107,21 +107,21 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 			else { 
 		         if ($reg_info->quantity >= 1){
 		    ?>
-		    		<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../abo/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&ouml;nnen Sie Ihre Bestellungen einsehen und gegebenenfalls nochmals herunterladen.</p>
+		    		<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../spende/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&ouml;nnen Sie Ihre Bestellungen einsehen und gegebenenfalls nochmals herunterladen.</p>
 		    <?     	
 		         }				 
 				 if ($product_info->type === 'media-privatseminar' || $product_info->livestream != '') {
 				 	if ($expired < time()) {
 ?>
 						<p class="content-elm error">
-							Ihre letzte Unterst&uuml;tzung ist mehr als ein Jahr her. <a href="../abo/index.php">Bitte unterst&uuml;tzen Sie uns erneut.</a> Anschlie&szlig;end k&ouml;nnen Sie diesen Stream buchen.
+							Ihre letzte Unterst&uuml;tzung ist mehr als ein Jahr her. <a href="../spende/">Bitte unterst&uuml;tzen Sie uns erneut.</a> Anschlie&szlig;end k&ouml;nnen Sie diesen Stream buchen.
 						</p>
 <?php
 					}
 					elseif ($user_info->credits_left < $price) {
 ?>
 						<p class="content-elm error">
-							Leider reicht Ihr Guthaben nicht aus, um diese Aufzeichnung zu erwerben. <a href="../abo/index.php">Bitte unterst&uuml;tzen Sie uns erneut, um weiteres Guthaben zu erhalten.</a>
+							Leider reicht Ihr Guthaben nicht aus, um diese Aufzeichnung zu erwerben. <a href="../spende/">Bitte unterst&uuml;tzen Sie uns erneut, um weiteres Guthaben zu erhalten.</a>
 						</p>
 <?php
 				 }
@@ -222,7 +222,7 @@ else {
 				echo $static_info->info;		
 			?>
 		<div class="centered">
-			<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+			<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
 		</div>
    </div>
 
@@ -420,7 +420,7 @@ while($entry = mysql_fetch_array($result))
 		
       </div>
       <div class="modal-footer">
-         <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
+         <a href="../spende/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
       </div>
     </div>
   </div>

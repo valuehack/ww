@@ -35,7 +35,7 @@ if(isset($_POST['add'])){
   $add_code = $add_id . $add_format;
   if ($add_quantity==1) $wort = "wurde";
   else $wort = "wurden";
-  echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>&raquo; zum Korb</a></div>";
+  echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../spende/korb.php'>&raquo; zum Korb</a></div>";
 
   if (isset($_SESSION['basket'][$add_code])) {
     $_SESSION['basket'][$add_code] += $add_quantity;
@@ -212,7 +212,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 				echo '<span class="salon_reservation_span_a">Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.</span><br>';
 			}	
   			if ($spots_available == 0){
-  				echo '<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht. Unsere Unterst&uuml;tzer k&ouml;nnen dennoch per Livestream dabei sein. <a href="../abo/">&rarr;Unterst&uuml;tzer werden</a></span><br>';
+  				echo '<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht. Unsere Unterst&uuml;tzer k&ouml;nnen dennoch per Livestream dabei sein. <a href="../spende/">&rarr;Unterst&uuml;tzer werden</a></span><br>';
   			}
 			?>  
     		<!--Button trigger modal-->
@@ -372,7 +372,7 @@ else {
 			echo $static_info->info;	
 	?>
 			<div class="centered">
-				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+				<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
 			</div>		
    </div>
    <?
@@ -441,7 +441,7 @@ else {
 			?>
         </div>
         <div class="modal-footer">
-			<a href="../abo/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
+			<a href="../spende/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
         </div>
         	<?php
         	}

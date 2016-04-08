@@ -203,7 +203,7 @@ else {
         <h2 class="modal-title" id="myModalLabel">Anmeldung</h2>
       </div>
       <div class="modal-body">
-    	<!-- <form method="post" action="../abo/zahlung.php" name="user_create_profile_form"> -->
+    	<!-- <form method="post" action="../spende/zahlung.php" name="user_create_profile_form"> -->
       
       	<div class="profil payment_width">
       	<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">

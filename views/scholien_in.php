@@ -79,7 +79,7 @@ if(isset($_GET['q']))
 		</script>
 			
 
-		<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+		<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
 		</div>
 		<? }
 		?>
@@ -119,7 +119,7 @@ if(isset($_GET['q']))
 		</script>
 			
 
-		<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+		<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
 		</div>
 		<? }
 		?>
@@ -289,7 +289,7 @@ else
 				echo $entry4[info1];
 		?>
 			<div class="centered">
-				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+				<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
 			</div>
 		</div>
 		<?

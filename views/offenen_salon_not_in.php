@@ -174,7 +174,7 @@ else {
   <div class="modal-body">
   <div class="profil payment_width">
 
-      <!-- <form method="post" action="../abo/zahlung.php" name="user_create_profile_form"> -->
+      <!-- <form method="post" action="../spende/zahlung.php" name="user_create_profile_form"> -->
       <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">
 
           <!-- ajax_email_exists checks if user email is already registered -->

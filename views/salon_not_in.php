@@ -50,7 +50,7 @@ if(isset($_GET['q']))
 				<div class="salon_reservation">
 				<?
 				if ($spots_available == 0){
-  					echo '<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht. Unsere Unterst&uuml;tzer k&ouml;nnen dennoch per Livestream dabei sein. <a href="../abo/">&rarr;Unterst&uuml;tzer werden</a></span><br>';
+  					echo '<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht. Unsere Unterst&uuml;tzer k&ouml;nnen dennoch per Livestream dabei sein. <a href="../spende/">&rarr;Unterst&uuml;tzer werden</a></span><br>';
   				}
 				if ($spots_total > 59){
 					echo '<span class="salon_reservation_span_a">Unser Offener Salon steht allen offen, die uns pers&ouml;nlich kennenlernen m&ouml;chten. Der Kostenbeitrag betr&auml;gt <b>5&euro;</b> und kann nur vor Ort in bar gezahlt werden.</span><br><br>';

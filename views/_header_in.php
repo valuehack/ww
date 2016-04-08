@@ -11,7 +11,7 @@
 		<meta name="author" content="scholarium">
 		<meta property="og:type" content="article">
 		<meta property="og:title" content="<?=$title?>">
-		<meta property="og:url" content="http://www.scholarium.at/">
+		<meta property="og:url" content="http://scholarium.at/">
 		<meta property="og:image" content="http://scholarium.at/style/gfx/cover.jpg">
 		<meta property="og:description" content="<?=$description_fb?>">
 		<meta property="og:site_name" content="Scholarium">
@@ -159,7 +159,7 @@ while ($entry = mysql_fetch_array($result))
                 <?php
 			  if ($expired < time()) {
       			?>
-        		<p class="error">Ihre letzte Unterst&uuml;tzung ist mehr als ein Jahr her, <a href="../abo/">bitte unterst&uuml;tzen Sie uns erneut</a>, um wieder vollen Zugriff zu erhalten.</p>
+        		<p class="error">Ihre letzte Unterst&uuml;tzung ist mehr als ein Jahr her, <a href="../spende/">bitte unterst&uuml;tzen Sie uns erneut</a>, um wieder vollen Zugriff zu erhalten.</p>
         	<?php
 			}
                   // show potential errors / feedback (from login object)
@@ -199,15 +199,15 @@ while ($entry = mysql_fetch_array($result))
                 		<ul class="dropdown-menu dropdown_menu dropdown-menu-right dropdown_menu" role="menu" aria-labelledby="dLabel">
                 			<li class="dropdown-header dropdown_name"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
                             <li class="dropdown-header dropdown_level"><? echo $Mitgliedschaft;?></li>
-                			<li><a href="/abo/profil.php">Profil</a></li>
-                			<li><a href="/abo/">Unterst&uuml;tzen</a></li>
+                			<li><a href="/spende/profil.php">Profil</a></li>
+                			<li><a href="/spende/">Unterst&uuml;tzen</a></li>
                 			<? 
                 			if ($mitgliedschaft >= 2){
                 			?>
                 			<li class="divider"></li>
                       <li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry[credits_left];?> <img class='dropdown_coin' src="../style/gfx/coin.png"></li>
-                			<li><a href="/abo/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></li> 
-                			<li><a href="/abo/bestellungen.php">Bestellungen</a></li>
+                			<li><a href="/spende/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></li> 
+                			<li><a href="/spende/bestellungen.php">Bestellungen</a></li>
                 			<li class="divider"></li>
                 			<?
                 			}
@@ -218,7 +218,7 @@ while ($entry = mysql_fetch_array($result))
                 			<? 
                 			if ($mitgliedschaft >= 2){
                 			?>
-                	<div class="login_basket"><a href="../abo/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></div>
+                	<div class="login_basket"><a href="../spende/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></div>
 <?
 							}
 	#isset and while-loop

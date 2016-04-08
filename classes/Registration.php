@@ -117,8 +117,8 @@ class Registration
                 $this->sendNewPayingUserEmailToInstitute($user_email);
 
                 //only redirect after registration was successfully finished
-                #header("Location: ../abo/zahlung.php");     
-                header("Location: ../abo/zahlung_info.php");
+                #header("Location: ../spende/zahlung.php");     
+                header("Location: ../spende/zahlung_info.php");
 
             }
         }        
@@ -147,7 +147,7 @@ class Registration
 
                 //only redirect after registration was successfully finished
                 #zahlung_info.php displays extra info for selected payment method
-                header("Location: ../abo/zahlung_info.php");
+                header("Location: ../spende/zahlung_info.php");
             }
         }
         #registration for open salon from outside

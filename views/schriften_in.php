@@ -42,7 +42,7 @@ if(isset($_POST['add'])){
   if ($add_quantity==1) $wort = "wurde";
   else $wort = "wurden";
 
- 	echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>&raquo; zum Korb</a></div>";
+ 	echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../spende/korb.php'>&raquo; zum Korb</a></div>";
 
  	if (isset($_SESSION['basket'][$add_code])) {
     $_SESSION['basket'][$add_code] += $add_quantity; 
@@ -100,7 +100,7 @@ if(isset($_GET['q']))
 			  echo '<span class="schriften_type">'.ucfirst($itm_info->type).'</span>';
 			  if ($_SESSION['Mitgliedschaft'] == 1) {
 			  	if ($bought == TRUE) {
-    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits in einer digitalen Version erworben. Sie k&ouml;nnen ihn unter <a href="../abo/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
+    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits in einer digitalen Version erworben. Sie k&ouml;nnen ihn unter <a href="../spende/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
     				}
 			  	?>     					 
     		<input type="button" value="Bestellen" class="inputbutton" data-toggle="modal" data-target="#myModal" <? if($bought == TRUE) echo "disabled"?>>
@@ -122,7 +122,7 @@ if(isset($_GET['q']))
 				}
 				else {
 			  		if ($bought == TRUE) {
-    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits in einer digitalen Version erworben. Sie k&ouml;nnen ihn unter <a href="../abo/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
+    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits in einer digitalen Version erworben. Sie k&ouml;nnen ihn unter <a href="../spende/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
 					}
 					
 					echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="price" class="schriften_price">' .$itm_info->price.' </span>';
@@ -193,7 +193,7 @@ else {
 			echo $schriften_info->info;		
 			?>
 			<div class="centered">
-				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+				<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
 			</div>	  
   </div>
   <?
@@ -415,7 +415,7 @@ while($entry = mysql_fetch_array($result))
         <p>Wir freuen uns, dass Sie eine unserer Schriften bestellen m&ouml;chten. Allerdings sind einige Schriften nicht f&uuml;r die &Ouml;ffentlichkeit bestimmt, andere sind im Buchhandel zu erwerben,&nbsp;da ein Vertrieb und Versand f&uuml;r uns nicht wirtschaftlich&nbsp;ist. Unser Webshop, &uuml;ber den alle Schriften entweder bestellt oder in allen digitalen Formaten f&uuml;r Leseger&auml;te heruntergeladen werden k&ouml;nnen, steht nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (6,25&euro; im Monat) f&uuml;r das Bestehen des <i>scholarium</i> leisten (und daf&uuml;r die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf unsere Schriften:&nbsp;</p>
       </div>
       <div class="modal-footer">
-        <a href="../abo/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
+        <a href="../spende/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
       </div>
     </div>
   </div>

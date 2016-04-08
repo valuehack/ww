@@ -90,11 +90,11 @@ if(isset($_POST['checkout'])) {
     if ($error == 1) {
         //$this->errors[] = "You do not have enough credits to buy the items in your basket.";
         //error message does not work, alternate message above
-        echo '<div class="basket_error"><p>Ihre Bestellung &uuml;bersteigt Ihr derzeit noch freies Guthaben. Wir freuen uns sehr &uuml;ber Ihr Interesse. Um die Bestellung abzuschlie&szlig;en, f&uuml;llen Sie bitte Ihr Guthaben auf. Bitte w&auml;hlen Sie dazu eine der m&ouml;glichen Unterst&uuml;tzungsstufen &ndash; Sie k&ouml;nnen Ihr Guthaben im jeweiligen Ausma&szlig; erneut auff&uuml;llen. Sie k&ouml;nnen auch wieder denselben Betrag w&auml;hlen, so bleibt Ihr Guthaben wieder ein volles Jahr von nun an aktiv. Das bedeutet, Sie ziehen Ihre Guthabenauff&uuml;llung, die sonst nach Ablauf eines Jahres und erneuter Unterst&uuml;tzung erfolgen w&uuml;rde, einfach vor, um dieses Guthaben schon jetzt zu nutzen. Oder Sie nutzen die Gelegenheit, uns auf einer h&ouml;heren Stufe zu unterst&uuml;tzen und so innerhalb eines Jahres &uuml;ber noch mehr Guthaben verf&uuml;gen zu k&ouml;nnen. Es ehrt uns sehr, dass Sie unser Angebot in gr&ouml;&szlig;erem Ma&szlig;e nutzen wollen! Vielen Dank f&uuml;r Ihr Vertrauen. <a href="../abo/">Zur Aboseite</a></p></div>';
+        echo '<div class="basket_error"><p>Ihre Bestellung &uuml;bersteigt Ihr derzeit noch freies Guthaben. Wir freuen uns sehr &uuml;ber Ihr Interesse. Die Nutzung ist aber durch das Ausma&szlig; Ihrer Unterst&uuml;tzung beschr&auml;nkt. Bitte w&auml;hlen Sie eine der m&ouml;glichen Unterst&uuml;tzungsstufen &ndash; Sie k&ouml;nnen Ihr Guthaben im jeweiligen Ausma&szlig; erneut auff&uuml;llen. Sie k&ouml;nnen auch wieder denselben Betrag w&auml;hlen, so bleibt Ihr Guthaben wieder ein volles Jahr von nun an aktiv. Das bedeutet, Sie ziehen Ihre Guthabenauff&uuml;llung, die sonst nach Ablauf eines Jahres und erneuter Unterst&uuml;tzung erfolgen w&uuml;rde, einfach vor, um dieses Guthaben schon jetzt zu nutzen. Oder Sie nutzen die Gelegenheit, uns auf einer h&ouml;heren Stufe zu unterst&uuml;tzen und so innerhalb eines Jahres &uuml;ber noch mehr Guthaben verf&uuml;gen zu k&ouml;nnen. Es ehrt uns sehr, dass Sie unser Angebot in gr&ouml;&szlig;erem Ma&szlig;e nutzen wollen! Vielen Dank f&uuml;r Ihr Vertrauen. <a href="../spende/">&rarr;Guthaben erh&ouml;hen</a></p></div>';
     }
 
     elseif ($error == 2) {
-        echo '<div class="basket_error"><p>Leider liegt Ihre letzte Unterst&uuml;tzung mehr als ein Jahr zur&uuml;ck. <a href="../abo/">Bitte erneuern Sie Ihre Unterst&uuml;tzung, um auf Ihr Guthaben zuzugreifen.</a> Falls uns ein Fehler unterlaufen sein sollte (manchmal werden Eing&auml;nge nicht korrekt erfasst), bitten wir um Ihr Verst&auml;ndnis und <a href="mailto:info@scholarium.at">Ihren Hinweis</a>.</p></div>';
+        echo '<div class="basket_error"><p>Leider liegt Ihre letzte Unterst&uuml;tzung mehr als ein Jahr zur&uuml;ck. <a href="../spende/">Bitte erneuern Sie Ihre Unterst&uuml;tzung, um auf Ihr Guthaben zuzugreifen.</a> Falls uns ein Fehler unterlaufen sein sollte (manchmal werden Eing&auml;nge nicht korrekt erfasst), bitten wir um Ihr Verst&auml;ndnis und <a href="mailto:info@scholarium.at">Ihren Hinweis</a>.</p></div>';
     }
 
     else
@@ -259,7 +259,7 @@ function checkMe() {
 			echo '<div class="basket">';
 			
 				
-        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als E-Mail zugesandt. Sie k&ouml;nnen Ihre Bestellungen auch in <a href='../abo/bestellungen.php'>Ihrer Bestell&uuml;bersicht</a> einsehen und gekaufte Artikel und Tickets dort herunterladen.</p></div>";
+        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als E-Mail zugesandt. Sie k&ouml;nnen Ihre Bestellungen auch in <a href='../spende/bestellungen.php'>Ihrer Bestell&uuml;bersicht</a> einsehen und gekaufte Artikel und Tickets dort herunterladen.</p></div>";
 		echo "<div class='basket_summary'>";
         echo "<table><tr>";
 		echo "<td style='width:10%'>&nbsp;</td>";

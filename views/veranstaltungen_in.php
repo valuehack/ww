@@ -23,7 +23,7 @@ include "_header_in.php";
 				echo $entry5[info];
 	?>
 			<div class="centered">
-				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+				<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
 			</div>		
    </div>
 	<?
