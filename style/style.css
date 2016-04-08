@@ -3063,6 +3063,8 @@ img.projekte_coin2  {
 
 .content-area {
 	margin-top: 50px;
+	margin: auto;
+	text-align: center;
 	display: inline-block;
 	width: 70%;
 }	
