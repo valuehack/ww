@@ -488,7 +488,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" name="paypal">
       <input type="hidden" name="cmd" value="_xclick">
       <input type="hidden" name="business" value="info@scholarium.at">
-      <input type="hidden" name="item_name" value="Spende Nr.<?php echo $user_id ?>">
+      <input type="hidden" name="item_name" value="Mitglied Nr.<?php echo $user_id ?>">
       <input type="hidden" name="amount" value="<?=$betrag?>">
       <input type="hidden" name="shipping" value="0">
       <input type="hidden" name="no_shipping" value="1">
@@ -530,7 +530,7 @@ else {
   ?>
   <div class="content">
         <div class="salon_content">
-              <p class='centered'>Aus Sicherheitsgr&uuml;nden kann innerhalb 24 Stunden leider nur einmal eine Unterst&uuml;tzung ausgew&auml;hlt werden.</p>
+              <p class='centered'>Aus Sicherheitsgr&uuml;nden kann innerhalb 24 Stunden leider nur einmal upgegradet werden.</p>
               <p class='centered'><a href='index.php'>&raquo; zur Startseite</a></p>
         </div>
   </div>
