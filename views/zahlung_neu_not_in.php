@@ -224,7 +224,7 @@
 					<div class="row row__body">
 						<div class="col-8">
 							<div class="col__content">
-								<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+								
 								<form method="post" action="<?=htmlentities('index.php')?>">
 									<input type="submit" class="profil_inputbutton" name="change_info_submit" value="Angaben &auml;ndern">
     	 							<input type="submit" class="profil_inputbutton" name="confirmed_submit" value="Verbindlich bestellen">
@@ -483,7 +483,7 @@ print_r($_SESSION);
 					<div class="row row__body">
 						<div class="col-8">
 							<div class="col__content">
-								<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+								
     	 							<input type="submit" class="profil_inputbutton" name="confirmed_submit" value="Verbindlich bestellen" disabled>
 								</form>
 							</div>

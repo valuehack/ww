@@ -165,8 +165,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
         				<li>&Ouml;sterreich</li>
         				<li>&nbsp;</li>
         				<li>E-Mail:&nbsp;<a href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;</a></li>
-					</ul>
-					<p><a href="http://www.scholarium.at/agb/">AGB</a></p> 
+					</ul> 
         		</div>
         	</div>
         	<div class="footer_section">

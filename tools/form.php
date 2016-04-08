@@ -99,9 +99,6 @@
 <?php
 		 }
 ?>
-		 <!--
-		 	Moved to the confirmation page
-		 	<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>-->
 			
     	 <input type="submit" class="profil_inputbutton" name="<?=$pass_to?>" value="Weiter">
       </form>

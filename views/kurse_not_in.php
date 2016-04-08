@@ -489,8 +489,6 @@ else {
     		<input type="radio" class="profil_radio" name="seminar_profile[zahlung]" value="bank" required>&Uuml;berweisung<br>
     		<input type="radio" class="profil_radio" name="seminar_profile[zahlung]" value="kredit">Paypal<br>
     		<input type="radio" class="profil_radio" name="seminar_profile[zahlung]" value="bar">Bar<br>
-
-			<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 			
     	    <input type="submit" class="profil_inputbutton" name="register_seminar_from_outside_submit" value="Anmelden">
     </form>

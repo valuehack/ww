@@ -50,7 +50,6 @@ if (isset($_POST["registrationform"])) {
     			<input type="radio" class="payment_form_radio" name="zahlung" value="kredit">Paypal<br>
     			<input type="radio" class="payment_form_radio" name="zahlung" value="bar">Bar<br>
 
-				<p>Mit dem Klick auf <i>Weiter</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 
     			<input type="submit" class="inputbutton" name="upgrade_user_account" value="Weiter">
 			</form>
@@ -111,7 +110,6 @@ if (isset($_POST["donationform"])) {
           <input type="radio" class="payment_form_radio" name="zahlung" value="kredit">Paypal<br>
           <input type="radio" class="payment_form_radio" name="zahlung" value="bar">Bar<br>
 
-		  <p>Mit dem Klick auf <i>Weiter</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 
           <input type="submit" class="inputbutton" name="upgrade_user_account" value="Weiter">
       </form>
@@ -415,7 +413,6 @@ elseif(isset($_POST['pay'])) {
     		<input type="radio" class="profil_radio" name="zahlung" value="kredit">Paypal<br>
     		<input type="radio" class="profil_radio" name="zahlung" value="bar">Bar<br>
 
-			<p>Mit dem Klick auf <i>Weiter</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 
     		<input id="weiter_button" type="submit" class="profil_inputbutton" name="register_from_outside_submit" value="Weiter">
 		</form>
