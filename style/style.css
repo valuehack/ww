@@ -3063,8 +3063,9 @@ img.projekte_coin2  {
 
 .content-area {
 	margin: auto;
+	margin-top: 50px;
 	display: inline-block;
-	width: 70%;
+	width: 800px;
 }	
 
 .h1, .h2, .h3, .h1__sub, .h2__sub {
