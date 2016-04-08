@@ -2038,6 +2038,9 @@ a:visited.medien_title_list {
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
 }
 
+.antiquariat_inputbutton:hover {
+	background: rgb(30,48,64);
+}
 /* ============= Programme ============*/
 
 .programm_centered {
