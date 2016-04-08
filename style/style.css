@@ -175,6 +175,7 @@ h3 {
 /* Class for div - centers everything within */
 .centered {
 	margin-top: 50px;
+	margin-bottom: 50px;
 	text-align: center;
 }
 
