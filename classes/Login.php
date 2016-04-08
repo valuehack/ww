@@ -281,7 +281,7 @@ Old school database connect
 
     $this->sendGivenCreditsMail();
 
-    $this->messages[] = 'Guthaben erfolgreich aufgeladen';
+    $this->messages[] = 'Unterst&uuml;tzung erfolgreich ausgew&auml;hlt.';
 
 
     // $query_edit_user_profile = "UPDATE mitgliederExt SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
@@ -1160,7 +1160,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
             $this->editProfile($profile);
         }
         
-        $this->messages[] = 'Guthaben erfolgreich aufgeladen! Bitte pr&uuml;fen Sie Ihren Posteingang - '. $user_email;
+        $this->messages[] = 'Unterst&uuml;tzung erfolgreich gespeichert. Bitte achten Sie auf korrekte Zahlungsdurchf&uuml;hrung und pr&uuml;fen Sie Ihren Posteingang - '. $user_email;
 
 } 
 else {
@@ -1244,10 +1244,9 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
 
         case "kredit":
 #this does not work in the email/ paypal complains
-/*        $body .='
-            <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR '.$payment_amount.' per Paypal: Einfach auf das Symbol unterhalb klicken, Ihre Kreditkartennummer eingeben, fertig. Unser Partner PayPal garantiert eine schnelle, einfache und sichere Zahlung (an Geb&uuml;hren fallen 2-3% vom Betrag an). Sie m&uuml;ssen kein eigenes Konto bei PayPal einrichten, die Eingabe Ihrer Kreditkartendaten reicht.</p><br>
+        $body .="<p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR '.$payment_amount.' per Paypal.</p><br>"
 
-            <div align="center">
+/*            <div align="center">
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" name="paypal">
             <input type="hidden" name="cmd" value="_xclick">
             <input type="hidden" name="business" value="info@wertewirtschaft.org">
@@ -1273,7 +1272,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
         <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR ".$betrag." an:</p>
         <p>
         <ul>
-        <li>Scholarium</li>
+        <li>scholarium</li>
         <li>Erste Bank, Wien/&Ouml;sterreich</li>
         <li>IBAN: AT812011182715898501</li>
         <li>BIC: GIBAATWWXXX</li>
@@ -1348,7 +1347,7 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
 
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         
-        $body = 'User '.$_SESSION['user_email'].' möchte auf die Stufe '.$level.' upgraden!';
+        $body = 'User '.$_SESSION['user_email'].' möchte auf Stufe '.$level.' unterstützen, Zahlung: '.$zahlung;
 
         $mail->Body = $body;
 
