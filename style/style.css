@@ -3067,6 +3067,10 @@ img.projekte_coin2  {
 	width: 70%;
 }	
 
+.content-area h2 {
+	margin-top: 50px;
+}	
+
 .h1, .h2, .h3, .h1__sub, .h2__sub {
 	font-family: "Futura Book", Helvetica, Arial, serif;
 }
