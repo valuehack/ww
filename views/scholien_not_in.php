@@ -91,7 +91,7 @@ if ($length>10)
 		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
   			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
   			<input type=hidden name="first_reg" value="scholien">
-  			<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+  			<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
 		</form>
 		</div>
 	</div>
@@ -106,7 +106,7 @@ else
 		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
 			<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
   			<input type=hidden name="first_reg" value="scholien">
-  			<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+  			<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
 		</form>
 		</div>
 	</div>
@@ -147,7 +147,7 @@ else
 				<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
         			<input class="inputfield" type="email" placeholder=" E-Mail-Adresse" name="user_email" autocomplete="off" required>
         			<input type=hidden name="first_reg" value="scholien">
-        			<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+        			<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
       			</form>	
 			</div>
 		</div>
