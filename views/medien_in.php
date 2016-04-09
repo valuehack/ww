@@ -1,4 +1,5 @@
 <?
+include_once("../down_secure/functions.php");
 require_once('../classes/Login.php');
 
 #####################################
@@ -130,7 +131,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 					<input type="hidden" name="product[format]" value="Stream">
 					<input type="hidden" name="product[event_id]" value="<?=$product_info->n?>">
 					<input type="hidden" name="product[quantity]" value="1">			 
-					<input type="submit" class="inputbutton" name="oneClickReg" value="Aufzeichnung ansehen (<?=$price?> Guthabenpunkte)" <?if ($user_info->credits_left < $price || $expired < time()) echo 'disabled'?>>
+					<input type="submit" class="inputbutton" name="oneClickReg" value="Aufzeichnung ansehen und/oder MP3-Datei herunterladen (<?=$price?> Guthabenpunkte)" <?if ($user_info->credits_left < $price || $expired < time()) echo 'disabled'?>>
 				 </form>
 <?php
 				 }
@@ -164,6 +165,7 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 	$id = $_GET['q'];
 	$product_info = $general->getProduct($id);
 	$reg_info = $general->getEventReg($_SESSION['user_id'], $product_info->n);
+	$file_path = 'http://scholarium.at/down_secure/content_secure/'.$product_info->id.'.mp3';
 	
 	if ($product_info->livestream) {
 	
@@ -179,7 +181,13 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 		<div class="centered">
 			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
 		</div>
+<?php	if ($product_info->status == 2) {
+?>
+		<div class="centered">
+			<a href="<?php downloadurl($file_path,$product_info->id);?>" onclick="updateReferer(this.href);"> <button type="button" class="inputbutton">Um die Audio-Aufzeichnung des Salons herunterzuladen, klicken Sie bitte hier.</button></a>
+		</div>
 <?php
+		}
 		if (file_exists($begleit_pdf)) {
 ?>
 		<div class="sinfo">
