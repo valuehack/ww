@@ -182,7 +182,7 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
 		</div>
 		<div class="centered">
-			<a href="<?php downloadurl($file_path,$product_info->id);?>" onclick="updateReferer(this.href);"> <button type="button" class="inputbutton">Um die Audio-Aufzeichnung des Salons herunterzuladen, klicken Sie bitte hier.</button></a>
+			<a href="<?php downloadurl($file_path,$product_info->id);?>" onclick="updateReferer(this.href);"> <button type="button" class="inputbutton">Audio-Aufzeichnung des Salons als MP3-Datei herunterladen</button></a>
 		</div>
 <?php
 		if (file_exists($begleit_pdf)) {
