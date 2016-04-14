@@ -269,6 +269,16 @@ h3 {
 	float: right;
 }
 
+.anmelden2 a {
+	padding: 4px 9px;
+	text-decoration: none;
+	color: rgb(0,0,0);
+	font-family: "Futura Book", Helvetica, Arial, serif;
+	float: right;
+	font-size: 12pt;
+	background: none;
+}
+
 .login_button {
 	background: none;
 	color: rgb(0,0,0);
