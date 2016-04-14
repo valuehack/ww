@@ -277,6 +277,7 @@ h3 {
 	float: right;
 	font-size: 12pt;
 	background: none;
+	padding-top: 2px;
 }
 
 .login_button {
