@@ -276,7 +276,7 @@ h3 {
 	float: right;
 	font-size: 12pt;
 	background: none;
-	padding-top: 2px;
+	padding-top: 5px;
 }
 
 .login_button {
@@ -286,7 +286,7 @@ h3 {
 	font-size: 12pt;
 	float: right;
 	font-family: "Futura Book", Helvetica, Arial, serif;
-	padding-top: 5px;
+	padding-top: 2px;
 }
 
 .login_button a {
