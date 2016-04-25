@@ -462,7 +462,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
       if ($zahlung=="bank")
       {
       ?>
-      <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <?php echo $betrag?> an:</p><br>
+      <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <?php echo $betrag?> an:</p>
       <p>
       <ul>
       <li>scholarium</li>
