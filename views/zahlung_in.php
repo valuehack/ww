@@ -401,7 +401,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
           // payments coming from kurse_in (Membership 1)
       if ($source == 2) { 
       
-        echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Teilnehmer&quot;</b> freigeschaltet und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
+        echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem sind Sie nun <b>&bdquo;Teilnehmer&ldquo;</b> und haben als Unterst&uuml;tzer ein Jahr lang Zugang zu unserem Unterst&uuml;tzerbereich. Hier k&ouml;nnen Sie Ihr Guthaben von momentan 25 Punkten einl&ouml;sen. (Sollten Sie Ihre Unterst&uuml;tzung erneuern wollen, k&ouml;nnen Sie dies jederzeit tun &ndash; hierf&uuml;r auf Ihre E-Mail-Adresse oben rechts klicken und &bdquo;Unterst&uuml;tzen&ldquo; w&auml;hlen.)</p></div>';
 
         $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
         $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
@@ -428,7 +428,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
           // payments coming from projekte_in (Membership 1)
       elseif ($source == 3) { 
 
-        echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschaltet.</p></div>';
+        echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben Sie nun als <b>&bdquo;'.$level.'&ldquo; ein Jahr lang Zugang zu unserem Unterst&uuml;tzerbereich. (Sollten Sie Ihre Unterst&uuml;tzung erneuern wollen, k&ouml;nnen Sie dies jederzeit tun &ndash; hierf&uuml;r auf Ihre E-Mail-Adresse oben rechts klicken und &bdquo;Unterst&uuml;tzen&ldquo; w&auml;hlen.)</b>.</p></div>';
 
         $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
         $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
@@ -471,7 +471,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
       <li>BIC: GIBAATWW</li>
       </ul></p>
 
-      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;Spende Nr. <?php echo $user_id ?>&quot;</b></p>
+      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &bdquo;Spende Nr. <?php echo $user_id ?>&ldquo;</b></p>
       
       <?php
       }
