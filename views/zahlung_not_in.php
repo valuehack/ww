@@ -478,7 +478,7 @@ elseif (isset($_POST['ok']))
     //payments coming from kurse_not_in
     if ($_POST['ok'] == 2) { 
 
-      echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Teilnehmer&quot;</b> freigeschaltet und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
+      echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem sind Sie nun <b>&bdquo;Teilnehmer&ldquo;</b> und haben als Unterst&uuml;tzer ein Jahr lang Zugang zu unserem Unterst&uuml;tzerbereich &ndash; hierf&uuml;r sind auch Ihre 25 Guthabenpunkte. (Sollten Sie Ihre Unterst&uuml;tzung erneuern wollen, k&ouml;nnen Sie dies jederzeit tun &ndash; hierzu auf Ihre E-Mail-Adresse oben rechts klicken und &bdquo;Unterst&uuml;tzen&ldquo; w&auml;hlen.)</p></div>';
 	  /*
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
       $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
@@ -506,7 +506,7 @@ elseif (isset($_POST['ok']))
     elseif ($_POST['ok'] == 3) { 
 
            
-      echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschaltet.</p></div>';
+      echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben Sie nun als <b>&bdquo;'.$level.'&ldquo;</b> ein Jahr lang Zugang zu unserem Unterst&uuml;tzerbereich. (Sollten Sie Ihre Unterst&uuml;tzung erneuern wollen, k&ouml;nnen Sie dies jederzeit tun &ndash; hierf&uuml;r auf Ihre E-Mail-Adresse oben rechts klicken und &bdquo;Unterst&uuml;tzen&ldquo; w&auml;hlen.).</p></div>';
 
       /*
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";

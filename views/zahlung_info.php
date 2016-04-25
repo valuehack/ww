@@ -36,13 +36,15 @@ $zahlung = $profile[zahlung];
     
     ?>
     <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <b><?php echo $profile[betrag] ?></b> an:</p>
-      <li>scholarium</li>
-      <li>Erste Bank, Wien/&Ouml;sterreich</li>
-      <li>IBAN: AT81 2011 1827 1589 8501</li>
-      <li>BIC: GIBAATWW</li>
-      </ul></p>
+    <p>
+    <ul>
+    <li>scholarium</li>
+    <li>Erste Bank, Wien/&Ouml;sterreich</li>
+    <li>IBAN: AT81 2011 1827 1589 8501</li>
+   	<li>BIC: GIBAATWW</li>
+    </ul></p>
 
-      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;<?php echo strtr($profile[user_email], array("@" => "(at)")) ?>&quot;</b></p>
+    <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;<?php echo strtr($profile[user_email], array("@" => "(at)")) ?>&quot;</b></p>
     
     <?php
     }
