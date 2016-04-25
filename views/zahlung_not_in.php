@@ -542,6 +542,8 @@ elseif (isset($_POST['ok']))
     
     ?>
     <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <b><?php echo $betrag?></b> an:</p>
+      <p>
+      <ul>
       <li>scholarium</li>
       <li>Erste Bank, Wien/&Ouml;sterreich</li>
       <li>IBAN: AT81 2011 1827 1589 8501</li>
