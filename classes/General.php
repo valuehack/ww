@@ -435,7 +435,7 @@ class General {
                   						<p>Bitte überweisen Sie den Gesamtbetrag mit Angabe der Rechnungsnummer innerhalb von 14 Tagen auf unser folgendes Konto:<br>
                       					<br>
                 						scholarium GmbH<br>
-                						IBAN: AT812011182715898501<br>
+                						IBAN: AT27 2011 1827 1589 8503<br>
                 						BIC: GIBAATWWXXX<br>
                   						</p>';
                   			}

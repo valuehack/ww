@@ -546,8 +546,8 @@ elseif (isset($_POST['ok']))
       <ul>
       <li>scholarium</li>
       <li>Erste Bank, Wien/&Ouml;sterreich</li>
-      <li>IBAN: AT81 2011 1827 1589 8501</li>
-      <li>BIC: GIBAATWW</li>
+      <li>IBAN: AT27 2011 1827 1589 8503</li>
+      <li>BIC: GIBAATWWXXX</li>
       </ul></p>
 
       <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;<?php echo $_SESSION['profile']['user_email'] ?>&quot;</b></p>
