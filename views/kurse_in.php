@@ -34,7 +34,7 @@ if(isset($_POST['add'])){
   }
 }
 
-   	//check, if there is a image in the seminare folder
+   	//check, if there is an image in the seminare folder
 	$img = 'http://scholarium.at/seminare/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {

@@ -409,7 +409,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
         $userArray = mysql_fetch_array($user_result);
         $user_id = $userArray[user_id];
 
-        $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
+        $registration_query = "INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
         mysql_query($registration_query);
 
         /* moved to Login.php - upgradeUserAccount
@@ -436,7 +436,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
         $userArray = mysql_fetch_array($user_result);
         $user_id = $userArray[user_id];
 
-        $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
+        $registration_query = "INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '$betrag', NOW())";
         mysql_query($registration_query);
 
         /*
