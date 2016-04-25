@@ -250,7 +250,6 @@ while ($entry = mysql_fetch_array($result))
                     		<li class="subnav_head"><a class="subnav_head" href="/schriften/">Schriften</a></li>
                     		<li><a href="/schriften/">Alle</a></li>
                     		<li><a href="/schriften/index.php?type=scholien">Scholien</a></li>
-                    		<li><a href="/schriften/index.php?type=analysen">Analysen</a></li>
                     		<li><a href="/schriften/index.php?type=buecher">B&uuml;cher</a></li>
                     		<li><a href="/schriften/antiquariat.php">Antiquariat</a></li>
                     		<li><a href="/bibliothek/">Bibliothek</a></li>
