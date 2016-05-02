@@ -296,13 +296,19 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			?>
 			<div class="basket_body">
 				<div class="basket_body_col_a">
+					<?php
+					if ($type != 'antiquariat') {
+					?>
 					<div class="basket_body_col_a_1">
 						<img src="<?=$url?>" style="max-width:75px;max-height:75px;" alt="">
-					</div>		
+					</div>	
+					<?php
+					}
+					?>
 					<div class="basket_body_col_a_2">
 						<span class="history_body_type"><?=ucfirst($type)?></span>
 						<?php
-						if ($type== 'antiquariat' OR $type== 'buch') {
+						if ($type == 'antiquariat' OR $type == 'buch') {
 							?>
 						<span class="history_body_title"><?=$title?></span>
 						<?php
