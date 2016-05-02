@@ -302,7 +302,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 					<div class="basket_body_col_a_2">
 						<span class="history_body_type"><?=ucfirst($type)?></span>
 						<?php
-						if ($type== 'antiquariat') {
+						if ($type== 'antiquariat' OR $type== 'buch') {
 							?>
 						<span class="history_body_title"><?=$title?></span>
 						<?php
