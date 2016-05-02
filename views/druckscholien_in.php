@@ -188,6 +188,7 @@ else {
   if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>       
   	<div class='medien_info'>
+  		<h1>Gedruckte Scholien</h1>
   		<?php  
 			$druckscholien_info = $general->getStaticInfo('druckscholien');
 			echo $druckscholien_info->info1;		
