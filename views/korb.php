@@ -693,7 +693,13 @@ if($_SESSION['basket']) {
 <?php			
 		echo "<span class='basket_body_type'>".ucfirst($type)."</span>";
 		echo "<span class='basket_body_title'>";
-		echo "<a href='../".$url2."/index.php?q=".$id."'>".$itemsExtraArray[title]."</a></span>";
+		if ($type == 'antiquariat') {
+			echo $itemsExtraArray[title];
+			echo "</span>";
+		}
+		else {
+			echo "<a href='../".$url2."/index.php?q=".$id."'>".$itemsExtraArray[title]."</a></span>";
+		}
 		if (!(is_null($itemsExtraArray[start]))) {
             echo "<span class='basket_body_date'>".date("d.m.Y",strtotime($itemsExtraArray[start]));
             	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));
