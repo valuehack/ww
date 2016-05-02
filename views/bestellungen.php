@@ -3,7 +3,7 @@ include_once("../down_secure/functions.php");
 dbconnect();
 include("_db.php");
 // require_once('../classes/Login.php');
-$title="Ihre K&auml;ufe";
+$title="Bestell&uuml;bersicht";
 include('_header_in.php');
 
 if(isset($_POST['delete'])) {
