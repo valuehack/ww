@@ -55,11 +55,12 @@ if(isset($_GET['q']))
 else { 
 ?>
 	<div class="medien_info">
-		<h1>Schriften</h1>
+		<h1>B&uuml;cher</h1>
 
 		<?php  
-			$bib_info = $general->getStaticInfo('schriften');
-			echo $bib_info->info;		
+			$buecher_info = $general->getStaticInfo('buecher');
+			echo $buecher_info->info;
+			echo $buecher_info->info1;		
 			?>
 				<div class="centered">
 					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">

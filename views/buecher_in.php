@@ -57,8 +57,9 @@ if(isset($_POST['add'])){
   ?>       
   	<div class='medien_info'>
   		<?php  
-			$bib_info = $general->getStaticInfo('schriften');
-			echo $bib_info->info;
+			$buecher_info = $general->getStaticInfo('buecher');
+			echo $buecher_info->info;
+			echo $buecher_info->info2;
 		?>
 			<div class="centered">
 				<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
