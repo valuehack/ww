@@ -56,6 +56,7 @@ if(isset($_POST['add'])){
   if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>       
   	<div class='medien_info'>
+  		<h1>B&uuml;cher</h1>
   		<?php  
 			$buecher_info = $general->getStaticInfo('buecher');
 			echo $buecher_info->info;
