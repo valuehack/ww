@@ -68,7 +68,7 @@ if(isset($_GET['q']))
 		if ($l>10)
 		{
 		echo '<div class="blog_upgrade">';
-		echo $static_info[mehr_lesen1];
+		echo $static_info->mehr_lesen1;
 			?>
 
 		<script type="text/javascript">
