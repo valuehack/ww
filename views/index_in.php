@@ -116,7 +116,7 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
                     </div>
-                    <p class="startpage_more"><a href="/scholien/">Mehr Scholien</a></p>
+                    <p class="startpage_more"><a href="/scholien/">Mehr Scholienartikel</a></p>
                 </div>     
 			</div>        
 			         
