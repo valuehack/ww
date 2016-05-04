@@ -233,6 +233,7 @@ while ($entry = mysql_fetch_array($result))
             <div class="nav">
                 <div class="navi">
                 <ul id="nav">
+                    <li id="navelm"><a class="navelm" href="/buecher/">B&uuml;cher</a></li>
                     <li id="navelm"><a class="navelm" id="drop2" data-toggle="dropdown" href="/scholien/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Scholien</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop2">
                     	<ul>
@@ -252,7 +253,6 @@ while ($entry = mysql_fetch_array($result))
                     	</ul>
                     	</div>
                     </li>
-                    <li id="navelm"><a class="navelm" href="/buecher/">B&uuml;cher</a></li>
                     <li id="navelm"><a class="navelm" id="drop3" data-toggle="dropdown" href="/medien/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Medien</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop3">
                     	<ul>
