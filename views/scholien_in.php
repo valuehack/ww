@@ -51,7 +51,7 @@ if(isset($_GET['q']))
 	if ($_SESSION['Mitgliedschaft'] == 1) { 
 		echo "<div class='blog_info'>";
 				
-				echo $static_info->info;
+				echo $static_info->info1;
 		
 		echo "</div>";
 		echo "<header>";
@@ -68,7 +68,7 @@ if(isset($_GET['q']))
 		if ($l>10)
 		{
 		echo '<div class="blog_upgrade">';
-		echo $entry4[mehr_lesen1];
+		echo $static_info[mehr_lesen1];
 			?>
 
 		<script type="text/javascript">
