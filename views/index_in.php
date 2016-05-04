@@ -131,17 +131,17 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id];
+				$type = $entry[type];
 				echo "<p>";  
-                if (type == 'scholie') {
+                if ($type == 'scholie') {
                 	echo "<a href='/scholienbuechlein/index.php?q=$id'>".$entry[title]."</a><br>";
                 }
-				elseif (type == 'analyse') {
+				elseif ($type == 'analyse') {
                 	echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";
                 }
-				elseif (type == 'buch' OR type == 'antiquariat') {
+				elseif ($type == 'buch' OR $type == 'antiquariat') {
                 	echo "<a href='/buecher'>".$entry[title]."</a><br>";
                 }
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>"; 
 				echo ucfirst($entry[type]);
 				echo "</p>";                    
 }
