@@ -125,20 +125,29 @@ while($entry = mysql_fetch_array($result))
                     <h1>Schriften</h1>
                     <div class="startpage_box_inner">
                      <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status = 1 order by n desc LIMIT 0, 3";
+$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse' OR type LIKE 'antiquariat') AND status = 1 AND (spots > spots_sold) order by n desc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id];
 				echo "<p>";  
+                if (type == 'scholie') {
+                	echo "<a href='/scholienbuechlein/index.php?q=$id'>".$entry[title]."</a><br>";
+                }
+				elseif (type == 'analyse') {
+                	echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";
+                }
+				elseif (type == 'buch' OR type == 'antiquariat') {
+                	echo "<a href='/buecher'>".$entry[title]."</a><br>";
+                }
                 echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>"; 
 				echo ucfirst($entry[type]);
 				echo "</p>";                    
 }
                     ?>
                     </div>
-                    <p class="startpage_more"><a href="/schriften/">Mehr Schriften</a></p>
+                    <p class="startpage_more"><a href="/buecher/">Mehr B&uuml;cher</a><a href="/scholienbuechlein/">Mehr Scholienb&uuml;chlein</a></p>
                 </div>
                 <div class="startpage_box_outer left">
                     <h1>Medien</h1>

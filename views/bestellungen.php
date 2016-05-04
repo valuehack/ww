@@ -277,9 +277,30 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			
 				if ($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'antiquariat' || substr($type,0,5) == 'media'){
 			
-					if ($type == 'scholie' || $type == 'analyse' || $type == 'buch') {
+					if ($type == 'analyse') {
 					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
             		$url2 = 'schriften';
+					if ($format == 'PDF') $extension = '.pdf';
+					if ($format == 'Kindle') $extension = '.mobi';
+					if ($format == 'ePub') $extension = '.epub';
+					}
+					elseif ($type == 'scholie') {
+					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
+            		$url2 = 'scholienbuechlein';
+					if ($format == 'PDF') $extension = '.pdf';
+					if ($format == 'Kindle') $extension = '.mobi';
+					if ($format == 'ePub') $extension = '.epub';
+					}
+					elseif ($type == 'buch') {
+					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
+            		$url2 = 'buecher';
+					if ($format == 'PDF') $extension = '.pdf';
+					if ($format == 'Kindle') $extension = '.mobi';
+					if ($format == 'ePub') $extension = '.epub';
+					}
+					elseif ($type == 'antiquariat') {
+					$url = '';
+            		$url2 = 'buecher';
 					if ($format == 'PDF') $extension = '.pdf';
 					if ($format == 'Kindle') $extension = '.mobi';
 					if ($format == 'ePub') $extension = '.epub';
@@ -310,7 +331,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 						<?php
 						if ($type == 'antiquariat' OR $type == 'buch') {
 							?>
-						<span class="history_body_title"><?=$title?></span>
+						<span class="history_body_title"><a href="../<?=$url2?>/"><?=$title?></a></span>
 						<?php
 						}
 						else {

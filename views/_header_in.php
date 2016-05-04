@@ -233,7 +233,15 @@ while ($entry = mysql_fetch_array($result))
             <div class="nav">
                 <div class="navi">
                 <ul id="nav">
-                    <li id="navelm"><a class="navelm" href="/scholien/">Scholien</a></li>
+                    <li id="navelm"><a class="navelm" id="drop1" data-toggle="dropdown" href="/scholien/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Scholien</a>
+                    	<div class="subnav dropdown-menu" aria-labelledby="drop1">
+                    	<ul>
+                    		<li class="subnav_head"><a class="subnav_head" href="/scholien/">Scholien</a></li>
+                    		<li><a href="/scholien/">Digitale Scholien</a></li>
+                    		<li><a href="/scholienbuechlein/">Scholienb&uuml;chlein</a></li>
+                    	</ul>
+                    	</div>
+                    </li>
                     <li id="navelm"><a class="navelm" id="drop1" data-toggle="dropdown" href="/veranstaltungen/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Veranstaltungen</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop1">
                     	<ul>
@@ -244,19 +252,7 @@ while ($entry = mysql_fetch_array($result))
                     	</ul>
                     	</div>
                     </li>
-                    <li id="navelm"><a class="navelm" id="drop2" data-toggle="dropdown" href="/schriften/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Schriften</a>
-                    	<div class="subnav dropdown-menu" aria-labelledby="drop2">
-                    	<ul>
-                    		<li class="subnav_head"><a class="subnav_head" href="/schriften/">Schriften</a></li>
-                    		<li><a href="/schriften/">Alle</a></li>
-                    		<li><a href="/schriften/index.php?type=scholien">Scholien</a></li>
-                    		<li><a href="/schriften/index.php?type=buecher">B&uuml;cher</a></li>
-                    		<li><a href="/schriften/antiquariat.php">Antiquariat</a></li>
-                    		<li><a href="/bibliothek/">Bibliothek</a></li>
-                    	</ul>
-                    	</div>
-                    </li>
-                    
+                    <li id="navelm"><a class="navelm" href="/buecher/">B&uuml;cher</a></li>
                     <li id="navelm"><a class="navelm" id="drop3" data-toggle="dropdown" href="/medien/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Medien</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop3">
                     	<ul>

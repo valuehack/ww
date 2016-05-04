@@ -52,13 +52,13 @@ if ($login->isUserLoggedIn() == true)
     // for demonstration purposes, we simply show the "you are logged in" view.
    switch ($_SESSION['Mitgliedschaft']) {
         case 0:
-            include("../views/druckscholien_not_in.php");
+            include("../views/scholienbuechlein_not_in.php");
             break;
         case ($_SESSION['Mitgliedschaft'] >= 1):
-            include("../views/druckscholien_in.php");
+            include("../views/scholienbuechlein_in.php");
             break;
         default: 
-            include("../views/druckscholien_not_in.php"); 
+            include("../views/scholienbuechlein_not_in.php"); 
             break;
     }
 
@@ -67,7 +67,7 @@ if ($login->isUserLoggedIn() == true)
 else {
     // the user is not logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are not logged in" view.
-    include("../views/druckscholien_not_in.php");
+    include("../views/scholienbuechlein_not_in.php");
     // echo "hello";
     #include("views/header2.inc.php");
     

@@ -1,6 +1,6 @@
 <?php 
 require_once('../classes/Login.php');
-$title="Gedruckte Scholien";
+$title="Scholienb&uuml;chlein";
 include('_header_in.php'); 
 
 ?>
@@ -177,7 +177,7 @@ if(isset($_GET['q']))
   if ($itm_info->text) echo $itm_info->text;
   if ($itm_info->text2) echo $itm_info->text2;
 ?>
-    	<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den gedruckten Scholien</a></div>
+    	<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Scholienb&uuml;chlein</a></div>
     </div>
    </div>
 <?php 
@@ -188,10 +188,10 @@ else {
   if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>       
   	<div class='medien_info'>
-  		<h1>Gedruckte Scholien</h1>
+  		<h1>Scholienb&uuml;chlein</h1>
   		<?php  
-			$druckscholien_info = $general->getStaticInfo('druckscholien');
-			echo $druckscholien_info->info1;		
+			$scholienbuechlein_info = $general->getStaticInfo('scholienbuechlein');
+			echo $scholienbuechlein_info->info1;		
 			?>
 			<div class="centered">
 				<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
@@ -413,7 +413,7 @@ while($entry = mysql_fetch_array($result))
         <h2 class="modal-title" id="myModalLabel">Bestellen und Herunterladen</h2>
       </div>
       <div class="modal-body">
-        <p>Wir freuen uns, dass Sie eine unserer gedruckten Scholien bestellen m&ouml;chten. Unser Webshop, &uuml;ber den alle Scholien entweder bestellt oder in allen digitalen Formaten f&uuml;r Leseger&auml;te heruntergeladen werden k&ouml;nnen, steht allerdings nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (mindestens 6,25&euro; im Monat) f&uuml;r das Bestehen des <i>scholarium</i> leisten (und daf&uuml;r die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf unsere gedruckten Scholien:&nbsp;</p>
+        <p>Wir freuen uns, dass Sie eines unserer Scholienb&uuml;chlein bestellen m&ouml;chten. Unser Webshop, &uuml;ber den alle Scholien entweder bestellt oder in allen digitalen Formaten f&uuml;r Leseger&auml;te heruntergeladen werden k&ouml;nnen, steht allerdings nur unseren G&auml;sten zur Verf&uuml;gung, die einen kleinen Kostenbeitrag (mindestens 6,25&euro; im Monat) f&uuml;r das Bestehen des <i>scholarium</i> leisten (und daf&uuml;r die meisten Schriften kostenlos beziehen k&ouml;nnen). K&ouml;nnen Sie sich das leisten? Dann folgen Sie diesem Link und in K&uuml;rze erhalten Sie Zugriff auf unsere Scholienb&uuml;chlein</p>
       </div>
       <div class="modal-footer">
         <a href="../spende/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>

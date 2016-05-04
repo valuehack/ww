@@ -666,9 +666,20 @@ if($_SESSION['basket']) {
              $sum = $quantity*$itemsExtraArray[price];
         }
         
-		if ($type == 'buch' || $type == 'analyse' || $type == 'scholie') {
+		if ($type == 'analyse') {
 			$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
             $url2 = 'schriften';
+			}
+		elseif ($type == 'antiquariat') {
+			$url2 = 'buecher';
+			}
+		elseif ($type == 'buch') {
+			$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
+            $url2 = 'buecher';
+			}
+		elseif ($type == 'scholie') {
+			$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
+            $url2 = 'scholienbuechlein';
 			}
 		elseif ($type == 'seminar' || $type == 'kurs') {
 			$url = 'http://scholarium.at/seminare/'.$id.'.jpg';
@@ -693,9 +704,8 @@ if($_SESSION['basket']) {
 <?php			
 		echo "<span class='basket_body_type'>".ucfirst($type)."</span>";
 		echo "<span class='basket_body_title'>";
-		if ($type == 'antiquariat') {
-			echo $itemsExtraArray[title];
-			echo "</span>";
+		if ($type == 'antiquariat' OR $type == 'buch') {
+			echo "<a href='../".$url2."/'>".$itemsExtraArray[title]."</a></span>";
 		}
 		else {
 			echo "<a href='../".$url2."/index.php?q=".$id."'>".$itemsExtraArray[title]."</a></span>";
