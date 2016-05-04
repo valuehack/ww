@@ -141,6 +141,7 @@ while($entry = mysql_fetch_array($result))
 				elseif (type == 'buch' OR type == 'antiquariat') {
                 	echo "<a href='/buecher'>".$entry[title]."</a><br>";
                 }
+                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>"; 
 				echo ucfirst($entry[type]);
 				echo "</p>";                    
 }
