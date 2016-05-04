@@ -237,7 +237,7 @@ while ($entry = mysql_fetch_array($result))
                     	<div class="subnav dropdown-menu" aria-labelledby="drop1">
                     	<ul>
                     		<li class="subnav_head"><a class="subnav_head" href="/scholien/">Scholien</a></li>
-                    		<li><a href="/scholien/">Digitale Scholien</a></li>
+                    		<li><a href="/scholien/">Scholienartikel</a></li>
                     		<li><a href="/scholienbuechlein/">Scholienb&uuml;chlein</a></li>
                     	</ul>
                     	</div>
