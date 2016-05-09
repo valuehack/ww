@@ -2729,7 +2729,7 @@ img.projekte_coin2  {
 	font-size: 12pt;
 	color: rgb(0,0,0);
 	width: 100%;
-	display: inline-block;
+	display: table;
 	border-bottom: 1px solid rgb(235,235,235);
 }
 
@@ -2742,7 +2742,7 @@ img.projekte_coin2  {
 .basket_body_col_a_1 {
 	float: left;
 	width: 200px;
-	padding-right: 40px;
+	padding-right: 0px;
 }
 
 .basket_body_col_a_1 img {
@@ -2753,13 +2753,15 @@ img.projekte_coin2  {
 
 .basket_body_col_a_2 {
 	width: calc(65%-240px);
+	display: table;
 }
 
 .basket_body_title {
 	display: block;
-	font-size: 26pt;
+	font-size: 20pt;
 	padding-bottom: 20px;
-}
+	text-align: left;
+	}
 
 .basket_body_title a {
 	color: rgb(46,74,98);
