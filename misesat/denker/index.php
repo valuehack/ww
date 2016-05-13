@@ -110,7 +110,7 @@ else {
 				<div class="row list-row">
 					<div class="one-third column">
 						<div class="list-itm h-white">
-							<img class="list-itm_img--small" src="<?=$img?>" alt=".">
+							<img src="<?=$img?>" alt=".">
 						</div>
 					</div>
 					<div class="two-thirds column">
