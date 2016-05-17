@@ -666,12 +666,16 @@ if($_SESSION['basket']) {
              $sum = $quantity*$itemsExtraArray[price];
         }
         
-		if ($type == 'analyse' OR $type == 'buch') {
+		if ($type == 'analyse') {
 			$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
-            $url2 = 'buecher';
+            $url2 = 'schriften';
 			}
 		elseif ($type == 'antiquariat') {
 			$url2 = 'buecher';
+			}
+		elseif ($type == 'buch') {
+			$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
+            $url2 = 'buecher';
 			}
 		elseif ($type == 'scholie') {
 			$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
@@ -700,7 +704,12 @@ if($_SESSION['basket']) {
 <?php			
 		echo "<span class='basket_body_type'>".ucfirst($type)."</span>";
 		echo "<span class='basket_body_title'>";
+		if ($type == 'antiquariat' OR $type == 'buch') {
+			echo "<a href='../".$url2."/'>".$itemsExtraArray[title]."</a></span>";
+		}
+		else {
 			echo "<a href='../".$url2."/index.php?q=".$id."'>".$itemsExtraArray[title]."</a></span>";
+		}
 		if (!(is_null($itemsExtraArray[start]))) {
             echo "<span class='basket_body_date'>".date("d.m.Y",strtotime($itemsExtraArray[start]));
             	if (strtotime($entry[end])>(strtotime($entry[start])+86400)) echo "-".date("d.m.Y",strtotime($entry[end]));

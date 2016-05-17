@@ -2044,44 +2044,6 @@ a:visited.medien_title_list {
 	margin: 20px 0px 0px;
 }
 
-.buecher_head {
-	width: 75%;
-	padding: 75px 12.5%;
-	display: inline-block;
-}
-
-.buecher_head h1 {
-	text-align: center;
-	font-size: 28pt;
-	line-height: 1.2em;
-	text-shadow: 0px 0px 0px rgb(20,20,20);	
-	margin: 0px 0 0px 0;
-}
-
-.buecher_img {
-	float: left;
-	text-align: center;
-	width: 45%;
-}
-
-.buecher_img img {
-	padding: 10px;
-	box-shadow: 0 0 1px 0 rgba(0,0,0,0.6);
-	max-height: 300px;
-	max-width: 300px;
-	background: rgb(250,250,250);
-}
-
-.buecher_bestellen {
-	float: right;
-	width: 40%;
-	text-align: right;
-	padding-right: 15%;
-}
-
-.buecher_form {
-	padding: 5px;
-}
 
 .buecher_table {
 	width: 100%;

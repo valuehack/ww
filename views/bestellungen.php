@@ -277,14 +277,21 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 			
 				if ($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'antiquariat' || substr($type,0,5) == 'media'){
 			
-					if ($type == 'scholie') {
+					if ($type == 'analyse') {
+					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
+            		$url2 = 'schriften';
+					if ($format == 'PDF') $extension = '.pdf';
+					if ($format == 'Kindle') $extension = '.mobi';
+					if ($format == 'ePub') $extension = '.epub';
+					}
+					elseif ($type == 'scholie') {
 					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
             		$url2 = 'scholienbuechlein';
 					if ($format == 'PDF') $extension = '.pdf';
 					if ($format == 'Kindle') $extension = '.mobi';
 					if ($format == 'ePub') $extension = '.epub';
 					}
-					elseif ($type == 'buch' OR $type == 'analyse') {
+					elseif ($type == 'buch') {
 					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
             		$url2 = 'buecher';
 					if ($format == 'PDF') $extension = '.pdf';
@@ -321,7 +328,18 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 					?>
 					<div class="basket_body_col_a_2">
 						<span class="history_body_type"><?=ucfirst($type)?></span>
+						<?php
+						if ($type == 'antiquariat' OR $type == 'buch') {
+							?>
+						<span class="history_body_title"><a href="../<?=$url2?>/"><?=$title?></a></span>
+						<?php
+						}
+						else {
+						?>
 						<span class="history_body_title"><a href="../<?=$url2?>/index.php?q=<?=$id?>"><?=$title?></a></span>
+						<?php
+						}
+						?>
 						<span class="history_body_format"><?=$format?></span>
 					</div>
         		</div>	
