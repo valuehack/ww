@@ -136,11 +136,8 @@ while($entry = mysql_fetch_array($result))
                 if ($type == 'scholie') {
                 	echo "<a href='/scholienbuechlein/index.php?q=$id'>".$entry[title]."</a><br>";
                 }
-				elseif ($type == 'analyse') {
-                	echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>";
-                }
-				elseif ($type == 'buch' OR $type == 'antiquariat') {
-                	echo "<a href='/buecher'>".$entry[title]."</a><br>";
+				elseif ($type == 'buch' OR $type == 'antiquariat' OR $type == 'analyse') {
+                	echo "<a href='/buecher/index.php?q=$id'>".$entry[title]."</a><br>";
                 }
 				echo ucfirst($entry[type]);
 				echo "</p>";                    
