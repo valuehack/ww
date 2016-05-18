@@ -46,7 +46,7 @@
   				<a href="../index.php"><img src="../style/ma_logo.png" alt=""></a>
 			</div>
 			<div class="mises">
-  				<a href="../Young_Mises.png"><img src="../style/Young_Mises.png" alt=""></a>
+  				<a href="../index.php"><img src="../style/Young_Mises.png" alt=""></a>
 			</div>
 			<div class="text">
 			<h1>mises.at</h1>
