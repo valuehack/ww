@@ -350,7 +350,7 @@ a:hover, a:active {
 		height: 130px;
     	border-bottom: 40px solid rgb(177, 177, 177);
 		box-shadow: inset 0px 60px 100px black;
-		box-shadow: inset 10px 0px 10px black;
+		box-shadow: inset 0px 0px 10px black;
 		padding: 0;
     	top: 0;
 	}
@@ -670,7 +670,7 @@ a:hover, a:active {
 /*==================================================*/
 
 #footer {
-	background: rgb(46,74,98);
+	background: rgb(0, 0, 51);
 	width: 100%;
 	margin-bottom: 0;
 	bottom: 0;
