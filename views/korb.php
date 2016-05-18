@@ -259,7 +259,7 @@ function checkMe() {
 			echo '<div class="basket">';
 			
 				
-        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als E-Mail zugesandt. Sie k&ouml;nnen Ihre Bestellungen auch in <a href='../spende/bestellungen.php'>Ihrer Bestell&uuml;bersicht</a> einsehen und gekaufte Artikel und Tickets dort herunterladen.</p></div>";
+        echo "<div class='basket_success'><p>Bestellung erfolgreich. Hier sehen Sie nochmals eine Zusammenfassung Ihrer Bestellung.<br> Diese wurde Ihnen auch als E-Mail zugesandt. Sie k&ouml;nnen Ihre bisherigen Bestellungen auch in <a href='../spende/bestellungen.php'>Ihrer Bestell&uuml;bersicht</a> einsehen und bestellte Artikel und Tickets dort herunterladen.</p></div>";
 		echo "<div class='basket_summary'>";
         echo "<table><tr>";
 		echo "<td style='width:10%'>&nbsp;</td>";
