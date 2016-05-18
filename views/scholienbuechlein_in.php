@@ -66,106 +66,122 @@ if(isset($_GET['q']))
   $user_items_query = "SELECT * from registration WHERE `user_id`=$user_id and event_id='$itm_info->n'";
   $user_items_result = mysql_query($user_items_query) or die("Failed Query of " . $user_items_query. mysql_error());
   
-  $m = 0;
-  while ($userItemsArray = mysql_fetch_array($user_items_result)){
-  		if ($userItemsArray[format] != 'Druck') {
-  			$format_bought[$m] = $userItemsArray[format];
-			
-			if ($userItemsArray[format] == 'PDF') $bought_pdf = TRUE;
-			if ($userItemsArray[format] == 'ePub') $bought_epub = TRUE;
-			if ($userItemsArray[format] == 'Kindle') $bought_kindle = TRUE;
-		}
-  	$m++;
-  }
-  
-  if (isset($format_bought[0])) $bought = TRUE;
-  
     //check, if there is an image in the schriften folder
 	$img = 'http://www.scholarium.at/schriften/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://www.scholarium.at/schriften/default.jpg";
+	    $img_url = "";
 	}
 ?>
-  	<div class="medien_head">
+  	<div class="buecher_head">
   		<h1><?=$itm_info->title?></h1>
   		<div>
-  		<div class="schriften_img">
-			<img src="<?=$img?>" alt="<?=$id?>">
-		</div>
-		<div class="schriften_bestellen">
+  			<?php
+  			if ($img_url != "") {
+  			?>	
+  			<div class="buecher_img">
+				<img src="<?=$img_url?>" alt="<?=$id?>">
+			</div>
+			<?php
+			}
+			?>
+		<div class="buecher_bestellen">
 			<?php
 			  echo '<span class="schriften_type">'.ucfirst($itm_info->type).'</span>';
 			  if ($_SESSION['Mitgliedschaft'] == 1) {
-			  	if ($bought == TRUE) {
-    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits in einer digitalen Version erworben. Sie k&ouml;nnen ihn unter <a href="../spende/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
-    				}
 			  	?>     					 
-    		<input type="button" value="Bestellen" class="inputbutton" data-toggle="modal" data-target="#myModal" <? if($bought == TRUE) echo "disabled"?>>
+    		<input type="button" value="Bestellen" class="inputbutton" data-toggle="modal" data-target="#myModal">
     		<?  
   			  }
   			  else {
-    				$pdf = substr($itm_info->format,0,1);
-    				$epub = substr($itm_info->format,1,1);
-    				$kindle = substr($itm_info->format,2,1);
-    				$druck = substr($itm_info->format,3,1);					
-    			?>
-    		<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-      			<input type="hidden" name="add" value="<?=$itm_info->n?>">
-     
-    		<?php
+  			  	
+  			  	$preis_druck = $itm_info->price_book;
+				$preis_digital = $itm_info->price;
+    			
     			if ($itm_info->format == '0001') {
-    				echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="total2" class="schriften_price">'.$itm_info->price_book.' </span>';
-					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
+    		?>
+    			
+    			<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      					<input type="hidden" name="add" value="<?=$itm_info->n?>">
+      					<input type="hidden" name="format" value="4">      
+      					<select class="input-select" name="quantity" onchange="changePrice(this.value,'<?=$preis_druck?>')">>
+      					<?php
+		  					if (($itm_info->spots - $itm_info->spots_sold) == 0){echo '<option value="0">0</option>';}
+		  					if (($itm_info->spots - $itm_info->spots_sold) >= 1){echo '<option value="1" selected>1</option>';}
+		  					if (($itm_info->spots - $itm_info->spots_sold) >= 2){echo '<option value="2">2</option>';}
+		  					if (($itm_info->spots - $itm_info->spots_sold) >= 3){echo '<option value="3">3</option>';}
+		  					if (($itm_info->spots - $itm_info->spots_sold) >= 4){echo '<option value="4">4</option>';}
+		  					if (($itm_info->spots - $itm_info->spots_sold) >= 5){echo '<option value="5">5</option>';}
+							if (($itm_info->spots - $itm_info->spots_sold) >= 6){echo '<option value="6">6</option>';}
+							if (($itm_info->spots - $itm_info->spots_sold) >= 7){echo '<option value="7">7</option>';}
+							if (($itm_info->spots - $itm_info->spots_sold) >= 8){echo '<option value="8">8</option>';}
+							if (($itm_info->spots - $itm_info->spots_sold) >= 9){echo '<option value="9">9</option>';}
+							if (($itm_info->spots - $itm_info->spots_sold) >= 10){echo '<option value="10">10</option>';}
+		  				?>       
+     					</select> 
+      					<input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if(($itm_info->spots - $itm_info->spots_sold) == 0) echo "disabled"?>><br>     
+    				</form>
+  					<span id="change" class="coin-span"><?=$preis_druck?></span><img class="coin-span__img" src="../style/gfx/coin.png">
+			<?php
 				}
-				else {
-			  		if ($bought == TRUE) {
-    					echo '<span class="schriften-price--small">Sie haben diesen Artikel bereits in einer digitalen Version erworben. Sie k&ouml;nnen ihn unter <a href="../spende/bestellungen.php">Bestellungen</a> erneut herunterladen.</span>';
-					}
-					
-					echo '<span class="coin"><img src="../style/gfx/coin.png"></span><span id="price" class="schriften_price">' .$itm_info->price.' </span>';
-					
-					echo '<input type="submit" class="inputbutton" value="Ausw&auml;hlen"><br>';
-				}
-				echo '<span class="schriften_format">Format: <select name="format"';
-				
-					if ($itm_info->format == '0001') {
-						echo '>';
-						echo '<option value="4">Druck</option>';
-					}
-					else {
-						echo ' id="change" onchange="changeView('.$itm_info->price.','.$itm_info->price_book.')">';
-							if ($pdf == 1) {
-								echo '<option value="1"';
-								if ($bought_pdf == TRUE) echo 'disabled';
-								echo '>PDF</option>';
-							}
-        					if ($epub == 1) {
-        						echo '<option value="2"';
-								if ($bought_epub == TRUE) echo 'disabled';
-        						echo '>ePub</option>';
-							}
-        					if ($kindle == 1) {
-        						 echo '<option value="3"';
-        						 if ($bought_kindle == TRUE) echo 'disabled';
-        						 echo '>Kindle</option>';
-        					}
-        					if ($druck == 1) echo '<option value="4">Druck</option>';
-						}					
-				echo '</select></span>';
-				
-        echo '<span class="schriften_quantity">Anzahl: ';
-        if ($itm_info->format == '0001' OR $itm_info->format == '0011' OR $itm_info->format == '0111' OR $itm_info->format == '1111' OR $itm_info->format == '1001' OR $itm_info->format == '1011' OR $itm_info->format == '1101' OR $itm_info->format == '0101') {
-				echo '<input type="number" name="quantity" onchange="changeprice_book(this.value,'.$price_book.')" value="1" min="1" max="100">';
-					}
-        else {
-				echo '<span id="quantity"><input type="hidden" name="quantity" value="1"><input type="number" name="quantity2" value="1" disabled></span>';
-					}
-				echo '</span>';
-      		} ?>
+				else {		
+			?>
+				<form class="buecher_form" action="<?php htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      					<input type="hidden" name="add" value="<?=$itm_info->n?>">
+      					<input type="hidden" name="format" value="4">      
+      					<select class="input-select" name="quantity" onchange="changePrice(this.value,'<?=$preis_druck?>')">>
+      					<?php
+		  					if (($itm_info->spots - $itm_info->spots_sold) == 0){echo '<option value="0">0</option>';}
+		  					if (($itm_info->spots - $itm_info->spots_sold) >= 1){echo '<option value="1" selected>1</option>';}
+		  					if (($itm_info->spots - $itm_info->spots_sold) >= 2){echo '<option value="2">2</option>';}
+		  					if (($itm_info->spots - $itm_info->spots_sold) >= 3){echo '<option value="3">3</option>';}
+		  					if (($itm_info->spots - $itm_info->spots_sold) >= 4){echo '<option value="4">4</option>';}
+		  					if (($itm_info->spots - $itm_info->spots_sold) >= 5){echo '<option value="5">5</option>';}
+							if (($itm_info->spots - $itm_info->spots_sold) >= 6){echo '<option value="6">6</option>';}
+							if (($itm_info->spots - $itm_info->spots_sold) >= 7){echo '<option value="7">7</option>';}
+							if (($itm_info->spots - $itm_info->spots_sold) >= 8){echo '<option value="8">8</option>';}
+							if (($itm_info->spots - $itm_info->spots_sold) >= 9){echo '<option value="9">9</option>';}
+							if (($itm_info->spots - $itm_info->spots_sold) >= 10){echo '<option value="10">10</option>';}
+		  				?>       
+     					</select> 
+      					<input class="inputbutton" type="submit" value="Druck" <? if(($itm_info->spots - $itm_info->spots_sold) == 0 OR $itm_info->format == "1110" OR $itm_info->format == "1010" OR $itm_info->format == "1100" OR $itm_info->format == "1000" OR $itm_info->format == "0110" OR $itm_info->format == "0100" OR $itm_info->format == "0010") echo "disabled"?>>
+      		<?php			
+      					if (strlen("$preis_druck") - strlen("$preis_digital") == "1") {$coin_span = "buecher-coin-span1";}
+						elseif (strlen("$preis_druck") - strlen("$preis_digital") == "2") {$coin_span = "buecher-coin-span2";}
+						else {$coin_span = "buecher-coin-span";}		
+			?>		
+      					<span id="change" class="buecher-coin-span"><?=$preis_druck?></span><img class="coin-span__img" src="../style/gfx/coin.png">
+    				</form>
+				<form class="buecher_form" action="<?php htmlentities($_SERVER['PHP_SELF'])?>" method="post">
+      			<input type="hidden" name="add" value="<?=$itm_info->n?>">
+      			<input type="hidden" name="quantity" value="1">
+      			<input type="hidden" name="format" value="1">
+     			
+     			<input type="submit" class="inputbutton" value="PDF" <?php if ($itm_info->format == "0111" OR $itm_info->format == "0011" OR $itm_info->format == "0101" OR $itm_info->format == "0100" OR $itm_info->format == "0010" OR $itm_info->format == "0110") { ?> disabled <?php } ?> >
+    			<span id="change" class="<?=$coin_span?>"><?=$preis_digital?></span><img class="buecher-coin-span__img" src="../style/gfx/coin.png">
     		</form>
+    		<form class="buecher_form" action="<?php htmlentities($_SERVER['PHP_SELF'])?>" method="post">
+      			<input type="hidden" name="add" value="<?=$itm_info->n?>">
+      			<input type="hidden" name="quantity" value="1">
+      			<input type="hidden" name="format" value="2">
+      			
+      			<input type="submit" class="inputbutton" value="EPUB" <?php if ($itm_info->format == "1011" OR $itm_info->format == "0011" OR $itm_info->format == "1001" OR $itm_info->format == "1000" OR $itm_info->format == "0010" OR $itm_info->format == "1010") { ?> disabled <?php } ?> >
+    			<span id="change" class="<?=$coin_span?>"><?=$preis_digital?></span><img class="buecher-coin-span__img" src="../style/gfx/coin.png">
+    		</form>
+    		<form class="buecher_form" action="<?php htmlentities($_SERVER['PHP_SELF'])?>" method="post">
+      			<input type="hidden" name="add" value="<?=$itm_info->n?>">
+      			<input type="hidden" name="quantity" value="1">
+      			<input type="hidden" name="format" value="3">
+      			
+      			<input type="submit" class="inputbutton" value="Kindle" <?php if ($itm_info->format == "1101" OR $itm_info->format == "1001" OR $itm_info->format == "0101" OR $itm_info->format == "1100" OR $itm_info->format == "1000" OR $itm_info->format == "0100") { ?> disabled <?php } ?> >
+				<span id="change" class="<?=$coin_span?>"><?=$preis_digital?></span><img class="buecher-coin-span__img" src="../style/gfx/coin.png">
+			</form>
+			<?php	
+					}
+      		}
+      	?>
 		</div>
 		</div>
 	</div>
