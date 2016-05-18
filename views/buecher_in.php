@@ -99,7 +99,7 @@ if(isset($_GET['q']))
     			if ($itm_info->format == '0001') {
     		?>
     			
-    			<form action="<?php htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+    			<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       					<input type="hidden" name="add" value="<?=$itm_info->n?>">
       					<input type="hidden" name="format" value="4">      
       					<select class="input-select" name="quantity" onchange="changePrice(this.value,'<?=$preis_druck?>')">>
