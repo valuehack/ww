@@ -19,10 +19,6 @@ function changeView(price, price_book) {
     }
 }
 
-function changePrice(totalQuantity, price_book){
-    document.getElementById("total").innerHTML = (totalQuantity * price_book);
-}
-
 function changeprice_book(totalQuantity, price_book){
     document.getElementById("price").innerHTML = (totalQuantity * price_book);
 }
