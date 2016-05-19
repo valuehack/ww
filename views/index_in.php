@@ -50,7 +50,7 @@ while($entry = mysql_fetch_array($result))
 				echo "<div class='startpage_last_scholie'>";
 				echo "<div class='startpage_last_scholie_ms'>";
                 echo "<h1><a href='/scholien/index.php?q=$id'>".$entry[title]."</a></h1><br>";
-				echo "<div class='centered'><span>Scholie</span>";
+				echo "<div class='startpage_last_scholie_centered'><span>Scholie</span>";
 				echo "<span>".date('d.m.Y', strtotime($entry[publ_date]))."</span></div><br>";
 			
 					$text1 = wordwrap($entry[public_text], 300, "\0");

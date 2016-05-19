@@ -862,6 +862,12 @@ a.subnav_head:hover {
 	text-decoration: none;
 }
 
+.startpage_last_scholie_centered {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
 .startpage_last_scholie span {
 	text-transform: uppercase;
 	font-size: 12pt;
