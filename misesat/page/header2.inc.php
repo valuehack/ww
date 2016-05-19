@@ -45,14 +45,6 @@
   			<div class="logo">
   				<a href="../index.php"><img src="../style/ma_logo.png" alt=""></a>
 			</div>
-			<div class="mises">
-  				<a href="../index.php"><img src="../style/Young_Mises.png" alt=""></a>
-			</div>
-			<div class="text">
-			<h1>mises.at</h1>
-			<h2>The Original Austrians</h2>
-			<h3>tu ne cede malis</h3>
-			</div>
 			<div class="nav-trigger">
 				<div class="nav-trigger__icon">
 					<a href="#" onclick="showNav();return false;"><img src="../style/navicon.svg" alt="Menu" title="Menu"></a>

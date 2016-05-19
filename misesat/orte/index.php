@@ -89,7 +89,7 @@ else {
 	var MisesAustriaMapStyle = new google.maps.StyledMapType([
       {
       	      }
-    ], {name: 'Wohnorte und Wirkstaetten Wiener Oekonomen'});
+    ], {name: 'Wohn- und Wirkungsorte Wiener Denker'});
     
      var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 48.0596696, lng: 14.4656239},
@@ -114,6 +114,13 @@ else {
 		$lng = $result[$i]['lng'];
 		$denker = $result[$i]['denker'];
 		
+		if (strlen($text) > 215) {
+			$info_text = substr($text, 0, 215).' ... <a href="index.php?q='.$id.'">Mehr</a>';
+		}
+		else {
+			$info_text = $text;
+		}
+		
 		$denker_links = "";
 		$denker_list = explode(", ", $denker);
 
@@ -126,9 +133,8 @@ else {
 				$denker_links = $denker_links.'<a href="../denker/index.php?q='.$denker_info->id.'">'.$denker_info->name.'</a>';
 			}
 		}
-     ?> 
-        		 			
-		var info = '<div class="map-info"><a href="index.php?q=<?=$id?>"><h2><?=$name?></h2></a><img src="<?=$img?>" alt="."><p><?=substr($text, 0, 180)?> ... <a href="index.php?q=<?=$id?>">Mehr</a></p><h6>Denker die hier gelebt und gewirkt haben</h6><p><?=$denker_links?></p></div>';
+     ?>         		 			
+		var info = '<div class="map-info"><a href="index.php?q=<?=$id?>"><h2><?=$name?></h2></a><img src="<?=$img?>" alt="."><p><?=$info_text?></p><h6>Denker die hier gelebt und gewirkt haben</h6><p><?=$denker_links?></p></div>';
 			
         var marker = new google.maps.Marker({
          	position: {lat: <?=$lat?>, lng: <?=$lng?>},
