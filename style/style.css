@@ -854,7 +854,7 @@ a.subnav_head:hover {
 .startpage_last_scholie_ms h1 a {
 	font-size: 20pt;
 	text-decoration: none;
-	margin-top: 65px;
+	margin-top: 45px;
 	color: rgb(20,20,20);
 }
 
@@ -863,8 +863,8 @@ a.subnav_head:hover {
 }
 
 .startpage_last_scholie_centered {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 	text-align: center;
 }
 
@@ -877,7 +877,7 @@ a.subnav_head:hover {
 .startpage_last_scholie p {
 	font-size: 14pt;
 	line-height: 1.5;
-	margin-top: 20px;
+	margin-top: 15px;
 }
 
 .startpage_last_scholie p a {
