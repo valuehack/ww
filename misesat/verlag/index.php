@@ -53,8 +53,8 @@
 ?>      		
       		<div class="row list-row">
 				<div class="one-third column">
-					<div class="list-itm h-white">
-						<img src="<?=$img?>" alt=".">
+					<div class="list-itm h-white h-centered">
+						<img class="list-itm_img--big" src="<?=$img?>" alt=".">
 					</div>
 				</div>
 				<div class="two-thirds column">
