@@ -324,7 +324,7 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 		}
 		?>
 		<div class="centered">
-			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
+			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
 		</div>
 		<?php
 		if ($salon_info->spots < 60) {

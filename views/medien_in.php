@@ -23,6 +23,7 @@ $event_reg = $general->getEventReg($_SESSION['user_id'],$event_id);
 $title="Medien";
 include "_header_in.php";
 
+echo '<div class="content">';
 
 if(!isset($_SESSION['basket'])){
     $_SESSION['basket'] = array();
@@ -67,7 +68,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
   $user_info = $general->getUserInfo($user_id);
   
   //Registration details
-  $reg_info = $general->getEventReg($user_id, $product_info->n);    
+  $reg_info = $general->getEventReg($user_id, $product_info->n);
 
   $expired = strtotime($user_info->Ablauf);
   	
@@ -177,7 +178,7 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 			<h2><?=$product_info->title?></h2>
 		</div>
 		<div class="centered">
-			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>" frameborder="0" allowfullscreen></iframe>
+			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>?rel=1&modestbranding=1" frameborder="0" allowfullscreen></iframe>
 		</div>
 <?php
 		if (file_exists($begleit_pdf)) {
@@ -405,7 +406,7 @@ while($entry = mysql_fetch_array($result))
 ?>
 
 	</div>
-
+</div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
