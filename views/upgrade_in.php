@@ -30,7 +30,7 @@ include('_header_in.php');
                 <table>
                     <tr><th rowspan="3">
                         <h1>Gast</h1>
-                        <h2>6,25&euro;/Monat</h2>
+                        <h2>75&euro;</h2>
                     </th>
                     <td>
                         <p>Sie sind interessierter B&uuml;rger mit beschr&auml;nkten Mitteln, der nur einmal neugierig hineinschnuppern m&ouml;chte, ob es das scholarium auch wert ist.</p>
@@ -61,7 +61,7 @@ include('_header_in.php');
                <table>
                     <tr><th rowspan="3">
                         <h1>Teilnehmer</h1>
-                        <h2>12,50&euro;/ Monat</h2>
+                        <h2>150&euro;</h2>
                     </th>
                     <td>
                         <p>Sie sind an tiefer gehender Erkenntnis und Inspiration interessiert. Sie vertrauen dem scholarium bereits, dass sich hier wirklich etwas lernen l&auml;sst. Manchmal w&uuml;rde Sie auch die Teilnahme an intensiven Seminaren reizen.</p>
@@ -90,7 +90,7 @@ include('_header_in.php');
             <table>
                 <tr><th th rowspan="3">
                     <h1>Scholar</h1>
-                    <h2>25&euro;/Monat</h2>
+                    <h2>300&euro;</h2>
                 </th>
                 <td class="pay_option_box_td_top">           
                     <p>Sie sind nicht zuf&auml;llig hier, sondern empfinden so wie wir. Wenn es das scholarium nicht g&auml;be, w&uuml;rden Sie es vermissen. Sie wollen wie wir die Realit&auml;t erkennen, Werte schaffen und Sinn finden. Sie leben Eigenverantwortung und leisten als B&uuml;rger einen Beitrag, um dieses Zentrum verantwortlichen Unternehmertums, unabh&auml;ngiger Forschung und zivilgesellschaftlichen Engagements abseits der subventionierten Anstalten zu erm&ouml;glichen. Wenn es Sie nicht g&auml;be, g&auml;be es auch kein scholarium.
@@ -121,7 +121,7 @@ include('_header_in.php');
             <table>
                 <tr><th rowspan="3">
                     <h1>Partner</h1>
-                    <h2>50&euro;/Monat</h2>
+                    <h2>600&euro;</h2>
                 </th>
                 <td>
                     <p>Sie k&ouml;nnen sich einen gr&ouml;&szlig;eren Beitrag leisten und wollen nicht nur unser Angebot nutzen, sondern uns auch helfen, dieses noch auszubauen. Sie begleiten uns auf unserem Weg und werden Teil des engeren Kerns unserer Unterst&uuml;tzer: allesamt wirklich beeindruckende Pers&ouml;nlichkeiten, ohne die Europa schon l&auml;ngst zusperren k&ouml;nnte.</p>
@@ -151,7 +151,7 @@ include('_header_in.php');
             <table>
                 <tr><th rowspan="3">
                     <h1>Beirat</h1>
-                    <h2>100&euro;/Monat</h2>
+                    <h2>1200&euro;</h2>
                 </th>
                 <td>
                     <p>Sie wollen und k&ouml;nnen einen wirklich ernsthaften Beitrag leisten, weil Sie ein Interesse an der strategischen Entwicklung des scholarium haben. Wir nehmen Sie als Beirat auf und Sie gestalten mit uns die Zukunft. Nat&uuml;rlich gehen wir mit Ihrer Zeit pfleglich um: Einmal im Jahr reflektieren wir mit unseren Beir&auml;ten die Erkenntnisse des vergangenen Jahres und blicken in das kommende.</p>
@@ -180,7 +180,7 @@ include('_header_in.php');
             <table>
                 <tr><th rowspan="3">
                     <h1>Patron</h1>
-                    <h2>200&euro;/Monat</h2>
+                    <h2>2400&euro;</h2>
                 </th>
                 <td class="pay_option_box_td_m">
                     <p>Vielleicht w&auml;re das ja eine Aufgabe f&uuml;r Sie? Als Patron leisten Sie einen Beitrag, der das nachhaltige Bestehen des scholarium sichert. Patrone sind unsere VIPs: Keine falsche Elite mit Anspr&uuml;chen, sondern eine wahre mit &uuml;berdurchschnittlicher Leistungs- und Verantwortungsbereitschaft.</p>

@@ -34,7 +34,7 @@ $(document).ready(function()
 		{
 	  	    $.post('/tools/ajax_email_exists.php',{user_email: $('#ajax_email_exists').val()}, function(response){
 			    if(response.exists){
-			        $("#ajax_email_exists_error").fadeIn("fast").html('E-Mail-Adresse bereits registriert. Bitte melden Sie sich zun&auml;chst mit Ihren Zugangsdaten an und fahren dann fort.');
+			        $("#ajax_email_exists_error").fadeIn("fast").html('Wir kennen Sie schon - bitte zu Ihrer Sicherheit durch Log-In Identit&auml;t best&auml;tigen: rechts oben &quot;Anmelden&quot; anklicken.');
 			        $("#ajax_email_exists_error").addClass("error");
 			        $("#weiter_button").attr("disabled", "disabled");     
 				    }else{

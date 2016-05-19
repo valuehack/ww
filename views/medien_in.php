@@ -1,4 +1,5 @@
 <?
+include_once("../down_secure/functions.php");
 require_once('../classes/Login.php');
 
 #####################################
@@ -36,7 +37,7 @@ if(isset($_POST['add'])){
   $add_code = $add_id . "0";
   if ($add_quantity==1) $wort = "wurde";
   else $wort = "wurden";
-  echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>&raquo; zum Korb</a></div>";
+  echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../spende/korb.php'>&raquo; zum Korb</a></div>";
 
   if (isset($_SESSION['basket'][$add_code])) {
     $_SESSION['basket'][$add_code] += $add_quantity;
@@ -99,7 +100,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 			<?
 			if ($_SESSION['Mitgliedschaft'] == 1) {
 				if ($reg_info->quantity >= 1) {
-    					echo '<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../abo/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&ouml;nnen Sie Ihre vergangenen Bestellungen einsehen und gegebenenfalls nochmals herunterladen.</p>';
+    					echo '<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../spende/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&ouml;nnen Sie Ihre vergangenen Bestellungen einsehen und gegebenenfalls nochmals herunterladen.</p>';
     				}
 			?>
 				<input type="button" value="Herunterladen" class="inputbutton" data-toggle="modal" data-target="#myModal" <?if ($reg_info->quantity >= 1) echo 'disabled'?>>
@@ -108,21 +109,21 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 			else { 
 		         if ($reg_info->quantity >= 1){
 		    ?>
-		    		<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../abo/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&ouml;nnen Sie Ihre Bestellungen einsehen und gegebenenfalls nochmals herunterladen.</p>
+		    		<p class="content-elm">Sie haben diesen Artikel bereits erworben. In <a href="../spende/bestellungen.php">Ihrer Bestell&uuml;bersicht</a> k&ouml;nnen Sie Ihre Bestellungen einsehen und gegebenenfalls nochmals herunterladen.</p>
 		    <?     	
 		         }				 
 				 if ($product_info->type === 'media-privatseminar' || $product_info->livestream != '') {
 				 	if ($expired < time()) {
 ?>
 						<p class="content-elm error">
-							Ihre Mitgliedschaft ist abgelaufen. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft.</a> Anschlie&szlig;end k&ouml;nnen Sie diesen Stream buchen.
+							Ihre letzte Unterst&uuml;tzung ist mehr als ein Jahr her. <a href="../spende/">Bitte unterst&uuml;tzen Sie uns erneut.</a> Anschlie&szlig;end k&ouml;nnen Sie diesen Stream buchen.
 						</p>
 <?php
 					}
 					elseif ($user_info->credits_left < $price) {
 ?>
 						<p class="content-elm error">
-							Leider reicht Ihr Guthaben nicht aus, um diese Aufzeichnung zu erwerben. <a href="../abo/index.php">Bitte erneuern Sie Ihre Mitgliedschaft, um weiteres Guthaben zu erhalten.</a>
+							Leider reicht Ihr Guthaben nicht aus, um diese Aufzeichnung zu erwerben. <a href="../spende/">Bitte unterst&uuml;tzen Sie uns erneut, um weiteres Guthaben zu erhalten.</a>
 						</p>
 <?php
 				 }
@@ -131,7 +132,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 					<input type="hidden" name="product[format]" value="Stream">
 					<input type="hidden" name="product[event_id]" value="<?=$product_info->n?>">
 					<input type="hidden" name="product[quantity]" value="1">			 
-					<input type="submit" class="inputbutton" name="oneClickReg" value="Aufzeichnung ansehen (<?=$price?> Guthabenpunkte)" <?if ($user_info->credits_left < $price || $expired < time()) echo 'disabled'?>>
+					<input type="submit" class="inputbutton" name="oneClickReg" value="Aufzeichnung ansehen und/oder MP3-Datei herunterladen (<?=$price?> Guthabenpunkte)" <?if ($user_info->credits_left < $price || $expired < time()) echo 'disabled'?>>
 				 </form>
 <?php
 				 }
@@ -165,6 +166,7 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 	$id = $_GET['q'];
 	$product_info = $general->getProduct($id);
 	$reg_info = $general->getEventReg($_SESSION['user_id'], $product_info->n);
+	$file_path = 'http://scholarium.at/down_secure/content_secure/'.$product_info->id.'.mp3';
 	
 	if ($product_info->livestream) {
 	
@@ -179,6 +181,9 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 		</div>
 		<div class="centered">
 			<iframe width="100%" height="500" src="https://www.youtube.com/embed/<?=$livestream?>?rel=1&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+		</div>
+		<div class="centered">
+			<a href="<?php downloadurl($file_path,$product_info->id);?>" onclick="updateReferer(this.href);"> <button type="button" class="inputbutton">Audio-Aufzeichnung des Salons als MP3-Datei herunterladen</button></a>
 		</div>
 <?php
 		if (file_exists($begleit_pdf)) {
@@ -223,7 +228,7 @@ else {
 				echo $static_info->info;		
 			?>
 		<div class="centered">
-			<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+			<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
 		</div>
    </div>
 
@@ -421,7 +426,7 @@ while($entry = mysql_fetch_array($result))
 		
       </div>
       <div class="modal-footer">
-         <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
+         <a href="../spende/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
       </div>
     </div>
   </div>

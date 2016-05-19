@@ -67,8 +67,8 @@ else {
 				<div class="centered">
 					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
 						<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
-  						<input type=hidden name="first_reg" value="scholien">
-  						<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+  						<input type=hidden name="first_reg" value="schriften">
+  						<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
 					</form>
 				</div>
 	</div>
@@ -90,7 +90,8 @@ else {
         <div class="subscribe">
           <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
-          	<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+          	<input type=hidden name="first_reg" value="schriften">
+          	<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
           </form> 
         </div>
       </div>

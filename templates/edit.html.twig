@@ -38,7 +38,7 @@ case 3: $total = 150; $membership ='Teilnehmer'; break;
 case 4: $total = 300; $membership ='Scholar'; break;
 case 5: $total = 600; $membership ='Partner'; break;
 case 6: $total = 1200; $membership ='Beirat'; break;
-case 7: $total = 2400; $membership ='Ehrenpr&auml;sident'; break;
+case 7: $total = 2400; $membership ='Patron'; break;
 default: $total = 75; $membership ='Gast'; break;
 }
 }
@@ -49,7 +49,7 @@ default: $total = 75; $membership ='Gast'; break;
 <div class="row-group">
 <div class="row row__body">
 <div class="col-8">
-<p class="h1">&Auml;nderung Ihrer Bestellung</p>
+<p class="h1">&Auml;nderung</p>
 <p class="h1__sub">Bitte &uuml;berpr&uuml;fen Sie Ihre Angaben</p>
 </div>
 </div>
@@ -179,7 +179,7 @@ if ($spots_available >= 2400){echo '<option value="2400"'.$selected2400.'>2400</
 <div class="col-1">1</div>
 <div class="col-5">
 <div class="col__content">
-Abo: Mitgliedschaftslevel
+Unterst&uuml;tzungsstufe
 <select id="quantity" name="product[what]" onchange="changePrice(this.value,'1')">
 
 {% if product.price == 75 %}
@@ -201,7 +201,7 @@ Abo: Mitgliedschaftslevel
 <option value="300" {{selected300}}> Scholar (25&euro;/Monat)</option>
 <option value="600" {{selected600}}> Partner (50&euro;/Monat)</option>
 <option value="1200" {{selected1200}}> Beirat (100&euro;/Monat)</option>
-<option value="2400" {{selected2400}}> Ehrenpr&auml;sident (200&euro;/Monat)</option>
+<option value="2400" {{selected2400}}> Patron (200&euro;/Monat)</option>
  #}
 
 <option value="upgrade_2" {{selected75}}> Gast (6,25&euro;/Monat)</option>
@@ -209,7 +209,7 @@ Abo: Mitgliedschaftslevel
 <option value="upgrade_4" {{selected300}}> Scholar (25&euro;/Monat)</option>
 <option value="upgrade_5" {{selected600}}> Partner (50&euro;/Monat)</option>
 <option value="upgrade_6" {{selected1200}}> Beirat (100&euro;/Monat)</option>
-<option value="upgrade_7" {{selected2400}}> Ehrenpr&auml;sident (200&euro;/Monat)</option>
+<option value="upgrade_7" {{selected2400}}> Patron (200&euro;/Monat)</option>
 
  
 </select>
@@ -265,7 +265,7 @@ Abo: Mitgliedschaftslevel
 <div class="row row__body">
 <div class="col-8">
 <div class="col__content">
-<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
+
 <input type="submit" class="profil_inputbutton" name="edit_form_submit" value="Verbindlich bestellen">
 </form>
 </div>

@@ -341,8 +341,6 @@ if (!isset($_COOKIE['gaveCredits'])) {
       		<input type="radio" class="profil_radio" name="zahlung" value="kredit"><span class="profil_radio_label">Paypal</span><br>
       		<input type="radio" class="profil_radio" name="zahlung" value="bar"><span class="profil_radio_label">Bar</span><br>
 			
-			<p>Mit dem Klick auf <i>Weiter</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
-			
       		<input type="submit" class="profil_inputbutton" name="upgrade_user_account" value="Weiter">
   		</form>  		
   	</div>
@@ -403,7 +401,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
           // payments coming from kurse_in (Membership 1)
       if ($source == 2) { 
       
-        echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Teilnehmer&quot;</b> freigeschaltet und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
+        echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem sind Sie nun <b>&bdquo;Teilnehmer&ldquo;</b> und haben als Unterst&uuml;tzer ein Jahr lang Zugang zu unserem Unterst&uuml;tzerbereich &ndash; hierf&uuml;r sind auch Ihre 25 Guthabenpunkte. (Sollten Sie Ihre Unterst&uuml;tzung erneuern wollen, k&ouml;nnen Sie dies jederzeit tun &ndash; hierzu auf Ihre E-Mail-Adresse oben rechts klicken und &bdquo;Unterst&uuml;tzen&ldquo; w&auml;hlen.)</p></div>';
 
         $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
         $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
@@ -411,7 +409,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
         $userArray = mysql_fetch_array($user_result);
         $user_id = $userArray[user_id];
 
-        $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
+        $registration_query = "INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
         mysql_query($registration_query);
 
         /* moved to Login.php - upgradeUserAccount
@@ -430,7 +428,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
           // payments coming from projekte_in (Membership 1)
       elseif ($source == 3) { 
 
-        echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschaltet.</p></div>';
+        echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben Sie nun als <b>&bdquo;'.$level.'&ldquo;</b> ein Jahr lang Zugang zu unserem Unterst&uuml;tzerbereich. (Sollten Sie Ihre Unterst&uuml;tzung erneuern wollen, k&ouml;nnen Sie dies jederzeit tun &ndash; hierf&uuml;r auf Ihre E-Mail-Adresse oben rechts klicken und &bdquo;Unterst&uuml;tzen&ldquo; w&auml;hlen.)</b>.</p></div>';
 
         $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
         $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
@@ -438,7 +436,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
         $userArray = mysql_fetch_array($user_result);
         $user_id = $userArray[user_id];
 
-        $registration_query = "INSERT INTO registration (id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '1', NOW())";
+        $registration_query = "INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES ('$id', '$user_id', '$betrag', NOW())";
         mysql_query($registration_query);
 
         /*
@@ -457,23 +455,23 @@ if (!isset($_COOKIE['gaveCredits'])) {
       else {
         echo '<div class="payment_success>"<p><b>Vielen Dank f&uuml;r Ihre Unterst&uuml;tzung!</b></p>';
 
-        echo "<p>Sie haben das Unterst&uuml;tzungs-Niveau ".$level." gew&auml;hlt. Eine monatliche Teilzahlung ist momentan noch aus technischen Gr&uuml;nden leider nicht m&ouml;glich, wir m&uuml;ssen um Vorauszahlung des Jahresbetrags bitten. Vielen Dank f&uuml;r Ihr Verst&auml;ndnis!</p></div>";
+        echo "<p>Sie haben das Unterst&uuml;tzungs-Niveau ".$level." gew&auml;hlt.</p></div>";
 
       }
 
       if ($zahlung=="bank")
       {
       ?>
-      <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <?php echo $betrag?> an:</p><br>
+      <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <?php echo $betrag?> an:</p>
       <p>
       <ul>
       <li>scholarium</li>
       <li>Erste Bank, Wien/&Ouml;sterreich</li>
-      <li>IBAN: AT81 2011 1827 1589 8501</li>
-      <li>BIC: GIBAATWW</li>
+      <li>IBAN: AT27 2011 1827 1589 8503</li>
+      <li>BIC: GIBAATWWXXX</li>
       </ul></p>
 
-      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;Spende Nr. <?php echo $user_id ?>&quot;</b></p>
+      <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &bdquo;Spende Nr. <?php echo $user_id ?>&ldquo;</b></p>
       
       <?php
       }
@@ -529,7 +527,9 @@ echo "</div>";
 }
 
 else {
-  ?>
+	  include('_header_in.php');
+    ?>
+  
   <div class="content">
         <div class="salon_content">
               <p class='centered'>Aus Sicherheitsgr&uuml;nden kann innerhalb 24 Stunden leider nur einmal upgegradet werden.</p>

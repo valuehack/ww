@@ -292,7 +292,7 @@ function updateProductSessionVars($product_what)
             $_SESSION['product']['type'] = "upgrade";
             $_SESSION['product']['level'] = "7";
             $_SESSION['product']['price'] = "2400";
-            $_SESSION['product']['name'] = "President";
+            $_SESSION['product']['name'] = "Patron";
         break;
 
         default:

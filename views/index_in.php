@@ -50,7 +50,7 @@ while($entry = mysql_fetch_array($result))
 				echo "<div class='startpage_last_scholie'>";
 				echo "<div class='startpage_last_scholie_ms'>";
                 echo "<h1><a href='/scholien/index.php?q=$id'>".$entry[title]."</a></h1><br>";
-				echo "<div class='centered'><span>Scholie</span>";
+				echo "<div class='startpage_last_scholie_centered'><span>Scholie</span>";
 				echo "<span>".date('d.m.Y', strtotime($entry[publ_date]))."</span></div><br>";
 			
 					$text1 = wordwrap($entry[public_text], 300, "\0");
@@ -116,7 +116,7 @@ while($entry = mysql_fetch_array($result))
 }
                     ?>
                     </div>
-                    <p class="startpage_more"><a href="/scholien/">Mehr Scholien</a></p>
+                    <p class="startpage_more"><a href="/scholien/">Mehr Scholienartikel</a></p>
                 </div>     
 			</div>        
 			         
@@ -125,20 +125,26 @@ while($entry = mysql_fetch_array($result))
                     <h1>Schriften</h1>
                     <div class="startpage_box_inner">
                      <?php
-$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse') AND status = 1 order by n desc LIMIT 0, 3";
+$sql = "SELECT * from produkte WHERE (type LIKE 'buch' OR type LIKE 'scholie' OR type LIKE 'analyse' OR type LIKE 'antiquariat') AND status = 1 AND (spots > spots_sold) order by n desc LIMIT 0, 3";
 $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 while($entry = mysql_fetch_array($result))
 {
                 $id = $entry[id];
+				$type = $entry[type];
 				echo "<p>";  
-                echo "<a href='/schriften/index.php?q=$id'>".$entry[title]."</a><br>"; 
+                if ($type == 'scholie') {
+                	echo "<a href='/scholienbuechlein/index.php?q=$id'>".$entry[title]."</a><br>";
+                }
+				elseif ($type == 'buch' OR $type == 'antiquariat' OR $type == 'analyse') {
+                	echo "<a href='/buecher/index.php?q=$id'>".$entry[title]."</a><br>";
+                }
 				echo ucfirst($entry[type]);
 				echo "</p>";                    
 }
                     ?>
                     </div>
-                    <p class="startpage_more"><a href="/schriften/">Mehr Schriften</a></p>
+                    <p class="startpage_more"><a href="/buecher/">Mehr B&uuml;cher</a><a href="/scholienbuechlein/">Mehr Scholienb&uuml;chlein</a></p>
                 </div>
                 <div class="startpage_box_outer left">
                     <h1>Medien</h1>

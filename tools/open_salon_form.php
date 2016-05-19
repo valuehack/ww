@@ -99,7 +99,6 @@
           <!-- <input type="hidden" name="profile[title]" value="<?php echo $title ?>"> -->
           <!-- <input type="hidden" name="profile[credits]" value="25"> -->
 
-		  <p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 			
     	  <input type="submit" class="profil_inputbutton" name="<?=$submit?>" value="Anmelden" <?if ($spots_available == 0){echo 'disabled';}?>>
       </form>

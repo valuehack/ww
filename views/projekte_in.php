@@ -23,7 +23,7 @@ if(isset($_POST['add'])){
   else $coin = "Credits";
   if ($add_quantity==1) $wort = "wurde";
   else $wort = "wurden";
-  echo "<div class='basket_message'><i>".$add_quantity." ".$coin." f&uuml;r das ausgew&auml;hlte Projekt ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>&raquo; zum Korb</a></div>";
+  echo "<div class='basket_message'><i>".$add_quantity." ".$coin." f&uuml;r das ausgew&auml;hlte Projekt ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../spende/korb.php'>&raquo; zum Korb</a></div>";
 
   if (isset($_SESSION['basket'][$add_code])) {
     $_SESSION['basket'][$add_code] += $add_quantity + $add_donationdate; 
@@ -92,7 +92,7 @@ else {
 				echo $entry4[info];	
 	?>
 			<div class="centered">
-				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+				<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
 			</div>		
     </div>
     <?
@@ -266,7 +266,7 @@ else {
             <h2 class="modal-title" id="myModalLabel">Investieren</h2>
           </div>
           <div class="modal-body">
-        	<form method="post" action="../abo/zahlung.php" name="user_create_profile_form">
+        	<form method="post" action="../spende/zahlung.php" name="user_create_profile_form">
             	<input type="hidden" name="event_id" value="<?php echo $n ?>">
             	<input type="hidden" name="title" value="<?php echo $title ?>">
         

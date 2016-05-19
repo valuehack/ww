@@ -25,7 +25,7 @@ if(isset($_POST['add'])){
   $add_code = $add_id . "0";
   if ($add_quantity==1) $wort = "wurde";
   else $wort = "wurden";
-  echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>&raquo; zum Korb</a></div>";
+  echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../spende/korb.php'>&raquo; zum Korb</a></div>";
 
   if (isset($_SESSION['basket'][$add_code])) {
     $_SESSION['basket'][$add_code] += $add_quantity; 
@@ -100,7 +100,7 @@ else {
     
 	?>
 			<div class="centered">
-				<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+				<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
 			</div>		
     </div>
     <?
@@ -267,7 +267,7 @@ else {
         </div>
         
         <div class="modal-footer">
-          <a href="../abo/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
+          <a href="../spende/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
         </div>
       </div>
     </div>

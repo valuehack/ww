@@ -499,8 +499,6 @@ else {
     		<input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="kredit">Paypal<br>
     		<input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="bar">Bar<br>
 
-			<p>Mit dem Klick auf <i>Investieren</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
-
 		
 			<input type="hidden" name="projekte_profile[first_reg]" value="projekt_<?php echo $n; ?>">
 			<input id="weiter_button" type="submit" class="profil_inputbutton" name="register_projekte_from_outside_submit" value="Investieren">

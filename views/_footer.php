@@ -18,7 +18,6 @@
         				<li>&nbsp;</li>
         				<li>E-Mail:&nbsp;<a href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;</a></li>
 					</ul>
-					<p><a href="../agb/">AGB</a></p>
 					<p><a href="../mitwirkende.php">Mitwirkende</a></p>
 					<p><a href="../fragen.php">H&auml;ufige Fragen</a></p> 
 					<!--<p><a href="">Unsere Projekte sind Open Source</a></p>-->
@@ -32,7 +31,6 @@
         			<ul>
         				<li><a class="footer_social_facebook" href="https://www.facebook.com/wertewirtschaft" target="_blank" title="Besuchen Sie uns auf Facebook"></a></li>
         				<li><a class="footer_social_twitter" href="https://www.twitter.com/scholarium_at" target="_blank" title="Folgen Sie uns auf Twitter"></a></li>
-        				<li><a class="footer_social_xing" href="https://www.xing.com/companies/institutf%C3%BCrwertewirtschaft" target="_blank" title="Scholarium bei Xing"></a></li>
         				<li><a class="footer_social_youtube" href="https://www.youtube.com/user/Wertewirtschaft" target="_blank" title="Schauen Sie unsere Videos auf YouTube"></a></li>
         			</ul>
         		</div>

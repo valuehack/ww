@@ -146,6 +146,7 @@ if(isset($_GET['q']))
 echo '<th>ID</th>';		
 			echo '<th>E-Mail</th>';
 			echo '<th>Stufe</th>';
+			echo '<th>Guthaben</th>';
 			echo '<th>Ablauf</th>';
 			echo '<th>Vorname</th>';
 			echo '<th>Nachname</th>';
@@ -168,6 +169,7 @@ echo '<th>ID</th>';
 		$name = $userEntry[Vorname];
 		$email = $userEntry[user_email];
 		$stufe = $userEntry[Mitgliedschaft];
+		$guthaben = $userEntry[credits_left];
 		$ablauf = $userEntry[Ablauf];
 		$diff_ablauf = floor((abs(strtotime(date("Y-m-d")) - strtotime($ablauf))/(60*60*24)));
 		
@@ -178,6 +180,7 @@ echo '<th>ID</th>';
 		echo '<td>'.$user_id.'</td>';
 			echo '<td>'.$email.'</td>';
 			echo '<td>'.$stufe.'</td>';
+			echo '<td>'.$guthaben.'</td>';
 			echo '<td class='.$ablauf_bgc.'>'.$ablauf.'</td>';
 			echo '<td>'.$name.'</td>';
 			echo '<td>'.$surname.'</td>';
@@ -191,7 +194,8 @@ echo '<th>ID</th>';
 			echo '<td>&nbsp;</td>';
 			echo '<td>&nbsp;</td>';
 			echo '<td>&nbsp;</td>';
-			echo '<td>&nbsp;</td>';		
+			echo '<td>&nbsp;</td>';
+			echo '<td>&nbsp;</td>';	
 			echo '<td>Anzahl Teilnehmer</td>';
 			echo '<td>'.$spots_sold.'</td>';
 		echo '</tr>';
@@ -218,6 +222,7 @@ else {
 }
 ?>
 	<a href="index.php">Zur&uuml;ck zum Admin Panel</a>
+	<a href="event_registrations.php">Zur Veranstaltungs&uuml;bersicht</a>
 		</div>
 	</body>
 </html>

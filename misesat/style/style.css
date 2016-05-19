@@ -286,7 +286,7 @@ a:hover, a:active {
 		background: rgb(46, 74, 98);
 		width: 100%;
 		height: 80px;
-    	border-bottom: 10px solid rgb(28,109,186);
+    	border-bottom: 10px solid rgb(222, 212, 186);
     	padding: 0;
 	}
 	.logo {
@@ -295,7 +295,8 @@ a:hover, a:active {
 		padding: 10px 2.5% 0 0;
 	}
 	.logo img {
-		height: 60px;	
+		height: 60px;
+		margin-left: 17px;
 	}
 	/*================  Main Navigation  ===============*/
 
@@ -303,18 +304,16 @@ a:hover, a:active {
 		display: none;
 	}
 	#nav {
-		position: relative;
-   		right: 0;
    		margin: 0 auto;
-   		padding: 0;
-		text-align: center;
-		margin-left: 25%;
+		text-align: left;
+		margin-left: 25.3%;
 		clear: none;
 		display: block;
+		float: left; 
 	}
 	#nav li {
 		list-style: none;
-   		float: left; 
+   		float: left;
 		height: 80px;
    		display: block;
    		transition: all 0.2s ease 0s;
@@ -346,19 +345,54 @@ a:hover, a:active {
 
 @media (min-width: 975px) {
 	#header {
-		background: rgb(46, 74, 98);
+		background: rgb(0, 0, 51);
 		width: 100%;
-		height: 80px;
-    	border-bottom: 10px solid rgb(28,109,186);
-    	padding: 0;
+		height: 130px;
+    	border-bottom: 40px solid rgb(177, 177, 177);
+		box-shadow: inset 0px 60px 100px black;
+		box-shadow: inset 0px 0px 10px black;
+		padding: 0;
+    	top: 0;
+	}
+	#header h1 {
+		font-size: 38pt;
+		font-family: 'EB Garamond', serif;
+		padding-top: 30px;
+		color: rgb(255,255,255);
+		text-shadow: 0 0 30px rgb(122, 122, 184);
+	}
+	#header h2 {
+		font-size: 12pt;
+		font-family: 'Raleway', sans-serif;
+		margin-top: -30px;
+		color: rgb(122, 122, 184);
+		text-shadow: 0 0 20px;
+	}
+	#header h3 {
+		font-size: 12pt;
+		font-family: 'Raleway', sans-serif;
+		margin-top: -74px;
+		text-align: right;
+		font-style: italic;
+		color: rgb(122, 122, 184);
+		text-shadow: 0 0 20px;
+	}
+	.mises {
+		float: right;
+		margin-top: 20px;
+		padding: 0px;
+		}
+	.mises img {
+		height: 150px;	
+		margin-right
 	}
 	.logo {
 		float: left;
-		margin-left: 5%;
+		margin-left: 14%;
 		padding: 10px 2.5% 0 0;
-	}
+		}
 	.logo img {
-		height: 60px;	
+		height: 150px;	
 	}
 	/*================  Main Navigation  ===============*/
 
@@ -366,44 +400,46 @@ a:hover, a:active {
 		display: none;
 	}
 	#nav {
-		position: relative;
-   		right: 0;
-   		margin: 0 auto;
+		position: absolute;
+   		margin-right: 350px;
+   		top: 130px;
+   		height: 30px;
    		padding: 0;
 		text-align: center;
-		margin-left: 35%;
 		clear: none;
 		display: block;
 	}
 	#nav li {
 		list-style: none;
    		float: left; 
-		height: 80px;
+		height: 30px;
    		display: block;
    		transition: all 0.2s ease 0s;
    		font-family: 'Raleway', sans-serif;
-   		font-size: 14pt;
+   		font-size: 12pt;
    		font-weight: 300;
    		margin: 0;
+   		padding: 4px 4px 0px;
+
 	}
 	#nav li:hover, #nav li:active {
-		background: rgb(255,255,255);
-		border-bottom: 10px solid rgb(203,44,52);
+		background: none;
+		border-bottom: 0px solid rgb(203,44,52);
 		margin: 0;
 	}
 	#nav li a {
 		display: block;
 		text-decoration: none;
-		padding: 44px 20px 8px;
-		color: rgb(255,255,255);
+		padding: 4px 16px 4px;
+		color: rgb(0,0,0);
 	}
 	#nav li a:hover, #nav li a:active {
-		color: rgb(150,150,150);
+		color: rgb(203,44,52);
 	}
 	.nav--active {
-   		color: rgb(150,150,150) !important; 
+   		color: rgb(203,44,52) !important; 
 		background: rgb(255,255,255);
-		border-bottom: 10px solid rgb(203,44,52);
+		border-bottom: 0px solid rgb(203,44,52);
 	}
 }
 
@@ -505,25 +541,15 @@ a:hover, a:active {
 	padding-bottom: 1em;
 }
 
-.list-itm_img--small,  .list-itm_img--big {
-	margin: 0 auto;	
-}	
-.list-itm_img--small {
+.list-itm img {
 	max-height: 10em;
-}
-.list-itm_img--big {
-	max-height: 20em;
+	margin: 0 auto;
 }
 
 @media (min-width: 550px) {
-	.list-itm_img--small,  .list-itm_img--big{
+	.list-itm img {
 	margin: 0;	
 	}
-	.list-itm_img--big {	
-	width: 100%;
-	max-height: initial;
-}
-	
 }
 
 /*======================  Text  ====================*/
@@ -644,7 +670,7 @@ a:hover, a:active {
 /*==================================================*/
 
 #footer {
-	background: rgb(46,74,98);
+	background: rgb(0, 0, 51);
 	width: 100%;
 	margin-bottom: 0;
 	bottom: 0;

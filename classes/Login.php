@@ -281,7 +281,7 @@ Old school database connect
 
     $this->sendGivenCreditsMail();
 
-    $this->messages[] = 'Guthaben erfolgreich aufgeladen';
+    $this->messages[] = 'Unterst&uuml;tzung erfolgreich ausgew&auml;hlt.';
 
 
     // $query_edit_user_profile = "UPDATE mitgliederExt SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
@@ -1160,7 +1160,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
             $this->editProfile($profile);
         }
         
-        $this->messages[] = 'Guthaben erfolgreich aufgeladen! Bitte pr&uuml;fen Sie Ihren Posteingang - '. $user_email;
+        $this->messages[] = 'Unterst&uuml;tzung erfolgreich gespeichert. Bitte achten Sie auf korrekte Zahlungsdurchf&uuml;hrung und pr&uuml;fen Sie Ihren Posteingang - '. $user_email;
 
 } 
 else {
@@ -1244,14 +1244,13 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
 
         case "kredit":
 #this does not work in the email/ paypal complains
-/*        $body .='
-            <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR '.$payment_amount.' per Paypal: Einfach auf das Symbol unterhalb klicken, Ihre Kreditkartennummer eingeben, fertig. Unser Partner PayPal garantiert eine schnelle, einfache und sichere Zahlung (an Geb&uuml;hren fallen 2-3% vom Betrag an). Sie m&uuml;ssen kein eigenes Konto bei PayPal einrichten, die Eingabe Ihrer Kreditkartendaten reicht.</p><br>
+        $body .="<p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR ".$payment_amount." per Paypal.</p><br>";
 
-            <div align="center">
+/*            <div align="center">
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" name="paypal">
             <input type="hidden" name="cmd" value="_xclick">
             <input type="hidden" name="business" value="info@wertewirtschaft.org">
-            <input type="hidden" name="item_name" value="Mitglied Nr.'.$user_id.'">
+            <input type="hidden" name="item_name" value="Spende Nr.'.$user_id.'">
             <input type="hidden" name="amount" value="<?php=$betrag?>">
             <input type="hidden" name="shipping" value="0">
             <input type="hidden" name="no_shipping" value="1">
@@ -1273,9 +1272,9 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
         <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR ".$betrag." an:</p>
         <p>
         <ul>
-        <li>Scholarium</li>
+        <li>scholarium</li>
         <li>Erste Bank, Wien/&Ouml;sterreich</li>
-        <li>IBAN: AT812011182715898501</li>
+        <li>IBAN: AT27 2011 1827 1589 8503</li>
         <li>BIC: GIBAATWWXXX</li>
         </ul></p>
 
@@ -1348,7 +1347,7 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
 
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         
-        $body = 'User '.$_SESSION['user_email'].' möchte auf die Stufe '.$level.' upgraden!';
+        $body = 'User '.$_SESSION['user_email'].' möchte auf Stufe '.$level.' unterstützen, Zahlung: '.$zahlung;
 
         $mail->Body = $body;
 
@@ -1847,17 +1846,7 @@ user_plz
                     <span style="color: #000000;">
                     <!--#/html#-->
                     <br>            
-                    Bitte klicken Sie unterhalb auf &bdquo;Passwort zur&uuml;cksetzen&ldquo;. 
-                        ';
-
-        $body = $body.'
-                    <table cellspacing="0" cellpadding="0"> <tr>
-                    <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
-                    <a href="'.$link.'" style="font-size:10px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
-                    <span style="color: #000000">
-                    Passwort zur&uuml;cksetzen
-                    </span>
-                    </a></td></tr></table> 
+                    Um ein neues Passwort zu erstellen, klicken Sie bitte auf folgenden Link: <a href="'.$link.'">'.$link.'</a>
                     ';
 
 
@@ -1909,17 +1898,7 @@ user_plz
                     <span style="color: #000000;">
                     <!--#/html#-->
                     <br>            
-                    Bitte klicken Sie unterhalb auf &bdquo;Passwort zur&uuml;cksetzen&ldquo;. 
-                        ';
-
-        $body = $body.'
-                    <table cellspacing="0" cellpadding="0"> <tr>
-                    <td align="center" width="300" height="40" bgcolor="#f9f9f9" style="border:1px solid #dcdcdc;color: #ffffff; display: block;">
-                    <a href="'.$link.'" style="font-size:10px; font-weight: bold; font-family:verdana; text-decoration: none; line-height:40px; width:100%; display:inline-block">
-                    <span style="color: #000000">
-                    Passwort zur&uuml;cksetzen
-                    </span>
-                    </a></td></tr></table> 
+                    Um ein neues Passwort zu erstellen, klicken Sie bitte auf folgenden Link: <a href="'.$link.'">'.$link.'</a>
                     ';
 
 
@@ -2224,7 +2203,7 @@ user_plz
                 <br>
                 Die Zahlung von 5&euro; pro Teilnehmer erfolgt am Abend des Salons vor Ort im scholarium.<br>
                 <br>
-                Wir freuen uns darauf, Sie kennenzulernen oder wiederzusehen.<br>
+                Wir freuen uns darauf, Sie kennenzulernen.<br>
                 <br>
                 Herzliche Gr&uuml;&szlig;e aus dem scholarium!';
 

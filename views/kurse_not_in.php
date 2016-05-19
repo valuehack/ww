@@ -131,7 +131,8 @@ if(isset($_GET['q']))
 		<p>Sie k&ouml;nnen zu diesem Termin leider nicht teilnehmen, interessieren sich aber f&uuml;r unser weiteres Angebot? Kein Problem. Tragen Sie hier Ihre E-Mail-Adresse ein, dann k&ouml;nnen wir Sie &uuml;ber unsere weiteren Veranstaltungen und Angebote informieren.</p>
           <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
-          	<input class="inputbutton" type="submit" name="eintragen_submit" value="Eintragen">
+          	<input type=hidden name="first_reg" value="seminare">
+          	<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
           </form> 
   </div>
 <?php
@@ -203,7 +204,7 @@ else {
         <h2 class="modal-title" id="myModalLabel">Anmeldung</h2>
       </div>
       <div class="modal-body">
-    	<!-- <form method="post" action="../abo/zahlung.php" name="user_create_profile_form"> -->
+    	<!-- <form method="post" action="../spende/zahlung.php" name="user_create_profile_form"> -->
       
       	<div class="profil payment_width">
       	<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">
@@ -489,8 +490,6 @@ else {
     		<input type="radio" class="profil_radio" name="seminar_profile[zahlung]" value="bank" required>&Uuml;berweisung<br>
     		<input type="radio" class="profil_radio" name="seminar_profile[zahlung]" value="kredit">Paypal<br>
     		<input type="radio" class="profil_radio" name="seminar_profile[zahlung]" value="bar">Bar<br>
-
-			<p>Mit dem Klick auf <i>Anmelden</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 			
     	    <input type="submit" class="profil_inputbutton" name="register_seminar_from_outside_submit" value="Anmelden">
     </form>

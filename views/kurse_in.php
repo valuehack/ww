@@ -24,7 +24,7 @@ if(isset($_POST['add'])){
   $add_code = $add_id . "0";
   if ($add_quantity==1) $wort = "wurde";
   else $wort = "wurden";
-  echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../abo/korb.php'>&raquo; zum Korb</a></div>";
+  echo "<div class='basket_message'><i>".$add_quantity." Artikel ".$wort." in Ihren Korb gelegt.</i> &nbsp <a href='../spende/korb.php'>&raquo; zum Korb</a></div>";
 
   if (isset($_SESSION['basket'][$add_code])) {
     $_SESSION['basket'][$add_code] += $add_quantity; 
@@ -34,7 +34,7 @@ if(isset($_POST['add'])){
   }
 }
 
-   	//check, if there is a image in the seminare folder
+   	//check, if there is an image in the seminare folder
 	$img = 'http://scholarium.at/seminare/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
@@ -126,7 +126,7 @@ if(isset($_GET['q']))
     	echo '<p class="salon_reservation_span_d">150&euro; pro Teilnehmer</p>';
 	}
 	?>
-    <form method="post" action="../abo/zahlung.php" name="user_create_profile_form">
+    <form method="post" action="../spende/zahlung.php" name="user_create_profile_form">
       <input type="hidden" name="event_id" value="<?php echo $n ?>">
       <input type="hidden" name="title" value="<?php echo $title ?>">
       <input type="hidden" name="pay" value="2">
@@ -339,7 +339,7 @@ elseif ($spots_available == 4) {
 				echo $entry4[info];			
 			?>
 		<div class="centered">
-			<a class="blog_linkbutton" href="../abo/">Unterst&uuml;tzen & Zugang erhalten</a>
+			<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
 		</div>
     </div>
 	<?
@@ -409,7 +409,7 @@ elseif ($spots_available == 4) {
         <h2 class="modal-title" id="myModalLabel">Anmeldung</h2>
       </div>
       <div class="modal-body">
-        <form method="post" action="../abo/zahlung.php" name="user_create_profile_form">
+        <form method="post" action="../spende/zahlung.php" name="user_create_profile_form">
             <input type="hidden" name="event_id" value="<?php echo $n ?>" />
             <input type="hidden" name="title" value="<?php echo $title ?>" />
         
@@ -445,7 +445,7 @@ elseif ($spots_available == 4) {
         Erkl&auml;rung 
       </div>
       <div class="modal-footer">
-        <a href="../abo/upgrade.php"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
+        <a href="../spende/"><button type="button" class="inputbutton">Besuchen Sie uns als Gast</button></a>
       </div>
     </div>
   </div>

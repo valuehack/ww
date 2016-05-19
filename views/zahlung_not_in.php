@@ -50,7 +50,6 @@ if (isset($_POST["registrationform"])) {
     			<input type="radio" class="payment_form_radio" name="zahlung" value="kredit">Paypal<br>
     			<input type="radio" class="payment_form_radio" name="zahlung" value="bar">Bar<br>
 
-				<p>Mit dem Klick auf <i>Weiter</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 
     			<input type="submit" class="inputbutton" name="upgrade_user_account" value="Weiter">
 			</form>
@@ -111,7 +110,6 @@ if (isset($_POST["donationform"])) {
           <input type="radio" class="payment_form_radio" name="zahlung" value="kredit">Paypal<br>
           <input type="radio" class="payment_form_radio" name="zahlung" value="bar">Bar<br>
 
-		  <p>Mit dem Klick auf <i>Weiter</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 
           <input type="submit" class="inputbutton" name="upgrade_user_account" value="Weiter">
       </form>
@@ -415,7 +413,6 @@ elseif(isset($_POST['pay'])) {
     		<input type="radio" class="profil_radio" name="zahlung" value="kredit">Paypal<br>
     		<input type="radio" class="profil_radio" name="zahlung" value="bar">Bar<br>
 
-			<p>Mit dem Klick auf <i>Weiter</i> best&auml;tigen Sie, dass Sie unsere AGB gelesen haben und anerkennen. <a href="../agb/agb.html" onclick="openpopup(this.href); return false">Unsere AGB finden Sie hier.</a></p>
 
     		<input id="weiter_button" type="submit" class="profil_inputbutton" name="register_from_outside_submit" value="Weiter">
 		</form>
@@ -481,7 +478,7 @@ elseif (isset($_POST['ok']))
     //payments coming from kurse_not_in
     if ($_POST['ok'] == 2) { 
 
-      echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;Teilnehmer&quot;</b> freigeschaltet und Ihrem Konto <b>25 Credits</b> hinzugef&uuml;gt.</p></div>';
+      echo "<div class='payment_success'><p>Vielen Dank, ein Platz in <b>\"".ucfirst($title).'"</b> wurde f&uuml;r Sie reserviert. Au&szlig;erdem sind Sie nun <b>&bdquo;Teilnehmer&ldquo;</b> und haben als Unterst&uuml;tzer ein Jahr lang Zugang zu unserem Unterst&uuml;tzerbereich &ndash; hierf&uuml;r sind auch Ihre 25 Guthabenpunkte. (Sollten Sie Ihre Unterst&uuml;tzung erneuern wollen, k&ouml;nnen Sie dies jederzeit tun &ndash; hierzu auf Ihre E-Mail-Adresse oben rechts klicken und &bdquo;Unterst&uuml;tzen&ldquo; w&auml;hlen.)</p></div>';
 	  /*
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
       $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
@@ -509,7 +506,7 @@ elseif (isset($_POST['ok']))
     elseif ($_POST['ok'] == 3) { 
 
            
-      echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben wir f&uuml;r Sie die einj&auml;hrige Mitgliedschaft <b>&quot;'.$level.'&quot;</b> freigeschaltet.</p></div>';
+      echo "<div class='payment_success'><p>Vielen Dank, Sie haben ".$betrag."&euro; in das Projekt <b>\"".ucfirst($title).'"</b> investiert. Au&szlig;erdem haben Sie nun als <b>&bdquo;'.$level.'&ldquo;</b> ein Jahr lang Zugang zu unserem Unterst&uuml;tzerbereich. (Sollten Sie Ihre Unterst&uuml;tzung erneuern wollen, k&ouml;nnen Sie dies jederzeit tun &ndash; hierf&uuml;r auf Ihre E-Mail-Adresse oben rechts klicken und &bdquo;Unterst&uuml;tzen&ldquo; w&auml;hlen.).</p></div>';
 
       /*
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
@@ -545,10 +542,12 @@ elseif (isset($_POST['ok']))
     
     ?>
     <p>Bitte &uuml;berweisen Sie den gew&auml;hlten Betrag von EUR <b><?php echo $betrag?></b> an:</p>
+      <p>
+      <ul>
       <li>scholarium</li>
       <li>Erste Bank, Wien/&Ouml;sterreich</li>
-      <li>IBAN: AT81 2011 1827 1589 8501</li>
-      <li>BIC: GIBAATWW</li>
+      <li>IBAN: AT27 2011 1827 1589 8503</li>
+      <li>BIC: GIBAATWWXXX</li>
       </ul></p>
 
       <p><b>Bitte verwenden Sie als Zahlungsreferenz/Betreff unbedingt &quot;<?php echo $_SESSION['profile']['user_email'] ?>&quot;</b></p>
