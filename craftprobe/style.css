@@ -140,7 +140,6 @@ h1, h2 {
 	background: rgb(64,64,127);
 	position: fixed;
 	z-index: 500;
-	opacity: 0.9;
 }
 
 .header p {
@@ -160,44 +159,105 @@ h1, h2 {
 	
 }
 
-.nav {
-	position: relative;
-   	right: 0;
-   	margin: 0 auto;
-   	padding: 0;
-	text-align: center;
-	font-size: 16pt;
+.nav-trigger {
+	right: 0;
+	float: right;
 }
 
-.nav li {   
-	list-style: none;
-   	float: left; 
-	height: 60px;
+.nav-trigger__icon {
+	padding: 0.9em 0.5em;
+	width: 2.1em;
+}
+
+.nav-trigger__icon img {
+	height: 1.75em;
+}
+
+#nav {
+	clear: both;
+	display: none;
+	background: rgb(64,64,127);
+}
+
+#nav li {
+	list-style: none; 
    	display: block;
+   	font-family: 'Raleway', sans-serif;
+   	font-weight: 300;
+   	font-size: 1.75em;
+   	margin: 0 -1em;
+   	text-align: center;
 }
 
-.nav li a {
+#nav li:hover, #nav li:active {
+	background: rgb(255,255,255);
+	margin: 0 -1em;
+}
+
+#nav li a {
 	display: block;
 	text-decoration: none;
-	padding: 20px;
-	color: rgb(225,225,225);
-	font-family: "Futura Book", Helvetica, Arial, sans-serif;
-}
-
-.nav li a:active {
+	padding: 0.75em 0;
 	color: rgb(255,255,255);
 }
 
-.nav li a:hover {
-	color: rgb(255,255,255);
+#nav li a:hover, #nav li a:active {
+	color: rgb(150,150,150);
+}
+
+@media (min-width: 550px) {
+	.nav-trigger {
+		display: none;
+	}
+	#nav {
+		position: relative;
+   		right: 0;
+   		margin: 0 auto;
+   		padding: 0;
+		text-align: center;
+		display: inline;
+	}
+	#nav li {   
+		list-style: none;
+   		float: left; 
+		height: 60px;
+   		display: block;
+   		margin: 0;
+	}
+	#nav li a {
+		display: block;
+		text-decoration: none;
+		padding: 20px 10px;
+		font-size: 16px;
+		color: rgb(225,225,225);
+		font-family: "Futura Book", Helvetica, Arial, sans-serif;
+	}
+	#nav li a:active, #nav li a:hover {
+		color: rgb(100,100,100);		
+	}
+	#nav li:active, #nav li:hover {
+		margin: 0;
+	}
+}
+
+@media (min-width: 840px) {
+	#nav li a {
+		padding: 20px;
+		font-size: 16pt;
+	}
 }
 
 .banner {
 	background: #000;
-	position: relative;
 	height: 600px;
 	width: 100%;
 	top: 60px;
+}
+
+@media (min-width: 550px) {
+	.banner {
+		position: relative;
+	}
 }
 
 .bannerimg {
@@ -221,7 +281,7 @@ h1, h2 {
 }
 
 .logo {
-	width: 50%;
+	width: 100%;
 }
 
 .bannerms h1 {
@@ -251,6 +311,18 @@ h1, h2 {
 	text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
 }
 
+@media (min-width: 550px) {
+	.logo {
+		width: 75%;
+	}
+}
+
+@media (min-width: 840px) {
+	.logo {
+		width: 50%;
+	}
+}
+
 /*=========================================*/
 /*          Content                        */
 /*=========================================*/
@@ -261,15 +333,15 @@ h1, h2 {
 }
 
 .s1, .s2, .s3, .s4 {
-	width: 70%;
+	width: 90%;
 	min-height: 410px;
 	background-size: cover;
-	padding: 80px 15% 80px 15%;
+	padding: 40px 5% 40px 5%;
 }
 
 section p {
-	font-size: 16pt;
-	line-height: 2em;
+	font-size: 14pt;
+	line-height: 1.5em;
 	font-family: "Garamond", Georgia, Times, serif;
 	margin: 20px 0;
 	text-align: justify;
@@ -297,9 +369,26 @@ section ol {
 }
 
 section li {
-	font-size: 16pt;
-	line-height: 1.8em; 
+	font-size: 16px;
+	line-height: 1.4em; 
 	margin: 10px 0;
+}
+
+@media (min-width: 550px) {
+	.s1, .s2, .s3, .s4 {
+		width: 70%;
+		padding: 80px 15% 80px 15%;
+	}
+	
+	section p {
+		font-size: 16pt;
+		line-height: 2em;
+	}
+	
+	section li {
+		font-size: 16pt;
+		line-height: 1.8em;
+	}
 }
 
 .fontchange {
@@ -329,8 +418,7 @@ section li {
 }
 
 .s5img {
-	width: 100%;
-	height: 550px;
+	min-height: 550px;
 }
 
 .crew {
@@ -340,18 +428,17 @@ section li {
 }	
 
 .crew__col-1 {
-	width: 20%;
-	float: left;
 	text-align: center;
 }
 
 .crew__col-1 a {
 	font-size: 14pt;
+	display: block;
+	padding: 5px 0 15px 0;
 }
 
 .crew__col-4 {
-	width: 80%;
-	float: left;
+
 }
 
 .crew img {
@@ -382,9 +469,49 @@ section li {
 	font-size: 20pt !important;
 }
 
+@media (min-width: 550px) {
+		.crew__col-1, .crew__col-4 {
+			float: left;
+		}		
+		.crew__col-1 {
+			width: 20%;
+		}
+		.crew__col-4 {
+			width: 40%;
+		}
+}
+
 .info {
 	font-size: 16pt;
 	padding: 10px 0;
+}
+
+.notice {
+	width: 100%;
+	display: block;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background: rgb(20,20,20);
+	font-size: 14pt;
+	text-align: center;
+	padding: 10px 0;
+	z-index: 5;
+}
+
+.notice a {
+	color: rgb(255,255,255);
+	text-decoration: none;
+}
+
+.dismiss {
+	right: 15px;
+	position: absolute;
+	color: rgb(255,255,255);
+	font-family: "Futura Bock", Helvetica, Arial;
+	background: transparent;
+	border: 0;
+	font-size: 14pt;
 }
 
 /*=========================================*/
@@ -392,13 +519,12 @@ section li {
 /*=========================================*/
 
 .form {
-	padding: 67px 5%;
+	padding: 70px 5%;
     background-color: rgba(26,26,26,0.6);
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.05) inset;
     font-size: 16pt;
     display: inline-block;
     text-align: center;
-    height: 416px;
     width: 90%;
 }
 
@@ -485,13 +611,13 @@ section li {
 	font-size: 16pt;
 	line-height: 1.4;
 	margin-bottom: 30px;
-	width: 520px;
+	width: 330px;
 }
 
 .inputfield {
 	border: 0;
 	border-top: 1px solid #dad8d8 !important;
-	width: 490px;
+	width: 300px;
 	height: 48px;
 	box-shadow: 0 0 0 0 inset;
 	padding: 3px 15px;
@@ -500,7 +626,7 @@ section li {
 
 .inputfield_select {
 	border-top: 1px solid #dad8d8 !important;
-	width: 520px;
+	width: 330px;
 	height: 48px;
 	box-shadow: 0 0 0 0 inset;
 	padding: 3px 15px;	
@@ -519,7 +645,7 @@ section li {
 .inputarea {
 	border-top: 1px solid #dad8d8 !important;
 	/*border-bottom: 1px solid #dad8d8 !important;*/
-	width: 490px;
+	width: 300px;
 	height: 200px;
 	box-shadow: 0 0 0 0 inset;
 	padding: 3px 15px;	
@@ -546,8 +672,7 @@ section li {
 	color: #fff;
 	border: 0;
 	border-radius: 2px;
-	margin: 5px;
-	width: 520px;
+	width: 330px;
 	height: 50px;
 	font-size: 16pt;
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
@@ -555,6 +680,25 @@ section li {
 
 .inputbutton_subscribe:hover {
 	background: rgb(51,51,102);
+}
+
+@media (min-width: 600px) {
+	.input {
+		width: 520px;
+	}
+	.inputfield {
+		width: 490px;
+	}
+	.inputfield_select {
+		width: 520px;
+	}
+	.inputarea {
+		width: 490px;
+	}
+	.inputbutton_subscribe {
+		width: 520px;
+		margin: 5px;
+	}
 }
 
 /*=========================================*/
@@ -670,8 +814,12 @@ button.close {
 
 .modal-dialog-login {
 	position: relative;
-  	width: 600px;
+  	width: 100%;
   	margin: 50px auto;
+}
+
+@media (min-width: 600px) {
+	width: 600px;
 }
 
 .modal-content {

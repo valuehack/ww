@@ -60,8 +60,9 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
     <head>
         <meta charset="UTF-8">
         <title>craftprobe</title>
-        <meta name="description" content="Gap Year Program in Entrepreneurship">
-        <link rel="stylesheet" href="style.css">
+        <meta name="description" content="One Month Program in Entrepreneurship">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">        
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript" src="js/smoothscroll.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
@@ -73,21 +74,50 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
   			ga('create', 'UA-62940948-1', 'auto');
   			ga('send', 'pageview');
+  			
+  			function showNav() {
+            	aObj = document.getElementById('nav');
+            	if (aObj.style.display == 'none') {
+            	aObj.style.display = 'block';
+            	}
+            	else {
+            		aObj.style.display = 'none';
+            	}
+            }
+            function dismissNotice() {
+            	aObj = document.getElementById('notice');
+            	if (aObj.style.display == 'none') {
+            	aObj.style.display = 'block';
+            	}
+            	else {
+            		aObj.style.display = 'none';
+            	}
+            }
 		</script>
 			
     </head>
     <body>
-    	<span id="top" style="font-size:10px;text-align:right"><a href="http://scholarium.at/eltern.php">(&rarr;deutschsprachige Information f&uuml;r Eltern)</a></span>
+    	<div id="notice" class="notice">
+    		<a href="http://scholarium.at/eltern.php">&rarr; deutschsprachige Information f&uuml;r Eltern</a>
+    		<button class="dismiss" onclick="dismissNotice();">X</button>
+    	</div>
         <header class="header" id="top">
             <p>craft<span>probe</span></p>
-            <ul class="nav">
-                <li><a href="#about">About</a></li>
-                <li><a href="#manual">Manual</a></li>
-                <li><a href="#course">Course</a></li>
-                <li><a href="#vessel">Vessel</a></li>
-                <li><a href="#crew">Crew</a></li>
-                <li><a href="#board">Board</a></li>
-            </ul>
+            <div class="nav-trigger">
+				<div class="nav-trigger__icon">
+					<a href="#" onclick="showNav();return false;"><img src="img/navicon.svg" alt="Menu" title="Menu"></a>
+				</div>
+			</div>
+			<div id="nav">
+            	<ul>
+               	 	<li><a href="#about">About</a></li>
+                	<li><a href="#manual">Manual</a></li>
+                	<li><a href="#course">Course</a></li>
+                	<li><a href="#vessel">Vessel</a></li>
+                	<li><a href="#crew">Crew</a></li>
+                	<li><a href="#board">Board</a></li>
+            	</ul>
+           </div>
         </header>
         <?   if($ok == 1) {
 		echo '<div class="ok">
@@ -271,7 +301,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             
             
        		<section id="board" class="s5">
-                <div class="s5img" style="background-image: url(img/code2.jpg);">
+                <div class="s5img" style="background: url(img/code2.jpg) center;">
                 <div class="form">
                  <h1>Now it&apos;s your turn. Join our voyage!</h1> 
                  <p>What are you waiting for? A television spot to tell you that this is meant for you? A government decree? A viral video to make you part of a crowd? We will try the best we can to avoid hypes, unwanted publicity, and official recognition. A craft like ours has to shun such shallow waters. If you are afraid, then stay ashore. No worries, anyway there is not enough space for everyone. Lifeboats get crowded easily. If you have the courage but just lack the confidence that you are good enough, go ahead and apply. We will get in touch with you. It won&apos;t hurt. But it might open up opportunities you have not even dared to dream about.</p>              
