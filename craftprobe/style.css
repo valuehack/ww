@@ -329,7 +329,6 @@ h1, h2 {
 
 .content {
 	width: 100%;
-	max-width: 800px;
 	background: #fff;
 }
 
@@ -342,7 +341,7 @@ h1, h2 {
 
 section p {
 	font-size: 14pt;
-	line-height: 14,4pt;
+	line-height: 1.5em;
 	font-family: "Garamond", Georgia, Times, serif;
 	margin: 20px 0;
 	text-align: justify;
