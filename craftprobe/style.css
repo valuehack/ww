@@ -268,9 +268,9 @@ h1, h2 {
 	background-repeat: no-repeat;
   	/*
   	background-repeat: no-repeat;
-  	-webkit-background-size: contain;
+  	-webkit-background-size: cover;
    	-moz-background-size: cover;
-   	-o-background-size: contain;
+   	-o-background-size: cover;
    	*/
 }
 
