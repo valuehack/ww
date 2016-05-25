@@ -261,7 +261,8 @@ h1, h2 {
 }
 
 .bannerimg {
-   	background-size: cover;
+	width: auto;
+	height: 100%;
 	/*opacity: 1;*/
 	background-position: center top;
 	background-repeat: no-repeat;
@@ -328,7 +329,7 @@ h1, h2 {
 /*=========================================*/
 
 .content {
-	width: 100%;
+	width: auto;
 	background: #fff;
 }
 
