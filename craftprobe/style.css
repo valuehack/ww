@@ -261,9 +261,9 @@ h1, h2 {
 }
 
 .bannerimg {
-	width: 100%;
+	width: auto;
 	height: 600px;
-	/*opacity: 0.7;*/
+	/*opacity: 1;*/
 	background-position: left bottom;
 	background-repeat: no-repeat;
   	/*
