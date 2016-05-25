@@ -127,18 +127,11 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 }
 ?>
         <div class="banner">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <img class="bannerimg" src="img/craftprobe.jpg" alt="">
-=======
-            <div class="bannerimg" style="background-image: url(img/craftprobe.png);"></div>
-=======
+                <img class="bannerimg" src="img/ship11-1.jpg" alt="">
             <div class="bannerimg" style="background-image: url(img/ship11-1.jpg);"></div>
->>>>>>> parent of ce1f21e... craftprobe design
             <div class="bannerms">
                 <img class="logo" src="img/cp_logo_white.png" alt="">
             </div>
->>>>>>> parent of cf37e8e... craftprobe design
         </div>
         <div class="content">
             <section id="about" class="s1">
