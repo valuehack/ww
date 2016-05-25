@@ -137,7 +137,7 @@ h1, h2 {
 .header {
 	height: 60px;
 	width: 100%;
-	background: rgb(64,64,127);
+	background: rgb(80,76,115);
 	position: fixed;
 	z-index: 500;
 }
