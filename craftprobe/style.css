@@ -261,17 +261,17 @@ h1, h2 {
 }
 
 .bannerimg {
-	width: 100%;
+	width: auto;
 	height: 600px;
 	/*opacity: 1;*/
 	background-position: center top;
 	background-repeat: no-repeat;
-	background-size: cover;
   	/*
   	background-repeat: no-repeat;
   	-webkit-background-size: cover;
    	-moz-background-size: cover;
    	-o-background-size: cover;
+   	background-size: cover;
    	*/
 }
 
