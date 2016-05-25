@@ -127,9 +127,8 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 }
 ?>
         <div class="banner">
-            <div class="bannerimg" src="img/craftprobe.png" alt=""></div>
-            <div class="bannerms">
-                <img class="logo" src="img/cp_logo_white.png" alt="">
+            <div class="bannerimg">
+                <img class="logo" src="img/craftprobe.png" alt="">
             </div>
         </div>
         <div class="content">
