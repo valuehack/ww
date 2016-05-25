@@ -176,7 +176,7 @@ h1, h2 {
 #nav {
 	clear: both;
 	display: none;
-	background: rgb(64,64,127);
+	background: rgb(80,76,115);
 }
 
 #nav li {
@@ -264,7 +264,7 @@ h1, h2 {
 	width: auto;
 	height: 600px;
 	/*opacity: 1;*/
-	background-position: center bottom;
+	background-position: center;
 	background-repeat: no-repeat;
   	/*
   	background-repeat: no-repeat;
