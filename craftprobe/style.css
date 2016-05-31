@@ -184,7 +184,7 @@ h1, h2 {
    	display: block;
    	font-family: 'Raleway', sans-serif;
    	font-weight: 300;
-   	font-size: 1.75em;
+   	font-size: 1.5em;
    	margin: 0 -1em;
    	text-align: center;
 }
@@ -197,7 +197,7 @@ h1, h2 {
 #nav li a {
 	display: block;
 	text-decoration: none;
-	padding: 0.75em 0;
+	padding: 0.5em 0;
 	color: rgb(255,255,255);
 }
 
@@ -431,7 +431,7 @@ section li {
 	text-align: center;
 }
 
-.crew__col-1 a {
+.crew__col-4__a {
 	font-size: 14pt;
 	display: block;
 	padding: 5px 0 15px 0;
@@ -470,6 +470,9 @@ section li {
 }
 
 @media (min-width: 550px) {
+		.crew img {
+				width: 95%;
+		}
 		.crew__col-1, .crew__col-4 {
 			float: left;
 		}		
@@ -477,7 +480,13 @@ section li {
 			width: 20%;
 		}
 		.crew__col-4 {
-			width: 40%;
+			width: 80%;
+		}
+}
+
+@media (min-width: 860px) {
+			.crew img {
+				width: unset;
 		}
 }
 
@@ -493,7 +502,7 @@ section li {
 	bottom: 0;
 	left: 0;
 	background: rgb(20,20,20);
-	font-size: 14pt;
+	font-size: 10pt;
 	text-align: center;
 	padding: 10px 0;
 	z-index: 5;
@@ -506,12 +515,19 @@ section li {
 
 .dismiss {
 	right: 15px;
+	bottom: 8px;
 	position: absolute;
 	color: rgb(255,255,255);
 	font-family: "Futura Bock", Helvetica, Arial;
 	background: transparent;
 	border: 0;
-	font-size: 14pt;
+	font-size: 10pt;
+}
+
+@media (min-width: 550px) {
+	.notice, .dismiss  {
+		font-size: 14pt;
+	}
 }
 
 /*=========================================*/
@@ -519,7 +535,7 @@ section li {
 /*=========================================*/
 
 .form {
-	padding: 70px 5%;
+	padding: 30px 5%;
     background-color: rgba(26,26,26,0.6);
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.05) inset;
     font-size: 16pt;
@@ -566,7 +582,7 @@ section li {
 	border: 0;
 	border-radius: 2px;
 	margin: 5px;
-	width: 350px;
+	width: 100%;
 	height: 60px;
 	font-size: 24pt;
 	font-family: "Garamond", Georgia, Times, serif;
@@ -611,13 +627,14 @@ section li {
 	font-size: 16pt;
 	line-height: 1.4;
 	margin-bottom: 30px;
-	width: 330px;
+	width: 100%;
 }
 
 .inputfield {
 	border: 0;
+	box-sizing: border-box;
 	border-top: 1px solid #dad8d8 !important;
-	width: 300px;
+	width: 100%;
 	height: 48px;
 	box-shadow: 0 0 0 0 inset;
 	padding: 3px 15px;
@@ -626,7 +643,7 @@ section li {
 
 .inputfield_select {
 	border-top: 1px solid #dad8d8 !important;
-	width: 330px;
+	width: 100%;
 	height: 48px;
 	box-shadow: 0 0 0 0 inset;
 	padding: 3px 15px;	
@@ -645,7 +662,8 @@ section li {
 .inputarea {
 	border-top: 1px solid #dad8d8 !important;
 	/*border-bottom: 1px solid #dad8d8 !important;*/
-	width: 300px;
+	box-sizing: border-box;
+	width: 100%;
 	height: 200px;
 	box-shadow: 0 0 0 0 inset;
 	padding: 3px 15px;	
@@ -672,7 +690,7 @@ section li {
 	color: #fff;
 	border: 0;
 	border-radius: 2px;
-	width: 330px;
+	width: 100%;
 	height: 50px;
 	font-size: 16pt;
 	box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.24);
@@ -683,6 +701,12 @@ section li {
 }
 
 @media (min-width: 600px) {
+	.form {
+		padding: 70px 5%;
+	}
+	.inputbutton {
+		width: 350px;
+	}
 	.input {
 		width: 520px;
 	}

@@ -74,20 +74,23 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
   			ga('create', 'UA-62940948-1', 'auto');
   			ga('send', 'pageview');
-  			
+  			  			
   			function showNav() {
-            	aObj = document.getElementById('nav');
-            	if (aObj.style.display == 'none') {
-            	aObj.style.display = 'block';
-            	}
-            	else {
-            		aObj.style.display = 'none';
+  				if (document.documentElement.clientWidth < 550) {
+            		aObj = document.getElementById('nav');
+            		if (aObj.style.display == 'none' || aObj.style.display == '') {
+            			aObj.style.display = 'block';
+            		}
+            		else {
+            			aObj.style.display = 'none';
+            		}
             	}
             }
+            
             function dismissNotice() {
             	aObj = document.getElementById('notice');
             	if (aObj.style.display == 'none') {
-            	aObj.style.display = 'block';
+            		aObj.style.display = 'block';
             	}
             	else {
             		aObj.style.display = 'none';
@@ -110,12 +113,12 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 			</div>
 			<div id="nav">
             	<ul>
-               	 	<li><a href="#about">About</a></li>
-                	<li><a href="#manual">Manual</a></li>
-                	<li><a href="#course">Course</a></li>
-                	<li><a href="#vessel">Vessel</a></li>
-                	<li><a href="#crew">Crew</a></li>
-                	<li><a href="#board">Board</a></li>
+               	 	<li><a href="#about" onclick="showNav();return false;">About</a></li>
+                	<li><a href="#manual" onclick="showNav();return false;">Manual</a></li>
+                	<li><a href="#course" onclick="showNav();return false;">Course</a></li>
+                	<li><a href="#vessel" onclick="showNav();return false;">Vessel</a></li>
+                	<li><a href="#crew" onclick="showNav();return false;">Crew</a></li>
+                	<li><a href="#board" onclick="showNav();return false;">Board</a></li>
             	</ul>
            </div>
         </header>
@@ -286,10 +289,10 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 			<div class="crew">
 				<div class="crew__col-1">
 					<img src="http://craftprobe.com/img/<?=$id?>.jpg">
-					<a href="http://<?=$link?>"><?=$link?></a>
 				</div>
 				<div class="crew__col-4">
 					<h1><?=$name?></h1>
+					<a class="crew__col-4__a" href="http://<?=$link?>"><?=$link?></a>
 					<p><?=$text_en?></p>
 				</div>
 			</div>
