@@ -64,8 +64,9 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">        
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script type="text/javascript" src="js/smoothscroll.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/general.js"></script>
+
 		<script>
   			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -74,28 +75,6 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
   			ga('create', 'UA-62940948-1', 'auto');
   			ga('send', 'pageview');
-  			  			
-  			function showNav() {
-  				if (document.documentElement.clientWidth < 550) {
-            		aObj = document.getElementById('nav');
-            		if (aObj.style.display == 'none' || aObj.style.display == '') {
-            			aObj.style.display = 'block';
-            		}
-            		else {
-            			aObj.style.display = 'none';
-            		}
-            	}
-            }
-            
-            function dismissNotice() {
-            	aObj = document.getElementById('notice');
-            	if (aObj.style.display == 'none') {
-            		aObj.style.display = 'block';
-            	}
-            	else {
-            		aObj.style.display = 'none';
-            	}
-            }
 		</script>
 			
     </head>
@@ -104,38 +83,42 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
     		<a href="http://scholarium.at/eltern.php">&rarr; deutschsprachige Information f&uuml;r Eltern</a>
     		<button class="dismiss" onclick="dismissNotice();">X</button>
     	</div>
-        <header class="header" id="top">
-            <p>craft<span>probe</span></p>
-            <div class="nav-trigger">
-				<div class="nav-trigger__icon">
-					<a href="#" onclick="showNav();return false;"><img src="img/navicon.svg" alt="Menu" title="Menu"></a>
+    	<section class="main-title">
+        	<header class="header" id="top">
+            	<p>craft<span>probe</span></p>
+            	<div class="nav-trigger">
+					<div class="nav-trigger__icon">
+						<a href="#" onclick="showNav();return false;"><img src="img/navicon.svg" alt="Menu" title="Menu"></a>
+					</div>
 				</div>
-			</div>
-			<div id="nav">
-            	<ul>
-               	 	<li><a href="#about" onclick="showNav();return false;">About</a></li>
-                	<li><a href="#manual" onclick="showNav();return false;">Manual</a></li>
-                	<li><a href="#course" onclick="showNav();return false;">Course</a></li>
-                	<li><a href="#vessel" onclick="showNav();return false;">Vessel</a></li>
-                	<li><a href="#crew" onclick="showNav();return false;">Crew</a></li>
-                	<li><a href="#board" onclick="showNav();return false;">Board</a></li>
-            	</ul>
-           </div>
-        </header>
-        <?   if($ok == 1) {
-		echo '<div class="ok">
-			<h1>Thank you for your interest in craftprobe!</h1>
-			<p>You successfully submitted your boarding request.</p>
-		</div>';
+				<div id="nav">
+            		<ul>
+               	 		<li><a href="#about" onclick="showNav();return false;">About</a></li>
+                		<li><a href="#manual" onclick="showNav();return false;">Manual</a></li>
+                		<li><a href="#course" onclick="showNav();return false;">Course</a></li>
+                		<li><a href="#vessel" onclick="showNav();return false;">Vessel</a></li>
+                		<li><a href="#crew" onclick="showNav();return false;">Crew</a></li>
+                		<li><a href="#board" onclick="showNav();return false;">Board</a></li>
+            		</ul>
+           		</div>
+       	 	</header>
+        	<?   if($ok == 1) {
+					echo '<div class="ok">
+					<h1>Thank you for your interest in craftprobe!</h1>
+					<p>You successfully submitted your boarding request.</p>
+					</div>';
 }
 ?>
-          <div class="banner">
-            <div class="bannerimg" style="background-image: url(img/ship11-1.jpg);"></div>
-            <div class="bannerms">
-                <img class="logo" src="img/cp_logo_white.png" alt="">
-            </div>
-        </div>
-        <div class="content">
+          	<div class="banner">
+            	<div class="bannerimg" style="background-image: url(img/craftprobe.jpg);"></div>
+	        	<div class="arrow-down">
+            		<a href="#about">
+                    	<div class="arrow-down__icon"></div>
+                	</a>
+            	</div>
+        	</div>
+        </section>
+        <!--<div class="content">-->
             <section id="about" class="s1">
             	<!-- <p>Sense: the final frontier. These are the voyages of craftprobe, an exploratory enterprise. Its mission: to explore alternatives to create real value and make sense, to boldly pierce through the endless swaths of bullshit that surround us every day in search of intelligent life. Our craft is a perpetual start-up, with some of the coolness, but none of the hype.</p> -->
 
@@ -312,7 +295,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                  </div>
                 </div>
             </section>
-        </div>    
+        <!--</div>-->    
         <footer class="footer">
             <p>
                 &copy; 2015 | scholarium&trade; | Schl&ouml;sselgasse 19/2/18 | 1080 Vienna | Austria <br>
