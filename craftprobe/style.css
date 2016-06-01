@@ -706,13 +706,13 @@ section li {
 		width: 520px;
 	}
 	.inputfield {
-		width: 490px;
+		width: 520px;
 	}
 	.inputfield_select {
 		width: 520px;
 	}
 	.inputarea {
-		width: 490px;
+		width: 520px;
 	}
 	.inputbutton_subscribe {
 		width: 520px;
@@ -838,7 +838,9 @@ button.close {
 }
 
 @media (min-width: 600px) {
-	width: 600px;
+	.modal-dialog-login {
+		width: 600px;
+	}
 }
 
 .modal-content {
