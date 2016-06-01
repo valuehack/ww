@@ -131,7 +131,7 @@ if(isset($_GET['q']))
 		<p>Sie k&ouml;nnen zu diesem Termin leider nicht teilnehmen, interessieren sich aber f&uuml;r unser weiteres Angebot? Kein Problem. Tragen Sie hier Ihre E-Mail-Adresse ein, dann k&ouml;nnen wir Sie &uuml;ber unsere weiteren Veranstaltungen und Angebote informieren.</p>
           <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
           	<input class="inputfield" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
-          	<input type=hidden name="first_reg" value="seminare">
+          	<input type="hidden" name="first_reg" value="seminare">
           	<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
           </form> 
   </div>
@@ -209,8 +209,8 @@ else {
       	<div class="profil payment_width">
       	<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="user_create_profile_form">
       
-        	<input type="hidden" name="seminar_profile[event_id]" value="<?php echo $n ?>">
-        	<input type="hidden" name="seminar_profile[title]" value="<?php echo $title ?>">
+        	<input type="hidden" name="seminar_profile[event_id]" value="<?=$n?>">
+        	<input type="hidden" name="seminar_profile[title]" value="<?=$title?>">
             <input type="hidden" name="seminar_profile[credits]" value="25">
 				
 			<label for="user_email">E-Mail</label>
@@ -483,9 +483,9 @@ else {
                     
             <p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p> 
                 
-			  <input type="hidden" name="ok" value="1">
+			<input type="hidden" name="ok" value="1">
     		<input type="hidden" name="seminar_profile[betrag]" value="<?php echo $event_price+25; ?>">
-    		<input type="hidden" name="level" value="<?php echo $level; ?>">
+    		<input type="hidden" name="level" value="<?=$level?>">
 
     		<input type="radio" class="profil_radio" name="seminar_profile[zahlung]" value="bank" required>&Uuml;berweisung<br>
     		<input type="radio" class="profil_radio" name="seminar_profile[zahlung]" value="kredit">Paypal<br>

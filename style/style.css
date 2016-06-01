@@ -3138,7 +3138,9 @@ img.projekte_coin2  {
 }
 
 .profil p {
-	margin: 40px 0 20px;
+	margin: 0;
+	text-align: center;
+	font-size: 14pt;
 	
 }
 .profil h1 {

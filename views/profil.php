@@ -2,12 +2,7 @@
 // require_once('../classes/Login.php');
 $title="Profil";
 include('_header_in.php'); 
-?> 
-	<div class="content">
-		<div class="profil">
-			<h1>Profil</h1>
-			
-<?php 
+
 // echo $_SESSION['user_email'];
 
 // $some = $login->getUserData($_SESSION['user_email']); 
@@ -26,6 +21,7 @@ $plz = trim($result_row->PLZ);
 $anrede = trim($result_row->Anrede);
 $telefon = trim($result_row->Telefon);
 
+$ablauf = date_create_from_format('Y-m-d', $result_row->Ablauf);
 
 /*
 if ($result_row->gave_credits == 0) echo "Please fill in this form to get a free credit.";
@@ -52,7 +48,11 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
 
     }
 */
-?>
+?> 
+	<div class="content">
+		<div class="profil">
+			<h1>Profil</h1>		
+			<p>Ihre Mitgliedschaft l&auml;uft am <?echo date_format($ablauf, 'd-m-Y');?> ab.</p>
 		</div>
 		<div class="medien_seperator">
 			<h1>Ihre Daten &auml;ndern</h1>

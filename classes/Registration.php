@@ -1238,53 +1238,54 @@ class Registration
             $reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime ) VALUES (:event_id, :user_id, :quantity, NOW())');
             $reg_query->bindValue(':event_id', $the_row->first_reg, PDO::PARAM_INT);
             $reg_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
-            $reg_query->bindValue(':quantity', $the_row->quantity, PDO::PARAM_STR);
+            $reg_query->bindValue(':quantity', '1', PDO::PARAM_INT);
             $reg_query->execute();
 
             #for now event id is first reg
-            $seminare_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:spot WHERE n LIKE :event_id");
-            $seminare_spots_sold_query->bindValue(':spot', $the_row->quantity, PDO::PARAM_INT);
-            $seminare_spots_sold_query->bindValue(':event_id', $the_row->first_reg, PDO::PARAM_INT);
-            $seminare_spots_sold_query->execute();
+        	$spots_sold_query = $this->db_connection->prepare('UPDATE produkte SET spots_sold = spots_sold+:spot WHERE n = :event_id');
+        	$spots_sold_query->bindValue(':spot', 1, PDO::PARAM_INT);
+        	$spots_sold_query->bindValue(':event_id', $the_row->first_reg, PDO::PARAM_INT);
+        	$spots_sold_query->execute();
 
             }
+			else {
+            	#first_reg carry type of event and event id  
+            	#this bit catches first_reg from projekte and registers to reg db
+            	list($event_type, $event_id) = explode('_', $the_row->first_reg);
 
-            #first_reg carry type of event and event id  
-            #this bit catches first_reg from projekte and registers to reg db
-            list($event_type, $event_id) = explode('_', $the_row->first_reg);
-
-#o_salon
-            #use switch when moving on...
-            if ($event_type === 'projekt') {
+				#o_salon
+            	#use switch when moving on...
+            	if ($event_type === 'projekt') {
                 
-                $reg_projekt_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime ) VALUES (:event_id, :user_id, :quantity, NOW())');
-                $reg_projekt_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
-                $reg_projekt_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
-                $reg_projekt_query->bindValue(':quantity', $the_row->Gesamt, PDO::PARAM_INT);
-                $reg_projekt_query->execute();
+                	$reg_projekt_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime ) VALUES (:event_id, :user_id, :quantity, NOW())');
+               		$reg_projekt_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
+               		$reg_projekt_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+                	$reg_projekt_query->bindValue(':quantity', $the_row->Gesamt, PDO::PARAM_INT);
+                	$reg_projekt_query->execute();
 
-                #$the_row->Gesamt is being used temporarily as it only exist in grey user
-                #$the_row->Gesamt is not being copied to mitgliederExt
-                $projekt_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:betrag WHERE n LIKE :event_id");
-                $projekt_spots_sold_query->bindValue(':betrag', $the_row->Gesamt, PDO::PARAM_INT);
-                $projekt_spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_STR);
-                $projekt_spots_sold_query->execute();
-            }
+                	#$the_row->Gesamt is being used temporarily as it only exist in grey user
+                	#$the_row->Gesamt is not being copied to mitgliederExt
+                	$projekt_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:betrag WHERE n LIKE :event_id");
+                	$projekt_spots_sold_query->bindValue(':betrag', $the_row->Gesamt, PDO::PARAM_INT);
+                	$projekt_spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_STR);
+                	$projekt_spots_sold_query->execute();
+            	}
 
-            #updates relevant dbs for open salons
-            #workaround for open salons $event_type = $event_id and $event_id = $quantity
-            if (is_numeric($event_type)) {
+            	#updates relevant dbs for open salons
+            	#workaround for open salons $event_type = $event_id and $event_id = $quantity
+            	if (is_numeric($event_type)) {
                 
-                $reg_o_salon_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES (:event_id, :user_id, :quantity, NOW() )');
-                $reg_o_salon_query->bindValue(':event_id', $event_type, PDO::PARAM_INT);
-                $reg_o_salon_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
-                $reg_o_salon_query->bindValue(':quantity', $event_id, PDO::PARAM_INT);
-                $reg_o_salon_query->execute();
+                	$reg_o_salon_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, reg_datetime) VALUES (:event_id, :user_id, :quantity, NOW() )');
+                	$reg_o_salon_query->bindValue(':event_id', $event_type, PDO::PARAM_INT);
+                	$reg_o_salon_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+                	$reg_o_salon_query->bindValue(':quantity', $event_id, PDO::PARAM_INT);
+                	$reg_o_salon_query->execute();
 
-                $projekt_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:spots_sold WHERE n LIKE :event_id");
-                $projekt_spots_sold_query->bindValue(':spots_sold', $event_id, PDO::PARAM_INT);
-                $projekt_spots_sold_query->bindValue(':event_id', $event_type, PDO::PARAM_STR);
-                $projekt_spots_sold_query->execute();
+                	$projekt_spots_sold_query = $this->db_connection->prepare("UPDATE produkte SET spots_sold = spots_sold+:spots_sold WHERE n LIKE :event_id");
+                	$projekt_spots_sold_query->bindValue(':spots_sold', $event_id, PDO::PARAM_INT);
+                	$projekt_spots_sold_query->bindValue(':event_id', $event_type, PDO::PARAM_STR);
+                	$projekt_spots_sold_query->execute();
+            	}
             }
 
             $query_delete_user = $this->db_connection->prepare('DELETE FROM grey_user WHERE user_email=:user_email');
@@ -1299,7 +1300,12 @@ class Registration
                 $_SESSION['user_id'] = $user_id;
 				
 				//temporary email for open salon
-				if ($event_id > 999){
+				$osalon_query = $this->db_connection->prepare('SELECT * FROM produkte WHERE n = :event_id');
+				$osalon_query->bindValue(':event_id', $event_type, PDO::PARAM_INT);
+				$osalon_query->execute();
+				
+				$osalon_info = $osalon_query->fetchObject();
+				if ($osalon_info->spots > 59 && $osalon_info->type == 'salon'){
 					$this->openSalonUserEmail($the_row->user_email, $the_row->Anrede, $the_row->Nachname);
 				}
             } else {
