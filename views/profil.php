@@ -53,7 +53,7 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
 	<div class="content">
 		<div class="profil">
 			<h1>Profil</h1>		
-			<p>Ihre letzte Spende war am <?echo date_format($ablauf, 'd-m-Y');?>.<br>
+			<p>Ihre letzte Spende war am <?echo date('d-m-Y', $ablauf);?>.<br>
 				<a href="../spende">&rarr; Unterst&uuml;tzung erneuern</a>
 			</p>
 		</div>
