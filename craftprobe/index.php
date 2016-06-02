@@ -319,13 +319,13 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				<div class="input">
 					<input type="hidden" name="ok" value="1">
 					
-					<input class="inputfield" type="text" name="firstname" placeholder=" First Name" required><br>
-        			<input class="inputfield" type="text" name="name" placeholder=" Surname" required><br>
-        			<input class="inputfield" type="email" name="email" placeholder=" Email" required><br> 
+					<input class="inputfield" type="text" name="firstname" placeholder=" First Name" required title="Please fill out this field."><br>
+        			<input class="inputfield" type="text" name="name" placeholder=" Surname" required title="Please fill out this field."><br>
+        			<input class="inputfield" type="email" name="email" placeholder=" Email" required title="Please fill out this field."><br> 
         			<input class="inputfield" type="tel" name="telephone" placeholder=" Telephone/ Mobile (e.g. +431234567)"><br>
-					<input class="inputfield" type="text" name="street" placeholder=" Street" required><br>
-					<input class="inputfield" type="text" name="postal" placeholder=" Postal Code" required><br>
-					<input class="inputfield" type="text" name="city" placeholder=" City" required><br>
+					<input class="inputfield" type="text" name="street" placeholder=" Street" required title="Please fill out this field."><br>
+					<input class="inputfield" type="text" name="postal" placeholder=" Postal Code" required title="Please fill out this field."><br>
+					<input class="inputfield" type="text" name="city" placeholder=" City" required title="Please fill out this field."><br>
 					 
         			<select class="inputfield_select" id="user_country" name="country" placeholder=" Country" required>
 <option value="Austria" selected>Austria</option>
@@ -578,7 +578,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 <option value="Zambia">Zambia</option>
 <option value="Zimbabwe">Zimbabwe</option>
 					</select><br>
-					<textarea name="note" class="inputarea" placeholder=" Do you have questions or comments?" rows="10" required></textarea><br>
+					<textarea name="note" class="inputarea" placeholder=" Do you have questions or comments?" rows="10" required title="Please fill out this field."></textarea><br>
 					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" How did you find us?"><br>					
 				</div>
     			<input type="submit" class="inputbutton_subscribe" name="registrationform" value="Boarding request">
