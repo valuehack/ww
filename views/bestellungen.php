@@ -301,7 +301,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 					elseif (substr($type,0,5) == 'media') {
 					$url = 'http://scholarium.at/medien/'.$id.'.jpg';
             		$url2 = 'medien';
-					if ($type == 'media-salon' || $type == 'media-vortrag') $extension = '.mp3';							
+					if ($type == 'media-salon' || $type == 'media-vortrag') $extension = '.mp3';
                     if ($type == 'media-vorlesung') $extension = '.zip';
                     $type = ucfirst(substr($type,6));
 					}			
