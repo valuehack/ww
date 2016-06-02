@@ -21,8 +21,7 @@ $plz = trim($result_row->PLZ);
 $anrede = trim($result_row->Anrede);
 $telefon = trim($result_row->Telefon);
 
-$ablauf = strtotime('$result_row->Ablauf -1 year');
-
+$ablauf = date_create_from_format('Y-m-d', $result_row->Ablauf);
 
 /*
 if ($result_row->gave_credits == 0) echo "Please fill in this form to get a free credit.";
@@ -53,9 +52,7 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
 	<div class="content">
 		<div class="profil">
 			<h1>Profil</h1>		
-			<p>Ihre letzte Spende war am <?echo date_format($ablauf, 'd-m-Y');?>.<br>
-				<a href="../spende">&rarr; Unterst&uuml;tzung erneuern</a>
-			</p>
+			<p>Ihre Mitgliedschaft l&auml;uft am <?echo date_format($ablauf, 'd-m-Y');?> ab.</p>
 		</div>
 		<div class="medien_seperator">
 			<h1>Ihre Daten &auml;ndern</h1>
