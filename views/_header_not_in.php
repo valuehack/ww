@@ -16,7 +16,7 @@
     <meta property="og:description" content="<?=$description_fb?>">
     <meta property="og:site_name" content="Scholarium">
     <meta property="og:locale" content="de_DE">
-    <meta property="article:publisher" content="https://www.facebook.com/Scholarium-5793868770">
+    <meta property="article:publisher" content="https://www.facebook.com/scholarium.at">
     <? }
 ?>
 

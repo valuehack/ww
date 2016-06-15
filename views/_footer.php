@@ -29,7 +29,7 @@
         		</div>
         		<div class="footer_social">
         			<ul>
-        				<li><a class="footer_social_facebook" href="https://www.facebook.com/Scholarium-5793868770" target="_blank" title="Besuchen Sie uns auf Facebook"></a></li>
+        				<li><a class="footer_social_facebook" href="https://www.facebook.com/scholarium.at" target="_blank" title="Besuchen Sie uns auf Facebook"></a></li>
         				<li><a class="footer_social_twitter" href="https://www.twitter.com/scholarium_at" target="_blank" title="Folgen Sie uns auf Twitter"></a></li>
         				<li><a class="footer_social_youtube" href="https://www.youtube.com/user/Wertewirtschaft" target="_blank" title="Schauen Sie unsere Videos auf YouTube"></a></li>
         			</ul>
