@@ -195,9 +195,9 @@ while ($entry = mysql_fetch_array($result))
               }
 			  ?>
 
-                <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry[user_email];?>"><? echo $entry[user_email];?><span class="caret"></span></button>
+                <div class="dropdown"><button class="login_button" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="<? echo $entry['user_email'];?>"><? echo $entry['user_email'];?><span class="caret"></span></button>
                 		<ul class="dropdown-menu dropdown_menu dropdown-menu-right dropdown_menu" role="menu" aria-labelledby="dLabel">
-                			<li class="dropdown-header dropdown_name"><? echo $entry[Vorname]." ".$entry[Nachname];?></li>
+                			<li class="dropdown-header dropdown_name"><? echo $entry['Vorname']." ".$entry['Nachname'];?></li>
                             <li class="dropdown-header dropdown_level"><? echo $Mitgliedschaft;?></li>
                 			<li><a href="/spende/profil.php">Profil</a></li>
                 			<li><a href="/spende/">Unterst&uuml;tzen</a></li>
@@ -205,7 +205,7 @@ while ($entry = mysql_fetch_array($result))
                 			if ($mitgliedschaft >= 2){
                 			?>
                 			<li class="divider"></li>
-                      <li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry[credits_left];?> <img class='dropdown_coin' src="../style/gfx/coin.png"></li>
+                      <li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry['credits_left'];?> <img class='dropdown_coin' src="/style/gfx/coin.png"></li>
                 			<li><a href="/spende/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></li> 
                 			<li><a href="/spende/bestellungen.php">Bestellungen</a></li>
                 			<li class="divider"></li>

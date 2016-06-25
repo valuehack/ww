@@ -53,9 +53,18 @@ else
 	$profile = $txn_data['profile'];
 	$product = $txn_data['product'];
 
+
+#if email exists in mitglieder, query database, function in registration 
+	#then 
+		#add credits to the db 
+	#else 
+		#create new user
+
 	#register user
 	$registration->addNewUser($profile, $product);
 	$registration->addPersonalDataGeneric($profile);
 }
+
+#how to check if the user is a member already???
 
 

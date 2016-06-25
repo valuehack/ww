@@ -36,7 +36,9 @@ class Registration
      */
     public function __construct()
     {
-        session_start();
+        if(session_id() == '') session_start();
+
+        // session_start();
 
         // if we have such a POST request, call the registerNewUser() method
         #this is not in use - main function that deals with it is now subscribe new user
@@ -349,9 +351,19 @@ class Registration
 
     }#end of constructor
 
-   public function addNewUser($profile, $product)
+   public function createNewUser($profile, $product)
     {
         #simple function to add a new entry in mitgliederEXT
+        #copy from subscribe new user to include emails etc.
+
+#here we assume that user is new and the email was not used. 
+
+        $user_password = $this->randomPasswordGenerator();
+
+        $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
+
+        //encrypt password for storage in the database, so no one would see it in plain text
+        $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => $hash_cost_factor));
 
         $this->databaseConnection();
 
@@ -363,6 +375,7 @@ class Registration
             Ablauf, 
             first_reg, 
             user_active,
+            user_password_hash,
             user_registration_ip, 
             user_registration_datetime) 
         VALUES(
@@ -372,6 +385,7 @@ class Registration
             :Ablauf,
             :first_reg, 
             :user_active,
+            :user_password_hash,
             :user_registration_ip, 
             now())');
 
@@ -380,12 +394,63 @@ class Registration
         $qry_new_user->bindValue(':Mitgliedschaft', $product['level'], PDO::PARAM_STR);
         $qry_new_user->bindValue(':credits_left', $product['credits'], PDO::PARAM_STR);
         $qry_new_user->bindValue(':Ablauf', $product['membership_end'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
         $qry_new_user->bindValue(':user_active', 1, PDO::PARAM_INT);
         $qry_new_user->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
         $qry_new_user->execute();
 
         $user_id = $this->db_connection->lastInsertId();
         $_SESSION['profile']['user_id'] = $user_id;
+        $_SESSION['user_id'] = $user_id;
+
+        $this->sendNewUserAfterPayEmail($profile['user_email'], $user_password);
+
+        
+
+    }
+
+    private function sendNewUserAfterPayEmail($user_email, $user_password)
+    {
+
+
+        //construct body
+        $body = "Welcome to scholarium. Hope you will like it here. Here is your password ".$user_password;
+
+        //create curl resource   
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => $user_email,
+            'bcc' => TEST_EMAIL,
+            //'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
+            'subject' => 'Thanks!',
+            'html' => $body,
+            'from' => 'no-reply@scholarium.at'
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+
+        if(empty($response))
+        {
+            die("Error: No response.");
+            return false;
+        }
+        else
+        {
+            // $json = json_decode($response);
+            return true;
+        }
+
+        curl_close($ch);
 
     }
     
@@ -437,38 +502,11 @@ class Registration
 
     }
 
-    
-    #private function returnConfirmationAndPasswordBody($profile)
-
-
-    private function sendConfirmationAndPasswordEmail($profile)
-    {
-        #generate a new password
-        $user_password = $this->randomPasswordGenerator();
-
-        #get email body
-
-        $subject = "testing";
-        $body = 
-        "Hi!<br>
-        This is a body of an email!<br>"
-        .$user_password;
-
-        #send email
-        $this->sendEmail('info@scholarium.at', 'scholarium', $profile[user_email], $subject, $body);
-
-        #write the password to the db
-            #if failed to send an email delete the entry in the db
-            #it would delete other info too. so dont delete. 
-
-        #encrypt password for storage in the database, so no one would see it in plain text
-        $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => $hash_cost_factor));
-
-    }
-
-    private function giveCredits($credits, $user_email)
+    public function giveCredits($credits, $user_email)
     {
         #adds more credits to given user email
+
+        $this->databaseConnection();
 
         $give_credits_qry = $this->db_connection->prepare(
         "UPDATE mitgliederExt   
@@ -481,7 +519,51 @@ class Registration
 
         $give_credits_qry->execute();
 
+        if($give_credits_qry->errorCode() != 0) return $give_credits_qry->errorInfo();
+
+
     }
+
+    public function prolongMembership($user_email)
+    {
+        #prolongs membership one year from now
+
+        $this->databaseConnection();
+
+        $prolong_qry = $this->db_connection->prepare(
+        "UPDATE mitgliederExt   
+            SET Ablauf = DATE_ADD(CURDATE(), INTERVAL 1 YEAR)
+          WHERE user_email = :user_email"
+        );
+
+        $prolong_qry->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+
+        $prolong_qry->execute();
+
+
+        if($prolong_qry->errorCode() != 0) return $prolong_qry->errorInfo();
+
+    }
+
+    public function markAsPaid($user_email, $wrt_txn_id)
+    {
+        #marks transaction paid - success
+
+        $paid_qry = $this->db_connection->prepare(
+        "UPDATE transactions   
+            SET paid_datetime = NOW()
+          WHERE user_email = :user_email
+            AND wrt_txn_id = :wrt_txn_id"
+        );
+
+        $paid_qry->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+        $paid_qry->bindValue(':wrt_txn_id', $wrt_txn_id, PDO::PARAM_STR);
+
+        $paid_qry->execute();
+
+    }
+
+        
 
     private function registerSeminar($profile, $product)
     {
@@ -557,12 +639,23 @@ class Registration
 
     }
 
-    public function registerUpgrade($profile, $product)
+    public function userUpgrade($profile, $product)
     {
-        #note when user has upgraded, keep the log of upgrades
-        #use registration db???
+
+
+
+
+            $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
+                mitgliederExt 
+                (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
+                VALUES
+                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
+
 
     }
+
+
+
 
     public function processSuccessfulPayment($profile, $product)
     {
@@ -779,6 +872,8 @@ class Registration
     //generates a random string of 6 characters used for temporary passwords
     private function randomPasswordGenerator() {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+        $str='';
 
         $size = strlen( $chars );
         for( $i = 0; $i < 6; $i++ ) {
@@ -1121,6 +1216,54 @@ class Registration
             }*/
     }
 
+    public function sendUpgradeEmailToUser($user_email)
+    {
+
+        //construct body
+        $body = "Thanks. We have received your payment. Enjoy one more year and extra credits. ".$user_email;
+
+        //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => $user_email,
+            'bcc' => TEST_EMAIL,
+            //'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
+            'subject' => 'You have been upgraded!',
+            'html' => $body,
+            'from' => 'no-reply@scholarium.at'
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+
+        if(empty($response))
+        {
+            die("Error: No response.");
+            return false;
+        }
+        else
+        {
+            // $json = json_decode($response);
+            return true;
+        }
+
+        curl_close($ch);
+
+    }
+
+
     #-------------------------------------
     //send an email to a newly subscribed member, containing password and activation link
     public function sendNewPayingUserEmailToInstitute($user_email)
@@ -1296,7 +1439,7 @@ class Registration
                 $this->verification_successful = true;
                 $this->messages[] = MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL;
                 
-                $_POST['user_rememberme'] = 1;
+                // $_POST['user_rememberme'] = 1;
                 $_SESSION['user_id'] = $user_id;
 				
 				//temporary email for open salon

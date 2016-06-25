@@ -244,9 +244,13 @@ Unterst&uuml;tzungsstufe
 <option value="Frau"{% if profile.user_anrede == "Frau" %}selected{% endif %}>Frau</option>
 
 </select><br>
+
 <input type="text" class="profil_inputfield" name="profile[user_first_name]" value="{{profile.user_first_name}}"><br> 
 <input type="text" class="profil_inputfield" name="profile[user_surname]" value="{{profile.user_surname}}"<br> 
-<input type="email" class="profil_inputfield" name="profile[user_email]" value="{{profile.user_email}}"><br> 
+
+<input id="ajax_email_exists" type="email" class="profil_inputfield" name="profile[user_email]" value="{{profile.user_email}}" required><br> 
+<div id="ajax_email_exists_error"></div><br><br>
+
 <input type="text" class="profil_inputfield" name="profile[user_street]" value="{{profile.user_street}}"><br> 
 <input type="text" class="profil_inputfield" name="profile[user_plz]" value="{{profile.user_plz}}"><br> 
 <input type="text" class="profil_inputfield" name="profile[user_city]" value="{{profile.user_city}}"><br> 
@@ -254,7 +258,6 @@ Unterst&uuml;tzungsstufe
 </div>
 </div>
 <div class="col-4">
-
 
 <input type="radio" name="profile[payment_option]" value="paypal"{% if profile.payment_option == "paypal" %}checked{% endif %} required>PayPal<br>
 <input type="radio" name="profile[payment_option]" value="sofort" {% if profile.payment_option == "sofort" %}checked{% endif %}>SOFORT		
@@ -266,7 +269,7 @@ Unterst&uuml;tzungsstufe
 <div class="col-8">
 <div class="col__content">
 
-<input type="submit" class="profil_inputbutton" name="edit_form_submit" value="Verbindlich bestellen">
+<input type="submit" id="weiter_button" class="profil_inputbutton" name="edit_form_submit" value="Verbindlich bestellen">
 </form>
 </div>
 </div>				

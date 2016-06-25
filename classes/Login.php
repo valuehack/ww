@@ -63,7 +63,10 @@ class Login
     public function __construct()
     {
         // create/read session
-        session_start();
+
+        if(session_id() == '') session_start();
+
+        // session_start();
 
 
         // TODO: organize this stuff better and make the constructor very small
@@ -138,8 +141,6 @@ class Login
             $this->newRememberMeCookie();
 
             #used to refresh page for logging in with a cookie
-            #please define REFRESH_URL in your local config file
-            #..or just go back to localhost and it should be working
             header("Location:http://scholarium.at/");
         }
 
@@ -505,7 +506,7 @@ GET user data using old database connection
     /**
      * Create all data needed for remember me cookie connection on client and server side
      */
-    private function newRememberMeCookie()
+    public function newRememberMeCookie()
     {
 
 

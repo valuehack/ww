@@ -1,8 +1,34 @@
 <?php 
 
+ini_set("display_errors" , "1");
+
 require_once('../config/config.php');
-include('../views/_header_not_in.php'); 
-include('../views/_db.php'); 
+
+
+// include('../views/_db.php'); 
+
+
+
+
+
+
+require_once('../translations/de.php');
+
+require_once('../classes/Login.php');
+require_once('../classes/Registration.php');
+
+$registration = new Registration();
+$login = new Login();
+
+if ($login->isUserLoggedIn() == true) 
+{
+	include('../views/_header_in.php'); 
+}
+else
+{
+  include('../views/_header_not_in.php'); 
+
+}
 
 
 #create a template 
@@ -28,4 +54,23 @@ In K&uuml;rze erhalten Sie eine Nachricht als Best&auml;tigung.
 
 </div></div></div>
 
-<?php include('../views/_footer.php'); ?>
+<?php 
+
+// include('../views/_footer.php'); 
+
+#TESTING ONLY
+#var output block
+echo "<br>POST<br>";
+print_r($_POST);
+echo "<br>";
+echo "<br>GET<br>";
+print_r($_GET);
+echo "<br><br><br>";
+#formats print_r for readability 
+$test = print_r($_SESSION, true);
+$test = str_replace("(", "<br>(", $test);
+$test = str_replace("[", "<br>[", $test);
+$test = str_replace(")", ")<br>", $test);
+echo $test;
+
+?>
