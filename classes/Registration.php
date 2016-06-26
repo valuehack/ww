@@ -639,7 +639,7 @@ public function processPayment($profile, $product)
     if ((isset($profile['user_logged_in'])) and ($profile['user_logged_in'] === 1))
     {
         #user was logged in when payment was made
-
+        error_log($profile['user_email'].' is a returning customer.');
         #make sure that credits exists! 
         $this->giveCredits($product['credits'] , $profile['user_email']);
         
@@ -683,6 +683,8 @@ public function processPayment($profile, $product)
     }elseif ( empty($profile['user_logged_in']) )
     {
         #create a new user
+
+        error_log($profile['user_email'].' is NEW.');
 
         $this->createNewUser($profile, $product);
         $this->addPersonalDataGeneric($profile);

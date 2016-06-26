@@ -29,9 +29,10 @@ catch (PDOException $e)
     exit;
 }
 
+
 #get data from transactional db 
 $paypal_data_query = $db_connection->prepare(
-"SELECT * FROM paypal_data_storage 
+"SELECT * FROM transactions 
 WHERE wrt_txn_id = :wrt_txn_id
 ");
 
