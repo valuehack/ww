@@ -101,7 +101,7 @@ $registration = new Registration();
         #TODO - rename
         writeTransactionDataToDB($user_email, $wrt_txn_id);
 
-        // header('Location: payment.php');
+        header('Location: payment.php');
 
     }
 
@@ -157,34 +157,28 @@ function getForm()
         'payment_option' => 'sofort'
         );
 
-    // user is new
-    $_SESSION['new_user'] = 1;
 
-    #if user is logged in, following will fetch user data and populate the form
+    #user logged in, following will fetch user data and populate the form
     if ($_SESSION['user_logged_in'] === 1)
     {
 
-    //user is not new 
-    $_SESSION['new_user'] = 0;
+        $_SESSION['profile']['user_logged_in'] = $_SESSION['user_logged_in'];
 
-    $user = getUser($_SESSION['user_id'],$_SESSION['user_email']);
-    
-    #overwrite testing values if a user object returned. 
-    $profile = array(
-        'user_email' => $user->user_email,
-        'user_anrede' => $user->Anrede,
-        'user_first_name' => $user->Vorname,
-        'user_surname' => $user->Nachname,
-        'user_telefon' => $user->Telefon,
-        'user_street' => $user->Strasse,
-        'user_plz' => $user->PLZ,
-        'user_city' => $user->Ort,
-        'user_country' => $user->Land
-        // 'payment_option' => $user->
-        );
-
+        $user = getUser($_SESSION['user_id'],$_SESSION['user_email']);
+        
+        #overwrite testing values if a user object returned. 
+        $profile = array(
+            'user_email' => $user->user_email,
+            'user_anrede' => $user->Anrede,
+            'user_first_name' => $user->Vorname,
+            'user_surname' => $user->Nachname,
+            'user_telefon' => $user->Telefon,
+            'user_street' => $user->Strasse,
+            'user_plz' => $user->PLZ,
+            'user_city' => $user->Ort,
+            'user_country' => $user->Land
+            );
     }
-
 
     #pass variables to and display the template
     echo $formTemplate->render(array(

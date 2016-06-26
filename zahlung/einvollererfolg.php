@@ -1,21 +1,13 @@
 <?php 
 
-ini_set("display_errors" , "1");
-
 require_once('../config/config.php');
-
-
-// include('../views/_db.php'); 
-
-
-
-
-
-
 require_once('../translations/de.php');
 
 require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
+
+
+// ini_set("display_errors" , "1");
 
 $registration = new Registration();
 $login = new Login();

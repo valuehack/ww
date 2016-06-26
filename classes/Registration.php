@@ -36,9 +36,10 @@ class Registration
      */
     public function __construct()
     {
-        if(session_id() == '') session_start();
 
-        // session_start();
+       
+        #if session does not exist, start a session
+        if(session_id() == '') session_start();
 
         // if we have such a POST request, call the registerNewUser() method
         #this is not in use - main function that deals with it is now subscribe new user
@@ -356,7 +357,7 @@ class Registration
         #simple function to add a new entry in mitgliederEXT
         #copy from subscribe new user to include emails etc.
 
-#here we assume that user is new and the email was not used. 
+        #here we assume that user is new and the email was not used. 
 
         $user_password = $this->randomPasswordGenerator();
 
@@ -403,57 +404,36 @@ class Registration
         $_SESSION['profile']['user_id'] = $user_id;
         $_SESSION['user_id'] = $user_id;
 
-        $this->sendNewUserAfterPayEmail($profile['user_email'], $user_password);
-
-        
-
-    }
-
-    private function sendNewUserAfterPayEmail($user_email, $user_password)
-    {
-
-
-        //construct body
-        $body = "Welcome to scholarium. Hope you will like it here. Here is your password ".$user_password;
-
-        //create curl resource   
-        $ch = curl_init();
-        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
-        //set url
-        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
-        //return the transfer as a string
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        #EMAIL SEND BLOCK
+        ####################################################################
+        #email template must exist in templates/email folder
+        $email_template = 'new_paying_user_email.email.twig';
 
         $post_data = array(
-            'to' => $user_email,
-            'bcc' => TEST_EMAIL,
-            //'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
-            'subject' => 'Thanks!',
-            'html' => $body,
-            'from' => 'no-reply@scholarium.at'
+            'to' => $profile['user_email'],
+            'bcc' => 'dzainius@gmail.com',
+            'subject' => 'You are a new user',
+            'from' => 'info@scholarium.at',
+            'fromname' => 'Scholarium'
             );
 
-        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
-
-        // $output contains the output string
-        $response = curl_exec($ch);
-
-
-        if(empty($response))
+        $body_data = array(
+            'profile' => $profile,
+            'product' => $product,
+            'user_password' => $user_password
+            );
+        
+        if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
         {
-            die("Error: No response.");
-            return false;
+          error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
         }
-        else
-        {
-            // $json = json_decode($response);
-            return true;
-        }
+        ####################################################################
 
-        curl_close($ch);
-
+        $login = new Login();        
+        $login->newRememberMeCookie();
     }
-    
+
+
     public function addPersonalDataGeneric($profile)
     {  
 
@@ -562,9 +542,7 @@ class Registration
         $paid_qry->execute();
 
     }
-
-        
-
+     
     private function registerSeminar($profile, $product)
     {
 
@@ -642,57 +620,126 @@ class Registration
     public function userUpgrade($profile, $product)
     {
 
-
-
-
             $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
                 mitgliederExt 
                 (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
                 VALUES
                 (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
 
-
     }
 
 
 
+public function processPayment($profile, $product)
+{
 
-    public function processSuccessfulPayment($profile, $product)
+    ini_set("log_errors" , "1");
+    error_log('processPayment');
+
+    if ((isset($profile['user_logged_in'])) and ($profile['user_logged_in'] === 1))
     {
+        #user was logged in when payment was made
 
-
-        #write user data to the database
-        $this->addNewUser($profile,$product);
-        $this->addPersonalDataGeneric($profile,$product);
+        #make sure that credits exists! 
+        $this->giveCredits($product['credits'] , $profile['user_email']);
         
-        // #register for appropriate events
-        // switch ($_SESSION['passed_from']) 
+        $this->prolongMembership($profile['user_email']);
+
+        // if ( !($this->sendUpgradeEmailToUser($profile['user_email'])) ) 
         // {
-        //     case 'seminar':
-
-        //         $this->registerSeminar($profile, $product);
-        //         break;
-
-        //     case 'projekt':
-        //         $this->registerProjekt($profile, $product);
-        //         break;
-
-        //     case 'upgrade':
-        //         $this->registerUpgrade($profile, $product);
-        //         break;
-
-        //     default:
-        //         # code...
-        //         break;
+        //     error_log( "Mail not sent " .$profile['user_email']);
         // }
 
+        #EMAIL SEND BLOCK
+        ####################################################################
+        #email template must exist in templates/email folder
+        $email_template = 'successful_upgrade.email.twig';
 
+        $post_data = array(
+            'to' => $profile['user_email'],
+            'bcc' => 'dzainius@gmail.com',
+            'subject' => 'The upgrade is successful!',
+            'from' => 'info@scholarium.at',
+            'fromname' => 'Scholarium'
+            );
 
-        // $email->sendSuccesfullPaymentConfirmationEmail();
-
+        $body_data = array(
+            'profile' => $profile,
+            'product' => $product
+            );
         
-        header('Location: einvollererfolg.php');
+        if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
+        {
+          error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+        }
+        ####################################################################
+
+
+
+        #TODO: mark as paid only when all above are successful
+        $this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
+        
+
+    }elseif ( empty($profile['user_logged_in']) )
+    {
+        #create a new user
+
+        $this->createNewUser($profile, $product);
+        $this->addPersonalDataGeneric($profile);
+
+
+        // if ( !($this->sendUpgradeEmailToUser($profile['user_email'])) ) 
+        // {
+        //     error_log( "Mail not sent " .$profile['user_email']);
+        // }
+
+        #EMAIL SEND BLOCK
+        ####################################################################
+        #email template must exist in templates/email folder
+        $email_template = 'successful_upgrade.email.twig';
+
+        $post_data = array(
+            'to' => $profile['user_email'],
+            'bcc' => 'dzainius@gmail.com',
+            'subject' => 'The upgrade is successful!',
+            'from' => 'info@scholarium.at',
+            'fromname' => 'Scholarium'
+            );
+
+        $body_data = array(
+            'profile' => $profile,
+            'product' => $product
+            );
+        
+        if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
+        {
+          error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+        }
+        ####################################################################
+
+        #TODO: mark as paid only when all above are successful
+        $this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
+
+    }else
+    {
+        #some random shit just happened! 
+        #log it and ivestigate
+        #send email too 
+        #create random gmail email for these errors 
+        #biene.sackerl@gmail.com
+        error_log('BAD NUTS: check processPayment() in registration class');
     }
+
+    #clear session vars as no longer needed
+    // $_SESSION['profile'] = '';
+    // $_SESSION['product'] = '';
+
+    #redirect to success page
+    header('Location: einvollererfolg.php');
+
+}
+
+
 
     public function addPaymentData($zahlung, $email)
     {  
@@ -1845,4 +1892,50 @@ class Registration
         curl_close($ch);
         
     }
+
+    #email sending based on the email templates
+    #_README in templates/email for more info
+    private function sendThisEmail($email_template, $post_data, $body_data) 
+    {
+        
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        require_once '../libraries/Twig-1.24.0/lib/Twig/Autoloader.php';
+        Twig_Autoloader::register();
+        $loader = new Twig_Loader_Filesystem('../templates/email');
+        $twig = new Twig_Environment($loader, array('cache' => false));
+
+        #select a template, base on the variable
+        $emailTemplate = $twig->loadTemplate($email_template);
+
+        #pass variables to template
+        $body = $emailTemplate->render($body_data);
+
+        #add rendered body based on the template
+        $post_data['html'] = $body;
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+        $response = curl_exec($ch);
+
+        #make a nice error message + log in the error log... 
+        if(empty($response))
+        {
+            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+            return false;
+        }
+        else
+        {
+            // $json = json_decode($response);
+            return true;
+        }
+
+        curl_close($ch);
+        
+    }
+
+
+
 }
