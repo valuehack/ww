@@ -74,7 +74,6 @@ function doPaypalPayment($profile, $product)
     #return url
     $query['return'] = 'http://scholarium.at/zahlung/einvollererfolg.php';
 
-
     #generic
     $query['cmd'] = '_xclick';   
     $query['charset'] = 'utf-8';
@@ -92,6 +91,7 @@ function doPaypalPayment($profile, $product)
     $query['address1'] = $profile['user_street'];
     $query['zip'] = $profile['user_plz'];
     $query['city'] = $profile['user_city'];
+    $query['country'] = $profile['user_country'];
 
     #product
     $query['item_name'] = $product['name'];

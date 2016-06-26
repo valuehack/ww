@@ -7,7 +7,6 @@ ini_set("error_log" , "./log/zahlung_index_errors");
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-
 date_default_timezone_set('Europe/Vienna');
 
 ob_start();
