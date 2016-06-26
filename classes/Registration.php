@@ -453,6 +453,8 @@ class Registration
         Land = :country,
         first_reg = :first_reg*/
 
+        $this->databaseConnection();
+
         $update_profile_query = $this->db_connection->prepare(
         "UPDATE mitgliederExt   
             SET Anrede = :anrede,
