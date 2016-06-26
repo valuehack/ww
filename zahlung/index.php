@@ -3,15 +3,14 @@
 #error log settings
 ini_set("log_errors" , "1");
 ini_set("error_log" , "./log/zahlung_index_errors");
+#display all errors while developing
+ini_set('display_errors',1);
+error_reporting(E_ALL);
 
 
 date_default_timezone_set('Europe/Vienna');
 
 ob_start();
-
-#display all errors while developing
-ini_set('display_errors',1);
-error_reporting(E_ALL);
 
 # check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
@@ -37,12 +36,22 @@ $login = new Login();
 $email = new Email();
 $registration = new Registration();
 
+if ( (isset($_SESSION['user_logged_in'])) and ($_SESSION['user_logged_in'] === 1) )
+{
+    include('../views/_header_in.php'); 
+}
+else
+{   
+    include('../views/_header_not_in.php');
+}
+
+
 
     #product selected, redirect to submit your data form
     if ($_GET["g"] === 'ihredaten')
     {
 
-        updateProductSessionVars($_POST['product']['what']);
+        if (isset($_POST['product']['what'])) updateProductSessionVars($_POST['product']['what']);
         getForm();
 
     }
@@ -55,6 +64,12 @@ $registration = new Registration();
         #here comes extra post from seminare and projekt, so set all session vars
         if (isset($_POST['product'])) $_SESSION['product'] = $_POST['product'];
         if (isset($_POST['profile'])) $_SESSION['profile'] = $_POST['profile'];
+        if ( (isset($_SESSION['user_logged_in'])) and ($_SESSION['user_logged_in'] === 1) )
+        {
+            $_SESSION['profile']['user_logged_in'] = $_SESSION['user_logged_in'];
+        }
+         
+
 
 
         #its coming from edit page
@@ -104,6 +119,10 @@ $registration = new Registration();
         header('Location: payment.php');
 
     }
+    elseif (!isset($_GET["g"]))
+    {
+        header('Location: /zahlung/?g=ihredaten');
+    }
 
 
 
@@ -136,13 +155,6 @@ function getForm()
     #select a template
     $formTemplate = $twig->loadTemplate('the_form.html.twig');
 
-    #header
-    $title="Unterst&uuml;tzen";
-    if ( $_SESSION['user_logged_in'] === 1) include('../views/_header_in.php'); 
-    else include('../views/_header_not_in.php'); 
-
-    echo random_email();
-
     #values to ease the testing
     $profile = array(
         'user_email' => random_email(),
@@ -159,10 +171,8 @@ function getForm()
 
 
     #user logged in, following will fetch user data and populate the form
-    if ($_SESSION['user_logged_in'] === 1)
+    if ( (isset($_SESSION['user_logged_in'])) and ($_SESSION['user_logged_in'] === 1) )
     {
-
-        $_SESSION['profile']['user_logged_in'] = $_SESSION['user_logged_in'];
 
         $user = getUser($_SESSION['user_id'],$_SESSION['user_email']);
         
@@ -178,6 +188,8 @@ function getForm()
             'user_city' => $user->Ort,
             'user_country' => $user->Land
             );
+
+        // $_SESSION['profile']['user_logged_in'] = $_SESSION['user_logged_in'];
     }
 
     #pass variables to and display the template
@@ -202,11 +214,6 @@ function getSummary()
 
     #select a template
     $formTemplate = $twig->loadTemplate('summary.html.twig');
-
-    #header
-    $title="Unterst&uuml;tzen";
-    if ( $_SESSION['user_logged_in'] === 1) include('../views/_header_in.php'); 
-    else include('../views/_header_not_in.php'); 
 
     $now = date('d.m.Y', time());
     #membership ends one year (31536000 sec) from today 
@@ -238,11 +245,6 @@ function getEditPage()
 
         #select a template
         $formTemplate = $twig->loadTemplate('edit.html.twig');
-
-        #header
-        $title="Unterst&uuml;tzen";
-        if ( $_SESSION['user_logged_in'] === 1) include('../views/_header_in.php'); 
-        else include('../views/_header_not_in.php'); 
 
         $now = date('d.m.Y', time());
         #membership ends one year (31536000 sec) from today 

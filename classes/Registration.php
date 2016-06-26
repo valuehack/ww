@@ -731,8 +731,8 @@ public function processPayment($profile, $product)
     }
 
     #clear session vars as no longer needed
-    // $_SESSION['profile'] = '';
-    // $_SESSION['product'] = '';
+    $_SESSION['profile'] = '';
+    $_SESSION['product'] = '';
 
     #redirect to success page
     header('Location: einvollererfolg.php');
