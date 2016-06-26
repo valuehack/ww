@@ -248,8 +248,10 @@ Unterst&uuml;tzungsstufe
 <input type="text" class="profil_inputfield" name="profile[user_first_name]" value="{{profile.user_first_name}}"><br> 
 <input type="text" class="profil_inputfield" name="profile[user_surname]" value="{{profile.user_surname}}"<br> 
 
+{% if profile.user_logged_in != "1" %}
 <input id="ajax_email_exists" type="email" class="profil_inputfield" name="profile[user_email]" value="{{profile.user_email}}" required><br> 
 <div id="ajax_email_exists_error"></div><br><br>
+{% endif %}
 
 <input type="text" class="profil_inputfield" name="profile[user_street]" value="{{profile.user_street}}"><br> 
 <input type="text" class="profil_inputfield" name="profile[user_plz]" value="{{profile.user_plz}}"><br> 

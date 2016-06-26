@@ -640,6 +640,9 @@ public function processPayment($profile, $product)
     {
         #user was logged in when payment was made
         error_log($profile['user_email'].' is a returning customer.');
+
+        $this->addPersonalDataGeneric($profile);
+
         #make sure that credits exists! 
         $this->giveCredits($product['credits'] , $profile['user_email']);
         
