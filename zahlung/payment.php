@@ -79,19 +79,19 @@ function doPaypalPayment($profile, $product)
     $query['charset'] = 'utf-8';
     $query['currency_code'] = 'EUR';     
     
-    #address override. by default takes user's paypal data
-    $query['address_override'] = '1';     
-   
-    #profile
-    $query['first_name'] = $profile['user_first_name'];
-    $query['last_name'] = $profile['user_surname'];
-    $query['email'] = $profile['user_email'];
-    $query['custom'] =  $profile['wrt_txn_id'];
+    // #address override. by default takes user's paypal data
+    // $query['address_override'] = '1';     
+       
+    // #profile
+    // $query['first_name'] = $profile['user_first_name'];
+    // $query['last_name'] = $profile['user_surname'];
+    // $query['email'] = $profile['user_email'];
+    // $query['custom'] =  $profile['wrt_txn_id'];
 
-    $query['address1'] = $profile['user_street'];
-    $query['zip'] = $profile['user_plz'];
-    $query['city'] = $profile['user_city'];
-    $query['country'] = $profile['user_country'];
+    // $query['address1'] = $profile['user_street'];
+    // $query['zip'] = $profile['user_plz'];
+    // $query['city'] = $profile['user_city'];
+    // $query['country'] = $profile['user_country'];
 
     #product
     $query['item_name'] = $product['name'];
