@@ -96,19 +96,48 @@ class General {
 		
 	}
 	
-	public function getProducts ($id, $type='all', $status=1, $show_passed=false, $show_soldout=true) {
+	public function getProducts ($type=array('all'), $status=1, $show_passed=false, $show_soldout=true) {
 		# WORK in PROGRESS
-		# $type has to be empty (all) or an array of the types that should be selected
+		# All have parameters have to be set in the right order when calling the function, omitting one parameter will cause an error, if all parameters are omitted the default values are used
+		# $type has to be an array of the types that should be selected or 'all' for all
 		# $status: 0 = not active, 1 = active, 2 = test
+		# $show_passed: true = show passed events, false = don't
+		# $show_soldout: true = show soldout events, false = don't
+
+		$select = 'SELECT * FROM produkte WHERE';
 		
-		$select = 'SELECT * FROM produkte WHERE type LIKE :type AND status = :status';
+		# Preparing the list of product types to be selected
+		if ($type[0] != 'all') {			
+			foreach ($type as $key => $value) {
+					$select = $select.' type = :type'.$key.' AND';
+			}
+		}
+		
+		# Don't show passed events
+		if ($show_passed === false) {
+			$select = $select.' start > NOW() AND';
+		}
+		
+		#Don't show events that are sold out
+		if ($show_soldout === false) {
+			$select = $select.' spots_sold < spots AND';
+		}
+		
+		$select = $select.' status = :status';
 		
 		$product_query = $this->db_connection->prepare($select);
-		$product_query->bindValue(':id', $id, PDO::PARAM_STR);
+		
+		if ($type[0] != 'all') {
+			foreach ($type as $key => $value) {
+				$product_query->bindValue(':type'.$key, $value, PDO::PARAM_STR);
+			}
+		}
+		
 		$product_query->bindValue(':status', $status, PDO::PARAM_INT);
 		$product_query->execute();
 		
-		return $event_query->fetchObject();
+		return $product_query->fetchAll();
+		//return $product_query->debugDumpParams();
 	}
 	
 	public function getUserInfo ($user_id) {

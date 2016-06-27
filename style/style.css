@@ -174,8 +174,6 @@ h3 {
 
 /* Class for div - centers everything within */
 .centered {
-	margin-top: 50px;
-	margin-bottom: 50px;
 	text-align: center;
 }
 
@@ -863,8 +861,7 @@ a.subnav_head:hover {
 }
 
 .startpage_last_scholie_centered {
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin: 15px 0;
 	text-align: center;
 }
 
@@ -3298,7 +3295,7 @@ img.projekte_coin2  {
 	margin-top: 50px;
 }	
 
-.h1, .h2, .h3, .h1__sub, .h2__sub {
+.h1, .h2, .h3, ,.h4, .h1__sub, .h2__sub {
 	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
@@ -3309,7 +3306,15 @@ img.projekte_coin2  {
 
 .h1__sub {
 	font-size: 12pt;
-	line-height: 2em;
+	line-height: 2;
+}
+
+.h2 {
+	font-size: 18pt !important;
+	line-height: 1.5em;
+	font-weight: normal;
+	text-align: left !important;
+	margin: 0 !important;
 }
 
 .h3 {
