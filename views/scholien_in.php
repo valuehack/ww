@@ -216,7 +216,7 @@ else
 				if ($counter == $page)
 					$pagination.= "<span class=\"current\">$counter</span>";
 				else
-					$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";					
+					$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";
 			}
 		}
 		elseif($lastpage > 5 + ($adjacents * 2))	//enough pages to hide some
@@ -229,11 +229,11 @@ else
 					if ($counter == $page)
 						$pagination.= "<span class=\"current\">$counter</span>";
 					else
-						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";					
+						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";
 				}
 				$pagination.= "...";
 				$pagination.= "<a href=\"$targetpage?page=$lpm1\">$lpm1</a>";
-				$pagination.= "<a href=\"$targetpage?page=$lastpage\">$lastpage</a>";		
+				$pagination.= "<a href=\"$targetpage?page=$lastpage\">$lastpage</a>";
 			}
 			//in middle; hide some front and some back
 			elseif($lastpage - ($adjacents * 2) > $page && $page > ($adjacents * 2))
@@ -246,11 +246,11 @@ else
 					if ($counter == $page)
 						$pagination.= "<span class=\"current\">$counter</span>";
 					else
-						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";					
+						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";
 				}
 				$pagination.= "...";
 				$pagination.= "<a href=\"$targetpage?page=$lpm1\">$lpm1</a>";
-				$pagination.= "<a href=\"$targetpage?page=$lastpage\">$lastpage</a>";		
+				$pagination.= "<a href=\"$targetpage?page=$lastpage\">$lastpage</a>";
 			}
 			//close to end; only hide early pages
 			else
@@ -263,7 +263,7 @@ else
 					if ($counter == $page)
 						$pagination.= "<span class=\"current\">$counter</span>";
 					else
-						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";					
+						$pagination.= "<a href=\"$targetpage?page=$counter\">$counter</a>";
 				}
 			}
 		}
@@ -273,7 +273,7 @@ else
 			$pagination.= "<a href=\"$targetpage?page=$next\">vor &raquo;</a>";
 		else
 			$pagination.= "<span class=\"disabled\">vor &raquo;</span>";
-		$pagination.= "</div>\n";		
+		$pagination.= "</div>\n";
 	}
 ?>
 	 <div class="content">
