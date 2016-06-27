@@ -59,6 +59,7 @@ $next_seminar = $general->getProducts($type=array('seminar'), $status = 2, $show
 ?>
 								<div class="basket_body_type">
 									<span><?=ucfirst($next_salon[$i]['type'])?></span>
+									<h1 class="h2"><a href="../<?=$next_salon[$i]['type']?>/?q=<?=$next_salon[$i]['id']?>"><?=$next_salon[$i]['title']?></a></h1>
 									<em><?=$general->getDate($next_salon[$i]['start'], $next_salon[$i]['end'])?></em>
 								</div>
 							</div>
