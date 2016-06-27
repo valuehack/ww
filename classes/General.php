@@ -111,7 +111,7 @@ class General {
 		return $event_query->fetchObject();
 	}
 	
-	public function getUserInfo ($id) {
+	public function getUserInfo ($user_id) {
 		
 		$table = 'mitgliederExt';
 		$ident = 'user_id';
@@ -124,10 +124,10 @@ class General {
 		//if ($grey === TRUE) {$table = 'grey_user';}
 		//if ($grey === FALSE) {$table = 'mitgliederExt';}
 		
-		$user_query = $this->db_connection->prepare('SELECT * FROM mitgliederExt WHERE user_id LIKE :id');
+		$user_query = $this->db_connection->prepare('SELECT * FROM mitgliederExt WHERE user_id LIKE :user_id LIMIT 1');
 		//$user_query->bindValue(':table', $table, PDO::PARAM_STR);
 		//$user_query->bindValue(':ident', $ident, PDO::PARAM_STR);
-		$user_query->bindValue(':id', $id, PDO::PARAM_STR);
+		$user_query->bindValue(':user_id', $user_id, PDO::PARAM_STR);
 		$user_query->execute();
 		
 		return $user_query->fetchObject();

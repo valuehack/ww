@@ -36,7 +36,10 @@ class Registration
      */
     public function __construct()
     {
-        session_start();
+
+       
+        #if session does not exist, start a session
+        if(session_id() == '') session_start();
 
         // if we have such a POST request, call the registerNewUser() method
         #this is not in use - main function that deals with it is now subscribe new user
@@ -349,9 +352,19 @@ class Registration
 
     }#end of constructor
 
-   public function addNewUser($profile, $product)
+   public function createNewUser($profile, $product)
     {
         #simple function to add a new entry in mitgliederEXT
+        #copy from subscribe new user to include emails etc.
+
+        #here we assume that user is new and the email was not used. 
+
+        $user_password = $this->randomPasswordGenerator();
+
+        $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
+
+        //encrypt password for storage in the database, so no one would see it in plain text
+        $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => $hash_cost_factor));
 
         $this->databaseConnection();
 
@@ -363,6 +376,7 @@ class Registration
             Ablauf, 
             first_reg, 
             user_active,
+            user_password_hash,
             user_registration_ip, 
             user_registration_datetime) 
         VALUES(
@@ -372,6 +386,7 @@ class Registration
             :Ablauf,
             :first_reg, 
             :user_active,
+            :user_password_hash,
             :user_registration_ip, 
             now())');
 
@@ -380,15 +395,45 @@ class Registration
         $qry_new_user->bindValue(':Mitgliedschaft', $product['level'], PDO::PARAM_STR);
         $qry_new_user->bindValue(':credits_left', $product['credits'], PDO::PARAM_STR);
         $qry_new_user->bindValue(':Ablauf', $product['membership_end'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
         $qry_new_user->bindValue(':user_active', 1, PDO::PARAM_INT);
         $qry_new_user->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
         $qry_new_user->execute();
 
         $user_id = $this->db_connection->lastInsertId();
         $_SESSION['profile']['user_id'] = $user_id;
+        $_SESSION['user_id'] = $user_id;
 
+        #EMAIL SEND BLOCK
+        ####################################################################
+        #email template must exist in templates/email folder
+        $email_template = 'new_paying_user_email.email.twig';
+
+        $post_data = array(
+            'to' => $profile['user_email'],
+            'bcc' => 'dzainius@gmail.com',
+            'subject' => 'You are a new user',
+            'from' => 'info@scholarium.at',
+            'fromname' => 'Scholarium'
+            );
+
+        $body_data = array(
+            'profile' => $profile,
+            'product' => $product,
+            'user_password' => $user_password
+            );
+        
+        if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
+        {
+          error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+        }
+        ####################################################################
+
+        $login = new Login();        
+        $login->newRememberMeCookie();
     }
-    
+
+
     public function addPersonalDataGeneric($profile)
     {  
 
@@ -407,6 +452,8 @@ class Registration
         Ort = :city,
         Land = :country,
         first_reg = :first_reg*/
+
+        $this->databaseConnection();
 
         $update_profile_query = $this->db_connection->prepare(
         "UPDATE mitgliederExt   
@@ -437,38 +484,11 @@ class Registration
 
     }
 
-    
-    #private function returnConfirmationAndPasswordBody($profile)
-
-
-    private function sendConfirmationAndPasswordEmail($profile)
-    {
-        #generate a new password
-        $user_password = $this->randomPasswordGenerator();
-
-        #get email body
-
-        $subject = "testing";
-        $body = 
-        "Hi!<br>
-        This is a body of an email!<br>"
-        .$user_password;
-
-        #send email
-        $this->sendEmail('info@scholarium.at', 'scholarium', $profile[user_email], $subject, $body);
-
-        #write the password to the db
-            #if failed to send an email delete the entry in the db
-            #it would delete other info too. so dont delete. 
-
-        #encrypt password for storage in the database, so no one would see it in plain text
-        $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => $hash_cost_factor));
-
-    }
-
-    private function giveCredits($credits, $user_email)
+    public function giveCredits($credits, $user_email)
     {
         #adds more credits to given user email
+
+        $this->databaseConnection();
 
         $give_credits_qry = $this->db_connection->prepare(
         "UPDATE mitgliederExt   
@@ -481,8 +501,50 @@ class Registration
 
         $give_credits_qry->execute();
 
+        if($give_credits_qry->errorCode() != 0) return $give_credits_qry->errorInfo();
+
+
     }
 
+    public function prolongMembership($user_email)
+    {
+        #prolongs membership one year from now
+
+        $this->databaseConnection();
+
+        $prolong_qry = $this->db_connection->prepare(
+        "UPDATE mitgliederExt   
+            SET Ablauf = DATE_ADD(CURDATE(), INTERVAL 1 YEAR)
+          WHERE user_email = :user_email"
+        );
+
+        $prolong_qry->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+
+        $prolong_qry->execute();
+
+
+        if($prolong_qry->errorCode() != 0) return $prolong_qry->errorInfo();
+
+    }
+
+    public function markAsPaid($user_email, $wrt_txn_id)
+    {
+        #marks transaction paid - success
+
+        $paid_qry = $this->db_connection->prepare(
+        "UPDATE transactions   
+            SET paid_datetime = NOW()
+          WHERE user_email = :user_email
+            AND wrt_txn_id = :wrt_txn_id"
+        );
+
+        $paid_qry->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+        $paid_qry->bindValue(':wrt_txn_id', $wrt_txn_id, PDO::PARAM_STR);
+
+        $paid_qry->execute();
+
+    }
+     
     private function registerSeminar($profile, $product)
     {
 
@@ -557,49 +619,134 @@ class Registration
 
     }
 
-    public function registerUpgrade($profile, $product)
+    public function userUpgrade($profile, $product)
     {
-        #note when user has upgraded, keep the log of upgrades
-        #use registration db???
+
+            $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
+                mitgliederExt 
+                (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
+                VALUES
+                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
 
     }
 
-    public function processSuccessfulPayment($profile, $product)
+
+
+public function processPayment($profile, $product)
+{
+
+    ini_set("log_errors" , "1");
+    error_log('processPayment');
+
+    if ((isset($profile['user_logged_in'])) and ($profile['user_logged_in'] === 1))
     {
+        #user was logged in when payment was made
+        error_log($profile['user_email'].' is a returning customer.');
 
+        $this->addPersonalDataGeneric($profile);
 
-        #write user data to the database
-        $this->addNewUser($profile,$product);
-        $this->addPersonalDataGeneric($profile,$product);
+        #make sure that credits exists! 
+        $this->giveCredits($product['credits'] , $profile['user_email']);
         
-        // #register for appropriate events
-        // switch ($_SESSION['passed_from']) 
+        $this->prolongMembership($profile['user_email']);
+
+        // if ( !($this->sendUpgradeEmailToUser($profile['user_email'])) ) 
         // {
-        //     case 'seminar':
-
-        //         $this->registerSeminar($profile, $product);
-        //         break;
-
-        //     case 'projekt':
-        //         $this->registerProjekt($profile, $product);
-        //         break;
-
-        //     case 'upgrade':
-        //         $this->registerUpgrade($profile, $product);
-        //         break;
-
-        //     default:
-        //         # code...
-        //         break;
+        //     error_log( "Mail not sent " .$profile['user_email']);
         // }
 
+        #EMAIL SEND BLOCK
+        ####################################################################
+        #email template must exist in templates/email folder
+        $email_template = 'successful_upgrade.email.twig';
 
+        $post_data = array(
+            'to' => $profile['user_email'],
+            'bcc' => 'dzainius@gmail.com',
+            'subject' => 'The upgrade is successful!',
+            'from' => 'info@scholarium.at',
+            'fromname' => 'Scholarium'
+            );
 
-        // $email->sendSuccesfullPaymentConfirmationEmail();
-
+        $body_data = array(
+            'profile' => $profile,
+            'product' => $product
+            );
         
-        header('Location: einvollererfolg.php');
+        if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
+        {
+          error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+        }
+        ####################################################################
+
+
+
+        #TODO: mark as paid only when all above are successful
+        $this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
+        
+
+    }elseif ( empty($profile['user_logged_in']) )
+    {
+        #create a new user
+
+        error_log($profile['user_email'].' is NEW.');
+
+        $this->createNewUser($profile, $product);
+        $this->addPersonalDataGeneric($profile);
+
+
+        // if ( !($this->sendUpgradeEmailToUser($profile['user_email'])) ) 
+        // {
+        //     error_log( "Mail not sent " .$profile['user_email']);
+        // }
+
+        #EMAIL SEND BLOCK
+        ####################################################################
+        #email template must exist in templates/email folder
+        $email_template = 'successful_upgrade.email.twig';
+
+        $post_data = array(
+            'to' => $profile['user_email'],
+            'bcc' => 'dzainius@gmail.com',
+            'subject' => 'The upgrade is successful!',
+            'from' => 'info@scholarium.at',
+            'fromname' => 'Scholarium'
+            );
+
+        $body_data = array(
+            'profile' => $profile,
+            'product' => $product
+            );
+        
+        if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
+        {
+          error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+        }
+        ####################################################################
+
+        #TODO: mark as paid only when all above are successful
+        $this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
+
+    }else
+    {
+        #some random shit just happened! 
+        #log it and ivestigate
+        #send email too 
+        #create random gmail email for these errors 
+        #biene.sackerl@gmail.com
+        error_log('BAD NUTS: check processPayment() in registration class');
     }
+
+    #clear session vars as no longer needed
+    $_SESSION['profile'] = '';
+    $_SESSION['product'] = '';
+
+    #redirect to success page
+    header('Location: einvollererfolg.php');
+
+}
+
+
 
     public function addPaymentData($zahlung, $email)
     {  
@@ -779,6 +926,8 @@ class Registration
     //generates a random string of 6 characters used for temporary passwords
     private function randomPasswordGenerator() {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+        $str='';
 
         $size = strlen( $chars );
         for( $i = 0; $i < 6; $i++ ) {
@@ -1121,6 +1270,54 @@ class Registration
             }*/
     }
 
+    public function sendUpgradeEmailToUser($user_email)
+    {
+
+        //construct body
+        $body = "Thanks. We have received your payment. Enjoy one more year and extra credits. ".$user_email;
+
+        //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => $user_email,
+            'bcc' => TEST_EMAIL,
+            //'toname' => $user_profile[Vorname]." ".$user_profile[Nachname],
+            'subject' => 'You have been upgraded!',
+            'html' => $body,
+            'from' => 'no-reply@scholarium.at'
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+
+        if(empty($response))
+        {
+            die("Error: No response.");
+            return false;
+        }
+        else
+        {
+            // $json = json_decode($response);
+            return true;
+        }
+
+        curl_close($ch);
+
+    }
+
+
     #-------------------------------------
     //send an email to a newly subscribed member, containing password and activation link
     public function sendNewPayingUserEmailToInstitute($user_email)
@@ -1296,7 +1493,7 @@ class Registration
                 $this->verification_successful = true;
                 $this->messages[] = MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL;
                 
-                $_POST['user_rememberme'] = 1;
+                // $_POST['user_rememberme'] = 1;
                 $_SESSION['user_id'] = $user_id;
 				
 				//temporary email for open salon
@@ -1702,4 +1899,50 @@ class Registration
         curl_close($ch);
         
     }
+
+    #email sending based on the email templates
+    #_README in templates/email for more info
+    private function sendThisEmail($email_template, $post_data, $body_data) 
+    {
+        
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        require_once '../libraries/Twig-1.24.0/lib/Twig/Autoloader.php';
+        Twig_Autoloader::register();
+        $loader = new Twig_Loader_Filesystem('../templates/email');
+        $twig = new Twig_Environment($loader, array('cache' => false));
+
+        #select a template, base on the variable
+        $emailTemplate = $twig->loadTemplate($email_template);
+
+        #pass variables to template
+        $body = $emailTemplate->render($body_data);
+
+        #add rendered body based on the template
+        $post_data['html'] = $body;
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+        $response = curl_exec($ch);
+
+        #make a nice error message + log in the error log... 
+        if(empty($response))
+        {
+            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+            return false;
+        }
+        else
+        {
+            // $json = json_decode($response);
+            return true;
+        }
+
+        curl_close($ch);
+        
+    }
+
+
+
 }

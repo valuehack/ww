@@ -2,11 +2,11 @@
 
 #error log settings
 ini_set("log_errors" , "1");
-#php_listener_errors is a filename where errors are logged
-ini_set("error_log" , "./log/sofort_listener_errors");
+ini_set("error_log" , "../classes/error.log");
 ini_set("display_errors" , "0");
 
-session_start();
+#if session does not exist, start a session
+if(session_id() == '') session_start();
 
 # check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
@@ -18,15 +18,28 @@ if (version_compare(PHP_VERSION, '5.3.7', '<')) {
 
 require_once('../config/config.php');
 require_once('../translations/de.php');
-
-// require_once('../classes/Login.php');
+require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
 
 $registration = new Registration();
-// $login = new Login();
+$login = new Login();
 
 $profile = $_SESSION['profile'];
 $product = $_SESSION['product'];
 
-$registration->processSuccessfulPayment($profile, $product);
+$registration->processPayment($profile, $product);
 
+// #TESTING ONLY
+// #var output block
+// echo "<br>POST<br>";
+// print_r($_POST);
+// echo "<br>";
+// echo "<br>GET<br>";
+// print_r($_GET);
+// echo "<br><br><br>";
+// #formats print_r for readability 
+// $test = print_r($_SESSION, true);
+// $test = str_replace("(", "<br>(", $test);
+// $test = str_replace("[", "<br>[", $test);
+// $test = str_replace(")", ")<br>", $test);
+// echo $test;

@@ -1,0 +1,39 @@
+<?php
+
+#This is to give you idea how email sending works.
+#Every email is based on email template
+#In order to send an email, template and data between long lines must exists
+#there is no data validation so be careful and triple check
+
+ini_set("log_errors" , "1");
+ini_set("error_log" , "../classes/error.log");
+ini_set("display_errors" , "1");
+
+session_start();
+
+require_once('../config/config.php');
+
+#EMAIL SEND BLOCK
+####################################################################
+#email template must exist in templates/email folder
+$email_template = 'successful_upgrade.email.twig';
+
+$post_data = array(
+    'to' => $profile['user_email'],
+    'bcc' => 'dzainius@gmail.com',
+    'subject' => 'The upgrade is successful!',
+    'from' => 'info@scholarium.at',
+    'fromname' => 'Scholarium'
+    );
+
+$body_data = array(
+    'profile' => $profile,
+    'product' => $product
+    );
+
+if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
+{
+  error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+}
+####################################################################
+

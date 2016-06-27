@@ -25,16 +25,18 @@ require_once('../classes/Registration.php');
 $login = new Login();
 $registration = new Registration();
 
-// ... ask if we are logged in here:
-if ($login->isUserLoggedIn() == true) {
-    // the user is logged in. you can do whatever you want here.
-    // for demonstration purposes, we simply show the "you are logged in" view.
-    #echo "this works";
-    include("../views/upgrade_in.php");
+include("upgrade_not_in.php");
 
-} else {
-    // the user is not logged in. you can do whatever you want here.
-    // for demonstration purposes, we simply show the "you are not logged in" view.
-    include("upgrade_not_in.php");
+// // ... ask if we are logged in here:
+// if ($login->isUserLoggedIn() == true) {
+//     // the user is logged in. you can do whatever you want here.
+//     // for demonstration purposes, we simply show the "you are logged in" view.
+//     #echo "this works";
+//     include("upgrade_not_in.php");
+
+// } else {
+//     // the user is not logged in. you can do whatever you want here.
+//     // for demonstration purposes, we simply show the "you are not logged in" view.
+//     include("upgrade_not_in.php");
     
-}
+// }

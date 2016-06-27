@@ -2,20 +2,30 @@
 
 #error log settings
 ini_set("log_errors" , "1");
-#php_listener_errors is a filename where errors are logged
-ini_set("error_log" , "./log/php_listener_errors");
+ini_set("error_log" , "../classes/error.log");
+#switch off error display on the screen
 ini_set("display_errors" , "0");
 
 #response from paypal
 $ipn_post_data = $_POST;
 
+# check for minimum PHP version
+if (version_compare(PHP_VERSION, '5.3.7', '<')) {
+    echo PHP_VERSION;
+    exit('Sorry, this script does not run on a PHP version smaller than 5.3.7 !');
+} else if (version_compare(PHP_VERSION, '5.5.0', '<')) {
+    require_once('../libraries/password_compatibility_library.php');
+}
+
 #log received post
 error_log( "POST FROM PAYPAL. TXN_ID: ".$ipn_post_data['txn_id'] ." WRT_TXN_ID: ".$ipn_post_data['custom']);
 
 require_once('../config/config.php');
+require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
 
 $registration = new Registration();
+$login = new Login();
 
 try 
 {
@@ -27,15 +37,15 @@ catch (PDOException $e)
     exit;
 }
 
+
 #get data from transactional db 
 $paypal_data_query = $db_connection->prepare(
-"SELECT * FROM paypal_data_storage 
+"SELECT * FROM transactions 
 WHERE wrt_txn_id = :wrt_txn_id
 ");
 
 $paypal_data_query->bindValue(':wrt_txn_id', $ipn_post_data['custom'], PDO::PARAM_STR);
 $paypal_data_query->execute();
-
 
 if ($paypal_data_query->rowCount() == 0) 
 {
@@ -48,14 +58,10 @@ else
 	$result_row = $paypal_data_query->fetchObject();
 
 	#session data in db is stored serialized
-	$txn_data = unserialize($result_row->data);
+	$txn_data = unserialize($result_row->session_data);
 
 	$profile = $txn_data['profile'];
 	$product = $txn_data['product'];
 
-	#register user
-	$registration->addNewUser($profile, $product);
-	$registration->addPersonalDataGeneric($profile);
+	$registration->processPayment($profile, $product);
 }
-
-

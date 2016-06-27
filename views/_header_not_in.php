@@ -60,7 +60,9 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
 ?>
 
 <?php
-    $ok2 = $_POST['ok2'];
+
+if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
+
 ?>  
   
   <body>
