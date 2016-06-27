@@ -1,83 +1,88 @@
 <? 
-	require_once "../../config/config.php";
-	include "../config/db.php";
+	require_once '../../config/config.php';
+	include '../config/db.php';
 
-	$title="B&uuml;cher";
+	$title='B&uuml;cher';
 
-	include "../page/header2.inc.php";
+	include '../page/header2.inc.php';
 ?>
 
 <!--Content-->
 
     <div id="content">      	
 <?
-	$sql_buch = $pdocon->db_connection->prepare("SELECT * from buecher order by id asc");
-    $sql_buch->execute();
-	$result_buch = $sql_buch->fetchAll();
-	
-	$sql_art = $pdocon->db_connection->prepare("SELECT * from artikel order by id asc");
-	$sql_art->execute();
-    $result_art = $sql_art->fetchAll();
+	if (isset($_GET['author'])) {
+		$sql_author = $pdocon->db_connection->prepare('SELECT name FROM denker WHERE id = :authorid');
+  		$sql_author->bindValue(':authorid', $_GET['author'], PDO::PARAM_STR);
+		$sql_author->execute();
+		$author_name = $sql_author->fetchObject();
+		
+		$sql_lit = $pdocon->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author UNION ALL SELECT * FROM artikel WHERE autor = :author ORDER BY jahr DESC');
+		$sql_lit->bindValue(':author', $author_name->name, PDO::PARAM_STR);
+    	$sql_lit->execute();
+		$result_lit = $sql_lit->fetchAll();
+	}
+	else {
+		if (isset($_GET['order'])) {
+			$order = $_GET['order'];
+		}
+		else {
+			$order = 'n';
+		}
+		$sql_lit = $pdocon->db_connection->prepare('SELECT * FROM buecher UNION ALL SELECT * FROM artikel ORDER BY '.$order.' DESC');
+    	$sql_lit->execute();
+		$result_lit = $sql_lit->fetchAll();
+	}
 	
 ?>
-      	<div class="container index-link"><a href="">Mises Austria</a> / <a href="">B&uuml;cher</a></div>
+      	<div class="container index-link"><p><a href="../">Mises Austria</a> / <a href="">B&uuml;cher</a></p></div>
       	<div class="container">
       		<h1>B&uuml;cher</h1>
+      		<p><b>mises.at</b> bietet die gr&ouml;&szlig;te und umfassendeste Online-Bibliothek der klassischen Wiener/ &Ouml;sstereichischen Schule der &Ouml;konomik. Hier finden Sie Artikel und B&uuml;cher einer Vielzahl von Denker der Wiener Schule &uuml;ber ein breites Spektrum von &ouml;konomischen, sozialwissenschaftlichen und philosophischen Problemstellungen und Themen.</p>
+      		
+      		<?if (isset($_GET['author'])) echo '<h3><a href="../denker/?q='.$_GET['author'].'">'.$author_name->name.'</a></h3>';?>
       	</div>
       	
       	<div class="container">
+      		<div>
+      			Filter: <a href="?order=autor">Autor</a>, <a href="?order=jahr">Jahr</a>
+      		</div>
+      		<table class="itm-table h-full-width">
+      			<thead>
+      				<tr><th><a href="?order=jahr" title="Nach Jahr sortieren">Titel (Jahr)</a></th><th><a href="?order=id" title="Nach Autor sortieren">Autor</a></th><th><a href="?order=sprache" title="Nach Sprache sortieren">Sprache</a></th><th>Quelle</th></tr>
+      			</thead>
+      			<tbody>
 <?php
-	for ($i = 0; $i < count($result_buch); $i++)
+	for ($i = 0; $i < count($result_lit); $i++)
 	{
-		$id_buch = $result_buch[$i]['id'];
-        $title_buch = $result_buch[$i]['titel'];
-  		$autor_buch = $result_buch[$i]['autor'];
-  		$lang_buch = $result_buch[$i]['sprache'];
-		$link_buch = $result_buch[$i]['link'];
+		$id_lit = $result_lit[$i]['id'];
+        $title_lit = $result_lit[$i]['titel'];
+  		$autor_lit = $result_lit[$i]['autor'];
+  		$year_lit = $result_lit[$i]['jahr'];
+		$link_lit = $result_lit[$i]['link'];
+		$lang_lit = $result_lit[$i]['sprache'];
   		
+		if ($lang_lit == 'en') {$sprache = 'Englisch';} 
+		else {$sprache = 'Deutsch';}
+		
+  		$sql_author = $pdocon->db_connection->prepare('SELECT id FROM denker WHERE name = :name');
+  		$sql_author->bindValue(':name', $autor_lit, PDO::PARAM_STR);
+		$sql_author->execute();
+		$author_id = $sql_author->fetchObject();
+						
 		?>      	
-
-			<div class="row">
-				<div class="twelve columns">
-					<div class="list-itm">							
-						<a class="title-link" href="<?=$link_buch?>"><?=$title_buch?></a>	
-						<span class="subinfo"><?=$autor_buch?></span> 
-					</div>
-				</div>
-			</div>
+					<tr>
+						<td><a class="itm-table_pri" href="<?=$link_lit?>"><?=$title_lit?></a> (<?=$year_lit?>)<br>
+						</td>
+						<td data-label="Autor"><a class="itm-table_sec" href="../denker/index.php?q=<?=$author_id->id?>"><?=$autor_lit?></a></td>
+						<td data-label="Sprache"><?=$sprache?></td>
+						<td>free/amazon</td>
+					</tr>
 		<?
 	}
-?>   
+?> 				</tbody>
+			</table>  
 		</div>
-			
-		<div class="container">
-      		<h1>Artikel</h1>
-      	</div>
-      	<div class="container">
-      		
-<?php
-	for ($i = 0; $i < count($result_art); $i++)
-	{
-		$id_art = $result_art[$i]['id'];
-        $title_art = $result_art[$i]['titel'];
-  		$autor_art = $result_art[$i]['autor'];
-  		$lang_art = $result_art[$i]['sprache'];
-		$link_art = $result_art[$i]['link'];
-  		
-		?>      	
-
-				<div class="row">
-					<div class="twelve columns">
-						<div class="list-itm">							
-							<a class="title-link" href="<?=$link_art?>"><?=$title_art?></a>	
-							<span class="subinfo"><?=$autor_art?></span> 
-						</div>
-					</div>
-				</div>
-		<?
-	}
-?>   
-		</div>        	
 	</div>
 <?	
 	include "../page/footer.inc.php";

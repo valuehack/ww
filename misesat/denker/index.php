@@ -13,7 +13,8 @@ if(isset($_GET['q']))
   $id = $_GET['q'];
 
   //Autorendetails
-  $sql = $pdocon->db_connection->prepare("SELECT * from denker WHERE id='$id'");
+  $sql = $pdocon->db_connection->prepare('SELECT * FROM denker WHERE id = :id');
+  $sql->bindValue(':id', $id, PDO::PARAM_STR);
   $sql->execute();
   $result = $sql->fetchAll();
 
@@ -24,7 +25,8 @@ if(isset($_GET['q']))
 ?>
 <!--Denker-->
 <!--Content-->    
-      	<div class="container index-link"><p><a href="../index.php">Wiener Schule</a> / <a href="index.php">Denker</a> / <?=$name?></a></p></div>      		<div class="container">
+      	<div class="container index-link"><p><a href="../index.php">Wiener Schule</a> / <a href="index.php">Denker</a> / <?=$name?></a></p></div>      		
+      	<div class="container">
       		<div class="row">
       			<div class="two-thirds column">
       				<h1><?=$name?></h1>
@@ -51,7 +53,8 @@ if(isset($_GET['q']))
 					<div class="list list--none">
           				<ul>
           				<?php
-   						$sql_buch = $pdocon->db_connection->prepare("SELECT * from buecher WHERE autor='$name' ORDER by n asc LIMIT 10");
+   						$sql_buch = $pdocon->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author ORDER BY n ASC LIMIT 5');
+   						$sql_buch->bindValue(':author', $name, PDO::PARAM_STR);
 						$sql_buch->execute();
 		        		$result_buch = $sql_buch->fetchAll();
 
@@ -67,7 +70,8 @@ if(isset($_GET['q']))
           			<div class="list list--none">
             			<ul>
           				<?php
-   						$sql_art = $pdocon->db_connection->prepare("SELECT * from artikel WHERE autor='$name' ORDER by n asc LIMIT 10");
+   						$sql_art = $pdocon->db_connection->prepare('SELECT * FROM artikel WHERE autor = :author ORDER BY n ASC LIMIT 5');
+						$sql_art->bindValue(':author', $name, PDO::PARAM_STR);
 						$sql_art->execute();
 						$result_art = $sql_art->fetchAll();
 						
@@ -78,6 +82,9 @@ if(isset($_GET['q']))
             			</ul>
        				</div>
 				</div>
+			</div>
+			<div class="row h-centered">
+				<p><a class="btn-link" href="../buecher/?author=<?=$id?>">vollst&auml;ndige Literaturliste</a></p>
 			</div>          		          		                		        
        	</div>
 
@@ -85,7 +92,7 @@ if(isset($_GET['q']))
 }
 else {
 	
-    $sql = $pdocon->db_connection->prepare("SELECT * from denker order by id asc");
+    $sql = $pdocon->db_connection->prepare('SELECT * FROM denker ORDER BY id ASC');
 	$sql->execute();
     $result = $sql->fetchAll();
 ?>
@@ -93,7 +100,8 @@ else {
   	
 			<div class="container index-link"><p><a href="../index.php">Wiener Schule</a> / Denker</p></div>
       		<div class="container">
-      			<h1>Autoren&uuml;bersicht</h1>
+      			<h1>Autoren</h1>
+      			<p>Hier finden Sie eine umfassende &Uuml;bersicht der in der Denktradition der klassischen Wiener/ &Ouml;sterreichischen Schulen stehenden Denker.</p>
       		</div>
       
       		<div class="container">

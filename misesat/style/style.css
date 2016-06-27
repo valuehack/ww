@@ -205,6 +205,10 @@ a:hover, a:active {
 	color: rgb(255,255,255);
 }
 
+.h-full-width {
+	width: 100%;
+}
+
 /*================= Special Styles =================*/
 
 .style-bl--red {
@@ -702,6 +706,83 @@ a:hover, a:active {
 	font-size: 1.25em;
 	padding: 0.5em 0;
 	display: block;
+}
+
+/*================== Item Table ====================*/
+
+.itm-table {
+	table-layout: fixed;
+}
+
+.itm-table thead {
+	padding: 0.25em 0;
+	border-bottom: 4px solid rgb(203,44,52);
+}
+
+.itm-table th, .itm-table td {
+	padding: 0.75em 0.5em;
+}
+
+.itm-table th {
+	padding-bottom: 0.25em;
+}
+
+.itm-table th:first-child, .itm-table td:first-child {
+	padding-left: 0;
+	width: 60%;
+}
+.itm-table th:last-child, .itm-table td:last-child {
+	padding-right: 0;
+}
+
+.itm-table th {
+	text-align: left;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+}
+
+.itm-table tr {
+	border-bottom: 1px solid rgb(230,230,230);
+}
+
+.itm-table_pri {
+	font-family: 'Raleway', sans-serif;
+}
+
+.itm-table_sec {
+	color: 	rgb(70,70,70);
+}
+
+/*Change table view on smaller screens. Every row is displayed like a card (one column) with every former column now being a row.*/
+@media (max-width: 550px) {
+	.itm-table thead {
+		display: none;
+	}
+	.itm-table tr {
+		display: block;
+		border: 1px solid rgb(230,230,230);
+		border-bottom: 3px solid rgb(230,230,230);
+		margin-bottom: 1em;
+	}
+	.itm-table td {
+		display: block;
+		text-align: right;
+		border-bottom: 1px dotted rgb(235,235,235);
+		width: auto;
+	}
+	.itm-table td:first-child {
+		width: auto;
+		text-align: left;
+		padding-left: 0.5em;
+	}
+	.itm-table td:last-child {
+		border-bottom: 0;
+		padding-right: 0.5em;
+	}
+	.itm-table td:before {
+		content: attr(data-label);
+		float: left;		
+	}
 }
 
 /*==================================================*/
