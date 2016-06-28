@@ -13,13 +13,15 @@ $general = new General();
 $registration = new Registration();
 $login = new Login();
 
+$title = 'Zahlung erfolgreich';
+
 if ($login->isUserLoggedIn() == true) 
 {
 	include('../views/_header_in.php');
 }
 else
 {
-  include('../views/_header_not_in.php');
+  	include('../views/_header_not_in.php');
 
 }
 
@@ -37,8 +39,6 @@ $next_seminar = $general->getProducts($type=array('seminar'), $status = 2, $show
 					<h2 class="h2__nd">Zahlung erfolgreich</h2>
 				</div>
 				<div>
-					<p>Sehr <?=$anrede?> <?=$name?>,<br>
-					<br>
 					<b>Vielen Dank f&uuml;r Ihre Spende.</b><br>
 					<br>
 					Die Zahlung wurde erfolgreich durchgef&uuml;hrt. In K&uuml;rze erhalten Sie eine Nachricht als Best&auml;tigung.</p>

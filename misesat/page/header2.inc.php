@@ -13,31 +13,9 @@
     	<link rel="stylesheet" href="../style/normalize.css">
     	<link rel="stylesheet" href="../style/style.css">
     	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300|EB+Garamond' rel='stylesheet' type='text/css'>
-       
+                     
     	<title><?=$title?> | Mises Austria</title>
-    
-    	<script type="text/javascript">
-    	    function setActive() {
-              aObj = document.getElementById('nav').getElementsByTagName('a');
-              for(i=0;i<aObj.length;i++) { 
-                if(document.location.href.indexOf(aObj[i].href)>=0) {
-                  aObj[i].className='nav--active';
-                }
-              }
-            }
-            window.onload = setActive;
-            
-            function showNav() {
-            	aObj = document.getElementById('nav');
-            	if (aObj.style.display == 'none') {
-            	aObj.style.display = 'block';
-            	}
-            	else {
-            		aObj.style.display = 'none';
-            	}
-            }
-    	</script>
-    
+        
 	</head>
 	<body>
 <!--Header-->
@@ -54,10 +32,10 @@
     			<div class="navi">
       				<ul>
       					<li><a href="../verlag/">Verlag</a></li>
-        				<li><a href="../begriffe/">Begriffe</a></li>
+        				<!--<li><a href="../begriffe/">Begriffe</a></li>-->
         				<li><a href="../denker/">Denker</a></li>
-        				<li><a href="../buecher/">B&uuml;cher</a></li>
-        				<li><a href="../dokumente/">Dokumente</a></li>
+        				<li><a href="../literatur/">Literatur</a></li>
+        				<!--<li><a href="../dokumente/">Dokumente</a></li>-->
         				<li><a href="../orte/">Orte</a></li>
       				</ul>
    				</div>

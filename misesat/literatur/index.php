@@ -2,7 +2,7 @@
 	require_once '../../config/config.php';
 	include '../config/db.php';
 
-	$title='B&uuml;cher';
+	$title='Literatur';
 
 	include '../page/header2.inc.php';
 ?>
@@ -33,23 +33,54 @@
     	$sql_lit->execute();
 		$result_lit = $sql_lit->fetchAll();
 	}
-	
+	$sql_author_list = $pdocon->db_connection->prepare('SELECT * FROM denker ORDER BY id');
+	$sql_author_list->execute();
+	$author_list = $sql_author_list->fetchAll();	
+	$x = count($author_list)/4;	
 ?>
-      	<div class="container index-link"><p><a href="../">Mises Austria</a> / <a href="">B&uuml;cher</a></p></div>
+      	<div class="container index-link"><p><a href="../">Mises Austria</a> / <a href="">Literatur</a></p></div>
       	<div class="container">
-      		<h1>B&uuml;cher</h1>
-      		<p><b>mises.at</b> bietet die gr&ouml;&szlig;te und umfassendeste Online-Bibliothek der klassischen Wiener/ &Ouml;sstereichischen Schule der &Ouml;konomik. Hier finden Sie Artikel und B&uuml;cher einer Vielzahl von Denker der Wiener Schule &uuml;ber ein breites Spektrum von &ouml;konomischen, sozialwissenschaftlichen und philosophischen Problemstellungen und Themen.</p>
+      		<h1>Literatur</h1>
       		
       		<?if (isset($_GET['author'])) echo '<h3><a href="../denker/?q='.$_GET['author'].'">'.$author_name->name.'</a></h3>';?>
       	</div>
       	
       	<div class="container">
-      		<div>
-      			Filter: <a href="?order=autor">Autor</a>, <a href="?order=jahr">Jahr</a>
+      			<button class="reiter showhide">Nach Autor filtern</button>
+      			<div class="hidden row reiter--ctn">
+      				<div class="three columns">
+<?php
+      				for ($j = 0; $j < $x; $j++) {
+						echo '<a href="?author='.$author_list[$j]['id'].'">'.$author_list[$j]['name'].'</a><br>';
+					}
+?>      					
+      				</div>
+      				<div class="three columns">
+<?php
+      				for ($j = $x+1; $j < $x*2; $j++) {
+						echo '<a href="?author='.$author_list[$j]['id'].'">'.$author_list[$j]['name'].'</a><br>';
+					}
+?>      					
+      				</div>
+      				<div class="three columns">
+<?php
+      				for ($j = ($x*2)+1; $j < $x*3; $j++) {
+						echo '<a href="?author='.$author_list[$j]['id'].'">'.$author_list[$j]['name'].'</a><br>';
+					}
+?>      					
+      				</div>
+      				<div class="three columns">
+<?php
+      				for ($j = ($x*3)+1; $j < count($author_list); $j++) {
+						echo '<a href="?author='.$author_list[$j]['id'].'">'.$author_list[$j]['name'].'</a><br>';
+					}
+?>      					
+      				</div>
+      			</div>     			
       		</div>
       		<table class="itm-table h-full-width">
       			<thead>
-      				<tr><th><a href="?order=jahr" title="Nach Jahr sortieren">Titel (Jahr)</a></th><th><a href="?order=id" title="Nach Autor sortieren">Autor</a></th><th><a href="?order=sprache" title="Nach Sprache sortieren">Sprache</a></th><th>Quelle</th></tr>
+      				<tr><th>Titel (Jahr)</th><th><a href="?order=id" title="Nach Autor sortieren">Autor</a></th><th><a href="?order=sprache" title="Nach Sprache sortieren">Sprache</a></th><th>Quelle</th></tr>
       			</thead>
       			<tbody>
 <?php

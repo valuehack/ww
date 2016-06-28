@@ -215,6 +215,10 @@ a:hover, a:active {
 	border-bottom: 4px solid rgb(203,44,52);
 }
 
+.style-space--bottom {
+	margin-bottom: 1.5em;
+}
+
 /*==================================================*/
 /*                   Header                    		*/
 /*==================================================*/
@@ -630,8 +634,7 @@ a:hover, a:active {
 	.list-itm_img--big {	
 	width: 100%;
 	max-height: initial;
-}
-	
+	}
 }
 
 /*======================  Text  ====================*/
@@ -785,6 +788,39 @@ a:hover, a:active {
 	}
 }
 
+/*=============== Hidden Elements ==================*/
+
+.hidden {
+	
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.reiter {
+	margin: 0px;
+	background: rgb(203, 44, 52) none repeat scroll 0% 0%;
+	color: rgb(255, 255, 255);
+	padding: 0.1em 0.8em;
+	border: 1px solid rgb(203,44,52);
+	border-bottom: 0px none;
+}
+
+.reiter--ctn {
+	border: 1px solid rgb(203, 44, 52);
+	padding: 0.3em 0.7em;
+	background: rgb(203, 44, 52) none repeat scroll 0% 0%;
+	color: rgb(255, 255, 255);
+}
+
+.reiter--ctn a {
+	color: #fff;
+}
 /*==================================================*/
 /*                  Map Styles                 		*/
 /*==================================================*/
