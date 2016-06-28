@@ -97,7 +97,7 @@ class General {
 	}
 	
 	public function getProducts ($type=array('all'), $status=1, $show_passed=false, $show_soldout=true) {
-		# WORK in PROGRESS
+		# WORK in PROGRESS (using more than one type does not work yet)
 		# All have parameters have to be set in the right order when calling the function, omitting one parameter will cause an error, if all parameters are omitted the default values are used
 		# $type has to be an array of the types that should be selected or 'all' for all
 		# $status: 0 = not active, 1 = active, 2 = test

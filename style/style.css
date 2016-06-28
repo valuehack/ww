@@ -147,7 +147,6 @@ li {
 h2 {
 	font-size: 20pt;
 	line-height: 1;
-	text-shadow: 0 0 0px rgb(20,20,20);
 }
 
 h5 {
@@ -3285,6 +3284,15 @@ img.projekte_coin2  {
 	background: transparent url(gfx/checkmark.png); no-repeat;
 }
 
+.body_nd {
+	font-size: 14pt;
+}
+
+.product_type {
+	font-size: 0.8em;
+	font-style: italic;
+}
+
 .content-area {
 	margin: 0px 15%;
 	display: inline-block;
@@ -3295,7 +3303,21 @@ img.projekte_coin2  {
 	margin-top: 50px;
 }	
 
-.h1, .h2, .h3, ,.h4, .h1__sub, .h2__sub {
+.ctn-elm {
+	margin-bottom: 1.2em;
+}
+
+.link--highlighted {
+	color: rgb(46,74,98);
+	text-decoration: none;
+	border-bottom: 1px dotted rgb(46,74,98);
+}
+
+.link--highlighted:hover, .link--highlighted:active {
+ 	border-bottom: 1px solid rgb(46,74,98);
+}
+
+.h1, .h2, .h3, .h4, .h1__sub, .h2__sub, .h2__nd, {
 	font-family: "Futura Book", Helvetica, Arial, serif;
 }
 
@@ -3310,11 +3332,16 @@ img.projekte_coin2  {
 }
 
 .h2 {
-	font-size: 18pt !important;
+	font-size: 1.1em !important;
 	line-height: 1.5em;
 	font-weight: normal;
 	text-align: left !important;
 	margin: 0 !important;
+}
+
+.h2__nd {
+	margin-top: 0 !important;
+	margin-bottom: 3em;
 }
 
 .h3 {
@@ -3328,8 +3355,9 @@ img.projekte_coin2  {
 
 .row {
 	clear: both;
-	height: 1em;
 	padding: 0.5em 0;
+	display: inline-block;
+	width: 100%;
 }
 
 .row__head {
