@@ -41,11 +41,13 @@
       	<div class="container index-link"><p><a href="../">Mises Austria</a> / <a href="">Literatur</a></p></div>
       	<div class="container">
       		<h1>Literatur</h1>
+      		<p><b>mises.at</b> bietet die gr&ouml;&szlig;te und umfassendeste Online-Bibliothek der klassischen Wiener/ &Ouml;stereichischen Schule der &Ouml;konomik. Hier finden Sie Artikel und B&uuml;cher einer Vielzahl von Denker der Wiener Schule &uuml;ber ein breites Spektrum von &ouml;konomischen, sozialwissenschaftlichen und philosophischen Problemstellungen und Themen.</p>
       		
       		<?if (isset($_GET['author'])) echo '<h3><a href="../denker/?q='.$_GET['author'].'">'.$author_name->name.'</a></h3>';?>
       	</div>
       	
       	<div class="container">
+      		<div class="style-space--bottom">
       			<button class="reiter showhide">Nach Autor filtern</button>
       			<div class="hidden row reiter--ctn">
       				<div class="three columns">
