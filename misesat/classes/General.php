@@ -43,30 +43,22 @@ class General {
         return false;
     }
 
-	public function getDenkerInfo ($id) {
-		
-		$info_query = $this->db_connection->prepare('SELECT * FROM denker WHERE id = :id');
+	public function getInfo ($table, $id) {
+		# Get info of a single row based on the id
+		# $table = name of sql table (denker, orte, bucher, artikel, etc.)
+		# $id = id of the row of interest
+		$info_query = $this->db_connection->prepare('SELECT * FROM '.$table.' WHERE id = :id');
 		$info_query->bindValue(':id', $id, PDO::PARAM_STR);
 		$info_query->execute();
 		
 		return $info_query->fetchObject();
 	}
 	
-	public function getOrteInfo ($id) {
-		
-		$info_query = $this->db_connection->prepare('SELECT * FROM orte WHERE id = :id');
-		$info_query->bindValue(':id', $id, PDO::PARAM_STR);
-		$info_query->execute();
-		
-		return $info_query->fetchObject();
-	}
-		
-	public function getBucherInfo ($id) {
-		
-		$info_query = $this->db_connection->prepare('SELECT * FROM buecher WHERE id = :id');
-		$info_query->bindValue(':id', $id, PDO::PARAM_STR);
-		$info_query->execute();
-		
-		return $info_query->fetchObject();
+	public function getItemList($table, $orderby, $order) {
+						
+		$list_query = $this->db_connection->prepare('SELECT * FROM '.$table.' ORDER by '.$orderby.' '.$order.'');
+		$list_query->execute();
+    	
+    	return $list_query->fetchAll();
 	}
 }

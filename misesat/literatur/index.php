@@ -1,7 +1,4 @@
 <? 
-	require_once '../../config/config.php';
-	include '../config/db.php';
-
 	include "../config/header1.inc.php";
 
 	$title='Literatur';
@@ -14,9 +11,9 @@
     <div id="content">      	
 <?
 	if (isset($_GET['author'])) {
-		$author_name = $general->getDenkerInfo($_GET['author']);
+		$author_name = $general->getInfo('denker', $_GET['author']);
 				
-		$sql_book = $pdocon->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author ORDER BY jahr DESC');
+		$sql_book = $general->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author ORDER BY jahr DESC');
 		$sql_book->bindValue(':author', $author_name->name, PDO::PARAM_STR);
 		$sql_book->execute();
 		$result_book = $sql_book->fetchAll();
@@ -25,7 +22,7 @@
 			$result_book[$m]['type'] = 'Buch';
 		}
 		
-		$sql_art = $pdocon->db_connection->prepare('SELECT * FROM artikel WHERE autor = :author ORDER BY jahr DESC');
+		$sql_art = $general->db_connection->prepare('SELECT * FROM artikel WHERE autor = :author ORDER BY jahr DESC');
 		$sql_art->bindValue(':author', $author_name->name, PDO::PARAM_STR);
 		$sql_art->execute();
 		$result_art = $sql_art->fetchAll();
@@ -41,45 +38,29 @@
 			$year[$key] = $row['jahr'];
 		}
 				
-		array_multisort($id, SORT_ASC, $year, SORT_ASC, $result_lit);
+		array_multisort($year, SORT_ASC, $id, SORT_ASC, $result_lit);
 	}
 	else {
-		if (isset($_GET['order'])) {
-			$order = $_GET['order'];
-		}
-		else {
-			$order = 'n';
-		}	
-			
-		$sql_book = $pdocon->db_connection->prepare('SELECT * FROM buecher ORDER BY '.$order.' DESC');
-		$sql_book->execute();
-		$result_book = $sql_book->fetchAll();
-		
+		# get Buecher and Artikel List and add the type (Buch, Artikel) to the result array			
+		$result_book = $general->getItemList('buecher', 'jahr', 'ASC');
 		for ($m = 0; $m < count($result_book); $m++) {
 			$result_book[$m]['type'] = 'Buch';
 		}
 		
-		$sql_art = $pdocon->db_connection->prepare('SELECT * FROM artikel ORDER BY '.$order.' DESC');
-		$sql_art->execute();
-		$result_art = $sql_art->fetchAll();
-		
+		$result_art = $general->getItemList('artikel', 'jahr', 'ASC');
 		for ($n = 0; $n < count($result_art); $n++) {
 			$result_art[$n]['type'] = 'Artikel';
 		}
-		
+		# merge both arrays to one and sort it
 		$result_lit = array_merge($result_book, $result_art);
-		
 		foreach ($result_lit as $key => $row) {
 			$id[$key] = $row['id'];
 			$year[$key] = $row['jahr'];
-		}
-				
-		array_multisort($id, SORT_ASC, $year, SORT_ASC, $result_lit);
-				
+		}				
+		array_multisort($year, SORT_DESC, $id, SORT_ASC, $result_lit);
+
 	}
-	$sql_author_list = $pdocon->db_connection->prepare('SELECT * FROM denker ORDER BY id');
-	$sql_author_list->execute();
-	$author_list = $sql_author_list->fetchAll();
+	$author_list = $general->getItemList('denker', 'id', 'ASC');
 	$x = count($author_list)/4;	
 ?>
       	<div class="container index-link"><p><a href="../">Mises Austria</a> / <a href="">Literatur</a></p></div>
@@ -150,7 +131,7 @@
 		if ($lang_lit == 'en') {$sprache = 'Englisch';} 
 		else {$sprache = 'Deutsch';}
 		
-  		$sql_author = $pdocon->db_connection->prepare('SELECT id FROM denker WHERE name = :name');
+  		$sql_author = $general->db_connection->prepare('SELECT id FROM denker WHERE name = :name');
   		$sql_author->bindValue(':name', $autor_lit, PDO::PARAM_STR);
 		$sql_author->execute();
 		$author_id = $sql_author->fetchObject();
@@ -160,7 +141,7 @@
 						<td><a class="itm-table_pri" href="<?=$link_lit?>"><?=$title_lit?></a>
 						</td>
 						<td data-label="Jahr"><?=$year_lit?></td>
-						<td data-label="Autor"><a class="itm-table_sec" href="../denker/index.php?q=<?=$author_id->id?>"><?=$autor_lit?></a></td>
+						<td data-label="Autor"><a class="itm-table_sec" href="../denker/?thinker=<?=$author_id->id?>"><?=$autor_lit?></a></td>
 						<td data-label="Typ"><?=$typ_lit?></td>
 						<td data-label="Sprache"><?=$sprache?></td>
 						<td>free/amazon</td>

@@ -139,7 +139,7 @@ h1 {font-size: 2.5rem; color: rgb(28,109,186); line-height: 1.1; letter-spacing:
 h2 {font-size: 2rem; color: rgb(28,109,186); line-height: 1.1; letter-spacing: 0;}
 h3 {font-size: 1.75rem; color: rgb(28,109,186); line-height: 1.1; letter-spacing: 0;}
 h4 {font-size: 1.5rem; line-height: 1.1; letter-spacing: 0;}
-h5 {font-size: 1.25rem; line-height: 1.1; letter-spacing: 0;}
+h5 {font-size: 1.5rem; line-height: 1.1; letter-spacing: 0;}
 h6 {font-size: 1rem; line-height: 1.1; letter-spacing: 0;}
 
 /* Larger than phablet */
@@ -177,6 +177,7 @@ a {
 
 a:hover, a:active {
 	text-decoration: underline;
+	color: rgba(28,109,186,0.8);
 }
 
 /*================ Little Helpers ===============*/
@@ -209,10 +210,15 @@ a:hover, a:active {
 	width: 100%;
 }
 
+.h-block {
+	display: block;
+}
+
 /*================= Special Styles =================*/
 
 .style-bl--red {
 	border-bottom: 4px solid rgb(203,44,52);
+	padding-bottom: 0.25em;
 }
 
 .style-space--bottom {
@@ -425,7 +431,7 @@ a:hover, a:active {
 	#content {
 		margin: 60px auto;
 		width: 80%;
-		background: rgb(255,255,255);
+		background: #fff;
 	}
 }
 
@@ -433,7 +439,7 @@ a:hover, a:active {
 	#content {
 		margin: 60px auto;
 		width: 65%;
-		background: rgb(255,255,255);
+		background: #fff;
 	}
 }
 
@@ -448,11 +454,12 @@ a:hover, a:active {
 .btn-link {
 	padding: 0.75em 3em;
 	background: rgb(203,44,52);
-	color: rgb(255,255,255);
+	color: #fff;
 }
 
 .btn-link:hover, btn-link:active {
 	background: rgba(203,44,52,0.85);
+	color: #fff;
 	text-decoration: none;
 }
 
@@ -648,8 +655,8 @@ a:hover, a:active {
 }
 
 .text p {
-	font-size: 1.25em;
-	line-height: 1.5;
+	font-size: 1.1em;
+	line-height: 1.4;
 }
 
 .text--raleway {
@@ -663,13 +670,6 @@ a:hover, a:active {
 
 .list {
 	padding-bottom: 1em;
-	margin-bottom: 3em;	
-}
-
-@media (min-width: 550px) {
-	.list {
-		margin: 0;
-	}
 }
 
 .list ul {
@@ -677,17 +677,10 @@ a:hover, a:active {
 }
 
 .list li {
-	font-size: 1em;
-	line-height: 1.25em;
-	display: block;
-	padding: 0.85em 0;
-	border-bottom: 1px solid rgb(150,150,150);
-}
-
-.list li a {
-	text-decoration: none;
-	display: block;
-	color: rgb(70,70,70); 
+	font-size: 0.975em;
+	line-height: 1.2em;
+	padding: 0.6em 0;
+	border-bottom: 1px solid rgb(230,230,230);
 }
 
 .list--none {
@@ -758,9 +751,8 @@ a:hover, a:active {
 
 table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
     content: "\25BE";
-    color: rgb(230,230,230); 
+    color: rgb(200,200,200); 
 }
-
 
 /*Change table view on smaller screens. Every row is displayed like a card (one column) with every former column now being a row.*/
 @media (max-width: 670px) {

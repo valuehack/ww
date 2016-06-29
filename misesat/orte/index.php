@@ -5,11 +5,11 @@
 
 	include "../page/header2.inc.php";
 	
-if(isset($_GET['q']))
+if(isset($_GET['place']))
 {
-	$id = $_GET['q'];
+	$id = $_GET['place'];
 
-  	$orte_info = $general->getOrteInfo($id);
+  	$orte_info = $general->getInfo('orte', $id);
 
   	$name = $orte_info->name;
   	$text = $orte_info->text;
@@ -20,12 +20,12 @@ if(isset($_GET['q']))
 	$denker_list = explode(", ", $denker);
 
 	foreach ($denker_list as $key => $denker_id) {
-		$denker_info = $general->getDenkerInfo($denker_id);
+		$denker_info = $general->getInfo('denker', $denker_id);
 		if (count($denker_list) > 1 && count($denker_list) != $key+1) {
-			$denker_links = $denker_links.'<a href="../denker/index.php?q='.$denker_info->id.'">'.$denker_info->name.'</a>, ';
+			$denker_links = $denker_links.'<a href="../denker/?thinker='.$denker_info->id.'">'.$denker_info->name.'</a>, ';
 		}
 		else {
-			$denker_links = $denker_links.'<a href="../denker/index.php?q='.$denker_info->id.'">'.$denker_info->name.'</a>';
+			$denker_links = $denker_links.'<a href="../denker/?thinker='.$denker_info->id.'">'.$denker_info->name.'</a>';
 		}   
 	}   
 ?>
@@ -60,11 +60,8 @@ if(isset($_GET['q']))
     </div>
 <?php
 }
-else {
-			
-    $sql = $general->db_connection->prepare("SELECT * FROM orte ORDER by id asc");
-	$sql->execute();
-    $result = $sql->fetchAll();
+else {			
+    $result = $general->getItemList('orte', 'id', 'ASC');
    
 ?>
 <!--Ortsliste-->	
@@ -115,7 +112,7 @@ else {
 		$denker = $result[$i]['denker'];
 		
 		if (strlen($text) > 215) {
-			$info_text = substr($text, 0, 215).' ... <a href="index.php?q='.$id.'">Mehr</a>';
+			$info_text = substr($text, 0, 215).' ... <a href="?place='.$id.'">Mehr</a>';
 		}
 		else {
 			$info_text = $text;
@@ -125,16 +122,16 @@ else {
 		$denker_list = explode(", ", $denker);
 
 		foreach ($denker_list as $key => $denker_id) {
-			$denker_info = $general->getDenkerInfo($denker_id);
+			$denker_info = $general->getInfo('denker', $denker_id);
 			if (count($denker_list) > 1 && count($denker_list) != $key+1) {
-				$denker_links = $denker_links.'<a href="../denker/index.php?q='.$denker_info->id.'">'.$denker_info->name.'</a>, ';
+				$denker_links = $denker_links.'<a href="../denker/?thinker='.$denker_info->id.'">'.$denker_info->name.'</a>, ';
 			}
 			else {
-				$denker_links = $denker_links.'<a href="../denker/index.php?q='.$denker_info->id.'">'.$denker_info->name.'</a>';
+				$denker_links = $denker_links.'<a href="../denker/?thinker='.$denker_info->id.'">'.$denker_info->name.'</a>';
 			}
 		}
      ?>         		 			
-		var info = '<div class="map-info"><a href="index.php?q=<?=$id?>"><h2><?=$name?></h2></a><img src="<?=$img?>" alt="."><p><?=$info_text?></p><h6>Denker die hier gelebt und gewirkt haben</h6><p><?=$denker_links?></p></div>';
+		var info = '<div class="map-info"><a href="?place=<?=$id?>"><h2><?=$name?></h2></a><img src="<?=$img?>" alt="."><p><?=$info_text?></p><h6>Denker die hier gelebt und gewirkt haben</h6><p><?=$denker_links?></p></div>';
 			
         var marker = new google.maps.Marker({
          	position: {lat: <?=$lat?>, lng: <?=$lng?>},
