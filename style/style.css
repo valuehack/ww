@@ -3278,10 +3278,9 @@ img.projekte_coin2  {
 }
 
 .history_reservation::after {
-	content: "";
+	content: "\u2713";
 	max-width: 15px;
 	padding-left: 5px;
-	background: transparent url(gfx/checkmark.png); no-repeat;
 }
 
 .body_nd {

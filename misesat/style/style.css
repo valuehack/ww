@@ -714,7 +714,7 @@ a:hover, a:active {
 /*================== Item Table ====================*/
 
 .itm-table {
-	table-layout: fixed;
+	table-layout: auto;
 }
 
 .itm-table thead {
@@ -732,7 +732,7 @@ a:hover, a:active {
 
 .itm-table th:first-child, .itm-table td:first-child {
 	padding-left: 0;
-	width: 60%;
+	width: 50%;
 }
 .itm-table th:last-child, .itm-table td:last-child {
 	padding-right: 0;
@@ -756,8 +756,14 @@ a:hover, a:active {
 	color: 	rgb(70,70,70);
 }
 
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+    content: "\25BE";
+    color: rgb(230,230,230); 
+}
+
+
 /*Change table view on smaller screens. Every row is displayed like a card (one column) with every former column now being a row.*/
-@media (max-width: 550px) {
+@media (max-width: 670px) {
 	.itm-table thead {
 		display: none;
 	}

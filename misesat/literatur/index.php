@@ -2,6 +2,8 @@
 	require_once '../../config/config.php';
 	include '../config/db.php';
 
+	include "../config/header1.inc.php";
+
 	$title='Literatur';
 
 	include '../page/header2.inc.php';
@@ -12,15 +14,34 @@
     <div id="content">      	
 <?
 	if (isset($_GET['author'])) {
-		$sql_author = $pdocon->db_connection->prepare('SELECT name FROM denker WHERE id = :authorid');
-  		$sql_author->bindValue(':authorid', $_GET['author'], PDO::PARAM_STR);
-		$sql_author->execute();
-		$author_name = $sql_author->fetchObject();
+		$author_name = $general->getDenkerInfo($_GET['author']);
+				
+		$sql_book = $pdocon->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author ORDER BY jahr DESC');
+		$sql_book->bindValue(':author', $author_name->name, PDO::PARAM_STR);
+		$sql_book->execute();
+		$result_book = $sql_book->fetchAll();
 		
-		$sql_lit = $pdocon->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author UNION ALL SELECT * FROM artikel WHERE autor = :author ORDER BY jahr DESC');
-		$sql_lit->bindValue(':author', $author_name->name, PDO::PARAM_STR);
-    	$sql_lit->execute();
-		$result_lit = $sql_lit->fetchAll();
+		for ($m = 0; $m < count($result_book); $m++) {
+			$result_book[$m]['type'] = 'Buch';
+		}
+		
+		$sql_art = $pdocon->db_connection->prepare('SELECT * FROM artikel WHERE autor = :author ORDER BY jahr DESC');
+		$sql_art->bindValue(':author', $author_name->name, PDO::PARAM_STR);
+		$sql_art->execute();
+		$result_art = $sql_art->fetchAll();
+		
+		for ($n = 0; $n < count($result_art); $n++) {
+			$result_art[$n]['type'] = 'Artikel';
+		}
+		
+		$result_lit = array_merge($result_book, $result_art);
+		
+		foreach ($result_lit as $key => $row) {
+			$id[$key] = $row['id'];
+			$year[$key] = $row['jahr'];
+		}
+				
+		array_multisort($id, SORT_ASC, $year, SORT_ASC, $result_lit);
 	}
 	else {
 		if (isset($_GET['order'])) {
@@ -28,14 +49,37 @@
 		}
 		else {
 			$order = 'n';
+		}	
+			
+		$sql_book = $pdocon->db_connection->prepare('SELECT * FROM buecher ORDER BY '.$order.' DESC');
+		$sql_book->execute();
+		$result_book = $sql_book->fetchAll();
+		
+		for ($m = 0; $m < count($result_book); $m++) {
+			$result_book[$m]['type'] = 'Buch';
 		}
-		$sql_lit = $pdocon->db_connection->prepare('SELECT * FROM buecher UNION ALL SELECT * FROM artikel ORDER BY '.$order.' DESC');
-    	$sql_lit->execute();
-		$result_lit = $sql_lit->fetchAll();
+		
+		$sql_art = $pdocon->db_connection->prepare('SELECT * FROM artikel ORDER BY '.$order.' DESC');
+		$sql_art->execute();
+		$result_art = $sql_art->fetchAll();
+		
+		for ($n = 0; $n < count($result_art); $n++) {
+			$result_art[$n]['type'] = 'Artikel';
+		}
+		
+		$result_lit = array_merge($result_book, $result_art);
+		
+		foreach ($result_lit as $key => $row) {
+			$id[$key] = $row['id'];
+			$year[$key] = $row['jahr'];
+		}
+				
+		array_multisort($id, SORT_ASC, $year, SORT_ASC, $result_lit);
+				
 	}
 	$sql_author_list = $pdocon->db_connection->prepare('SELECT * FROM denker ORDER BY id');
 	$sql_author_list->execute();
-	$author_list = $sql_author_list->fetchAll();	
+	$author_list = $sql_author_list->fetchAll();
 	$x = count($author_list)/4;	
 ?>
       	<div class="container index-link"><p><a href="../">Mises Austria</a> / <a href="">Literatur</a></p></div>
@@ -80,9 +124,16 @@
       				</div>
       			</div>     			
       		</div>
-      		<table class="itm-table h-full-width">
+      		<table class="itm-table h-full-width sortable">
       			<thead>
-      				<tr><th>Titel (Jahr)</th><th><a href="?order=id" title="Nach Autor sortieren">Autor</a></th><th><a href="?order=sprache" title="Nach Sprache sortieren">Sprache</a></th><th>Quelle</th></tr>
+      				<tr>
+      					<th>Titel</th>
+      					<th>Jahr</th>
+      					<th>Autor</th>
+      					<th>Typ</th>
+      					<th>Sprache</th>
+      					<th>Quelle</th>
+      				</tr>
       			</thead>
       			<tbody>
 <?php
@@ -94,6 +145,7 @@
   		$year_lit = $result_lit[$i]['jahr'];
 		$link_lit = $result_lit[$i]['link'];
 		$lang_lit = $result_lit[$i]['sprache'];
+		$typ_lit = $result_lit[$i]['type'];
   		
 		if ($lang_lit == 'en') {$sprache = 'Englisch';} 
 		else {$sprache = 'Deutsch';}
@@ -105,9 +157,11 @@
 						
 		?>      	
 					<tr>
-						<td><a class="itm-table_pri" href="<?=$link_lit?>"><?=$title_lit?></a> (<?=$year_lit?>)<br>
+						<td><a class="itm-table_pri" href="<?=$link_lit?>"><?=$title_lit?></a>
 						</td>
+						<td data-label="Jahr"><?=$year_lit?></td>
 						<td data-label="Autor"><a class="itm-table_sec" href="../denker/index.php?q=<?=$author_id->id?>"><?=$autor_lit?></a></td>
+						<td data-label="Typ"><?=$typ_lit?></td>
 						<td data-label="Sprache"><?=$sprache?></td>
 						<td>free/amazon</td>
 					</tr>
