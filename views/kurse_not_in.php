@@ -66,6 +66,10 @@ if(isset($_GET['q']))
   $event_price = $entry3[price];
   $status = $entry3[status];
   
+    if ($title == "craftprobe") {
+    	$event_price = $entry3[price]-25;
+    }
+    
     if ($status == 0) {
   	echo '<div class="salon_head"><p class="salon_date">Es wurde keine Veranstaltung gefunden.</p></div>';
   }
@@ -107,7 +111,7 @@ if(isset($_GET['q']))
     	echo '<p class="salon_reservation_span_d">Die Veranstaltung ist leider ausgebucht.</p>';
 	}
 	else {    
-    	echo '<p class="salon_reservation_span_d">'.($entry3[price]+25).' &euro; pro Teilnehmer</p>';
+    	echo '<p class="salon_reservation_span_d">'.($event_price+25).' &euro; pro Teilnehmer</p>';
 	}
 	?>
   				<!-- Button trigger modal -->
