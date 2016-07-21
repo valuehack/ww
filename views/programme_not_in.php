@@ -35,10 +35,12 @@ if(isset($_GET['q']))
 
   ?>
 			<div class="centered">
-				<a class="blog_linkbutton" href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;">&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;">Anfrage schicken</a>
+				<a class="blog_linkbutton" href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;">Anfrage schicken</a>
 			</div>		
     </div>
-
+<? } 
+else {
+?>
 	<div class="medien_content">
 <?php
 
@@ -159,10 +161,6 @@ if(isset($_GET['q']))
     $pagination.= "</div>\n";   
   }
 
-
-//$sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status > 0 order by n asc";
-//$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-
   while($entry = mysql_fetch_array($result))
   {
     $id = $entry[id];
@@ -170,7 +168,7 @@ if(isset($_GET['q']))
 	<div class="projekte">
 		<h1><a href='?q=<?php echo $id;?>'><?php echo $entry[title];?></h1></a>
 		<?php echo $entry[text]; ?>
-		<!--<div class="medien_anmeldung"><a href="?q=<?php echo $id;?>">weitere Informationen</a></div>-->
+		
 		<div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
  	</div>    
     <?php
