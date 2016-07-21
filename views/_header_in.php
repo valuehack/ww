@@ -266,7 +266,6 @@ while ($entry = mysql_fetch_array($result))
                     	</div>
                     </li>
                     
-                    <li id="navelm"><a class="navelm" href="/studium/">Studium</a></li>
                     <li id="navelm"><a class="navelm" id="drop4" data-toggle="dropdown" href="/studium/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Studium</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop4">
                     	<ul>
