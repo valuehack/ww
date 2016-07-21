@@ -1,6 +1,6 @@
 <?php 
 require_once('../classes/Login.php');
-$title="Programme";
+$title="Studium";
 include ("_header_in.php"); 
 ?>
 
@@ -136,7 +136,7 @@ else {
     $start = 0;               //if no page var is given, set start to 0
   
   /* Get data. */
-  $sql = "SELECT * from produkte WHERE `type` LIKE 'programm' AND status > 0 order by n asc LIMIT $start, $limit";
+  $sql = "SELECT * from produkte WHERE `type` LIKE 'programm' AND status > 0 order by n desc LIMIT $start, $limit";
   
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   

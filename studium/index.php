@@ -1,7 +1,18 @@
 <?php
 
+/**
+ * A simple PHP Login Script / ADVANCED VERSION
+ * For more versions (one-file, minimal, framework-like) visit http://www.php-login.net
+ *
+ * @author Panique
+ * @link http://www.php-login.net
+ * @link https://github.com/panique/php-login-advanced/
+ * @license http://opensource.org/licenses/MIT MIT License
+ */
+
 // check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
+    echo PHP_VERSION;
     exit('Sorry, this script does not run on a PHP version smaller than 5.3.7 !');
 } else if (version_compare(PHP_VERSION, '5.5.0', '<')) {
     // if you are using PHP 5.3 or PHP 5.4 you have to include the password_api_compatibility_library.php
@@ -23,40 +34,43 @@ require_once('../classes/Registration.php');
 
 // create a login object. when this object is created, it will do all login/logout stuff automatically
 // so this single line handles the entire login process.
+
+
+
 $login = new Login();
 $registration = new Registration();
-$title="Studium am scholarium";
+
+
+// Mitgliedschaft 
+// and $_SESSION['Mitgliedschaft'] == 1
 
 // ... ask if we are logged in here:
-if ($login->isUserLoggedIn() == true) {
+if ($login->isUserLoggedIn() == true) 
+{
     // the user is logged in. you can do whatever you want here.
-    include("../views/_header_in.php");
+    // for demonstration purposes, we simply show the "you are logged in" view.
 
-} else {
+    #display the members area according to membership level
+    switch ($_SESSION['Mitgliedschaft']) {
+        case 0:
+            include("../views/programme_not_in.php");
+            break;
+        case ($_SESSION['Mitgliedschaft'] >= 1):
+            include("../views/programme_in.php");
+            break;
+        default: 
+            include("../views/programme_not_in.php"); 
+            break;
+    }
+
+
+} 
+else {
     // the user is not logged in. you can do whatever you want here.
-    include("../views/_header_not_in.php");
-    
+    // for demonstration purposes, we simply show the "you are not logged in" view.
+    // include("../views/mitglied_not_in.php");
+    include("../views/programme_not_in.php");
+
+
+    #include("views/header2.inc.php"); 
 }
-
-?>
-
-<div class="content">
-	<div class="blog">
-		<header>
-			<h1>Studium am scholarium</h1>
-		</header>
-		<div class="blog_text">
-			
-			<?php
-				$sql = "SELECT * from static_content WHERE (page LIKE 'studium')";
-				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-				$entry = mysql_fetch_array($result);
-				
-				echo $entry[info];			
-			?>
-		
-		</div>		
-	</div>
-</div>
-
-<?php include('../views/_footer.php'); ?>
