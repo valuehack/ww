@@ -233,7 +233,7 @@ while ($entry = mysql_fetch_array($result))
             <div class="nav">
                 <div class="navi">
                 <ul id="nav">
-                    <li id="navelm"><a class="navelm" href="/buecher/">B&uuml;cher</a></li>
+            
                     <li id="navelm"><a class="navelm" id="drop2" data-toggle="dropdown" href="/scholien/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Scholien</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop2">
                     	<ul>
@@ -253,18 +253,30 @@ while ($entry = mysql_fetch_array($result))
                     	</ul>
                     	</div>
                     </li>
+                    <li id="navelm"><a class="navelm" href="/buecher/">B&uuml;cher</a></li>
                     <li id="navelm"><a class="navelm" id="drop3" data-toggle="dropdown" href="/medien/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Medien</a>
                     	<div class="subnav dropdown-menu" aria-labelledby="drop3">
                     	<ul>
                     		<li class="subnav_head"><a class="subnav_head" href="/medien/">Medien</a></li>
                     		<li><a href="/medien/">Alle</a></li>
-                    		<li><a href="/medien/index.php?type=media-salon">Salon</a></li>
-                    		<li><a href="/medien/index.php?type=media-vorlesung">Vorlesung</a></li>
-                    		<li><a href="/medien/index.php?type=media-vortrag">Vortrag</a></li>
+                    		<li><a href="/medien/?type=media-salon">Salon</a></li>
+                    		<li><a href="/medien/?type=media-vorlesung">Vorlesung</a></li>
+                    		<li><a href="/medien/?type=media-vortrag">Vortrag</a></li>
                     	</ul>
                     	</div>
                     </li>
+                    
                     <li id="navelm"><a class="navelm" href="/studium/">Studium</a></li>
+                    <li id="navelm"><a class="navelm" id="drop4" data-toggle="dropdown" href="/studium/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Studium</a>
+                    	<div class="subnav dropdown-menu" aria-labelledby="drop4">
+                    	<ul>
+                    		<li class="subnav_head"><a class="subnav_head" href="/studium/">Studium</a></li>
+                    		<li><a href="/studium/?q=studium">Regelstudium</a></li>
+                    		<li><a href="/studium/?q=craftprobe">craftprobe</a></li>
+                    		<li><a href="/studium/?q=baader-stipendium">Stipendium</a></li>
+                    		<li><a href="/studium/?q=beratung">Beratung</a></li>
+                    	</ul>
+                    	</div>
                     <li id="navelm"><a class="navelm" href="/projekte/">Projekte</a></li>
                 </ul>
                 </div>
