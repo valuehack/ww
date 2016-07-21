@@ -182,7 +182,6 @@ if(isset($_GET['q']))
 
 <?php 
 	}
-} 
 ?>
 </div>
     
