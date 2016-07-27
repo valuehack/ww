@@ -329,39 +329,39 @@ function writeTransactionDataToDB($user_email, $wrt_txn_id)
 
     $serialized_session = serialize($_SESSION);
 
-    if (!unserialize($serialized_session))
-    // if (true)
-    {
+    // if (!unserialize($serialized_session))
+    // // if (true)
+    // {
 
-        #EMAIL SEND BLOCK
-        ####################################################################
-        #email template must exist in templates/email folder
-        $email_template = 'problem.email.twig';
+    //     #EMAIL SEND BLOCK
+    //     ####################################################################
+    //     #email template must exist in templates/email folder
+    //     $email_template = 'problem.email.twig';
 
-        $post_data = array(
-            'to' => 'dzainius@gmail.com',
-            'subject' => 'huge problem',
-            'from' => 'info@scholarium.at',
-            'fromname' => 'problem'
-            );
+    //     $post_data = array(
+    //         'to' => 'dzainius@gmail.com',
+    //         'subject' => 'huge problem',
+    //         'from' => 'info@scholarium.at',
+    //         'fromname' => 'problem'
+    //         );
 
-        $body_data = array(
-            'user_email' => $user_email
-            );
+    //     $body_data = array(
+    //         'user_email' => $user_email
+    //         );
         
-        if ( !$registration->sendThisEmail($email_template, $post_data, $body_data) ) 
-        {
-          error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
-        }
-        ####################################################################
+    //     if ( !$registration->sendThisEmail($email_template, $post_data, $body_data) ) 
+    //     {
+    //       error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+    //     }
+    //     ####################################################################
 
 
-        ##log in error log
-        // error_log(message)
+    //     ##log in error log
+    //     // error_log(message)
         
-        ##stop further process
-        return false;
-    }
+    //     ##stop further process
+    //     return false;
+    // }
 
     try 
     {
