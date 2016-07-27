@@ -24,24 +24,41 @@ require_once('../classes/Registration.php');
 $registration = new Registration();
 $login = new Login();
 
-$profile = $_SESSION['profile'];
-$product = $_SESSION['product'];
+try 
+{
+	$db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=utf8', DB_USER, DB_PASS, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+} 
+catch (PDOException $e) 
+{
+    echo 'Connection failed: ' . $e->getMessage();
+    exit;
+}
 
-error_log("User email in sofort listener ".$profile['user_email']);
 
-$registration->processPayment($profile, $product);
+#get data from transactional db 
+$sofort_data_query = $db_connection->prepare(
+"SELECT * FROM transactions 
+WHERE wrt_txn_id = :wrt_txn_id
+");
 
-// #TESTING ONLY
-// #var output block
-// echo "<br>POST<br>";
-// print_r($_POST);
-// echo "<br>";
-// echo "<br>GET<br>";
-// print_r($_GET);
-// echo "<br><br><br>";
-// #formats print_r for readability 
-// $test = print_r($_SESSION, true);
-// $test = str_replace("(", "<br>(", $test);
-// $test = str_replace("[", "<br>[", $test);
-// $test = str_replace(")", ")<br>", $test);
-// echo $test;
+$sofort_data_query->bindValue(':wrt_txn_id', $_GET["g"], PDO::PARAM_STR);
+$sofort_data_query->execute();
+
+if ($sofort_data_query->rowCount() == 0) 
+{
+	#wrt_txn_id was not found in the transactional db.
+	error_log( "CRITICAL: No entry in db for:  ".$_GET["g"]);
+
+}
+else
+{
+	$result_row = $sofort_data_query->fetchObject();
+
+	#session data in db is stored serialized
+	$txn_data = unserialize($result_row->session_data);
+
+	$profile = $txn_data['profile'];
+	$product = $txn_data['product'];
+
+	$registration->processPayment($profile, $product);
+}

@@ -1,12 +1,15 @@
 <?php 
 namespace Sofort\SofortLib;
 
-#display all errors while developing
-ini_set('display_errors',1);
-error_reporting(E_ALL);
+#error log settings
+ini_set("log_errors" , "1");
+ini_set("error_log" , "../classes/error.log");
+ini_set("display_errors" , "0");
 
-#init methods
-session_start();
+#if session does not exist, start a session
+if(session_id() == '') session_start();
+error_log('this is a session id in payment '.session_id());
+
 date_default_timezone_set('Europe/Vienna');
 
 require_once('../config/config.php');
@@ -42,7 +45,10 @@ function doSofortPayment($profile, $product)
     $Sofortueberweisung->setCurrencyCode('EUR');
     $Sofortueberweisung->setReason($profile['user_email']);
 
-    $Sofortueberweisung->setSuccessUrl(SOFORT_URL_BASE."sofort_listener.php", true);
+    $sofort_success_url = SOFORT_URL_BASE."sofort_listener.php?g=".$profile['wrt_txn_id'];
+    error_log('sofort success url in payment '.$sofort_success_url);
+
+    $Sofortueberweisung->setSuccessUrl($sofort_success_url, true);
     // $Sofortueberweisung->setAbortUrl(SOFORT_URL_BASE., true);
 
     $Sofortueberweisung->sendRequest();
@@ -54,24 +60,8 @@ function doSofortPayment($profile, $product)
     } else {
         #buyer must be redirected to $paymentUrl else payment cannot be successfully completed!
         $paymentUrl = $Sofortueberweisung->getPaymentUrl();
-        
-#TESTING ONLY
-#var output block
-echo "<br>POST<br>";
-print_r($_POST);
-echo "<br>";
-echo "<br>GET<br>";
-print_r($_GET);
-echo "<br><br><br>";
-#formats print_r for readability 
-$test = print_r($_SESSION, true);
-$test = str_replace("(", "<br>(", $test);
-$test = str_replace("[", "<br>[", $test);
-$test = str_replace(")", ")<br>", $test);
-echo $test;
-
-        // header('Location: '.$paymentUrl);
-        // exit();
+        header('Location: '.$paymentUrl);
+        exit();
     }
 
 }
