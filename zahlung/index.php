@@ -402,6 +402,7 @@ function writeTransactionDataToDB($user_email, $wrt_txn_id)
     $paypal_to_db_query->execute();
 
     if($paypal_to_db_query->errorCode() != 0) echo "wat ".$paypal_to_db_query->errorInfo();
+    return true;
 
 
 }
