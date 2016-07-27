@@ -329,8 +329,8 @@ function writeTransactionDataToDB($user_email, $wrt_txn_id)
 
     $serialized_session = serialize($_SESSION);
 
-    // if (!unserialize($serialized_session))
-    if (true)
+    if (!unserialize($serialized_session))
+    // if (true)
     {
 
         #EMAIL SEND BLOCK
