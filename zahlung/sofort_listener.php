@@ -27,6 +27,8 @@ $login = new Login();
 $profile = $_SESSION['profile'];
 $product = $_SESSION['product'];
 
+error_log("User email in sofort listener ".$profile['user_email']);
+
 $registration->processPayment($profile, $product);
 
 // #TESTING ONLY

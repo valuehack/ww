@@ -638,6 +638,8 @@ public function processPayment($profile, $product)
     ini_set("log_errors" , "1");
     error_log('processPayment');
 
+    error_log("User email in registration ".$profile['user_email']);
+
     if ((isset($profile['user_logged_in'])) and ($profile['user_logged_in'] === 1))
     {
         #user was logged in when payment was made
