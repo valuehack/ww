@@ -710,7 +710,7 @@ public function processPayment($profile, $product)
         $post_data = array(
             'to' => $profile['user_email'],
             'bcc' => 'dzainius@gmail.com',
-            'subject' => 'The upgrade is successful!',
+            'subject' => 'Vielen Dank fuer Ihre Unterstuetzung',
             'from' => 'info@scholarium.at',
             'fromname' => 'Scholarium'
             );
