@@ -2,9 +2,9 @@
 
 #error log settings
 ini_set("log_errors" , "1");
-ini_set("error_log" , "./log/zahlung_index_errors");
+ini_set("error_log" , "../classes/error.log");
 #display all errors while developing
-ini_set('display_errors',0);
+ini_set('display_errors', "0");
 error_reporting(E_ALL);
 
 date_default_timezone_set('Europe/Vienna');
