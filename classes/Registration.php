@@ -1904,7 +1904,7 @@ public function processPayment($profile, $product)
 
     #email sending based on the email templates
     #_README in templates/email for more info
-    private function sendThisEmail($email_template, $post_data, $body_data) 
+    public function sendThisEmail($email_template, $post_data, $body_data) 
     {
         
         $ch = curl_init();

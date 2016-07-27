@@ -4,7 +4,7 @@
 ini_set("log_errors" , "1");
 ini_set("error_log" , "./log/zahlung_index_errors");
 #display all errors while developing
-ini_set('display_errors',1);
+ini_set('display_errors',0);
 error_reporting(E_ALL);
 
 date_default_timezone_set('Europe/Vienna');
@@ -37,11 +37,11 @@ $registration = new Registration();
 
 if ( (isset($_SESSION['user_logged_in'])) and ($_SESSION['user_logged_in'] === 1) )
 {
-    include('../views/_header_in.php'); 
+    include('../views/_header_in_utf8.php'); 
 }
 else
 {   
-    include('../views/_header_not_in.php');
+    include('../views/_header_not_in_utf8.php');
 }
 
 
@@ -67,9 +67,6 @@ else
         {
             $_SESSION['profile']['user_logged_in'] = $_SESSION['user_logged_in'];
         }
-         
-
-
 
         #its coming from edit page
         if (isset($_POST['edit_form_submit']))
@@ -113,9 +110,16 @@ else
         #write paypal data to database
         #this writes every txn data to the db
         #TODO - rename
-        writeTransactionDataToDB($user_email, $wrt_txn_id);
+        if (writeTransactionDataToDB($user_email, $wrt_txn_id))
+        {
+           header('Location: payment.php');     
+        }
+        else 
+        {
+           header('Location: leider.php'); 
 
-        header('Location: payment.php');
+        }
+        
 
     }
     elseif (!isset($_GET["g"]))
@@ -125,20 +129,20 @@ else
 
 
 
-#TESTING ONLY
-#var output block
-echo "<br>POST<br>";
-print_r($_POST);
-echo "<br>";
-echo "<br>GET<br>";
-print_r($_GET);
-echo "<br><br><br>";
-#formats print_r for readability 
-$test = print_r($_SESSION, true);
-$test = str_replace("(", "<br>(", $test);
-$test = str_replace("[", "<br>[", $test);
-$test = str_replace(")", ")<br>", $test);
-echo $test;
+// #TESTING ONLY
+// #var output block
+// echo "<br>POST<br>";
+// print_r($_POST);
+// echo "<br>";
+// echo "<br>GET<br>";
+// print_r($_GET);
+// echo "<br><br><br>";
+// #formats print_r for readability 
+// $test = print_r($_SESSION, true);
+// $test = str_replace("(", "<br>(", $test);
+// $test = str_replace("[", "<br>[", $test);
+// $test = str_replace(")", ")<br>", $test);
+// echo $test;
 
     
 
@@ -272,7 +276,7 @@ function updateProductSessionVars($product_what)
         case 'upgrade_2':
             $_SESSION['product']['type'] = "upgrade";
             $_SESSION['product']['level'] = "2";
-            $_SESSION['product']['price'] = "75";
+            $_SESSION['product']['price'] = "0.01";
             $_SESSION['product']['name'] = "Gast";
         break;    
 
@@ -321,7 +325,43 @@ function writeTransactionDataToDB($user_email, $wrt_txn_id)
 {
     #paypal data needs to be written to db as paypal only sends post to another script, not connected to a user session
 
+    $registration = new Registration();
+
     $serialized_session = serialize($_SESSION);
+
+    // if (!unserialize($serialized_session))
+    if (true)
+    {
+
+        #EMAIL SEND BLOCK
+        ####################################################################
+        #email template must exist in templates/email folder
+        $email_template = 'problem.email.twig';
+
+        $post_data = array(
+            'to' => 'dzainius@gmail.com',
+            'subject' => 'huge problem',
+            'from' => 'info@scholarium.at',
+            'fromname' => 'problem'
+            );
+
+        $body_data = array(
+            'user_email' => $user_email
+            );
+        
+        if ( !$registration->sendThisEmail($email_template, $post_data, $body_data) ) 
+        {
+          error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+        }
+        ####################################################################
+
+
+        ##log in error log
+        // error_log(message)
+        
+        ##stop further process
+        return false;
+    }
 
     try 
     {

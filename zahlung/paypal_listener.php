@@ -57,11 +57,16 @@ else
 {
 	$result_row = $paypal_data_query->fetchObject();
 
+
 	#session data in db is stored serialized
 	$txn_data = unserialize($result_row->session_data);
 
+	error_log($txn_data['profile']['user_email']);
+
 	$profile = $txn_data['profile'];
 	$product = $txn_data['product'];
+
+	error_log('email from paypal listener'.$profile['user_email']);
 
 	$registration->processPayment($profile, $product);
 }

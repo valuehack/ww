@@ -33,7 +33,6 @@ elseif ($profile['payment_option'] === 'paypal')
 
 }
 
-
 function doSofortPayment($profile, $product)
 {
 
