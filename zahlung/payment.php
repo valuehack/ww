@@ -54,8 +54,24 @@ function doSofortPayment($profile, $product)
     } else {
         #buyer must be redirected to $paymentUrl else payment cannot be successfully completed!
         $paymentUrl = $Sofortueberweisung->getPaymentUrl();
-        header('Location: '.$paymentUrl);
-        exit();
+        
+#TESTING ONLY
+#var output block
+echo "<br>POST<br>";
+print_r($_POST);
+echo "<br>";
+echo "<br>GET<br>";
+print_r($_GET);
+echo "<br><br><br>";
+#formats print_r for readability 
+$test = print_r($_SESSION, true);
+$test = str_replace("(", "<br>(", $test);
+$test = str_replace("[", "<br>[", $test);
+$test = str_replace(")", ")<br>", $test);
+echo $test;
+
+        // header('Location: '.$paymentUrl);
+        // exit();
     }
 
 }
