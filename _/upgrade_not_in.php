@@ -60,10 +60,10 @@ $(document).ready(function(){
 
 
                                 <input type="hidden" name="product[what]" value="upgrade_2">
-                                <input type="hidden" name="product[type]" value="upgrade">
+   <!--                              <input type="hidden" name="product[type]" value="upgrade">
                                 <input type="hidden" name="product[level]" value="3">
-                                <input type="hidden" name="product[price]" value="75">
-                                <input type="hidden" name="product[name]" value="Gast">
+                                <input type="hidden" name="product[price]" value="0.01">
+                                <input type="hidden" name="product[name]" value="Gast"> -->
                                 
 
                                 <input type="submit" class="pay_option_box_inputbutton" name="submit_event_selection" value="Werden Sie jetzt Gast">

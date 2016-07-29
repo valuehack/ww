@@ -3,8 +3,8 @@
 #error log settings
 ini_set("log_errors" , "1");
 ini_set("error_log" , "../classes/error.log");
-#display all errors while developing
 ini_set('display_errors', "0");
+
 error_reporting(E_ALL);
 
 date_default_timezone_set('Europe/Vienna');
@@ -43,7 +43,6 @@ else
 {   
     include('../views/_header_not_in_utf8.php');
 }
-
 
 
     #product selected, redirect to submit your data form
@@ -159,18 +158,18 @@ function getForm()
     $formTemplate = $twig->loadTemplate('the_form.html.twig');
 
     #values to ease the testing
-    $profile = array(
-        'user_email' => random_email(),
-        'user_anrede' => 'Herr',
-        'user_first_name' => 'testDenis',
-        'user_surname' => 'testStankus',
-        'user_telefon' => '123',
-        'user_street' => 'Goodin Street 5',
-        'user_plz' => '1050',
-        'user_city' => 'Wien',
-        'user_country' => 'Austria',
-        'payment_option' => 'sofort'
-        );
+    // $profile = array(
+    //     'user_email' => random_email(),
+    //     'user_anrede' => 'Herr',
+    //     'user_first_name' => 'testDenis',
+    //     'user_surname' => 'testStankus',
+    //     'user_telefon' => '123',
+    //     'user_street' => 'Goodin Street 5',
+    //     'user_plz' => '1050',
+    //     'user_city' => 'Wien',
+    //     'user_country' => 'Austria',
+    //     'payment_option' => 'sofort'
+    //     );
 
 
     #user logged in, following will fetch user data and populate the form
@@ -276,7 +275,7 @@ function updateProductSessionVars($product_what)
         case 'upgrade_2':
             $_SESSION['product']['type'] = "upgrade";
             $_SESSION['product']['level'] = "2";
-            $_SESSION['product']['price'] = "0.01";
+            $_SESSION['product']['price'] = "75";
             $_SESSION['product']['name'] = "Gast";
         break;    
 
@@ -328,40 +327,6 @@ function writeTransactionDataToDB($user_email, $wrt_txn_id)
     $registration = new Registration();
 
     $serialized_session = serialize($_SESSION);
-
-    // if (!unserialize($serialized_session))
-    // // if (true)
-    // {
-
-    //     #EMAIL SEND BLOCK
-    //     ####################################################################
-    //     #email template must exist in templates/email folder
-    //     $email_template = 'problem.email.twig';
-
-    //     $post_data = array(
-    //         'to' => 'dzainius@gmail.com',
-    //         'subject' => 'huge problem',
-    //         'from' => 'info@scholarium.at',
-    //         'fromname' => 'problem'
-    //         );
-
-    //     $body_data = array(
-    //         'user_email' => $user_email
-    //         );
-        
-    //     if ( !$registration->sendThisEmail($email_template, $post_data, $body_data) ) 
-    //     {
-    //       error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
-    //     }
-    //     ####################################################################
-
-
-    //     ##log in error log
-    //     // error_log(message)
-        
-    //     ##stop further process
-    //     return false;
-    // }
 
     try 
     {
@@ -458,22 +423,17 @@ function random_wrt_txn_id() {
 
 function random_email() {
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
     $email="";
     $username="";
     $domain="";
-
     $size = strlen( $chars );
     for( $i = 0; $i < 1; $i++ ) {
         $username .= $chars[ rand( 0, $size - 1 ) ];
     }
-
     $size = strlen( $chars );
     for( $i = 0; $i < 3; $i++ ) {
         $domain .= $chars[ rand( 0, $size - 1 ) ];
     }
-
     $email=$username."@".$domain.".com";
-
     return $email;
 }

@@ -443,16 +443,6 @@ class Registration
 
         ### DO NOT ADD EXTRA FIELDS FOR DB UPDATE IN HERE. USE SEPARATE FUNCTIONS, so it would not break other instances depending on this function.  
 
-        /*Anrede = :anrede,
-        Vorname = :name,
-        Nachname = :surname,
-        Telefon = :telefon,
-        Strasse = :street,
-        PLZ = :plz,
-        Ort = :city,
-        Land = :country,
-        first_reg = :first_reg*/
-
         $this->databaseConnection();
 
         $update_profile_query = $this->db_connection->prepare(
@@ -484,7 +474,7 @@ class Registration
 
     }
 
-    public function giveCredits($credits, $user_email)
+    public function giveCredits($credits, $user_email, $membership_level)
     {
         #adds more credits to given user email
 
@@ -492,12 +482,14 @@ class Registration
 
         $give_credits_qry = $this->db_connection->prepare(
         "UPDATE mitgliederExt   
-            SET credits_left = credits_left+:credits
+            SET credits_left = credits_left+:credits,
+                Mitgliedschaft = GREATEST(Mitgliedschaft, :Mitgliedschaft)
           WHERE user_email = :user_email"
         );
 
         $give_credits_qry->bindValue(':credits', $credits, PDO::PARAM_INT);
         $give_credits_qry->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+        $give_credits_qry->bindValue(':Mitgliedschaft', $membership_level, PDO::PARAM_STR);
 
         $give_credits_qry->execute();
 
@@ -514,7 +506,7 @@ class Registration
 
         $prolong_qry = $this->db_connection->prepare(
         "UPDATE mitgliederExt   
-            SET Ablauf = DATE_ADD(CURDATE(), INTERVAL 1 YEAR)
+            SET Ablauf = DATE_ADD(Ablauf, INTERVAL 1 YEAR)
           WHERE user_email = :user_email"
         );
 
@@ -582,7 +574,7 @@ class Registration
 
         #gives user extra credits
         #seminar registration get 25 = 150 - 125
-        $this->giveCredits(25, $profile['user_email']);
+        $this->giveCredits(25, $profile['user_email'], 3);
 
     }
 
@@ -648,7 +640,7 @@ public function processPayment($profile, $product)
         $this->addPersonalDataGeneric($profile);
 
         #make sure that credits exists! 
-        $this->giveCredits($product['credits'] , $profile['user_email']);
+        $this->giveCredits($product['credits'] , $profile['user_email'], $product['level']);
         
         $this->prolongMembership($profile['user_email']);
 
@@ -690,17 +682,10 @@ public function processPayment($profile, $product)
     }elseif ( empty($profile['user_logged_in']) )
     {
         #create a new user
-
         error_log($profile['user_email'].' is NEW.');
 
         $this->createNewUser($profile, $product);
         $this->addPersonalDataGeneric($profile);
-
-
-        // if ( !($this->sendUpgradeEmailToUser($profile['user_email'])) ) 
-        // {
-        //     error_log( "Mail not sent " .$profile['user_email']);
-        // }
 
         #EMAIL SEND BLOCK
         ####################################################################

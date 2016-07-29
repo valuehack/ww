@@ -8,7 +8,7 @@ require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
 
 
-ini_set("display_errors" , "1");
+ini_set("display_errors" , "0");
 $general = new General();
 $registration = new Registration();
 $login = new Login();
