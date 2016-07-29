@@ -3,11 +3,13 @@
   <head>  
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title><?=$title?> | Scholarium</title>
+
     
 <?php
     if ($type == 'blog'){
       ?>
-      <meta name="twitter:card" content="summary">
+
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@scholarium_at">
     <meta name="author" content="scholarium">
     <meta property="og:type" content="article">

@@ -505,8 +505,11 @@ class Registration
         $this->databaseConnection();
 
         $prolong_qry = $this->db_connection->prepare(
-        "UPDATE mitgliederExt   
-            SET Ablauf = DATE_ADD(Ablauf, INTERVAL 1 YEAR)
+        "UPDATE mitgliederExt  
+            SET Ablauf= CASE
+           WHEN Ablauf<CURDATE() THEN DATE_ADD(CURDATE(), INTERVAL 1 YEAR)
+           ELSE DATE_ADD(Ablauf, INTERVAL 1 YEAR)
+            END 
           WHERE user_email = :user_email"
         );
 

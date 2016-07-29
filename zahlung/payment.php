@@ -42,7 +42,7 @@ function doSofortPayment($profile, $product)
 
     $Sofortueberweisung->setAmount($product['total']);
     $Sofortueberweisung->setCurrencyCode('EUR');
-    $Sofortueberweisung->setReason($profile['user_email']);
+    $Sofortueberweisung->setReason($product['what']);
 
     $sofort_success_url = SOFORT_URL_BASE."sofort_listener.php?g=".$profile['wrt_txn_id'];
     error_log('sofort success url in payment '.$sofort_success_url);

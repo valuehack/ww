@@ -82,18 +82,18 @@ $next_seminar = $general->getProducts($type=array('seminar'), $status = 2, $show
 // include('../views/_footer.php'); 
 
 #TESTING ONLY
-#var output block
-echo "<br>POST<br>";
-print_r($_POST);
-echo "<br>";
-echo "<br>GET<br>";
-print_r($_GET);
-echo "<br><br><br>";
-#formats print_r for readability 
-$test = print_r($_SESSION, true);
-$test = str_replace("(", "<br>(", $test);
-$test = str_replace("[", "<br>[", $test);
-$test = str_replace(")", ")<br>", $test);
-echo $test;
+// #var output block
+// echo "<br>POST<br>";
+// print_r($_POST);
+// echo "<br>";
+// echo "<br>GET<br>";
+// print_r($_GET);
+// echo "<br><br><br>";
+// #formats print_r for readability 
+// $test = print_r($_SESSION, true);
+// $test = str_replace("(", "<br>(", $test);
+// $test = str_replace("[", "<br>[", $test);
+// $test = str_replace(")", ")<br>", $test);
+// echo $test;
 
 ?>
