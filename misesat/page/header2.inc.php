@@ -3,7 +3,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     	<meta name="description" content="Verlag und Kompendium zur &Ouml;stereichischen Schule der &Ouml;konomik">
-    	<link rel="shortcut icon" href="../favicon.ico">
+    	<link rel="shortcut icon" href="..\favicon.ico">
+        <link rel="icon" type="image/png" href="..\favicon.png" sizes="32x32">
+ 
+        <link rel="apple-touch-icon" sizes="180x180" href="..\apple-touch-icon.png">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="..\mstile-144x144.png">
     	
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<!--[if IE]>
@@ -18,7 +23,7 @@
         
 	</head>
 	<body>
-<!--Header-->
+		<!-- Begin Header-->
 		<header id="header">
   			<div class="logo">
   				<a href="../index.php"><img src="../style/ma_logo.png" alt=""></a>
@@ -31,13 +36,14 @@
   			<div id="nav">
     			<div class="navi">
       				<ul>
-      					<li><a href="../verlag/">Verlag</a></li>
-        				<!--<li><a href="../begriffe/">Begriffe</a></li>-->
-        				<li><a href="../denker/">Denker</a></li>
-        				<li><a href="../literatur/">Literatur</a></li>
-        				<!--<li><a href="../dokumente/">Dokumente</a></li>-->
-        				<li><a href="../orte/">Orte</a></li>
+      					<li><a href="../verlag/" onclick="showNav();">Verlag</a></li>
+        				<!--<li><a href="../begriffe/" onclick="showNav();">Begriffe</a></li>-->
+        				<li><a href="../denker/" onclick="showNav();">Denker</a></li>
+        				<li><a href="../literatur/" onclick="showNav();">Literatur</a></li>
+        				<!--<li><a href="../dokumente/" onclick="showNav();">Dokumente</a></li>-->
+        				<li><a href="../orte/" onclick="showNav();">Orte</a></li>
       				</ul>
    				</div>
   			</div>
-  	</header>
+  		</header>
+  		<!-- End Header -->

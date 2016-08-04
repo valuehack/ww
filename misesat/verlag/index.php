@@ -32,7 +32,7 @@
 			$author_list = explode(", ", $authors);
 
 			foreach ($author_list as $key => $author_id) {
-				$author_info = $general->getDenkerInfo($author_id);
+				$author_info = $general->getInfo('denker',$author_id);
 				if (count($author_list) > 1 && count($author_list) != $key+1) {
 					if ($author_info == FALSE) {
 						$author_links = $author_links.$author_id.', ';

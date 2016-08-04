@@ -11,9 +11,7 @@ $general = new General();
 
 $get_user_info = $general->db_connection->prepare('SELECT * FROM mitgliederExt');
 $get_user_info->execute();
-//$user_info = $get_user_info->fetchAll();
-
-echo 'Ich schlafe noch!';
+$user_info = $get_user_info->fetchAll();
 
 for ($i = 0; $i < count($user_info); $i++) {
 	if (strtotime($user_info[$i]['Ablauf']) < time() - 7776000) {
@@ -29,7 +27,7 @@ for ($i = 0; $i < count($user_info); $i++) {
 			$reset_credit = $general->db_connection->prepare('UPDATE mitgliederExt SET credits_left = :reset WHERE user_id = :user_id');
 			$reset_credit->bindValue(':reset', 0, PDO::PARAM_INT);
 			$reset_credit->bindValue(':user_id', $user_info[$i]['user_id'], PDO::PARAM_INT);
-			//$reset_credit->execute();
+			$reset_credit->execute();
 		}
 	}
 }

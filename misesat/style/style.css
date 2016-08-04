@@ -159,6 +159,11 @@ p, .list {
 
 p {
 	margin-bottom: 2em;
+		-ms-hyphens: auto;
+   	   -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+        	hyphens: auto;
+    text-align: justify;
 }
 
 em, .italic {
@@ -190,6 +195,10 @@ a:hover, a:active {
 	margin: 0 auto;
 }
 
+.h-right {
+	text-align: right;
+}
+
 .h-fleft {
 	float: left;
 }
@@ -198,16 +207,20 @@ a:hover, a:active {
 	float: right;
 }
 
+.h-nofloat {
+	float: none;
+}
+
 .h-white {
-	color: rgb(255,255,255);
+	color: #fff;
 }
 
-.h-full-width {
-	width: 100%;
+.h-img-wrapper {
+	position: relative;
 }
 
-.h-block {
-	display: block;
+.h-extra-space__top {
+	margin-top: 2rem;
 }
 
 /*================= Special Styles =================*/
@@ -231,10 +244,10 @@ a:hover, a:active {
 
 #header {
 	background: rgb(46, 74, 98);
-	width: calc(100%-2em);
+	width: 100%;
 	min-height: 4em;
     border-bottom: 0.5em solid rgb(28,109,186);
-    padding: 1em;
+    padding: 1em 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     position: fixed;
     top: 0;
@@ -243,6 +256,7 @@ a:hover, a:active {
 
 .logo {
 	float: left;
+	margin: 0 1rem;
 }
 
 .logo img {
@@ -257,7 +271,7 @@ a:hover, a:active {
 }
 
 .nav-trigger__icon {
-	padding: 1em 0.5em;
+	padding: 1rem;
 	width: 2.1em;
 }
 
@@ -403,7 +417,7 @@ a:hover, a:active {
 	border-radius: 2px;
 }
 
-.btn-link:hover, btn-link:active {
+.btn-link:hover, .btn-link:active {
 	background: rgb(203,44,52);
 	color: #fff;
 	text-decoration: none;
@@ -766,6 +780,124 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 .reiter--ctn a {
 	color: #fff;
 }
+
+/*==================== Cards =======================*/
+
+.card {
+	box-shadow: 1px 0  6px rgba(0,0,0,0.3);
+	border-radius: 2px;
+	transition: box-shadow 0.3s;
+	margin: 1rem 0;
+}
+
+.card:hover {
+	box-shadow: 2px 0 12px rgba(0,0,0,0.3);
+}
+
+.card.horizontal {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex		
+}
+
+.card.horizontal .card-stacked {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	position:relative;
+}
+
+.card.horizontal .card-head {
+	width: 40%;
+}
+.card.horizontal .card-image img {
+	max-width: 100%;
+	width: auto;
+}
+
+.card-head {
+	overflow: hidden;
+	position: relative;
+	display: inherit;
+	height: 200px;		
+}
+
+.card-head__overlay::before {
+    content: '';
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 40%;
+	background-image: linear-gradient(to bottom ,transparent,rgba(0,0,0,0.2));
+	opacity: .5; 
+}
+
+.card-head img {
+	width: 100%;
+	top: 0;
+	left: 0;
+	right 0;
+	bottom: 0;
+	position: relative;
+	margin-top: -4rem;
+}
+
+.card .card-title {
+	display: block;
+	font-size: 1.25rem;	
+}
+
+.card .card-head .card-title {
+	position: absolute;
+	padding: 2rem;
+	bottom: 0;
+	left: 0;
+	font-size: 1.5rem;	
+}
+
+.card .card-head__overlay .card-title {	
+	text-shadow: 0 0 3px rgba(0,0,0,0.9);
+}
+
+.card .card-content .card-title {
+	padding-bottom: 1rem;
+}
+
+.card-content  {
+	padding: 2rem 2rem 0 2rem;
+	flex-grow: 1;
+}
+
+.card-link {
+	border-top: 1px solid rgba(0,0,0,0.15);
+	padding: 1rem;
+}
+
+.card-link a {
+	text-transform: uppercase;
+	text-decoration: none;
+	color: rgba(203,44,52,0.75);
+	font-family: "Raleway", Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+	font-weight: 600;
+	transition: color 0.3s;
+}
+
+.card-link a:hover {
+	color: rgba(203,44,52,0.9);
+}
+
+.card-link a:active {
+	color: rgba(203,44,52);
+}
+
 /*==================================================*/
 /*                  Map Styles                 		*/
 /*==================================================*/

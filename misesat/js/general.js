@@ -14,14 +14,17 @@ window.onload = setActive;
 /*
  * For small screens, show nav after click on burger icon
  */            
+
 function showNav() {
-	aObj = document.getElementById('nav');
-		if (aObj.style.display == 'none') {
+	if (document.documentElement.clientWidth < 740) {
+		aObj = document.getElementById('nav');
+		if (aObj.style.display == 'none' || aObj.style.display == '') {
 			aObj.style.display = 'block';
-        }
-        else {
+		}
+		else {
 			aObj.style.display = 'none';
 		}
+	}
 }
 
 /*
