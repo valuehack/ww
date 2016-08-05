@@ -24,7 +24,7 @@
 				</div>
 			</div>			
 		</div>
-		<div class="section">
+		<!--<div class="section">
 			<div class="row " style="padding:3em 0; background:rgb(46, 74, 98);">
 				<div class="container">
 				<div class="one-third column column--red">
@@ -41,7 +41,7 @@
 				</div>
 			</div>
 			</div>
-		</div>
+		</div>-->
 		
 		<div class="section">
 			<div class="row">

@@ -7,9 +7,9 @@
 ?>
 		<div id="content">
 <?php	
-if(isset($_GET['thinker']))
+if(isset($_GET['denker']))
 {
-  $thinker_id = $_GET['thinker'];
+  $thinker_id = $_GET['denker'];
 
   $result = $general->getInfo('denker', $thinker_id);
 
@@ -20,16 +20,16 @@ if(isset($_GET['thinker']))
 ?>
 <!--Denker-->
 <!--Content-->    
-      	<div class="container index-link"><p><a href="../index.php">Wiener Schule</a> / <a href="index.php">Denker</a> / <?=$name?></a></p></div>     		
+      	<div class="container index-link"><p><a href="../index.php">mises.at</a> / <a href="index.php">Denker</a> / <?=$name?></a></p></div>     		
       	<div class="container">
       		<div class="row style-space--bottom">
       			<div class="two-thirds column">
       				<h1><?=$name?></h1>
       			</div>
-      			<div class="one-third column h-white">
+      			<div class="one-third column h-centered">
       				<?php
       					if ($img !== "" OR $img !== 0) { 
-      					echo '<img src="'.$img.'" class="img--portrait" alt=".">';
+      					echo '<img src="'.$img.'" class="img--portrait" alt="'.$name.'">';
 			}
       	?>
       			</div>
@@ -40,10 +40,7 @@ if(isset($_GET['thinker']))
       				<p><?=$bio?></p>
       			</div>
       			<div class="one-third column">
-      				<h5 class="style-bl--red">Werke</h5>
-      				<div class="list">
-          				<ul class="list--none">
-          				<?php
+      				<?php
    						$sql_book = $general->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author ORDER BY jahr DESC');
 						$sql_book->bindValue(':author', $name, PDO::PARAM_STR);
 						$sql_book->execute();
@@ -63,26 +60,36 @@ if(isset($_GET['thinker']))
 						}
 		
 						$result_lit = array_merge($result_book, $result_art);
+
+						if (!empty($result_lit)) {
 		
-						foreach ($result_lit as $key => $row) {
-							$id[$key] = $row['id'];
-							$year[$key] = $row['jahr'];
-						}
+							foreach ($result_lit as $key => $row) {
+								$id[$key] = $row['id'];
+								$year[$key] = $row['jahr'];
+							}
 																	
-						array_multisort($year, SORT_DESC, $id, SORT_ASC, $result_lit);
+							array_multisort($year, SORT_DESC, $id, SORT_ASC, $result_lit);
 
-						if (count($result_lit) >= 10) {$x = 10;}
-						else {$x = count($result_lit);}
-
+							if (count($result_lit) >= 10) {$x = 10;}
+							else {$x = count($result_lit);}
+						
+					?>      				
+      				<h5 class="style-bl--red">Werke</h5>
+      				<div class="list">
+          				<ul class="list--none">
+						<?php
 						for ($i = 0; $i < $x; $i++) {				       		
           					echo '<li>'.$result_lit[$i]['type'].': <a href="'.$result_lit[$i]['link'].'" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
           				}
 						?>
           				</ul>
       				</div>
-      				<div class="h-centered">
-						<p><a class="btn-link h-block" href="../literatur/?author=<?=$thinker_id?>">gesamte Liste</a></p>
+      				<div class="h-centered h-extra-space__top">
+						<a class="btn-link h-block" href="../literatur/?author=<?=$thinker_id?>">gesamte Liste</a>
 					</div>
+					<?php
+						}
+					?>
       			</div>
       		</div>
       	</div>
@@ -95,13 +102,29 @@ else {
 ?>
 <!--Denkerliste-->	
   	
-			<div class="container index-link"><p><a href="../index.php">Wiener Schule</a> / Denker</p></div>						
+			<div class="container index-link"><p><a href="../index.php">mises.at</a> / Denker</p></div>						
       		<div class="container">
       			<h1>Denker</h1>
       			<p>Hier finden Sie eine umfassende &Uuml;bersicht der in der Denktradition der klassischen Wiener/ &Ouml;sterreichischen Schulen stehenden Denker.</p>
       		</div>
       
       		<div class="container">
+      			<div class="">
+      				<?php
+      				$l_let = '';
+					$let_list = array();
+      				for ($j = 0; $j < count($result); $j++) {     					
+      					$let = substr($result[$j]['id'],0,1);
+						if ($let != $l_let) {							
+							$let_list[$j] = $let;
+							$l_let = $let;
+						}
+      				}
+					foreach ($let_list as $lett) {
+						echo '<a href="#'.$lett.'">'.ucfirst($lett).'</a> | ';
+					}
+					?>
+      			</div>
 <?php
 	for ($i = 0; $i < count($result); $i++) 
 	{
@@ -110,6 +133,15 @@ else {
   		$bio = $result[$i]['bio'];
   		$img = $result[$i]['img'];
   		
+		$last_letter = '';
+		$letter = substr($id,0,1);
+		
+		if ($letter != $last_letter) {
+			echo '<span id="'.$letter.'"></span>';
+		}
+		
+		$last_letter = $letter;
+		
 		if (($i % 2) === 0) {
 			echo '<div class="row">';
 		}
@@ -122,10 +154,10 @@ else {
       							<span class="card-title <? if ($img != '') echo 'h-white';?>"><?=$name?></span>      							
       						</div>
       						<div class="card-content">      								
-      							<p><?=$general->substr_close_tags($bio,200)?></p>
+      							<p><?=$general->substrCloseTags($bio,200)?></p>
       						</div>
       						<div class="card-link h-right">
-      							<a href="?id=<?=$id?>">Zum Denker</a>
+      							<a href="?denker=<?=$id?>">Zum Denker</a>
       						</div>
       					</div>
       				</div>

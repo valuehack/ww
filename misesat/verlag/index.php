@@ -19,7 +19,7 @@
       		<p>Infotext</p>
       	</div> 
       	<div class="container">
-      		<h3>Verlagsprogramm</h3>
+      		<h3 class="h-extra-space__bottom">Verlagsprogramm</h3>
 <?php
 
 		foreach ($program as $key => $item) {

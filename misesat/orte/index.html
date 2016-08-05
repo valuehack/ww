@@ -1,0 +1,56 @@
+<style>
+    header {
+        height: 4em;
+        position: fixed;
+        width: 100%;
+        background: #008000;
+        top: 0;
+        display: block;
+        margin: 0;
+    }
+    .content {
+        height: 20em;
+        background:#CCCCCC;
+        width: 100%;
+    }
+    footer {
+        height: 4em;
+        position: relative;
+        bottom: 0;
+        margin: 0;
+        background: #204D74;
+        width: 100%;
+        display: block;
+    }
+    
+    header.vertical {
+        display: flex;
+        flex-direction: column;
+        order: 2;
+    }
+    .content.vertical {
+        display: flex;
+        flex-direction: column;
+        order: 3;
+    }
+    footer.vertical {
+        display: flex;
+        flex-direction: column;
+        order: 2;
+    }
+    main {
+        display: flex;
+        flex-direction: row;
+    }
+</style>
+<main>
+<header class="vertical">
+    
+</header>
+<div class="content vertical">
+    
+</div>
+<footer class="vertical">
+    
+</footer>
+</main>

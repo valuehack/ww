@@ -62,7 +62,7 @@ class General {
     	return $list_query->fetchAll();
 	}
 	
-	public function substr_close_tags($code, $limit = 300) {
+	public function substrCloseTags($code, $limit = 300) {
 		# Creates a substr out of a html string where html end tags are closed		
 		
     	if ( strlen($code) <= $limit )
@@ -132,5 +132,30 @@ class General {
     	}
 
     	return substr($code, 0, $position).$close_tag."...";
+	}
+
+	public function clearAuthorList ($list) {
+		# Clears the Author List from Authors without books or articles in the database
+		# Returns a reindexed array
+		
+		for ($k = 0; $k < count($list); $k++) {
+			$name = $list[$k]['name'];
+		
+			$book = $this->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author ORDER BY jahr DESC');
+			$book->bindValue(':author', $name, PDO::PARAM_STR);
+			$book->execute();
+			$result_book = $book->fetchAll();
+		
+			$art = $this->db_connection->prepare('SELECT * FROM artikel WHERE autor = :author ORDER BY jahr DESC');
+			$art->bindValue(':author', $name, PDO::PARAM_STR);
+			$art->execute();
+			$result_art = $art->fetchAll();
+		
+			if (!empty($result_book) || !empty($result_art)) {
+			$l[$k] = $list[$k];
+			}
+	}
+	$l = array_values($l);
+	return $l;
 	}
 }

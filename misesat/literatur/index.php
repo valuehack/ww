@@ -61,9 +61,10 @@
 
 	}
 	$author_list = $general->getItemList('denker', 'id', 'ASC');
-	$x = count($author_list)/4;	
+	$author_l = $general->clearAuthorList($author_list);
+	$x = count($author_l)/4;	
 ?>
-      	<div class="container index-link"><p><a href="../">Mises Austria</a> / Literatur</p></div>
+      	<div class="container index-link"><p><a href="../">mises.at</a> / Literatur</p></div>
       	<div class="container">
       		<h1>Literatur</h1>
       		<p><b>mises.at</b> bietet die gr&ouml;&szlig;te und umfassendeste Online-Bibliothek der klassischen Wiener/ &Ouml;stereichischen Schule der &Ouml;konomik. Hier finden Sie Artikel und B&uuml;cher einer Vielzahl von Denker der Wiener Schule &uuml;ber ein breites Spektrum von &ouml;konomischen, sozialwissenschaftlichen und philosophischen Problemstellungen und Themen.</p>
@@ -78,28 +79,28 @@
       				<div class="three columns">
 <?php
       				for ($j = 0; $j < $x; $j++) {
-						echo '<a href="?author='.$author_list[$j]['id'].'">'.$author_list[$j]['name'].'</a><br>';
+						echo '<a href="?author='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
 					}
 ?>      					
       				</div>
       				<div class="three columns">
 <?php
       				for ($j = $x+1; $j < $x*2; $j++) {
-						echo '<a href="?author='.$author_list[$j]['id'].'">'.$author_list[$j]['name'].'</a><br>';
+						echo '<a href="?author='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
 					}
 ?>      					
       				</div>
       				<div class="three columns">
 <?php
       				for ($j = ($x*2)+1; $j < $x*3; $j++) {
-						echo '<a href="?author='.$author_list[$j]['id'].'">'.$author_list[$j]['name'].'</a><br>';
+						echo '<a href="?author='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
 					}
 ?>      					
       				</div>
       				<div class="three columns">
 <?php
-      				for ($j = ($x*3)+1; $j < count($author_list); $j++) {
-						echo '<a href="?author='.$author_list[$j]['id'].'">'.$author_list[$j]['name'].'</a><br>';
+      				for ($j = ($x*3)+1; $j < count($author_l); $j++) {
+						echo '<a href="?author='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
 					}
 ?>      					
       				</div>
@@ -128,9 +129,15 @@
 		$lang_lit = $result_lit[$i]['sprache'];
 		$typ_lit = $result_lit[$i]['type'];
   		
-		if ($lang_lit == 'en') {$sprache = 'Englisch';} 
-		else {$sprache = 'Deutsch';}
-		
+		switch($lang_lit) {
+			case 'en': $lang = 'English'; break;
+			case 'fr': $lang = 'Franz&ouml;sisch'; break;
+			case 'es': $lang = 'Spanisch'; break;
+			case 'it': $lang = 'Italienisch'; break;
+			case 'nl': $lang = 'Niederl&auml;ndisch'; break;
+			default: $lang = 'Deutsch'; break;
+		}
+				
   		$sql_author = $general->db_connection->prepare('SELECT id FROM denker WHERE name = :name');
   		$sql_author->bindValue(':name', $autor_lit, PDO::PARAM_STR);
 		$sql_author->execute();
@@ -143,7 +150,7 @@
 						<td data-label="Jahr"><?=$year_lit?></td>
 						<td data-label="Autor"><a class="itm-table_sec" href="../denker/?thinker=<?=$author_id->id?>"><?=$autor_lit?></a></td>
 						<td data-label="Typ"><?=$typ_lit?></td>
-						<td data-label="Sprache"><?=$sprache?></td>
+						<td data-label="Sprache"><?=$lang?></td>
 						<td>free/amazon</td>
 					</tr>
 		<?

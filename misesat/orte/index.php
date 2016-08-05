@@ -33,7 +33,7 @@ if(isset($_GET['place']))
 <!--Content-->
 
     <div id="content">
-      	<div class="container index-link"><p><a href="../index.php">Wiener Schule</a> / <a href="index.php">Orte</a> / <?=$name?></p></div>
+      	<div class="container index-link"><p><a href="../index.php">mises.at</a> / <a href="index.php">Orte</a> / <?=$name?></p></div>
       	<div class="container">
       		<div class="row">
       			<div class="two-thirds column">
@@ -65,17 +65,14 @@ else {
    
 ?>
 <!--Ortsliste-->	
-	<div id="content">
+	<!--<div id="content">
   	
 		<div class="container index-link"><p><a href="../index.php">Wiener Schule</a> / Orte</p></div>
       	<div class="container">
       		<h1>Orts&uuml;bersicht</h2>
       
-    		<noscript><b>Um unsere Kartenanwendung zu nutzen ben&ouml;tigen Sie JavaScript.</b> 
-     		JavaScript scheint in Ihrem Browser deaktiviert zu sein oder wird von diesem nicht unterst&uuml;tzt. 
-     	 	Um unsere Kartenansischt sehen k&oouml;nnen, aktivieren Sie bitte JavaScript.
-    		</noscript>   		
-    	</div>
+ 		
+    	</div>-->
     	<div class="map">
 			<div id="map" class="map__map"></div>
 		</div>
@@ -112,7 +109,7 @@ else {
 		$denker = $result[$i]['denker'];
 		
 		if (strlen($text) > 215) {
-			$info_text = substr($text, 0, 215).' ... <a href="?place='.$id.'">Mehr</a>';
+			$info_text = substr($text, 0, 215).' ...';
 		}
 		else {
 			$info_text = $text;
@@ -130,15 +127,22 @@ else {
 				$denker_links = $denker_links.'<a href="../denker/?thinker='.$denker_info->id.'">'.$denker_info->name.'</a>';
 			}
 		}
-     ?>         		 			
-		var info = '<div class="map-info"><a href="?place=<?=$id?>"><h2><?=$name?></h2></a><img src="<?=$img?>" alt="."><p><?=$info_text?></p><h6>Denker die hier gelebt und gewirkt haben</h6><p><?=$denker_links?></p></div>';
-			
+     ?>   
+     
+     	var contentString = '<div class="map-info">'+
+     						'<h2><?=$name?></h2>'+
+     						'<img src="<?=$img?>" alt=".">'+
+     						'<p><?=$info_text?></p>'+
+     						'<h6>Denker die hier gelebt und gewirkt haben</h6><p><?=$denker_links?></p>'+
+     						'</div>'+
+     						'<div class="card-link h-right"><a href="?place=<?=$id?>">Mehr</div>';
+
         var marker = new google.maps.Marker({
          	position: {lat: <?=$lat?>, lng: <?=$lng?>},
          	map: map,
          	title: '<?=$name?>'
         });
-        attachInfoWindow(marker, info);
+        attachInfoWindow(marker, contentString);
 <?php       
 	}
 ?>
@@ -156,8 +160,8 @@ else {
 	</script>
 
 		<!--echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";-->
-		</div>
-	</div>
+		<!--</div>
+	</div>-->
 
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChP6VPcxuqcO5r8q7733mF7hzjNg4r9EY&callback=initMap">
