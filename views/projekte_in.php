@@ -36,16 +36,14 @@ if(isset($_POST['add'])){
 
 if ($id = $_GET["q"])
 {
-  $sql="SELECT * from produkte WHERE `type` LIKE 'projekt' AND id='$id'";
-  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-  $entry = mysql_fetch_array($result);
-  $title=$entry[title];
-  $avail=$entry[spots]-$entry[spots_sold];
-  $text=$entry[text];
-  $n = $entry[n];
+	$project_info = $general->getProduct($id);
+	$title = $project_info->title;
+	$text = $project_info->text;
+	$n = $project_info->n;
+	$avail = $project_info->spots - $project_info->spots_sold;
 ?>
 	<div class="medien_head">
- 		<h1><?echo $title?></h1>
+ 		<h1><?=$title?></h1>
  	</div>
 	<div class="medien_seperator">
 		<h1>Inhalt und Informationen</h1>
@@ -67,9 +65,9 @@ if ($id = $_GET["q"])
 		echo "<div class='projekte_invest'>
 		<p>Private Unterst&uuml;tzer haben bereits <span class='projekte_credits_sold'>".$entry[spots_sold]."</span> von <span class='projekte_credits_sold'>".$entry[spots]."</span> n&ouml;tigen <img class='projekte_coin' src='../style/gfx/coin.png'> investiert.</p>"; ?>
       	<form class="projekte_invest_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-        	<input type="hidden" name="add" value="<?php echo $n ?>">
+        	<input type="hidden" name="add" value="<?=$n?>">
         	<span class="projekte_invest_span">Ich m&ouml;chte mit </span>
-        	<input class="projekte_invest_select" type="number" name="quantity" value="1" min="1" max="<?php echo $avail;?>">
+        	<input class="projekte_invest_select" type="number" name="quantity" value="1" min="1" max="<?=$avail?>">
         	<span class="projekte_invest_span"><img class='projekte_coin2' src='../style/gfx/coin.png'> zu diesem Projekt beitragen.</span><br>
         	<input type="hidden" name="projekt" value="1">
           <input type="submit" class="medien_inputbutton" value="Jetzt beitragen">
@@ -85,11 +83,9 @@ else {
   if ($_SESSION['Mitgliedschaft'] == 1) { 
     echo "<div class='medien_info'>";
 
-			$sql = "SELECT * from static_content WHERE (page LIKE 'projekte')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[info];	
+			$project_static = $general->getStaticInfo('projekte');
+				
+			echo $project_static->info;	
 	?>
 			<div class="centered">
 				<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
@@ -267,8 +263,8 @@ else {
           </div>
           <div class="modal-body">
         	<form method="post" action="../spende/zahlung.php" name="user_create_profile_form">
-            	<input type="hidden" name="event_id" value="<?php echo $n ?>">
-            	<input type="hidden" name="title" value="<?php echo $title ?>">
+            	<input type="hidden" name="event_id" value="<?=$n?>">
+            	<input type="hidden" name="title" value="<?=$title?>">
         
               <!--
               <input class="salon_inputfield" id="user_email" type="email" name="profile[user_email]" value="<?php echo $_SESSION['user_email']; ?>" required><br> 

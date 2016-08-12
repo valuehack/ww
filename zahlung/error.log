@@ -1,0 +1,522 @@
+[26-Jun-2016 09:02:13 America/Phoenix] PHP Fatal error:  Call to undefined method Registration::processPayment() in /home/content/56/6152056/html/production/zahlung/sofort_listener.php on line 30
+[26-Jun-2016 09:55:55 America/Phoenix] processPayment
+[26-Jun-2016 10:00:33 America/Phoenix] processPayment
+[26-Jun-2016 10:11:58 America/Phoenix] processPayment
+[26-Jun-2016 10:13:47 America/Phoenix] processPayment
+[26-Jun-2016 10:15:07 America/Phoenix] POST FROM PAYPAL. TXN_ID: 5B9129302A225945K WRT_TXN_ID: jKkGOXG4TSrX
+[26-Jun-2016 10:15:07 America/Phoenix] CRITICAL: No entry in db for:  jKkGOXG4TSrX
+[26-Jun-2016 10:15:54 America/Phoenix] processPayment
+[26-Jun-2016 10:22:54 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2U254160D8583673E WRT_TXN_ID: 1Rhyv45qONIC
+[26-Jun-2016 10:22:54 America/Phoenix] PHP Warning:  PDOStatement::execute() [<a href='pdostatement.execute'>pdostatement.execute</a>]: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'newBig.transactions' doesn't exist in /home/content/56/6152056/html/production/zahlung/paypal_listener.php on line 40
+[26-Jun-2016 10:22:54 America/Phoenix] CRITICAL: No entry in db for:  1Rhyv45qONIC
+[26-Jun-2016 10:31:39 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2XM66052FM2770249 WRT_TXN_ID: c4nWlky9inYJ
+[26-Jun-2016 10:31:39 America/Phoenix] processPayment
+[26-Jun-2016 10:31:39 America/Phoenix]  is NEW.
+[26-Jun-2016 10:31:39 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:31:55 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2XM66052FM2770249 WRT_TXN_ID: c4nWlky9inYJ
+[26-Jun-2016 10:31:55 America/Phoenix] processPayment
+[26-Jun-2016 10:31:55 America/Phoenix]  is NEW.
+[26-Jun-2016 10:31:55 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:32:16 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2XM66052FM2770249 WRT_TXN_ID: c4nWlky9inYJ
+[26-Jun-2016 10:32:16 America/Phoenix] processPayment
+[26-Jun-2016 10:32:16 America/Phoenix]  is NEW.
+[26-Jun-2016 10:32:16 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:32:58 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2XM66052FM2770249 WRT_TXN_ID: c4nWlky9inYJ
+[26-Jun-2016 10:32:58 America/Phoenix] processPayment
+[26-Jun-2016 10:32:58 America/Phoenix]  is NEW.
+[26-Jun-2016 10:32:58 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:34:22 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2XM66052FM2770249 WRT_TXN_ID: c4nWlky9inYJ
+[26-Jun-2016 10:34:22 America/Phoenix] processPayment
+[26-Jun-2016 10:34:22 America/Phoenix]  is NEW.
+[26-Jun-2016 10:34:22 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:37:06 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2XM66052FM2770249 WRT_TXN_ID: c4nWlky9inYJ
+[26-Jun-2016 10:37:06 America/Phoenix] processPayment
+[26-Jun-2016 10:37:06 America/Phoenix]  is NEW.
+[26-Jun-2016 10:37:06 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:37:45 America/Phoenix] POST FROM PAYPAL. TXN_ID: 94S51752RX011122L WRT_TXN_ID: MOl7JhonVWPI
+[26-Jun-2016 10:37:45 America/Phoenix] processPayment
+[26-Jun-2016 10:37:45 America/Phoenix]  is NEW.
+[26-Jun-2016 10:37:45 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:38:01 America/Phoenix] POST FROM PAYPAL. TXN_ID: 94S51752RX011122L WRT_TXN_ID: MOl7JhonVWPI
+[26-Jun-2016 10:38:01 America/Phoenix] processPayment
+[26-Jun-2016 10:38:01 America/Phoenix]  is NEW.
+[26-Jun-2016 10:38:01 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:38:22 America/Phoenix] POST FROM PAYPAL. TXN_ID: 94S51752RX011122L WRT_TXN_ID: MOl7JhonVWPI
+[26-Jun-2016 10:38:22 America/Phoenix] processPayment
+[26-Jun-2016 10:38:22 America/Phoenix]  is NEW.
+[26-Jun-2016 10:38:22 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:39:04 America/Phoenix] POST FROM PAYPAL. TXN_ID: 94S51752RX011122L WRT_TXN_ID: MOl7JhonVWPI
+[26-Jun-2016 10:39:04 America/Phoenix] processPayment
+[26-Jun-2016 10:39:04 America/Phoenix]  is NEW.
+[26-Jun-2016 10:39:04 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:39:44 America/Phoenix] POST FROM PAYPAL. TXN_ID: 88017882R9323490F WRT_TXN_ID: PQJX3yxZt3M5
+[26-Jun-2016 10:39:44 America/Phoenix] processPayment
+[26-Jun-2016 10:39:44 America/Phoenix]  is NEW.
+[26-Jun-2016 10:39:44 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:40:00 America/Phoenix] POST FROM PAYPAL. TXN_ID: 88017882R9323490F WRT_TXN_ID: PQJX3yxZt3M5
+[26-Jun-2016 10:40:00 America/Phoenix] processPayment
+[26-Jun-2016 10:40:00 America/Phoenix]  is NEW.
+[26-Jun-2016 10:40:00 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:40:21 America/Phoenix] POST FROM PAYPAL. TXN_ID: 88017882R9323490F WRT_TXN_ID: PQJX3yxZt3M5
+[26-Jun-2016 10:40:21 America/Phoenix] processPayment
+[26-Jun-2016 10:40:21 America/Phoenix]  is NEW.
+[26-Jun-2016 10:40:21 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:40:28 America/Phoenix] POST FROM PAYPAL. TXN_ID: 94S51752RX011122L WRT_TXN_ID: MOl7JhonVWPI
+[26-Jun-2016 10:40:28 America/Phoenix] processPayment
+[26-Jun-2016 10:40:28 America/Phoenix]  is NEW.
+[26-Jun-2016 10:40:28 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:41:03 America/Phoenix] POST FROM PAYPAL. TXN_ID: 88017882R9323490F WRT_TXN_ID: PQJX3yxZt3M5
+[26-Jun-2016 10:41:03 America/Phoenix] processPayment
+[26-Jun-2016 10:41:03 America/Phoenix]  is NEW.
+[26-Jun-2016 10:41:03 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:42:27 America/Phoenix] POST FROM PAYPAL. TXN_ID: 88017882R9323490F WRT_TXN_ID: PQJX3yxZt3M5
+[26-Jun-2016 10:42:27 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2XM66052FM2770249 WRT_TXN_ID: c4nWlky9inYJ
+[26-Jun-2016 10:42:27 America/Phoenix] processPayment
+[26-Jun-2016 10:42:27 America/Phoenix]  is NEW.
+[26-Jun-2016 10:42:27 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:42:27 America/Phoenix] processPayment
+[26-Jun-2016 10:42:27 America/Phoenix]  is NEW.
+[26-Jun-2016 10:42:27 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:43:09 America/Phoenix] POST FROM PAYPAL. TXN_ID: 94S51752RX011122L WRT_TXN_ID: MOl7JhonVWPI
+[26-Jun-2016 10:43:09 America/Phoenix] processPayment
+[26-Jun-2016 10:43:09 America/Phoenix]  is NEW.
+[26-Jun-2016 10:43:09 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:45:06 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2Y5447532U452283W WRT_TXN_ID: 5huQ3aowDF11
+[26-Jun-2016 10:45:06 America/Phoenix] processPayment
+[26-Jun-2016 10:45:06 America/Phoenix]  is NEW.
+[26-Jun-2016 10:45:06 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:45:11 America/Phoenix] POST FROM PAYPAL. TXN_ID: 88017882R9323490F WRT_TXN_ID: PQJX3yxZt3M5
+[26-Jun-2016 10:45:12 America/Phoenix] processPayment
+[26-Jun-2016 10:45:12 America/Phoenix]  is NEW.
+[26-Jun-2016 10:45:12 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:45:17 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2Y5447532U452283W WRT_TXN_ID: 5huQ3aowDF11
+[26-Jun-2016 10:45:17 America/Phoenix] processPayment
+[26-Jun-2016 10:45:17 America/Phoenix]  is NEW.
+[26-Jun-2016 10:45:17 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:45:41 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2Y5447532U452283W WRT_TXN_ID: 5huQ3aowDF11
+[26-Jun-2016 10:45:41 America/Phoenix] processPayment
+[26-Jun-2016 10:45:41 America/Phoenix]  is NEW.
+[26-Jun-2016 10:45:41 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:46:24 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2Y5447532U452283W WRT_TXN_ID: 5huQ3aowDF11
+[26-Jun-2016 10:46:24 America/Phoenix] processPayment
+[26-Jun-2016 10:46:24 America/Phoenix]  is NEW.
+[26-Jun-2016 10:46:24 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:47:50 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2Y5447532U452283W WRT_TXN_ID: 5huQ3aowDF11
+[26-Jun-2016 10:47:50 America/Phoenix] processPayment
+[26-Jun-2016 10:47:50 America/Phoenix]  is NEW.
+[26-Jun-2016 10:47:50 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:48:31 America/Phoenix] POST FROM PAYPAL. TXN_ID: 94S51752RX011122L WRT_TXN_ID: MOl7JhonVWPI
+[26-Jun-2016 10:48:31 America/Phoenix] processPayment
+[26-Jun-2016 10:48:31 America/Phoenix]  is NEW.
+[26-Jun-2016 10:48:31 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:50:33 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2Y5447532U452283W WRT_TXN_ID: 5huQ3aowDF11
+[26-Jun-2016 10:50:33 America/Phoenix] processPayment
+[26-Jun-2016 10:50:33 America/Phoenix]  is NEW.
+[26-Jun-2016 10:50:33 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:50:42 America/Phoenix] POST FROM PAYPAL. TXN_ID: 88017882R9323490F WRT_TXN_ID: PQJX3yxZt3M5
+[26-Jun-2016 10:50:42 America/Phoenix] processPayment
+[26-Jun-2016 10:50:42 America/Phoenix]  is NEW.
+[26-Jun-2016 10:50:42 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:53:12 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2XM66052FM2770249 WRT_TXN_ID: c4nWlky9inYJ
+[26-Jun-2016 10:53:12 America/Phoenix] processPayment
+[26-Jun-2016 10:53:12 America/Phoenix]  is NEW.
+[26-Jun-2016 10:53:12 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:55:57 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2Y5447532U452283W WRT_TXN_ID: 5huQ3aowDF11
+[26-Jun-2016 10:55:57 America/Phoenix] processPayment
+[26-Jun-2016 10:55:57 America/Phoenix]  is NEW.
+[26-Jun-2016 10:55:57 America/Phoenix] PHP Fatal error:  Call to undefined function password_hash() in /home/content/56/6152056/html/production/classes/Registration.php on line 367
+[26-Jun-2016 10:57:37 America/Phoenix] processPayment
+[26-Jun-2016 10:57:37 America/Phoenix] dzainius@gmail.com is a returning customer.
+[26-Jun-2016 10:57:37 America/Phoenix] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/content/56/6152056/html/production/classes/Registration.php on line 456
+[26-Jun-2016 10:59:12 America/Phoenix] POST FROM PAYPAL. TXN_ID: 94S51752RX011122L WRT_TXN_ID: MOl7JhonVWPI
+[26-Jun-2016 10:59:12 America/Phoenix] processPayment
+[26-Jun-2016 10:59:12 America/Phoenix] 5@5GX.com is NEW.
+[26-Jun-2016 11:01:24 America/Phoenix] POST FROM PAYPAL. TXN_ID: 88017882R9323490F WRT_TXN_ID: PQJX3yxZt3M5
+[26-Jun-2016 11:01:24 America/Phoenix] processPayment
+[26-Jun-2016 11:01:24 America/Phoenix] dzainius@gmail.com is a returning customer.
+[26-Jun-2016 11:01:24 America/Phoenix] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/content/56/6152056/html/production/classes/Registration.php on line 456
+[26-Jun-2016 11:06:40 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2Y5447532U452283W WRT_TXN_ID: 5huQ3aowDF11
+[26-Jun-2016 11:06:40 America/Phoenix] processPayment
+[26-Jun-2016 11:06:40 America/Phoenix] dzainius@gmail.com is a returning customer.
+[26-Jun-2016 11:14:34 America/Phoenix] POST FROM PAYPAL. TXN_ID: 2XM66052FM2770249 WRT_TXN_ID: c4nWlky9inYJ
+[26-Jun-2016 11:14:34 America/Phoenix] processPayment
+[26-Jun-2016 11:14:34 America/Phoenix] X@QXS.com is NEW.
+[26-Jun-2016 11:20:14 America/Phoenix] POST FROM PAYPAL. TXN_ID: 1AA51200N02981525 WRT_TXN_ID: 
+[26-Jun-2016 11:20:14 America/Phoenix] CRITICAL: No entry in db for:  
+[26-Jun-2016 11:22:26 America/Phoenix] POST FROM PAYPAL. TXN_ID: 9AU344311J0372645 WRT_TXN_ID: 
+[26-Jun-2016 11:22:26 America/Phoenix] CRITICAL: No entry in db for:  
+[26-Jun-2016 11:22:46 America/Phoenix] POST FROM PAYPAL. TXN_ID: 88017882R9323490F WRT_TXN_ID: PQJX3yxZt3M5
+[26-Jun-2016 11:22:46 America/Phoenix] processPayment
+[26-Jun-2016 11:22:46 America/Phoenix] dzainius@gmail.com is a returning customer.
+[27-Jul-2016 00:06:01 America/Phoenix] processPayment
+[27-Jul-2016 00:06:01 America/Phoenix]  is NEW.
+[27-Jul-2016 00:10:04 America/Phoenix] processPayment
+[27-Jul-2016 00:10:05 America/Phoenix] M@C6S.com is NEW.
+[27-Jul-2016 00:11:43 America/Phoenix] POST FROM PAYPAL. TXN_ID: 8AK48010LS1627649 WRT_TXN_ID: 
+[27-Jul-2016 00:11:43 America/Phoenix] CRITICAL: No entry in db for:  
+[27-Jul-2016 01:02:25 America/Phoenix] processPayment
+[27-Jul-2016 01:02:25 America/Phoenix] i@byp.com is NEW.
+[27-Jul-2016 01:03:01 America/Phoenix] POST FROM PAYPAL. TXN_ID: 66392148W23730511 WRT_TXN_ID: 
+[27-Jul-2016 01:03:01 America/Phoenix] CRITICAL: No entry in db for:  
+[27-Jul-2016 01:04:55 America/Phoenix] POST FROM PAYPAL. TXN_ID: 48W10080WV778400H WRT_TXN_ID: 
+[27-Jul-2016 01:04:55 America/Phoenix] CRITICAL: No entry in db for:  
+[27-Jul-2016 01:30:56 America/Phoenix] POST FROM PAYPAL. TXN_ID: 3FH89603E15840417 WRT_TXN_ID: 
+[27-Jul-2016 01:30:56 America/Phoenix] CRITICAL: No entry in db for:  
+[27-Jul-2016 01:38:01 America/Phoenix] POST FROM PAYPAL. TXN_ID: 14D56341Y2831163U WRT_TXN_ID: FAjSGULvjxcY
+[27-Jul-2016 01:38:01 America/Phoenix] processPayment
+[27-Jul-2016 01:38:01 America/Phoenix] H@QEG.com is NEW.
+[27-Jul-2016 01:56:02 America/Phoenix] processPayment
+[27-Jul-2016 01:56:02 America/Phoenix]  is NEW.
+[27-Jul-2016 02:05:59 America/Phoenix] processPayment
+[27-Jul-2016 02:05:59 America/Phoenix]  is NEW.
+[27-Jul-2016 02:08:05 America/Phoenix] processPayment
+[27-Jul-2016 02:08:05 America/Phoenix]  is NEW.
+[27-Jul-2016 02:14:11 America/Phoenix] processPayment
+[27-Jul-2016 02:14:11 America/Phoenix]  is NEW.
+[27-Jul-2016 02:23:30 America/Phoenix] User email in sofort listener 
+[27-Jul-2016 02:23:30 America/Phoenix] processPayment
+[27-Jul-2016 02:23:30 America/Phoenix] User email in registration 
+[27-Jul-2016 02:23:30 America/Phoenix]  is NEW.
+[27-Jul-2016 02:29:41 America/Phoenix] User email in sofort listener 3@3pK.com
+[27-Jul-2016 02:29:41 America/Phoenix] processPayment
+[27-Jul-2016 02:29:41 America/Phoenix] User email in registration 3@3pK.com
+[27-Jul-2016 02:29:41 America/Phoenix] 3@3pK.com is NEW.
+[27-Jul-2016 02:51:54 America/Phoenix] this is a session id in payment sao4io0golmcimpgoltnhlebq3
+[27-Jul-2016 02:52:12 America/Phoenix] this is a session id in sofort listener 3ef1hj6irbpfv9tvgvt6dsns45
+[27-Jul-2016 02:52:12 America/Phoenix] User email in sofort listener e@gxq.com
+[27-Jul-2016 02:52:12 America/Phoenix] processPayment
+[27-Jul-2016 02:52:12 America/Phoenix] User email in registration e@gxq.com
+[27-Jul-2016 02:52:12 America/Phoenix] e@gxq.com is NEW.
+[27-Jul-2016 02:54:33 America/Phoenix] this is a session id in payment sao4io0golmcimpgoltnhlebq3
+[27-Jul-2016 02:54:59 America/Phoenix] this is a session id in sofort listener 3ef1hj6irbpfv9tvgvt6dsns45
+[27-Jul-2016 02:54:59 America/Phoenix] User email in sofort listener 
+[27-Jul-2016 02:54:59 America/Phoenix] processPayment
+[27-Jul-2016 02:54:59 America/Phoenix] User email in registration 
+[27-Jul-2016 02:54:59 America/Phoenix]  is NEW.
+[27-Jul-2016 03:07:12 America/Phoenix] this is a session id in sofort listener sao4io0golmcimpgoltnhlebq3
+[27-Jul-2016 03:07:12 America/Phoenix] User email in sofort listener A@FxA.com
+[27-Jul-2016 03:07:12 America/Phoenix] processPayment
+[27-Jul-2016 03:07:12 America/Phoenix] User email in registration A@FxA.com
+[27-Jul-2016 03:07:12 America/Phoenix] A@FxA.com is NEW.
+[27-Jul-2016 04:08:43 America/Phoenix] this is a session id in payment g2sn9j8um4l1uhbe1tk1bbkr33
+[27-Jul-2016 13:08:43 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=xB7yzkXKkVJ8
+[27-Jul-2016 04:09:31 America/Phoenix] this is a session id in payment g2sn9j8um4l1uhbe1tk1bbkr33
+[27-Jul-2016 13:09:31 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=8ty9nU4AhmgP
+[27-Jul-2016 04:09:49 America/Phoenix] processPayment
+[27-Jul-2016 04:09:49 America/Phoenix] User email in registration 5@9aZ.com
+[27-Jul-2016 04:09:49 America/Phoenix] 5@9aZ.com is NEW.
+[27-Jul-2016 04:19:33 America/Phoenix] POST FROM PAYPAL. TXN_ID: 8PY14146PE483831X WRT_TXN_ID: qS27jeEbh6ZV
+[27-Jul-2016 04:19:33 America/Phoenix] CRITICAL: No entry in db for:  qS27jeEbh6ZV
+[27-Jul-2016 04:25:50 America/Phoenix] this is a session id in payment td5g6hqf1qjlom39ii1efjptv3
+[27-Jul-2016 13:25:50 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=iKWoPcnYvp4D
+[27-Jul-2016 04:29:02 America/Phoenix] this is a session id in payment td5g6hqf1qjlom39ii1efjptv3
+[27-Jul-2016 13:29:02 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=Sp9J6IQOyODD
+[27-Jul-2016 04:29:50 America/Phoenix] processPayment
+[27-Jul-2016 04:29:50 America/Phoenix] User email in registration D@6lD.com
+[27-Jul-2016 04:29:50 America/Phoenix] D@6lD.com is NEW.
+[27-Jul-2016 04:32:56 America/Phoenix] this is a session id in payment g2sn9j8um4l1uhbe1tk1bbkr33
+[27-Jul-2016 13:32:56 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=zVU7Bzwf2ZOK
+[27-Jul-2016 04:33:15 America/Phoenix] processPayment
+[27-Jul-2016 04:33:15 America/Phoenix] User email in registration I@zlY.com
+[27-Jul-2016 04:33:15 America/Phoenix] I@zlY.com is NEW.
+[27-Jul-2016 04:36:56 America/Phoenix] this is a session id in payment i3covehh8mrk4up5bonr7navh0
+[27-Jul-2016 13:36:56 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=fLeFW24IN29c
+[27-Jul-2016 04:37:29 America/Phoenix] processPayment
+[27-Jul-2016 04:37:29 America/Phoenix] User email in registration i@ihG.com
+[27-Jul-2016 04:37:29 America/Phoenix] i@ihG.com is NEW.
+[27-Jul-2016 04:39:50 America/Phoenix] this is a session id in payment td5g6hqf1qjlom39ii1efjptv3
+[27-Jul-2016 04:44:33 America/Phoenix] this is a session id in payment jun2mvib0ndn2q6amb7kor27a1
+[27-Jul-2016 05:08:32 America/Phoenix] POST FROM PAYPAL. TXN_ID: 5K660165T14648439 WRT_TXN_ID: k3jT9ugoKY30
+[27-Jul-2016 05:08:32 America/Phoenix] CRITICAL: No entry in db for:  k3jT9ugoKY30
+[27-Jul-2016 05:10:02 America/Phoenix] this is a session id in payment i3covehh8mrk4up5bonr7navh0
+[27-Jul-2016 05:10:32 America/Phoenix] POST FROM PAYPAL. TXN_ID: 02H44601X6871043K WRT_TXN_ID: QBd95weybTli
+[27-Jul-2016 05:10:32 America/Phoenix] processPayment
+[27-Jul-2016 05:10:32 America/Phoenix] User email in registration 
+[27-Jul-2016 05:10:32 America/Phoenix]  is NEW.
+[27-Jul-2016 05:12:05 America/Phoenix] this is a session id in payment i3covehh8mrk4up5bonr7navh0
+[27-Jul-2016 05:12:32 America/Phoenix] POST FROM PAYPAL. TXN_ID: 9NV902593V354251Y WRT_TXN_ID: GrXgc2Pdq7Ix
+[27-Jul-2016 05:12:32 America/Phoenix] processPayment
+[27-Jul-2016 05:12:32 America/Phoenix] User email in registration 
+[27-Jul-2016 05:12:32 America/Phoenix]  is NEW.
+[27-Jul-2016 05:13:16 America/Phoenix] this is a session id in payment 4becl2j3m5ebqpkqkrs4t10973
+[27-Jul-2016 05:21:26 America/Phoenix] this is a session id in payment i3covehh8mrk4up5bonr7navh0
+[27-Jul-2016 05:21:52 America/Phoenix] POST FROM PAYPAL. TXN_ID: 89F226119H7030518 WRT_TXN_ID: rqe4lVRtvfO3
+[27-Jul-2016 05:21:52 America/Phoenix] processPayment
+[27-Jul-2016 05:21:52 America/Phoenix] User email in registration 
+[27-Jul-2016 05:21:52 America/Phoenix]  is NEW.
+[27-Jul-2016 05:26:53 America/Phoenix] this is a session id in payment i3covehh8mrk4up5bonr7navh0
+[27-Jul-2016 05:27:22 America/Phoenix] POST FROM PAYPAL. TXN_ID: 6N302161LP432510Y WRT_TXN_ID: z7x6oObjZX0j
+[27-Jul-2016 05:27:22 America/Phoenix] 1
+[27-Jul-2016 05:27:22 America/Phoenix] email from paypal listener
+[27-Jul-2016 05:27:22 America/Phoenix] processPayment
+[27-Jul-2016 05:27:22 America/Phoenix] User email in registration 
+[27-Jul-2016 05:27:22 America/Phoenix]  is NEW.
+[27-Jul-2016 05:28:06 America/Phoenix] this is a session id in payment 4becl2j3m5ebqpkqkrs4t10973
+[27-Jul-2016 14:28:06 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=Jf8FuOudxFRz
+[27-Jul-2016 05:29:51 America/Phoenix] processPayment
+[27-Jul-2016 05:29:51 America/Phoenix] User email in registration 
+[27-Jul-2016 05:29:51 America/Phoenix]  is NEW.
+[27-Jul-2016 05:30:28 America/Phoenix] this is a session id in payment i3covehh8mrk4up5bonr7navh0
+[27-Jul-2016 05:30:53 America/Phoenix] POST FROM PAYPAL. TXN_ID: 0K621500107105333 WRT_TXN_ID: 8v1TG6Yk9ng8
+[27-Jul-2016 05:30:53 America/Phoenix] 
+[27-Jul-2016 05:30:53 America/Phoenix] email from paypal listener
+[27-Jul-2016 05:30:53 America/Phoenix] processPayment
+[27-Jul-2016 05:30:53 America/Phoenix] User email in registration 
+[27-Jul-2016 05:30:53 America/Phoenix]  is NEW.
+[27-Jul-2016 05:32:05 America/Phoenix] this is a session id in payment feuuf6qgf7tt8r2p48ihdupdv0
+[27-Jul-2016 05:32:49 America/Phoenix] POST FROM PAYPAL. TXN_ID: 8ET4088058493810R WRT_TXN_ID: a3PHffuGOs1F
+[27-Jul-2016 05:32:49 America/Phoenix] t@4xC.com
+[27-Jul-2016 05:32:49 America/Phoenix] email from paypal listenert@4xC.com
+[27-Jul-2016 05:32:49 America/Phoenix] processPayment
+[27-Jul-2016 05:32:49 America/Phoenix] User email in registration t@4xC.com
+[27-Jul-2016 05:32:49 America/Phoenix] t@4xC.com is NEW.
+[27-Jul-2016 06:03:02 America/Phoenix] POST FROM PAYPAL. TXN_ID: 4CR985618U1523721 WRT_TXN_ID: tVMCboGI4AcW
+[27-Jul-2016 06:03:02 America/Phoenix] CRITICAL: No entry in db for:  tVMCboGI4AcW
+[27-Jul-2016 16:49:03 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 16:49:03 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 16:49:03 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 16:49:03 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 16:49:03 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:49:03 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:49:05 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 16:49:05 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 16:49:05 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 16:49:05 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 16:49:05 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:49:05 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:49:25 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:49:25 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:49:25 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:49:29 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:49:29 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:49:29 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:49:32 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:49:32 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:49:32 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:49:32 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 50
+[27-Jul-2016 16:49:32 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 58
+[27-Jul-2016 16:49:32 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 83
+[27-Jul-2016 16:49:32 Europe/Vienna] PHP Notice:  Undefined variable: str in /home/content/56/6152056/html/production/zahlung/index.php on line 453
+[27-Jul-2016 07:49:32 America/Phoenix] this is a session id in payment n4gl5g3rhj3fsbadkirndmoeq4
+[27-Jul-2016 16:49:32 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=SJ8aeJA1yjcv
+[27-Jul-2016 16:49:47 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:49:47 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:49:47 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:49:52 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:49:52 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:49:52 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:49:54 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:49:54 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:49:54 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:49:54 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 50
+[27-Jul-2016 16:49:54 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 58
+[27-Jul-2016 16:49:54 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 83
+[27-Jul-2016 16:49:54 Europe/Vienna] PHP Notice:  Undefined variable: str in /home/content/56/6152056/html/production/zahlung/index.php on line 453
+[27-Jul-2016 07:49:55 America/Phoenix] this is a session id in payment n4gl5g3rhj3fsbadkirndmoeq4
+[27-Jul-2016 16:49:55 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=ijW0uWGIVrZZ
+[27-Jul-2016 16:50:22 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:50:22 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:50:22 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:50:25 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:50:25 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:50:25 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:50:25 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 50
+[27-Jul-2016 16:50:25 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 58
+[27-Jul-2016 16:50:25 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 83
+[27-Jul-2016 16:50:25 Europe/Vienna] PHP Notice:  Undefined variable: str in /home/content/56/6152056/html/production/zahlung/index.php on line 453
+[27-Jul-2016 07:50:25 America/Phoenix] this is a session id in payment n4gl5g3rhj3fsbadkirndmoeq4
+[27-Jul-2016 16:51:06 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:51:06 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:51:06 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:51:11 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:51:11 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:51:11 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:51:54 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:51:54 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:51:54 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:51:58 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:51:58 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:51:58 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:52:00 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[27-Jul-2016 16:52:00 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[27-Jul-2016 16:52:00 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[27-Jul-2016 16:52:00 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 50
+[27-Jul-2016 16:52:00 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 58
+[27-Jul-2016 16:52:00 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 83
+[27-Jul-2016 16:52:00 Europe/Vienna] PHP Notice:  Undefined variable: str in /home/content/56/6152056/html/production/zahlung/index.php on line 453
+[27-Jul-2016 07:52:00 America/Phoenix] this is a session id in payment n4gl5g3rhj3fsbadkirndmoeq4
+[27-Jul-2016 16:52:00 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=3O1PlzBCpqRV
+[27-Jul-2016 07:53:03 America/Phoenix] processPayment
+[27-Jul-2016 07:53:03 America/Phoenix] User email in registration x@gXG.com
+[27-Jul-2016 07:53:03 America/Phoenix] x@gXG.com is NEW.
+[27-Jul-2016 16:54:14 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 16:54:14 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 16:54:14 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 16:54:14 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 16:54:14 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:54:14 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:54:24 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 16:54:24 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 16:54:24 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 16:54:24 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 16:54:24 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:54:24 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:54:27 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 16:54:27 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 16:54:27 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 16:54:27 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 16:54:27 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:54:27 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:54:27 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 50
+[27-Jul-2016 16:54:27 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 58
+[27-Jul-2016 16:54:27 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 83
+[27-Jul-2016 16:54:27 Europe/Vienna] PHP Notice:  Undefined variable: str in /home/content/56/6152056/html/production/zahlung/index.php on line 453
+[27-Jul-2016 07:54:27 America/Phoenix] this is a session id in payment jun2mvib0ndn2q6amb7kor27a1
+[27-Jul-2016 16:54:27 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=9NFgBc9f3Pqt
+[27-Jul-2016 16:59:23 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 16:59:23 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 16:59:23 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 16:59:23 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 16:59:23 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:59:23 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:59:29 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 16:59:29 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 16:59:29 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 16:59:29 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 16:59:29 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:59:29 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:59:34 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 16:59:34 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 16:59:34 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 16:59:34 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 16:59:34 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:59:34 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:59:34 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 50
+[27-Jul-2016 16:59:34 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 58
+[27-Jul-2016 16:59:34 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 83
+[27-Jul-2016 16:59:34 Europe/Vienna] PHP Notice:  Undefined variable: str in /home/content/56/6152056/html/production/zahlung/index.php on line 453
+[27-Jul-2016 07:59:35 America/Phoenix] this is a session id in payment jun2mvib0ndn2q6amb7kor27a1
+[27-Jul-2016 16:59:35 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=J7DFOTP2BDBz
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 50
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 58
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 83
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 16:59:44 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 08:00:02 America/Phoenix] processPayment
+[27-Jul-2016 08:00:02 America/Phoenix] User email in registration rahim.taghizadegan@gmail.com
+[27-Jul-2016 08:00:02 America/Phoenix] rahim.taghizadegan@gmail.com is a returning customer.
+[27-Jul-2016 17:00:46 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 17:00:46 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 17:00:46 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 17:00:46 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 17:00:46 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 17:00:46 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 17:00:54 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 17:00:54 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 17:00:54 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 17:00:54 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 17:00:54 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 17:00:54 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 17:01:47 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[27-Jul-2016 17:01:47 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[27-Jul-2016 17:01:47 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[27-Jul-2016 17:01:47 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[27-Jul-2016 17:01:47 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 17:01:47 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[27-Jul-2016 17:01:47 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 50
+[27-Jul-2016 17:01:47 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 58
+[27-Jul-2016 17:01:47 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 83
+[27-Jul-2016 17:01:47 Europe/Vienna] PHP Notice:  Undefined variable: str in /home/content/56/6152056/html/production/zahlung/index.php on line 453
+[27-Jul-2016 08:01:47 America/Phoenix] this is a session id in payment jns3uf5r6m2ju4font44uquur3
+[27-Jul-2016 17:01:47 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=HJdn0xuJ6Sar
+[27-Jul-2016 08:02:36 America/Phoenix] processPayment
+[27-Jul-2016 08:02:36 America/Phoenix] User email in registration gk@scholarium.at
+[27-Jul-2016 08:02:36 America/Phoenix] gk@scholarium.at is a returning customer.
+[08-Aug-2016 11:29:27 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[08-Aug-2016 11:29:27 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[08-Aug-2016 11:29:27 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[08-Aug-2016 11:29:28 Europe/Vienna] PHP Notice:  Undefined variable: profile in /home/content/56/6152056/html/production/zahlung/index.php on line 202
+[08-Aug-2016 11:29:59 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[08-Aug-2016 11:29:59 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[08-Aug-2016 11:29:59 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[08-Aug-2016 11:30:40 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[08-Aug-2016 11:30:40 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[08-Aug-2016 11:30:40 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[08-Aug-2016 11:30:40 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 49
+[08-Aug-2016 11:30:40 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 57
+[08-Aug-2016 11:30:40 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 82
+[08-Aug-2016 11:30:40 Europe/Vienna] PHP Notice:  Undefined variable: str in /home/content/56/6152056/html/production/zahlung/index.php on line 418
+[08-Aug-2016 02:30:40 America/Phoenix] this is a session id in payment 8pbc8vc2boqdpd11d3qbtrsfr5
+[08-Aug-2016 11:30:40 Europe/Vienna] sofort success url in payment http://www.scholarium.at/zahlung/sofort_listener.php?g=REJlhhoBtsgh
+[08-Aug-2016 02:32:08 America/Phoenix] processPayment
+[08-Aug-2016 02:32:08 America/Phoenix] User email in registration barthololos@web.de
+[08-Aug-2016 02:32:08 America/Phoenix] barthololos@web.de is NEW.
+[09-Aug-2016 11:47:04 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 6
+[09-Aug-2016 11:47:04 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 8
+[09-Aug-2016 11:47:05 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 125
+[09-Aug-2016 11:47:05 Europe/Vienna] PHP Notice:  Use of undefined constant Mitgliedschaft - assumed 'Mitgliedschaft' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 148
+[09-Aug-2016 11:47:05 Europe/Vienna] PHP Notice:  Use of undefined constant test - assumed 'test' in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[09-Aug-2016 11:47:05 Europe/Vienna] PHP Notice:  Undefined index: test in /home/content/56/6152056/html/production/views/_header_in_utf8.php on line 150
+[09-Aug-2016 13:39:32 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[09-Aug-2016 13:39:32 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[09-Aug-2016 13:39:32 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[09-Aug-2016 13:39:32 Europe/Vienna] PHP Notice:  Undefined variable: profile in /home/content/56/6152056/html/production/zahlung/index.php on line 202
+[09-Aug-2016 13:40:12 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[09-Aug-2016 13:40:12 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[09-Aug-2016 13:40:12 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[09-Aug-2016 13:46:11 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[09-Aug-2016 13:46:11 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[09-Aug-2016 13:46:11 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[09-Aug-2016 13:46:11 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 49
+[09-Aug-2016 13:46:11 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 57
+[09-Aug-2016 13:46:11 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 82
+[09-Aug-2016 13:46:12 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[09-Aug-2016 13:46:12 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[09-Aug-2016 13:46:12 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[09-Aug-2016 14:06:02 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[09-Aug-2016 14:06:02 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[09-Aug-2016 14:06:02 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[10-Aug-2016 18:10:44 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[10-Aug-2016 18:10:44 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[10-Aug-2016 18:10:44 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[10-Aug-2016 18:10:44 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 49
+[10-Aug-2016 18:10:44 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 57
+[10-Aug-2016 18:10:44 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 82
+[10-Aug-2016 18:10:45 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[10-Aug-2016 18:10:45 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[10-Aug-2016 18:10:45 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[10-Aug-2016 18:10:45 Europe/Vienna] PHP Notice:  Undefined index: product in /home/content/56/6152056/html/production/zahlung/index.php on line 200
+[10-Aug-2016 18:10:45 Europe/Vienna] PHP Notice:  Undefined variable: profile in /home/content/56/6152056/html/production/zahlung/index.php on line 202
+[10-Aug-2016 18:11:09 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[10-Aug-2016 18:11:09 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[10-Aug-2016 18:11:09 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[10-Aug-2016 18:11:09 Europe/Vienna] PHP Notice:  Undefined index: product in /home/content/56/6152056/html/production/zahlung/index.php on line 76
+[10-Aug-2016 18:11:44 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[10-Aug-2016 18:11:44 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[10-Aug-2016 18:11:44 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[10-Aug-2016 18:11:44 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 49
+[10-Aug-2016 18:11:44 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 57
+[10-Aug-2016 18:11:44 Europe/Vienna] PHP Notice:  Undefined index: g in /home/content/56/6152056/html/production/zahlung/index.php on line 82
+[10-Aug-2016 18:11:44 Europe/Vienna] PHP Notice:  Undefined variable: title in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 6
+[10-Aug-2016 18:11:44 Europe/Vienna] PHP Notice:  Undefined variable: type in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 10
+[10-Aug-2016 18:11:44 Europe/Vienna] PHP Notice:  Use of undefined constant BASE_URL - assumed 'BASE_URL' in /home/content/56/6152056/html/production/views/_header_not_in_utf8.php on line 164
+[10-Aug-2016 18:11:44 Europe/Vienna] PHP Fatal error:  Uncaught exception 'Twig_Error_Syntax' with message 'Unexpected ")" in "edit.html.twig" at line 156.' in /home/content/56/6152056/html/production/libraries/Twig-1.24.0/lib/Twig/Lexer.php:259
+Stack trace:
+#0 /home/content/56/6152056/html/production/libraries/Twig-1.24.0/lib/Twig/Lexer.php(205): Twig_Lexer->lexExpression()
+#1 /home/content/56/6152056/html/production/libraries/Twig-1.24.0/lib/Twig/Lexer.php(111): Twig_Lexer->lexBlock()
+#2 /home/content/56/6152056/html/production/libraries/Twig-1.24.0/lib/Twig/Environment.php(577): Twig_Lexer->tokenize('{# ??//if($_SES...', 'edit.html.twig')
+#3 /home/content/56/6152056/html/production/libraries/Twig-1.24.0/lib/Twig/Environment.php(667): Twig_Environment->tokenize('{# ??//if($_SES...', 'edit.html.twig')
+#4 /home/content/56/6152056/html/production/libraries/Twig-1.24.0/lib/Twig/Environment.php(396): Twig_Environment->compileSource('{# ??//if($_SES...', 'edit.html.twig')
+#5 /home/content/56/6152056/html/production/zahlung/index.php(249): Twig_Environment->loadTempla in /home/content/56/6152056/html/production/libraries/Twig-1.24.0/lib/Twig/Lexer.php on line 259
+[10-Aug-2016 18:16:51 Europe/Vienna] PHP Fatal error:  Class 'General' not found in /home/content/56/6152056/html/production/zahlung/index.php on line 32
+[10-Aug-2016 18:16:57 Europe/Vienna] PHP Fatal error:  Class 'General' not found in /home/content/56/6152056/html/production/zahlung/index.php on line 32

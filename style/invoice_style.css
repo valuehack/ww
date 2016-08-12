@@ -121,7 +121,7 @@ h1 {
 }
 
 .invoice-detail__col2 {
-	width: 52%;
+	width: 50%;
 }
 
 .invoice-detail__col3 {
@@ -138,14 +138,53 @@ h1 {
 	padding-bottom: 0em;
 }
 
-.invoice-payment {
+.invoice-detail__type {
+	font-size: 0.75rem;
+	line-height: 1;
+	font-style: italic;
+}
+
+.invoice-detail__title {
+	font-family: "Futura Book", Helvetica, Arial, sans-serif;
+	font-size: 1.25rem;
+	line-height: 1.1;
+	margin: 0.15rem 0 0.25rem 0;
+}
+
+.invoice-detail__date {
+	font-size: 1rem;
+}
+
+.invoice-payment, .invoice-location {
 	line-height: 1.25;
 	text-align: justify;
 	font-family: 'Garamond', Georgia, Times, serif;
-	margin: 1em 0 2em 2.5cm;
+	margin: 0 0 2em 2.5cm;
+}
+
+.invoice-location {
+	display: block;
+}
+
+.invoice-location__info {
+	width: 32%;
+	padding-right: 3%;
+} 
+
+.invoice-location__info h1 {
+	font-size: 12pt;
+}
+
+.invoice-location__map {
+	width: 65%;
+	text-align: right;
 }
 
 .invoice-ending {
 	line-height: 2;
 	font-family: 'Garamond', Georgia, Times, serif;
+}
+
+.h-full-width {
+	width: 100%;
 }

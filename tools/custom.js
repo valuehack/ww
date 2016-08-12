@@ -36,20 +36,60 @@ $(document).ready(function()
 			    if(response.exists){
 			        $("#ajax_email_exists_error").fadeIn("fast").html('Wir kennen Sie schon - bitte zu Ihrer Sicherheit durch Log-In Identit&auml;t best&auml;tigen: rechts oben &quot;Anmelden&quot; anklicken.');
 			        $("#ajax_email_exists_error").addClass("error");
+			        $("#ajax_email_exists").addClass("error--input");
 			        $("#weiter_button").attr("disabled", "disabled");     
-				    }else{
+				}
+				else
+				{
 			        //user email does not exist - enable the button
 			        $("#weiter_button").removeAttr("disabled");
-			        $("#ajax_email_exists_error").fadeOut('fast');   
+			        $("#ajax_email_exists_error").fadeOut('fast');
+			        $("#ajax_email_exists").removeClass("error--input");   
 			    }
 		 	}, 'JSON');
-		}else
+		}
+		else
 		{
 			//keep button enabled if email is not validated
 			$("#weiter_button").removeAttr("disabled");
 			$("#ajax_email_exists_error").fadeOut('fast');    
 		}
 
+	});
+
+	$("#ajax_email_exists2").change(function()
+	{
+		var ajax_email_exists = $("#ajax_email_exists").val();
+		var ajax_email_exists2 = $("#ajax_email_exists2").val();
+		
+		if(validateEmail(ajax_email_exists) && validateEmail(ajax_email_exists2))
+		{
+			$.post('/tools/ajax_email_same.php',{user_email: $('#ajax_email_exists').val(), user_email2: $('#ajax_email_exists2').val()}, function(response){
+				if(response.notsame)
+				{
+					$("#ajax_email_same_error").fadeIn("fast").html('Die E-Mails sind nicht identisch.');
+					$("#ajax_email_same_error").addClass("error");
+					$("#ajax_email_same_error").addClass("h-nofloat");
+			        $("#ajax_email_exists2").addClass("error--input");
+			        $("#weiter_button").attr("disabled", "disabled");	      
+				}
+				else
+				{
+					//user emails are the same - enable the button, remove error
+			 		$("#weiter_button").removeAttr("disabled");
+			 		$("#ajax_email_same_error").fadeOut('fast');
+			 		$("#ajax_email_exists2").removeClass("error--input");
+			 		$("#ajax_email_exists").addClass("message--input");
+			 		$("#ajax_email_exists2").addClass("message--input");
+				}
+			}, 'JSON');
+		}
+		else
+		{
+			//keep button enabled if email is not validated
+			$("#weiter_button").removeAttr("disabled");
+			$("#ajax_email_exists_error").fadeOut('fast'); 
+		}
 	});
 
 	// autofocus for login form in the header

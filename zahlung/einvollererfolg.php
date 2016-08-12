@@ -41,7 +41,7 @@ $next_seminar = $general->getProducts($type=array('seminar'), $status = 2, $show
 				<div>
 					<b>Vielen Dank f&uuml;r Ihre Spende.</b><br>
 					<br>
-					Die Zahlung wurde erfolgreich durchgef&uuml;hrt. In K&uuml;rze erhalten Sie eine Nachricht als Best&auml;tigung.</p>
+					Die Zahlung wurde erfolgreich durchgef&uuml;hrt. In K&uuml;rze erhalten Sie eine Best&auml;tigung-E-Mail und eine Spendenquittung.</p>
 				</div>
 			</div>
 		</div>
@@ -69,6 +69,24 @@ $next_seminar = $general->getProducts($type=array('seminar'), $status = 2, $show
 <?php
 					}
 ?>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-8">
+<?php
+					if (count($next_seminar) > 5) {$m = 5;}
+					else {$m = count($next_seminar);}
+					
+					for ($n = 0; $n < $m; $n++ ) {
+?>
+					<div class="ctn-elm">
+						<span class="product_type"><?=ucfirst($next_seminar[$n]['type'])?></span>
+						<h1 class="h2"><a class="link--highlighted" href="../<?=$next_seminar[$n]['type']?>/?q=<?=$next_seminar[$n]['id']?>"><?=$next_seminar[$n]['title']?></a></h1>
+						<em><?=$general->getDate($next_seminar[$n]['start'], $next_seminar[$n]['end'])?></em>
+					</div>
+<?php
+					}
+?>				
 			</div>
 		</div>
 <?php

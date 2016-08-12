@@ -1,15 +1,4 @@
-<?php
-
-/**
- * A simple PHP Login Script / ADVANCED VERSION
- * For more versions (one-file, minimal, framework-like) visit http://www.php-login.net
- *
- * @author Panique
- * @link http://www.php-login.net
- * @link https://github.com/panique/php-login-advanced/
- * @license http://opensource.org/licenses/MIT MIT License
- */
-
+<?php 
 // check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
     echo PHP_VERSION;
@@ -44,31 +33,45 @@ $login = new Login();
 $email = new Email();
 $registration = new Registration();
 
-
-// ... ask if we are logged in here:
-if ($login->isUserLoggedIn() == true) 
-{
-    // the user is logged in. you can do whatever you want here.
-    // for demonstration purposes, we simply show the "you are logged in" view.
-    switch ($_SESSION['Mitgliedschaft']) {
-        case 0:
-            include("../views/salon_not_in.php");
-            break;
-        case ($_SESSION['Mitgliedschaft'] >= 1):
-            include("../views/salon_in.php");
-            break;
-        default: 
-            include("../views/salon_not_in.php"); 
-            break;
-    }
+$title="Unterst&uuml;tzen";
+include('../views/_header_not_in.php'); 
 
 
-} 
-else {
-    // the user is not logged in. you can do whatever you want here.
-    // for demonstration purposes, we simply show the "you are not logged in" view.
-    include("../views/salon_not_in.php");
-    // echo "hello";
-    #include("views/header2.inc.php");
-    
-}
+?>
+
+<div class="content">
+	<div class="blog">
+		<header>
+			<h1>Seminar Test</h1>
+		</header>
+	</div>
+	<div>
+		<form method="post" action="/zahlung/?g=ihredaten">
+			<input type="hidden" name="product[what]" value="seminar_666670">
+			<input type="hidden" name="product[id]" value="666670">
+			<input type="hidden" name="product[type]" value="seminar">
+			<input type="hidden" name="product[price]" value="175">
+			
+			<select name="product[quantity]">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+			
+			<input type="submit" class="profil_inputbutton" name="submit_event_selection" value="Anmelden">
+		</form>
+	</div>
+	<div class="profil">
+		<form action="" method="">
+			<div id="ajax_email_exists_error"></div>
+		 	<label for="user_email">E-Mail</label>
+    		<input id="ajax_email_exists" type="email" class="profil_inputfield" name="profile[user_email]" value="" required>
+    		<label for="user_email2">E-Mail wiederhohlen</label>
+    		<input id="ajax_email_exists2" type="email" class="profil_inputfield" name="profile[user_email]" value="" required>
+    		<div id="ajax_email_same_error"></div>
+    	</form>   		
+	</div>
+</div>
+<?php include('../views/_footer.php'); ?>

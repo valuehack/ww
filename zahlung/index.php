@@ -24,32 +24,46 @@ require_once('../config/config.php');
 require_once('../translations/de.php');
 
 # load the login class
-// require_once('../classes/General.php');
+require_once('../classes/General.php');
 require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
 require_once('../classes/Email.php');
 
-#does not work
-// $general = new General();
+$general = new General();
 $login = new Login();
 $email = new Email();
 $registration = new Registration();
 
+$title = 'Zahlung';
+$type = '';
+
 if ( (isset($_SESSION['user_logged_in'])) and ($_SESSION['user_logged_in'] === 1) )
 {
-    include('../views/_header_in_utf8.php'); 
+    include('../views/_header_in_utf8.php');
 }
 else
 {   
     include('../views/_header_not_in_utf8.php');
 }
 
-
     #product selected, redirect to submit your data form
-    if ($_GET["g"] === 'ihredaten')
+    if ($_GET['g'] === 'ihredaten')
     {
+    	$product = $_POST['product'];
+				
+    	if ($product['type'] === 'seminar' || $product['type'] === 'projekt')
+		{
+			$product_info = $general->getProduct($product['id']);
+			$product['title'] = $product_info->title;
+			$product['date'] = $general->getDate($product_info->start, $product_info->end);
+			$product['spots'] = $product_info->spots;
+			$product['spots_sold'] = $product_info->spots_sold;
+			$product['spots_avail'] = $product_info->spots - $product_info->spots_sold;
+		} 
 
-        if (isset($_POST['product']['what'])) updateProductSessionVars($_POST['product']['what']);
+		$_SESSION['product'] = $product;
+				
+        updateSessionVars($product);
         getForm();
 
     }
@@ -60,8 +74,8 @@ else
         #check if email is already registered       
 
         #here comes extra post from seminare and projekt, so set all session vars
-        if (isset($_POST['product'])) $_SESSION['product'] = $_POST['product'];
         if (isset($_POST['profile'])) $_SESSION['profile'] = $_POST['profile'];
+		//if (isset($_POST['donation'])) $_SESSION['donation'] = $_POST['donation'];
         if ( (isset($_SESSION['user_logged_in'])) and ($_SESSION['user_logged_in'] === 1) )
         {
             $_SESSION['profile']['user_logged_in'] = $_SESSION['user_logged_in'];
@@ -70,21 +84,27 @@ else
         #its coming from edit page
         if (isset($_POST['edit_form_submit']))
         {
-            updateProductSessionVars($_POST['product']['what']);
+        	if (isset($_POST['product']['quantity'])) $_SESSION['product']['quantity'] = $_POST['product']['quantity'];
+			if (isset($_POST['product']['price'])) $_SESSION['product']['price'] = $_POST['product']['price'];
+			if (isset($_POST['product']['what'])) $_SESSION['product']['what'] = $_POST['product']['what'];
+			
+            updateSessionVars($_SESSION['product']);
         }
 
-        $_SESSION['product']['total'] = $_SESSION['product']['price']; 
+        //$_SESSION['product']['total'] = $_SESSION['product']['price']; 
 
         #generate and display summary 
         getSummary();
+		
+		$general->generateTicket($_SESSION['profile'], $_SESSION['product']);
 
     }
     elseif ($_GET["g"] === 'edit')      
     {
-
         getEditPage();
 
-    }elseif (isset($_POST['change_info_submit']))        
+    }
+    elseif (isset($_POST['change_info_submit']))        
     {
         #edit
         #user want to edit the details, forward to summary/confirmation page
@@ -111,15 +131,13 @@ else
         #TODO - rename
         if (writeTransactionDataToDB($user_email, $wrt_txn_id))
         {
-           header('Location: payment.php');     
+           header('Location: payment.php');
         }
         else 
         {
-           header('Location: leider.php'); 
-
+           header('Location: error.php');
         }
         
-
     }
     elseif (!isset($_GET["g"]))
     {
@@ -202,7 +220,6 @@ function getForm()
             ));
 
     #footer
-
 }
 
 function getSummary()
@@ -217,21 +234,18 @@ function getSummary()
     #select a template
     $formTemplate = $twig->loadTemplate('summary.html.twig');
 
-    $now = date('d.m.Y', time());
+    $_SESSION['donation']['start'] = date('d.m.Y', time());
     #membership ends one year (31536000 sec) from today 
-    $membership_end = date('d.m.Y', time()+31536000);
+    $_SESSION['donation']['end'] = date('d.m.Y', time()+31536000);
 
-    $_SESSION['product']['membership_end'] = date('Y-m-d', time()+31536000);
+    //$_SESSION['donation']['end'] = date('Y-m-d', time()+31536000); dunno what this format is for
 
     #pass variables to template
-    echo $formTemplate->render(array(
-        'type' => "seminars",        
+    echo $formTemplate->render(array(       
         'profile' => $_SESSION['profile'],
         'test' => "another",
-        'now' => $now,
         'product' => $_SESSION['product'],
-        'membership_end' => $membership_end
-
+        'donation' => $_SESSION['donation'],
         ));
 }
 
@@ -248,36 +262,57 @@ function getEditPage()
         #select a template
         $formTemplate = $twig->loadTemplate('edit.html.twig');
 
-        $now = date('d.m.Y', time());
+        $_SESSION['donation']['start']= date('d.m.Y', time());
         #membership ends one year (31536000 sec) from today 
-        $membership_end = date('d.m.Y', time()+31536000);
+        $_SESSION['donation']['end'] = date('d.m.Y', time()+31536000);
 
         #pass variables to template
         echo $formTemplate->render(array(
-            'type' => "seminar",
             'product' => $_SESSION['product'],
             'profile' => $_SESSION['profile'],
-            'now' => $now,
-            'membership_end' => $membership_end
-
-
+            'donation' => $_SESSION['donation'],
             ));
 }
 
-function updateProductSessionVars($product_what)
+function updateSessionVars($product)
 {
+	if ($product['type'] === 'seminar') 
+	{
+		$level = 3;
+	}	
+	elseif ($product['type'] === 'projekt' || $product['type'] === 'upgrade')
+	{
+		$product['quantity'] = 1;
+		$level = $product['price'];
+	}
+	
+	$product['total'] = $product['price']*$product['quantity'];
+		
+	$general = new General();
+	# retrieves Membership Info (price, name,level) given a level (2,3,4,5,6,7) or a price (75 ... 2400)
+	$mb_info = $general->getMembershipInfo($level);
+	
+	$_SESSION['donation'] = $mb_info;
+	
+	if ($product['type'] === 'upgrade') 
+	{
+		$product['what'] = 'upgrade_'.$mb_info['level'];
+	}
+		
+    #sets updated vars to session as used by further methods 
+    $_SESSION['product']['what'] = $product['what'];
+	$_SESSION['product']['price'] = $product['price'];
+	$_SESSION['product']['quantity'] = $product['quantity'];
+	$_SESSION['product']['total'] = $product['total'];
 
-    #sets 'what' to session as used by futher methods 
-    $_SESSION['product']['what'] = $product_what;
-
-    switch ($product_what)
+    /*switch ($product_what)
     {
         case 'upgrade_2':
             $_SESSION['product']['type'] = "upgrade";
             $_SESSION['product']['level'] = "2";
             $_SESSION['product']['price'] = "75";
             $_SESSION['product']['name'] = "Gast";
-        break;    
+        break;
 
         case 'upgrade_3':
             $_SESSION['product']['type'] = "upgrade";
@@ -316,7 +351,7 @@ function updateProductSessionVars($product_what)
 
         default:
             // $_SESSION['product']['type'] = "unknown";
-    }
+    }*/
 
 }
 

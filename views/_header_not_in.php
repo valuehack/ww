@@ -29,12 +29,11 @@
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../tools/bootstrap.js"></script>
-    <script src="../tools/custom.js"></script>
-
-      <!-- this is used for this fancy login form -->
-      <script language="javascript" src="/js/jquery.js"></script>
-      <script language="javascript" src="/js/script.js"></script>
-
+    <!-- this is used for this fancy login form -->
+    <!--<script src="../tools/custom.js"></script>-->
+    
+	<script langugae="javascript" src="/js/general.js"></script>    
+ 
     <!-- Google Analytics Code -->
     <script type="text/javascript">
         var _gaq = _gaq || [];

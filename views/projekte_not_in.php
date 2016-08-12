@@ -10,17 +10,17 @@ include ("_header_not_in.php");
 #retrieves info about the projekt from db
 if ($id = $_GET["q"])
 {
-  $sql="SELECT * from produkte WHERE `type` LIKE 'projekt' AND id='$id'";
-  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-  $entry = mysql_fetch_array($result);
-  $title=$entry[title];
-  $avail=$entry[spots]-$entry[spots_sold];
-  $text=$entry[text];
-  $n=$entry[n];
+	$project_info = $general->getProduct($id);
+	$title = $project_info->title;
+	$img = $project_info->img;
+	$text = $project_info->text;
+	$text2 = $project_info->text2;
+	$n = $project_info->n;
+	$avail = $project_info->spots - $project_info->spots_sold;
 ?>
 
 	<div class="medien_head">
-  	    <h1><?echo $title?></h1>
+  	    <h1><?=$title?></h1>
 	</div>
 	<div class="medien_seperator">
 	    <h1>Inhalt und Informationen</h1>
@@ -28,14 +28,14 @@ if ($id = $_GET["q"])
 	<div class="medien_content">
     
     <?php
-    	if ($entry[img]) echo $entry[img];
+    	if ($img) echo $img;
 
-    	if ($entry[text]) echo $entry[text];
-    	if ($entry[text2]) echo $entry[text2];
+    	if ($text) echo $text;
+    	if ($text2) echo $text2;
     ?>
    		<!-- Button trigger modal -->
    		<div class="centered">
-   		<p>Private Unterst&uuml;tzer haben bereits <?=$entry[spots_sold];?> von n&ouml;tigen <?=$entry[spots];?> &euro; investiert.</p>
+   		<p>Private Unterst&uuml;tzer haben bereits <?=$project_info->spots_sold?> von n&ouml;tigen <?=$project_info->spots?> &euro; investiert.</p>
     		<input type="button" value="Investieren" class="medien_inputbutton" data-toggle="modal" data-target="#myModal"> 
     	</div>
     	<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>">zur&uuml;ck zu den Projekten</a></div>
@@ -52,11 +52,9 @@ else {
 		<h1>Projekte</h1>  
 
 		<?php  
-			$sql = "SELECT * from static_content WHERE (page LIKE 'projekte')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[info];		
+			$project_static = $general->getStaticInfo('projekte');
+				
+			echo $project_static->info;		
 ?>
 	</div>	
 	<div class="medien_content">

@@ -5,10 +5,13 @@
 <form method="post" action="/zahlung/?g=summary" name="the_form">
 
   {# email #}
+  <div id="ajax_email_exists_error"></div>
   <label for="user_email">E-Mail</label>
-    <input id="ajax_email_exists" type="email" class="profil_inputfield" name="profile[user_email]" value="{{profile.user_email}}" required><br>
-    <div id="ajax_email_exists_error"></div><br><br>
-
+    <input id="ajax_email_exists" type="email" class="profil_inputfield" name="profile[user_email]" value="{{profile.user_email}}" required>
+   <label for="user_email2">E-Mail wiederhohlen</label>
+   <input id="ajax_email_exists2" type="email" class="profil_inputfield" name="profile[user_email]" value="" required>
+   <div id="ajax_email_same_error"></div>
+   
   {# title  #}
   <label for="user_anrede">Anrede</label> 
     <select id="user_anrede" name="profile[user_anrede]" required>
@@ -49,26 +52,16 @@
   </select><br>
 
   {# select payment method #}
-  <div class="">
+  <div class="h-extra-space--top">
   <p>W&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p>            
   <input type="radio" class="profil_radio" name="profile[payment_option]" value="sofort" checked required><span class="profil_radio_label">SOFORT</span><br>
   <input type="radio" class="profil_radio" name="profile[payment_option]" value="paypal"><span class="profil_radio_label">PayPal</span><br>   
   </div>
 
-  {# this is maybe not needed #}
-  <input type="hidden" name="profile[first_reg]" value="{{first_reg}}">
-
   <input type="submit" id="weiter_button" class="profil_inputbutton" name="the_form_submit" value="Weiter">
 
 </form>
 </div><!-- <div class="profil"> -->
-
-<script>
-  function changePrice(totalQuantity, price){
-  document.getElementById("change").innerHTML = (totalQuantity * price);
-  }
-</script>
-
 
 {#       	//$passed_from = Where was the form included?
       	//$pass_to = To what function should the form be send?

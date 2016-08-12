@@ -80,7 +80,7 @@ function doPaypalPayment($profile, $product)
     $query['return'] = 'http://scholarium.at/zahlung/einvollererfolg.php';
 
     #generic
-    $query['cmd'] = '_xclick';   
+    $query['cmd'] = '_xclick';
     $query['charset'] = 'utf-8';
     $query['currency_code'] = 'EUR';     
     

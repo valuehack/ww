@@ -450,8 +450,7 @@ img.dropdown_coin {
 	margin-left: 5%;
 	padding: 3px 3px;	
 	border-radius: 4px;
-	box-shadow: 0 0 1px 0 transparent;
-	
+	box-shadow: 0 0 1px 0 transparent;	
 }
 
 .error {
@@ -464,6 +463,16 @@ img.dropdown_coin {
 	border: 1px solid #D6E9C6;
 	color: #468847;
 	background-color: #DFF0D8;
+}
+
+.error--input {
+	border-color: #A94442 !important;
+	color: #A94442;
+}
+
+.message--input {
+	border-color: #468847 !important;
+	color: #468847;
 }
 
 .github {
@@ -3224,6 +3233,10 @@ img.projekte_coin2  {
 	background: rgb(30,48,64);
 }
 
+.profil_inputtbutton:disabled {
+	background: rgb(175,175,175);
+}
+
 .profil_radio {
 	margin: 10px 10px 10px 157px;
 }
@@ -3354,7 +3367,7 @@ img.projekte_coin2  {
 
 .row {
 	clear: both;
-	padding: 0.5em 0;
+	padding: 1em 0;
 	display: inline-block;
 	width: 100%;
 }
@@ -3870,56 +3883,73 @@ button.close {
 }
 
 @media (max-width: 984px) {
-.agb {
-	width: 75%;
-	padding: 75px 12.5%;
+	.agb {
+		width: 75%;
+		padding: 75px 12.5%;
+	}
+
+	.agb h1 {
+		font-size: 36pt;
+		color: rgb(20,20,20);
+		text-shadow: 0 0 1px 0 rgb(20,20,20);
+		margin: 30px 0 100px 0;
+		text-align: center;
+	}
+
+	.agb h2 {
+		font-size: 24pt;
+		text-align: center;
+		margin: 80px 0 30px 0;
+		font-family: "Futura Book", Helvetica, Arial, serif;
+	}
+
+	.agb p {
+		line-height: 1.8;
+		font-size: 15pt;
+		text-align: justify;
+		margin: 20px 0;
+		-ms-hyphens: auto;
+    	-moz-hyphens: auto;
+    	-webkit-hyphens: auto;
+    	hyphens: auto
+	}
+
+	.agb ul {
+		list-style-position: outside;
+		list-style-type: none;
+		font-size: 15pt;
+		font-weight: bold;
+		line-height: 1.4;
+	}
+
+	.agb a {
+		color: rgb(46,74,98);
+		text-decoration: none;
+		border-bottom: 1px dotted rgb(46,74,98);
+	}
+
+	.agb a:hover {
+		border-bottom: 1px solid rgb(46,74,98);
+	}
+
+	.agb a:visited {
+		color: rgb(46,74,98);
+		text-decoration: none;
+	}
 }
 
-.agb h1 {
-	font-size: 36pt;
-	color: rgb(20,20,20);
-	text-shadow: 0 0 1px 0 rgb(20,20,20);
-	margin: 30px 0 100px 0;
+/*
+ * Litte Helpers 
+ */
+
+.h-centered {
 	text-align: center;
 }
 
-.agb h2 {
-	font-size: 24pt;
-	text-align: center;
-	margin: 80px 0 30px 0;
-	font-family: "Futura Book", Helvetica, Arial, serif;
+.h-nofloat {
+	float: none !important;
 }
 
-.agb p {
-	line-height: 1.8;
-	font-size: 15pt;
-	text-align: justify;
-	margin: 20px 0;
-	-ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto
-}
-
-.agb ul {
-	list-style-position: outside;
-	list-style-type: none;
-	font-size: 15pt;
-	font-weight: bold;
-	line-height: 1.4;
-}
-
-.agb a {
-	color: rgb(46,74,98);
-	text-decoration: none;
-	border-bottom: 1px dotted rgb(46,74,98);
-}
-
-.agb a:hover {
-	border-bottom: 1px solid rgb(46,74,98);
-}
-
-.agb a:visited {
-	color: rgb(46,74,98);
-	text-decoration: none;
+.h-extra-space--top {
+	margin-top: 1.5rem;
 }

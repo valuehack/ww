@@ -49,8 +49,8 @@ default: $total = 75; $membership ='Gast'; break;
 <div class="row-group">
 <div class="row row__body">
 <div class="col-8">
-<p class="h1">&Auml;nderung</p>
-<p class="h1__sub">Bitte &uuml;berpr&uuml;fen Sie Ihre Angaben</p>
+<p class="h1">Angaben &auml;ndern</p>
+<p class="h1__sub">Hier haben Sie die M&ouml;glichkeit Ihre Angaben zu korrigieren</p>
 </div>
 </div>
 </div>
@@ -61,7 +61,7 @@ default: $total = 75; $membership ='Gast'; break;
 
 
 {# seminar #}
-{% if product.event_type == 'seminar' %}
+{% if product.type == 'seminar' %}
 
 
 <div class="row row__head">
@@ -72,49 +72,66 @@ default: $total = 75; $membership ='Gast'; break;
 </div>
 <div class="row row__body">
 <div class="col-1">
-<select id="quantity" name="product[quantity]" onchange="changePrice(this.value,'<?=$product_info->price?>')">
-<?php
-if($quantity == 1) $selected1 = ' selected';
-if($quantity == 2) $selected2 = ' selected';
-if($quantity == 3) $selected3 = ' selected';
-if($quantity == 4) $selected4 = ' selected';
-if($quantity == 5) $selected5 = ' selected';
+<select id="quantity" name="product[quantity]" onchange="changePrice(this.value,'{{product.price}}')">
 
-if ($spots_available == 0){echo '<option value="0" disabled>0</option>';}
-if ($spots_available >= 1){echo '<option value="1"'.$selected1.'>1</option>';}
-if ($spots_available >= 2){echo '<option value="2"'.$selected2.'>2</option>';}
-if ($spots_available >= 3){echo '<option value="3"'.$selected3.'>3</option>';}
-if ($spots_available >= 4){echo '<option value="4"'.$selected4.'>4</option>';}
-if ($spots_available >= 5){echo '<option value="5"'.$selected5.'>5</option>';}
-?>
+{% if product.quantity == 1 %}
+    {% set selected1 = ' selected' %}
+{% elseif product.quantity == 2 %}
+    {% set selected2 = ' selected' %}
+{% elseif product.quantity == 3 %}
+    {% set selected3 = ' selected' %}
+{% elseif product.quantity == 4  %}
+    {% set selected4 = ' selected' %}
+{% elseif product.quantity == 5 %}
+    {% set selected5 = ' selected' %}
+{% endif %}
+
+{% if product.spots_avail == 0 %}
+    <option value="0" disabled>0</option>
+{% endif %}
+{% if product.spots_avail >= 1 %}
+    <option value="1" {{selected1}}>1</option>
+{% endif %}
+{% if product.spots_avail >= 2 %}
+    <option value="2" {{selected2}}>2</option>
+{% endif %}
+{% if product.spots_avail >= 3 %}
+    <option value="3" {{selected3}}>3</option>
+{% endif %}
+{% if product.spots_avail >= 4 %}
+    <option value="4" {{selected4}}>4</option>
+{% endif %}
+{% if product.spots_avail >= 5 %}
+    <option value="5" {{selected5}}>5</option>
+{% endif %}
 </select>
 </div>
 <div class="col-5">
 <div class="col__content">
-<?=$product_info->title?><br>
-<?=$event_date?>
+{{product.title}}<br>
+{{product.date}}
 </div>
 </div>
-<div class="col-1"><?=$product_info->price?></div>
-<div class="col-1"><span id="change"><?=$total?></span>&euro;</div>
+<div class="col-1">{{product.price}}</div>
+<div class="col-1"><span id="change">{{product.total}}</span>&euro;</div>
 </div>
 <div class="row row__body">
 <div class="col-1">1</div>
-<div class="col-5"><?=$membership?></div>
+<div class="col-5">{{donation.name}}</div>
 <div class="col-1">0</div>
 <div class="col-1">0</div>
 </div>
 <div class="row row__foot">
 <div class="col-6">&nbsp;</div>
 <div class="col-1">Gesamt:</div>
-<div class="col-1"><span id="change"><?=$total?></span>&euro;</div>
+<div class="col-1"><span id="change2">{{product.total}}</span>&euro;</div>
 </div>		
 
 {% endif %}{# seminar #} 
 
 
 {# projekt #}
-{% if product.event_type == 'projekt' %}			
+{% if product.type == 'projekt' %}			
 
 
 <div class="row row__head">
@@ -124,42 +141,61 @@ if ($spots_available >= 5){echo '<option value="5"'.$selected5.'>5</option>';}
 <div class="col-1">Gesamtpreis</div>
 </div>
 <div class="row row__body">
-<div class="col-1">
-<select id="quantity" name="product[total]" onchange="changePrice(this.value,'1')">
-<?php
-if($total == 75) $selected75 = ' selected';
-if($total == 150) $selected150 = ' selected';
-if($total == 300) $selected300 = ' selected';
-if($total == 600) $selected600 = ' selected';
-if($total == 1200) $selected1200 = ' selected';
-if($total == 2400) $selected2400 = ' selected';
-
-if ($spots_available == 0){echo '<option value="0" disabled>0</option>';}
-if ($spots_available >= 150){echo '<option value="150"'.$selected150.'>150</option>';}
-if ($spots_available >= 300){echo '<option value="300"'.$selected300.'>300</option>';}
-if ($spots_available >= 600){echo '<option value="600"'.$selected600.'>600</option>';}
-if ($spots_available >= 1200){echo '<option value="1200"'.$selected1200.'>1200</option>';}
-if ($spots_available >= 2400){echo '<option value="2400"'.$selected2400.'>2400</option>';}
-?>
-</select></div>
+<div class="col-1">1</div>
 <div class="col-5">
 <div class="col__content">
-<?=ucfirst($product_info->type)?> <?=$product_info->title?>
+{{product.type|capitalize}} {{product.title}}
 </div>
 </div>
-<div class="col-1">1</div>
-<div class="col-1"><span id="change"><?=$total?></span>&euro;</div>
+<div class="col-1">
+<select id="quantity" name="product[price]" onchange="changePrice(this.value,'1')">
+
+{% if product.total == 75 %}
+    {% set selected75 = ' selected' %}
+{% elseif product.total == 150 %}
+    {% set selected150 = ' selected' %}
+{% elseif product.total == 300 %}
+    {% set selected300 = ' selected' %}
+{% elseif product.total == 600 %}
+    {% set selected600 = ' selected' %}
+{% elseif product.total == 1200 %}
+    {% set selected1200 = ' selected' %}
+{% elseif product.total == 2400 %}
+    {% set selected2400 = ' selected' %}
+{% endif %}
+
+{% if product.spots_avail == 0 %}
+    <option value="0" disabled>0</option>
+{% endif %}
+{% if product.spots_avail >= 150 %}
+    <option value="150" {{selected150}}>150</option>
+{% endif %}
+{% if product.spots_avail >= 300 %}
+    <option value="300" {{selected300}}>300</option>
+{% endif %}
+{% if product.spots_avail >= 600 %}
+    <option value="600" {{selected600}}>600</option>
+{% endif %}
+{% if product.spots_avail >= 1200 %}
+    <option value="1200" {{selected1200}}>1200</option>
+{% endif %}
+{% if product.spots_avail >= 2400 %}
+    <option value="2400" {{selected2400}}>2400</option>
+{% endif %}
+</select>
+</div>
+<div class="col-1"><span id="change">{{product.total}}</span>&euro;</div>
 </div>
 <div class="row row__body">
 <div class="col-1">1</div>
-<div class="col-5"><?=$membership?></div>
+<div class="col-5">{{donation.name}}</div>
 <div class="col-1">0</div>
 <div class="col-1">0</div>
 </div>
 <div class="row row__foot">
 <div class="col-6">&nbsp;</div>
 <div class="col-1">Gesamt:</div>
-<div class="col-1"><span id="change"><?=$total?></span>&euro;</div>
+<div class="col-1"><span id="change2">{{product.total}}</span>&euro;</div>
 </div>
 
 {% endif %}{# projekt #} 	
@@ -180,7 +216,7 @@ if ($spots_available >= 2400){echo '<option value="2400"'.$selected2400.'>2400</
 <div class="col-5">
 <div class="col__content">
 Unterst&uuml;tzungsstufe
-<select id="quantity" name="product[what]" onchange="changePrice(this.value,'1')">
+<select id="quantity" name="product[price]" onchange="changePrice(this.value,'1')">
 
 {% if product.price == 75 %}
 	{% set selected75 = ' selected' %}
@@ -196,32 +232,32 @@ Unterst&uuml;tzungsstufe
 	{% set selected2400 = ' selected' %}
 {% endif %}
 
-{# <option value="75" {{selected75}}> Gast (6,25&euro;/Monat)</option>
+<option value="75" {{selected75}}> Gast (6,25&euro;/Monat)</option>
 <option value="150" {{selected150}}> Teilnehmer (12,50&euro;/Monat)</option>
 <option value="300" {{selected300}}> Scholar (25&euro;/Monat)</option>
 <option value="600" {{selected600}}> Partner (50&euro;/Monat)</option>
 <option value="1200" {{selected1200}}> Beirat (100&euro;/Monat)</option>
 <option value="2400" {{selected2400}}> Patron (200&euro;/Monat)</option>
- #}
 
-<option value="upgrade_2" {{selected75}}> Gast (6,25&euro;/Monat)</option>
+
+{# <option value="upgrade_2" {{selected75}}> Gast (6,25&euro;/Monat)</option>
 <option value="upgrade_3" {{selected150}}> Teilnehmer (12,50&euro;/Monat)</option>
 <option value="upgrade_4" {{selected300}}> Scholar (25&euro;/Monat)</option>
 <option value="upgrade_5" {{selected600}}> Partner (50&euro;/Monat)</option>
 <option value="upgrade_6" {{selected1200}}> Beirat (100&euro;/Monat)</option>
-<option value="upgrade_7" {{selected2400}}> Patron (200&euro;/Monat)</option>
+<option value="upgrade_7" {{selected2400}}> Patron (200&euro;/Monat)</option> #}
 
  
 </select>
 </div>
 </div>
 <div class="col-1"><span id="change">{{product.price}}</span></div>
-<div class="col-1"><span id="change">{{product.price}}</span></div>
+<div class="col-1"><span id="change2">{{product.price}}</span></div>
 </div>
 <div class="row row__foot">
 <div class="col-6">&nbsp;</div>
 <div class="col-1">Gesamt:</div>
-<div class="col-1"><span id="change">{{product.price}}</span></div>
+<div class="col-1"><span id="change3">{{product.price}}</span></div>
 </div>
 
 {% endif %}{# upgrade #} 
@@ -238,23 +274,23 @@ Unterst&uuml;tzungsstufe
 <div class="row row__body">
 <div class="col-4">
 <div class="col__content">
+    
+{% if profile.user_logged_in != "1" %}
+<div id="ajax_email_exists_error"></div>
+<input id="ajax_email_exists" type="email" class="profil_inputfield" name="profile[user_email]" value="{{profile.user_email}}" required>
+<input id="ajax_email_exists2" type="email" class="profil_inputfield" name="profile[user_email]" value="" required>
+<div id="ajax_email_same_error"></div> 
+{% else %}
+<input type="hidden" name="profile[user_email]" value="{{profile.user_email}}">
+{% endif %}
+    
 <select class="profil_select" name="profile[user_anrede]">
-
 <option value="Herr"{% if profile.user_anrede == "Herr" %}selected{% endif %}>Herr</option>
 <option value="Frau"{% if profile.user_anrede == "Frau" %}selected{% endif %}>Frau</option>
-
 </select><br>
 
 <input type="text" class="profil_inputfield" name="profile[user_first_name]" value="{{profile.user_first_name}}"><br> 
 <input type="text" class="profil_inputfield" name="profile[user_surname]" value="{{profile.user_surname}}"<br> 
-
-{% if profile.user_logged_in != "1" %}
-<input id="ajax_email_exists" type="email" class="profil_inputfield" name="profile[user_email]" value="{{profile.user_email}}" required><br> 
-<div id="ajax_email_exists_error"></div><br><br>
-{% else %}
-<input type="hidden" name="profile[user_email]" value="{{profile.user_email}}">
-{% endif %}
-
 <input type="text" class="profil_inputfield" name="profile[user_street]" value="{{profile.user_street}}"><br> 
 <input type="text" class="profil_inputfield" name="profile[user_plz]" value="{{profile.user_plz}}"><br> 
 <input type="text" class="profil_inputfield" name="profile[user_city]" value="{{profile.user_city}}"><br> 
@@ -273,7 +309,7 @@ Unterst&uuml;tzungsstufe
 <div class="col-8">
 <div class="col__content">
 
-<input type="submit" id="weiter_button" class="profil_inputbutton" name="edit_form_submit" value="Verbindlich bestellen">
+<input type="submit" id="weiter_button" class="profil_inputbutton" name="edit_form_submit" value="&Auml;anderung &uuml;bernehmen">
 </form>
 </div>
 </div>				

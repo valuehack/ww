@@ -352,7 +352,7 @@ class Registration
 
     }#end of constructor
 
-   public function createNewUser($profile, $product)
+    public function createNewUser($profile, $product)
     {
         #simple function to add a new entry in mitgliederEXT
         #copy from subscribe new user to include emails etc.
@@ -429,7 +429,7 @@ class Registration
         }
         ####################################################################
 
-        $login = new Login();        
+        $login = new Login();
         $login->newRememberMeCookie();
     }
 
@@ -625,117 +625,119 @@ class Registration
 
     }
 
+	public function processPayment($profile, $product)
+	{
 
+    	ini_set("log_errors" , "1");
+    	error_log('processPayment');
 
-public function processPayment($profile, $product)
-{
+    	error_log("User email in registration ".$profile['user_email']);
 
-    ini_set("log_errors" , "1");
-    error_log('processPayment');
+    	if ((isset($profile['user_logged_in'])) and ($profile['user_logged_in'] === 1))
+    	{
+       	 	#user was logged in when payment was made
+        	error_log($profile['user_email'].' is a returning customer.');
 
-    error_log("User email in registration ".$profile['user_email']);
+        	$this->addPersonalDataGeneric($profile);
 
-    if ((isset($profile['user_logged_in'])) and ($profile['user_logged_in'] === 1))
-    {
-        #user was logged in when payment was made
-        error_log($profile['user_email'].' is a returning customer.');
-
-        $this->addPersonalDataGeneric($profile);
-
-        #make sure that credits exists! 
-        $this->giveCredits($product['credits'] , $profile['user_email'], $product['level']);
+        	#make sure that credits exists! 
+       	 	$this->giveCredits($product['credits'] , $profile['user_email'], $product['level']);
         
-        $this->prolongMembership($profile['user_email']);
+        	$this->prolongMembership($profile['user_email']);
 
-        // if ( !($this->sendUpgradeEmailToUser($profile['user_email'])) ) 
-        // {
-        //     error_log( "Mail not sent " .$profile['user_email']);
-        // }
+			#render invoice
+			$general->generateInvoice($_SESSION['profile'], $_SESSION['product'], $_SESSION['donation']);
 
-        #EMAIL SEND BLOCK
-        ####################################################################
-        #email template must exist in templates/email folder
-        $email_template = 'successful_upgrade.email.twig';
+        	// if ( !($this->sendUpgradeEmailToUser($profile['user_email'])) ) 
+        	// {
+        	//     error_log( "Mail not sent " .$profile['user_email']);
+        		// }
 
-        $post_data = array(
-            'to' => $profile['user_email'],
-            'bcc' => 'dzainius@gmail.com',
-            'subject' => 'The upgrade is successful!',
-            'from' => 'info@scholarium.at',
-            'fromname' => 'Scholarium'
-            );
+        	#EMAIL SEND BLOCK
+        	####################################################################
+        	#email template must exist in templates/email folder
+        	$email_template = 'successful_upgrade.email.twig';
 
-        $body_data = array(
-            'profile' => $profile,
-            'product' => $product
-            );
+        	$post_data = array(
+            	'to' => $profile['user_email'],
+            	'bcc' => 'dzainius@gmail.com',
+            	'subject' => 'Vielen Dank f&uuml;r die Verl&auml;ngerung Ihrer Spende',
+            	'from' => 'info@scholarium.at',
+            	'fromname' => 'Scholarium'
+            	);
+
+        	$body_data = array(
+            	'profile' => $profile,
+            	'product' => $product
+            	);
         
-        if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
-        {
-          error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
-        }
-        ####################################################################
+        	if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
+        	{
+          		error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+			}
+        	####################################################################
 
 
+        	#TODO: mark as paid only when all above are successful
+        	$this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
 
-        #TODO: mark as paid only when all above are successful
-        $this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
+    	}
+    	elseif (empty($profile['user_logged_in']) )
+    	{
+       	 	#create a new user
+        	error_log($profile['user_email'].' is NEW.');
+
+        	$this->createNewUser($profile, $product);
+        	$this->addPersonalDataGeneric($profile);
+
+			#render invoice
+			$general->generateInvoice($_SESSION['profile'], $_SESSION['product'], $_SESSION['donation']);
+
+        	#EMAIL SEND BLOCK
+        	####################################################################
+        	#email template must exist in templates/email folder
+        	$email_template = 'successful_upgrade.email.twig';
+
+        	$post_data = array(
+            	'to' => $profile['user_email'],
+            	'bcc' => 'um@scholarium.at',
+            	'subject' => 'Vielen Dank fuer Ihre Unterst&uuml;tzung',
+            	'from' => 'info@scholarium.at',
+            	'fromname' => 'Scholarium'
+            	);
+
+        	$body_data = array(
+            	'profile' => $profile,
+            	'product' => $product
+            	);
         
+        	if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
+        	{
+          		error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+        	}
+        	####################################################################
 
-    }elseif ( empty($profile['user_logged_in']) )
-    {
-        #create a new user
-        error_log($profile['user_email'].' is NEW.');
+        	#TODO: mark as paid only when all above are successful
+        	$this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
 
-        $this->createNewUser($profile, $product);
-        $this->addPersonalDataGeneric($profile);
+    	}
+    	else
+    	{
+        	#some random shit just happened! 
+        	#log it and ivestigate
+        	#send email too 
+        	#create random gmail email for these errors 
+        	#biene.sackerl@gmail.com
+        	error_log('BAD NUTS: check processPayment() in registration class');
+    	}
 
-        #EMAIL SEND BLOCK
-        ####################################################################
-        #email template must exist in templates/email folder
-        $email_template = 'successful_upgrade.email.twig';
+    	#clear session vars as no longer needed
+    	$_SESSION['profile'] = '';
+    	$_SESSION['product'] = '';
 
-        $post_data = array(
-            'to' => $profile['user_email'],
-            'bcc' => 'dzainius@gmail.com',
-            'subject' => 'Vielen Dank fuer Ihre Unterstuetzung',
-            'from' => 'info@scholarium.at',
-            'fromname' => 'Scholarium'
-            );
-
-        $body_data = array(
-            'profile' => $profile,
-            'product' => $product
-            );
-        
-        if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
-        {
-          error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
-        }
-        ####################################################################
-
-        #TODO: mark as paid only when all above are successful
-        $this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
-
-    }else
-    {
-        #some random shit just happened! 
-        #log it and ivestigate
-        #send email too 
-        #create random gmail email for these errors 
-        #biene.sackerl@gmail.com
-        error_log('BAD NUTS: check processPayment() in registration class');
-    }
-
-    #clear session vars as no longer needed
-    $_SESSION['profile'] = '';
-    $_SESSION['product'] = '';
-
-    #redirect to success page
-    header('Location: einvollererfolg.php');
-
-}
-
+    	#redirect to success page
+    	header('Location: einvollererfolg.php');
+	}
 
 
     public function addPaymentData($zahlung, $email)

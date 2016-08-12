@@ -25,7 +25,7 @@ require_once('../classes/Registration.php');
 $login = new Login();
 $registration = new Registration();
 
-include("upgrade_not_in.php");
+include("pay_test.php");
 
 // // ... ask if we are logged in here:
 // if ($login->isUserLoggedIn() == true) {

@@ -79,29 +79,8 @@ if(isset($_GET['q']))
   	<div class="salon_head">
   		<h1><?=ucfirst($entry3[type])." ".$entry3[title]?></h1>
   		<p class="salon_date">
-  			  <? 
-  if ($entry3[start] != NULL && $entry3[end] != NULL)
-        {
-        $tag=date("w",strtotime($entry3[start]));
-        $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
-        echo $tage[$tag]." ";
-        echo strftime("%d.%m.%Y %H:%M", strtotime($entry3[start]));
-        if (strftime("%d.%m.%Y", strtotime($entry3[start]))!=strftime("%d.%m.%Y", strtotime($entry3[end])))
-          {
-          echo " Uhr &ndash; ";
-          $tag=date("w",strtotime($entry3[end]));
-          echo $tage[$tag];
-          echo strftime(" %d.%m.%Y %H:%M Uhr", strtotime($entry3[end]));
-          }
-        else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry3[end]));
-      }
-      elseif ($entry3[start]!= NULL)
-        {
-        $tag=date("w",strtotime($entry3[start]));
-        echo $tage[$tag]." ";
-        echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry3[start]));
-      }
-      else echo "Der Termin wird in K&uuml;rze bekannt gegeben."; ?>
+  			  <? $date = $general->getDate($entry3[start],$entry3[end]);
+			  echo $date;?>
   		</p>
   		<!--<img src="<?echo $img_url;?>" alt="<? echo $id;?>">-->
 		<div class="centered">
@@ -162,29 +141,9 @@ else {
     echo $entry[title]."</a></h1>";
      
     echo "<div class='salon_dates'>";
-
-    if ($entry[start] != NULL && $entry[end] != NULL)
-      {
-      $tag=date("w",strtotime($entry[start]));
-      $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
-      echo $tage[$tag]." ";
-      echo strftime("%d.%m.%Y %H:%M", strtotime($entry[start]));
-      if (strftime("%d.%m.%Y", strtotime($entry[start]))!=strftime("%d.%m.%Y", strtotime($entry[end])))
-        {
-        echo " Uhr &ndash; ";
-        $tag=date("w",strtotime($entry[end]));
-        echo $tage[$tag];
-        echo strftime(" %d.%m.%Y %H:%M Uhr", strtotime($entry[end]));
-        }
-      else echo strftime(" &ndash; %H:%M Uhr", strtotime($entry[end]));
-    }
-    elseif ($entry[start]!= NULL)
-      {
-      $tag=date("w",strtotime($entry[start]));
-      echo $tage[$tag]." ";
-      echo strftime("%d.%m.%Y %H:%M Uhr", strtotime($entry[start]));
-    }
-    else echo "Der Termin wird in K&uuml;rze bekannt gegeben.";
+	$date = $general->getDate($entry[start],$entry[end]);
+	echo $date;
+    
     echo "</div>";
     echo "<p>";
     //echo "<img src='$img_url' alt='$id'>";

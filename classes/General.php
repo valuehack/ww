@@ -4,6 +4,11 @@
 	
 class General {
 	
+	 /**
+     * @var object $db_connection The database connection
+     */
+    private $db_connection = null;
+	
 	public function __construct() {
 		
 		$this->databaseConnection();
@@ -28,7 +33,7 @@ class General {
                 $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=latin1', DB_USER, DB_PASS);
                 
                 #query sets timezone for the database
-                $query_time_zone = $this->db_connection->prepare("SET time_zone = 'Europe/Vienna'");
+                $query_time_zone = $this->db_connection->prepare("SET time_zone = '+2:00'");
                 $query_time_zone->execute();
                 
                 return true;
@@ -54,13 +59,13 @@ class General {
 			
 				if (strftime("%d.%m.%Y", strtotime($start))!=strftime("%d.%m.%Y", strtotime($end))) {
 				
-					$date = $date." Uhr &ndash; ";
+					$date = $date." Uhr – ";
 					$tag  = date("w",strtotime($end));
 					$date = $date.$tage[$tag];
 					$date = $date.strftime(" %d.%m.%Y %H:%M Uhr", strtotime($end));
 				}
 				else {
-					$date = $date.strftime(" &ndash; %H:%M Uhr", strtotime($end));
+					$date = $date.strftime(" – %H:%M Uhr", strtotime($end));
 				}
 			}
 			elseif ($start!= NULL) {
@@ -182,6 +187,37 @@ class General {
 		return $static_query->fetchObject();
 	}
 
+	public function getMembershipInfo ($level) {
+		
+		# takes a level number (2,3,4,5,6,7) or price (75 ... 2400) in and returns the corresponding information (level, price, name)
+		
+		if ($level < 10) 
+		{
+			switch ($level) {
+				case 2: $mb_info['level'] = 2; $mb_info['price'] = 75; $mb_info['name'] = 'Gast'; break;
+				case 3: $mb_info['level'] = 3; $mb_info['price'] = 150; $mb_info['name'] = 'Teilnehmer'; break;
+				case 4: $mb_info['level'] = 4; $mb_info['price'] = 300; $mb_info['name'] = 'Scholar'; break;
+				case 5: $mb_info['level'] = 5; $mb_info['price'] = 600; $mb_info['name'] = 'Partner'; break;
+				case 6: $mb_info['level'] = 6; $mb_info['price'] = 1200; $mb_info['name'] = 'Beirat'; break;
+				case 7: $mb_info['level'] = 7; $mb_info['price'] = 2400; $mb_info['name'] = 'Patron'; break;
+				default: $mb_info['level'] = 2; $mb_info['price'] = 75; $mb_info['name'] = 'Gast'; break;
+			}
+		}
+		else 
+		{
+			switch ($level) {
+				case 75: $mb_info['level'] = 2; $mb_info['price'] = 75; $mb_info['name'] = 'Gast'; break;
+				case 150: $mb_info['level'] = 3; $mb_info['price'] = 150; $mb_info['name'] = 'Teilnehmer'; break;
+				case 300: $mb_info['level'] = 4; $mb_info['price'] = 300; $mb_info['name'] = 'Scholar'; break;
+				case 600: $mb_info['level'] = 5; $mb_info['price'] = 600; $mb_info['name'] = 'Partner'; break;
+				case 1200: $mb_info['level'] = 6; $mb_info['price'] = 1200; $mb_info['name'] = 'Beirat'; break;
+				case 2400: $mb_info['level'] = 7; $mb_info['price'] = 2400; $mb_info['name'] = 'Patron'; break;
+				default: $mb_info['level'] = 2; $mb_info['price'] = 75; $mb_info['name'] = 'Gast'; break;
+			}			
+		}
+		return $mb_info;
+	}
+
 	public function registerEvent ($user_id, $event_id, $quantity, $format) {
 	    			    				
     	#enter into event registration
@@ -212,12 +248,12 @@ class General {
 		$credit_change_query->execute();
 	}
 
-	public function generateTicket ($user_id, $user_name, $user_surname, $event_id, $quantity) {
+	public function generateTicket ($profile, $product) {
 		
 			#automated ticket generation for events both for outsiders and insiders
 			
 			#get event information
-			$event_query = $this->db_connection->prepare('SELECT * FROM produkte WHERE n = :event_id');
+			/*$event_query = $this->db_connection->prepare('SELECT * FROM produkte WHERE n = :event_id');
 			$event_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
 			$event_query->execute();
 			$event_result = $event_query->fetchObject();
@@ -229,52 +265,114 @@ class General {
 			$event_end = $event_result->end;
 			
 			#prepare the date-string
-			$event_date = $this->getDate($event_start, $event_end);
-
-			$ticket_name = 'Ticket_'.$user_id.'_'.$event_type.'_'.$event_id;
-			$ticket_pdf = 'ticket_'.$user_id.'_'.$event_type.'_'.$event_id.'.pdf';
+			$event_date = $this->getDate($event_start, $event_end);*/
 			
-			$total = $event_price*$quantity;
+			$now = date('d.m.Y', time());
+			$profile['user_id'] = 44;
+			
+			$ticket_name = 'Ticket_'.$profile['user_id'].'_'.$product['type'].'_'.$product['id'];
+			$ticket_pdf = 'ticket_'.$profile['user_id'].'_'.$product['type'].'_'.$product['id'].'.pdf';
+			
+			//$total = $event_price*$quantity;
 			
 			#prepare the ticket content with html and css
 			$html = '
   					<html lang="de">
       				<head>
           				<title>'.$ticket_name.'</title>        
-          				<link rel="stylesheet" type="text/css" href="/home/content/56/6152056/html/production/style/ticket_style.css">
+          				<link rel="stylesheet" type="text/css" href="/home/content/56/6152056/html/production/style/invoice_style.css">
           
           				<meta name="Content-Disposition" content="attachment; filename='.$ticket_pdf.'">
           				<meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8">
       				</head>
       				<body>
-          				<div class="ticket_content">
-              				<div>
-                  				<img src="/home/content/56/6152056/html/production/style/gfx/ticket_logo.png" style="width:300px;margin-bottom:50px;">
-              				</div>
-              				<div class="ticket_event">
-                  				<p><i>'.ucfirst($event_type).'</i></p>
-                  				<h1>'.$event_title.'</h1>
-                  				<p>
-                      				<span class="ticket_date">'.$date.'</span>
-                      				<span class="ticket_object">Anzahl</span> <span class="ticket_value">'.$quantity.'</span><br>
-                      				<span class="ticket_object">Preis</span> <span class="ticket_value">'.$event_price.' &euro;</span>
-                      				<span class="ticket_object">Gesamtpreis</span> <span class="ticket_value">'.$total.' &euro;</span>                       
-                  				</p>   
-              				</div>
-              				<div class="ticket_user">
-                  				<p>
-                      				<span class="ticket_user_name">'.$user_name.' '.$user_surname.'</span><br>
-                      				<span class="ticket_user_no">Kundennummer: '.$user_id.'</span> 
-                  				</p>
-              				</div>              
-              				<div class="ticket_location">  
-                  				<h1>Veranstaltungsort</h1>
-                  				<p>Schl&ouml;sselgasse 19/2/18<br>A-1080 Wien, &Ouml;sterreich</p>
-                  				<div>
-  									<img src="../style/gfx/ticket_map.jpg" alt="">
-          						</div>
-              				</div>
-          				</div>        
+						<div class="invoice-info">
+            				<div class="invoice-logo">
+                				<img src="../style/gfx/invoice_logo.png">
+            				</div>
+            				<div class="invoice-scholarium">
+                				Scholarium GmbH<br>
+                				Schl&ouml;sselgasse 19/2/18<br>
+                				1080 Wien<br>
+                				&Ouml;sterreich<br>
+                				<br>
+                				info@scholarium.at<br>
+                				www.scholarium.at
+             				</div>
+        				</div>                 
+        				<div class="invoice-content">
+            				<div class="invoice-address"> 
+                				<p>
+                      				'.$profile['user_first_name'].' '.$profile['user_surname'].'<br>
+                      				'.$profile['user_street'].'<br>
+                      				'.$profile['user_plz'].' '.$profile['user_city'].'<br>
+                      				'.$profile['user_country'].'<br>
+                				</p>
+            				</div>              
+            				<div class="invoice-date">
+                				<p>Wien, '.$now.'</p>
+            				</div>
+            				<div class="invoice-title">
+                				<h1>Ticket '.$product['title'].'</h1>
+            				</div>
+            				<div class="invoice-detail">
+                				<table class="invoice-detail__table">
+                    				<tr>
+                        				<td class="invoice-detail__col2 invoice-detail__first-row">
+                            				Beschreibung
+                        				</td>
+                        				<td class="invoice-detail__col1 invoice-detail__first-row">
+                            				Menge
+                        				</td>
+                        				<td class="invoice-detail__col3 invoice-detail__first-row">
+                            				Einzelpreis
+                        				</td>
+                        				<td class="invoice-detail__col4 invoice-detail__first-row">
+                            				Gesamtpreis
+                      					</td>
+                   					</tr>
+									<tr>
+                        				<td class="invoice-detail__col2">
+                        					<span class="invoice-detail__type">'.ucfirst($product['type']).'</span>
+                            				<h1 class="invoice-detail__title">'.$product['title'].'</h1>
+                            				<span class="invoice-detail__date">'.$product['date'].'</span>
+                        				</td>
+                        				<td class="invoice-detail__col1">
+                            				'.$product['quantity'].'
+                        				</td>
+                        				<td class="invoice-detail__col3">
+                            				&euro; '.$product['price'].',-
+                        				</td>
+                        				<td class="invoice-detail__col4">
+                            				&euro; '.$product['total'].',-
+                        				</td> 
+                   					</tr>
+               						<tr>
+                        				<td class="invoice-detail__col2 invoice-detail__last-row">&nbsp;</td>
+                        				<td class="invoice-detail__col1 invoice-detail__last-row">&nbsp;</td>
+                        				<td class="invoice-detail__col3 invoice-detail__last-row">Gesamtbetrag</td>
+                        				<td class="invoice-detail__col4 invoice-detail__last-row">&euro; '.$product['total'].',-</td>
+                					</tr>
+            					</table>
+        					</div>
+        					<div class="invoice-location">
+        						<table class="h-full-width">
+        							<tr>
+                						<td class="invoice-location__info">  
+                    						<h1>Veranstaltungsort</h1>
+                    						<p>Schl&ouml;sselgasse 19/2/18<br>A-1080 Wien, &Ouml;sterreich</p>
+                						</td>
+                						<td class="invoice-location__map">
+                       						<img src="../style/gfx/ticket_map.jpg" alt="">
+                						</td>
+                					</tr>
+                				</table>
+            				</div>
+            				<div class="invoice-ending">
+                				<p>Mit freundlichen Gr&uuml;&szlig;en</p>
+                				<p><i>Ihr Scholarium</i></p>
+            				</div>
+            			</div>        
       				</body>
   					</html>';
 			
@@ -297,13 +395,14 @@ class General {
 			return $ticket_location;
 	}
 	
-	public function generateInvoice($user_id, $product_id, $product_type, $user_level, $quantity, $zahlung) {
+	public function generateInvoice($profile, $product, $membership) {
 		
 			#automated invoice generation both for outsiders and insiders
 			
+			/*
 			#get user information
 			$user_query = $this->db_connection->prepare('SELECT * FROM mitgliederExt WHERE user_id = :user_id');
-			$user_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+			$user_query->bindValue(':user_id', $profile['user_id'], PDO::PARAM_INT);
 			$user_query->execute();
 			$user_result = $user_query->fetchObject();
 			
@@ -314,20 +413,17 @@ class General {
 			$user_city = $user_result->Ort;
 			$user_country = $user_result->Land;
 			
-			#get event information
+			/*#get event information
 			$event_query = $this->db_connection->prepare('SELECT * FROM produkte WHERE n = :event_id');
-			$event_query->bindValue(':event_id', $product_id, PDO::PARAM_INT);
+			$event_query->bindValue(':event_id', $product['event_id'], PDO::PARAM_INT);
 			$event_query->execute();
 			$event_result = $event_query->fetchObject();
 			
 			$event_title = $event_result->title;
-			$event_price = $event_result->price;
+			$event_price = $event_result->price;*/
 			
-			$year = date('Y', time());
 			$now = date('d.m.Y', time());
-			
-			#membership ends one year (31536000 sec) from today 
-			$membership_end = date('d.m.Y', time()+31536000);
+			$year = date('Y', time());
 			
 			#get number of invoices from the current year
 			$get_invoices = $this->db_connection->prepare('SELECT * FROM rechnungen WHERE date LIKE :year');
@@ -345,27 +441,27 @@ class General {
 			$invoice_name = 'Rechnung_'.$invoice_number;
 			$invoice_pdf = 'Rechnung_'.$invoice_number.'.pdf';
 								
-			#
+			/*
 			switch ($user_level) {
 				case 2: $product_price = 75; $membership = 'Gast'; break;
 				case 3: $product_price = 150; $membership = 'Teilnehmer'; break;
 				case 4: $product_price = 300; $membership = 'Scholar'; break;
 				case 5: $product_price = 600; $membership = 'Partner'; break;
 				case 6: $product_price = 1200; $membership = 'Beirat'; break;
-				case 7: $product_price = 2400; $membership = 'Gr&uuml;nder'; break;
+				case 7: $product_price = 2400; $membership = 'Patron'; break;
 				default: $product_price = 75; $membership = 'Gast'; break;
-			}
+			}*/
 			
-			if ($product_type === 'seminar') {
-      			$invoice_info[] = array('price' => $event_price, 'quantity' => $quantity, 'description' => 'Seminar: '.ucfirst($event_title));
-	  			$invoice_info[] = array('price' => 0, 'quantity' => 1, 'description' => 'Einj&auml;hrige Mitgliedschaft - &quot;Teilnehmer&quot; ('.$now.' - '.$membership_end.')');
+			if ($product['type'] === 'seminar') {
+      			$invoice_info[] = array('price' => $product['price'], 'quantity' => $product['quantity'], 'description' => 'Seminar: '.ucfirst($product['title']));
+	  			$invoice_info[] = array('price' => 0, 'quantity' => 1, 'description' => 'Spende für ein Jahr - &quot;Teilnehmer&quot; ('.$membership['start'].' - '.$membership['end'].')');
 			}
-			elseif ($product_type === 'projekt') {
-	  			$invoice_info[] = array('price' => $product_price, 'quantity' => 1, 'description' => 'Projekt: '.ucfirst($event_title));
-	  			$invoice_info[] = array('price' => 0, 'quantity' => 1, 'description' => 'Einj&auml;hrige Mitgliedschaft - &quot;'.$membership.'&quot; ('.$now.' - '.$membership_end.')');
+			elseif ($product['type'] === 'projekt') {
+	  			$invoice_info[] = array('price' => $product['price'], 'quantity' => 1, 'description' => 'Projekt: '.ucfirst($product['title']));
+	  			$invoice_info[] = array('price' => 0, 'quantity' => 1, 'description' => 'Spende für ein Jahr - &quot;'.$membership['name'].'&quot; ('.$membership['start'].' - '.$membership['end'].')');
 			}
 			else {
-	  			$invoice_info[] = array('price' => $product_price, 'quantity' => 1, 'description' => 'Einj&auml;hrige Mitgliedschaft - &quot;'.$membership.'&quot; ('.$now.' - '.$membership_end.')');
+	  			$invoice_info[] = array('price' => $product['price'], 'quantity' => 1, 'description' => 'Spende für ein Jahr - &quot;'.$membership['name'].'&quot; ('.$membership['start'].' - '.$membership['end'].')');
 			}
 			
 			$html = '
@@ -395,10 +491,10 @@ class General {
           			<div class="invoice-content">
               			<div class="invoice-address"> 
                   			<p>
-                      			'.$user_name.' '.$user_surname.'<br>
-                      			'.$user_street.'<br>
-                      			'.$user_plz.' '.$user_city.'<br>
-                      			'.$user_country.'<br>
+                      			'.$profile['user_first_name'].' '.$profile['user_surname'].'<br>
+                      			'.$profile['user_street'].'<br>
+                      			'.$profile['user_plz'].' '.$profile['user_city'].'<br>
+                      			'.$profile['user_country'].'<br>
                   			</p>
               			</div>
               
@@ -428,7 +524,7 @@ class General {
                       			</tr>';
 					  	$i = 0;
 					  	while ($i < count($invoice_info)) {					  	
-                      	$price_total = $invoice_info[$i]['quantity']*$invoice_info[$i]['price'];
+                      	//$price_total = $invoice_info[$i]['quantity']*$invoice_info[$i]['price'];
 					  
 					  	$html = $html.'
                       			<tr>
@@ -442,10 +538,10 @@ class General {
                              			&euro; '.$invoice_info[$i]['price'].',-
                          			</td>
                          			<td class="invoice-detail__col3">
-                             			&euro; '.$price_total.',-
+                             			&euro; '.$product['total'].',-
                          			</td> 
                       			</tr>';
-                      $total = $total + $price_total;
+                      //$total = $total + $price_total;
                       $i++;
                       }
 					  $html = $html.'
@@ -453,29 +549,20 @@ class General {
                           			<td class="invoice-detail__col1 invoice-detail__last-row">&nbsp;</td>
                           			<td class="invoice-detail__col2 invoice-detail__last-row">&nbsp;</td>
                           			<td class="invoice-detail__col3 invoice-detail__last-row">Gesamtbetrag</td>
-                          			<td class="invoice-detail__col4 invoice-detail__last-row">&euro; '.$total.',-</td>
+                          			<td class="invoice-detail__col4 invoice-detail__last-row">&euro; '.$product['total'].',-</td>
                       			</tr>
                   			</table>
               			</div>
               			
               			<div class="invoice-payment">';
-              				if ($zahlung == 'bank'){
+              				if ($profile['payment_option'] === 'sofort'){
 			 	  			$html = $html.'
-                  						<p>Bitte überweisen Sie den Gesamtbetrag mit Angabe der Rechnungsnummer innerhalb von 14 Tagen auf unser folgendes Konto:<br>
-                      					<br>
-                						scholarium GmbH<br>
-                						IBAN: AT27 2011 1827 1589 8503<br>
-                						BIC: GIBAATWWXXX<br>
-                  						</p>';
+                  						<p>Wir haben den Spendenbetrag bereits dankend via SOFORT erhalten.</p>';
                   			}
-			  				if ($zahlung == 'kredit'){
+			  				if ($profile['payment_option'] == 'paypal'){
 				  			$html = $html.'
-				  						<p>Sie haben diese Rechnung bereits mit paypal beglichen.</p>';
+				  						<p>Wir haben den Spendenbetrag bereits dankend via PayPal erhalten.</p>';
 				  			}   
-			  				if ($zahlung == 'bar'){
-				  			$html = $html.'
-				  						<p>Bitte schicken Sie uns den gew&auml;hlten Betrag von '.$total.' &euro; in Euro-Scheinen oder im ungef&auml;hren Edelmetallgegenwert (Gold-/Silberm&uuml;nzen) an das scholarium, Schl&ouml;sselgasse 19/2/18, 1080 Wien, &Ouml;sterreich. Alternativ k&ouml;nnen Sie uns den Betrag auch pers&ouml;nlich (bitte um Voranmeldung) oder bei einer unserer Veranstaltungen &uuml;berbringen.</p>';
-				  			}
 			  			$html = $html.'
               			</div>
               
@@ -499,7 +586,7 @@ class General {
 			#dompdf output is saved as a string
 			$pdf = $dompdf->output();
 
-			#save invoice on sever
+			#save invoice on server
 			$invoice_location = '/home/content/56/6152056/html/production/rechnungen/'.$invoice_pdf;
 			file_put_contents($invoice_location, $pdf);
 			
@@ -507,7 +594,7 @@ class General {
 			$invoice_query = $this->db_connection->prepare('INSERT INTO rechnungen (user_id, nummer, date, zahlungsart, pdf) VALUES (:user_id, :nummer, NOW(), :zahlung, :pdf)');
 			$invoice_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 			$invoice_query->bindValue(':nummer', $invoice_number, PDO::PARAM_STR);
-			$invoice_query->bindValue(':zahlung', $zahlung, PDO::PARAM_STR);
+			$invoice_query->bindValue(':zahlung', $profile['payment_option'], PDO::PARAM_STR);
 			$invoice_query->bindValue(':pdf', $invoice_location, PDO::PARAM_STR);
 			$invoice_query->execute();
 

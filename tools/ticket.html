@@ -1,39 +1,107 @@
 <html lang="de">
-                    <head>
-                        <title>'.$ticket_name.'</title>        
-                        <link rel="stylesheet" type="text/css" href="../style/ticket_style.css">
+    <head>
+        <title>'.$ticket_name.'</title>        
+        <link rel="stylesheet" type="text/css" href="../style/invoice_style.css">
           
-                        <meta name="Content-Disposition" content="attachment; filename='.$ticket_pdf.'">
-                        <meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8">
-                    </head>
-                    <body>
-                        <div class="ticket_content">
-                            <div>
-                                <img src="../style/gfx/ticket_logo.png" style="width:300px;margin-bottom:50px;">
-                            </div>
-                            <div class="ticket_event">
-                                <p><i>'.ucfirst($event_type).'</i></p>
-                                <h1>'.$event_title.'</h1>
-                                <p>
-                                    <span class="ticket_date">'.$date.'</span>
-                                    <span class="ticket_object">Anzahl</span> <span class="ticket_value">'.$quantity.'</span><br>
-                                    <span class="ticket_object">Einzelpreis</span> <span class="ticket_value">'.$event_price.' &euro;</span>
-                                    <span class="ticket_object">Gesamtpreis</span> <span class="ticket_value">'.$total.' &euro;</span>                       
-                                </p>   
-                            </div>
-                            <div class="ticket_user">
-                                <p>
-                                    <span class="ticket_user_name">'.$user_name.' '.$user_surname.'</span><br> 
-                                    <span class="ticket_user_no">Kundennummer: '.$user_id.'</span> 
-                                </p>
-                            </div>              
-                            <div class="ticket_location">  
-                                <h1>Veranstaltungsort</h1>
-                                <p>Schl&ouml;sselgasse 19/2/18<br>A-1080 Wien, &Ouml;sterreich</p>
-                                <div>
-                                    <img src="../style/gfx/ticket_map.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>        
-                    </body>
-                    </html>
+        <meta name="Content-Disposition" content="attachment; filename='.$ticket_pdf.'">
+        <meta http-equiv="Content-Type" content="application/pdf; charset=UTF-8">
+    </head>
+    <body>
+        <div class="invoice-info">
+            <div class="invoice-logo">
+                <img src="../style/gfx/invoice_logo.png">
+            </div>
+            <div class="invoice-scholarium">
+                Scholarium GmbH<br>
+                Schl&ouml;sselgasse 19/2/18<br>
+                1080 Wien<br>
+                &Ouml;sterreich<br>
+                <br>
+                info@scholarium.at<br>
+                www.scholarium.at
+             </div>
+        </div>                 
+        <div class="invoice-content">
+            <div class="invoice-address"> 
+                <p>
+                    '.$user_name.' '.$user_surname.'<br>
+                    '.$user_street.'<br>
+                    '.$user_plz.' '.$user_city.'<br>
+                    '.$user_country.'<br>
+                </p>
+            </div>              
+            <div class="invoice-date">
+                <p>Wien, '.$now.'</p>
+            </div>
+            <div class="invoice-title">
+                <h1>Ticket '.$event_title.'</h1>
+            </div>
+            <div class="invoice-detail">
+                <table class="invoice-detail__table">
+                    <tr>
+                        <th class="invoice-detail__col2 invoice-detail__first-row">
+                            Beschreibung
+                        </th>
+                        <th class="invoice-detail__col1 invoice-detail__first-row">
+                            Menge
+                        </th>
+                        <th class="invoice-detail__col3 invoice-detail__first-row">
+                            Einzelpreis
+                        </th>
+                        <th class="invoice-detail__col4 invoice-detail__first-row">
+                            Gesamtpreis
+                       </th>
+                   </tr>';
+                   $i = 0;
+                   while ($i < count($invoice_info)) {                     
+                   $price_total = $invoice_info[$i]['quantity']*$invoice_info[$i]['price'];
+                      
+                   $html = $html.'
+                   <tr>
+                        <td class="invoice-detail__col2">
+                            <span class="invoice-detail__type">'.ucfirst($product['type']).'</span>
+                            <h1 class="invoice-detail__title">'.$product['title'].'</h1>
+                            <span class="invoice-detail__date">'.$product['date'].'</span>
+                        </td>
+                        <td class="invoice-detail__col1">
+                            '.$invoice_info[$i]['quantity'].'
+                        </td>
+                        <td class="invoice-detail__col3">
+                            &euro; '.$invoice_info[$i]['price'].',-
+                        </td>
+                        <td class="invoice-detail__col4">
+                            &euro; '.$price_total.',-
+                        </td> 
+                   </tr>';
+                   $total = $total + $price_total;
+                   $i++;
+                   }
+                   $html = $html.'
+                <tr>
+                        <td class="invoice-detail__col2 invoice-detail__last-row">&nbsp;</td>
+                        <td class="invoice-detail__col1 invoice-detail__last-row">&nbsp;</td>
+                        <td class="invoice-detail__col3 invoice-detail__last-row">Gesamtbetrag</td>
+                        <td class="invoice-detail__col4 invoice-detail__last-row">&euro; '.$total.',-</td>
+                </tr>
+            </table>
+        </div>
+            
+                     
+            <div class="invoice-location">
+                <table><tr>
+                <td class="invoice-location__info">  
+                    <h1>Veranstaltungsort</h1>
+                    <p>Schl&ouml;sselgasse 19/2/18<br>A-1080 Wien, &Ouml;sterreich</p>
+                </td>
+                <td class="invoice-location__map">
+                    <img src="../style/gfx/ticket_map.jpg" alt="">
+                </td>
+                </tr></table>
+            </div>
+            <div class="invoice-ending">
+                <p>Mit freundlichen Gr&uuml;&szlig;en</p>
+                <p><i>Ihr Scholarium</i></p>
+            </div>
+        </div>        
+    </body>
+</html>
