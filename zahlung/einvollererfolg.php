@@ -25,10 +25,6 @@ else
 
 }
 
-$next_salon = $general->getProducts($type=array('salon'), $status = 2, $show_passed = false, $show_soldout = false);
-$next_seminar = $general->getProducts($type=array('seminar'), $status = 2, $show_passed = false, $show_soldout = false);
-#create a template 
-#display info based on 
 ?>
 
 <div class="content body_nd">
@@ -45,59 +41,12 @@ $next_seminar = $general->getProducts($type=array('seminar'), $status = 2, $show
 				</div>
 			</div>
 		</div>
-<?php
-		if (count($next_salon) > 0 || count($next_seminar) > 0) { 
-?>
-		<div class="row">
-			<div class="col-8">						
-				<p>In der Zwischenzeit m&ouml;chten wir Sie gerne auf einige unserer <a href="../veranstaltungen/">n&auml;chsten Veranstaltung</a> hinweisen.</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-8">
-<?php
-					if (count($next_salon) > 5) {$j = 5;}
-					else {$j = count($next_salon);}
-					
-					for ($i = 0; $i < $j; $i++ ) {
-?>
-					<div class="ctn-elm">
-						<span class="product_type"><?=ucfirst($next_salon[$i]['type'])?></span>
-						<h1 class="h2"><a class="link--highlighted" href="../<?=$next_salon[$i]['type']?>/?q=<?=$next_salon[$i]['id']?>"><?=$next_salon[$i]['title']?></a></h1>
-						<em><?=$general->getDate($next_salon[$i]['start'], $next_salon[$i]['end'])?></em>
-					</div>
-<?php
-					}
-?>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-8">
-<?php
-					if (count($next_seminar) > 5) {$m = 5;}
-					else {$m = count($next_seminar);}
-					
-					for ($n = 0; $n < $m; $n++ ) {
-?>
-					<div class="ctn-elm">
-						<span class="product_type"><?=ucfirst($next_seminar[$n]['type'])?></span>
-						<h1 class="h2"><a class="link--highlighted" href="../<?=$next_seminar[$n]['type']?>/?q=<?=$next_seminar[$n]['id']?>"><?=$next_seminar[$n]['title']?></a></h1>
-						<em><?=$general->getDate($next_seminar[$n]['start'], $next_seminar[$n]['end'])?></em>
-					</div>
-<?php
-					}
-?>				
-			</div>
-		</div>
-<?php
-			}
-?>
 	</div>
 </div>
 
 <?php 
 
-// include('../views/_footer.php'); 
+include('../views/_footer.php'); 
 
 #TESTING ONLY
 // #var output block

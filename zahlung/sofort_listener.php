@@ -59,6 +59,7 @@ else
 
 	$profile = $txn_data['profile'];
 	$product = $txn_data['product'];
+	$donation = $txn_data['donation'];
 
-	$registration->processPayment($profile, $product);
+	$registration->processPayment($profile, $product, $donation);
 }

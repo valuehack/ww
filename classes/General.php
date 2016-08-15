@@ -218,7 +218,7 @@ class General {
 		return $mb_info;
 	}
 
-	public function registerEvent ($user_id, $event_id, $quantity, $format) {
+	public function registerEvent ($user_id, $event_id, $quantity, $format='vorOrt') {
 	    			    				
     	#enter into event registration
 		$reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, format, reg_datetime ) VALUES (:event_id, :user_id, :quantity, :format, NOW())');
@@ -235,7 +235,6 @@ class General {
         	$spots_sold_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
         	$spots_sold_query->execute();
 		}
-
     }
 
 	public function changeCredit ($user_id, $quantity, $price) {
@@ -268,7 +267,6 @@ class General {
 			$event_date = $this->getDate($event_start, $event_end);*/
 			
 			$now = date('d.m.Y', time());
-			$profile['user_id'] = 44;
 			
 			$ticket_name = 'Ticket_'.$profile['user_id'].'_'.$product['type'].'_'.$product['id'];
 			$ticket_pdf = 'ticket_'.$profile['user_id'].'_'.$product['type'].'_'.$product['id'].'.pdf';
@@ -592,7 +590,7 @@ class General {
 			
 			#put invoice into database
 			$invoice_query = $this->db_connection->prepare('INSERT INTO rechnungen (user_id, nummer, date, zahlungsart, pdf) VALUES (:user_id, :nummer, NOW(), :zahlung, :pdf)');
-			$invoice_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+			$invoice_query->bindValue(':user_id', $profile['user_id'], PDO::PARAM_INT);
 			$invoice_query->bindValue(':nummer', $invoice_number, PDO::PARAM_STR);
 			$invoice_query->bindValue(':zahlung', $profile['payment_option'], PDO::PARAM_STR);
 			$invoice_query->bindValue(':pdf', $invoice_location, PDO::PARAM_STR);

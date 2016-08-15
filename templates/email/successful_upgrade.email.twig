@@ -1,9 +1,23 @@
-Lieber Unterst&uuml;tzer,
-<br><br>f&uuml;r Ihre gesch&auml;tzte Unterst&uuml;tzung haben wir Ihnen ein Pr&auml;mienguthaben gutgeschrieben.
-<br>Dieses symbolische Guthaben k&ouml;nnen Sie auf scholarium.at einsetzen, um unser Angebot nach belieben zu nutzen.
-<br>Im Ausma&szlig; Ihrer Unterst&uuml;tzung erhalten Sie eine Gutschrift auf Seminare, Saloneintritte, Aufzeichnungen und Live-&Uuml;bertragungen, B&uuml;cher, digitale Schriften und Videos.
-<br>Zugang erhalten Sie auf scholarium.at mit Ihrer E-Mail-Adresse und dem zugesandten Passwort (dieses k&ouml;nnen Sie jederzeit zur&uuml;cksetzen oder &auml;ndern).
-<br>Falls Sie noch Fragen haben, stehen wir Ihnen gerne zur Verf&uuml;gung.
-<br>Vielen Dank f&uuml;r Ihr Engagement und Interesse.
-<br>Wir w&uuml;nschen Ihnen viele neue Einsichten und Erkenntnisse.
-<br><br>Herzliche Gr&uuml;&szlig;e aus dem scholarium
+{# eMail template for succesful upgrade #}
+
+{% include 'email_header.html.twig' %}
+
+{% if profile.user_anrede == 'Herr' %}
+	{% set anrede = 'Lieber' %}
+{% endif %}
+{% if profile.user_anrede == 'Frau' %}
+	{% set anrede = 'Liebe' %}
+{% endif %}
+
+<p>{{anrede}} {{profile.user_anrede}} {{profile.user_surname}},<br><br>
+f&uuml;r Ihre gesch&auml;tzte Unterst&uuml;tzung haben wir Ihnen ein Pr&auml;mienguthaben gutgeschrieben. Dieses symbolische Guthaben k&ouml;nnen Sie auf scholarium.at einsetzen, um unser Angebot nach belieben zu nutzen. Im Ausma&szlig; Ihrer Unterst&uuml;tzung erhalten Sie eine Gutschrift auf Seminare, Saloneintritte, Aufzeichnungen und Live-&Uuml;bertragungen, B&uuml;cher, digitale Schriften und Videos.</p>
+                                
+<p>Zugang erhalten Sie auf scholarium.at mit Ihrer E-Mail-Adresse und dem zugesandten Passwort (dieses k&ouml;nnen Sie jederzeit zur&uuml;cksetzen oder &auml;ndern).</p>
+ 
+<p>Anbei finden Sie Ihre Spendenquittung.</p> 
+<p>Falls Sie noch Fragen haben, stehen wir Ihnen gerne zur Verf&uuml;gung.</p>
+<p>Vielen Dank f&uuml;r Ihr Engagement und Interesse.</p>
+<p>Wir w&uuml;nschen Ihnen viele neue Einsichten und Erkenntnisse.</p>
+<p>Herzliche Gr&uuml;&szlig;e aus dem scholarium</p>
+
+{% include 'email_footer.html.twig' %}

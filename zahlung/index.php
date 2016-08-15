@@ -95,8 +95,6 @@ else
 
         #generate and display summary 
         getSummary();
-		
-		$general->generateTicket($_SESSION['profile'], $_SESSION['product']);
 
     }
     elseif ($_GET["g"] === 'edit')      
@@ -117,8 +115,8 @@ else
         #confirmed - send to sofort/paypal
         #problem with namespaces
         #redirect to other file for a quick workaround
-
-        $_SESSION['product']['credits'] = $_SESSION['product']['total'];
+		if ($_SESSION['product']['type'] === 'seminar') $_SESSION['profile']['credits'] = 25;
+		else $_SESSION['profile']['credits'] = $_SESSION['product']['total'];
         $_SESSION['profile']['first_reg'] = $_SESSION['product']['what'];
 
         $user_email = $_SESSION['profile']['user_email'];
@@ -238,7 +236,7 @@ function getSummary()
     #membership ends one year (31536000 sec) from today 
     $_SESSION['donation']['end'] = date('d.m.Y', time()+31536000);
 
-    //$_SESSION['donation']['end'] = date('Y-m-d', time()+31536000); dunno what this format is for
+    $_SESSION['donation']['end_ymd'] = date('Y-m-d', time()+31536000);
 
     #pass variables to template
     echo $formTemplate->render(array(       

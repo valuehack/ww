@@ -18,8 +18,8 @@
 <div class="row row__head">
 <div class="col-1">Menge</div>
 <div class="col-5">&nbsp;</div>
-<div class="col-1">Einzelpreis</div>
-<div class="col-1">Gesamtpreis</div>
+<div class="col-1">Spendenbetrag</div>
+<div class="col-1">Gesamtspende</div>
 </div>
 <div class="row row__body">
 <div class="col-1">{{product.quantity}}</div>
@@ -52,8 +52,8 @@
 <div class="row row__head">
 <div class="col-1">Menge</div>
 <div class="col-5">&nbsp;</div>
-<div class="col-1">Einzelpreis</div>
-<div class="col-1">Gesamtpreis</div>
+<div class="col-1">Spendenbetrag</div>
+<div class="col-1">Gesamtspende</div>
 </div>
 <div class="row row__body">
 <div class="col-1">{{product.quantity}}</div>
@@ -85,8 +85,8 @@
 <div class="row row__head">
 <div class="col-1">Menge</div>
 <div class="col-5">&nbsp;</div>
-<div class="col-1">Einzelpreis</div>
-<div class="col-1">Gesamtpreis</div>
+<div class="col-1">Spendenbetrag</div>
+<div class="col-1">Gesamtspende</div>
 </div>
 <div class="row row__body">
 <div class="col-1">1</div>
@@ -120,11 +120,13 @@ Unterst&uuml;tzung <i>{{donation.name}}</i> ({{donation.start}} - {{donation.end
 <div class="row row__body">
 <div class="col-4">
 <div class="col__content">
-
+    
+{{profile.user_email}}<br>
 {{profile.user_anrede}}
 {{profile.user_first_name}}
 {{profile.user_surname}}<br>
-{{profile.user_email}}<br>
+{{profile.user_company}}<br>
+{{profile.user_telefone}}<br>
 {{profile.user_street}}<br>
 {{profile.user_plz}}<br>
 {{profile.user_city}}<br>
@@ -138,7 +140,7 @@ Unterst&uuml;tzung <i>{{donation.name}}</i> ({{donation.start}} - {{donation.end
 <div class="col-4">								
 
 {% if profile.payment_option == "paypal" %}PayPal{% endif %}
-{% if profile.payment_option == "sofort" %}SOFORT{% endif %}
+{% if profile.payment_option == "sofort" %}Bank&uuml;berweisung per SOFORT{% endif %}
 
 
 </div>
@@ -154,7 +156,7 @@ Unterst&uuml;tzung <i>{{donation.name}}</i> ({{donation.start}} - {{donation.end
 </div>
 <div class="col-4">
 <div class="col__content h-centered">
-<input type="submit" class="profil_inputbutton" name="confirmed_submit" value="Verbindlich bestellen">
+<input type="submit" class="profil_inputbutton" name="confirmed_submit" value="Unterst&uuml;tzung best&auml;tigen">
 </div>
 </div>
 </form>			

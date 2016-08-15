@@ -2,11 +2,11 @@
 
 /**
  * Handles the user registration
- * @author Panique
- * @link http://www.php-login.net
- * @link https://github.com/panique/php-login-advanced/
+ * @author Dainius/ Ulrich <um@scholarium.at>
+ * @link http://www.scholarium.at
  * @license http://opensource.org/licenses/MIT MIT License
  */
+  
 class Registration
 {
     /**
@@ -352,7 +352,7 @@ class Registration
 
     }#end of constructor
 
-    public function createNewUser($profile, $product)
+    public function createNewUser($profile, $product, $donation)
     {
         #simple function to add a new entry in mitgliederEXT
         #copy from subscribe new user to include emails etc.
@@ -360,6 +360,7 @@ class Registration
         #here we assume that user is new and the email was not used. 
 
         $user_password = $this->randomPasswordGenerator();
+		$_SESSION['profile']['user_password'] = $user_password;
 
         $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
 
@@ -392,9 +393,9 @@ class Registration
 
         $qry_new_user->bindValue(':user_email', $profile['user_email'], PDO::PARAM_STR);
         $qry_new_user->bindValue(':first_reg', $profile['first_reg'], PDO::PARAM_STR);
-        $qry_new_user->bindValue(':Mitgliedschaft', $product['level'], PDO::PARAM_STR);
-        $qry_new_user->bindValue(':credits_left', $product['credits'], PDO::PARAM_STR);
-        $qry_new_user->bindValue(':Ablauf', $product['membership_end'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':Mitgliedschaft', $donation['level'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':credits_left', $profile['credits'], PDO::PARAM_STR);
+        $qry_new_user->bindValue(':Ablauf', $donation['end_ymd'], PDO::PARAM_STR);
         $qry_new_user->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
         $qry_new_user->bindValue(':user_active', 1, PDO::PARAM_INT);
         $qry_new_user->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
@@ -407,7 +408,7 @@ class Registration
         #EMAIL SEND BLOCK
         ####################################################################
         #email template must exist in templates/email folder
-        $email_template = 'new_paying_user_email.email.twig';
+        /*$email_template = 'new_paying_user_email.email.twig';
 
         $post_data = array(
             'to' => $profile['user_email'],
@@ -427,7 +428,7 @@ class Registration
         {
           error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
         }
-        ####################################################################
+        ####################################################################*/
 
         $login = new Login();
         $login->newRememberMeCookie();
@@ -455,6 +456,7 @@ class Registration
                 PLZ = :plz,
                 Ort = :city,
                 Land = :country,
+                Firma = :company,
                 first_reg = :first_reg
           WHERE user_email = :user_email"
         );
@@ -467,6 +469,7 @@ class Registration
         $update_profile_query->bindValue(':plz', $profile['user_plz'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':city', $profile['user_city'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':country', $profile['user_country'], PDO::PARAM_STR);
+        $update_profile_query->bindValue(':company', $profile['user_company'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':first_reg', $profile['first_reg'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':user_email', $profile['user_email'], PDO::PARAM_STR);
 
@@ -495,7 +498,6 @@ class Registration
 
         if($give_credits_qry->errorCode() != 0) return $give_credits_qry->errorInfo();
 
-
     }
 
     public function prolongMembership($user_email)
@@ -506,17 +508,13 @@ class Registration
 
         $prolong_qry = $this->db_connection->prepare(
         "UPDATE mitgliederExt  
-            SET Ablauf= CASE
-           WHEN Ablauf<CURDATE() THEN DATE_ADD(CURDATE(), INTERVAL 1 YEAR)
-           ELSE DATE_ADD(Ablauf, INTERVAL 1 YEAR)
-            END 
+            SET Ablauf = DATE_ADD(Ablauf, INTERVAL 1 YEAR)
           WHERE user_email = :user_email"
         );
 
         $prolong_qry->bindValue(':user_email', $user_email, PDO::PARAM_STR);
 
         $prolong_qry->execute();
-
 
         if($prolong_qry->errorCode() != 0) return $prolong_qry->errorInfo();
 
@@ -625,13 +623,16 @@ class Registration
 
     }
 
-	public function processPayment($profile, $product)
+	public function processPayment($profile, $product, $donation)
 	{
 
     	ini_set("log_errors" , "1");
     	error_log('processPayment');
 
     	error_log("User email in registration ".$profile['user_email']);
+
+		require_once('../classes/General.php');
+		$general = new General();
 
     	if ((isset($profile['user_logged_in'])) and ($profile['user_logged_in'] === 1))
     	{
@@ -641,12 +642,14 @@ class Registration
         	$this->addPersonalDataGeneric($profile);
 
         	#make sure that credits exists! 
-       	 	$this->giveCredits($product['credits'] , $profile['user_email'], $product['level']);
+       	 	$this->giveCredits($profile['credits'] , $profile['user_email'], $donation['level']);
         
         	$this->prolongMembership($profile['user_email']);
 
+			$profile['user_id'] = $_SESSION['user_id'];
 			#render invoice
-			$general->generateInvoice($_SESSION['profile'], $_SESSION['product'], $_SESSION['donation']);
+			$invoice_name = 'Rechnung_'.$_SESSION['user_id'].'.pdf';
+			$files[$invoice_name] = $general->generateInvoice($profile, $product, $donation);
 
         	// if ( !($this->sendUpgradeEmailToUser($profile['user_email'])) ) 
         	// {
@@ -655,20 +658,28 @@ class Registration
 
         	#EMAIL SEND BLOCK
         	####################################################################
+        	#user email
         	#email template must exist in templates/email folder
         	$email_template = 'successful_upgrade.email.twig';
 
         	$post_data = array(
             	'to' => $profile['user_email'],
-            	'bcc' => 'dzainius@gmail.com',
-            	'subject' => 'Vielen Dank f&uuml;r die Verl&auml;ngerung Ihrer Spende',
+            	'bcc' => 'um@scholarium.at',
+            	'subject' => 'Vielen Dank für die Verlängerung Ihrer Spende',
             	'from' => 'info@scholarium.at',
             	'fromname' => 'Scholarium'
             	);
 
+			if (!(is_null($files))) {
+				foreach ($files as $filename => $location) {
+					$post_data['files['. $filename .']'] = "@".$location;
+				}
+			}
+			
         	$body_data = array(
             	'profile' => $profile,
-            	'product' => $product
+            	'product' => $product,
+            	'donation' => $donation
             	);
         
         	if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
@@ -677,6 +688,30 @@ class Registration
 			}
         	####################################################################
 
+        	#EMAIL SEND BLOCK
+        	####################################################################
+        	#scholarium email
+        	#email template must exist in templates/email folder
+        	$email_template = 'scholarium_upgrade.email.twig';
+
+        	$post_data = array(
+            	'to' => 'info@scholarium.at',
+            	'bcc' => 'um@scholarium.at',
+            	'subject' => 'Unterstützung erneuert',
+            	'from' => 'info@scholarium.at',
+            	'fromname' => 'Scholarium'
+            	);
+
+        	$body_data = array(
+            	'profile' => $profile,
+            	'donation' => $donation
+            	);
+        
+        	if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
+        	{
+          		error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+        	}
+        	####################################################################  
 
         	#TODO: mark as paid only when all above are successful
         	$this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
@@ -687,28 +722,54 @@ class Registration
        	 	#create a new user
         	error_log($profile['user_email'].' is NEW.');
 
-        	$this->createNewUser($profile, $product);
+        	$this->createNewUser($profile, $product, $donation);
         	$this->addPersonalDataGeneric($profile);
 
+			$profile['user_id'] = $_SESSION['user_id'];
+
+			if ($product['type'] === 'seminar' || $product['type'] === 'projekt' || $product['id'] > 999) {
+				
+				if ($product['type'] === 'projekt') $product_quantity = $product['price'];
+				else $product_quantity = $product['quantity'];
+				
+				#update registration and produkte
+				$general->registerEvent($_SESSION['user_id'], $product['id'], $product_quantity);
+
+				if ($product['type'] === 'seminar') {				
+					#ticket generation
+					$ticket_name = 'Ticket_'.$_SESSION['user_id'].'_'.ucfirst($product['type']).'_'.$product['id'].'.pdf';
+					$files[$ticket_name] = $general->generateTicket($profile, $product);
+				}
+			}	
+
 			#render invoice
-			$general->generateInvoice($_SESSION['profile'], $_SESSION['product'], $_SESSION['donation']);
+			$invoice_name = 'Rechnung_'.$_SESSION['user_id'].'.pdf';
+			$files[$invoice_name] = $general->generateInvoice($profile, $product, $donation);
 
         	#EMAIL SEND BLOCK
         	####################################################################
+        	#User email
         	#email template must exist in templates/email folder
-        	$email_template = 'successful_upgrade.email.twig';
+        	$email_template = 'new_paying_user.email.twig';
 
         	$post_data = array(
             	'to' => $profile['user_email'],
             	'bcc' => 'um@scholarium.at',
-            	'subject' => 'Vielen Dank fuer Ihre Unterst&uuml;tzung',
+            	'subject' => 'Vielen Dank für Ihre Unterstützung',
             	'from' => 'info@scholarium.at',
             	'fromname' => 'Scholarium'
             	);
 
+			if (!(is_null($files))) {
+				foreach ($files as $filename => $location) {
+					$post_data['files['. $filename .']'] = "@".$location;
+				}
+			}
+
         	$body_data = array(
             	'profile' => $profile,
-            	'product' => $product
+            	'product' => $product,
+            	'donation' => $donation
             	);
         
         	if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
@@ -717,6 +778,32 @@ class Registration
         	}
         	####################################################################
 
+        	#EMAIL SEND BLOCK
+        	####################################################################
+        	#scholarium email
+        	#email template must exist in templates/email folder
+        	$email_template = 'scholarium_newdonation.email.twig';
+
+        	$post_data = array(
+            	'to' => 'info@scholarium.at',
+            	'bcc' => 'um@scholarium.at',
+            	'subject' => 'Neuer Unterstützer',
+            	'from' => 'info@scholarium.at',
+            	'fromname' => 'Scholarium'
+            	);
+
+        	$body_data = array(
+            	'profile' => $profile,
+            	'product' => $product,
+            	'donation' => $donation
+            	);
+        
+        	if ( !$this->sendThisEmail($email_template, $post_data, $body_data) ) 
+        	{
+          		error_log('Problem sending an email '.$email_template.' to '.$profile['user_email']);
+        	}
+        	####################################################################        	
+        	
         	#TODO: mark as paid only when all above are successful
         	$this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
 
@@ -724,7 +811,7 @@ class Registration
     	else
     	{
         	#some random shit just happened! 
-        	#log it and ivestigate
+        	#log it and investigate
         	#send email too 
         	#create random gmail email for these errors 
         	#biene.sackerl@gmail.com
@@ -734,6 +821,7 @@ class Registration
     	#clear session vars as no longer needed
     	$_SESSION['profile'] = '';
     	$_SESSION['product'] = '';
+		$_SESSION['donation'] = '';
 
     	#redirect to success page
     	header('Location: einvollererfolg.php');
@@ -1894,7 +1982,7 @@ class Registration
 
     #email sending based on the email templates
     #_README in templates/email for more info
-    public function sendThisEmail($email_template, $post_data, $body_data) 
+    public function sendThisEmail($email_template, $post_data, $body_data)
     {
         
         $ch = curl_init();

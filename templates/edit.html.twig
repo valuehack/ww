@@ -67,8 +67,8 @@ default: $total = 75; $membership ='Gast'; break;
 <div class="row row__head">
 <div class="col-1">Menge</div>
 <div class="col-5">&nbsp;</div>
-<div class="col-1">Einzelpreis</div>
-<div class="col-1">Gesamtpreis</div>
+<div class="col-1">Spendenbetrag</div>
+<div class="col-1">Gesamtspende</div>
 </div>
 <div class="row row__body">
 <div class="col-1">
@@ -137,8 +137,8 @@ default: $total = 75; $membership ='Gast'; break;
 <div class="row row__head">
 <div class="col-1">Menge</div>
 <div class="col-5">&nbsp;</div>
-<div class="col-1">Einzelpreis</div>
-<div class="col-1">Gesamtpreis</div>
+<div class="col-1">Spendenbetrag</div>
+<div class="col-1">Gesamtspende</div>
 </div>
 <div class="row row__body">
 <div class="col-1">1</div>
@@ -208,8 +208,8 @@ default: $total = 75; $membership ='Gast'; break;
 <div class="row row__head">
 <div class="col-1">Menge</div>
 <div class="col-5">&nbsp;</div>
-<div class="col-1">Einzelpreis</div>
-<div class="col-1">Gesamtpreis</div>
+<div class="col-1">Spendenbetrag</div>
+<div class="col-1">Gesamtspende</div>
 </div>
 <div class="row row__body">
 <div class="col-1">1</div>
@@ -273,34 +273,54 @@ Unterst&uuml;tzungsstufe
 </div> 
 <div class="row row__body">
 <div class="col-4">
-<div class="col__content">
+<div class="col__content profil unprofil">
     
 {% if profile.user_logged_in != "1" %}
 <div id="ajax_email_exists_error"></div>
+<label for="user_email">E-Mail</label>
 <input id="ajax_email_exists" type="email" class="profil_inputfield" name="profile[user_email]" value="{{profile.user_email}}" required>
-<input id="ajax_email_exists2" type="email" class="profil_inputfield" name="profile[user_email]" value="" required>
+<label for="user_email2">E-Mail Wiederholen</label>
+<input id="ajax_email_exists2" type="email" class="profil_inputfield" name="profile[user_email]" value="{{profile.user_email}}" required>
 <div id="ajax_email_same_error"></div> 
 {% else %}
 <input type="hidden" name="profile[user_email]" value="{{profile.user_email}}">
 {% endif %}
-    
-<select class="profil_select" name="profile[user_anrede]">
+
+<label for="user_anrede">Anrede</label>   
+<select class="profil_select" name="profile[user_anrede]" required>
 <option value="Herr"{% if profile.user_anrede == "Herr" %}selected{% endif %}>Herr</option>
 <option value="Frau"{% if profile.user_anrede == "Frau" %}selected{% endif %}>Frau</option>
 </select><br>
 
-<input type="text" class="profil_inputfield" name="profile[user_first_name]" value="{{profile.user_first_name}}"><br> 
-<input type="text" class="profil_inputfield" name="profile[user_surname]" value="{{profile.user_surname}}"<br> 
-<input type="text" class="profil_inputfield" name="profile[user_street]" value="{{profile.user_street}}"><br> 
-<input type="text" class="profil_inputfield" name="profile[user_plz]" value="{{profile.user_plz}}"><br> 
-<input type="text" class="profil_inputfield" name="profile[user_city]" value="{{profile.user_city}}"><br> 
+<label for="user_first_name">Vorname</label> 
+<input type="text" class="profil_inputfield" name="profile[user_first_name]" value="{{profile.user_first_name}}" required><br>
+
+<label for="user_surname">Nachname</label> 
+<input type="text" class="profil_inputfield" name="profile[user_surname]" value="{{profile.user_surname}}" required><br> 
+
+<label for="user_company">Firma</label>
+<input class="profil_inputfield" id="user_company" type="text" name="profile[user_company]" value="{{profile.user_company}}"><br>
+
+<label for="user_telefon">Telefon</label>
+<input class="profil_inputfield" id="user_telefon" type="tel"  name="profile[user_telefon]" value="{{profile.user_telefon}}"><br>
+
+<label for="user_street">Stra&szlig;e</label>
+<input type="text" class="profil_inputfield" name="profile[user_street]" value="{{profile.user_street}}" required><br>
+
+<label for="user_plz">PLZ</label> 
+<input type="text" class="profil_inputfield" name="profile[user_plz]" value="{{profile.user_plz}}" required><br> 
+
+<label for="user_city">Ort</label>
+<input type="text" class="profil_inputfield" name="profile[user_city]" value="{{profile.user_city}}" required><br> 
+
+<label for="user_country">Land</label>
 <input type="text" class="profil_inputfield" name="profile[user_country]" value="{{profile.user_country}}"><br> 
 </div>
 </div>
 <div class="col-4">
 
 <input type="radio" name="profile[payment_option]" value="paypal"{% if profile.payment_option == "paypal" %}checked{% endif %} required>PayPal<br>
-<input type="radio" name="profile[payment_option]" value="sofort" {% if profile.payment_option == "sofort" %}checked{% endif %}>SOFORT		
+<input type="radio" name="profile[payment_option]" value="sofort" {% if profile.payment_option == "sofort" %}checked{% endif %}>Bank&uuml;berweisung per SOFORT		
 </div>
 </div>
 </div>

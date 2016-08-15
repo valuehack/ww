@@ -16,6 +16,7 @@ require_once('../config/config.php');
 
 $profile = $_SESSION['profile'];
 $product = $_SESSION['product'];
+$donation = $_SESSION['donation'];
 
 
 if ($profile['payment_option'] === 'sofort')
@@ -42,6 +43,8 @@ function doSofortPayment($profile, $product)
 
     $Sofortueberweisung->setAmount($product['total']);
     $Sofortueberweisung->setCurrencyCode('EUR');
+	
+	// Think about upgrade because there is no product name set
     $Sofortueberweisung->setReason($product['what']);
 
     $sofort_success_url = SOFORT_URL_BASE."sofort_listener.php?g=".$profile['wrt_txn_id'];

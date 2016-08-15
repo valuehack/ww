@@ -65,8 +65,9 @@ else
 
 	$profile = $txn_data['profile'];
 	$product = $txn_data['product'];
+	$donation = $txn_data['donation'];
 
 	error_log('email from paypal listener'.$profile['user_email']);
 
-	$registration->processPayment($profile, $product);
+	$registration->processPayment($profile, $product, $donation);
 }

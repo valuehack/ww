@@ -63,15 +63,5 @@ include('../views/_header_not_in.php');
 			<input type="submit" class="profil_inputbutton" name="submit_event_selection" value="Anmelden">
 		</form>
 	</div>
-	<div class="profil">
-		<form action="" method="">
-			<div id="ajax_email_exists_error"></div>
-		 	<label for="user_email">E-Mail</label>
-    		<input id="ajax_email_exists" type="email" class="profil_inputfield" name="profile[user_email]" value="" required>
-    		<label for="user_email2">E-Mail wiederhohlen</label>
-    		<input id="ajax_email_exists2" type="email" class="profil_inputfield" name="profile[user_email]" value="" required>
-    		<div id="ajax_email_same_error"></div>
-    	</form>   		
-	</div>
 </div>
 <?php include('../views/_footer.php'); ?>

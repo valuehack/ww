@@ -41,7 +41,7 @@ else
 	</div>
 </div>
 <?php
-// include('../views/_footer.php'); 
+include('../views/_footer.php'); 
 
 // #TESTING ONLY
 // #var output block
