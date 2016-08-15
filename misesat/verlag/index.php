@@ -38,7 +38,7 @@
 						$author_links = $author_links.$author_id.', ';
 					}
 					else {
-						$author_links = $author_links.'<a href="../denker/index.php?q='.$author_info->id.'">'.$author_info->name.'</a>, ';
+						$author_links = $author_links.'<a href="../denker/index.php?denker='.$author_info->id.'">'.$author_info->name.'</a>, ';
 					}
 				}
 				else {
@@ -46,7 +46,7 @@
 						$author_links = $author_links.$author_id;
 					}
 					else { 
-						$author_links = $author_links.'<a href="../denker/index.php?q='.$author_info->id.'">'.$author_info->name.'</a>';
+						$author_links = $author_links.'<a href="../denker/index.php?denker='.$author_info->id.'">'.$author_info->name.'</a>';
 					}
 				}
 		}

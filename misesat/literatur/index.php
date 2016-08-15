@@ -135,6 +135,7 @@
 			case 'es': $lang = 'Spanisch'; break;
 			case 'it': $lang = 'Italienisch'; break;
 			case 'nl': $lang = 'Niederl&auml;ndisch'; break;
+			case 'pt': $lang = 'Portugiesisch'; break;
 			default: $lang = 'Deutsch'; break;
 		}
 				
@@ -148,7 +149,7 @@
 						<td><a class="itm-table_pri" href="<?=$link_lit?>"><?=$title_lit?></a>
 						</td>
 						<td data-label="Jahr"><?=$year_lit?></td>
-						<td data-label="Autor"><a class="itm-table_sec" href="../denker/?thinker=<?=$author_id->id?>"><?=$autor_lit?></a></td>
+						<td data-label="Autor"><a class="itm-table_sec" href="../denker/?denker=<?=$author_id->id?>"><?=$autor_lit?></a></td>
 						<td data-label="Typ"><?=$typ_lit?></td>
 						<td data-label="Sprache"><?=$lang?></td>
 						<td>free/amazon</td>
