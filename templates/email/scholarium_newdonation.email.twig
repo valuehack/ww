@@ -5,8 +5,12 @@ User ID {{profile.user_id}} <br>
 <br>
 hat {{product.type|capitalize}} gebucht<br>
 <br>
+
+{% if product.type == 'seminar' || product.type == 'projekt' %)
 Produkt: {{product.title}}<br>
 Menge: {{product.quantity}}<br>
 <br>
+{% endif %}
+
 Spende: {{donation.price}}<br>
 Level: {{donation.name}}<br>

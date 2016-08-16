@@ -108,7 +108,7 @@ class Login
 
                 // function below uses $_SESSION['user_name'] and $_SESSION['user_id']
                 #$this->errors[] = "this is working now";
-                $this->upgradeUserAccount($_POST['betrag'], $_POST['zahlung'], $_POST['level'], $_POST['profile'], $_POST['source']);       
+                $this->upgradeUserAccount($_POST['betrag'], $_POST['zahlung'], $_POST['level'], $_POST['profile'], $_POST['source']);
             }elseif (isset($_POST["select_events"])) {
                 #check the differences in arrays  
                 $this->doEventStuff($_POST['events']);

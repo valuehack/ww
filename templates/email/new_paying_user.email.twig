@@ -18,6 +18,11 @@ Ihr Benutzername ist Ihre angegebene E-Mail-Adresse <b>{{profile.user_email}}</b
 <p>Mit Benutzername und Passwort k&ouml;nnen Sie sich k&uuml;nftig auf scholarium.at einloggen, um Zugang zu unserem digitalen Angebot zu erhalten. Dort finden Sie Aufzeichnungen und Live-&Uuml;bertragungen von Vortr&auml;gen, sowie digitale Schriften. Zudem k&ouml;nnen Sie B&uuml;cher bestellen.</p>
 
 <p>Anbei finden Sie Ihre Spendenquittung.</p>
+
+{% product.type == 'seminar' %}
+	<p>Vielen Dank f&uuml;r Ihre Anmeldung zu unserem Seminar <i>{{product.title}}</i>. Das Ticket mit allen relevanten Informationen finden Sie im Anhang.</p>
+{% endif %}
+
 <p>Falls Sie noch Fragen haben, stehen wir Ihnen gerne zur Verf&uuml;gung.</p>
 <p>Vielen Dank f&uuml;r Ihr Engagement und Interesse.</p>
 <p>Wir w&uuml;nschen Ihnen viele neue Einsichten und Erkenntnisse.</p>

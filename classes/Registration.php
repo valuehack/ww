@@ -360,7 +360,6 @@ class Registration
         #here we assume that user is new and the email was not used. 
 
         $user_password = $this->randomPasswordGenerator();
-		$_SESSION['profile']['user_password'] = $user_password;
 
         $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
 
@@ -405,17 +404,17 @@ class Registration
         $_SESSION['profile']['user_id'] = $user_id;
         $_SESSION['user_id'] = $user_id;
 
-        #EMAIL SEND BLOCK
+        /*#EMAIL SEND BLOCK
         ####################################################################
         #email template must exist in templates/email folder
-        /*$email_template = 'new_paying_user_email.email.twig';
+        $email_template = 'new_user_pw.email.twig';
 
         $post_data = array(
             'to' => $profile['user_email'],
-            'bcc' => 'dzainius@gmail.com',
-            'subject' => 'You are a new user',
+            'bcc' => 'um@scholarium.at',
+            'subject' => 'Willkommen beim scholarium',
             'from' => 'info@scholarium.at',
-            'fromname' => 'Scholarium'
+            'fromname' => 'scholarium'
             );
 
         $body_data = array(
@@ -432,8 +431,9 @@ class Registration
 
         $login = new Login();
         $login->newRememberMeCookie();
+		
+		return $user_password;
     }
-
 
     public function addPersonalDataGeneric($profile)
     {  
@@ -722,7 +722,8 @@ class Registration
        	 	#create a new user
         	error_log($profile['user_email'].' is NEW.');
 
-        	$this->createNewUser($profile, $product, $donation);
+			#Create New User and Return Password for eMail
+        	$profile['user_password'] = $this->createNewUser($profile, $product, $donation);
         	$this->addPersonalDataGeneric($profile);
 
 			$profile['user_id'] = $_SESSION['user_id'];

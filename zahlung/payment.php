@@ -6,11 +6,12 @@ ini_set("log_errors" , "1");
 ini_set("error_log" , "../classes/error.log");
 ini_set("display_errors" , "0");
 
+#switch the timezone from under error_log
+date_default_timezone_set('Europe/Vienna');
+
 #if session does not exist, start a session
 if(session_id() == '') session_start();
 error_log('this is a session id in payment '.session_id());
-
-date_default_timezone_set('Europe/Vienna');
 
 require_once('../config/config.php');
 
@@ -102,7 +103,10 @@ function doPaypalPayment($profile, $product)
     $query['country'] = $profile['user_country'];
 
     #product
-    $query['item_name'] = $product['name'];
+    if ($product['type'] === 'upgrade') $query['item_name'] = 'Spende';
+	elseif ($product['type'] === 'projekt') $query['item_name'] = 'Projektspende '.$product['title'];
+	elseif ($product['type'] === 'seminar') $query['item_name'] = 'Seminar '.$product['title'];
+    
     $query['item_number'] = $product['what'];
 
     $query['amount'] = $product['total'];
