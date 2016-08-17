@@ -8,7 +8,7 @@ include('_header_in.php');
 // $some = $login->getUserData($_SESSION['user_email']); 
 
 //this is used for placeholders to show what is the current user info
-$result_row = $login->getUserData(trim($_SESSION['user_email']));
+$result_row = $general->getUserInfo($_SESSION['user_id']);
 
 $vorname = trim($result_row->Vorname);
 $nachname = trim($result_row->Nachname);

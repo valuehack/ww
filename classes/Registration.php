@@ -34,10 +34,12 @@ class Registration
      * the function "__construct()" automatically starts whenever an object of this class is created,
      * you know, when you do "$login = new Login();"
      */
+     	 
     public function __construct()
     {
 
-       
+        date_default_timezone_set('Europe/Vienna');
+		
         #if session does not exist, start a session
         if(session_id() == '') session_start();
 
@@ -108,7 +110,7 @@ class Registration
 			$user_surname = $profile[user_surname];
             $betrag = 150;
 						
-            #if $user_email is unique -> then continue with registration
+            #if $user_email is unique -> then dateontinue with registration
             #if already exist - direct to login 
             $this->subscribeNewUser($user_email, $betrag, $user_anrede, $user_surname);
             
@@ -456,8 +458,7 @@ class Registration
                 PLZ = :plz,
                 Ort = :city,
                 Land = :country,
-                Firma = :company,
-                first_reg = :first_reg
+                Firma = :company
           WHERE user_email = :user_email"
         );
 
@@ -470,7 +471,6 @@ class Registration
         $update_profile_query->bindValue(':city', $profile['user_city'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':country', $profile['user_country'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':company', $profile['user_company'], PDO::PARAM_STR);
-        $update_profile_query->bindValue(':first_reg', $profile['first_reg'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':user_email', $profile['user_email'], PDO::PARAM_STR);
 
         $update_profile_query->execute();
@@ -630,7 +630,8 @@ class Registration
     	error_log('processPayment');
 
     	error_log("User email in registration ".$profile['user_email']);
-
+		error_log('this is a session id in process-payment-start '.session_id());
+		
 		require_once('../classes/General.php');
 		$general = new General();
 
@@ -646,9 +647,8 @@ class Registration
         
         	$this->prolongMembership($profile['user_email']);
 
-			$profile['user_id'] = $_SESSION['user_id'];
 			#render invoice
-			$invoice_name = 'Rechnung_'.$_SESSION['user_id'].'.pdf';
+			$invoice_name = 'Rechnung_'.$profile['user_id'].'.pdf';
 			$files[$invoice_name] = $general->generateInvoice($profile, $product, $donation);
 
         	// if ( !($this->sendUpgradeEmailToUser($profile['user_email'])) ) 
@@ -716,6 +716,7 @@ class Registration
         	#TODO: mark as paid only when all above are successful
         	$this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
 
+			error_log('this is a session id process-payment-end '.session_id());
     	}
     	elseif (empty($profile['user_logged_in']) )
     	{
@@ -823,6 +824,8 @@ class Registration
     	$_SESSION['profile'] = '';
     	$_SESSION['product'] = '';
 		$_SESSION['donation'] = '';
+
+		
 
     	#redirect to success page
     	header('Location: einvollererfolg.php');

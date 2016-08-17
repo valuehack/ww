@@ -7,6 +7,7 @@ ini_set("display_errors" , "0");
 
 #if session does not exist, start a session
 if(session_id() == '') session_start();
+error_log('this is a session id in sofort-listener '.session_id());
 
 # check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {

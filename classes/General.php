@@ -30,7 +30,9 @@ class General {
                 #$this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=latin1', DB_USER, DB_PASS);
 
                 #using utf8 charset instead of latin1
-                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=latin1', DB_USER, DB_PASS);
+                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=utf8', DB_USER, DB_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+                
+                //$this->$db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=utf8', DB_USER, DB_PASS, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
                 
                 #query sets timezone for the database
                 $query_time_zone = $this->db_connection->prepare("SET time_zone = '+2:00'");
@@ -218,7 +220,7 @@ class General {
 		return $mb_info;
 	}
 
-	public function registerEvent ($user_id, $event_id, $quantity, $format='vorOrt') {
+	public function registerEvent ($user_id, $event_id, $quantity, $format='') {
 	    			    				
     	#enter into event registration
 		$reg_query = $this->db_connection->prepare('INSERT INTO registration (event_id, user_id, quantity, format, reg_datetime ) VALUES (:event_id, :user_id, :quantity, :format, NOW())');

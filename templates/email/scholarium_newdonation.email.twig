@@ -6,7 +6,7 @@ User ID {{profile.user_id}} <br>
 hat {{product.type|capitalize}} gebucht<br>
 <br>
 
-{% if product.type == 'seminar' || product.type == 'projekt' %)
+{% if product.type == 'seminar' or product.type == 'projekt' %}
 Produkt: {{product.title}}<br>
 Menge: {{product.quantity}}<br>
 <br>

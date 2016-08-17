@@ -7,7 +7,6 @@ require_once('../classes/General.php');
 require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
 
-
 // ini_set("display_errors" , "1");
 $general = new General();
 $registration = new Registration();
@@ -22,7 +21,6 @@ if ($login->isUserLoggedIn() == true)
 else
 {
   	include('../views/_header_not_in.php');
-
 }
 
 ?>

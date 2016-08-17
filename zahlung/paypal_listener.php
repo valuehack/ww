@@ -17,6 +17,8 @@ if (version_compare(PHP_VERSION, '5.3.7', '<')) {
     require_once('../libraries/password_compatibility_library.php');
 }
 
+error_log('this is a session id in paypal-listener '.session_id());
+
 #log received post
 error_log( "POST FROM PAYPAL. TXN_ID: ".$ipn_post_data['txn_id'] ." WRT_TXN_ID: ".$ipn_post_data['custom']);
 
@@ -56,7 +58,6 @@ if ($paypal_data_query->rowCount() == 0)
 else
 {
 	$result_row = $paypal_data_query->fetchObject();
-
 
 	#session data in db is stored serialized
 	$txn_data = unserialize($result_row->session_data);

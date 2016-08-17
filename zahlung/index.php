@@ -200,6 +200,7 @@ function getForm()
             'user_anrede' => $user->Anrede,
             'user_first_name' => $user->Vorname,
             'user_surname' => $user->Nachname,
+            'user_company' => $user->Firma,
             'user_telefon' => $user->Telefon,
             'user_street' => $user->Strasse,
             'user_plz' => $user->PLZ,

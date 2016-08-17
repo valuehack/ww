@@ -19,7 +19,7 @@ Ihr Benutzername ist Ihre angegebene E-Mail-Adresse <b>{{profile.user_email}}</b
 
 <p>Anbei finden Sie Ihre Spendenquittung.</p>
 
-{% product.type == 'seminar' %}
+{% if product.type == 'seminar' %}
 	<p>Vielen Dank f&uuml;r Ihre Anmeldung zu unserem Seminar <i>{{product.title}}</i>. Das Ticket mit allen relevanten Informationen finden Sie im Anhang.</p>
 {% endif %}
 

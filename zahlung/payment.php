@@ -45,9 +45,11 @@ function doSofortPayment($profile, $product)
     $Sofortueberweisung->setAmount($product['total']);
     $Sofortueberweisung->setCurrencyCode('EUR');
 	
-	// Think about upgrade because there is no product name set
-    $Sofortueberweisung->setReason($product['what']);
-
+	if(isset($_SESSION['user_id'])) $Sofortueberweisung->setReason('Spende '.$_SESSION['user_id']);
+	elseif ($product['type'] === 'upgrade') $Sofortueberweisung->setReason('Spende '.$product['what']);
+	elseif ($product['type'] === 'projekt') $Sofortueberweisung->setReason('Projektspende '.$product['id']);
+	elseif ($product['type'] === 'seminar') $Sofortueberweisung->setReason('Seminarbuchung '.$product['id']);
+	
     $sofort_success_url = SOFORT_URL_BASE."sofort_listener.php?g=".$profile['wrt_txn_id'];
     error_log('sofort success url in payment '.$sofort_success_url);
 
@@ -77,7 +79,7 @@ function doPaypalPayment($profile, $product)
     #to be moved to config
     $query['notify_url'] = 'http://scholarium.at/zahlung/paypal_listener.php';
     
-    $query['business'] = 'dainius.tol-facilitator@gmail.com';
+    $query['business'] = 'bartholos-facilitator@web.de';
     $query['hosted_button_id'] = 'VEP823EAZG9BA';
 
     #return url
@@ -103,9 +105,10 @@ function doPaypalPayment($profile, $product)
     $query['country'] = $profile['user_country'];
 
     #product
-    if ($product['type'] === 'upgrade') $query['item_name'] = 'Spende';
-	elseif ($product['type'] === 'projekt') $query['item_name'] = 'Projektspende '.$product['title'];
-	elseif ($product['type'] === 'seminar') $query['item_name'] = 'Seminar '.$product['title'];
+    if(isset($_SESSION['user_id'])) $query['item_name'] = 'Spende '.$_SESSION['user_id'];
+	elseif ($product['type'] === 'upgrade') $query['item_name'] = 'Spende '.$product['what'];
+	elseif ($product['type'] === 'projekt') $query['item_name'] = 'Projektspende '.$product['id'];
+	elseif ($product['type'] === 'seminar') $query['item_name'] = 'Seminarbuchung '.$product['id'];
     
     $query['item_number'] = $product['what'];
 
