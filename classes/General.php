@@ -325,10 +325,10 @@ class General {
                             				&nbsp;
                         				</td>
                         				<td class="invoice-detail__col3 invoice-detail__first-row">
-                            				Menge
+                            				&nbsp;
                         				</td>
                         				<td class="invoice-detail__col4 invoice-detail__first-row">
-                            				&nbsp;
+                            				Menge
                       					</td>
                    					</tr>
 									<tr>
@@ -341,10 +341,10 @@ class General {
                             				&nbsp;
                         				</td>
                         				<td class="invoice-detail__col3">
-                            				'.$product['quantity'].'
+                            				&nbsp;
                         				</td>
                         				<td class="invoice-detail__col4">
-                            				&nbsp;
+                            				'.$product['quantity'].'
                         				</td> 
                    					</tr>
                						<tr>
