@@ -33,7 +33,7 @@ else
 					<h2 class="h2__nd">Zahlung erfolgreich</h2>
 				</div>
 				<div>
-					<b>Vielen Dank f&uuml;r Ihre Spende.</b><br>
+					<b>Vielen Dank f&uuml;r Ihre Spende!</b><br>
 					<br>
 					Die Zahlung wurde erfolgreich durchgef&uuml;hrt. In K&uuml;rze erhalten Sie eine Best&auml;tigung-E-Mail und eine Spendenquittung.</p>
 				</div>
