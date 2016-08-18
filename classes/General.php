@@ -338,13 +338,13 @@ class General {
                             				<span class="invoice-detail__date">'.$product['date'].'</span>
                         				</td>
                         				<td class="invoice-detail__col1">
-                            				'.$product['quantity'].'
+                            				&nbsp;
                         				</td>
                         				<td class="invoice-detail__col3">
-                            				&euro; '.$product['price'].',-
+                            				'.$product['quantity'].'
                         				</td>
                         				<td class="invoice-detail__col4">
-                            				&euro; '.$product['total'].',-
+                            				&nbsp;
                         				</td> 
                    					</tr>
                						<tr>
