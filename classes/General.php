@@ -291,7 +291,7 @@ class General {
                 				<img src="../style/gfx/invoice_logo.png">
             				</div>
             				<div class="invoice-scholarium">
-                				Scholarium GmbH<br>
+                				scholarium<br>
                 				Schl&ouml;sselgasse 19/2/18<br>
                 				1080 Wien<br>
                 				&Ouml;sterreich<br>
@@ -322,13 +322,13 @@ class General {
                             				Beschreibung
                         				</td>
                         				<td class="invoice-detail__col1 invoice-detail__first-row">
-                            				Menge
+                            				&nbsp;
                         				</td>
                         				<td class="invoice-detail__col3 invoice-detail__first-row">
-                            				Einzelpreis
+                            				Menge
                         				</td>
                         				<td class="invoice-detail__col4 invoice-detail__first-row">
-                            				Gesamtpreis
+                            				&nbsp;
                       					</td>
                    					</tr>
 									<tr>
@@ -350,8 +350,8 @@ class General {
                						<tr>
                         				<td class="invoice-detail__col2 invoice-detail__last-row">&nbsp;</td>
                         				<td class="invoice-detail__col1 invoice-detail__last-row">&nbsp;</td>
-                        				<td class="invoice-detail__col3 invoice-detail__last-row">Gesamtbetrag</td>
-                        				<td class="invoice-detail__col4 invoice-detail__last-row">&euro; '.$product['total'].',-</td>
+                        				<td class="invoice-detail__col3 invoice-detail__last-row">&nbsp;</td>
+                        				<td class="invoice-detail__col4 invoice-detail__last-row">&nbsp;</td>
                 					</tr>
             					</table>
         					</div>
@@ -360,7 +360,7 @@ class General {
         							<tr>
                 						<td class="invoice-location__info">  
                     						<h1>Veranstaltungsort</h1>
-                    						<p>Schl&ouml;sselgasse 19/2/18<br>A-1080 Wien, &Ouml;sterreich</p>
+                    						<p>Schl&ouml;sselgasse 19/2/18<br>1080 Wien, &Ouml;sterreich</p>
                 						</td>
                 						<td class="invoice-location__map">
                        						<img src="../style/gfx/ticket_map.jpg" alt="">
@@ -370,7 +370,7 @@ class General {
             				</div>
             				<div class="invoice-ending">
                 				<p>Mit freundlichen Gr&uuml;&szlig;en</p>
-                				<p><i>Ihr Scholarium</i></p>
+                				<p><i>Ihr scholarium</i></p>
             				</div>
             			</div>        
       				</body>
@@ -479,7 +479,7 @@ class General {
                   			<img src="/home/content/56/6152056/html/production/style/gfx/invoice_logo.png">
              			</div>
               			<div class="invoice-scholarium">
-                  			Scholarium GmbH<br>
+                  			scholarium<br>
                   			Schl&ouml;sselgasse 19/2/18<br>
                   			1080 Wien<br>
                   			&Ouml;sterreich<br>
@@ -568,7 +568,7 @@ class General {
               
               			<div class="invoice-ending">
                   			<p>Mit freundlichen Gr&uuml;&szlig;en</p>
-                  			<p><i>Ihr Scholarium</i></p>
+                  			<p><i>Ihr scholarium</i></p>
               			</div>
                             
           			</div>        
