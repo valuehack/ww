@@ -68,7 +68,7 @@ else
 
     }
     #redirect to summary page
-    elseif ($_GET["g"] === 'summary')
+    elseif ($_GET["g"] === 'zusammenfassung')
     {
 
         #check if email is already registered       
@@ -97,7 +97,7 @@ else
         getSummary();
 
     }
-    elseif ($_GET["g"] === 'edit')      
+    elseif ($_GET["g"] === 'aendern')      
     {
         getEditPage();
 
@@ -107,7 +107,7 @@ else
         #edit
         #user want to edit the details, forward to summary/confirmation page
 
-        header('Location: ../zahlung/?g=edit');
+        header('Location: ../zahlung/?g=aendern');
 
     }
     elseif (isset($_POST['confirmed_submit']))        
@@ -116,6 +116,7 @@ else
         #problem with namespaces
         #redirect to other file for a quick workaround
 		if ($_SESSION['product']['type'] === 'seminar') $_SESSION['profile']['credits'] = 25;
+		elseif ($_SESSION['product']['type'] === 'projekt') $_SESSION['profile']['credits'] = 0;
 		else $_SESSION['profile']['credits'] = $_SESSION['product']['total'];
         $_SESSION['profile']['first_reg'] = $_SESSION['product']['what'];
 
@@ -142,7 +143,7 @@ else
         header('Location: /zahlung/?g=ihredaten');
     }
 
-
+include ('../views/_footer.php');
 
 // #TESTING ONLY
 // #var output block

@@ -57,7 +57,7 @@ default: $total = 75; $membership ='Gast'; break;
 <div class="row-group">
 <p class="h3">Produkt</p>
 
-<form method="post" action="/zahlung/?g=summary">
+<form method="post" action="/zahlung/?g=zusammenfassung">
 
 
 {# seminar #}
@@ -319,7 +319,7 @@ Unterst&uuml;tzungsstufe
 </div>
 <div class="col-4">
 
-<input type="radio" name="profile[payment_option]" value="paypal"{% if profile.payment_option == "paypal" %}checked{% endif %} required>PayPal<br>
+<input type="radio" name="profile[payment_option]" value="paypal"{% if profile.payment_option == "paypal" %}checked{% endif %} required>PayPal/Kreditkarte<br>
 <input type="radio" name="profile[payment_option]" value="sofort" {% if profile.payment_option == "sofort" %}checked{% endif %}>Bank&uuml;berweisung per SOFORT		
 </div>
 </div>

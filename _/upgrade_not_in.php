@@ -271,4 +271,4 @@ $(document).ready(function(){
         
         </div>
 
-<?php include('_footer.php'); ?>
+<?php include('../views/_footer.php'); ?>

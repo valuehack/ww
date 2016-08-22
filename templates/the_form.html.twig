@@ -2,7 +2,7 @@
 
 {# form for user data #}
 <div class="profil">
-<form method="post" action="/zahlung/?g=summary" name="the_form">
+<form method="post" action="/zahlung/?g=zusammenfassung" name="the_form">
 
   {# email #}
   <div id="ajax_email_exists_error"></div>
@@ -66,71 +66,4 @@
   <p>Bei Problemen oder Fragen zur Zahlung schreiben Sie uns bitte eine E-Mail an <a href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;</a></p>
   </div>
 </form>
-</div><!-- <div class="profil"> -->
-
-{#       	//$passed_from = Where was the form included?
-      	//$pass_to = To what function should the form be send?
-        # $pass_to - name of the form submit value
-      	# working example in /test/
-      	
-      	//profile[] = personal information, name, e-mail, adress
-      	//product[] = product information, betrag, quantity
-      	  	
-      	if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
-      		$result_row = $login->getUserData(trim($_SESSION['user_email']));
-
-			$anrede = trim($result_row->Anrede);
-       		$vorname = trim($result_row->Vorname);
-        	$nachname = trim($result_row->Nachname);
-        	$land = trim($resulttesttwig_row->Land);
-        	$ort = trim($result_row->Ort);
-        	$strasse = trim($result_row->Strasse);
-        	$plz = trim($result_row->PLZ);
-		} #}
-
-
-        <!-- end of user profile -->
-      
-      <!-- payment methods  -->
- 
-	  <!-- end payment options -->
-
-	  <!-- hidden fields -->
-	  <!-- <input type="hidden" name="amount" value="20"> -->
-
-      <!-- general -->
-  	        	  
-{#   <?php
-  #swich first_reg
-  switch ($passed_from){
-	  case 'open_salon':
-	  		$first_reg = 'opensalon_'.$event_id;
-			break;
-		case 'seminar':
-			$first_reg = 'seminar_'.$event_id;
-			break;
-		case 'projekt':
-			$first_reg = 'projekt_'.$event_id;
-			break;
-		case 'upgrade':
-			$first_reg = 'upgrade_buerger';
-			echo '<input type="hidden" name="profile[level]" value="'.$level['level'].'">';
-			break;
-		default:
-			$first_reg = 'unbekannt';
-  	  }
-		 ?>
-		 
-		 <input type="hidden" name="profile[first_reg]" value="<?=$first_reg?>">
-      
-<?php	
-	 if (isset($passed_from)) {
-?>
- <input type="hidden" name="passed_from" value="<?=$passed_from?>">
-	 <input type="hidden" name="product[event_id]" value="<?=$_SESSION['product']['event_id']?>">
-	 <input type="hidden" name="product[quantity]" value="<?=$_SESSION['product']['quantity']?>">
-	 <input type="hidden" name="profile[level]" value="<?=$level?>">
-
- #}
-
-		
+</div><!-- <div class="profil"> -->	

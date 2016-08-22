@@ -252,22 +252,7 @@ class General {
 	public function generateTicket ($profile, $product) {
 		
 			#automated ticket generation for events both for outsiders and insiders
-			
-			#get event information
-			/*$event_query = $this->db_connection->prepare('SELECT * FROM produkte WHERE n = :event_id');
-			$event_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
-			$event_query->execute();
-			$event_result = $event_query->fetchObject();
-			
-			$event_title = $event_result->title;
-			$event_price = $event_result->price;
-			$event_type = $event_result->type;
-			$event_start = $event_result->start;
-			$event_end = $event_result->end;
-			
-			#prepare the date-string
-			$event_date = $this->getDate($event_start, $event_end);*/
-			
+						
 			$now = date('d.m.Y', time());
 			
 			$ticket_name = 'Ticket_'.$profile['user_id'].'_'.$product['type'].'_'.$product['id'];
@@ -363,7 +348,7 @@ class General {
                     						<p>Schl&ouml;sselgasse 19/2/18<br>1080 Wien, &Ouml;sterreich</p>
                 						</td>
                 						<td class="invoice-location__map">
-                       						<img src="../style/gfx/ticket_map.jpg" alt="">
+                       						&nbsp;
                 						</td>
                 					</tr>
                 				</table>
@@ -398,30 +383,7 @@ class General {
 	public function generateInvoice($profile, $product, $membership) {
 		
 			#automated invoice generation both for outsiders and insiders
-			
-			/*
-			#get user information
-			$user_query = $this->db_connection->prepare('SELECT * FROM mitgliederExt WHERE user_id = :user_id');
-			$user_query->bindValue(':user_id', $profile['user_id'], PDO::PARAM_INT);
-			$user_query->execute();
-			$user_result = $user_query->fetchObject();
-			
-			$user_name = $user_result->Vorname;
-			$user_surname = $user_result->Nachname;
-			$user_street = $user_result->Strasse;
-			$user_plz = $user_result->PLZ;
-			$user_city = $user_result->Ort;
-			$user_country = $user_result->Land;
-			
-			/*#get event information
-			$event_query = $this->db_connection->prepare('SELECT * FROM produkte WHERE n = :event_id');
-			$event_query->bindValue(':event_id', $product['event_id'], PDO::PARAM_INT);
-			$event_query->execute();
-			$event_result = $event_query->fetchObject();
-			
-			$event_title = $event_result->title;
-			$event_price = $event_result->price;*/
-			
+						
 			$now = date('d.m.Y', time());
 			$year = date('Y', time());
 			
@@ -440,18 +402,7 @@ class General {
 			
 			$invoice_name = 'Rechnung_'.$invoice_number;
 			$invoice_pdf = 'Rechnung_'.$invoice_number.'.pdf';
-								
-			/*
-			switch ($user_level) {
-				case 2: $product_price = 75; $membership = 'Gast'; break;
-				case 3: $product_price = 150; $membership = 'Teilnehmer'; break;
-				case 4: $product_price = 300; $membership = 'Scholar'; break;
-				case 5: $product_price = 600; $membership = 'Partner'; break;
-				case 6: $product_price = 1200; $membership = 'Beirat'; break;
-				case 7: $product_price = 2400; $membership = 'Patron'; break;
-				default: $product_price = 75; $membership = 'Gast'; break;
-			}*/
-			
+											
 			if ($product['type'] === 'seminar') {
       			$invoice_info[] = array('price' => $product['price'], 'quantity' => $product['quantity'], 'description' => 'Seminar: '.ucfirst($product['title']));
 	  			$invoice_info[] = array('price' => 0, 'quantity' => 1, 'description' => 'Spende für ein Jahr - &quot;Teilnehmer&quot; ('.$membership['start'].' - '.$membership['end'].')');
@@ -653,6 +604,23 @@ class General {
 		}
 		return $file;
 	}
+
+	public function replaceUmlaute($str) {
+		# $str has to be a string
+		
+		# set search and replace arrays
+		$umlaute = array('Ä','ä','Ö','ö','Ü','ü','ß');
+		$replace = array('Ae','ae','Oe','oe','Ue','ue','ss');
+		
+		# replace umlaute and encode in utf-8
+		$str_wo_uml = str_replace($umlaute, $replace, utf8_encode($str));
+		
+		# strip all that is not alphanumerical (just to be sure)
+		$str_wo_uml = preg_replace('/[^a-z0-9_-]/isU', '', $str_wo_uml);
+	
+		return $str_wo_uml;
+
+	} 
 }
 
 ?>

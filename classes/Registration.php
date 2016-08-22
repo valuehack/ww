@@ -647,9 +647,12 @@ class Registration
         
         	$this->prolongMembership($profile['user_email']);
 
+			/* 
+			 * Sending out Invoices is on hold indefinitely
+			 * 
 			#render invoice
 			$invoice_name = 'Rechnung_'.$profile['user_id'].'.pdf';
-			$files[$invoice_name] = $general->generateInvoice($profile, $product, $donation);
+			$files[$invoice_name] = $general->generateInvoice($profile, $product, $donation);*/
 
         	// if ( !($this->sendUpgradeEmailToUser($profile['user_email'])) ) 
         	// {
@@ -728,25 +731,31 @@ class Registration
         	$this->addPersonalDataGeneric($profile);
 
 			$profile['user_id'] = $_SESSION['user_id'];
-
+			$format = '';
+			
 			if ($product['type'] === 'seminar' || $product['type'] === 'projekt' || $product['id'] > 999) {
 				
 				if ($product['type'] === 'projekt') $product_quantity = $product['price'];
 				else $product_quantity = $product['quantity'];
 				
-				#update registration and produkte
-				$general->registerEvent($_SESSION['user_id'], $product['id'], $product_quantity);
-
 				if ($product['type'] === 'seminar') {				
 					#ticket generation
-					$ticket_name = 'Ticket_'.$_SESSION['user_id'].'_'.ucfirst($product['type']).'_'.$product['id'].'.pdf';
+					$ticket_name = 'ticket_'.$_SESSION['user_id'].'_'.ucfirst($product['type']).'_'.$product['id'].'.pdf';
 					$files[$ticket_name] = $general->generateTicket($profile, $product);
+					
+					$format = 'vorOrt';
 				}
-			}	
+				
+				#update registration and produkte
+				$general->registerEvent($_SESSION['user_id'], $product['id'], $product_quantity, $format);
+			}
 
+			/*
+			 * Sending out Invoices is on hold indefinitely
+			 * 
 			#render invoice
 			$invoice_name = 'Rechnung_'.$_SESSION['user_id'].'.pdf';
-			$files[$invoice_name] = $general->generateInvoice($profile, $product, $donation);
+			$files[$invoice_name] = $general->generateInvoice($profile, $product, $donation); */
 
         	#EMAIL SEND BLOCK
         	####################################################################
@@ -825,10 +834,8 @@ class Registration
     	$_SESSION['product'] = '';
 		$_SESSION['donation'] = '';
 
-		
-
     	#redirect to success page
-    	header('Location: einvollererfolg.php');
+    	header('Location: zahlung_erfolgreich.php');
 	}
 
 
