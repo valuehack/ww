@@ -141,7 +141,7 @@ class Login
             $this->newRememberMeCookie();
 
             #used to refresh page for logging in with a cookie
-            header("Location:http://scholarium.at/");
+            header("Location:http://www.scholarium.at/");
         }
 
         // if user just submitted a login form
@@ -237,6 +237,7 @@ Old school database connect
                 // "Adding the charset to the DSN is very important for security reasons,
                 // most examples you'll see around leave it out. MAKE SURE TO INCLUDE THE CHARSET!"
                 $this->old_db_connect = mysql_connect(DB_HOST,DB_USER,DB_PASS) or die ("cannot connect to MySQL");
+				mysql_set_charset('utf8', $this->old_db_connect);
                 mysql_select_db(DB_NAME);
 
                 return true;

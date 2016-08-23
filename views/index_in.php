@@ -17,8 +17,8 @@ include ("_header_in.php");
 
         <div class="content">
             
-           <?php
-            $livestream_sql = $pdocon->db_connection->prepare("SELECT * from produkte WHERE type LIKE 'salon' and livestream != '' and end > NOW() and status = 1 order by start asc LIMIT 1");
+           <?php/*
+            $livestream_sql = $general->db_connection->prepare("SELECT * from produkte WHERE type LIKE 'salon' and livestream != '' and end > NOW() and status = 1 order by start asc LIMIT 1");
 			$livestream_sql->execute();
 			$livestream_result = $livestream_sql->fetchObject();
 
@@ -33,7 +33,7 @@ include ("_header_in.php");
             	<a href="<?=$livestream_url?>">Sehen Sie unseren <?=ucfirst($livestream_type)?> <em><?=$livestream_title?></em> im Livestream</a>
             </div>
 			<?php            
-            }
+            }*/
 			?> 
             <div class="startpage_section_last_scholie">
 			            	

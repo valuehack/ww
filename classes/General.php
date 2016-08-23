@@ -256,7 +256,7 @@ class General {
 			$now = date('d.m.Y', time());
 			
 			$ticket_name = 'Ticket_'.$profile['user_id'].'_'.$product['type'].'_'.$product['id'];
-			$ticket_pdf = 'ticket_'.$profile['user_id'].'_'.$product['type'].'_'.$product['id'].'.pdf';
+			$ticket_pdf = 'ticket_'.$profile['user_id'].'_'.ucfirst($product['type']).'_'.$product['id'].'.pdf';
 			
 			//$total = $event_price*$quantity;
 			

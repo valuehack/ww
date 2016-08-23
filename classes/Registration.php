@@ -719,7 +719,6 @@ class Registration
         	#TODO: mark as paid only when all above are successful
         	$this->markAsPaid($profile['user_email'],$profile['wrt_txn_id']);
 
-			error_log('this is a session id process-payment-end '.session_id());
     	}
     	elseif (empty($profile['user_logged_in']) )
     	{
