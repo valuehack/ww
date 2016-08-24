@@ -51,7 +51,7 @@ function doSofortPayment($profile, $product)
 	elseif ($product['type'] === 'projekt') $Sofortueberweisung->setReason('Projektspende '.$product['id']);
 	elseif ($product['type'] === 'seminar') $Sofortueberweisung->setReason('Seminarbuchung '.$product['id']);
 	
-    $sofort_success_url = SOFORT_URL_BASE."sofort_listener.php?g=".$profile['wrt_txn_id'];
+    $sofort_success_url = SOFORT_BASE_URL."sofort_listener.php?g=".$profile['wrt_txn_id'];
     error_log('sofort success url in payment '.$sofort_success_url);
 
     $Sofortueberweisung->setSuccessUrl($sofort_success_url, true);

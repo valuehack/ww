@@ -2,11 +2,8 @@
         	<div class="footer_section">
         		<div class="footer_info">
         			<?php
-						$sql = "SELECT * from static_content WHERE (page LIKE 'footer')";
-						$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-						$entry = mysql_fetch_array($result);
-				
-						echo $entry[info];			
+						$info = $general->getStaticInfo('footer');
+						echo $info->info;			
 					?>
         		</div>
         		<div class="footer_contact">

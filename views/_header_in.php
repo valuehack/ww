@@ -50,6 +50,7 @@
 	</head>
 
 <?php
+
 //set timezone
 mysql_query("SET time_zone = 'Europe/Vienna'");
 
@@ -70,7 +71,7 @@ if(isset($_SESSION['basket'])){
         $project_result = mysql_query($project_query) or die("Failed Query of " . $project_query. mysql_error());
         $itemsPriceArray = mysql_fetch_array($project_result);
 
-        if ($itemsPriceArray[type] == 'projekt') {
+        if ($itemsPriceArray['type'] == 'projekt') {
             $total_quantity += 1;
         }
         else {
@@ -121,7 +122,7 @@ $result = mysql_query($query) or die("Failed Query of " . $query. mysql_error())
 
 while ($entry = mysql_fetch_array($result))
 {
-    switch ($entry[Mitgliedschaft]) {
+    switch ($entry['Mitgliedschaft']) {
         case 1:
             $Mitgliedschaft = 'Interessent';
             break;
@@ -144,9 +145,7 @@ while ($entry = mysql_fetch_array($result))
             $Mitgliedschaft = 'Patron';
             break;
         }
-	$mitgliedschaft = $entry[Mitgliedschaft];
-	
-	$test = $entry[test];
+	$mitgliedschaft = $entry['Mitgliedschaft'];
 	
 	$expired = strtotime($entry['Ablauf']);
 ?>
@@ -201,23 +200,17 @@ while ($entry = mysql_fetch_array($result))
                             <li class="dropdown-header dropdown_level"><? echo $Mitgliedschaft;?></li>
                 			<li><a href="/spende/profil.php">Profil</a></li>
                 			<li><a href="/spende/">Unterst&uuml;tzen</a></li>
-                			<? 
-                			if ($mitgliedschaft >= 2){
-                			?>
+                			<?php if ($mitgliedschaft >= 2){ ?>
                 			<li class="divider"></li>
-                      <li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry['credits_left'];?> <img class='dropdown_coin' src="/style/gfx/coin.png"></li>
+                      		<li class="dropdown-header dropdown_credits">Guthaben: <?echo $entry['credits_left'];?> <img class='dropdown_coin' src="/style/gfx/coin.png"></li>
                 			<li><a href="/spende/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></li> 
                 			<li><a href="/spende/bestellungen.php">Bestellungen</a></li>
                 			<li class="divider"></li>
-                			<?
-                			}
-                			?>
+                			<?php } ?>
                 			<li><a href="/logout.php?logout">Abmelden</a></li>        			               		
                 		</ul>
                 	</div>
-                			<? 
-                			if ($mitgliedschaft >= 2){
-                			?>
+                			<?php if ($mitgliedschaft >= 2){ ?>
                 	<div class="login_basket"><a href="../spende/korb.php">Warenkorb <span class="badge"><?echo $total_quantity;?></span></a></div>
 <?
 							}

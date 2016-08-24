@@ -8,11 +8,8 @@ include ("_header_not_in.php");
 		<div class="blog_text">
 			
 			<?php
-				$sql = "SELECT * from static_content WHERE (page LIKE 'buerger')";
-				$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-				$entry = mysql_fetch_array($result);
-				
-				echo $entry[info];			
+				$info = $general->getStaticInfo('buerger');
+				echo $info->info;		
 			?>
 		
 			<div class="centered">

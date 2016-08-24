@@ -307,6 +307,7 @@ GET user data using old database connection
      */
     private function loginWithSessionData()
     {
+    	error_log('User was logged in with session data');
         #$this->user_name = $_SESSION['user_name'];
         $this->user_email = $_SESSION['user_email'];
 
@@ -322,6 +323,7 @@ GET user data using old database connection
      */
     private function loginWithCookieData()
     {
+    	error_log('User was logged in with cookie data');
         if (isset($_COOKIE['rememberme'])) {
             // extract data from the cookie
             list ($user_id, $token, $hash) = explode(':', $_COOKIE['rememberme']);
@@ -384,7 +386,7 @@ GET user data using old database connection
      */
     private function loginWithPostData($user_email, $user_password, $user_rememberme)
     {
-
+		error_log('User was logged in with post data');
         $user_password = trim($user_password);
 
         if (empty($user_email)) {
@@ -509,8 +511,7 @@ GET user data using old database connection
      */
     public function newRememberMeCookie()
     {
-
-
+		error_log('A new cookie is going to be set');
 
         // if database connection opened
         if ($this->databaseConnection()) {

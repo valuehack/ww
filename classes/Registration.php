@@ -1275,7 +1275,7 @@ class Registration
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                <img style="" class="" title="" alt="" src="http://www.scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                 <!--#/image#-->
                 </td>
                 </tr>

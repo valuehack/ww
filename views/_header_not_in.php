@@ -159,7 +159,7 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
             <div class="nav">
                 <div class="navi">
                   <ul id="nav">
-                  		<li id="navelm"><a class="navelm" href="<?php BASE_URL ?>/fragen.php">H&auml;ufige Fragen</a></li>
+                  		<li id="navelm"><a class="navelm" href="/fragen.php">H&auml;ufige Fragen</a></li>
              			<li id="navelm"><a class="navelm" href="/scholien/">Scholien</a></li>
                     	<li id="navelm"><a class="navelm" href="/salon/">Salon</a></li>
                     	<li id="navelm"><a class="navelm" href="/seminare/">Seminare</a></li>

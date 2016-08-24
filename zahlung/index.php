@@ -39,11 +39,11 @@ $type = '';
 
 if ( (isset($_SESSION['user_logged_in'])) and ($_SESSION['user_logged_in'] === 1) )
 {
-    include('../views/_header_in_utf8.php');
+    include('../views/_header_in.php');
 }
 else
 {   
-    include('../views/_header_not_in_utf8.php');
+    include('../views/_header_not_in.php');
 }
 
     #product selected, redirect to submit your data form
