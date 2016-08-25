@@ -358,7 +358,8 @@ function updateSessionVars($product)
 function writeTransactionDataToDB($user_email, $wrt_txn_id)
 {
     #paypal data needs to be written to db as paypal only sends post to another script, not connected to a user session
-
+	
+	$_SESSION['sessionID'] = session_id();
     $registration = new Registration();
 
     $serialized_session = serialize($_SESSION);

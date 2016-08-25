@@ -7,14 +7,14 @@ class General {
 	 /**
      * @var object $db_connection The database connection
      */
-    private $db_connection = null;
+    public $db_connection = null;
 	
 	public function __construct() {
 		
 		$this->databaseConnection();
 	}
 	
-	private function databaseConnection()
+	public function databaseConnection()
     {
         // if connection already exists
         if ($this->db_connection != null) {

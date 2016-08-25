@@ -18,6 +18,7 @@ require_once('translations/de.php');
 require_once('libraries/PHPMailer.php');
 
 // load the login class
+require_once('classes/General.php');
 require_once('classes/Login.php');
 require_once('classes/Registration.php');
 
@@ -25,6 +26,7 @@ include("views/_db.php");
 
 // create a login object. when this object is created, it will do all login/logout stuff automatically
 // so this single line handles the entire login process.
+$general = new General();
 $login = new Login();
 $registration = new Registration();
 $title="Mitwirkende";
@@ -40,7 +42,7 @@ if ($login->isUserLoggedIn() == true) {
     
 }
 
-	$get_crew = $pdocon->db_connection->prepare("SELECT * from crew WHERE level <8 order by level asc");
+	$get_crew = $general->db_connection->prepare("SELECT * from crew WHERE level <8 order by level asc");
 	$get_crew->execute();
 	$crew_result = $get_crew->fetchAll();	
 
@@ -121,7 +123,7 @@ if ($login->isUserLoggedIn() == true) {
 ?>			
 			<div class="crew">
 				<div class="crew__col-1">
-					<img src="http://craftprobe.com/img/<?=$id?>.jpg">
+					<img src="http://www.craftprobe.com/img/<?=$id?>.jpg">
 					<a href="http://<?=$link?>"><?=$link?></a>
 				</div>
 				<div class="crew__col-4">

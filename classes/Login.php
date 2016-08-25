@@ -325,10 +325,12 @@ GET user data using old database connection
     {
     	error_log('User was logged in with cookie data');
         if (isset($_COOKIE['rememberme'])) {
+        	error_log('Cookie is set');
             // extract data from the cookie
             list ($user_id, $token, $hash) = explode(':', $_COOKIE['rememberme']);
             // check cookie hash validity
             if ($hash == hash('sha256', $user_id . ':' . $token . COOKIE_SECRET_KEY) && !empty($token)) {
+            	error_log('Cookie is valid');
                 // cookie looks good, try to select corresponding user
                 if ($this->databaseConnection()) {
                     // get real token from database (and all other data)
@@ -370,6 +372,7 @@ GET user data using old database connection
                     }
                 }
             }
+			error_log('Cookie is not valid');
             // A cookie has been used but is not valid... we delete it
             $this->deleteRememberMeCookie();
             $this->errors[] = MESSAGE_COOKIE_INVALID;
@@ -514,7 +517,7 @@ GET user data using old database connection
 		error_log('A new cookie is going to be set');
 
         // if database connection opened
-        if ($this->databaseConnection()) {
+        if ($this->databaseConnection()) {        	
             // generate 64 char random string and store it in current user data
             $random_token_string = hash('sha256', mt_rand());
             $sth = $this->db_connection->prepare("UPDATE mitgliederExt SET user_rememberme_token = :user_rememberme_token WHERE user_id = :user_id");
@@ -528,8 +531,16 @@ GET user data using old database connection
             // set cookie
             #setcookie('rememberme', $cookie_string, time() + 3600, "/", COOKIE_DOMAIN);
             #cookie expiration is set to 3 years (seconds*minutes*hoursday*daysinayear*years)
-            setcookie('rememberme', $cookie_string, time() + (60*60*24*365*3), "/");
+            if (setcookie('rememberme', $cookie_string, time() + (60*60*24*365*3), "/") === TRUE) {
+            	error_log('Cookie set');
+            }
+			else {
+				error_log('The Error is here');
+			};
         }
+		else {
+		error_log('No cookie set because there is no connection');
+		}
     }
 
     /**

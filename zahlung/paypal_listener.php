@@ -67,8 +67,10 @@ else
 	$profile = $txn_data['profile'];
 	$product = $txn_data['product'];
 	$donation = $txn_data['donation'];
+	
+	session_id($txn_data['sessionID']);
 
-	error_log('email from paypal listener'.$profile['user_email']);
-
+	error_log('email from paypal listener '.$profile['user_email']);
+	error_log('this is a session id in paypal-listener '.session_id());
 	$registration->processPayment($profile, $product, $donation);
 }

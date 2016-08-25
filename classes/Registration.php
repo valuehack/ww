@@ -433,7 +433,6 @@ class Registration
 
         $login = new Login();
         $login->newRememberMeCookie();
-		
 		return $user_password;
     }
 
@@ -729,6 +728,8 @@ class Registration
         	$profile['user_password'] = $this->createNewUser($profile, $product, $donation);
         	$this->addPersonalDataGeneric($profile);
 
+			error_log('Payment After User Creation');
+
 			$profile['user_id'] = $_SESSION['user_id'];
 			$format = '';
 			
@@ -748,6 +749,8 @@ class Registration
 				#update registration and produkte
 				$general->registerEvent($_SESSION['user_id'], $product['id'], $product_quantity, $format);
 			}
+
+			error_log('Payment Ticket and Event Reg');
 
 			/*
 			 * Sending out Invoices is on hold indefinitely
@@ -828,6 +831,8 @@ class Registration
         	error_log('BAD NUTS: check processPayment() in registration class');
     	}
 
+		error_log('End of Payment before clearing the SESSION. UserID/ProfileUserID'.$_SESSION['user_id'].'/'.$_SESSION['profile']['user_id']);
+				
     	#clear session vars as no longer needed
     	$_SESSION['profile'] = '';
     	$_SESSION['product'] = '';
@@ -1473,7 +1478,6 @@ class Registration
             // get result row (as an object)
             $the_row = $verify_user->fetchObject();
 
-
             #sets php timezone to Europe/Vienna
             #does the same for mysql in PDO way
             #this could be better in the header...
@@ -1583,7 +1587,7 @@ class Registration
                 $this->verification_successful = true;
                 $this->messages[] = MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL;
                 
-                // $_POST['user_rememberme'] = 1;
+                //$_POST['user_rememberme'] = 1;
                 $_SESSION['user_id'] = $user_id;
 				
 				//temporary email for open salon
@@ -1595,6 +1599,11 @@ class Registration
 				if ($osalon_info->spots > 59 && $osalon_info->type == 'salon'){
 					$this->openSalonUserEmail($the_row->user_email, $the_row->Anrede, $the_row->Nachname);
 				}
+				
+				$login = new Login();
+        		$login->newRememberMeCookie();
+				
+				header("Location:http://www.scholarium.at/");
             } else {
                 $this->errors[] = MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL;
             }

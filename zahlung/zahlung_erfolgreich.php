@@ -30,6 +30,10 @@ else
   	include('../views/_header_not_in.php');
 }
 
+print_r($_COOKIE);
+
+print_r($_SESSION);
+
 ?>
 
 <div class="content body_nd">
@@ -42,7 +46,7 @@ else
 				<div>
 					<b>Vielen Dank f&uuml;r Ihre Spende!</b><br>
 					<br>
-					Die Zahlung wurde erfolgreich durchgef&uuml;hrt. In K&uuml;rze erhalten Sie eine Best&auml;tigung-E-Mail und eine Spendenquittung.</p>
+					Die Zahlung wurde erfolgreich durchgef&uuml;hrt. In K&uuml;rze erhalten Sie eine Best&auml;tigung-E-Mail.</p>
 				</div>
 			</div>
 		</div>
