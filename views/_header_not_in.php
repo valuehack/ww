@@ -104,7 +104,7 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
               }
               ?>
                     <div class="anmelden"><a href="http://en.scholarium.at/">English</a></div>
-                   <div class="anmelden2"><a href="http://scholarium.at/spende/">Unterst&uuml;tzen</a></div> 
+                   <div class="anmelden2"><a href="/spende/">Unterst&uuml;tzen</a></div> 
                   <div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Eintragen</button></div>
                   <div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
 
