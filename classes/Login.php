@@ -155,9 +155,10 @@ class Login
         } */
         //login with email and password
         elseif (isset($_POST["anmelden_submit"])) {
- 
+ 			
             // if (isset($_POST['user_email']) and !(trim($_POST['user_password']) === "")) {
             $this->loginWithPostData($_POST['user_email'], $_POST['user_password'], 1);
+			
             // }
         } 
         #elseif (true) {  
@@ -457,9 +458,9 @@ GET user data using old database connection
                 $this->user_email = $result_row->user_email;
                 $this->user_is_logged_in = true;
 
-                #update last_login_time to now
+                #update last_login_time to now and set password reminder to 0
                 $query_login_time = $this->db_connection->prepare('UPDATE mitgliederExt '
-                        . 'SET last_login_time = NOW()'
+                        . 'SET last_login_time = NOW(), reminded = 0 '
                         . 'WHERE user_email = :user_email LIMIT 1');
                 $query_login_time->bindValue(':user_email', $user_email, PDO::PARAM_STR);
                 $query_login_time->execute();

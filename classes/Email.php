@@ -446,16 +446,51 @@ public function sendEmailWithFiles($from, $fromname, $to, $subject, $body, $file
 	public function sendSuccesfullPaymentConfirmationEmail()
 	{
 
-
 		sendEmail($from, $fromname, $to, $subject, $body);
-
 	}
 
+    #email sending based on the email templates
+    #_README in templates/email for more info
+    public function sendThisEmail($email_template, $post_data, $body_data)
+    {
+        
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
+        require_once '../libraries/Twig-1.24.0/lib/Twig/Autoloader.php';
+        Twig_Autoloader::register();
+        $loader = new Twig_Loader_Filesystem('../templates/email');
+        $twig = new Twig_Environment($loader, array('cache' => false));
 
+        #select a template, base on the variable
+        $emailTemplate = $twig->loadTemplate($email_template);
 
+        #pass variables to template
+        $body = $emailTemplate->render($body_data);
 
+        #add rendered body based on the template
+        $post_data['html'] = $body;
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+        $response = curl_exec($ch);
+
+        #make a nice error message + log in the error log... 
+        if(empty($response))
+        {
+            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+            return false;
+        }
+        else
+        {
+            // $json = json_decode($response);
+            return true;
+        }
+
+        curl_close($ch);
+        
+    }
 	
 }
-
 ?>

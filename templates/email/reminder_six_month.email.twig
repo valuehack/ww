@@ -1,0 +1,30 @@
+{# eMail template for reminders after six months that contain user name and password reset #}
+
+{% include 'email_header.html.twig' %}
+
+{% if profile.Anrede == '' %}
+	{% set anrede = 'Lieber Interessent' %}
+{% elseif profile.Anrede == 'Herr' %}
+	{% set anrede = 'Lieber ' ~ profile.Anrede ~ ' ' ~ profile.Nachname %}
+{% elseif profile.Anrede == 'Frau' %}
+	{% set anrede = 'Liebe ' ~ profile.Anrede ~ ' ' ~ profile.Nachname %}
+{% endif %}
+
+<p>{{anrede}},<br><br>
+seid Ihrem letztem Besuch haben wir viele neue Inhalte bereitgestellt. Schauen Sie doch mal wieder vorbei. Es ist sicher etwas Interessantes und Erkenntnisreiches für Sie dabei.</p>
+
+{% if events_exist == 1 %}
+<p>Werfen Sie auch einen Blick auf unsere <a href="http://www.scholarium.at/veranstaltungen/">Veranstaltungen</a>.</p>
+{% endif %}
+
+<p>Sie können sich mit Ihrer E-Mail Adresse ({{profile.user_email}}) und Ihrem Passwort auf <a href="http://www.scholarium.at">www.scholarium.at</a> anmelden.</p>
+
+<p>Sollten Sie Ihr Passwort vergessen haben können Sie ganz unkompliziert ein neues anfordern:</p>
+<p><a href="http://www.scholarium.at/password_reset.php">Neues Passwort anfordern</a></p>
+
+<p>Falls Sie noch Fragen haben, stehen wir Ihnen gerne zur Verf&uuml;gung.</p>
+<p>Vielen Dank f&uuml;r Ihr Engagement und Interesse.</p>
+<p>Wir w&uuml;nschen Ihnen viele neue Einsichten und Erkenntnisse.</p>
+<p>Herzliche Gr&uuml;&szlig;e aus dem scholarium</p>
+
+{% include 'email_footer.html.twig' %}

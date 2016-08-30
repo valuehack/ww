@@ -1,0 +1,33 @@
+{# eMail template for reminders that their membership is expering #}
+
+{% include 'email_header.html.twig' %}
+
+{% if profile.Anrede == '' %}
+	{% set anrede = 'Lieber Interessent' %}
+{% elseif profile.Anrede == 'Herr' %}
+	{% set anrede = 'Lieber ' ~ profile.Anrede ~ ' ' ~ profile.Nachname %}
+{% elseif profile.Anrede == 'Frau' %}
+	{% set anrede = 'Liebe ' ~ profile.Anrede ~ ' ' ~ profile.Nachname %}
+{% endif %}
+
+{% if expiry == -14 %}
+	{% set period = 'läuft in zwei Wochen' %}
+{% elseif expiry == 0 %}
+	{%set period = 'läuft heute' %}
+{% elseif expiry == 14 %}
+    {%set period = 'lief vor 14 Tagen' %}
+{% elseif expiry == 30 %}
+	{%set period = 'lief vor 30 Tagen' %}
+{% endif %}
+
+<p>{{anrede}},<br><br>
+Ihr Spendenzeitraum läuft {{period}} aus. Wenn Sie darüber hinaus den Zugriff auf unser Angebot behalten möchten, bitten wir um eine erneut Spende.</p>
+
+<p><a href="http://www.scholarium.at/spende/>Jetzt spenden</a></p>
+
+<p>Falls Sie noch Fragen haben, stehen wir Ihnen gerne zur Verf&uuml;gung.</p>
+<p>Vielen Dank f&uuml;r Ihr Engagement und Interesse.</p>
+<p>Wir w&uuml;nschen Ihnen viele neue Einsichten und Erkenntnisse.</p>
+<p>Herzliche Gr&uuml;&szlig;e aus dem scholarium</p>
+
+{% include 'email_footer.html.twig' %}

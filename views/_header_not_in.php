@@ -124,8 +124,8 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
         </div>
         <div class="modal-body">
           <p>
-            <form method="post" action="index.php" name="registerform">
-              <input class="inputfield_login" id="user_email_login" type="email" placeholder=" E-Mail-Adresse" name="user_email" autocomplete="on" autofocus required><br>
+            <form method="post" action="" name="registerform">
+              <input class="inputfield_login" id="user_email_login" type="email" placeholder=" E-Mail-Adresse" name="user_email" autocomplete="on" autofocus required><br>     
               <input class="inputfield_login" id="user_password" type="password" name="user_password" placeholder=" Passwort" required><br>
               <input class="inputbutton_login" id="inputbutton" name="anmelden_submit" type="submit" value="Anmelden">
             </form>     
@@ -146,7 +146,7 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
         </div>
         <div class="modal-body">
           <p>
-            <form method="post" action="index.php" name="registerform">
+            <form method="post" action="" name="registerform">
                 <input class="inputfield_login" id="user_email_signup" type="email" placeholder=" E-Mail-Adresse" name="user_email" required><br>
                 <input type="hidden" name="first_reg" value="header">
                 <input class="inputbutton_login" id="inputbutton" name="eintragen_submit" type="submit" value="Kostenlos eintragen">

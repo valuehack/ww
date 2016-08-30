@@ -1,0 +1,25 @@
+{# eMail template for reminders to upgrade after Gast registration #}
+
+{% include 'email_header.html.twig' %}
+
+{% if profile.Anrede == '' %}
+	{% set anrede = 'Lieber Interessent' %}
+{% elseif profile.Anrede == 'Herr' %}
+	{% set anrede = 'Lieber ' ~ profile.Anrede ~ ' ' ~ profile.Nachname %}
+{% elseif profile.Anrede == 'Frau' %}
+	{% set anrede = 'Liebe ' ~ profile.Anrede ~ ' ' ~ profile.Nachname %}
+{% endif %}
+
+<p>{{anrede}},<br><br>
+wir freuen uns, dass Sie uns als Gast besuchen. Wenn Sie uns eine Spende zukommen lassen, können Sie auf ein umfassendes Angebot an Inhalten zugreifen.</p>
+
+<p><a href="http://www.scholarium.at/spende/>Jetzt spenden</a></p>
+
+<p>Anschließend können Sie sich mit Ihrer E-Mail Adresse ({{profile.user_email}}) und Ihrem Passwort auf <a href="http://www.scholarium.at">www.scholarium.at</a> anmelden.</p>
+
+<p>Falls Sie noch Fragen haben, stehen wir Ihnen gerne zur Verf&uuml;gung.</p>
+<p>Vielen Dank f&uuml;r Ihr Engagement und Interesse.</p>
+<p>Wir w&uuml;nschen Ihnen viele neue Einsichten und Erkenntnisse.</p>
+<p>Herzliche Gr&uuml;&szlig;e aus dem scholarium</p>
+
+{% include 'email_footer.html.twig' %}

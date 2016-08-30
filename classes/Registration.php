@@ -623,8 +623,7 @@ class Registration
     }
 
 	public function processPayment($profile, $product, $donation)
-	{
-
+	{		
     	ini_set("log_errors" , "1");
     	error_log('processPayment');
 
