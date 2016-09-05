@@ -205,6 +205,170 @@ h3 {
 	/*background: rgb(30,48,64);*/
 }
 
+/*==================================================*/
+/*                   Jubilaeum                    	*/
+/*==================================================*/
+
+.header_jubilaeum {
+	background: url(gfx/jubilaeumsheader.jpg) no-repeat center;
+	background-size: contain;
+	min-width: 960px;
+}
+
+.jubilaeum_head p {
+	font-family: "Garamond", Georgia, Times, serif; 
+	font-size: 20pt;
+	color: rgb(143,52,51);
+	text-align: center;
+}
+
+.nav_jubilaeum {
+	height: 40px;
+	background: rgba(255,255,255);
+	position: relative;
+	top: 30px;
+   	right: 0;
+   	margin: 0 auto;
+	text-align: center;
+	z-index: 500;
+}
+
+.navi_jubilaeum {
+	height: 40px;
+	margin: 0 10%;
+	width: 80%;
+}
+
+#nav_jubilaeum ul {
+	text-align: center;
+}
+
+#navelm_jubilaeum {
+	float: left;
+	width: 16.6667%; /*20% with five fields*/
+	padding: 9px 0 4px;
+	height: 27px;
+	margin-top: 5px;
+	list-style: none;
+   	display: inline;
+   	font-size: 15px;
+}
+
+#navelm_jubilaeum:hover {
+	text-shadow: 0 0 2px 0 rgba(0,0,0,0);
+}
+
+#navelm_jubilaeum:hover .subnav {
+	display: block;
+}
+
+a.navelm_jubilaeum {
+	display: block;
+	height: 27px;
+  	text-decoration: none; 
+   	color: rgb(1,1,1);
+	padding: 3px 10px;
+	font-size: 17px;
+	text-shadow: 0px 0px 0px #fff;
+}
+
+a.navelm_jubilaeum:hover {
+  	text-decoration: none; 
+	padding: 3px 10px;
+	font-size: 17px;
+	text-shadow: 0px 0px 20px #fff;
+}
+
+a.navelm_jubilaeum:visited {
+  	text-decoration: none; 
+   	color: rgb(0,0,0); 
+	padding: 3px 10px;
+	font-size: 17px;
+	text-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
+}
+
+#navelm_jubilaeum a.active {
+	display: block;
+	height: 27px;
+  	text-decoration: none; 
+   	color: #fff;
+	padding: 3px 10px;
+	font-size: 17px;
+	text-shadow: 0px 0px 5px #fff;
+}
+
+.subnav_jubilaeum {
+	background: rgb(11,19,30);
+	margin: -2px 0 0 !important;
+  	border-radius: none !important;
+  	position: relative !important;
+  	right: 0;
+  	left: 0;
+  	top: -40px !important;
+  	width: 100% !important;
+  	box-shadow: 0 0px 2px 0 rgb(20,20,20);
+}
+
+.subnav_jubilaeum li {
+	font-size: 15px;
+	color: rgb(255,255,255);
+	float: none;
+	width: 100%;
+	text-align: center;
+	height: 40px;
+	display: block;
+}
+
+.subnav_jubilaeum li:hover {
+	font-size: 17px;
+	width: 100%;
+	padding: 0;
+	color: rgb(255,255,255);
+	color: #fff;
+	text-shadow: 0px 0px 10px #fff;
+}
+
+.subnav_jubilaeum li a {
+	color: rgb(255,255,255);
+	display: block;
+	height: 21px;
+	padding: 12px 0 7px;
+	text-decoration: none;
+}
+
+.subnav_jubilaeum li a:hover {
+	color: rgb(255,255,255);
+	font-size: 15px;
+}
+
+.subnav_jubilaeum li a.active {
+	text-decoration: none; 
+   	color: rgb(20,20,20); 
+	padding: 10px 10px 2px 10px;
+	font-size: 15px;
+	text-shadow: none;
+	margin-top: -9px;
+	height: 28px;
+}
+
+.subnav_head_jubilaeum {
+	text-align: center;
+}
+
+a.subnav_head_jubilaeum {
+	padding-left: 0 !important;
+	font-size: 17px !important;
+}
+
+a.subnav_head_jubilaeum:hover {
+	color: rgb(255,255,255) !important;
+	font-size: 17px !important;
+}
+
+/*==================================================*/
+/*                   Ende Jubilaeum              	*/
+/*==================================================*/
+	
 .logo {
 	background: transparent;
 	width: 900px;
@@ -241,7 +405,6 @@ h3 {
 	background: rgba(255,255,255,0.8);
 	padding: 4px 10% 4px 0;
 	text-align: right;
-	box-shadow: 0 0 10px 0 rgb(20,20,20);
 	z-index: 1000;
 }
 
@@ -500,7 +663,6 @@ img.dropdown_coin {
    	right: 0;
    	margin: 0 auto;
 	text-align: center;
-	box-shadow: 0 0 10px 0 rgb(20,20,20);
 	z-index: 500;
 }
 
@@ -2040,7 +2202,7 @@ a:visited.medien_title_list {
 }
 
 .buecher_content h1 {
-	font-size: 36pt;
+	font-size: 20pt;
 	margin: 50px 0 10px 0;
 	text-align: center;
 	text-decoration: none; 
@@ -2063,7 +2225,7 @@ a:visited.medien_title_list {
 
 .buecher_head h1 {
 	text-align: center;
-	font-size: 28pt;
+	font-size: 20pt;
 	line-height: 1.2em;
 	text-shadow: 0px 0px 0px rgb(20,20,20);	
 	margin: 0px 0 0px 0;
