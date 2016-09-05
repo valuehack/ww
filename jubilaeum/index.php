@@ -32,6 +32,7 @@ require_once('../libraries/PHPMailer.php');
 require_once('../classes/General.php');
 require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
+require_once('../classes/Email.php');
 
 // create a login object. when this object is created, it will do all login/logout stuff automatically
 // so this single line handles the entire login process.
@@ -39,9 +40,36 @@ $general = new General();
 $login = new Login();
 $registration = new Registration();
 
-require_once('../classes/Login.php');
 $title="10 Jahre scholarium: Geschichte und Zukunft Europas";
-include "../views/_header_not_in_jubilaeum.php"; 
+
+// ... ask if we are logged in here:
+if ($login->isUserLoggedIn() == true) 
+{
+    // the user is logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are logged in" view.
+    switch ($_SESSION['Mitgliedschaft']) {
+        case 0:
+            include("../views/_header_not_in_jubilaeum.php");
+            break;
+        case ($_SESSION['Mitgliedschaft'] >= 1):
+            include("../views/_header_in_jubilaeum.php");
+            break;
+        default: 
+            include("../views/_header_not_in_jubilaeum.php"); 
+            break;
+    }
+
+
+} 
+else {
+    // the user is not logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are not logged in" view.
+    include("../views/_header_not_in_jubilaeum.php");
+    // echo "hello";
+    #include("views/header2.inc.php");
+    
+}
+
 ?>
 	<div class="content">
 		<div class="jubilaeum_head">
