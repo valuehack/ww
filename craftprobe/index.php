@@ -80,7 +80,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
     </head>
     <body>
     	<div id="notice" class="notice">
-    		<a href="http://scholarium.at/eltern.php">&rarr; deutschsprachige Information f&uuml;r Eltern</a>
+    		<a href="http://www.scholarium.at/eltern.php">&rarr; deutschsprachige Information f&uuml;r Eltern</a>
     		<button class="dismiss" onclick="dismissNotice();">X</button>
     	</div>
     	<section class="main-title">
