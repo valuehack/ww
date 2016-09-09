@@ -68,7 +68,6 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
   
   <body>
         <header class="header_jubilaeum">
-          <div class="login">
 
                   <?php
                   // show potential errors / feedback (from login object)
@@ -104,10 +103,6 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
               }
               ?>
 
-                  <div class="anmelden"><a href="../en/">English</a></div>
-                  <div class="anmelden2"><a href="../spende/">Unterst&uuml;tzen</a></div> 
-                  <div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Eintragen</button></div>
-                  <div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
 
             </div>
             <div class="logo">
@@ -119,7 +114,6 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="modal-header">
 
-          <h2 class="modal-title" id="myModalLabel">Anmelden</h2>
         </div>
         <div class="modal-body">
           <p>
@@ -141,7 +135,6 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="modal-header">
 
-          <h2 class="modal-title" id="myModalLabel">Eintragen</h2>
         </div>
         <div class="modal-body">
           <p>
@@ -155,17 +148,5 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
       </div>
     </div>
   </div>            
-          </div>
-            <div class="nav_jubilaeum">
-                <div class="navi_jubilaeum">
-                  <ul id="nav_jubilaeum">
-                  		<li id="navelm_jubilaeum"><a class="navelm_jubilaeum" href="/fragen.php">H&auml;ufige Fragen</a></li>
-             			<li id="navelm_jubilaeum"><a class="navelm_jubilaeum" href="/scholien/">Scholien</a></li>
-                    	<li id="navelm_jubilaeum"><a class="navelm_jubilaeum" href="/salon/">Salon</a></li>
-                    	<li id="navelm_jubilaeum"><a class="navelm_jubilaeum" href="/seminare/">Seminare</a></li>
-    					<li id="navelm_jubilaeum"><a class="navelm_jubilaeum" href="/studium/">Studium</a></li>
-    					<li id="navelm_jubilaeum"><a class="navelm_jubilaeum" href="/projekte/">Projekte</a></li>
-                 </ul>
-                </div>
-           </div>
+        
         </header>

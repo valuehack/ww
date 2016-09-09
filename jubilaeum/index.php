@@ -43,12 +43,74 @@ require_once('../classes/Login.php');
 $title="10 Jahre scholarium: Geschichte und Zukunft Europas";
 include "../views/_header_not_in_jubilaeum.php"; 
 ?>
+
 	<div class="content">
+	
+		<div class="jubilaeum_head">
+		<p>Programm</p>
+		</div>
+		
+		<div class="blog">
+			<div class="jubilaeum_body">
+			<q>Ab 10:00 Uhr Jubil&auml;umskonferenz “Die Zukunft Europas”</q>
+			<q><p>Vortragende (u.a.):</p></q>
+			<p>Rahim Taghizadegan</p>
+			<p>J&ouml;rg Guido H&uuml;lsmann</p>
+			<p>Hans-Hermann Hoppe</p>
+			<p>Robert Nef</p>
+			<p>Daniel Model</p>
+			<q>Ab 17:00 Uhr Jubil&auml;umsfeier</q>
+			<p>Er&ouml;ffnung im Prunksaal</p>
+			<p>Festessen im Augustinerlesesaal</p>
+			<p>Kulturprogramm im Oratorium</p>
+			<p>Bar im Foyer und Engelraum</p>
+			<q>Optionales Zusatzprogramm am Freitag und Sonntag.</q>
+			</div>
+		</div>
+
+		<div class="blog">
+			<div class="jubilaeum_body2">
+			<p>Konferenz und Festessen finden in den Räumlichkeiten der berühmten Österreichische Nationalbibliothek statt, einer der umfangreichsten Universalbibliotheken der Welt.</p>
+			</div>
+		</div>
+		
+		<div class="prunksaal">
+    	<a href="/"><img class="prunksaal" src="../style/gfx/prunksaal.jpg" alt="scholarium" name="Home"></a>                 
+        </div>
+		
 		<div class="jubilaeum_head">
 		<p>Anmeldung</p>
 		</div>
+	</div>
+	
 		<div class="centered">
     <script type="text/javascript" src="https://ZLNVLYY-modules.xing-events.com/resources/js/amiandoExport.js"></script><iframe src="https://ZLNVLYY-modules.xing-events.com/ZLNVLYY.html?viewType=iframe&distributionChannel=CHANNEL_IFRAME&useDefaults=false&resizeIFrame=true" frameborder="0" width="650px" height="650px" id="_amiandoIFrame2907520"><p>Diese Seite benötigt die Unterstützung von Frames durch Ihren Browser. Bitte nutzen Sie einen Browser, der die Darstellung von Frames unterstützt, damit das Ticketvorverkaufs-Modul angezeigt werden kann.</p><p>Probieren Sie die XING Events <a href="https://www.xing-events.com">online Registrierung</a> noch heute aus.</p></iframe><p style="text-align: left; font-size:10px;"><a href="https://www.xing-events.com?viralRefId=ZLNVLYY&utm_campaign=ev-ZLNVLYY&utm_medium=viral&utm_source=EventWebsite&utm_content=TextLinkBottom&utm_term=text-link" target="_blank" alt="Konferenz - Online Event Management" title="Konferenz - Online Event Management" >Konferenz - Online Event Management</a> mit der Ticketing-Lösung von XING Events</p>
 	</div></div>
+
+	<html>
+  <head>
+    <style>
+ #map {	width: 100%;
+        height: 400px;}
+    </style>
+  </head>
+  <body>
+    <h3></h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+            center: {lat: 44.540, lng: -78.546},
+            zoom: 8 }); }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARVgxzXuKDw_KsyGPs3HkTek37iV-BI88&callback=initMap">
+    </script>
+  </body>
+</html>
+
+
 	
 <? include "../views/_footer.php"; ?>
+
