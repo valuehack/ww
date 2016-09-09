@@ -50,7 +50,6 @@ include "../views/_header_not_in_jubilaeum.php";
 		<p>Programm</p>
 		</div>
 		
-		<div class="blog">
 			<div class="jubilaeum_body">
 			<q>Ab 10:00 Uhr Jubil&auml;umskonferenz “Die Zukunft Europas”</q>
 			<q><p>Vortragende (u.a.):</p></q>
@@ -66,11 +65,10 @@ include "../views/_header_not_in_jubilaeum.php";
 			<p>Bar im Foyer und Engelraum</p>
 			<q>Optionales Zusatzprogramm am Freitag und Sonntag.</q>
 			</div>
-		</div>
 
 		<div class="blog">
 			<div class="jubilaeum_body2">
-			<p>Konferenz und Festessen finden in den Räumlichkeiten der berühmten Österreichische Nationalbibliothek statt, einer der umfangreichsten Universalbibliotheken der Welt.</p>
+			<p>Konferenz und Festessen finden in den Räumlichkeiten der berühmten Österreichischen Nationalbibliothek statt, einer der umfangreichsten Universalbibliotheken der Welt.</p>
 			</div>
 		</div>
 		
