@@ -1,7 +1,7 @@
 /*
  * mises.at
  * Author: Ulrich Moller
- * 
+ *
  */
 
 /*==================================================*/
@@ -280,7 +280,7 @@ a:active {
 }
 
 .logo img {
-	height: 2em;	
+	height: 2em;
 }
 
 /*================  Main Navigation  ===============*/
@@ -305,7 +305,7 @@ a:active {
 }
 
 #nav li {
-	list-style: none; 
+	list-style: none;
    	display: block;
    	font-family: 'Raleway', sans-serif;
    	font-size: 1.75em;
@@ -343,7 +343,7 @@ a:active {
 		padding: 10px 2.5% 0 0;
 	}
 	.logo img {
-		height: 60px;	
+		height: 60px;
 	}
 	/*================  Main Navigation  ===============*/
 
@@ -361,7 +361,7 @@ a:active {
 		display: block;
 	}
 	#nav li {
-   		float: left; 
+   		float: left;
 		height: 80px;
    		transition: all 0.2s ease 0s;
    		font-size: 12pt;
@@ -375,7 +375,7 @@ a:active {
 		padding: 48px 15px 8px;
 	}
 	.nav--active {
-   		color: rgba(0,0,0,0.5) !important; 
+   		color: rgba(0,0,0,0.5) !important;
 		background: #fff;
 		border-bottom: 10px solid rgb(203,44,52);
 	}
@@ -462,9 +462,9 @@ a:active {
 		font-weight: 300;
 		text-align: left;
 	}
-	.index-link a {		
+	.index-link a {
 		color: rgba(0,0,0,0.5) !important;
-		text-decoration: none;	
+		text-decoration: none;
 	}
 	.index-link a:hover,  .index-link a:hover {
 		color: rgba(0,0,0,0.8) !important;
@@ -530,14 +530,14 @@ a:active {
 @media (min-width: 550px) {
 	.full-text {
 		padding: 3em;
-	}	
+	}
 	.clear-fright {
 		clear: left;
 		float: right;
 	}
 	.full-img {
 		position: relative;
-	}	
+	}
 	.full-img img {
 		position: absolute;
 		bottom: 0;
@@ -593,7 +593,7 @@ a:active {
 }
 
 @media (min-width: 550px) {
-	.title-link, .title {		
+	.title-link, .title {
 		margin-top: 0.5em;
 	}
 }
@@ -611,8 +611,8 @@ a:active {
 }
 
 .list-itm_img--small,  .list-itm_img--big {
-	margin: 0 auto;	
-}	
+	margin: 0 auto;
+}
 .list-itm_img--small {
 	max-height: 10em;
 }
@@ -622,9 +622,9 @@ a:active {
 
 @media (min-width: 550px) {
 	.list-itm_img--small,  .list-itm_img--big{
-	margin: 0;	
+	margin: 0;
 	}
-	.list-itm_img--big {	
+	.list-itm_img--big {
 	width: 100%;
 	max-height: initial;
 	}
@@ -731,7 +731,7 @@ a:active {
 }
 
 .itm-table_sec {
-	color: rgba(203,44,52,0.75);	
+	color: rgba(203,44,52,0.75);
 }
 
 .itm-table_sec:hover {
@@ -742,9 +742,9 @@ a:active {
 	color: rgb(203,44,52);
 }
 
-table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
     content: "\25BE";
-    color: rgba(0,0,0,0.4); 
+    color: rgba(0,0,0,0.4);
 }
 
 /*Change table view on smaller screens. Every row is displayed like a card (one column) with every former column now being a row.*/
@@ -775,14 +775,14 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	}
 	.itm-table td:before {
 		content: attr(data-label);
-		float: left;		
+		float: left;
 	}
 }
 
 /*=============== Hidden Elements ==================*/
 
 .hidden {
-	
+
 }
 
 .hide {
@@ -838,7 +838,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 .card.horizontal {
 	display: -webkit-flex;
 	display: -ms-flexbox;
-	display: flex		
+	display: flex
 }
 
 .card.horizontal .card-stacked {
@@ -866,7 +866,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	overflow: hidden;
 	position: relative;
 	display: inherit;
-	height: 200px;		
+	height: 200px;
 }
 
 .card-head__overlay::before {
@@ -877,22 +877,23 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	left: 0;
 	height: 40%;
 	background-image: linear-gradient(to bottom ,transparent,rgba(0,0,0,0.2));
-	opacity: .5; 
+	opacity: .5;
 }
 
 .card-head img {
-	width: 100%;
+	min-height: 100%;
+  width: 100%;
 	top: 0;
 	left: 0;
-	right 0;
+	right: 0;
 	bottom: 0;
 	position: relative;
-	margin-top: -4rem;
+	/*margin-top: -4rem;*/
 }
 
 .card .card-title {
 	display: block;
-	font-size: 1.25rem;	
+	font-size: 1.25rem;
 }
 
 .card .card-head .card-title {
@@ -900,10 +901,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	padding: 2rem;
 	bottom: 0;
 	left: 0;
-	font-size: 1.5rem;	
+	font-size: 1.5rem;
 }
 
-.card .card-head__overlay .card-title {	
+.card .card-head__overlay .card-title {
 	text-shadow: 0 0 3px rgba(0,0,0,0.9);
 }
 
@@ -992,13 +993,13 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 #footer p {
 	padding: 2em;
-	margin: 0;	
+	margin: 0;
 }
 
 #footer p, #footer a, #footer a:visited {
 	line-height: 2;
 	text-align: center;
-	color: rgba(255,255,255,1);	
+	color: rgba(255,255,255,1);
 	font-family: 'Raleway', sans-serif;
 	font-weight: 300;
 	font-size: 0.75rem;
