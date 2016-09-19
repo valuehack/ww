@@ -1,4 +1,4 @@
-<?php include "http://craftprobe.com/header.php";
+<?php include "../header.php";
 
 $ok = $_POST['ok'];
 $email = $_POST['email'];
