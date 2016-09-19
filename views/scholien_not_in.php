@@ -29,7 +29,7 @@ if(isset($_GET['q']))
 	$description_fb = preg_replace('/^(.*?)\0(.*)$/is', '$1', $description_fb0);
 	
 	//check, if there is a image in the blog/gfx folder
-/*	$img = 'http://scholarium.at/scholien/'.$id.'.jpg';
+/*	$img = 'http://www.scholarium.at/scholien/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
@@ -42,11 +42,11 @@ if(isset($_GET['q']))
 ?>		
         <aside class="social">
                    <ul>
-                       <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/facebook.png" alt="Facebook" title="Teilen Sie diesen Post auf Facebook!"></a></li>
-                       <li><a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?q=<?=$id?>&text=<?=$title?>&via=scholarium_at" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweeten Sie diesen Post!"></a></li>
-                       <li><a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/google.png" alt="Google+" title="Teilen Sie diesen Post auf Google+!"></a></li>
-                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teilen Sie diesen Post auf Linkedin!"></a></li>
-                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/xing.png" alt="Xing" title="Teilen Sie diesen Post auf Xing!"></a></li>
+                       <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/facebook.png" alt="Facebook" title="Teilen Sie diesen Post auf Facebook!"></a></li>
+                       <li><a href="http://twitter.com/share?url=http://www.scholarium.at/scholien/index.php?q=<?=$id?>&text=<?=$title?>&via=scholarium_at" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweeten Sie diesen Post!"></a></li>
+                       <li><a href="https://plus.google.com/share?url=http://www.scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/google.png" alt="Google+" title="Teilen Sie diesen Post auf Google+!"></a></li>
+                       <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teilen Sie diesen Post auf Linkedin!"></a></li>
+                       <li><a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://www.scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/xing.png" alt="Xing" title="Teilen Sie diesen Post auf Xing!"></a></li>
                        <li><a href="?q=<?=$id?>&print=TRUE" target="_blank" onclick="openpopup2(this.href); return false"><img src="../style/gfx/print.png" alt="Print" title="Druckansicht &ouml;ffnen!"></a>
                        </li>
                     </ul>                 
@@ -117,11 +117,11 @@ else
 	<footer class="blog_footer">
 		<p><a href='index.php'>Alle Scholien</a></p>
 		<div class="socialimg">
-                   <a href="https://www.facebook.com/sharer/sharer.php?u=http://scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"> <img src="../style/gfx/facebook.png" alt="Facebook" title="Teilen Sie diesen Post auf Facebook!"></a>
-                   <a href="http://twitter.com/share?url=http://scholarium.at/scholien/index.php?q=<?=$id?>&text=<?=$title?>&via=scholarium_at" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweeten Sie diesen Post!"></a>
-                   <a href="https://plus.google.com/share?url=http://scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/google.png" alt="Google+" title="Teilen Sie diesen Post auf Google+!"></a>
-                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teilen Sie diesen Post auf Linkedin!"></a>
-                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/xing.png" alt="Xing" title="Teilen Sie diesen Post auf Xing!"></a>
+                   <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"> <img src="../style/gfx/facebook.png" alt="Facebook" title="Teilen Sie diesen Post auf Facebook!"></a>
+                   <a href="http://twitter.com/share?url=http://www.scholarium.at/scholien/index.php?q=<?=$id?>&text=<?=$title?>&via=scholarium_at" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/twitter.png" alt="Twitter" title="Tweeten Sie diesen Post!"></a>
+                   <a href="https://plus.google.com/share?url=http://www.scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/google.png" alt="Google+" title="Teilen Sie diesen Post auf Google+!"></a>
+                   <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/linkedin.png" alt="Linkedin" title="Teilen Sie diesen Post auf Linkedin!"></a>
+                   <a href="https://www.xing-share.com/app/user?op=share;sc_p=xing-share;url=http://www.scholarium.at/scholien/index.php?q=<?=$id?>" target="_blank" onclick="openpopup(this.href); return false"><img src="../style/gfx/xing.png" alt="Xing" title="Teilen Sie diesen Post auf Xing!"></a>
                    <a href="?q=<?=$id?>&print=TRUE" target="_blank" onclick="openpopup2(this.href); return false"><img src="../style/gfx/print.png" alt="Print" title="Druckansicht &ouml;ffnen!"></a>
                    </div>
     </footer>

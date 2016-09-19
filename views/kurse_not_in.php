@@ -7,12 +7,12 @@ include('_header_not_in.php');
 
 
     	//check, if there is a image in the salon folder
-	$img = 'http://scholarium.at/seminare/'.$id.'.jpg';
+	$img = 'http://www.scholarium.at/seminare/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://scholarium.at/seminare/default.jpg";
+	    $img_url = "http://www.scholarium.at/seminare/default.jpg";
 	}
 ?>
 

@@ -166,7 +166,7 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 	$id = $_GET['q'];
 	$product_info = $general->getProduct($id);
 	$reg_info = $general->getEventReg($_SESSION['user_id'], $product_info->n);
-	$file_path = 'http://scholarium.at/down_secure/content_secure/'.$product_info->id.'.mp3';
+	$file_path = 'http://www.scholarium.at/down_secure/content_secure/'.$product_info->id.'.mp3';
 	
 	if ($product_info->livestream) {
 	

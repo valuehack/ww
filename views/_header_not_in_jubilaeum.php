@@ -14,7 +14,7 @@
     <meta name="author" content="scholarium">
     <meta property="og:type" content="article">
     <meta property="og:title" content="<?=$title?>">
-    <meta property="og:image" content="http://scholarium.at/style/gfx/cover.jpg">
+    <meta property="og:image" content="http://www.scholarium.at/style/gfx/cover.jpg">
     <meta property="og:description" content="<?=$description_fb?>">
     <meta property="og:site_name" content="Scholarium">
     <meta property="og:locale" content="de_DE">

@@ -43,7 +43,7 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
 
     #page refresh after form was submitted
     #evaluate AJAX for such action in the future 
-    echo '<meta http-equiv="refresh" content="0; url=http://scholarium.at/edit.php" />';
+    echo '<meta http-equiv="refresh" content="0; url=http://www.scholarium.at/edit.php" />';
 
 
     }
