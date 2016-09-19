@@ -349,15 +349,14 @@ if (!isset($_COOKIE['gaveCredits'])) {
 
   elseif (isset($_POST['ok']))
   {
-  	$level_old = $_SESSION['Mitgliedschaft'];	
   	$level = $_POST['level'];
-    $betrag = $_POST['betrag'];
-    $zahlung = $_POST['zahlung'];
-    $user_id = $_SESSION['user_id'];
-    $source = $_POST['source'];
-    $user_email = $_SESSION['user_email'];
-    $id = $_POST['event_id'];
-    $title = $_POST['title'];
+      $betrag = $_POST['betrag'];
+      $zahlung = $_POST['zahlung'];
+      $user_id = $_SESSION['user_id'];
+      $source = $_POST['source'];
+      $user_email = $_SESSION['user_email'];
+      $id = $_POST['event_id'];
+      $title = $_POST['title'];
 ?><!--      
     require_once('../config/config.php');
 	include('../views/_db.php');

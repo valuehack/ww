@@ -1328,7 +1328,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
     }
 
 /**/
-public function sendUpgradeMailToInstitute($betrag, $zahlung, $level, $level_old)
+public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
     {
         $mail = new PHPMailer;
 
@@ -1362,7 +1362,7 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level, $level_old
 
         $link    = EMAIL_PASSWORDRESET_URL.'?user_email='.urlencode($user_email).'&verification_code='.urlencode($user_password_reset_hash);
         
-        $body = 'User '.$_SESSION['user_email'].' möchte auf Stufe '.$level.' unterstützen, alte Stufe: '.$level_old.', Zahlung: '.$zahlung;
+        $body = 'User '.$_SESSION['user_email'].' möchte auf Stufe '.$level.' unterstützen, Zahlung: '.$zahlung;
 
         $mail->Body = $body;
 
