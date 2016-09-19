@@ -88,7 +88,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             	<p>craft<span>probe</span></p>
             	<div class="nav-trigger">
 					<div class="nav-trigger__icon">
-						<a href="#" onclick="showNav();return false;"><img src="http://craftprobe.com/img/navicon.svg" alt="Menu" title="Menu"></a>
+						<a href="#" onclick="showNav();return false;"><img src="http://www.craftprobe.com/img/navicon.svg" alt="Menu" title="Menu"></a>
 					</div>
 				</div>
 				<div id="nav">
@@ -112,7 +112,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 }
 ?>
           	<div class="banner">
-            	<div class="bannerimg" style="background-image: url(http://craftprobe.com/img/craftprobe.jpg);"></div>
+            	<div class="bannerimg" style="background-image: url(http://www.craftprobe.com/img/craftprobe.jpg);"></div>
 	        	<div class="arrow-down">
             		<a href="#about">
                     	<div class="arrow-down__icon"></div>
