@@ -18,21 +18,6 @@ $sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, street, postal, ci
 
 $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
 
-	/*$insert_query = $wwalt->db_connection->prepare('INSERT INTO cb_anmeldung (id, email, firstname, name, country, telephone, nationality, found_us, note, sub_date) VALUES (:email, :firstname, :name, :street, :postal, :city, :country, :telephone, :found_us, :note, NOW())');
-	
-	$insert_query->bindValue(':email', $email, PDO::PARAM_STR);
-	$insert_query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
-	$insert_query->bindValue(':name', $name, PDO::PARAM_STR);
-	$insert_query->bindValue(':street', $street, PDO::PARAM_STR);
-	$insert_query->bindValue(':postal', $postal, PDO::PARAM_STR);
-	$insert_query->bindValue(':city', $city, PDO::PARAM_STR);
-	$insert_query->bindValue(':country', $country, PDO::PARAM_STR);
-	$insert_query->bindValue(':telephone', $telephone, PDO::PARAM_STR);
-	$insert_query->bindValue(':found_us', $found_us, PDO::PARAM_STR);
-	$insert_query->bindValue(':note', $note, PDO::PARAM_STR);
-
-	$insert_query->execute();*/
-
 //Email an Interessenten
 
 $body = "Hallo $firstname,\n\n
