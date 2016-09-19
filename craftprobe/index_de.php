@@ -72,6 +72,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 		<li><a href="#course" onclick="showNav();return false;">Programm</a></li>
                 		<li><a href="#vessel" onclick="showNav();return false;">Ort</a></li>
                 	    <li><a href="#manual" onclick="showNav();return false;">Fragen</a></li>
+                	    <li><a href="#crew" onclick="showNav();return false;">Mentoren</a></li>
                 		<li><a href="#board" onclick="showNav();return false;">Teilnahme</a></li>
             		</ul>
            		</div>
