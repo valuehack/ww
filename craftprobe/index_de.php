@@ -198,18 +198,16 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					</ol>
 
 				<h2>Wieviel kostet es?</h2>
-				<p>A practical program of this kind is usually prohibitively expensive. As the program is run by a non-profit enterprise which puts a high value on efficiency and effectiveness, we are able to cut costs to 1.900&euro;. Usually, parents or close relatives are willing to help you get a head-start in life. In order to convince them to bear the costs, you can direct them to <a href="http://scholarium.at/eltern.php">this page</a>, if they speak German, where we have compiled all information for your parents/relatives/sponsors.</p>
+				<p>Ein praktisches Programm dieser Art ist normalerweise unleistbar, alternative Angebote kosten 7.000 &euro; und mehr. Da die craftprobe von einem steuerbefreiten Unternehmen angeboten wird, das gr&ouml;&szlig;ten Wert auf Effizienz und Effektivit&auml;t legt, konnten wir die Kosten auf 1.900 &euro; reduzieren. Dieses Angebot gilt nur f&uuml;r 12 Teilnehmer. Wenn Du den Kostenbeitrag selbst nicht aufbringen kannst, helfen Dir vielleicht Eltern oder Verwandte dabei. Gerne stehen wir diesen f&uuml;r Fragen zur Verf&uuml;gung.</p>
 
 				<h2>Bekomme ich einen Abschluss? Und damit leichter einen Job?</h2>
-				<p>You will not get a state-accredited degree, but a personal certificate and a documentation of your strengths. Coming on board is not an alternative to university or vocational training, but a short-time program to help you make better decisions on your education and career. Your employability in the sense of a real and proven capacity to create value for real clients should rise a lot.</p>
+				<p>Du bekommst kein staatlich akkreditiertes Diplom, sondern eine persönliche Urkunde, die Arbeitgebern den Wert und Inhalt des Programms vermittelt. Die craftprobe ist keine Alternative zu einem Diplomstudium, sondern die notwendige Ergänzung, um bessere Bildungs- und Karriereentscheidungen zu treffen. Deine Jobaussichten im Sinne von realen und nachvollziehbaren Fähigkeiten, realen Wert für reale Kunden zu schaffen, sollten sich dramatisch verbessern.</p>
 
-				<h2>Warum sollte ich teilnehmen?</h2>
-				<p>YOU should not. It all seems so easy in the beginning. You will get a degree, you will gather a few more certificates, and your dream job is waiting for you. If you are not employed right away, you only have to gather more certificates and do more internships. Until some day you realize that no-one is waiting for you. Then the only way out of frustration is enthusiasm for some start-up. While you dream of sudden riches, you exploit yourself for another web app, another drink, another gadget. Only that 80% of start-ups fail, and we are still in the midst of a bubble economy. More will fail when the bubble bursts. Or, on the other hand, you are a high-potential. A consultancy firm, investment bank or big corporation has recruited you right away. If you are checking out this site it is unlikely that you are at this stage. You would be exploited for good money and prestige and have neither time nor eagerness to explore alternatives. If you are not broken physically, you are broken mentally, and if not mentally, you are broken spiritually. At age 30 you may come to us whining, and it may well be too late. We do not mean to take away all hope. We are quite optimistic, only very down to earth. If you aim too hard at success, you will most certainly miss it. But there is still so much to succeed at in this world, so many unsolved problems, awaiting challenges, hidden treasures. We may not have a map for treasure island, but our amazing vessel can go places where no one else is digging. Yes, you will get no fancy paper. Instead, you will get inspired, challenged, and prepared for the real world. No bullshit.</p>
             <p><a href="#top">Zur&uuml;ck nach oben</a></p>
             </section>
             
             <section  id="crew"  class="s3">
-                <h1>crew</h1>
+                <h1>Mentoren</h1>
 
 <?php		
 		$get_crew = $pdocon->db_connection->prepare("SELECT * from crew WHERE level <8 order by level asc");
@@ -231,54 +229,54 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 			$id = $crew_result[$i]['id'];
 			$link = $crew_result[$i]['link'];
 			$name = $crew_result[$i]['name'];
-			$text_en = $crew_result[$i]['text_en'];
+			$text_de = $crew_result[$i]['text_de'];
 			
 			if ($level == 1){
 				if ($check_lvl1 == 0){
 					$check_lvl1 = 1;
-					echo '<p class="crew_levels">Captain</p>'; 
+					echo '<p class="crew_levels"></p>'; 
 				}
 			}
 			if ($level == 2){
 				if ($check_lvl2 == 0){
 					$check_lvl2 = 1;
-					echo '<p class="crew_levels">Admiralty</p>'; 
+					echo '<p class="crew_levels"></p>'; 
 				}
 			}
 			if ($level == 3){
 				if ($check_lvl3 == 0){
 					$check_lvl3 = 1;
-					echo '<p class="crew_levels">Officers</p>'; 
+					echo '<p class="crew_levels"></p>'; 
 				}
 			}
 			if ($level == 4){
 				if ($check_lvl4 == 0){
 					$check_lvl4 = 1;
-					echo '<p class="crew_levels">Mates</p>'; 
+					echo '<p class="crew_levels"></p>'; 
 				}
 			}
 			if ($level == 5){
 				if ($check_lvl5 == 0){
 					$check_lvl5 = 1;
-					echo '<p class="crew_levels">Ehrenpr&auml;sidenten</p>'; 
+					echo '<p class="crew_levels"></p>'; 
 				}
 			}
 			if ($level == 6){
 				if ($check_lvl6 == 0){
 					$check_lvl6 = 1;
-					echo '<p class="crew_levels">Beir&auml;te</p>'; 
+					echo '<p class="crew_levels"></p>'; 
 				}
 			}
 			if ($level == 7){
 				if ($check_lvl7 == 0){
 					$check_lvl7 = 1;
-					echo '<p class="crew_levels">Partner</p>'; 
+					echo '<p class="crew_levels"></p>'; 
 				}
 			}
 			if ($level == 8){
 				if ($check_lvl8 == 0){
 					$check_lvl8 = 1;
-					echo '<p class="crew_levels">Sailors</p>'; 
+					echo '<p class="crew_levels"></p>'; 
 				}
 			}
 ?>			
@@ -289,7 +287,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				<div class="crew__col-4">
 					<h1><?=$name?></h1>
 					<a class="crew__col-4__a" href="http://<?=$link?>"><?=$link?></a>
-					<p><?=$text_en?></p>
+					<p><?=$text_de?></p>
 				</div>
 			</div>
 <?php
@@ -302,8 +300,8 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
        		<section id="board" class="s5">
                 <div class="s5img" style="background: url(img/code2.jpg) center;">
                 <div class="form">
-                 <h1>Now it&apos;s your turn. Join our voyage!</h1> 
-                 <p>What are you waiting for? A television spot to tell you that this is meant for you? A government decree? A viral video to make you part of a crowd? We will try the best we can to avoid hypes, unwanted publicity, and official recognition. A craft like ours has to shun such shallow waters. If you are afraid, then stay ashore. No worries, anyway there is not enough space for everyone. Lifeboats get crowded easily. If you have the courage but just lack the confidence that you are good enough, go ahead and apply. We will get in touch with you. It won&apos;t hurt. But it might open up opportunities you have not even dared to dream about.</p>              
+                 <h1>Jetzt liegt es an Dir. Komm an Bord!</h1> 
+                 <p>Worauf wartest Du? Eine virale Fernsehwerbung, die Dir versichert, dass Du als Teilnehmer Teil einer hippen Masse bist? Einen Regierungserlass? Wir versuchen, so gut wir k&ouml;nnen, einen Hype, Massenaufmerksamkeit und staatliche Anerkennung und damit Intervention zu vermeiden. Wenn Du Angst hast, bleib an Land. Keine Sorge, an Bord ist ohnehin nicht genug Platz f&uuml;r jeden. Rettungsboote sind schnell &uuml;berf&uuml;llt. Wenn Du den Mut hast, blo&szlig; Zweifel, ob Du geeignet bist, gib Dir einen Ruck. Nach der craftprobe bist Du es gewiss. Wir melden uns zur&uuml;ck, das tut nicht weh. Doch es k&ouml;nnte Dir M&ouml;glichkeiten er&ouml;ffnen, von denen Du bislang noch nicht einmal zu tr&auml;umen gewagt hast.</p>              
                      <input type="button" class="inputbutton" value="Boarding request" data-toggle="modal" data-target="#myModal">
                  </div>
                 </div>
@@ -311,7 +309,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <!--</div>-->    
         <footer class="footer">
             <p>
-                &copy; 2015 | scholarium&trade; | Schl&ouml;sselgasse 19/2/18 | 1080 Wien <br>
+                &copy; scholarium&trade; | Schl&ouml;sselgasse 19/2/18 | 1080 Wien <br>
             </p>
             <p class="img_links">
                 Background-Image: <a href="https://www.flickr.com/photos/riebart/4466482623/in/photolist-7NFTF6-4qquBv-4qvivG-6WxYTc-57hHm6-mjhDwB-5VKcCj-8SjwXw-79EVn6-nfPx72-6xfvm9-ccQ6rL-75cgcM-59ib1t-7Gyyds-9UNeUM-fKSF1d-asasy3-Mdf4-ptJh3V-apgafX-KnCK4-4U2GPi-bpd8Ht-4usG5p-GH7wh-jmr8PB-as7QVk-ec78kF-b7r6g-6fmKyW-3AvBtV-4nqiZn-5RUuNN-6NKzvV-kmhEbE-7E9fqU-d9A4Eb-7d7ipd-8dpeZZ-buRLHu-5WvBYq-7tnkmy-8dsw7J-asaxj1-asawS3-5XzfyW-aMG5S4-9dUbHm-d9A3SY">"Code" by Michael Himbeault</a>
@@ -324,7 +322,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
     <div class="modal-content-login">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="myModalLabel">Join our voyage</h2>
+        <h2 class="modal-title" id="myModalLabel">Komm an Bord</h2>
       </div>
       <div class="modal-body">
 		<form method="post" action="index.php" name="user_create_profile_form">
@@ -332,18 +330,18 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				<div class="input">
 					<input type="hidden" name="ok" value="1">
 					
-					<input class="inputfield" type="text" name="firstname" placeholder=" First Name" required><br>
-        			<input class="inputfield" type="text" name="name" placeholder=" Surname" required><br>
-        			<input class="inputfield" type="email" name="email" placeholder=" Email" required><br> 
-        			<input class="inputfield" type="tel" name="telephone" placeholder=" Telephone/ Mobile (e.g. +431234567)"><br>
-					<input class="inputfield" type="text" name="street" placeholder=" Street" required><br>
-					<input class="inputfield" type="text" name="postal" placeholder=" Postal Code" required><br>
-					<input class="inputfield" type="text" name="city" placeholder=" City" required><br>
+					<input class="inputfield" type="text" name="firstname" placeholder=" Vorname" required><br>
+        			<input class="inputfield" type="text" name="name" placeholder=" Nachname" required><br>
+        			<input class="inputfield" type="email" name="email" placeholder=" E-Mail" required><br> 
+        			<input class="inputfield" type="tel" name="telephone" placeholder=" Telefonnummer (z.B. +431234567)"><br>
+					<input class="inputfield" type="text" name="street" placeholder=" Strasse" required><br>
+					<input class="inputfield" type="text" name="postal" placeholder=" Postfach" required><br>
+					<input class="inputfield" type="text" name="city" placeholder=" Stadt" required><br>
 					 
-        			<select class="inputfield_select" id="user_country" name="country" placeholder=" Country" required>
-<option value="Austria" selected>Austria</option>
-<option value="Germany">Germany</option>
-<option value="Switzerland">Switzerland</option>
+        			<select class="inputfield_select" id="user_country" name="country" placeholder=" Land" required>
+<option value="Austria" selected>&Ouml;sterreich</option>
+<option value="Germany">Deutschland</option>
+<option value="Switzerland">Schweiz</option>
 <option value="Liechtenstein">Liechtenstein</option>
 <option value="divider" disabled>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>
 <option value="Afghanistan">Afghanistan</option>
@@ -591,10 +589,10 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 <option value="Zambia">Zambia</option>
 <option value="Zimbabwe">Zimbabwe</option>
 					</select><br>
-					<textarea name="note" class="inputarea" placeholder=" Do you have questions or comments?" rows="10" required></textarea><br>
-					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" How did you find us?"><br>					
+					<textarea name="note" class="inputarea" placeholder=" Hast Du Fragen oder Anmerkungen?" rows="10" required></textarea><br>
+					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" Wie hast Du uns gefunden?"><br>					
 				</div>
-    			<input type="submit" class="inputbutton_subscribe" name="registrationform" value="Boarding request">
+    			<input type="submit" class="inputbutton_subscribe" name="registrationform" value="Anmeldung">
 			</form>
 		</div>
     </div>
