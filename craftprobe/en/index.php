@@ -62,7 +62,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <title>craftprobe</title>
         <meta name="description" content="One Month Program in Entrepreneurship">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">        
+        <link rel="stylesheet" href="../style.css">        
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript" src="js/general.js"></script>
@@ -88,7 +88,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             	<p>craft<span>probe</span></p>
             	<div class="nav-trigger">
 					<div class="nav-trigger__icon">
-						<a href="#" onclick="showNav();return false;"><img src="img/navicon.svg" alt="Menu" title="Menu"></a>
+						<a href="#" onclick="showNav();return false;"><img src="http://craftprobe.comimg/navicon.svg" alt="Menu" title="Menu"></a>
 					</div>
 				</div>
 				<div id="nav">
