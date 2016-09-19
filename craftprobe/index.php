@@ -72,9 +72,8 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 		<li><a href="#course" onclick="showNav();return false;">Programm</a></li>
                 		<li><a href="#vessel" onclick="showNav();return false;">Ort</a></li>
                 	    <li><a href="#manual" onclick="showNav();return false;">Fragen</a></li>
-                	    <li><a href="#crew" onclick="showNav();return false;">Mentoren</a></li>
                 		<li><a href="#board" onclick="showNav();return false;">Teilnahme</a></li>
-                		<li></li>
+                		<li>&nbsp;</li>
                 		<li><a href="http://craftprobe.com/en/"><i>English</i></a></li>
             		</ul>
            		</div>
@@ -207,96 +206,6 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				<p>Du bekommst kein staatlich akkreditiertes Diplom, sondern eine persönliche Urkunde, die Arbeitgebern den Wert und Inhalt des Programms vermittelt. Die craftprobe ist keine Alternative zu einem Diplomstudium, sondern die notwendige Ergänzung, um bessere Bildungs- und Karriereentscheidungen zu treffen. Deine Jobaussichten im Sinne von realen und nachvollziehbaren Fähigkeiten, realen Wert für reale Kunden zu schaffen, sollten sich dramatisch verbessern.</p>
 
             <p><a href="#top">Zur&uuml;ck nach oben</a></p>
-            </section>
-            
-            <section  id="crew"  class="s3">
-                <h1>Mentoren</h1>
-
-<?php		
-		$get_crew = $pdocon->db_connection->prepare("SELECT * from crew WHERE level <8 order by level asc");
-		$get_crew->execute();
-		$crew_result = $get_crew->fetchAll();
-	
-		$check_lvl1 = 0;
-		$check_lvl2 = 0;
-		$check_lvl3 = 0;
-		$check_lvl4 = 0;
-		$check_lvl5 = 0;
-		$check_lvl6 = 0;
-		$check_lvl7 = 0;
-		$check_lvl8 = 0;
-		
-		for ($i=0; $i < count($crew_result); $i++) {
-				
-			$level = $crew_result[$i]['level'];
-			$id = $crew_result[$i]['id'];
-			$link = $crew_result[$i]['link'];
-			$name = $crew_result[$i]['name'];
-			$text_de = $crew_result[$i]['text_de'];
-			
-			if ($level == 1){
-				if ($check_lvl1 == 0){
-					$check_lvl1 = 1;
-					echo '<p class="crew_levels"></p>'; 
-				}
-			}
-			if ($level == 2){
-				if ($check_lvl2 == 0){
-					$check_lvl2 = 1;
-					echo '<p class="crew_levels"></p>'; 
-				}
-			}
-			if ($level == 3){
-				if ($check_lvl3 == 0){
-					$check_lvl3 = 1;
-					echo '<p class="crew_levels"></p>'; 
-				}
-			}
-			if ($level == 4){
-				if ($check_lvl4 == 0){
-					$check_lvl4 = 1;
-					echo '<p class="crew_levels"></p>'; 
-				}
-			}
-			if ($level == 5){
-				if ($check_lvl5 == 0){
-					$check_lvl5 = 1;
-					echo '<p class="crew_levels"></p>'; 
-				}
-			}
-			if ($level == 6){
-				if ($check_lvl6 == 0){
-					$check_lvl6 = 1;
-					echo '<p class="crew_levels"></p>'; 
-				}
-			}
-			if ($level == 7){
-				if ($check_lvl7 == 0){
-					$check_lvl7 = 1;
-					echo '<p class="crew_levels"></p>'; 
-				}
-			}
-			if ($level == 8){
-				if ($check_lvl8 == 0){
-					$check_lvl8 = 1;
-					echo '<p class="crew_levels"></p>'; 
-				}
-			}
-?>			
-			<div class="crew">
-				<div class="crew__col-1">
-					<img src="http://www.craftprobe.com/img/<?=$id?>.jpg">
-				</div>
-				<div class="crew__col-4">
-					<h1><?=$name?></h1>
-					<a class="crew__col-4__a" href="http://<?=$link?>"><?=$link?></a>
-					<p><?=$text_de?></p>
-				</div>
-			</div>
-<?php
-		}
-?>	                                             				            
-                    <p><a href="#top">Zur&uuml;ck nach oben</a></p>
             </section>
             
             
