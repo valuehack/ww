@@ -101,7 +101,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
 <p>Die craftprobe ist eine Realit&auml;tspr&uuml;fung f&uuml;r junge Erwachsene mit Drang zum Selberdenken und Andersmachen. Dabei handelt es sich um ein extrem intensives einmonatiges Programm in Wien (&Ouml;sterreich), das einer beschr&auml;nkten Zahl von Teilnehmern eine einzigartige Lebenserfahrung bietet, die darauf vorbereitet, bessere Entscheidungen unter der Ungewissheit der Zukunft zu treffen. Nach der craftprobe kennst Du Deine St&auml;rken und hast ein klareres Bild von zuk&uuml;nftigen Entwicklungen und Deinem Platz in der Welt. Mit der Hilfe einiger des besten K&ouml;pfe und Werkzeuge und in unternehmerischen Projekten, praktischen Experimenten und tiefgehender Reflexion entwickelst Du die notwendigen Fertigkeiten und Ideen, um reale Werte zu schaffen. Nicht die Pseudowerte, die Pseudomanager und Pseudopolitiker anbieten: entweder irgendeinen gehypeten Schrott, den Du nicht brauchst, bezahlt mit Geld, das Du nicht hast, oder die Fiktion, durch die jeder versucht, auf Kosten aller anderen zu leben.</p>
 
-<p>craftprobe wird von einem Unternehmen angeboten, nicht von einer Agentur, Beh&ouml;rde oder Schule. Die Eigent&uuml;mer des Tr&auml;gerunternehmens zielen angesichts der verzerrten M&auml;rkte nicht auf schnelle Profite ab, sondern wollen ein unternehmerisches Labor aufbauen, in dem realistische, kleinr&auml;umige L&ouml;sungen f&uuml;r die Probleme von morgen entwickelt werden.</p>
+<p>craftprobe wird von einem Unternehmen angeboten, nicht von einer Agentur, Beh&ouml;rde oder Schule. Die Eigent&uuml;mer des Tr&auml;gerunternehmens zielen angesichts der verzerrten M&auml;rkte nicht auf schnelle Profite ab, sondern wollen ein unternehmerisches Labor aufbauen, in dem realistische, kleinr&auml;umige L&ouml;sungen f&uuml;r die Probleme von morgen entwickelt werden. Das Programm tr&auml;gt den Namen craftprobe, was im Englischen grob &uuml;bersetzt &bdquo;Sondieren beruflicher Fertigkeiten&ldquo; bedeutet und im Deutschen auf die Kraftproben Bezug nimmt, die in traditionellen Gesellschaften den &Uuml;bergang von der Jugend ins Erwachsenenalter markieren. Fehlen solche selbst&auml;ndigen Kraftproben, werden sie durch leichtsinnige Mutproben kompensiert oder die Selbst&auml;ndigkeit misslingt zum Preis ewiger Abh&auml;ngigkeiten.</p>
 
 <p>Suchst Du einen Job? Fast jeder tut das heute, aber Einstiegsjobs werden immer knapper. Schlechte Nachrichten: Aufgrund aktueller technischer Entwicklungen, des Konjunkturzyklus und politischen Interventionismus wird es bald kaum noch Jobs f&uuml;r junge Menschen geben, die bislang noch keine Gelegenheit hatten, ihre Kreativit&auml;t und Produktivit&auml;t zu beweisen &ndash; ein Teufelskreislauf, denn wie soll man sich beweisen, wenn man gar keine Gelegenheit dazu erh&auml;lt? Lehrer, Journalisten und Politiker haben junge Menschen schon eine ganze Weile in die Irre gef&uuml;hrt, aber sie wissen es auch nicht besser. Wir verstehen Deine Wut und Angst. Sinnvoller ist es, wenn Du Dich selbst f&uuml;r eine ungewisse Zukunft vorbereitest, in der sich viele wirtschaftliche Annahmen als Illusionen erweisen werden.</p>
 
@@ -127,44 +127,44 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 
                 <p>Die Ausbildungsschwerpunkte liegen in den Bereichen Praktische Philosophie, Unternehmertum, digitale und analoge Werkzeuge sowie Naturkunde. Eine Auswahl der bislang angebotenen Module:</p>
 
-<ul><li>Unternehmensgründung und Unternehmensführung
+<ul><li>Unternehmensgr&uuml;ndung und Unternehmensf&uuml;hrung
 </li><li>Wirtschaftswissenschaft, Sozialwissenschaft und Philosophie
 </li><li>CNC-Steuerung und 3D-Druck, Prototypenerstellung
 </li><li>Grundlagen der Medizin und Neurowissenschaft
 </li><li>Marketing und SEO-Optimierung
 </li><li>Produktion eines Werbefilms
 </li><li>Grundlagen der Politik- und Rechtswissenschaft
-</li><li>Landwirtschaftsprojekt: Anbau von Biogemüse
-</li><li>Einführung in Aquaponik
+</li><li>Landwirtschaftsprojekt: Anbau von Biogem&uuml;se
+</li><li>Einf&uuml;hrung in Aquaponik
 </li><li>Grundlagen der Permakultur
-</li><li>Einführung ins Bauingenieurwesen
+</li><li>Einf&uuml;hrung ins Bauingenieurwesen
 </li><li>Besuche von Unternehmern, Wissenschaftlern, Künstlern
 </li><li>Wanderungen, Survival
-</li><li>Schauspielkurs mit Roland Düringer
+</li><li>Schauspielkurs mit Roland D&uuml;ringer
 </li><li>Professionelle Fotografie
-</li><li>Einführung in Typographie und Corporate Design
-</li><li>Design-orientiertes Gründen
-</li><li>Einführung in Modeschnitt
+</li><li>Einf&uuml;hrung in Typographie und Corporate Design
+</li><li>Design-orientiertes Gr&uuml;nden
+</li><li>Einf&uuml;hrung in Modeschnitt
 </li><li>Technisches Zeichnen mit AutoCAD
 </li><li>Satz mit Indesign
 </li><li>Grafisches Gestalten mit Photoshop
 </li><li>Programmieren in PHP, SQL, C, Python und Javascript
 </li><li>Webgestaltung mit HTML, CSS und Templates
-</li><li>Leichtathletik, Tennis, Fußball, Trampolin
-</li><li>Grundlagen des Möbelbaus
+</li><li>Leichtathletik, Tennis, Fu&szlig;ball, Trampolin
+</li><li>Grundlagen des M&ouml;belbaus
 </li><li>Bibliotheksverwaltung
 </li><li>Grundlagen des Interior Design
 </li><li>Psychologische Typenerkennung
 </li><li>Sprachkurse: Chinesisch, Russisch
-</li><li>Textwerkstatt Deutsch/Englisch, Fachübersetzung
+</li><li>Textwerkstatt Deutsch/Englisch, Fach&uuml;bersetzung
 </li><li>Eventorganisation & Catering
-</li><li>Entwicklung und Prüfung von Unternehmensideen
+</li><li>Entwicklung und Pr&uuml;fung von Unternehmensideen
 </li><li>Robotik mit Arduino
 </li><li>Social Media Marketing
 </li><li>Hausbau/Lehmbau
-</li><li>Einführung in Botanik & Pflanzenzucht
+</li><li>Einf&uuml;hrung in Botanik & Pflanzenzucht
 </li><li>Gesangsschulung
-</li><li>Musikarrangement & Komposition</li></ul>
+</li><li>Musikarrangement und Komposition</li></ul>
 				
                 <p><a href="#top">Zur&uuml;ck nach oben</a></p>
             </section>
@@ -173,17 +173,11 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 
                 <p>Das <i>scholarium</i> ist eine unabh&auml;ngige Forschungs- und Bildungseinrichtung, die ausschlie&szlig;lich &uuml;ber das freiwillige Engagement von B&uuml;rgern finanziert wird. <i>scholarium</i> steht f&uuml;r die &bdquo;Gemeinschaft der Lernenden&ldquo;, und als lernendes Unternehmen bietet es eine Erg&auml;nzung zu anerkannten universit&auml;ren Ausbildungen. Das praktische Curriculum wird in Kooperation mit erfolgreichen &ouml;sterreichischen und internationalen Unternehmen entwickelt und evaluiert. Die Eigent&uuml;mer dieser Unternehmen &uuml;ben als Gesellschafter die Aufsicht und Qualit&auml;tskontrolle des scholarium aus. Das Tr&auml;gerunternehmen des Programms ist gemeinn&uuml;tzig und wurde von einer Gruppe erfolgreicher Unternehmer aus &Ouml;sterreich, Deutschland, Schweiz und Liechtenstein gegr&uuml;ndet, aus dem Antrieb heraus, der n&auml;chsten Generation Wertvolles mitzugeben und ihr Mut zur Eigenverantwortung zu machen.</p>
                 
-                <p>Our first craft is anchored in one of the most ancient, creative and educated parts of Vienna, close to one of the oldest universities of the world (alas, of past glories not much more than the facades has survived), neighboring a beautiful, hidden monastery where the last remaining urban monks tend to their garden and library. The beauty of our deck and cabins will inspire you: in a historic building with high ceilings and impeccable interiors we explore, experiment and innovate within walls adorned by one of the most spectacular private libraries of Vienna, yet with plenty of space and equipment for practical endeavors.</p>
+                <p>Das <i>scholarium</i> liegt in einem der &auml;ltesten, kreativsten und gebildetsten Vierteln Wiens, in der N&auml;he einer der &auml;ltesten Universit&auml;ten der Welt (von deren glorreicher Vergangenheit aber kaum mehr als die Fassaden &uuml;berlebt haben), direkt neben einem sch&ouml;nen, versteckten Kloster, in dem die allerletzten Stadtm&ouml;nche Garten und Bibliothek hegen. Die Sch&ouml;nheit des Ortes ist inspirierend: Historische R&auml;umlichkeiten mit hohen Decken, ges&auml;umt von einer der gro&szlig;artigsten Privatbibliotheken Wiens, die gen&uuml;gend Platz und Ruhe f&uuml;r praktische Experimente und theoretische Reflexion bieten.</p>
 
-				<p>We chose Austria as our home port for the high quality of life (Vienna is ranked highest worldwide), the unparalleled access to culture and nature, and the rich heritage as a center of science and entrepreneurship. Austria is the birthplace of the Austrian School of Economics, the only economic tradition that focusses on the entrepreneur and cherishes entrepreneurship while at the same time being highly critical of the financially and politically inflated bubble economy and the concomitant inflation of bullshit. But Austria is also the birthplace of logo-therapy, of the search for meaning and the rejection of cynicism, relativism and short-term materialism.</p>
+				<p>Wir w&auml;hlten Wien als Heimathafen aufgrund der hohen Lebensqualit&auml;t, des einmaligen Zugangs zu Kultur und Natur und des reichen Erbes als historisches Zentrum von Wissenschaft und Unternehmertum. Wien ist der Geburtsort der Wiener Schule der &Ouml;konomik, die einzige &ouml;konomische Tradition, die sich auf den Unternehmer konzentriert und das Unternehmertum hochh&auml;lt, w&auml;hrend sie gegen&uuml;ber der finanziell und politisch inflationierten Blasenwirtschaft und der damit verbundenen Inflation von Unsinn h&ouml;chst kritisch ist. Doch Wien ist auch der Geburtsort der Logotherapie, der Sinnsuche und der Kritik des Zynismus, Relativismus und verk&uuml;rzten Materialismus.</p>
 
-
-				<p>Our mothership is a private, tax-exempted, non-profit enterprise founded by successful entrepreneurs and visionaries from Austria, Germany, Liechtenstein and Switzerland eager to pass on the spark to future generations. Contributions go directly to financing our explorations and scholarships, without deductions for interests, profits or taxes, keeping the costs for new explorers as low as possible. Even if you are unable to finance your journey, do not hesitate to apply.</p>
-
-
-				<p>If you have what it takes, we are absolutely sure that you will love this journey and it will be one of the greatest experiences of your life. No other educational program, internship, traineeship or job opportunity comes close to it. You will be reluctant to go ashore again and will either stay on board or join another vessel to boldly go where no one has gone before.</p>
-                <p><a href="#top">Zur&uuml;ck nach oben</a></p>
-            </section>
+				<p>Wenn Du f&uuml;r diese Reise geeignet bist, sind wir &uuml;berzeugt, dass Du die Zeit bei uns an Bord niemals vergessen wirst &ndash; es wird einer der besten und sch&ouml;nsten Lebenserfahrungen bleiben, wie zahlreiche begeisterte Teilnehme best&auml;tigen. Kein anderes Bildungsprogramm oder Praktikum kommt dieser Erfahrung auch nur nahe.</p>
 
    <p><a href="#top">Zur&uuml;ck nach oben</a></p>
             </section>
@@ -191,27 +185,28 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             <section id="manual" class="s4">
             	<h1>Fragen</h1>
 
-				<h2>Who is this for?</h2>
+				<h2>F&uuml;r wen ist die craftprobe gedacht?</h2>
 				
-				<p>Anyone old enough to be or become independent, and young enough to challenge conceived wisdom and walk off the beaten track. This means that the usual age bracket of our explorers is 18 to 28. 18 is the minimum age for insurance reasons (we do some dangerous stuff). If you are above 28, but absolutely longing for such a restart and reexamination, and financially independent, we may be able to make it happen. In this case do not apply, just contact us. Normally, 28 is the maximum age, because after that you will either have already invested too much sunk costs in the status quo or be a sad failure (most are, do not take it personally). Please leave us alone if you are looking for a 9-5 career where someone tells you what to do until retirement or if you think your degree somehow deserves you a well paid, fun and easy job. If you suspect that there is more out there than university teaches, the media informs about and politicians admit and that the future may be radically different from what the generation of your parents expects, but do not feel like retiring to virtual reality from a challenging world and have the courage and energy to confront those challenges, then you may just be the crew member we have been looking for.</p>
+				<p>F&uuml;r alle, die alt genug sind, um unabh&auml;ngig zu werden, und jung genug sind, um abseits der ausgetretenen Pfade zu wandern. Das bedeutet &uuml;blicherweise ein Alter zwischen 17 und 27. Die craftprobe ist ganz sicher nichts f&uuml;r jene, die eine typische Karriere suchen, in der ihnen jemand bis zur Pensionierung vorschreibt, was zu tun ist, oder jene, die glauben, dass ein Universit&auml;tsdiplom einen Anspruch auf einen gut bezahlten, interessanten und einfachen Job bedeutet. Wenn Du den Verdacht hast, dass es da drau&szlig;en mehr gibt, als die Universit&auml;t lehrt, die Medien beschreiben, die Politiker zugeben, und dass die Zukunft radikal anders sein k&ouml;nnte als die Elterngeneration erwartete, und Dich trotzdem nicht einfach in die Virtuelle Realit&auml;t vor einer herausfordernden Welt zur&uuml;ckziehen willst, sondern den Must und die Energie hast, diesen Herausforderungen zu begegnen, dann bist Du genau derjenige (oder diejenige), den/die wir suchen.</p>
 
-				<h2>When should I do it?</h2>
-				<p>The most common options are:</p>
+				<h2>Wann soll ich teilnehmen?</h2>
+				<p>Die h&auml;ufigsten Optionen sind:</p>
 					<ol>
-						<li>Directly after your school-leaving exam, before enrolling at university or making another career choice. You either take a gap year or at least use shorter gaps to prepare for a better decision and lay the right foundations for your life. The earlier the better, the longer you wait the more you will regret. Taking time for a month before going to university is the best choice you can make.</li>
-						<li>After your Bachelor&apos;s degree, when considering or waiting for enrollment for a Master&apos;s degree. Many students face extended periods in doubt and frustration. Do not waste this time! craftprobe is the perfect gap filler, next to which in retrospect your studies and degrees will fade in importance.</li>
-						<li>After finishing university and when trying to enter the job market. You will realize that it is getting more and more difficult to land a job right out of university. Have you considered entrepreneurial alternatives? Even if you just want to grow personally, develop a network and get a head-start for your professional career, by making up for all the real-life lessons university has spared you, craftprobe is just what you are looking for.</li>
+						<li>Direkt nach Matura/Abitur, bevor Du Dich an der Universit&auml;t einschreibst oder eine andere Karriereentscheidung triffst. Je fr&uuml;her, desto besser, denn je l&auml;nger Du wartest, desto mehr wirst Du es bereuen. Dir ein Monat Zeit zu nehmen, bevor Du an die Universit&auml;t gehst, ist die beste Entscheidung, die Du treffen kannst.</li>
+						<li>Nach Deinem Bachelor, wenn Du Dich fragst, ob Du noch einen Master machen sollst oder nicht, oder Wartezeiten zu &uuml;berbr&uuml;cken hast. Viele Studenten qu&auml;len sich in dieser Zeit mit Zweifeln und Frustration. Verschwende Deine Zeit nicht! Die craftprobe ist der perfekte L&uuml;ckenf&uuml;ller, der letztlich wichtiger als Deine Studien und Abschl&uuml;sse sein k&ouml;nnte.</li>
+						<li>Nach dem Abschluss der Universit&auml;tsstudien, wenn es um den Einstieg in den Arbeitsmarkt geht. Hast Du Dir schon einmal unternehmerische Alternativen &uuml;berlegt? Aber auch wenn Du vor Karrierebeginn noch pers&ouml;nlich wachsen und einen Startvorteil erlangen willst, indem Du die realen Lektionen nachholst, die Dir bislang an der Universit&auml;t vorenthalten blieben, ist die craftprobe genau das Richtige f&uuml;r Dich.</li>
 					</ol>
 
-				<h2>How much does it cost?</h2>
+				<h2>Wieviel kostet es?</h2>
 				<p>A practical program of this kind is usually prohibitively expensive. As the program is run by a non-profit enterprise which puts a high value on efficiency and effectiveness, we are able to cut costs to 1.900&euro;. Usually, parents or close relatives are willing to help you get a head-start in life. In order to convince them to bear the costs, you can direct them to <a href="http://scholarium.at/eltern.php">this page</a>, if they speak German, where we have compiled all information for your parents/relatives/sponsors.</p>
 
-				<h2>Do I get a degree? Will my employability rise?</h2>
+				<h2>Bekomme ich einen Abschluss? Und damit leichter einen Job?</h2>
 				<p>You will not get a state-accredited degree, but a personal certificate and a documentation of your strengths. Coming on board is not an alternative to university or vocational training, but a short-time program to help you make better decisions on your education and career. Your employability in the sense of a real and proven capacity to create value for real clients should rise a lot.</p>
 
-				<h2>Why should I do that? No degree, no certificate, no money, no prestige, are you kidding? What is in it for me?</h2>
+				<h2>Warum sollte ich teilnehmen?</h2>
 				<p>YOU should not. It all seems so easy in the beginning. You will get a degree, you will gather a few more certificates, and your dream job is waiting for you. If you are not employed right away, you only have to gather more certificates and do more internships. Until some day you realize that no-one is waiting for you. Then the only way out of frustration is enthusiasm for some start-up. While you dream of sudden riches, you exploit yourself for another web app, another drink, another gadget. Only that 80% of start-ups fail, and we are still in the midst of a bubble economy. More will fail when the bubble bursts. Or, on the other hand, you are a high-potential. A consultancy firm, investment bank or big corporation has recruited you right away. If you are checking out this site it is unlikely that you are at this stage. You would be exploited for good money and prestige and have neither time nor eagerness to explore alternatives. If you are not broken physically, you are broken mentally, and if not mentally, you are broken spiritually. At age 30 you may come to us whining, and it may well be too late. We do not mean to take away all hope. We are quite optimistic, only very down to earth. If you aim too hard at success, you will most certainly miss it. But there is still so much to succeed at in this world, so many unsolved problems, awaiting challenges, hidden treasures. We may not have a map for treasure island, but our amazing vessel can go places where no one else is digging. Yes, you will get no fancy paper. Instead, you will get inspired, challenged, and prepared for the real world. No bullshit.</p>
-           
+            <p><a href="#top">Zur&uuml;ck nach oben</a></p>
+            </section>
             
             <section  id="crew"  class="s3">
                 <h1>crew</h1>
