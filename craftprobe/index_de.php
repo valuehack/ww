@@ -99,36 +99,80 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
 <p>Jugendliche von heute sind &uuml;berrumpelt von den scheinbar unendlichen M&ouml;glichkeiten, die ihnen geboten werden und haben Sorge, das entscheidende Ereignis zu verpassen. Einige fliehen in virtuelle Welten, andere verfallen einem ungesunden Karrierismus &ndash; kalt l&auml;sst diese Zeit niemanden. Ein Universit&auml;tsstudium ist oft nur ein willkommenes Alibi, um das Erwachsenwerden hinauszuschieben oder sinnlose Zertifikate zu sammeln, w&auml;hrend man sich um wesentliche Entscheidungen herumdr&uuml;ckt.</p>
 
-<p>Die craftprobe ist eine Realit&auml;tspr&uuml;fung f&uuml;r junge Erwachsene mit Drang zum Selberdenken und Andersmachen. Dabei handelt es sich um ein extrem intensives einmonatiges Programm in Wien (&Ouml;sterreich), das einer beschr&auml;nkten Zahl von Teilnehmern eine einzigartige Lebenserfahrung bietet, die darauf vorbereitet, bessere Entscheidungen unter der Ungewissheit der Zukunft zu treffen. Nach der craftprobe kennst Du Deine St&auml;rken und hast ein klareres Bild von zuk&uuml;nftigern Entwicklungen und Deinem Platz in der Welt. Mit der Hilfe einiger des besten K&ouml;pfe und Werkzeuge und in unternehmerischen Projekten, praktischen Experimenten und tiefgehender Reflexion entwickelst Du die notwendigen Fertigkeiten und Ideen, um reale Werte zu schaffen. Nicht die Pseudowerte, die Pseudomanager und Pseudopolitiker anbieten: entweder irgendeinen gehypeten Schrott, den Du nicht brauchst, bezahlt mit Geld, das Du nicht hast, oder die Fiktion, durch die jeder versucht, auf Kosten aller anderen zu leben.</p>
+<p>Die craftprobe ist eine Realit&auml;tspr&uuml;fung f&uuml;r junge Erwachsene mit Drang zum Selberdenken und Andersmachen. Dabei handelt es sich um ein extrem intensives einmonatiges Programm in Wien (&Ouml;sterreich), das einer beschr&auml;nkten Zahl von Teilnehmern eine einzigartige Lebenserfahrung bietet, die darauf vorbereitet, bessere Entscheidungen unter der Ungewissheit der Zukunft zu treffen. Nach der craftprobe kennst Du Deine St&auml;rken und hast ein klareres Bild von zuk&uuml;nftigen Entwicklungen und Deinem Platz in der Welt. Mit der Hilfe einiger des besten K&ouml;pfe und Werkzeuge und in unternehmerischen Projekten, praktischen Experimenten und tiefgehender Reflexion entwickelst Du die notwendigen Fertigkeiten und Ideen, um reale Werte zu schaffen. Nicht die Pseudowerte, die Pseudomanager und Pseudopolitiker anbieten: entweder irgendeinen gehypeten Schrott, den Du nicht brauchst, bezahlt mit Geld, das Du nicht hast, oder die Fiktion, durch die jeder versucht, auf Kosten aller anderen zu leben.</p>
 
 <p>craftprobe wird von einem Unternehmen angeboten, nicht von einer Agentur, Beh&ouml;rde oder Schule. Die Eigent&uuml;mer des Tr&auml;gerunternehmens zielen angesichts der verzerrten M&auml;rkte nicht auf schnelle Profite ab, sondern wollen ein unternehmerisches Labor aufbauen, in dem realistische, kleinr&auml;umige L&ouml;sungen f&uuml;r die Probleme von morgen entwickelt werden.</p>
 
 <p>Suchst Du einen Job? Fast jeder tut das heute, aber Einstiegsjobs werden immer knapper. Schlechte Nachrichten: Aufgrund aktueller technischer Entwicklungen, des Konjunkturzyklus und politischen Interventionismus wird es bald kaum noch Jobs f&uuml;r junge Menschen geben, die bislang noch keine Gelegenheit hatten, ihre Kreativit&auml;t und Produktivit&auml;t zu beweisen &ndash; ein Teufelskreislauf, denn wie soll man sich beweisen, wenn man gar keine Gelegenheit dazu erh&auml;lt? Lehrer, Journalisten und Politiker haben junge Menschen schon eine ganze Weile in die Irre gef&uuml;hrt, aber sie wissen es auch nicht besser. Wir verstehen Deine Wut und Angst. Sinnvoller ist es, wenn Du Dich selbst f&uuml;r eine ungewisse Zukunft vorbereitest, in der sich viele wirtschaftliche Annahmen als Illusionen erweisen werden.</p>
 
+<p>Dazu dient die craftprobe. Nicht, weil wir die Zukunft genau kennen, sondern weil wir offen und bereit sind, die Herausforderung anzunehmen. Die craftprobe ist ein einzigartiges Pers&ouml;nlichkeitsentwicklungsprogramm, um Dich auf diese ungewisse Zukunft vorzubereiten, aber nicht durch Hirnw&auml;sche, Psychogeschw&auml;tz oder motivierende Reden, e-Books, Ratgeber oder Videos, die Dir eine falsche Gewissheit versprechen, sondern durch konkrete und relevante Projekte und Aufgaben, die Produkte, Prozesse, Werkzeuge, M&auml;rkte und Ideen erkunden. Wir lieben das Erkunden des Unbekannten, wir lieben Unternehmertum, wir lieben das Lernen neuer Ideen, Fertigkeiten und Wege, wir lieben unsere Freiheit und Individualit&auml;t. Wir misstrauen Experten, Politikern, Bankiers, Managern, Journalisten, Lehrern, Venturekapitalisten genauso wie wir Gurus, Untergangspropheten, Ideologen, Gutmenschen, Hipstern, Internetpromis und -trollen misstrauen. craftprobe ist eine Kraftprobe &ndash; die Teilnahme an unserer Expedition ist definitiv nichts f&uuml;r Weicheicher. Bequeme Illusionen k&ouml;nnten ersch&uuml;ttert werden. Wir tolerieren keinerlei Bullshit an Bord.</p>
+
 <div class="centered">
 			<iframe width="100%" height="500" src="https://www.youtube.com/embed/GvkK5SRvE2I/?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
 		</div>
-                <p><a href="#top">Back to the top</a></p>
+                <p><a href="#top">Zur&uuml;ck nach oben</a></p>
             </section>
             <section  id="course" class="s2">
-                <h1>Course</h1>
+                <h1>Programm</h1>
                 
-                <p>You will probe into <b>culture</b>: Most start-ups and entrepreneurial education programs are rather shallow. You mainly learn how to sell promises of endless riches to greedy investors, promises of faked coolness to indebted consumers and promises of heroic images to funding bureaucrats. Our vessel goes much further and ignores all the need for hype and glamour. Based in one of the capitals of old European culture, a historic center of science, art, literature, music and trade, we have access to an ancient treasure trove of thought and creation. We do not live in the past but think about the future standing on the shoulders of giants. Right on board we carry along one of the most spectacular private libraries of Austria, with a unique selection of masterworks in practical philosophy, economics and history.</p>
+                <p><b>Daten:</b></p>
+                
+                <ul>
+                <li>Termin: 1.-31. M&auml;rz oder 1.-31. August 2017</li>
+                <li>Ort: <i>scholarium</i> in Wien</li>
+                <li>Maximale Teilnehmerzahl: 12 Personen</li>
+                <li>Kosten: 1.900 &euro;</li>
+                <li>Kontakt: <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;">&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;</a></li>
+                </ul>
+                
+                <p>Die Ausbildungsschwerpunkte liegen in den Bereichen Praktische Philosophie, Unternehmertum, digitale und analoge Werkzeuge sowie Naturkunde. Eine Auswahl der bislang angebotenen Module:</p>
 
-				<p>You will probe into the <b>market</b>: Many alternative educational programs are too much rooted in the past or too aloof in ivory towers to really understand what is going on in the world today and where it will lead. We are young natives of a globalized and digital world. Our captain is a renowned visionary with both feet firmly on the ground: As an economist, entrepreneur, physicist and investment consultant, he has just the eye to tell promising trends and ominous dynamics from hyped bullshit. We are following the markets and geopolitics, and are sober, down-to-earth entrepreneurs at the forefront of innovation. We are continually checking premises, gathering data, scouting for opportunities and challenges.</p>
-
-				<p>You will probe into <b>nature</b>: Austria is famous for its magnificent, largely intact, rough nature. This is a boundless resource for knowledge and self-reliance. It is a historic center of alpinism, of seeking challenges, sharpening the senses and strengthening the body in the world&apos;s most beautiful and breathtaking training circuit toughened by elements and terrain. In Austria, ancient traditions of agriculture, horticulture, medicine and craft have survived the ages which contain amazing amounts of lost knowledge. We gain hands-on experience and learn from masters hidden in distant valleys and on secluded mountains. No laboratory, no network, no university can replace this immense study resource at our hands. Our team comprises tough sportsmen and survivalists that guide us through challenging explorations of natural abundance and our inner potential to become truly self-reliant.</p>
-
-				<p>You will probe into <b>digital tools</b>: A thorough command of cutting-edge digital tools is a precondition of a successful, creative, entrepreneurial and self-reliant life. Most modern interactions, be it in communication, research or trade, are based on a digital infrastructure. Learning to code is like the sailing license without which you will not be very useful on board of a craft in today's stormy waters. We are learning by doing and continually probing into the newest tools, most of which are of course senseless time-wasters, but some of which are absolutely necessary to stay on top of the wave. Access to modern CNC and prototyping equipment allows us to translate our digital endeavors into real objects.</p>
-
-				<p>You will probe into <b>analog tools</b>: Austria is infused with a spirit of makers, craftsmen and artists. On the countryside people are to an amazing degree technologically self-reliant, being able to fix what is broken and continually finding hacks to make work what seems impossible. We get our hands dirty and experiment with the most versatile tools we can lay our hands on. A network of master craftsmen helps us in our explorations. The artist and creator is unthinkable without the right tools. There is so much of value outside our screens with their unhandy, fake gadgets. We need to understand the real, physical world in order to change it. Most educational alternatives just bombard you with even more digital information. You need to cut the cord once in a while if you really mean to learn something useful.</p>
-
-				<p>You will probe into your <b>own projects and ideas</b>. We will support you with infrastructure, investment, tools, contacts, and brains. This way you will be able to try out and develop skills, ideas, products, solutions, campaigns, brands, research interests, maybe even your own company or organization, in the widest possible variety of industries and fields. In your free time you can have all the culture, partying and nature you like &ndash; partly on your own, making new friends, partly with fellow crew members. Explore art, music, theatre, opera, history, go skiing, rafting, hiking, biking, travel to neighboring Italy, Czech Republic, Hungary, Slovakia, Slovenia, Switzerland, Germany, Liechtenstein, or simply relax in the place ranked to have the highest quality of life on this planet.</p>
+<ul><li>Unternehmensgründung und Unternehmensführung
+</li><li>Wirtschaftswissenschaft, Sozialwissenschaft und Philosophie
+</li><li>CNC-Steuerung und 3D-Druck, Prototypenerstellung
+</li><li>Grundlagen der Medizin und Neurowissenschaft
+</li><li>Marketing und SEO-Optimierung
+</li><li>Produktion eines Werbefilms
+</li><li>Grundlagen der Politik- und Rechtswissenschaft
+</li><li>Landwirtschaftsprojekt: Anbau von Biogemüse
+</li><li>Einführung in Aquaponik
+</li><li>Grundlagen der Permakultur
+</li><li>Einführung ins Bauingenieurwesen
+</li><li>Besuche von Unternehmern, Wissenschaftlern, Künstlern
+</li><li>Wanderungen, Survival
+</li><li>Schauspielkurs mit Roland Düringer
+</li><li>Professionelle Fotografie
+</li><li>Einführung in Typographie und Corporate Design
+</li><li>Design-orientiertes Gründen
+</li><li>Einführung in Modeschnitt
+</li><li>Technisches Zeichnen mit AutoCAD
+</li><li>Satz mit Indesign
+</li><li>Grafisches Gestalten mit Photoshop
+</li><li>Programmieren in PHP, SQL, C, Python und Javascript
+</li><li>Webgestaltung mit HTML, CSS und Templates
+</li><li>Leichtathletik, Tennis, Fußball, Trampolin
+</li><li>Grundlagen des Möbelbaus
+</li><li>Bibliotheksverwaltung
+</li><li>Grundlagen des Interior Design
+</li><li>Psychologische Typenerkennung
+</li><li>Sprachkurse: Chinesisch, Russisch
+</li><li>Textwerkstatt Deutsch/Englisch, Fachübersetzung
+</li><li>Eventorganisation & Catering
+</li><li>Entwicklung und Prüfung von Unternehmensideen
+</li><li>Robotik mit Arduino
+</li><li>Social Media Marketing
+</li><li>Hausbau/Lehmbau
+</li><li>Einführung in Botanik & Pflanzenzucht
+</li><li>Gesangsschulung
+</li><li>Musikarrangement & Komposition</li></ul>
 				
-                <p><a href="#top">Back to the top</a></p>
+                <p><a href="#top">Zur&uuml;ck nach oben</a></p>
             </section>
             <section  id="vessel" class="s3">
-                <h1>Vessel</h1>
+                <h1>Ort</h1>
+                
+                <p>Das <i>scholarium</i> ist eine unabh&auml;ngige Forschungs- und Bildungseinrichtung, die ausschlie&szlig;lich &uuml;ber das freiwillige Engagement von B&uuml;rgern finanziert wird. <i>scholarium</i> steht f&uuml;r die &bdquo;Gemeinschaft der Lernenden&ldquo;, und als lernendes Unternehmen bietet es eine Erg&auml;nzung zu anerkannten universit&auml;ren Ausbildungen. Das praktische Curriculum wird in Kooperation mit erfolgreichen &ouml;sterreichischen und internationalen Unternehmen entwickelt und evaluiert. Die Eigent&uuml;mer dieser Unternehmen &uuml;ben als Gesellschafter die Aufsicht und Qualit&auml;tskontrolle des scholarium aus. Das Tr&auml;gerunternehmen des Programms ist gemeinn&uuml;tzig und wurde von einer Gruppe erfolgreicher Unternehmer aus &Ouml;sterreich, Deutschland, Schweiz und Liechtenstein gegr&uuml;ndet, aus dem Antrieb heraus, der n&auml;chsten Generation Wertvolles mitzugeben und ihr Mut zur Eigenverantwortung zu machen.</p>
+                
                 <p>Our first craft is anchored in one of the most ancient, creative and educated parts of Vienna, close to one of the oldest universities of the world (alas, of past glories not much more than the facades has survived), neighboring a beautiful, hidden monastery where the last remaining urban monks tend to their garden and library. The beauty of our deck and cabins will inspire you: in a historic building with high ceilings and impeccable interiors we explore, experiment and innovate within walls adorned by one of the most spectacular private libraries of Vienna, yet with plenty of space and equipment for practical endeavors.</p>
 
 				<p>We chose Austria as our home port for the high quality of life (Vienna is ranked highest worldwide), the unparalleled access to culture and nature, and the rich heritage as a center of science and entrepreneurship. Austria is the birthplace of the Austrian School of Economics, the only economic tradition that focusses on the entrepreneur and cherishes entrepreneurship while at the same time being highly critical of the financially and politically inflated bubble economy and the concomitant inflation of bullshit. But Austria is also the birthplace of logo-therapy, of the search for meaning and the rejection of cynicism, relativism and short-term materialism.</p>
@@ -138,14 +182,14 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
 
 				<p>If you have what it takes, we are absolutely sure that you will love this journey and it will be one of the greatest experiences of your life. No other educational program, internship, traineeship or job opportunity comes close to it. You will be reluctant to go ashore again and will either stay on board or join another vessel to boldly go where no one has gone before.</p>
-                <p><a href="#top">Back to the top</a></p>
+                <p><a href="#top">Zur&uuml;ck nach oben</a></p>
             </section>
 
-   <p><a href="#top">Back to the top</a></p>
+   <p><a href="#top">Zur&uuml;ck nach oben</a></p>
             </section>
             
             <section id="manual" class="s4">
-            	<h1>MANUAL</h1>
+            	<h1>Fragen</h1>
 
 				<h2>Who is this for?</h2>
 				
@@ -167,9 +211,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
 				<h2>Why should I do that? No degree, no certificate, no money, no prestige, are you kidding? What is in it for me?</h2>
 				<p>YOU should not. It all seems so easy in the beginning. You will get a degree, you will gather a few more certificates, and your dream job is waiting for you. If you are not employed right away, you only have to gather more certificates and do more internships. Until some day you realize that no-one is waiting for you. Then the only way out of frustration is enthusiasm for some start-up. While you dream of sudden riches, you exploit yourself for another web app, another drink, another gadget. Only that 80% of start-ups fail, and we are still in the midst of a bubble economy. More will fail when the bubble bursts. Or, on the other hand, you are a high-potential. A consultancy firm, investment bank or big corporation has recruited you right away. If you are checking out this site it is unlikely that you are at this stage. You would be exploited for good money and prestige and have neither time nor eagerness to explore alternatives. If you are not broken physically, you are broken mentally, and if not mentally, you are broken spiritually. At age 30 you may come to us whining, and it may well be too late. We do not mean to take away all hope. We are quite optimistic, only very down to earth. If you aim too hard at success, you will most certainly miss it. But there is still so much to succeed at in this world, so many unsolved problems, awaiting challenges, hidden treasures. We may not have a map for treasure island, but our amazing vessel can go places where no one else is digging. Yes, you will get no fancy paper. Instead, you will get inspired, challenged, and prepared for the real world. No bullshit.</p>
-
-				<h2>Why is it all in English? Are you embarrassing hipsters?</h2>
-				<p>We live in a global age. We have been connected for power and profit, for this we cannot take the blame. The things, ideas and voices that make sense are so rare and widely dispersed in this ocean of bullshit, which has been let loose around the globe, that we simply cannot afford to withdraw from the world and play deaf and mute for national pride. For most of our team, English is not a native language, but we are natives of a world that converses in English. We are masters of our native languages, we love them and we need them. Currently, our team is able to converse in German, French, Spanish, Persian, Arabic and Hungarian as well, if you prefer. Everyone who joins us will at least perfect his English and learn German. Speaking German or English is no condition to come on board, but speaking either of those languages and being willing to learn some of the other is. German is not only one of the richest and most precise languages that opens up a rich heritage of science and culture, but also the language that adds the most economic benefit for foreign speakers. According to a recent study, Americans who are able to speak German earn on average $128,000 more during their lifetime.</p>            
+           
             
             <section  id="crew"  class="s3">
                 <h1>crew</h1>
@@ -258,7 +300,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 <?php
 		}
 ?>	                                             				            
-                    <p><a href="#top">Back to the top</a></p>
+                    <p><a href="#top">Zur&uuml;ck nach oben</a></p>
             </section>
             
             
