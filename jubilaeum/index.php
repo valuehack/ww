@@ -47,12 +47,11 @@ include "../views/_header_not_in_jubilaeum.php";
 	<div class="content">
 	
 		<div class="jubilaeum_head">
-		<p>Programm</p>
+		<p>Programm f&uuml;r Samstag, den 3.12.2016</p>
 		</div>
 		
 		<div class="blog">
 			<div class="jubilaeum_body">
-			<q><p>Samstag, 3.12.2016</p></q>
 			<q>Ab 10:00 Uhr Jubil&auml;umskonferenz “Die Zukunft Europas”</q>
 			<q><p>Vortragende (u.a.):</p></q>
 			<p>Rahim Taghizadegan</p>
