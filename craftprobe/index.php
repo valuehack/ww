@@ -97,7 +97,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <!--<div class="content">-->
             <section id="ueber" class="s1">
 
-<p>Frauen und M&auml;nner f&uuml;r ein waghalsiges Abenteuer gesucht. Keine Multiple-Choice-Tests, kein veraltetes Schulbuchwissen, aber auch kein hipper Start-Up-Schmafu. Zeitig aufstehen, intensives Arbeiten. Muskelkater wahrscheinlich. Erkenntnisgewinn sicher. Eine schonungslose Konfrontation mit der Realit&auml;t.</p>
+<p>Frauen und M&auml;nner f&uuml;r ein waghalsiges Abenteuer gesucht. Keine Multiple-Choice-Tests, kein veraltetes Schulbuchwissen, aber auch kein hipper Start-Up-Unsinn. Zeitig aufstehen, intensives Arbeiten. Muskelkater wahrscheinlich. Erkenntnisgewinn sicher. Eine schonungslose Konfrontation mit der Realit&auml;t.</p>
 
 <p>Jugendliche von heute sind &uuml;berrumpelt von den scheinbar unendlichen M&ouml;glichkeiten, die ihnen geboten werden und haben Sorge, das entscheidende Ereignis zu verpassen. Einige fliehen in virtuelle Welten, andere verfallen einem ungesunden Karrierismus &ndash; kalt l&auml;sst diese Zeit niemanden. Ein Universit&auml;tsstudium ist oft nur ein willkommenes Alibi, um das Erwachsenwerden hinauszuschieben oder sinnlose Zertifikate zu sammeln, w&auml;hrend man sich um wesentliche Entscheidungen herumdr&uuml;ckt.</p>
 
