@@ -68,11 +68,11 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				</div>
 				<div id="nav">
             		<ul>
-               	 		<li><a href="#about" onclick="showNav();return false;">Über</a></li>
-                		<li><a href="#course" onclick="showNav();return false;">Programm</a></li>
-                		<li><a href="#vessel" onclick="showNav();return false;">Ort</a></li>
-                	    <li><a href="#manual" onclick="showNav();return false;">Fragen</a></li>
-                		<li><a href="#board" onclick="showNav();return false;">Teilnahme</a></li>
+               	 		<li><a href="#ueber" onclick="showNav();return false;">Über</a></li>
+                		<li><a href="#programm" onclick="showNav();return false;">Programm</a></li>
+                		<li><a href="#ort" onclick="showNav();return false;">Ort</a></li>
+                	    <li><a href="#fragen" onclick="showNav();return false;">Fragen</a></li>
+                		<li><a href="#teilnahme" onclick="showNav();return false;">Teilnahme</a></li>
                 		<li>&nbsp;</li>
                 		<li><a href="http://craftprobe.com/en/"><i>English</i></a></li>
             		</ul>
@@ -88,7 +88,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
           	<div class="banner">
             	<div class="bannerimg" style="background-image: url(img/craftprobe.jpg);"></div>
 	        	<div class="arrow-down">
-            		<a href="#about">
+            		<a href="#ueber">
                     	<div class="arrow-down__icon"></div>
                 	</a>
             	</div>
@@ -101,7 +101,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
 <p>Jugendliche von heute sind &uuml;berrumpelt von den scheinbar unendlichen M&ouml;glichkeiten, die ihnen geboten werden und haben Sorge, das entscheidende Ereignis zu verpassen. Einige fliehen in virtuelle Welten, andere verfallen einem ungesunden Karrierismus &ndash; kalt l&auml;sst diese Zeit niemanden. Ein Universit&auml;tsstudium ist oft nur ein willkommenes Alibi, um das Erwachsenwerden hinauszuschieben oder sinnlose Zertifikate zu sammeln, w&auml;hrend man sich um wesentliche Entscheidungen herumdr&uuml;ckt.</p>
 
-<p>Die craftprobe ist eine Realit&auml;tspr&uuml;fung f&uuml;r junge Erwachsene mit Drang zum Selberdenken und Andersmachen. Dabei handelt es sich um ein extrem intensives einmonatiges Programm in Wien (&Ouml;sterreich), das einer beschr&auml;nkten Zahl von Teilnehmern eine einzigartige Lebenserfahrung bietet, die darauf vorbereitet, bessere Entscheidungen unter der Ungewissheit der Zukunft zu treffen. Nach der craftprobe kennst Du Deine St&auml;rken und hast ein klareres Bild von zuk&uuml;nftigen Entwicklungen und Deinem Platz in der Welt. Mit der Hilfe einiger des besten K&ouml;pfe und Werkzeuge und in unternehmerischen Projekten, praktischen Experimenten und tiefgehender Reflexion entwickelst Du die notwendigen Fertigkeiten und Ideen, um reale Werte zu schaffen. Nicht die Pseudowerte, die Pseudomanager und Pseudopolitiker anbieten: entweder irgendeinen gehypeten Schrott, den Du nicht brauchst, bezahlt mit Geld, das Du nicht hast, oder die Fiktion, durch die jeder versucht, auf Kosten aller anderen zu leben.</p>
+<p>Die craftprobe ist eine Realit&auml;tspr&uuml;fung f&uuml;r junge Erwachsene mit Drang zum Selberdenken und Andersmachen. Dabei handelt es sich um ein extrem intensives einmonatiges Programm in Wien (&Ouml;sterreich), das einer beschr&auml;nkten Zahl von Teilnehmern eine einzigartige Lebenserfahrung bietet, die darauf vorbereitet, bessere Entscheidungen unter der Ungewissheit der Zukunft zu treffen. Nach der craftprobe kennst Du Deine St&auml;rken und hast ein klareres Bild von zuk&uuml;nftigen Entwicklungen und Deinem Platz in der Welt. Mit der Hilfe einiger des besten K&ouml;pfe und Werkzeuge und in unternehmerischen Projekten, praktischen Experimenten und tiefgehender Reflexion entwickelst Du die notwendigen Fertigkeiten und Ideen, um reale Werte zu schaffen. Nicht die Pseudowerte, die Pseudomanager und Pseudopolitiker anbieten: entweder irgendeinen gehypten Schrott, den Du nicht brauchst, bezahlt mit Geld, das Du nicht hast, oder die Fiktion, durch die jeder versucht, auf Kosten aller anderen zu leben.</p>
 
 <p>craftprobe wird von einem Unternehmen angeboten, nicht von einer Agentur, Beh&ouml;rde oder Schule. Die Eigent&uuml;mer des Tr&auml;gerunternehmens zielen angesichts der verzerrten M&auml;rkte nicht auf schnelle Profite ab, sondern wollen ein unternehmerisches Labor aufbauen, in dem realistische, kleinr&auml;umige L&ouml;sungen f&uuml;r die Probleme von morgen entwickelt werden. Das Programm tr&auml;gt den Namen craftprobe, was im Englischen grob &uuml;bersetzt &bdquo;Sondieren beruflicher Fertigkeiten&ldquo; bedeutet und im Deutschen auf die Kraftproben Bezug nimmt, die in traditionellen Gesellschaften den &Uuml;bergang von der Jugend ins Erwachsenenalter markieren. Fehlen solche selbst&auml;ndigen Kraftproben, werden sie durch leichtsinnige Mutproben kompensiert oder die Selbst&auml;ndigkeit misslingt zum Preis ewiger Abh&auml;ngigkeiten.</p>
 
@@ -121,7 +121,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 
                 <ul>
                 <li>Termin: 1.-31. M&auml;rz oder 1.-31. August 2017</li>
-                <li>Ort: <i>scholarium</i> in Wien</li>
+                <li>Ort: <i>scholarium</i> in Wien (Schl&ouml;sselgasse 19/2/18, 1080 Wien)</li>
                 <li>Maximale Teilnehmerzahl: 12 Personen</li>
                 <li>Kosten: 1.900 &euro;</li>
                 <li>Kontakt: <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;">&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;</a></li>
@@ -157,7 +157,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 </li><li>Bibliotheksverwaltung
 </li><li>Grundlagen des Interior Design
 </li><li>Psychologische Typenerkennung
-</li><li>Sprachkurse: Chinesisch, Russisch
+</li><li>Sprachkurse: Chinesisch, Russisch, Italienisch
 </li><li>Textwerkstatt Deutsch/Englisch, Fach&uuml;bersetzung
 </li><li>Eventorganisation & Catering
 </li><li>Entwicklung und Pr&uuml;fung von Unternehmensideen
@@ -173,13 +173,13 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             <section  id="vessel" class="s3">
                 <h1>Ort</h1>
                 
-                <p>Das <i>scholarium</i> ist eine unabh&auml;ngige Forschungs- und Bildungseinrichtung, die ausschlie&szlig;lich &uuml;ber das freiwillige Engagement von B&uuml;rgern finanziert wird. <i>scholarium</i> steht f&uuml;r die &bdquo;Gemeinschaft der Lernenden&ldquo;, und als lernendes Unternehmen bietet es eine Erg&auml;nzung zu anerkannten universit&auml;ren Ausbildungen. Das praktische Curriculum wird in Kooperation mit erfolgreichen &ouml;sterreichischen und internationalen Unternehmen entwickelt und evaluiert. Die Eigent&uuml;mer dieser Unternehmen &uuml;ben als Gesellschafter die Aufsicht und Qualit&auml;tskontrolle des scholarium aus. Das Tr&auml;gerunternehmen des Programms ist gemeinn&uuml;tzig und wurde von einer Gruppe erfolgreicher Unternehmer aus &Ouml;sterreich, Deutschland, Schweiz und Liechtenstein gegr&uuml;ndet, aus dem Antrieb heraus, der n&auml;chsten Generation Wertvolles mitzugeben und ihr Mut zur Eigenverantwortung zu machen.</p>
+                <p>Das <i>scholarium</i> ist eine unabh&auml;ngige Forschungs- und Bildungseinrichtung, die ausschlie&szlig;lich &uuml;ber das freiwillige Engagement von B&uuml;rgern finanziert wird. <i>scholarium</i> steht f&uuml;r die &bdquo;Gemeinschaft der Lernenden&ldquo;, und als lernendes Unternehmen bietet es eine Erg&auml;nzung zu anerkannten universit&auml;ren Ausbildungen. Das praktische Curriculum wird in Kooperation mit erfolgreichen &ouml;sterreichischen und internationalen Unternehmen entwickelt und evaluiert. Die Eigent&uuml;mer dieser Unternehmen &uuml;ben als Gesellschafter die Aufsicht und Qualit&auml;tskontrolle des <i>scholarium</i> aus. Das Tr&auml;gerunternehmen des Programms ist gemeinn&uuml;tzig und wurde von einer Gruppe erfolgreicher Unternehmer aus &Ouml;sterreich, Deutschland, Schweiz und Liechtenstein gegr&uuml;ndet, aus dem Antrieb heraus, der n&auml;chsten Generation Wertvolles mitzugeben und ihr Mut zur Eigenverantwortung zu machen.</p>
                 
                 <p>Das <i>scholarium</i> liegt in einem der &auml;ltesten, kreativsten und gebildetsten Vierteln Wiens, in der N&auml;he einer der &auml;ltesten Universit&auml;ten der Welt (von deren glorreicher Vergangenheit aber kaum mehr als die Fassaden &uuml;berlebt haben), direkt neben einem sch&ouml;nen, versteckten Kloster, in dem die allerletzten Stadtm&ouml;nche Garten und Bibliothek hegen. Die Sch&ouml;nheit des Ortes ist inspirierend: Historische R&auml;umlichkeiten mit hohen Decken, ges&auml;umt von einer der gro&szlig;artigsten Privatbibliotheken Wiens, die gen&uuml;gend Platz und Ruhe f&uuml;r praktische Experimente und theoretische Reflexion bieten.</p>
 
 				<p>Wir w&auml;hlten Wien als Heimathafen aufgrund der hohen Lebensqualit&auml;t, des einmaligen Zugangs zu Kultur und Natur und des reichen Erbes als historisches Zentrum von Wissenschaft und Unternehmertum. Wien ist der Geburtsort der Wiener Schule der &Ouml;konomik, die einzige &ouml;konomische Tradition, die sich auf den Unternehmer konzentriert und das Unternehmertum hochh&auml;lt, w&auml;hrend sie gegen&uuml;ber der finanziell und politisch inflationierten Blasenwirtschaft und der damit verbundenen Inflation von Unsinn h&ouml;chst kritisch ist. Doch Wien ist auch der Geburtsort der Logotherapie, der Sinnsuche und der Kritik des Zynismus, Relativismus und verk&uuml;rzten Materialismus.</p>
 
-				<p>Wenn Du f&uuml;r diese Reise geeignet bist, sind wir &uuml;berzeugt, dass Du die Zeit bei uns an Bord niemals vergessen wirst &ndash; es wird einer der besten und sch&ouml;nsten Lebenserfahrungen bleiben, wie zahlreiche begeisterte Teilnehme best&auml;tigen. Kein anderes Bildungsprogramm oder Praktikum kommt dieser Erfahrung auch nur nahe.</p>
+				<p>Wenn Du f&uuml;r diese Reise geeignet bist, sind wir &uuml;berzeugt, dass Du die Zeit bei uns an Bord niemals vergessen wirst &ndash; es wird einer der besten und sch&ouml;nsten Lebenserfahrungen bleiben, wie zahlreiche begeisterte Teilnehmer best&auml;tigen. Kein anderes Bildungsprogramm oder Praktikum kommt dieser Erfahrung auch nur nahe.</p>
 
    <p><a href="#top">Zur&uuml;ck nach oben</a></p>
             </section>
@@ -189,12 +189,12 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
 				<h2>F&uuml;r wen ist die craftprobe gedacht?</h2>
 				
-				<p>F&uuml;r alle, die alt genug sind, um unabh&auml;ngig zu werden, und jung genug sind, um abseits der ausgetretenen Pfade zu wandern. Das bedeutet &uuml;blicherweise ein Alter zwischen 17 und 27. Die craftprobe ist ganz sicher nichts f&uuml;r jene, die eine typische Karriere suchen, in der ihnen jemand bis zur Pensionierung vorschreibt, was zu tun ist, oder jene, die glauben, dass ein Universit&auml;tsdiplom einen Anspruch auf einen gut bezahlten, interessanten und einfachen Job bedeutet. Wenn Du den Verdacht hast, dass es da drau&szlig;en mehr gibt, als die Universit&auml;t lehrt, die Medien beschreiben, die Politiker zugeben, und dass die Zukunft radikal anders sein k&ouml;nnte als die Elterngeneration erwartete, und Dich trotzdem nicht einfach in die Virtuelle Realit&auml;t vor einer herausfordernden Welt zur&uuml;ckziehen willst, sondern den Must und die Energie hast, diesen Herausforderungen zu begegnen, dann bist Du genau derjenige (oder diejenige), den/die wir suchen.</p>
+				<p>F&uuml;r alle, die alt genug sind, um unabh&auml;ngig zu werden, und jung genug sind, um abseits der ausgetretenen Pfade zu wandern. Das bedeutet &uuml;blicherweise ein Alter zwischen 17 und 27. Die craftprobe ist ganz sicher nichts f&uuml;r jene, die eine typische Karriere suchen, in der ihnen jemand bis zur Pensionierung vorschreibt, was zu tun ist, oder jene, die glauben, dass ein Universit&auml;tsdiplom einen Anspruch auf einen gut bezahlten, interessanten und einfachen Job bedeutet. Wenn Du den Verdacht hast, dass es da drau&szlig;en mehr gibt, als die Universit&auml;t lehrt, die Medien beschreiben, die Politiker zugeben, und dass die Zukunft radikal anders sein k&ouml;nnte als die Elterngeneration erwartete, und Dich trotzdem nicht einfach in die virtuelle Realit&auml;t vor einer herausfordernden Welt zur&uuml;ckziehen willst, sondern den Mut und die Energie hast, diesen Herausforderungen zu begegnen, dann bist Du genau derjenige/diejenige, den/die wir suchen.</p>
 
 				<h2>Wann soll ich teilnehmen?</h2>
 				<p>Die h&auml;ufigsten Optionen sind:</p>
 					<ol>
-						<li>Direkt nach Matura/Abitur, bevor Du Dich an der Universit&auml;t einschreibst oder eine andere Karriereentscheidung triffst. Je fr&uuml;her, desto besser, denn je l&auml;nger Du wartest, desto mehr wirst Du es bereuen. Dir ein Monat Zeit zu nehmen, bevor Du an die Universit&auml;t gehst, ist die beste Entscheidung, die Du treffen kannst.</li>
+						<li>Direkt nach Matura/Abitur, bevor Du Dich an der Universit&auml;t einschreibst oder eine andere Karriereentscheidung triffst. Je fr&uuml;her, desto besser, denn je l&auml;nger Du wartest, desto mehr wirst Du es bereuen. Dir einen Monat Zeit zu nehmen, bevor Du an die Universit&auml;t gehst, ist die beste Entscheidung, die Du treffen kannst.</li>
 						<li>Nach Deinem Bachelor, wenn Du Dich fragst, ob Du noch einen Master machen sollst oder nicht, oder Wartezeiten zu &uuml;berbr&uuml;cken hast. Viele Studenten qu&auml;len sich in dieser Zeit mit Zweifeln und Frustration. Verschwende Deine Zeit nicht! Die craftprobe ist der perfekte L&uuml;ckenf&uuml;ller, der letztlich wichtiger als Deine Studien und Abschl&uuml;sse sein k&ouml;nnte.</li>
 						<li>Nach dem Abschluss der Universit&auml;tsstudien, wenn es um den Einstieg in den Arbeitsmarkt geht. Hast Du Dir schon einmal unternehmerische Alternativen &uuml;berlegt? Aber auch wenn Du vor Karrierebeginn noch pers&ouml;nlich wachsen und einen Startvorteil erlangen willst, indem Du die realen Lektionen nachholst, die Dir bislang an der Universit&auml;t vorenthalten blieben, ist die craftprobe genau das Richtige f&uuml;r Dich.</li>
 					</ol>
@@ -203,7 +203,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				<p>Ein praktisches Programm dieser Art ist normalerweise unleistbar, alternative Angebote kosten 7.000 &euro; und mehr. Da die craftprobe von einem steuerbefreiten Unternehmen angeboten wird, das gr&ouml;&szlig;ten Wert auf Effizienz und Effektivit&auml;t legt, konnten wir die Kosten auf 1.900 &euro; reduzieren. Dieses Angebot gilt nur f&uuml;r 12 Teilnehmer. Wenn Du den Kostenbeitrag selbst nicht aufbringen kannst, helfen Dir vielleicht Eltern oder Verwandte dabei. Gerne stehen wir diesen f&uuml;r Fragen zur Verf&uuml;gung.</p>
 
 				<h2>Bekomme ich einen Abschluss? Und damit leichter einen Job?</h2>
-				<p>Du bekommst kein staatlich akkreditiertes Diplom, sondern eine persönliche Urkunde, die Arbeitgebern den Wert und Inhalt des Programms vermittelt. Die craftprobe ist keine Alternative zu einem Diplomstudium, sondern die notwendige Ergänzung, um bessere Bildungs- und Karriereentscheidungen zu treffen. Deine Jobaussichten im Sinne von realen und nachvollziehbaren Fähigkeiten, realen Wert für reale Kunden zu schaffen, sollten sich dramatisch verbessern.</p>
+				<p>Du bekommst kein staatlich akkreditiertes Diplom, sondern eine persönliche Urkunde, die Arbeitgebern den Wert und Inhalt des Programms vermittelt. Die craftprobe ist keine Alternative zu einem akkreditierten Studium, sondern die notwendige Ergänzung, um bessere Bildungs- und Karriereentscheidungen zu treffen. Deine Jobaussichten im Sinne von realen und nachvollziehbaren Fähigkeiten, realen Wert für reale Kunden zu schaffen, sollten sich dramatisch verbessern.</p>
 
             <p><a href="#top">Zur&uuml;ck nach oben</a></p>
             </section>
@@ -213,7 +213,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 <div class="s5img" style="background: url(img/code2.jpg) center;">
                 <div class="form">
                  <h1>Jetzt liegt es an Dir. Komm an Bord!</h1> 
-                 <p>Worauf wartest Du? Eine virale Fernsehwerbung, die Dir versichert, dass Du als Teilnehmer Teil einer hippen Masse bist? Einen Regierungserlass? Wir versuchen, so gut wir k&ouml;nnen, einen Hype, Massenaufmerksamkeit und staatliche Anerkennung und damit Intervention zu vermeiden. Wenn Du Angst hast, bleib an Land. Keine Sorge, an Bord ist ohnehin nicht genug Platz f&uuml;r jeden. Rettungsboote sind schnell &uuml;berf&uuml;llt. Wenn Du den Mut hast, blo&szlig; Zweifel, ob Du geeignet bist, gib Dir einen Ruck. Nach der craftprobe bist Du es gewiss. Wir melden uns zur&uuml;ck, das tut nicht weh. Doch es k&ouml;nnte Dir M&ouml;glichkeiten er&ouml;ffnen, von denen Du bislang noch nicht einmal zu tr&auml;umen gewagt hast.</p>              
+                 <p>Worauf wartest Du? Eine virale Fernsehwerbung, die Dir versichert, dass Du als Teilnehmer Teil einer hippen Masse bist? Einen Regierungserlass? Wir versuchen, so gut wir k&ouml;nnen, einen Hype, Massenaufmerksamkeit und staatliche Anerkennung und damit Intervention zu vermeiden. Wenn Du Angst hast, bleib an Land. Keine Sorge, an Bord ist ohnehin nicht genug Platz f&uuml;r jeden. Rettungsboote sind schnell &uuml;berf&uuml;llt. Wenn Du den Mut hast, aber noch zweifelst, ob Du geeignet bist, gib Dir einen Ruck. Nach der craftprobe bist Du es gewiss. Wir melden uns zur&uuml;ck, das tut nicht weh. Doch es k&ouml;nnte Dir M&ouml;glichkeiten er&ouml;ffnen, von denen Du bislang noch nicht einmal zu tr&auml;umen gewagt hast.</p>              
                      <input type="button" class="inputbutton" value="Anfrage" data-toggle="modal" data-target="#myModal">
                  </div>
                 </div>
@@ -238,7 +238,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
       </div>
       <div class="modal-body">
 		<form method="post" action="index.php" name="user_create_profile_form">
-				<p><span class="inputlabel2">Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</span></p>
+				<!--<p><span class="inputlabel2">Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</span></p>-->
 				<div class="input">
 					<input type="hidden" name="ok" value="1">
 					
@@ -246,8 +246,8 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         			<input class="inputfield" type="text" name="name" placeholder=" Nachname" required><br>
         			<input class="inputfield" type="email" name="email" placeholder=" E-Mail" required><br> 
         			<input class="inputfield" type="tel" name="telephone" placeholder=" Telefonnummer (z.B. +431234567)"><br>
-					<input class="inputfield" type="text" name="street" placeholder=" Strasse" required><br>
-					<input class="inputfield" type="text" name="postal" placeholder=" Postfach" required><br>
+					<input class="inputfield" type="text" name="street" placeholder=" Stra&szlig;e" required><br>
+					<input class="inputfield" type="text" name="postal" placeholder=" PLZ" required><br>
 					<input class="inputfield" type="text" name="city" placeholder=" Stadt" required><br>
 					 
         			<select class="inputfield_select" id="user_country" name="country" placeholder=" Land" required>
