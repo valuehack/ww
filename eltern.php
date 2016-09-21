@@ -18,6 +18,7 @@ require_once('translations/de.php');
 require_once('libraries/PHPMailer.php');
 
 // load the login class
+require_once('classes/General.php');
 require_once('classes/Login.php');
 require_once('classes/Registration.php');
 
