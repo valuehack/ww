@@ -59,7 +59,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
     </head>
     <body>
     	<section class="main-title">
-        	<header class="header" id="oben">
+        	<header class="header">
             	<p>craft<span>probe</span></p>
             	<div class="nav-trigger">
 					<div class="nav-trigger__icon">
@@ -85,7 +85,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					</div>';
 }
 ?>
-          	<div class="banner">
+          	<div class="banner" id="oben">
             	<div class="bannerimg" style="background-image: url(img/craftprobe.jpg);"></div>
 	        	<div class="arrow-down">
             		<a href="#ueber">
