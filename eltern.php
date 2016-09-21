@@ -24,6 +24,7 @@ require_once('classes/Registration.php');
 
 // create a login object. when this object is created, it will do all login/logout stuff automatically
 // so this single line handles the entire login process.
+$general = new General();
 $login = new Login();
 $registration = new Registration();
 $title="Eltern";
