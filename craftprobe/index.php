@@ -59,7 +59,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
     </head>
     <body>
     	<section class="main-title">
-        	<header class="header" id="top">
+        	<header class="header" id="oben">
             	<p>craft<span>probe</span></p>
             	<div class="nav-trigger">
 					<div class="nav-trigger__icon">
@@ -95,7 +95,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         	</div>
         </section>
         <!--<div class="content">-->
-            <section id="about" class="s1">
+            <section id="ueber" class="s1">
 
 <p>Frauen und M&auml;nner f&uuml;r ein waghalsiges Abenteuer gesucht. Keine Multiple-Choice-Tests, kein veraltetes Schulbuchwissen, aber auch kein hipper Start-Up-Schmafu. Zeitig aufstehen, intensives Arbeiten. Muskelkater wahrscheinlich. Erkenntnisgewinn sicher. Eine schonungslose Konfrontation mit der Realit&auml;t.</p>
 
@@ -112,9 +112,9 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 <div class="centered">
 			<iframe width="100%" height="500" src="https://www.youtube.com/embed/GvkK5SRvE2I/?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
 		</div>
-                <p><a href="#top">Zur&uuml;ck nach oben</a></p>
+                <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
             </section>
-            <section  id="course" class="s2">
+            <section  id="programm" class="s2">
                 <h1>Programm</h1>
                 
                 <p><b>Daten:</b></p>
@@ -168,9 +168,9 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 </li><li>Gesangsschulung
 </li><li>Musikarrangement und Komposition</li></ul>
 				
-                <p><a href="#top">Zur&uuml;ck nach oben</a></p>
+                <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
             </section>
-            <section  id="vessel" class="s3">
+            <section  id="ort" class="s3">
                 <h1>Ort</h1>
                 
                 <p>Das <i>scholarium</i> ist eine unabh&auml;ngige Forschungs- und Bildungseinrichtung, die ausschlie&szlig;lich &uuml;ber das freiwillige Engagement von B&uuml;rgern finanziert wird. <i>scholarium</i> steht f&uuml;r die &bdquo;Gemeinschaft der Lernenden&ldquo;, und als lernendes Unternehmen bietet es eine Erg&auml;nzung zu anerkannten universit&auml;ren Ausbildungen. Das praktische Curriculum wird in Kooperation mit erfolgreichen &ouml;sterreichischen und internationalen Unternehmen entwickelt und evaluiert. Die Eigent&uuml;mer dieser Unternehmen &uuml;ben als Gesellschafter die Aufsicht und Qualit&auml;tskontrolle des <i>scholarium</i> aus. Das Tr&auml;gerunternehmen des Programms ist gemeinn&uuml;tzig und wurde von einer Gruppe erfolgreicher Unternehmer aus &Ouml;sterreich, Deutschland, Schweiz und Liechtenstein gegr&uuml;ndet, aus dem Antrieb heraus, der n&auml;chsten Generation Wertvolles mitzugeben und ihr Mut zur Eigenverantwortung zu machen.</p>
@@ -181,10 +181,10 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
 				<p>Wenn Du f&uuml;r diese Reise geeignet bist, sind wir &uuml;berzeugt, dass Du die Zeit bei uns an Bord niemals vergessen wirst &ndash; es wird einer der besten und sch&ouml;nsten Lebenserfahrungen bleiben, wie zahlreiche begeisterte Teilnehmer best&auml;tigen. Kein anderes Bildungsprogramm oder Praktikum kommt dieser Erfahrung auch nur nahe.</p>
 
-   <p><a href="#top">Zur&uuml;ck nach oben</a></p>
+   <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
             </section>
             
-            <section id="manual" class="s4">
+            <section id="fragen" class="s4">
             	<h1>Fragen</h1>
 
 				<h2>F&uuml;r wen ist die craftprobe gedacht?</h2>
@@ -205,11 +205,11 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				<h2>Bekomme ich einen Abschluss? Und damit leichter einen Job?</h2>
 				<p>Du bekommst kein staatlich akkreditiertes Diplom, sondern eine persönliche Urkunde, die Arbeitgebern den Wert und Inhalt des Programms vermittelt. Die craftprobe ist keine Alternative zu einem akkreditierten Studium, sondern die notwendige Ergänzung, um bessere Bildungs- und Karriereentscheidungen zu treffen. Deine Jobaussichten im Sinne von realen und nachvollziehbaren Fähigkeiten, realen Wert für reale Kunden zu schaffen, sollten sich dramatisch verbessern.</p>
 
-            <p><a href="#top">Zur&uuml;ck nach oben</a></p>
+            <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
             </section>
             
             
-       		<section id="board" class="s5">
+       		<section id="teilnahme" class="s5">
                 <div class="s5img" style="background: url(img/code2.jpg) center;">
                 <div class="form">
                  <h1>Jetzt liegt es an Dir. Komm an Bord!</h1> 
@@ -234,7 +234,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
     <div class="modal-content-login">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="myModalLabel">Komm an Bord</h2>
+        <h2 class="modal-title" id="myModalLabel">Komm an Bord!</h2>
       </div>
       <div class="modal-body">
 		<form method="post" action="index.php" name="user_create_profile_form">
