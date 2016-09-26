@@ -84,7 +84,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
     		<button class="dismiss" onclick="dismissNotice();">X</button>
     	</div>
     	<section class="main-title">
-        	<header class="header" id="top">
+        	<header class="header">
             	<p>craft<span>probe</span></p>
             	<div class="nav-trigger">
 					<div class="nav-trigger__icon">
@@ -111,7 +111,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					</div>';
 }
 ?>
-          	<div class="banner">
+          	<div class="banner" id="top">
             	<div class="bannerimg" style="background-image: url(http://www.craftprobe.com/img/craftprobe.jpg);"></div>
 	        	<div class="arrow-down">
             		<a href="#about">
