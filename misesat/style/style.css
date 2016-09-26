@@ -834,7 +834,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 }
 
 .card.medium { 
-	height: 400px;	
+	height: 410px;	
 }
 
 .card.large {
@@ -869,8 +869,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	height: auto;
 }
 .card.horizontal .card-head img {
-	width: 100%;
-	/*width: auto;*/
+	width: auto;
 	vertical-align: middle;
 }
 
@@ -878,8 +877,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	overflow: hidden;
 	position: relative;
 	display: inherit;
-	/*height: 300px;*/
-  	min-height: 6em;
+	height: 200px;
 }
 
 .card-head__overlay::before {
@@ -902,14 +900,13 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	right: 0;
 	bottom: 0;
 	position: relative;
-	margin-top: -4rem;
 	border-radius: 2px;
+	height: 200px;
 }
 
 .card-head.horizontal img {
 	margin-top: 0;
 	/*margin-top: -4rem;*/
-
 }
 
 .card .card-title {
