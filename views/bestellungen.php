@@ -29,7 +29,7 @@ if(isset($_POST['delete'])) {
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <img style="" class="" title="" alt="" src="http://www.scholarium.at/style/gfx/email_header.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                     <!--#/image#-->
                     </td>
                     </tr>
@@ -167,11 +167,11 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 				if ($type == 'seminar' || $type == 'kurs' || $type == 'salon' || $type == 'privatseminar'){
 			
 					if ($type == 'seminar' || $type == 'kurs') {
-					$url = 'http://scholarium.at/seminare/'.$id.'.jpg';
+					$url = 'http://www.scholarium.at/seminare/'.$id.'.jpg';
             		$url2 = 'seminare';
 					}
 					elseif ($type == 'salon') {
-					$url = 'http://scholarium.at/salon/'.$id.'.jpg';
+					$url = 'http://www.scholarium.at/salon/'.$id.'.jpg';
             		$url2 = 'salon';
 					}
 					elseif ($type =='privatseminar') {
@@ -278,14 +278,14 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 				if ($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'antiquariat' || substr($type,0,5) == 'media'){
 			
 					if ($type == 'scholie') {
-					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
+					$url = 'http://www.scholarium.at/schriften/'.$id.'.jpg';
             		$url2 = 'scholienbuechlein';
 					if ($format == 'PDF') $extension = '.pdf';
 					if ($format == 'Kindle') $extension = '.mobi';
 					if ($format == 'ePub') $extension = '.epub';
 					}
 					elseif ($type == 'buch' OR $type == 'analyse') {
-					$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
+					$url = 'http://www.scholarium.at/schriften/'.$id.'.jpg';
             		$url2 = 'buecher';
 					if ($format == 'PDF') $extension = '.pdf';
 					if ($format == 'Kindle') $extension = '.mobi';
@@ -299,7 +299,7 @@ $user_items_result_d = mysql_query($user_items_query_d) or die("Failed Query of 
 					if ($format == 'ePub') $extension = '.epub';
 					}
 					elseif (substr($type,0,5) == 'media') {
-					$url = 'http://scholarium.at/medien/'.$id.'.jpg';
+					$url = 'http://www.scholarium.at/medien/'.$id.'.jpg';
             		$url2 = 'medien';
 					if ($type == 'media-salon' || $type == 'media-vortrag') $extension = '.mp3';
                     if ($type == 'media-vorlesung') $extension = '.zip';

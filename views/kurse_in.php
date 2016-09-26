@@ -35,12 +35,12 @@ if(isset($_POST['add'])){
 }
 
    	//check, if there is an image in the seminare folder
-	$img = 'http://scholarium.at/seminare/'.$id.'.jpg';
+	$img = 'http://www.scholarium.at/seminare/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;
 	} else {
-	    $img_url = "http://scholarium.at/seminare/default.jpg";
+	    $img_url = "http://www.scholarium.at/seminare/default.jpg";
 	}
 
 if(isset($_GET['q']))

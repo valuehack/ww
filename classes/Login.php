@@ -683,7 +683,7 @@ public function checkout ($items)
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
             
             $sum = $quantity*$itemsExtraArray[event_price];
-            $download_link = '<a href="<?php downloadurl(\'http://scholarium.at/secdown/sec_files/'.$key.'.pdf\',\''.$key.'\'); ?>" onclick="updateReferer(this.href);">Download</a>';
+            $download_link = '<a href="<?php downloadurl(\'http://www.scholarium.at/secdown/sec_files/'.$key.'.pdf\',\''.$key.'\'); ?>" onclick="updateReferer(this.href);">Download</a>';
 
             echo "<tr><td>".$itemsExtraArray[id]."&nbsp</td>";
             echo "<td><i>".ucfirst($itemsExtraArray[type])."</i> ".$itemsExtraArray[title]." <i>".$itemsExtraArray[format]."</i></td>";
@@ -1035,7 +1035,7 @@ public function sendEventRegMail($events)
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <img style="" class="" title="" alt="" src="http://www.scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                     <!--#/image#-->
                     </td>
                     </tr>
@@ -1225,7 +1225,7 @@ public function sendUpgradeMailToUser($betrag, $zahlung, $level)
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body .='
-            <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+            <img style="" class="" title="" alt="" src="http://www.scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
             <!--#/image#-->
             </td>
             </tr>
@@ -1410,7 +1410,7 @@ public function sendUpgradeMailToInstitute($betrag, $zahlung, $level)
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <img style="" class="" title="" alt="" src="http://www.scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                     <!--#/image#-->
                     </td>
                     </tr>
@@ -1842,7 +1842,7 @@ user_plz
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <img style="" class="" title="" alt="" src="http://www.scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                     <!--#/image#-->
                     </td>
                     </tr>
@@ -1894,7 +1894,7 @@ user_plz
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <img style="" class="" title="" alt="" src="http://www.scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                     <!--#/image#-->
                     </td>
                     </tr>
@@ -2189,7 +2189,7 @@ user_plz
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                <img style="" class="" title="" alt="" src="http://www.scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                 <!--#/image#-->
                 </td>
                 </tr>

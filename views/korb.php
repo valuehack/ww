@@ -290,7 +290,7 @@ function checkMe() {
         	else {
              	$sum = $quantity*$itemsExtraArray[price];
         	}
-            //$download_link = downloadurl('http://scholarium.at/secdown/sec_files/'.$key.'.pdf\','.$key);
+            //$download_link = downloadurl('http://www.scholarium.at/secdown/sec_files/'.$key.'.pdf\','.$key);
 
             if(substr($itemsExtraArray[type],0,5) == 'media'){
 				$type2 = ucfirst(substr($itemsExtraArray[type],6));
@@ -356,7 +356,7 @@ function checkMe() {
             }
 
 
-                $file_path = 'http://scholarium.at/down_secure/content_secure/'.$id.$extension;
+                $file_path = 'http://www.scholarium.at/down_secure/content_secure/'.$id.$extension;
                 //$download_link = downloadurl($file_path , $key);
                 
                 if (($type == 'scholie' || $type == 'analyse' || $type == 'buch' || $type == 'media-vorlesung' || $type == 'media-vortrag' || $type == 'media-salon') && $format != 4) {
@@ -420,7 +420,7 @@ function checkMe() {
         $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
-                    <img style="" class="" title="" alt="" src="http://scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
+                    <img style="" class="" title="" alt="" src="http://www.scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
                     <!--#/image#-->
                     </td>
                     </tr>
@@ -667,26 +667,26 @@ if($_SESSION['basket']) {
         }
         
 		if ($type == 'analyse' OR $type == 'buch') {
-			$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
+			$url = 'http://www.scholarium.at/schriften/'.$id.'.jpg';
             $url2 = 'buecher';
 			}
 		elseif ($type == 'antiquariat') {
 			$url2 = 'buecher';
 			}
 		elseif ($type == 'scholie') {
-			$url = 'http://scholarium.at/schriften/'.$id.'.jpg';
+			$url = 'http://www.scholarium.at/schriften/'.$id.'.jpg';
             $url2 = 'scholienbuechlein';
 			}
 		elseif ($type == 'seminar' || $type == 'kurs') {
-			$url = 'http://scholarium.at/seminare/'.$id.'.jpg';
+			$url = 'http://www.scholarium.at/seminare/'.$id.'.jpg';
             $url2 = 'seminare';
 			}
 		elseif ($type == 'salon') {
-			$url = 'http://scholarium.at/salon/'.$id.'.jpg';
+			$url = 'http://www.scholarium.at/salon/'.$id.'.jpg';
             $url2 = 'salon';
 			}
         elseif ($type == 'media-vorlesung' || $type == 'media-vortrag' || $type == 'media-salon') {
-            $url = 'http://scholarium.at/medien/'.$id.'.jpg';
+            $url = 'http://www.scholarium.at/medien/'.$id.'.jpg';
             $url2 = 'medien';
             $type=substr($type,6);
             }

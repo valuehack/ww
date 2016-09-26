@@ -20,7 +20,7 @@ if(isset($_GET['q']))
   $entry3 = mysql_fetch_array($result);
   
         	//check, if there is an image in the salon folder
-	$img = 'http://scholarium.at/schriften/'.$id.'.jpg';
+	$img = 'http://www.scholarium.at/schriften/'.$id.'.jpg';
 
 	if (@getimagesize($img)) {
 	    $img_url = $img;

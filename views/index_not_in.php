@@ -24,4 +24,4 @@ include ("_header_not_in.php");
 	</div>
 </div>
 
-<?php include('views/_footer.php'); ?>
+<?php include('_footer.php'); ?>
