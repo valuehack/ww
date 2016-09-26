@@ -833,8 +833,8 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	height: 300px;
 }
 
-.card.medium { 
-	height: 410px;	
+.card.medium {
+	height: 410px;
 }
 
 .card.large {
@@ -877,7 +877,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	overflow: hidden;
 	position: relative;
 	display: inherit;
-	height: 200px;
+  min-height: 6em;
 }
 
 .card-head__overlay::before {
@@ -900,8 +900,6 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	right: 0;
 	bottom: 0;
 	position: relative;
-	border-radius: 2px;
-	height: 200px;
 }
 
 .card-head.horizontal img {
