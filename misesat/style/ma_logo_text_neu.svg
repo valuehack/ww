@@ -13,7 +13,7 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    width="3000"
-   height="740"
+   height="750"
    xml:space="preserve"
    sodipodi:docname="ma_logo_text_neu.svg"
    inkscape:export-filename="E:\GitHub\ww\misesat\style\ma_logo.png"
@@ -21,7 +21,7 @@
    inkscape:export-ydpi="20.230782"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath16"><path
@@ -81,7 +81,7 @@
      id="namedview4"
      showgrid="false"
      inkscape:zoom="0.37081674"
-     inkscape:cx="1919.0677"
+     inkscape:cx="830.92912"
      inkscape:cy="475.10829"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
@@ -92,7 +92,7 @@
      inkscape:label="mises_austria_logo"
      transform="matrix(1.25,0,0,-1.25,0,667.3)"><g
        id="g12"
-       transform="translate(-0.09253784,-10.678585)"><g
+       transform="translate(-0.09253784,-60.678585)"><g
          id="g14"
          clip-path="url(#clipPath16)"><g
            id="g20"
@@ -544,26 +544,26 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:39.55265427px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;"
        x="483.76868"
-       y="-246.75209"
+       y="-216.75209"
        id="text3167"
        sodipodi:linespacing="125%"
        transform="scale(1.0377649,-0.96360938)"><tspan
          sodipodi:role="line"
          id="tspan3169"
          x="483.76868"
-         y="-246.75209"
-         style="font-size:474.63183594px;font-family:'Adobe Garamond Pro';-inkscape-font-specification:'Adobe Garamond Pro';fill:#ffffff;">mises.at</tspan></text>
+         y="-216.75209"
+         style="font-size:530px;font-family:'Adobe Garamond Pro';-inkscape-font-specification:'Adobe Garamond Pro';fill:#ffffff;">mises.at</tspan></text>
 <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:11.26801968px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;"
        x="508.02631"
-       y="-17.121866"
+       y="10"
        id="text3171"
        sodipodi:linespacing="125%"
        transform="scale(0.99403381,-1.006002)"><tspan
          sodipodi:role="line"
          id="tspan3173"
          x="508.02631"
-         y="-17.121866"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:217.46891785px;font-family:'Adobe Garamond Pro';-inkscape-font-specification:'Adobe Garamond Pro';fill:#ffffff;">The orignal Austrians</tspan></text>
+         y="10"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:210px;font-family:'Adobe Garamond Pro';-inkscape-font-specification:'Adobe Garamond Pro';fill:#ffffff;">The orignal Austrians</tspan></text>
 </g></svg>
