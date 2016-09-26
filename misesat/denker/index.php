@@ -109,7 +109,7 @@ else {
       		</div>
       
       		<div class="container">
-      			<div class="">
+      			<div class="itm-index">
       				<?php
       				$l_let = '';
 					$let_list = array();

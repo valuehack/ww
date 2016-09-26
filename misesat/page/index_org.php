@@ -1,13 +1,16 @@
 <? 
+	ini_set("log_errors" , "1");
+	ini_set("error_log" , "../classes/error.log");
+	ini_set("display_errors" , "0");
+
 	include "../config/header1.inc.php";
 
 	$title="Willkommen!";
 
 	include "header2.inc.php";
 ?>
-
+	<!-- Begin Landing Content -->
     <div id="">
-
 		<div class="section">
 			<div class="main-title">
 				<div class="row">
@@ -24,24 +27,46 @@
 				</div>
 			</div>			
 		</div>
-		<!--<div class="section">
-			<div class="row " style="padding:3em 0; background:rgb(46, 74, 98);">
+		<div class="section">
+			<div class="row " style="padding:3em 0;">
 				<div class="container">
-				<div class="one-third column column--red">
-					<h5>NEUER ZUFÄLLIGER ARTIKEL</h5>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat tortor lorem, sit amet fringilla nibh sodales vel. In ullamcorper quam sed laoreet fringilla. Praesent fermentum tortor sit amet lorem tincidunt vehicula. Nullam eleifend nisi eget elit vestibulum, nec dictum sapien semper. Praesent gravida congue elementum</p>
-				</div>
-				<div class="one-third column column--grey">
-					<h5>NEUER ZUFÄLLIGER ARTIKEL</h5>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat tortor lorem, sit amet fringilla nibh sodales vel. In ullamcorper quam sed laoreet fringilla. Praesent fermentum tortor sit amet lorem tincidunt vehicula. Nullam eleifend nisi eget elit vestibulum, nec dictum sapien semper. Praesent gravida congue elementum</p>
-				</div>
-				<div class="one-third column column--blue">
-					<h5>NEUER ZUFÄLLIGER ARTIKEL</h5>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat tortor lorem, sit amet fringilla nibh sodales vel. In ullamcorper quam sed laoreet fringilla. Praesent fermentum tortor sit amet lorem tincidunt vehicula. Nullam eleifend nisi eget elit vestibulum, nec dictum sapien semper. Praesent gravida congue elementum</p>
+					<div class="one-half column">
+						<?php $denker = $general->getRandomInfo('denker');?>
+						<div class="card small horizontal">
+      						<div class="card-head">      							
+      							<? if ($denker->img != '') echo '<img src="'.$denker->img.'" alt="'.$denker->name.'">';?>							
+     						</div>
+      						<div class="card-stacked">
+								<div class="card-content">
+									<span class="card-title"><?=$denker->name?></span>
+									<p><?=$general->substrCloseTags($denker->bio,200)?></p>
+								</div>
+								<div class="card-link h-right">
+									<a href="?denker=<?=$denker->id?>">Zum Denker</a>
+								</div>
+							</div>
+						</div>						
+					</div>
+					<div class="one-half column">
+						<?php $orte = $general->getRandomInfo('orte');?>
+						<div class="card small horizontal">
+      						<div class="card-head">      							
+      							<? if ($orte->img != '') echo '<img src="'.$orte->img.'" alt="'.$orte->name.'">';?>			
+      						</div>
+      						<div class="card-stacked">
+      							<div class="card-content">
+      								<span class="card-title"><?=$orte->name?></span>
+									<p><?=$general->substrCloseTags($orte->text,200)?></p>
+								</div>
+								<div class="card-link h-right">
+									<a href="?denker=<?=$orte->id?>">Zum Ort</a>
+								</div>
+      						</div>
+						</div>	
+					</div>
 				</div>
 			</div>
-			</div>
-		</div>-->
+		</div>
 		
 		<div class="section">
 			<div class="row">
@@ -60,7 +85,5 @@
 
 		</div>
     </div>    
-
-<?	
-	include "footer.inc.php";
-?>
+	<!-- End Landing Content -->
+<?php include "footer.inc.php"?>

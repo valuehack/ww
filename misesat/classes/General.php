@@ -27,7 +27,7 @@ class General {
                 #$this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=latin1', DB_USER, DB_PASS);
 
                 #using utf8 charset instead of latin1
-                $this->db_connection = new PDO('mysql:host='. DB_MISESAT_HOST .';dbname='. DB_MISESAT_NAME . ';charset=latin1', DB_MISESAT_USER, DB_MISESAT_PASS);
+                $this->db_connection = new PDO('mysql:host='. DB_MISESAT_HOST .';dbname='. DB_MISESAT_NAME . ';charset=utf8', DB_MISESAT_USER, DB_MISESAT_PASS, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
                 							
                 #query sets timezone for the database
                 $query_time_zone = $this->db_connection->prepare("SET time_zone = 'Europe/Vienna'");
@@ -47,9 +47,29 @@ class General {
 		# Get info of a single row based on the id
 		# $table = name of sql table (denker, orte, bucher, artikel, etc.)
 		# $id = id of the row of interest
+		
 		$info_query = $this->db_connection->prepare('SELECT * FROM '.$table.' WHERE id = :id');
 		$info_query->bindValue(':id', $id, PDO::PARAM_STR);
 		$info_query->execute();
+		
+		return $info_query->fetchObject();
+	}
+	
+	public function getRandomInfo ($table) {
+		# Takes a random entry out of  the table specified
+		
+		$counter_query = $this->db_connection->prepare('SELECT * FROM '.$table);
+		$counter_query->execute();
+		$counter = $counter_query->rowCount();
+		
+		$rand = rand(1,$counter);
+		
+		$info_query = $this->db_connection->prepare('SELECT * FROM '.$table.' WHERE n = :n');
+		$info_query->bindValue(':n', $rand, PDO::PARAM_INT);
+		$info_query->execute();
+		
+		error_log('Counter '.$counter);
+		error_log('Rand '.$rand);
 		
 		return $info_query->fetchObject();
 	}
