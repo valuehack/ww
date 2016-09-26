@@ -194,7 +194,9 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				<h2>Wann soll ich teilnehmen?</h2>
 				<p>Die h&auml;ufigsten Optionen sind:</p>
 					<ol>
+				
 						<li>Direkt nach Matura/Abitur, bevor Du Dich an der Universit&auml;t einschreibst oder eine andere Karriereentscheidung triffst. Je fr&uuml;her, desto besser, denn je l&auml;nger Du wartest, desto mehr wirst Du es bereuen. Dir einen Monat Zeit zu nehmen, bevor Du an die Universit&auml;t gehst, ist die beste Entscheidung, die Du treffen kannst.</li>
+						<li>W&auml;hrend Deines Studiums in den Semesterferien - entweder im August oder im M&auml;rz.</li>
 						<li>Nach Deinem Bachelor, wenn Du Dich fragst, ob Du noch einen Master machen sollst oder nicht, oder Wartezeiten zu &uuml;berbr&uuml;cken hast. Viele Studenten qu&auml;len sich in dieser Zeit mit Zweifeln und Frustration. Verschwende Deine Zeit nicht! Die craftprobe ist der perfekte L&uuml;ckenf&uuml;ller, der letztlich wichtiger als Deine Studien und Abschl&uuml;sse sein k&ouml;nnte.</li>
 						<li>Nach dem Abschluss der Universit&auml;tsstudien, wenn es um den Einstieg in den Arbeitsmarkt geht. Hast Du Dir schon einmal unternehmerische Alternativen &uuml;berlegt? Aber auch wenn Du vor Karrierebeginn noch pers&ouml;nlich wachsen und einen Startvorteil erlangen willst, indem Du die realen Lektionen nachholst, die Dir bislang an der Universit&auml;t vorenthalten blieben, ist die craftprobe genau das Richtige f&uuml;r Dich.</li>
 					</ol>
