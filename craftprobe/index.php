@@ -41,7 +41,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <title>craftprobe</title>
         <meta name="description" content="Ein intensives Monatsprogramm">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">        
+        <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript" src="js/general.js"></script>
@@ -55,7 +55,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
   			ga('create', 'UA-62940948-1', 'auto');
   			ga('send', 'pageview');
 		</script>
-			
+
     </head>
     <body>
     	<section class="main-title">
@@ -116,9 +116,9 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             </section>
             <section  id="programm" class="s2">
                 <h1>Programm</h1>
-                
+
                 <p><b>Daten:</b></p>
-                
+
                 <ul>
                 <li>Termin: 1.-31. M&auml;rz oder 1.-31. August 2017</li>
                 <li>Ort: <i>scholarium</i> in Wien (Schl&ouml;sselgasse 19/2/18, 1080 Wien)</li>
@@ -126,7 +126,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 <li>Kosten: 1.900 &euro;</li>
                 <li>Kontakt: <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;">&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;</a></li>
                 </ul>
-                
+
                 <p>Die Ausbildungsschwerpunkte liegen in den Bereichen Praktische Philosophie, Unternehmertum, digitale und analoge Werkzeuge sowie Naturkunde. Eine Auswahl der bislang angebotenen Module:</p>
 
 <ul><li>Unternehmensgr&uuml;ndung und Unternehmensf&uuml;hrung
@@ -159,22 +159,22 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 </li><li>Psychologische Typenerkennung
 </li><li>Sprachkurse: Chinesisch, Russisch, Italienisch
 </li><li>Textwerkstatt Deutsch/Englisch, Fach&uuml;bersetzung
-</li><li>Eventorganisation & Catering
+</li><li>Eventorganisation &amp; Catering
 </li><li>Entwicklung und Pr&uuml;fung von Unternehmensideen
 </li><li>Robotik mit Arduino
 </li><li>Social Media Marketing
 </li><li>Hausbau/Lehmbau
-</li><li>Einf&uuml;hrung in Botanik & Pflanzenzucht
+</li><li>Einf&uuml;hrung in Botanik &amp; Pflanzenzucht
 </li><li>Gesangsschulung
 </li><li>Musikarrangement und Komposition</li></ul>
-				
+
                 <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
             </section>
             <section  id="ort" class="s3">
                 <h1>Ort</h1>
-                
+
                 <p>Das <i>scholarium</i> ist eine unabh&auml;ngige Forschungs- und Bildungseinrichtung, die ausschlie&szlig;lich &uuml;ber das freiwillige Engagement von B&uuml;rgern finanziert wird. <i>scholarium</i> steht f&uuml;r die &bdquo;Gemeinschaft der Lernenden&ldquo;, und als lernendes Unternehmen bietet es eine Erg&auml;nzung zu anerkannten universit&auml;ren Ausbildungen. Das praktische Curriculum wird in Kooperation mit erfolgreichen &ouml;sterreichischen und internationalen Unternehmen entwickelt und evaluiert. Die Eigent&uuml;mer dieser Unternehmen &uuml;ben als Gesellschafter die Aufsicht und Qualit&auml;tskontrolle des <i>scholarium</i> aus. Das Tr&auml;gerunternehmen des Programms ist gemeinn&uuml;tzig und wurde von einer Gruppe erfolgreicher Unternehmer aus &Ouml;sterreich, Deutschland, Schweiz und Liechtenstein gegr&uuml;ndet, aus dem Antrieb heraus, der n&auml;chsten Generation Wertvolles mitzugeben und ihr Mut zur Eigenverantwortung zu machen.</p>
-                
+
                 <p>Das <i>scholarium</i> liegt in einem der &auml;ltesten, kreativsten und gebildetsten Vierteln Wiens, in der N&auml;he einer der &auml;ltesten Universit&auml;ten der Welt (von deren glorreicher Vergangenheit aber kaum mehr als die Fassaden &uuml;berlebt haben), direkt neben einem sch&ouml;nen, versteckten Kloster, in dem die allerletzten Stadtm&ouml;nche Garten und Bibliothek hegen. Die Sch&ouml;nheit des Ortes ist inspirierend: Historische R&auml;umlichkeiten mit hohen Decken, ges&auml;umt von einer der gro&szlig;artigsten Privatbibliotheken Wiens, die gen&uuml;gend Platz und Ruhe f&uuml;r praktische Experimente und theoretische Reflexion bieten.</p>
 
 				<p>Wir w&auml;hlten Wien als Heimathafen aufgrund der hohen Lebensqualit&auml;t, des einmaligen Zugangs zu Kultur und Natur und des reichen Erbes als historisches Zentrum von Wissenschaft und Unternehmertum. Wien ist der Geburtsort der Wiener Schule der &Ouml;konomik, die einzige &ouml;konomische Tradition, die sich auf den Unternehmer konzentriert und das Unternehmertum hochh&auml;lt, w&auml;hrend sie gegen&uuml;ber der finanziell und politisch inflationierten Blasenwirtschaft und der damit verbundenen Inflation von Unsinn h&ouml;chst kritisch ist. Doch Wien ist auch der Geburtsort der Logotherapie, der Sinnsuche und der Kritik des Zynismus, Relativismus und verk&uuml;rzten Materialismus.</p>
@@ -183,18 +183,18 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
    <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
             </section>
-            
+
             <section id="fragen" class="s4">
             	<h1>Fragen</h1>
 
 				<h2>F&uuml;r wen ist die craftprobe gedacht?</h2>
-				
+
 				<p>F&uuml;r alle, die alt genug sind, um unabh&auml;ngig zu werden, und jung genug sind, um abseits der ausgetretenen Pfade zu wandern. Das bedeutet &uuml;blicherweise ein Alter zwischen 17 und 27. Die craftprobe ist ganz sicher nichts f&uuml;r jene, die eine typische Karriere suchen, in der ihnen jemand bis zur Pensionierung vorschreibt, was zu tun ist, oder jene, die glauben, dass ein Universit&auml;tsdiplom einen Anspruch auf einen gut bezahlten, interessanten und einfachen Job bedeutet. Wenn Du den Verdacht hast, dass es da drau&szlig;en mehr gibt, als die Universit&auml;t lehrt, die Medien beschreiben, die Politiker zugeben, und dass die Zukunft radikal anders sein k&ouml;nnte als die Elterngeneration erwartete, und Dich trotzdem nicht einfach in die virtuelle Realit&auml;t vor einer herausfordernden Welt zur&uuml;ckziehen willst, sondern den Mut und die Energie hast, diesen Herausforderungen zu begegnen, dann bist Du genau derjenige/diejenige, den/die wir suchen.</p>
 
 				<h2>Wann soll ich teilnehmen?</h2>
 				<p>Die h&auml;ufigsten Optionen sind:</p>
 					<ol>
-				
+
 						<li>Direkt nach Matura/Abitur, bevor Du Dich an der Universit&auml;t einschreibst oder eine andere Karriereentscheidung triffst. Je fr&uuml;her, desto besser, denn je l&auml;nger Du wartest, desto mehr wirst Du es bereuen. Dir einen Monat Zeit zu nehmen, bevor Du an die Universit&auml;t gehst, ist die beste Entscheidung, die Du treffen kannst.</li>
 						<li>W&auml;hrend Deines Studiums in den Semesterferien - entweder im August oder im M&auml;rz.</li>
 						<li>Nach Deinem Bachelor, wenn Du Dich fragst, ob Du noch einen Master machen sollst oder nicht, oder Wartezeiten zu &uuml;berbr&uuml;cken hast. Viele Studenten qu&auml;len sich in dieser Zeit mit Zweifeln und Frustration. Verschwende Deine Zeit nicht! Die craftprobe ist der perfekte L&uuml;ckenf&uuml;ller, der letztlich wichtiger als Deine Studien und Abschl&uuml;sse sein k&ouml;nnte.</li>
@@ -209,18 +209,18 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
             <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
             </section>
-            
-            
+
+
        		<section id="teilnahme" class="s5">
                 <div class="s5img" style="background: url(img/code2.jpg) center;">
                 <div class="form">
-                 <h1>Jetzt liegt es an Dir. Komm an Bord!</h1> 
-                 <p>Worauf wartest Du? Eine virale Fernsehwerbung, die Dir versichert, dass Du als Teilnehmer Teil einer hippen Masse bist? Einen Regierungserlass? Wir versuchen, so gut wir k&ouml;nnen, einen Hype, Massenaufmerksamkeit und staatliche Anerkennung und damit Intervention zu vermeiden. Wenn Du Angst hast, bleib an Land. Keine Sorge, an Bord ist ohnehin nicht genug Platz f&uuml;r jeden. Rettungsboote sind schnell &uuml;berf&uuml;llt. Wenn Du den Mut hast, aber noch zweifelst, ob Du geeignet bist, gib Dir einen Ruck. Nach der craftprobe bist Du es gewiss. Wir melden uns zur&uuml;ck, das tut nicht weh. Doch es k&ouml;nnte Dir M&ouml;glichkeiten er&ouml;ffnen, von denen Du bislang noch nicht einmal zu tr&auml;umen gewagt hast.</p>              
+                 <h1>Jetzt liegt es an Dir. Komm an Bord!</h1>
+                 <p>Worauf wartest Du? Eine virale Fernsehwerbung, die Dir versichert, dass Du als Teilnehmer Teil einer hippen Masse bist? Einen Regierungserlass? Wir versuchen, so gut wir k&ouml;nnen, einen Hype, Massenaufmerksamkeit und staatliche Anerkennung und damit Intervention zu vermeiden. Wenn Du Angst hast, bleib an Land. Keine Sorge, an Bord ist ohnehin nicht genug Platz f&uuml;r jeden. Rettungsboote sind schnell &uuml;berf&uuml;llt. Wenn Du den Mut hast, aber noch zweifelst, ob Du geeignet bist, gib Dir einen Ruck. Nach der craftprobe bist Du es gewiss. Wir melden uns zur&uuml;ck, das tut nicht weh. Doch es k&ouml;nnte Dir M&ouml;glichkeiten er&ouml;ffnen, von denen Du bislang noch nicht einmal zu tr&auml;umen gewagt hast.</p>
                      <input type="button" class="inputbutton" value="Anfrage" data-toggle="modal" data-target="#myModal">
                  </div>
                 </div>
             </section>
-        <!--</div>-->    
+        <!--</div>-->
         <footer class="footer">
             <p>
                 &copy; scholarium&trade; | Schl&ouml;sselgasse 19/2/18 | 1080 Wien <br>
@@ -228,7 +228,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             <p class="img_links">
                 Background-Image: <a href="https://www.flickr.com/photos/riebart/4466482623/in/photolist-7NFTF6-4qquBv-4qvivG-6WxYTc-57hHm6-mjhDwB-5VKcCj-8SjwXw-79EVn6-nfPx72-6xfvm9-ccQ6rL-75cgcM-59ib1t-7Gyyds-9UNeUM-fKSF1d-asasy3-Mdf4-ptJh3V-apgafX-KnCK4-4U2GPi-bpd8Ht-4usG5p-GH7wh-jmr8PB-as7QVk-ec78kF-b7r6g-6fmKyW-3AvBtV-4nqiZn-5RUuNN-6NKzvV-kmhEbE-7E9fqU-d9A4Eb-7d7ipd-8dpeZZ-buRLHu-5WvBYq-7tnkmy-8dsw7J-asaxj1-asawS3-5XzfyW-aMG5S4-9dUbHm-d9A3SY">"Code" by Michael Himbeault</a>
             </p>
-        </footer>        
+        </footer>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -243,15 +243,15 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				<!--<p><span class="inputlabel2">Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</span></p>-->
 				<div class="input">
 					<input type="hidden" name="ok" value="1">
-					
+
 					<input class="inputfield" type="text" name="firstname" placeholder=" Vorname" required><br>
         			<input class="inputfield" type="text" name="name" placeholder=" Nachname" required><br>
-        			<input class="inputfield" type="email" name="email" placeholder=" E-Mail" required><br> 
+        			<input class="inputfield" type="email" name="email" placeholder=" E-Mail" required><br>
         			<input class="inputfield" type="tel" name="telephone" placeholder=" Telefonnummer (z.B. +431234567)"><br>
 					<input class="inputfield" type="text" name="street" placeholder=" Stra&szlig;e" required><br>
 					<input class="inputfield" type="text" name="postal" placeholder=" PLZ" required><br>
 					<input class="inputfield" type="text" name="city" placeholder=" Stadt" required><br>
-					 
+
         			<select class="inputfield_select" id="user_country" name="country" placeholder=" Land" required>
 <option value="Austria" selected>&Ouml;sterreich</option>
 <option value="Germany">Deutschland</option>
@@ -504,7 +504,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 <option value="Zimbabwe">Zimbabwe</option>
 					</select><br>
 					<textarea name="note" class="inputarea" placeholder=" Hast Du Fragen oder Anmerkungen?" rows="10" required></textarea><br>
-					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" Wie hast Du uns gefunden?"><br>					
+					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" Wie hast Du uns gefunden?"><br>
 				</div>
     			<input type="submit" class="inputbutton_subscribe" name="registrationform" value="Anmeldung">
 			</form>
