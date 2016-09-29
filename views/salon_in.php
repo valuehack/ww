@@ -117,8 +117,8 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 		</div>
 		<div class="salon_content">
   		<?php
-  			if ($salon_info->text) echo "<p>$salon_info->text</p>";
-  			if ($salon_info->text2) echo "<p>$salon_info->text2</p>";
+  			if ($salon_info->text) echo "<p>".$salon_info->text."</p>";
+  			if ($salon_info->text2) echo "<p>".$salon_info->text2."</p>";
 
 			$static_info = $general->getStaticInfo('salon');
 			echo $static_info->info			
@@ -289,7 +289,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 			</div>
 			</div>		
 		</div>	
-
+	</div>
 <?php
 	}
 }

@@ -148,7 +148,7 @@ else {
 
 		?>
 					<div class="one-half column">
-      					<div class="card medium">
+      					<div class="card">
       						<div class="card-head <? if ($img != '') echo 'card-head__overlay';?>">
       							<? if ($img != '') echo '<img src="'.$img.'" alt="'.$name.'">';?>
       							<span class="card-title <? if ($img != '') echo 'h-white';?>"><?=$name?></span>
@@ -173,6 +173,4 @@ else {
 }
 ?>
 		</div>
-<?php
-	include "../page/footer.inc.php";
-?>
+<?php include "../page/footer.inc.php"; ?>

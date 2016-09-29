@@ -829,7 +829,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	position: relative;
 }
 
-/*.card.small {
+.card.small {
 	height: 300px;
 }
 
@@ -839,7 +839,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 .card.large {
 	height: 600px;
-}*/
+}
 
 .card:hover {
 	box-shadow: 0 2px 10px 0 rgba(0,0,0,0.3), 0 2px 15px 0 rgba(0,0,0,0.2);
@@ -883,13 +883,12 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 .card-head__overlay::before {
     content: '';
 	position: absolute;
-	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	height: 40%;
 	background-image: linear-gradient(to bottom ,transparent,rgba(0,0,0,0.2));
-	opacity: .5;
+	z-index: 5;
 }
 
 .card-head img {
