@@ -500,7 +500,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					</select><br>
 					<textarea name="note" class="inputarea" placeholder=" Hast Du Fragen oder Anmerkungen?" rows="10" required></textarea><br>
 					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" Wie hast Du uns gefunden?"><br>
-					<p class ="input_zeitraum">Zeitraum:<br>
+					<p id="input_zeitraum">Zeitraum:<br>
 					<input type="radio" name="pref_date" value="2017-03-01" required> 1. bis 31. M&auml;rz 2017<br>
   					<input type="radio" name="pref_date" value="2017-08-01" required> 1. bis 31. August 2017<br>
 					</p>

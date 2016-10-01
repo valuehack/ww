@@ -555,7 +555,7 @@ section li {
 	margin: 5px 0px 30px;
 }
 
-.input_zeitraum {
+#input_zeitraum {
 	margin: 0px;
 	padding: 3px 15px;
 	font-size: 14pt;
