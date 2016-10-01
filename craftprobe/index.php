@@ -511,7 +511,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					</div>
 				</div>
     			<input type="submit" class="inputbutton_subscribe" name="registrationform" value="Anmelden">
-    			<p>Solltest Du vorab noch etwas fragen oder klären wollen, schreib uns einfach eine Mail an: &nbsp;<a href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;</a></p>
+    			<p>Solltest Du vorab noch etwas fragen oder klären wollen, schreib uns einfach eine Mail an:&nbsp;<a href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;</a></p>
 			</form>
 		</div>
     </div>

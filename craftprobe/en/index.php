@@ -9,12 +9,13 @@ $postal = $_POST['postal'];
 $city = $_POST['city'];
 $country = $_POST['country'];
 $telephone = $_POST['telephone'];
+$pref_date = $_POST['pref_date'];
 $note = $_POST['note'];
 $found_us = $_POST['found_us'];
 
 if ($ok) {
 
-$sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, street, postal, city, country, telephone, found_us, sub_date, note) VALUES ('', '$email', '$firstname', '$name', '$street', '$postal', '$city', '$country', '$telephone', '$found_us', NOW(), '$note')";
+$sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, street, postal, city, country, telephone, pref_date, found_us, sub_date, note) VALUES ('', '$email', '$firstname', '$name', '$street', '$postal', '$city', '$country', '$telephone', '$pref_date', '$found_us', NOW(), '$note')";
 
 $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
 
@@ -64,8 +65,8 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../style.css">        
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.js"></script>
-        <script type="text/javascript" src="js/general.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.js"></script>
+        <script type="text/javascript" src="../js/general.js"></script>
 
 		<script>
   			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -316,7 +317,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <h2 class="modal-title" id="myModalLabel">Join our voyage</h2>
       </div>
       <div class="modal-body">
-		<form method="post" action="index.php" name="user_create_profile_form">
+		<form method="post" action="index.php" name="user_create_profile_form" onsubmit="return validateMyForm();>
 				<p><span class="inputlabel2">Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</span></p>
 				<div class="input">
 					<input type="hidden" name="ok" value="1">
@@ -582,8 +583,18 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					</select><br>
 					<textarea name="note" class="inputarea" placeholder=" Do you have questions or comments?" rows="10" required></textarea><br>
 					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" How did you find us?"><br>					
+					<p id="input_zeitraum">Preferred period<br>
+					<input type="radio" name="pref_date" value="2017-03-01" required> 1 &ndash; 31 March 2017<br>
+  					<input type="radio" name="pref_date" value="2017-08-01" required> 1 &ndash; 31 August 2017<br>
+					</p>
+					<!-- honeypot field to prevent spam-->
+					<div style="display:none;">
+					<label>Please keep this field blank</label>
+					<input type="text" name="honeypot" id="honeypot" />
+					</div>
 				</div>
     			<input type="submit" class="inputbutton_subscribe" name="registrationform" value="Boarding request">
+				<p>If you have any questions before boarding, we are glad to answer them. Just write us an email:&nbsp;<a href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;</a></p>
 			</form>
 		</div>
     </div>
