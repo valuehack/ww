@@ -1,4 +1,10 @@
-<?php include "header.php";
+<?php 
+#error log settings
+ini_set("log_errors" , "1");
+ini_set("error_log" , "error.log");
+ini_set("display_errors" , "0");
+
+include "header.php";
 
 $ok = $_POST['ok'];
 $email = $_POST['email'];
@@ -14,6 +20,58 @@ $note = $_POST['note'];
 $found_us = $_POST['found_us'];
 
 if ($ok) {
+
+/*try {
+	$db = new PDO('mysql:host='. DB_WERTE_HOST .';dbname='. DB_WERTE_NAME . ';charset=utf8', DB_WERTE_USER, DB_WERTE_PASS);
+return true;
+
+            } catch (PDOException $e) {
+                echo "error! <br>".$e->getMessage();
+            }
+$db->pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+$in_query = $db->prepare(
+	'INSERT INTO cb_anmeldung (
+		email,
+		firstname,
+		name,
+		street,
+		postal,
+		city,
+		country,
+		telephone,
+		pref_date,
+		found_us,
+		sub_date,
+		note )
+	VALUES (
+		:email,
+		:firstname,
+		:name,
+		:street,
+		:postal,
+		:city,
+		:country,
+		:telephone,
+		:pref_date,
+		:found_us,
+		NOW(),
+		:note)'
+);
+print_r($db->errorInfo());
+$in_query->bindValue(':email', $email, PDO::PARAM_STR);
+$in_query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+$in_query->bindValue(':name', $name, PDO::PARAM_STR);
+$in_query->bindValue(':street', $street, PDO::PARAM_STR);
+$in_query->bindValue(':postal', $postal, PDO::PARAM_STR);
+$in_query->bindValue(':city', $city, PDO::PARAM_STR);
+$in_query->bindValue(':country', $country, PDO::PARAM_STR);
+$in_query->bindValue(':telephone', $telephone, PDO::PARAM_STR);
+$in_query->bindValue(':pref_date', $pref_date, PDO::PARAM_STR);
+$in_query->bindValue(':found_us', $found_us, PDO::PARAM_STR);
+$in_query->bindValue(':note', $note, PDO::PARAM_STR);
+print_r($db->errorInfo());
+$in_query->execute();
+print_r($db->errorInfo());*/
 
 $sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, street, postal, city, country, telephone, pref_date, found_us, sub_date, note) VALUES ('', '$email', '$firstname', '$name', '$street', '$postal', '$city', '$country', '$telephone', '$pref_date', '$found_us', NOW(), '$note')";
 

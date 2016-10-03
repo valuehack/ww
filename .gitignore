@@ -1,5 +1,7 @@
 config/
 config/config.php
+craftprobe/config/
+crafprobe/config/config.php
 rahim/header1.inc.php
 misesat/wienerschule.org.webprj
 misesat/wienerschule.org.txt
