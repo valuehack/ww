@@ -581,7 +581,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 <option value="Zambia">Zambia</option>
 <option value="Zimbabwe">Zimbabwe</option>
 					</select><br>
-					<textarea name="note" class="inputarea" placeholder=" Do you have questions or comments?" rows="10" required></textarea><br>
+					<!-- <textarea name="note" class="inputarea" placeholder=" Do you have questions or comments?" rows="10" required></textarea><br> -->
 					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" How did you find us?"><br>					
 					<p id="input_zeitraum">Preferred period:<br>
 					<input type="radio" name="pref_date" value="2017-03-01" required> 1 &ndash; 31 March 2017<br>
