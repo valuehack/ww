@@ -63,7 +63,7 @@ if ($id = $_GET["q"])
     }
     else {
 		echo "<div class='projekte_invest'>
-		<p>Private Unterst&uuml;tzer haben bereits <span class='projekte_credits_sold'>".$entry[spots_sold]."</span> von <span class='projekte_credits_sold'>".$entry[spots]."</span> n&ouml;tigen <img class='projekte_coin' src='../style/gfx/coin.png'> investiert.</p>"; ?>
+		<p>Private Unterst&uuml;tzer haben bereits <span class='projekte_credits_sold'>".$project_info->spots_sold."</span> von <span class='projekte_credits_sold'>".$project_info->spots."</span> n&ouml;tigen <img class='projekte_coin' src='../style/gfx/coin.png'> investiert.</p>"; ?>
       	<form class="projekte_invest_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
         	<input type="hidden" name="add" value="<?=$n?>">
         	<span class="projekte_invest_span">Ich m&ouml;chte mit </span>
