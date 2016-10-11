@@ -26,12 +26,7 @@ if(isset($_GET['q']))
 	    $img_url = "http://www.scholarium.at/medien/default.jpg";
 	}
 ?>
-  	<div class="medien_head">
-  		<h1><?=$entry3[title];?></h1>
-		<!--<img src="<?echo $img;?>" alt="<?echo $id;?>">-->
-	</div>
-
-  <?php
+    <?php
         $product_info = $general->getProduct($id);
   ?>
   <div class="content-area centered">
