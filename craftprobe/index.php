@@ -1,4 +1,4 @@
-<?php 
+<?php
 #error log settings
 ini_set("log_errors" , "1");
 ini_set("error_log" , "error.log");
@@ -157,11 +157,11 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             <section id="ueber" class="s1">
 
 <p>Frauen und M&auml;nner f&uuml;r ein waghalsiges Abenteuer gesucht. Keine Multiple-Choice-Tests, kein veraltetes Schulbuchwissen, aber auch kein hipper Start-Up-Unsinn. Zeitig aufstehen, intensives Arbeiten. Muskelkater wahrscheinlich. Erkenntnisgewinn sicher. Eine schonungslose Konfrontation mit der Realit&auml;t.</p>
-
+<a><img class="img_floatr" src="img/cp1.jpg" name="Home"></a>
 <p>Jugendliche von heute sind &uuml;berrumpelt von den scheinbar unendlichen M&ouml;glichkeiten, die ihnen geboten werden und haben Sorge, das entscheidende Ereignis zu verpassen. Einige fliehen in virtuelle Welten, andere verfallen einem ungesunden Karrierismus &ndash; kalt l&auml;sst diese Zeit niemanden. Ein Universit&auml;tsstudium ist oft nur ein willkommenes Alibi, um das Erwachsenwerden hinauszuschieben oder sinnlose Zertifikate zu sammeln, w&auml;hrend man sich um wesentliche Entscheidungen herumdr&uuml;ckt.</p>
 
 <p>Die craftprobe ist eine Realit&auml;tspr&uuml;fung f&uuml;r junge Erwachsene mit Drang zum Selberdenken und Andersmachen. Dabei handelt es sich um ein extrem intensives einmonatiges Programm in Wien (&Ouml;sterreich), das einer beschr&auml;nkten Zahl von Teilnehmern eine einzigartige Lebenserfahrung bietet, die darauf vorbereitet, bessere Entscheidungen unter der Ungewissheit der Zukunft zu treffen. Nach der craftprobe kennst Du Deine St&auml;rken und hast ein klareres Bild von zuk&uuml;nftigen Entwicklungen und Deinem Platz in der Welt. Mit der Hilfe einiger des besten K&ouml;pfe und Werkzeuge und in unternehmerischen Projekten, praktischen Experimenten und tiefgehender Reflexion entwickelst Du die notwendigen Fertigkeiten und Ideen, um reale Werte zu schaffen. Nicht die Pseudowerte, die Pseudomanager und Pseudopolitiker anbieten: entweder irgendeinen gehypten Schrott, den Du nicht brauchst, bezahlt mit Geld, das Du nicht hast, oder die Fiktion, durch die jeder versucht, auf Kosten aller anderen zu leben.</p>
-
+<a><img class="img_floatl" src="img/cp7.jpg" name="Home"></a>
 <p>craftprobe wird von einem Unternehmen angeboten, nicht von einer Agentur, Beh&ouml;rde oder Schule. Die Eigent&uuml;mer des Tr&auml;gerunternehmens zielen angesichts der verzerrten M&auml;rkte nicht auf schnelle Profite ab, sondern wollen ein unternehmerisches Labor aufbauen, in dem realistische, kleinr&auml;umige L&ouml;sungen f&uuml;r die Probleme von morgen entwickelt werden. Das Programm tr&auml;gt den Namen craftprobe, was im Englischen grob &uuml;bersetzt &bdquo;Sondieren beruflicher Fertigkeiten&ldquo; bedeutet und im Deutschen auf die Kraftproben Bezug nimmt, die in traditionellen Gesellschaften den &Uuml;bergang von der Jugend ins Erwachsenenalter markieren. Fehlen solche selbst&auml;ndigen Kraftproben, werden sie durch leichtsinnige Mutproben kompensiert oder die Selbst&auml;ndigkeit misslingt zum Preis ewiger Abh&auml;ngigkeiten.</p>
 
 <p>Suchst Du einen Job? Fast jeder tut das heute, aber Einstiegsjobs werden immer knapper. Schlechte Nachrichten: Aufgrund aktueller technischer Entwicklungen, des Konjunkturzyklus und politischen Interventionismus wird es bald kaum noch Jobs f&uuml;r junge Menschen geben, die bislang noch keine Gelegenheit hatten, ihre Kreativit&auml;t und Produktivit&auml;t zu beweisen &ndash; ein Teufelskreislauf, denn wie soll man sich beweisen, wenn man gar keine Gelegenheit dazu erh&auml;lt? Lehrer, Journalisten und Politiker haben junge Menschen schon eine ganze Weile in die Irre gef&uuml;hrt, aber sie wissen es auch nicht besser. Wir verstehen Deine Wut und Angst. Sinnvoller ist es, wenn Du Dich selbst f&uuml;r eine ungewisse Zukunft vorbereitest, in der sich viele wirtschaftliche Annahmen als Illusionen erweisen werden.</p>
@@ -188,7 +188,12 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 
                 <p>Die Ausbildungsschwerpunkte liegen in den Bereichen Praktische Philosophie, Unternehmertum, digitale und analoge Werkzeuge sowie Naturkunde. Eine Auswahl der bislang angebotenen Module:</p>
 
-<ul><li>Unternehmensgr&uuml;ndung und Unternehmensf&uuml;hrung
+<div class="block">
+<ul>
+<div class="blockr">
+<a><img class="img_floatr" src="img/cp2.jpg" name="Home"></a>
+<div class="textl">
+<li>Unternehmensgr&uuml;ndung und Unternehmensf&uuml;hrung
 </li><li>Wirtschaftswissenschaft, Sozialwissenschaft und Philosophie
 </li><li>CNC-Steuerung und 3D-Druck, Prototypenerstellung
 </li><li>Grundlagen der Medizin und Neurowissenschaft
@@ -196,7 +201,13 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 </li><li>Produktion eines Werbefilms
 </li><li>Grundlagen der Politik- und Rechtswissenschaft
 </li><li>Landwirtschaftsprojekt: Anbau von Biogem&uuml;se
-</li><li>Einf&uuml;hrung in Aquaponik
+</li>
+</div></div>
+</table>
+<div class="blockl">
+<a><img class="img_floatl" src="img/cp3.jpg" name="Home"></a>
+<div class="textr">
+<li>Einf&uuml;hrung in Aquaponik
 </li><li>Grundlagen der Permakultur
 </li><li>Einf&uuml;hrung ins Bauingenieurwesen
 </li><li>Besuche von Unternehmern, Wissenschaftlern, Künstlern
@@ -204,7 +215,12 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 </li><li>Schauspielkurs mit Roland D&uuml;ringer
 </li><li>Professionelle Fotografie
 </li><li>Einf&uuml;hrung in Typographie und Corporate Design
-</li><li>Design-orientiertes Gr&uuml;nden
+</li>
+</div></div>
+<div class="blockr">
+<a><img class="img_floatr" src="img/cp6.jpg" name="Home"></a>
+<div class="textl">
+<li>Design-orientiertes Gr&uuml;nden
 </li><li>Einf&uuml;hrung in Modeschnitt
 </li><li>Technisches Zeichnen mit AutoCAD
 </li><li>Satz mit Indesign
@@ -212,7 +228,12 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 </li><li>Programmieren in PHP, SQL, C, Python und Javascript
 </li><li>Webgestaltung mit HTML, CSS und Templates
 </li><li>Leichtathletik, Tennis, Fu&szlig;ball, Trampolin
-</li><li>Grundlagen des M&ouml;belbaus
+</li>
+</div></div>
+<div class="blockl">
+<a><img class="img_floatl" src="img/cp5.jpg" name="Home"></a>
+<div class="textr">
+<li>Grundlagen des M&ouml;belbaus
 </li><li>Bibliotheksverwaltung
 </li><li>Grundlagen des Interior Design
 </li><li>Psychologische Typenerkennung
@@ -220,12 +241,17 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 </li><li>Textwerkstatt Deutsch/Englisch, Fach&uuml;bersetzung
 </li><li>Eventorganisation &amp; Catering
 </li><li>Entwicklung und Pr&uuml;fung von Unternehmensideen
-</li><li>Robotik mit Arduino
+</li>
+</div></div>
+<div class="blockr">
+<a><img class="img_floatr" src="img/cp4.jpg" name="Home"></a>
+<div class="textl">
+<li>Robotik mit Arduino
 </li><li>Social Media Marketing
 </li><li>Hausbau/Lehmbau
 </li><li>Einf&uuml;hrung in Botanik &amp; Pflanzenzucht
 </li><li>Gesangsschulung
-</li><li>Musikarrangement und Komposition</li></ul>
+</li><li>Musikarrangement und Komposition</li></div></div></ul></div>
 
                 <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
             </section>
@@ -266,7 +292,9 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				<h2>Bekomme ich einen Abschluss? Und damit leichter einen Job?</h2>
 				<p>Du bekommst kein staatlich akkreditiertes Diplom, sondern eine persönliche Urkunde, die Arbeitgebern den Wert und Inhalt des Programms vermittelt. Die craftprobe ist keine Alternative zu einem akkreditierten Studium, sondern die notwendige Ergänzung, um bessere Bildungs- und Karriereentscheidungen zu treffen. Deine Jobaussichten im Sinne von realen und nachvollziehbaren Fähigkeiten, realen Wert für reale Kunden zu schaffen, sollten sich dramatisch verbessern.</p>
 
+        <a><img class="mittig" src="img/cp8.jpg" name="Home"></a>
             <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
+
             </section>
 
 
@@ -328,10 +356,10 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					<option value="Angola">Angola</option>
 					<option value="Anguilla">Anguilla</option>
 					<option value="Antarktis">Antarktis</option>
-					<option value="Antigua und Barbuda">Antigua und Barbuda</option> 					
+					<option value="Antigua und Barbuda">Antigua und Barbuda</option>
                     <option value="&Auml;quatorialguinea">&Auml;quatorialguinea</option>
                     <option value="Argentinien">Argentinien</option>
-                    <option value="Armenien">Armenien</option>                    
+                    <option value="Armenien">Armenien</option>
                     <option value="Aruba">Aruba</option>
                     <option value="Ascension">Ascension</option>
                     <option value="Aserbaidschan">Aserbaidschan</option>
