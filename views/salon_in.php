@@ -8,7 +8,7 @@ require_once('../classes/Login.php');
 # if the user has alreday registered for the stream, directly redirect him to the stream view
 
 if($_GET['stream'] != true) {
-	
+
 $id = $_GET['q'];
 
 $salon_info = $general->getProduct($id);
@@ -43,7 +43,7 @@ if(isset($_POST['add'])){
   else {
     $_SESSION['basket'][$add_code] = $add_quantity;
   }
-  
+
 }
 
 #####################################
@@ -54,9 +54,9 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 {
   $id = $_GET['q'];
 
-  //Termindetails  	
+  //Termindetails
   $salon_info = $general->getProduct($id);
-  
+
   $event_id = $salon_info->n;
   $title = $salon_info->title;
   $price = $salon_info->price;
@@ -65,7 +65,7 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
   $spots_available = $spots_total - $salon_info->spots_sold;
   $livestream = $salon_info->livestream;
   $status = $salon_info->status;
-  
+
   $date = $general->getDate($salon_info->start, $salon_info->end);
   if($price2 != '') {
   	$streamprice = $price2;
@@ -73,23 +73,23 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
   else {
 	$streamprice = $price;
   }
-  
+
   //Userdetails
   $user_id = $_SESSION['user_id'];
   $user_itm_info = $general->getEventReg($user_id, $event_id);
   $quantity = $user_itm_info->quantity;
   $format = $user_itm_info->format;
-  
-  
+
+
     ################## No valid Event ##################
-    
+
 	if ($status == 0) {
   	echo '<div class="salon_head"><p class="salon_date">Es wurde keine Veranstaltung gefunden.</p></div>';
     }
-	
+
 	################### Valid Event ####################
-	
-    else {  
+
+    else {
 ?>
     <div class="content">
   		<div class="salon_head">
@@ -102,15 +102,15 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
   		?>
   				<div class="startpage_section_last_scholie startpage-livestream">
   				<p><a href='?q=<?=$id?>&stream=true'>&Uuml;ber diesen Link gelangen Sie zum Livestream des Offenen Salons</a></p>
-  				</div>  				
-		<?php	
+  				</div>
+		<?php
 		}
-  		?>      	
+  		?>
       	</div>
-      	
+
       	<?php
 	##################### Event Info ###################
-?>	
+?>
 
   		<div class="salon_seperator">
 			<h1>Inhalt und Informationen</h1>
@@ -121,39 +121,39 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
   			if ($salon_info->text2) echo "<p>".$salon_info->text2."</p>";
 
 			$static_info = $general->getStaticInfo('salon');
-			echo $static_info->info			
+			echo $static_info->info
 			?>
-			
+
   			<div class="medien_anmeldung"><a href="http://www.scholarium.at/salon/index.php">zur&uuml;ck zu den Salons</a></div>
-	
+
   			<div class="centered">
     			<div class="salon_reservation">
 <?php
 
 		###################### Reg Form ####################
-		
+
 		# Offener Salon
-		
+
 		if($spots_total > 59) {
-			
+
 			/*if(isset($livestream)) {
 ?>
 				<div class="sinfo">
 					<h5>Im Stream</h5>
-					
+
 					<p>
-<?php		
+<?php
 						if($quantity >= 1 && $format == 'Stream') {
 							echo 'Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.<br><br>';
 						}
-?>						
-					</p>	
-								
+?>
+					</p>
+
 					<form action="<?php echo htmlentities($_SERVER['PHP_SELF'])?>" method="post">
-      					<input type="hidden" name="profile[event_id]" value="<?=$event_id?>">      
-						<input type="hidden" name="profile[quantity]" value="1"> 
+      					<input type="hidden" name="profile[event_id]" value="<?=$event_id?>">
+						<input type="hidden" name="profile[quantity]" value="1">
 						<input type="hidden" name="sformat" value="2">
-      					<input class="inputbutton" type="submit" name="register_open_salon" value="Reservieren" <? if($quantity >= 1) echo "disabled"?>><br>     
+      					<input class="inputbutton" type="submit" name="register_open_salon" value="Reservieren" <? if($quantity >= 1) echo "disabled"?>><br>
     				</form>
 					<span class="coin-span"><?=$streamprice?></span> &euro;
 
@@ -163,9 +163,9 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 ?>
 			<div class="sinfo">
 				<!--<h5>Vor Ort</h5>-->
-					
+
 					<p>
-<?php		
+<?php
 						echo 'F&uuml;r unseren Offenen Salon ist nur Barzahlung vor Ort m&ouml;glich. Der Eintritt kostet 5&euro; pro Teilnehmer. Mit dem Klick auf &quot;Reservieren&quot; werden Sie unmittelbar eingetragen.<br><br>';
 
 						if($quantity >= 1 && $format == 'vorOrt') {
@@ -174,15 +174,15 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 						if($spots_available == 0) {
 ?>
   							Die Pl&auml;tze vor Ort sind leider ausgebucht, sie k&ouml;nnen stattdessen per <a href='?q=<?=$id?>&stream=true'>Livestream</a> dazukommen.
-<?php					
+<?php
 						}
-?>					
+?>
 					</p>
 					<p>Anzahl gew&uuml;nschter Teilnehmer:</p>
-					
+
 			    	<form action="<?php htmlentities($_SERVER['PHP_SELF'])?>" method="post">
       					<input type="hidden" name="profile[event_id]" value="<?=$event_id?>">
-      					<input type="hidden" name="profile[sformat]" value="1">      
+      					<input type="hidden" name="profile[sformat]" value="1">
       					<select class="input-select" name="profile[quantity]" onchange="changePrice(this.value,'<?=$price?>')">>
       					<?php
 		  					if ($spots_available == 0){echo '<option value="0">0</option>';}
@@ -191,58 +191,58 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 		  					if ($spots_available >= 3){echo '<option value="3">3</option>';}
 		  					if ($spots_available >= 4){echo '<option value="4">4</option>';}
 		  					if ($spots_available >= 5){echo '<option value="5">5</option>';}
-		  				?>       
-     					</select> 
-      					<input class="inputbutton" type="submit" name="register_open_salon" value="Reservieren" <? if($spots_available == 0) echo "disabled"?>><br>     
+		  				?>
+     					</select>
+      					<input class="inputbutton" type="submit" name="register_open_salon" value="Reservieren" <? if($spots_available == 0) echo "disabled"?>><br>
     				</form>
   					<span id="change" class="coin-span"><?=$streamprice?></span> &euro;
-  				</div>						
-		<?php 
+  				</div>
+		<?php
 		}
 
 		# Normal Form
 
 		else {
-						
+
 			########## Reg Options For level 1 members #########
-	
+
   			if ($_SESSION['Mitgliedschaft'] == 1) {
-  	
+
 			if ($quantity >= 1) {
 				echo '<span class="salon_reservation_span_a">Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.</span><br>';
-			}	
+			}
   			if ($spots_available == 0){
   				echo '<span class="salon_reservation_span_a">Diese Veranstaltung ist leider ausgebucht. Unsere Unterst&uuml;tzer k&ouml;nnen dennoch per Livestream dabei sein. <a href="../spende/">&rarr;Unterst&uuml;tzer werden</a></span><br>';
   			}
-			?>  
+			?>
     		<!--Button trigger modal-->
     		<input class="salon_reservation_inputbutton" type="button" value="Reservieren" data-toggle="modal" data-target="#myModal" <?if($spots_available == 0){echo 'disabled';}?>>
-    	
+
 <?php
   			}
-			
+
 			######### Reg Options For level > 1 members ########
-				
-			else {	
+
+			else {
 
 			if(isset($livestream)) {
 ?>
 				<div class="sinfo">
 					<h5>Im Stream</h5>
-					
+
 					<p>
-<?php		
+<?php
 						if($quantity >= 1 && $format == 'Stream') {
 							echo 'Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.<br><br>';
 						}
-?>						
-					</p>	
-								
+?>
+					</p>
+
 					<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
-      					<input type="hidden" name="add" value="<?=$event_id?>">      
-						<input type="hidden" name="quantity" value="1"> 
+      					<input type="hidden" name="add" value="<?=$event_id?>">
+						<input type="hidden" name="quantity" value="1">
 						<input type="hidden" name="sformat" value="2">
-      					<input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($quantity >= 1) echo "disabled"?>><br>     
+      					<input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($quantity >= 1) echo "disabled"?>><br>
     				</form>
 					<span class="coin-span"><?=$streamprice?></span><img class="coin-span__img" src="../style/gfx/coin.png">
 
@@ -252,22 +252,22 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 ?>
 				<div class="sinfo">
 					<h5>Vor Ort</h5>
-					
+
 					<p>
-<?php		
+<?php
 						if($quantity >= 1 && $format == 'vorOrt') {
 							echo 'Sie haben sich f&uuml;r diese Veranstaltung bereits registriert ('.$quantity.' Ticket(s)).<br><br>';
 						}
 						if($spots_available == 0) {
   							echo 'Die Pl&auml;tze vor Ort sind leider ausgebucht, sie k&oumlnnen stattdessen per Livestream dazukommen.';
 						}
-?>					
+?>
 					</p>
 					<p>Anzahl gew&uuml;nschter Teilnehmer:</p>
-					
+
 			    	<form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       					<input type="hidden" name="add" value="<?=$event_id?>">
-      					<input type="hidden" name="sformat" value="1">      
+      					<input type="hidden" name="sformat" value="1">
       					<select class="input-select" name="quantity" onchange="changePrice(this.value,'<?=$price?>')">>
       					<?php
 		  					if ($spots_available == 0){echo '<option value="0">0</option>';}
@@ -276,19 +276,19 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 		  					if ($spots_available >= 3){echo '<option value="3">3</option>';}
 		  					if ($spots_available >= 4){echo '<option value="4">4</option>';}
 		  					if ($spots_available >= 5){echo '<option value="5">5</option>';}
-		  				?>       
-     					</select> 
-      					<input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($spots_available == 0) echo "disabled"?>><br>     
+		  				?>
+     					</select>
+      					<input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($spots_available == 0) echo "disabled"?>><br>
     				</form>
-  					<span id="change" class="coin-span"><?=$price?></span><img class="coin-span__img" src="../style/gfx/coin.png">							
+  					<span id="change" class="coin-span"><?=$price?></span><img class="coin-span__img" src="../style/gfx/coin.png">
   				</div>
 <?php
 		}
   	}
 ?>
 			</div>
-			</div>		
-		</div>	
+			</div>
+		</div>
 	</div>
 <?php
 	}
@@ -299,17 +299,17 @@ if(isset($_GET['q']) && !isset($_GET['stream']))
 #####################################
 
 elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
-	
+
 	$id = $_GET['q'];
 	$salon_info = $general->getProduct($id);
 	$reg_info = $general->getEventReg($_SESSION['user_id'], $salon_info->n);
-	
+
 	$chat_loc = $general->createChat($salon_info->n, $salon_info->type);
-	
+
 	if ($reg_info->format === 'Stream' || $salon_info->spots > 59) {
-			
+
 		$livestream = substr($salon_info->livestream,32);
-?>	
+?>
 	<div class="content-area">
 		<div class="centered">
 			<h2><?=$salon_info->title?></h2>
@@ -352,8 +352,8 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 			<p>Wir freuen uns, dass Sie an unserem Salon aus der Ferne teilnehmen m&ouml;chten. <a href="index.php?q=<?=$id?>">Bitte buchen Sie dazu zun&auml;chst einen Streamplatz.</a></p>
 		</div>
 	</div>
-<?php	
-	}	
+<?php
+	}
 }
 
 #####################################
@@ -361,27 +361,27 @@ elseif(isset($_GET['q']) && $_GET['stream'] === 'true') {
 #####################################
 
 else {
-?>		
+?>
 	<div class="content">
 		<?
-		
+
 #für Interessenten (Mitgliedschaft 1) Erklärungstext oben
   if ($_SESSION['Mitgliedschaft'] == 1) {
   	echo "<div class='salon_info'>";
 	  		$static_info = $general->getStaticInfo('salon');
-			echo $static_info->info;	
+			echo $static_info->info;
 	?>
 			<div class="centered">
 				<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
-			</div>		
+			</div>
    </div>
    <?
   }
   elseif ($_SESSION['Mitgliedschaft'] > 1) {
 ?>
 		<div class="salon_content">
-<?	
-  $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND start > NOW() AND status = 1 order by start asc, n asc";
+<?
+  $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND end > NOW() AND status = 1 order by start asc, n asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 
@@ -390,12 +390,12 @@ else {
     $id = $entry[id];
 	$date = $general->getDate($entry[start], $entry[end]);
       ?>
-      
+
 <?php echo "<h1><a href='?q=$id'>".$entry[title]; ?></a></h1>
 		<div class="salon_dates">
       <?=$date?>
 		</div>
-<?php 
+<?php
 		if ($entry[spots] > 59 && $entry[livestream] != '') {
 ?>
 		<div class="salon_dates">
@@ -403,8 +403,8 @@ else {
 		</div>
 <?php
 }
-			echo $entry[text]; 
-?> 
+			echo $entry[text];
+?>
 			<div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
   <?php
   }
@@ -413,8 +413,8 @@ else {
   </div>
   	<?php
   }
-}    
-  ?> 
+}
+  ?>
 
  <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -431,13 +431,13 @@ else {
       			$submit = 'register_open_salon'; //Register from level 1
         		include ('../tools/open_salon_form.php');
 				echo '</div>';
-        	}  
+        	}
 			else {
 			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
 			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[modal];					
+
+				echo $entry4[modal];
 			?>
         </div>
         <div class="modal-footer">
