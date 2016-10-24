@@ -15,7 +15,8 @@ if(isset($_GET['denker']))
 
   $name = $result->name;
   $bio = $result->bio;
-  $img = $result->img;
+	//$img = 'http://mises.at/denker/'.$thinker_id.'.jpg';
+	$img = $result->img;
 
 ?>
 <!--Denker-->
@@ -131,7 +132,12 @@ else {
 		$id = $result[$i]['id'];
         $name = $result[$i]['name'];
   		$bio = $result[$i]['bio'];
-  		$img = $result[$i]['img'];
+			$img_url = 'http://www.mises.at/denker/'.$id.'.jpg';
+			if (@getimagesize($img_url)) {
+					$img = $img_url;
+			} else {
+					$img = "http://www.mises.at/denker/ma_logo.jpg";
+			}
 
 		$last_letter = '';
 		$letter = substr($id,0,1);
