@@ -9,6 +9,6 @@ return true;
 
 $db = new PDO('mysql:host='. DB_WERTE_HOST .';dbname='. DB_WERTE_NAME . ';charset=utf8', DB_WERTE_USER, DB_WERTE_PASS);
 return true;
+/*hallo test*/
+
 ?>
-
-
