@@ -16,19 +16,11 @@ $city = $_POST['city'];
 $country = $_POST['country'];
 $telephone = $_POST['telephone'];
 $pref_date = $_POST['pref_date'];
-$note = $_POST['note'];
 $found_us = $_POST['found_us'];
 
 if ($ok) {
 
-/*try {
-	$db = new PDO('mysql:host='. DB_WERTE_HOST .';dbname='. DB_WERTE_NAME . ';charset=utf8', DB_WERTE_USER, DB_WERTE_PASS);
-return true;
-
-            } catch (PDOException $e) {
-                echo "error! <br>".$e->getMessage();
-            }
-$db->pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 $in_query = $db->prepare(
 	'INSERT INTO cb_anmeldung (
 		email,
@@ -41,8 +33,8 @@ $in_query = $db->prepare(
 		telephone,
 		pref_date,
 		found_us,
-		sub_date,
-		note )
+		sub_date
+		)
 	VALUES (
 		:email,
 		:firstname,
@@ -54,10 +46,10 @@ $in_query = $db->prepare(
 		:telephone,
 		:pref_date,
 		:found_us,
-		NOW(),
-		:note)'
+		NOW()
+		)'
 );
-print_r($db->errorInfo());
+
 $in_query->bindValue(':email', $email, PDO::PARAM_STR);
 $in_query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
 $in_query->bindValue(':name', $name, PDO::PARAM_STR);
@@ -68,14 +60,12 @@ $in_query->bindValue(':country', $country, PDO::PARAM_STR);
 $in_query->bindValue(':telephone', $telephone, PDO::PARAM_STR);
 $in_query->bindValue(':pref_date', $pref_date, PDO::PARAM_STR);
 $in_query->bindValue(':found_us', $found_us, PDO::PARAM_STR);
-$in_query->bindValue(':note', $note, PDO::PARAM_STR);
-print_r($db->errorInfo());
+
 $in_query->execute();
-print_r($db->errorInfo());*/
 
-$sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, street, postal, city, country, telephone, pref_date, found_us, sub_date, note) VALUES ('', '$email', '$firstname', '$name', '$street', '$postal', '$city', '$country', '$telephone', '$pref_date', '$found_us', NOW(), '$note')";
+/*$sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, street, postal, city, country, telephone, pref_date, found_us, sub_date, note) VALUES ('', '$email', '$firstname', '$name', '$street', '$postal', '$city', '$country', '$telephone', '$pref_date', '$found_us', NOW(), '$note')";
 
-$result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
+$result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());*/
 
 //Email an Interessenten
 
@@ -88,7 +78,7 @@ mail ($email,"Willkommen bei der craftprobe",$body,"From: info@scholarium.at\nCo
 
 //Email an Uns
 
-mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat sich als Interessent eingetragen","From: $email\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
+//mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat sich als Interessent eingetragen","From: $email\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
 }
 
 ?>
@@ -119,7 +109,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
     <body>
     	<section class="main-title">
         	<header class="header">
-            	<p>craft<span>probe</span></p>
+            	<a href="www.craftprobe.com"><p>craft<span>probe</span></p></a>
             	<div class="nav-trigger">
 					<div class="nav-trigger__icon">
 						<a href="#" onclick="showNav();return false;"><img src="img/navicon.svg" alt="Menu" title="Menu"></a>
@@ -156,22 +146,22 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <!--<div class="content">-->
             <section id="ueber" class="s1">
 
-<p>Frauen und M&auml;nner f&uuml;r ein waghalsiges Abenteuer gesucht. Keine Multiple-Choice-Tests, kein veraltetes Schulbuchwissen, aber auch kein hipper Start-Up-Unsinn. Zeitig aufstehen, intensives Arbeiten. Muskelkater wahrscheinlich. Erkenntnisgewinn sicher. Eine schonungslose Konfrontation mit der Realit&auml;t.</p>
-<a><img class="img_floatr" src="img/cp1.jpg" name="Home"></a>
-<p>Jugendliche von heute sind &uuml;berrumpelt von den scheinbar unendlichen M&ouml;glichkeiten, die ihnen geboten werden und haben Sorge, das entscheidende Ereignis zu verpassen. Einige fliehen in virtuelle Welten, andere verfallen einem ungesunden Karrierismus &ndash; kalt l&auml;sst diese Zeit niemanden. Ein Universit&auml;tsstudium ist oft nur ein willkommenes Alibi, um das Erwachsenwerden hinauszuschieben oder sinnlose Zertifikate zu sammeln, w&auml;hrend man sich um wesentliche Entscheidungen herumdr&uuml;ckt.</p>
+				<p>Frauen und M&auml;nner f&uuml;r ein waghalsiges Abenteuer gesucht. Keine Multiple-Choice-Tests, kein veraltetes Schulbuchwissen, aber auch kein hipper Start-Up-Unsinn. Zeitig aufstehen, intensives Arbeiten. Muskelkater wahrscheinlich. Erkenntnisgewinn sicher. Eine schonungslose Konfrontation mit der Realit&auml;t.</p>
+				<a><img class="img_floatr" src="img/cp1.jpg" name="Home"></a>
+				<p>Jugendliche von heute sind &uuml;berrumpelt von den scheinbar unendlichen M&ouml;glichkeiten, die ihnen geboten werden und haben Sorge, das entscheidende Ereignis zu verpassen. Einige fliehen in virtuelle Welten, andere verfallen einem ungesunden Karrierismus &ndash; kalt l&auml;sst diese Zeit niemanden. Ein Universit&auml;tsstudium ist oft nur ein willkommenes Alibi, um das Erwachsenwerden hinauszuschieben oder sinnlose Zertifikate zu sammeln, w&auml;hrend man sich um wesentliche Entscheidungen herumdr&uuml;ckt.</p>
 
 
-<p>Die craftprobe ist eine Realit&auml;tspr&uuml;fung f&uuml;r junge Erwachsene mit Drang zum Selberdenken und Andersmachen. Dabei handelt es sich um ein extrem intensives einmonatiges Programm in Wien (&Ouml;sterreich), das einer beschr&auml;nkten Zahl von Teilnehmern eine einzigartige Lebenserfahrung bietet, die darauf vorbereitet, bessere Entscheidungen unter der Ungewissheit der Zukunft zu treffen. Nach der craftprobe kennst Du Deine St&auml;rken und hast ein klareres Bild von zuk&uuml;nftigen Entwicklungen und Deinem Platz in der Welt. Mit der Hilfe einiger der besten K&ouml;pfe und Werkzeuge und in unternehmerischen Projekten, praktischen Experimenten und tiefgehender Reflexion entwickelst Du die notwendigen Fertigkeiten und Ideen, um reale Werte zu schaffen. Nicht die Pseudowerte, die Pseudomanager und Pseudopolitiker anbieten: entweder irgendeinen gehypten Schrott, den Du nicht brauchst, bezahlt mit Geld, das Du nicht hast, oder die Fiktion, durch die jeder versucht, auf Kosten aller anderen zu leben.</p>
-<a><img class="img_floatl" src="img/cp7.jpg" name="Home"></a>
-<p>craftprobe wird von einem Unternehmen angeboten, nicht von einer Agentur, Beh&ouml;rde oder Schule. Die Eigent&uuml;mer des Tr&auml;gerunternehmens zielen angesichts der verzerrten M&auml;rkte nicht auf schnelle Profite ab, sondern wollen ein unternehmerisches Labor aufbauen, in dem realistische, kleinr&auml;umige L&ouml;sungen f&uuml;r die Probleme von morgen entwickelt werden. Das Programm tr&auml;gt den Namen craftprobe, was im Englischen grob &uuml;bersetzt &bdquo;Sondieren beruflicher Fertigkeiten&ldquo; bedeutet und im Deutschen auf die Kraftproben Bezug nimmt, die in traditionellen Gesellschaften den &Uuml;bergang von der Jugend ins Erwachsenenalter markieren. Fehlen solche selbst&auml;ndigen Kraftproben, werden sie durch leichtsinnige Mutproben kompensiert oder die Selbst&auml;ndigkeit misslingt zum Preis ewiger Abh&auml;ngigkeiten.</p>
+				<p>Die craftprobe ist eine Realit&auml;tspr&uuml;fung f&uuml;r junge Erwachsene mit Drang zum Selberdenken und Andersmachen. Dabei handelt es sich um ein extrem intensives einmonatiges Programm in Wien (&Ouml;sterreich), das einer beschr&auml;nkten Zahl von Teilnehmern eine einzigartige Lebenserfahrung bietet, die darauf vorbereitet, bessere Entscheidungen unter der Ungewissheit der Zukunft zu treffen. Nach der craftprobe kennst Du Deine St&auml;rken und hast ein klareres Bild von zuk&uuml;nftigen Entwicklungen und Deinem Platz in der Welt. Mit der Hilfe einiger der besten K&ouml;pfe und Werkzeuge und in unternehmerischen Projekten, praktischen Experimenten und tiefgehender Reflexion entwickelst Du die notwendigen Fertigkeiten und Ideen, um reale Werte zu schaffen. Nicht die Pseudowerte, die Pseudomanager und Pseudopolitiker anbieten: entweder irgendeinen gehypten Schrott, den Du nicht brauchst, bezahlt mit Geld, das Du nicht hast, oder die Fiktion, durch die jeder versucht, auf Kosten aller anderen zu leben.</p>
+				<a><img class="img_floatl" src="img/cp7.jpg" name="Home"></a>
+				<p>craftprobe wird von einem Unternehmen angeboten, nicht von einer Agentur, Beh&ouml;rde oder Schule. Die Eigent&uuml;mer des Tr&auml;gerunternehmens zielen angesichts der verzerrten M&auml;rkte nicht auf schnelle Profite ab, sondern wollen ein unternehmerisches Labor aufbauen, in dem realistische, kleinr&auml;umige L&ouml;sungen f&uuml;r die Probleme von morgen entwickelt werden. Das Programm tr&auml;gt den Namen craftprobe, was im Englischen grob &uuml;bersetzt &bdquo;Sondieren beruflicher Fertigkeiten&ldquo; bedeutet und im Deutschen auf die Kraftproben Bezug nimmt, die in traditionellen Gesellschaften den &Uuml;bergang von der Jugend ins Erwachsenenalter markieren. Fehlen solche selbst&auml;ndigen Kraftproben, werden sie durch leichtsinnige Mutproben kompensiert oder die Selbst&auml;ndigkeit misslingt zum Preis ewiger Abh&auml;ngigkeiten.</p>
 
-<p>Suchst Du einen Job? Fast jeder tut das heute, aber Einstiegsjobs werden immer knapper. Schlechte Nachrichten: Aufgrund aktueller technischer Entwicklungen, des Konjunkturzyklus und politischen Interventionismus wird es bald kaum noch Jobs f&uuml;r junge Menschen geben, die bislang noch keine Gelegenheit hatten, ihre Kreativit&auml;t und Produktivit&auml;t zu beweisen &ndash; ein Teufelskreislauf, denn wie soll man sich beweisen, wenn man gar keine Gelegenheit dazu erh&auml;lt? Lehrer, Journalisten und Politiker haben junge Menschen schon eine ganze Weile in die Irre gef&uuml;hrt, aber sie wissen es auch nicht besser. Wir verstehen Deine Wut und Angst. Sinnvoller ist es, wenn Du Dich selbst f&uuml;r eine ungewisse Zukunft vorbereitest, in der sich viele wirtschaftliche Annahmen als Illusionen erweisen werden.</p>
+				<p>Suchst Du einen Job? Fast jeder tut das heute, aber Einstiegsjobs werden immer knapper. Schlechte Nachrichten: Aufgrund aktueller technischer Entwicklungen, des Konjunkturzyklus und politischen Interventionismus wird es bald kaum noch Jobs f&uuml;r junge Menschen geben, die bislang noch keine Gelegenheit hatten, ihre Kreativit&auml;t und Produktivit&auml;t zu beweisen &ndash; ein Teufelskreislauf, denn wie soll man sich beweisen, wenn man gar keine Gelegenheit dazu erh&auml;lt? Lehrer, Journalisten und Politiker haben junge Menschen schon eine ganze Weile in die Irre gef&uuml;hrt, aber sie wissen es auch nicht besser. Wir verstehen Deine Wut und Angst. Sinnvoller ist es, wenn Du Dich selbst f&uuml;r eine ungewisse Zukunft vorbereitest, in der sich viele wirtschaftliche Annahmen als Illusionen erweisen werden.</p>
 
-<p>Dazu dient die craftprobe. Nicht, weil wir die Zukunft genau kennen, sondern weil wir offen und bereit sind, die Herausforderung anzunehmen. Die craftprobe ist ein einzigartiges Pers&ouml;nlichkeitsentwicklungsprogramm, um Dich auf diese ungewisse Zukunft vorzubereiten, aber nicht durch Hirnw&auml;sche, Psychogeschw&auml;tz oder motivierende Reden, e-Books, Ratgeber oder Videos, die Dir eine falsche Gewissheit versprechen, sondern durch konkrete und relevante Projekte und Aufgaben, die Produkte, Prozesse, Werkzeuge, M&auml;rkte und Ideen erkunden. Wir lieben das Erkunden des Unbekannten, wir lieben Unternehmertum, wir lieben das Lernen neuer Ideen, Fertigkeiten und Wege, wir lieben unsere Freiheit und Individualit&auml;t. Wir misstrauen Experten, Politikern, Bankiers, Managern, Journalisten, Lehrern, Venturekapitalisten genauso wie wir Gurus, Untergangspropheten, Ideologen, Gutmenschen, Hipstern, Internetpromis und -trollen misstrauen. craftprobe ist eine Kraftprobe &ndash; die Teilnahme an unserer Expedition ist definitiv nichts f&uuml;r Weicheicher. Bequeme Illusionen k&ouml;nnten ersch&uuml;ttert werden. Wir tolerieren keinerlei Bullshit an Bord.</p>
+				<p>Dazu dient die craftprobe. Nicht, weil wir die Zukunft genau kennen, sondern weil wir offen und bereit sind, die Herausforderung anzunehmen. Die craftprobe ist ein einzigartiges Pers&ouml;nlichkeitsentwicklungsprogramm, um Dich auf diese ungewisse Zukunft vorzubereiten, aber nicht durch Hirnw&auml;sche, Psychogeschw&auml;tz oder motivierende Reden, e-Books, Ratgeber oder Videos, die Dir eine falsche Gewissheit versprechen, sondern durch konkrete und relevante Projekte und Aufgaben, die Produkte, Prozesse, Werkzeuge, M&auml;rkte und Ideen erkunden. Wir lieben das Erkunden des Unbekannten, wir lieben Unternehmertum, wir lieben das Lernen neuer Ideen, Fertigkeiten und Wege, wir lieben unsere Freiheit und Individualit&auml;t. Wir misstrauen Experten, Politikern, Bankiers, Managern, Journalisten, Lehrern, Venturekapitalisten genauso wie wir Gurus, Untergangspropheten, Ideologen, Gutmenschen, Hipstern, Internetpromis und -trollen misstrauen. craftprobe ist eine Kraftprobe &ndash; die Teilnahme an unserer Expedition ist definitiv nichts f&uuml;r Weicheicher. Bequeme Illusionen k&ouml;nnten ersch&uuml;ttert werden. Wir tolerieren keinerlei Bullshit an Bord.</p>
 
-<div class="centered">
-			<iframe width="100%" height="500" src="https://www.youtube.com/embed/GvkK5SRvE2I/?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
-		</div>
+				<div class="centered">
+					<iframe width="100%" height="500" src="https://www.youtube.com/embed/GvkK5SRvE2I/?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+				</div>
                 <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
             </section>
             <section  id="programm" class="s2">
@@ -180,79 +170,89 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 <p><b>Daten:</b></p>
 
                 <ul>
-                <li>Termin: 1.-31. M&auml;rz oder 1.-31. August 2017</li>
-                <li>Ort: <i>scholarium</i> in Wien (Schl&ouml;sselgasse 19/2/18, 1080 Wien)</li>
-                <li>Maximale Teilnehmerzahl: 12 Personen</li>
-                <li>Kosten: 1.900 &euro;</li>
-                <li>Kontakt: <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;">&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;</a></li>
+                	<li>Termin: 1.-31. M&auml;rz oder 1.-31. August 2017</li>
+                	<li>Ort: <i>scholarium</i> in Wien (Schl&ouml;sselgasse 19/2/18, 1080 Wien)</li>
+                	<li>Maximale Teilnehmerzahl: 12 Personen</li>
+                	<li>Kosten: 1.900 &euro;</li>
+                	<li>Kontakt: <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;">&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;</a></li>
                 </ul>
 
                 <p>Die Ausbildungsschwerpunkte liegen in den Bereichen Praktische Philosophie, Unternehmertum, digitale und analoge Werkzeuge sowie Naturkunde. Eine Auswahl der bislang angebotenen Module:</p>
 
-<div class="block">
-<ul>
-<div class="blockr">
-<a><img class="img_floatr" src="img/cp2.jpg" name="Home"></a>
-<div class="textl">
-<li>Unternehmensgr&uuml;ndung und Unternehmensf&uuml;hrung
-</li><li>Wirtschaftswissenschaft, Sozialwissenschaft und Philosophie
-</li><li>CNC-Steuerung und 3D-Druck, Prototypenerstellung
-</li><li>Grundlagen der Medizin und Neurowissenschaft
-</li><li>Marketing und SEO-Optimierung
-</li><li>Produktion eines Werbefilms
-</li><li>Grundlagen der Politik- und Rechtswissenschaft
-</li><li>Landwirtschaftsprojekt: Anbau von Biogem&uuml;se
-</li>
-</div></div>
-</table>
-<div class="blockl">
-<a><img class="img_floatl" src="img/cp3.jpg" name="Home"></a>
-<div class="textr">
-<li>Einf&uuml;hrung in Aquaponik
-</li><li>Grundlagen der Permakultur
-</li><li>Einf&uuml;hrung ins Bauingenieurwesen
-</li><li>Besuche von Unternehmern, Wissenschaftlern, Künstlern
-</li><li>Wanderungen, Survival
-</li><li>Schauspielkurs mit Roland D&uuml;ringer
-</li><li>Professionelle Fotografie
-</li><li>Einf&uuml;hrung in Typographie und Corporate Design
-</li>
-</div></div>
-<div class="blockr">
-<a><img class="img_floatr" src="img/cp6.jpg" name="Home"></a>
-<div class="textl">
-<li>Design-orientiertes Gr&uuml;nden
-</li><li>Einf&uuml;hrung in Modeschnitt
-</li><li>Technisches Zeichnen mit AutoCAD
-</li><li>Satz mit Indesign
-</li><li>Grafisches Gestalten mit Photoshop
-</li><li>Programmieren in PHP, SQL, C, Python und Javascript
-</li><li>Webgestaltung mit HTML, CSS und Templates
-</li><li>Leichtathletik, Tennis, Fu&szlig;ball, Trampolin
-</li>
-</div></div>
-<div class="blockl">
-<a><img class="img_floatl" src="img/cp5.jpg" name="Home"></a>
-<div class="textr">
-<li>Grundlagen des M&ouml;belbaus
-</li><li>Bibliotheksverwaltung
-</li><li>Grundlagen des Interior Design
-</li><li>Psychologische Typenerkennung
-</li><li>Sprachkurse: Chinesisch, Russisch, Italienisch
-</li><li>Textwerkstatt Deutsch/Englisch, Fach&uuml;bersetzung
-</li><li>Eventorganisation &amp; Catering
-</li><li>Entwicklung und Pr&uuml;fung von Unternehmensideen
-</li>
-</div></div>
-<div class="blockr">
-<a><img class="img_floatr" src="img/cp4.jpg" name="Home"></a>
-<div class="textl">
-<li>Robotik mit Arduino
-</li><li>Social Media Marketing
-</li><li>Hausbau/Lehmbau
-</li><li>Einf&uuml;hrung in Botanik &amp; Pflanzenzucht
-</li><li>Gesangsschulung
-</li><li>Musikarrangement und Komposition</li></div></div></ul></div>
+				<div class="block">
+					<div class="blockr">
+						<a><img class="img_floatr" src="img/cp2.jpg" name="Home"></a>
+							<div class="textl">
+								<ul>
+									<li>Unternehmensgr&uuml;ndung und Unternehmensf&uuml;hrung</li>
+									<li>Wirtschaftswissenschaft, Sozialwissenschaft und Philosophie</li>
+									<li>CNC-Steuerung und 3D-Druck, Prototypenerstellung</li>
+									<li>Grundlagen der Medizin und Neurowissenschaft</li>
+									<li>Marketing und SEO-Optimierung</li>
+									<li>Produktion eines Werbefilms</li>
+									<li>Grundlagen der Politik- und Rechtswissenschaft</li>
+									<li>Landwirtschaftsprojekt: Anbau von Biogem&uuml;se</li>
+								</ul>
+							</div>
+						</div>
+						<div class="blockl">
+							<a><img class="img_floatl" src="img/cp3.jpg" name="Home"></a>
+							<div class="textr">
+								<ul>								
+									<li>Einf&uuml;hrung in Aquaponik</li>
+									<li>Grundlagen der Permakultur</li>
+									<li>Einf&uuml;hrung ins Bauingenieurwesen</li>
+									<li>Besuche von Unternehmern, Wissenschaftlern, Künstlern</li>
+									<li>Wanderungen, Survival</li>
+									<li>Schauspielkurs mit Roland D&uuml;ringer</li>
+									<li>Professionelle Fotografie</li>
+									<li>Einf&uuml;hrung in Typographie und Corporate Design</li>
+								</ul>
+							</div>
+						</div>
+						<div class="blockr">
+							<a><img class="img_floatr" src="img/cp6.jpg" name="Home"></a>
+							<div class="textl">
+								<ul>
+									<li>Design-orientiertes Gr&uuml;nden</li>
+									<li>Einf&uuml;hrung in Modeschnitt</li>
+									<li>Technisches Zeichnen mit AutoCAD</li>
+									<li>Satz mit Indesign</li>
+									<li>Grafisches Gestalten mit Photoshop</li>
+									<li>Programmieren in PHP, SQL, C, Python und Javascript</li>
+									<li>Webgestaltung mit HTML, CSS und Templates</li>
+									<li>Leichtathletik, Tennis, Fu&szlig;ball, Trampolin</li>
+							</div>
+						</div>
+						<div class="blockl">
+							<a><img class="img_floatl" src="img/cp5.jpg" name="Home"></a>
+							<div class="textr">
+								<ul>
+									<li>Grundlagen des M&ouml;belbaus</li>
+									<li>Bibliotheksverwaltung</li>
+									<li>Grundlagen des Interior Design</li>
+									<li>Psychologische Typenerkennung</li>
+									<li>Sprachkurse: Chinesisch, Russisch, Italienisch</li>
+									<li>Textwerkstatt Deutsch/Englisch, Fach&uuml;bersetzung</li>
+									<li>Eventorganisation &amp; Catering</li>
+									<li>Entwicklung und Pr&uuml;fung von Unternehmensideen</li>
+								</ul>
+							</div>
+						</div>
+						<div class="blockr">
+							<a><img class="img_floatr" src="img/cp4.jpg" name="Home"></a>
+								<div class="textl">
+									<ul>
+										<li>Robotik mit Arduino</li>
+										<li>Social Media Marketing</li>
+										<li>Hausbau/Lehmbau</li>
+										<li>Einf&uuml;hrung in Botanik &amp; Pflanzenzucht</li>
+										<li>Gesangsschulung</li>
+										<li>Musikarrangement und Komposition</li>
+									</ul>
+								</div>
+						</div>
+					</div>
 
                 <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
             </section>
