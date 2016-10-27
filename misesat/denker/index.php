@@ -15,8 +15,13 @@ if(isset($_GET['denker']))
 
   $name = $result->name;
   $bio = $result->bio;
-	//$img = 'http://mises.at/denker/'.$thinker_id.'.jpg';
-	$img = $result->img;
+	$img_url = 'http://www.mises.at/denker/'.$thinker_id.'.jpg';
+	if (@getimagesize($img_url)) {
+			$img = $img_url;
+	} else {
+			$img = "http://www.mises.at/denker/ma_logo.jpg";
+	}
+	//$img = $result->img;
 
 ?>
 <!--Denker-->
