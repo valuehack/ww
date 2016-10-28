@@ -109,7 +109,7 @@ mail ($email,"Willkommen bei der craftprobe",$body,"From: info@scholarium.at\nCo
     <body>
     	<section class="main-title">
         	<header class="header">
-            	<a href="www.craftprobe.com"><p>craft<span>probe</span></p></a>
+            	<a href="javascript:window.location.href=window.location.href"><p>craft<span>probe</span></p></a>
             	<div class="nav-trigger">
 					<div class="nav-trigger__icon">
 						<a href="#" onclick="showNav();return false;"><img src="img/navicon.svg" alt="Menu" title="Menu"></a>
