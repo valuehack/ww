@@ -86,7 +86,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
     	</div>
     	<section class="main-title">
         	<header class="header">
-            	<a href="javascript:window.location.href=window.location.href"><p>craft<span>probe</span></p></a>
+            	<a href="."><p>craft<span>probe</span></p></a>
             	<div class="nav-trigger">
 					<div class="nav-trigger__icon">
 						<a href="#" onclick="showNav();return false;"><img src="http://www.craftprobe.com/img/navicon.svg" alt="Menu" title="Menu"></a>
