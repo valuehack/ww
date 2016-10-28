@@ -5,8 +5,8 @@ function changePrice(totalQuantity, price){
 }
 
 /* Social Links Popup*/
-function openpopup2 (url) {
-   	popup = window.open(url, "popup1", "width=640,height=480,status=yes,scrollbars=yes,resizable=yes");
+function openpopup (url) {
+   	popup = window.open(url, "popup", "width=640,height=480,status=yes,scrollbars=yes,resizable=yes");
    	popup.focus();
 }
 

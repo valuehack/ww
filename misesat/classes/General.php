@@ -93,7 +93,7 @@ class General {
     	$html = substr($code, 0, $limit);
     	preg_match_all ( "#<([a-zA-Z]+)#", $html, $result );
 
-    	foreach($result[1] AS $key => $value)
+    	foreach($result[1] as $key => $value)
     	{
         	if ( strtolower($value) == 'br' )
         	{
@@ -105,7 +105,7 @@ class General {
     	preg_match_all ( "#</([a-zA-Z]+)>#iU", $html, $result );
     	$closedtags = $result[1];
 
-    	foreach($closedtags AS $key => $value)
+    	foreach($closedtags as $key => $value)
     	{
         	if ( ($k = array_search($value, $openedtags)) === FALSE )
        		{
