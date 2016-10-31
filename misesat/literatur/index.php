@@ -114,7 +114,7 @@
       					<th>Autor</th>
       					<th>Typ</th>
       					<th>Sprache</th>
-      					<th>Quelle</th>
+      					<th>Link</th>
       				</tr>
       			</thead>
       			<tbody>
@@ -147,13 +147,28 @@
 						
 		?>      	
 					<tr>
-						<td><a class="itm-table_pri" target="_blank" href="<?=$link_lit?>"><?=$title_lit?></a>
-						</td>
+						<!--? if($quelle_lit == "PDF"){
+							echo '<td><a class="itm-table_pri" target="_blank" href="./Buecher/'.$id_lit.'.pdf">'.$title_lit.'</a></td>';
+						} else if (empty($link_lit)) {
+							echo '<td>'.$title_lit.'</td>';
+						} else {
+							echo '<td><a class="itm-table_pri" target="_blank" href="'.$link_lit.'">'.$title_lit.'</a></td>';
+						}
+						?-->
+						<td><?=$title_lit?></td>
 						<td data-label="Jahr"><?=$year_lit?></td>
 						<td data-label="Autor"><a class="itm-table_sec" href="../denker/?denker=<?=$author_id->id?>"><?=$autor_lit?></a></td>
 						<td data-label="Typ"><?=$typ_lit?></td>
 						<td data-label="Sprache"><?=$lang?></td>
-						<td data-label="Quelle"><?=$quelle_lit?></td>
+						<!--td data-label="Quelle"><?=$quelle_lit?></td-->
+						<? if($quelle_lit == "PDF"){
+							echo '<td><a class="itm-table_pri" target="_blank" href="./Buecher/'.$id_lit.'.pdf">'.$quelle_lit.'</a></td>';
+						} else if (empty($link_lit)) {
+							echo '<td>'.$quelle_lit.'</td>';
+						} else {
+							echo '<td><a class="itm-table_pri" target="_blank" href="'.$link_lit.'">'.$quelle_lit.'</a></td>';
+						}
+						?>
 					</tr>
 		<?
 	}
