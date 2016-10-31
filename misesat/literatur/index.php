@@ -13,7 +13,7 @@
 	if (isset($_GET['author'])) {
 		$author_name = $general->getInfo('denker', $_GET['author']);
 				
-		$sql_book = $general->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author ORDER BY jahr DESC');
+		$sql_book = $general->db_connection->prepare('SELECT * FROM buechertest WHERE autor = :author ORDER BY jahr DESC');
 		$sql_book->bindValue(':author', $author_name->name, PDO::PARAM_STR);
 		$sql_book->execute();
 		$result_book = $sql_book->fetchAll();
@@ -127,6 +127,7 @@
   		$year_lit = $result_lit[$i]['jahr'];
 		$link_lit = $result_lit[$i]['link'];
 		$lang_lit = $result_lit[$i]['sprache'];
+		$quelle_lit = $result_lit[$i]['quelle'];
 		$typ_lit = $result_lit[$i]['type'];
   		
 		switch($lang_lit) {
@@ -146,13 +147,13 @@
 						
 		?>      	
 					<tr>
-						<td><a class="itm-table_pri" href="<?=$link_lit?>"><?=$title_lit?></a>
+						<td><a class="itm-table_pri" target="_blank" href="<?=$link_lit?>"><?=$title_lit?></a>
 						</td>
 						<td data-label="Jahr"><?=$year_lit?></td>
 						<td data-label="Autor"><a class="itm-table_sec" href="../denker/?denker=<?=$author_id->id?>"><?=$autor_lit?></a></td>
 						<td data-label="Typ"><?=$typ_lit?></td>
 						<td data-label="Sprache"><?=$lang?></td>
-						<td>free/amazon</td>
+						<td data-label="Quelle"><?=$quelle_lit?></td>
 					</tr>
 		<?
 	}
