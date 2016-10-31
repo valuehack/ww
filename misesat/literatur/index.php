@@ -13,7 +13,7 @@
 	if (isset($_GET['author'])) {
 		$author_name = $general->getInfo('denker', $_GET['author']);
 				
-		$sql_book = $general->db_connection->prepare('SELECT * FROM buechertest WHERE autor = :author ORDER BY jahr DESC');
+		$sql_book = $general->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author ORDER BY jahr DESC');
 		$sql_book->bindValue(':author', $author_name->name, PDO::PARAM_STR);
 		$sql_book->execute();
 		$result_book = $sql_book->fetchAll();
