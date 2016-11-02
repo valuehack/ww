@@ -162,7 +162,7 @@
 						<td data-label="Sprache"><?=$lang?></td>
 						<!--td data-label="Quelle"><?=$quelle_lit?></td-->
 						<? if($quelle_lit == "PDF"&&$typ_lit == "Artikel"){
-							echo '<td><a class="itm-table_pri" target="_blank" href="./'.$typ_lit.'/'.$id_lit.'/'.$autor_lit.'.pdf">'.$quelle_lit.'</a></td>'; 
+							echo '<td><a class="itm-table_pri" target="_blank" href="./'.$typ_lit.'/'.$autor_lit.'/'.$id_lit.'.pdf">'.$quelle_lit.'</a></td>'; 
 						}
 							else if ($quelle_lit == "PDF") {
 							echo '<td><a class="itm-table_pri" target="_blank" href="./'.$typ_lit.'/'.$id_lit.'.pdf">'.$quelle_lit.'</a></td>'; 
