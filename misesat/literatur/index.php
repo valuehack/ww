@@ -162,7 +162,7 @@
 						<td data-label="Sprache"><?=$lang?></td>
 						<!--td data-label="Quelle"><?=$quelle_lit?></td-->
 						<? if($quelle_lit == "PDF"){
-							echo '<td><a class="itm-table_pri" target="_blank" href="./Buecher/'.$id_lit.'.pdf">'.$quelle_lit.'</a></td>';
+							echo '<td><a class="itm-table_pri" target="_blank" href="./'.$typ_lit.'/'.$id_lit.'.pdf">'.$quelle_lit.'</a></td>'; 
 						} else if (empty($link_lit)) {
 							echo '<td>'.$quelle_lit.'</td>';
 						} else {
