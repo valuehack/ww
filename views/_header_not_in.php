@@ -105,9 +105,10 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
               ?>
 
                   <div class="anmelden"><a href="../en/">English</a></div>
-                  <div class="anmelden2"><a href="../spende/">Unterst&uuml;tzen</a></div> 
-                  <div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Eintragen</button></div>
+                  <!--div class="anmelden2"><a href="../spende/">Unterst&uuml;tzen</a></div--> 
                   <div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button></div>
+                  <div class="anmelden"><button class="login_button" type="button" data-toggle="modal" data-target="#signup" value="Anmelden">Eintragen</button></div>
+                  
 
             </div>
             <div class="logo">
@@ -143,6 +144,7 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
         <div class="modal-header">
 
           <h2 class="modal-title" id="myModalLabel">Eintragen</h2>
+          <p class="tologin">Sie kennen uns bereits? Dann melden Sie sich <a data-toggle="modal" data-target="#login" value="Anmelden">hier</a> mit ihrer Email-Adresse an.</p>
         </div>
         <div class="modal-body">
           <p>
@@ -174,9 +176,16 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
                     	</div>
                     </li>
                     	<li id="navelm"><a class="navelm" href="/jubilaeum/">Jubil&auml;um</a></li>
-                    	<!--<li id="navelm"><a class="navelm" href="/seminare/">Seminare</a></li>-->
     					<li id="navelm"><a class="navelm" href="/studium/">Studium</a></li>
-    					<li id="navelm"><a class="navelm" href="/projekte/">Projekte</a></li>
+              <li id="navelm"><a class="navelm" id="drop1" data-toggle="dropdown" href="../spende/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Unterst&uuml;tzen</a>
+                <div class="subnav dropdown-menu" aria-labelledby="drop1">
+                  <ul>
+                    <li class="subnav_head"><a class="subnav_head" href="../spende/">Unterst&uuml;tzen</a></li>
+                    <li><a href="/spende/">Spenden</a></li>
+                    <li><a href="/projekte/">Projekte</a></li>
+                  </ul>
+                </div>
+              </li>
                  </ul>
                 </div>
            </div>

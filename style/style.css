@@ -665,6 +665,23 @@ img.dropdown_coin {
 	border-bottom: 1px solid rgb(46,74,98);
 }
 
+.tologin {
+	padding-top: 50px;
+	text-align: center;
+}
+
+.tologin a {
+	font-size: 14pt;
+	text-decoration: none;
+	border-bottom: 1px dotted rgb(46,74,98);
+	color: rgb(46,74,98);
+}
+
+.tologin a:hover {
+	text-decoration: none;
+	border-bottom: 1px solid rgb(46,74,98);
+}
+
 .error, .message {
 	float: left;
 	margin-left: 5%;
