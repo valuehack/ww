@@ -122,6 +122,7 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
         <div class="modal-header">
 
           <h2 class="modal-title" id="myModalLabel">Anmelden</h2>
+          <p class="tologin">Sie sind noch nicht eingetragen? Dann legen Sie <a data-toggle="modal" data-target="#signup" data-dismiss="modal" aria-label="Close" value="Anmelden">hier</a> einen Account an.</p>
         </div>
         <div class="modal-body">
           <p>
@@ -144,7 +145,7 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
         <div class="modal-header">
 
           <h2 class="modal-title" id="myModalLabel">Eintragen</h2>
-          <p class="tologin">Sie kennen uns bereits? Dann melden Sie sich <a data-toggle="modal" data-target="#login" value="Anmelden">hier</a> mit ihrer Email-Adresse an.</p>
+          <p class="tologin">Sie sind bereits eingetragen? Dann melden Sie sich <a data-toggle="modal" data-target="#login" data-dismiss="modal" aria-label="Close" value="Anmelden">hier</a> mit ihrer Email-Adresse an.</p>
         </div>
         <div class="modal-body">
           <p>

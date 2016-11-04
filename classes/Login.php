@@ -237,7 +237,7 @@ Old school database connect
                 // @see http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers#Connecting_to_MySQL says:
                 // "Adding the charset to the DSN is very important for security reasons,
                 // most examples you'll see around leave it out. MAKE SURE TO INCLUDE THE CHARSET!"
-                $this->old_db_connect = mysql_connect(DB_HOST,DB_USER,DB_PASS) or die ("cannot connect to MySQL");
+                $this->old_db_connect = @mysql_connect(DB_HOST,DB_USER,DB_PASS) or die ("cannot connect to MySQL");
 				mysql_set_charset('utf8', $this->old_db_connect);
                 mysql_select_db(DB_NAME);
 
@@ -2354,4 +2354,3 @@ user_plz
 		#$email->sendOneClick($_SESSION['user_id'], $product['event_id'], $product['quantity'], $product['format']);
 	}
 }
-

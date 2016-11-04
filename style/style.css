@@ -668,6 +668,7 @@ img.dropdown_coin {
 .tologin {
 	padding-top: 50px;
 	text-align: center;
+	font-size: 14pt;
 }
 
 .tologin a {
@@ -675,6 +676,7 @@ img.dropdown_coin {
 	text-decoration: none;
 	border-bottom: 1px dotted rgb(46,74,98);
 	color: rgb(46,74,98);
+	cursor: pointer;
 }
 
 .tologin a:hover {
