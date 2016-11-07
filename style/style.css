@@ -666,14 +666,14 @@ img.dropdown_coin {
 }
 
 .tologin {
-	padding-top: 50px;
+	padding-top: 25px;
 	text-align: center;
-	font-size: 14pt;
+	font-size: 14.5pt;
 }
 
 .tologin a {
-	font-size: 14pt;
 	text-decoration: none;
+	line-height: 120%;
 	border-bottom: 1px dotted rgb(46,74,98);
 	color: rgb(46,74,98);
 	cursor: pointer;
@@ -4064,7 +4064,7 @@ button.close {
   	text-align: justify;
 	font-size: 14pt;
 	line-height: 1.6;
-	padding: 30px 0;
+	padding: 0px;
 	-ms-hyphens: auto;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
