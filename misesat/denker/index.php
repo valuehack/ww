@@ -111,7 +111,7 @@ else {
 			<div class="container index-link"><p><a href="../index.php">mises.at</a> / Denker</p></div>
       		<div class="container">
       			<h1>Denker</h1>
-      			<p>Hier finden Sie eine &Uuml;bersicht der in der Denktradition der &Ouml;sterreichischen Schule stehenden Denker.</p>
+      			<p>Hier finden Sie eine umfassende &Uuml;bersicht der in der Denktradition der &Ouml;sterreichischen Schule stehenden Denker.</p>
       		</div>
 
       		<div class="container">
