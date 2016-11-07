@@ -137,6 +137,9 @@
 			case 'it': $lang = 'Italienisch'; break;
 			case 'nl': $lang = 'Niederl&auml;ndisch'; break;
 			case 'pt': $lang = 'Portugiesisch'; break;
+			case 'pl': $lang = 'Polnisch'; break;
+			case 'jp': $lang = 'Japanisch'; break;
+			case 'hu': $lang = 'Ungarisch'; break;
 			default: $lang = 'Deutsch'; break;
 		}
 				
