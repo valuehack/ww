@@ -69,7 +69,7 @@
       		<h1>Literatur</h1>
       		<p><b>mises.at</b> bietet die gr&ouml;&szlig;te und umfassendste Online-Bibliothek der &Ouml;stereichischen Schule der &Ouml;konomik. Hier finden Sie Artikel und B&uuml;cher einer Vielzahl von Denkern der &Ouml;stereichischen Schule &uuml;ber ein breites Spektrum von &ouml;konomischen, sozialwissenschaftlichen und philosophischen Problemstellungen und Themen.</p>
       		
-      		<?if (isset($_GET['author'])) echo '<h3><a href="../denker/?q='.$_GET['author'].'">'.$author_name->name.'</a></h3>';?>
+      		<?if (isset($_GET['author'])) echo '<h3><a href="../denker/?denker='.$_GET['author'].'">'.$author_name->name.'</a></h3>';?>
       	</div>
       	
       	<div class="container">
@@ -164,7 +164,7 @@
 						<td data-label="Typ"><?=$typ_lit?></td>
 						<td data-label="Sprache"><?=$lang?></td>
 						<!--td data-label="Quelle"><?=$quelle_lit?></td-->
-						<? if($quelle_lit == "PDF"&&$typ_lit == "Artikel"){
+						<? if($quelle_lit == "PDF" && $typ_lit == "Artikel"){
 							echo '<td><a class="itm-table_pri" target="_blank" href="./'.$typ_lit.'/'.$autor_lit.'/'.$id_lit.'.pdf">'.$quelle_lit.'</a></td>'; 
 						}
 							else if ($quelle_lit == "PDF") {
