@@ -71,6 +71,8 @@ if (!isset($_COOKIE['gaveCredits'])) {
 
                 <label for="user_telefon">Telefon</label>
                 <input id="user_telefon" type="tel" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
+                <label for="user_firma">firma</label>
+                <input id="user_firma" type="tel" class="profil_inputfield" value="<?php echo $firma; ?>" name="profile[user_firma]" ><br>
 
         		<label for="user_street">Stra&szlig;e</label>
         		<input id="user_street" type="text" class="profil_inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]" required><br>
