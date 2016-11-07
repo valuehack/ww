@@ -222,7 +222,7 @@ class Login
     }
 
 /*
-Old school database connect
+old school database connect
 */
     private function oldDatabaseConnection()
     {

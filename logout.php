@@ -28,7 +28,7 @@ $general = new General();
 // create a login object. when this object is created, it will do all login/logout stuff automatically
 // so this single line handles the entire login process.
 $login = new Login();
-//TODO Login and Email don't work together because of header send issues. It might be better to generate the email object wihtin he other functions to avoid this
+//TODO Login and Email don't work together because of header send issues. It might be better to generate the email object within he other functions to avoid this
 $email = new Email();
 $registration = new Registration();
 $title="Logout";

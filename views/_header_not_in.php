@@ -114,7 +114,7 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
             <div class="logo">
                 <a href="/"><img class="logo_img" src="../style/gfx/scholarium_logo_w.png" alt="scholarium" name="Home"></a>
                   
-<!-- Login Modal -->
+<!-- Login (Anmelden) Modal -->
   <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-login">
       <div class="modal-content-login">
@@ -137,7 +137,7 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
       </div>
     </div>
   </div>
-<!-- Sign Up Modal -->  
+<!-- Sign Up (Eintragen) Modal -->  
   <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-login">
       <div class="modal-content-login">
