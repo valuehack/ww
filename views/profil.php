@@ -94,8 +94,8 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
 
                 <label for="user_telefon">Telefon</label>
                 <input id="user_telefon" type="tel" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
-								<label for="user_firma">Firma</label>
-                <input id="user_firma" type="tel" class="profil_inputfield" value="<?php echo $firma; ?>" name="profile[user_firma]" ><br>
+								<label for="user_firma">(ggf. Firma)</label>
+                <input id="user_firma" type="text" class="profil_inputfield" value="<?php echo $firma; ?>" name="profile[user_firma]" ><br>
 
         		<label for="user_street">Stra&szlig;e</label>
         		<input id="user_street" type="text" class="profil_inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]"><br>
