@@ -85,8 +85,16 @@ if(isset($_GET['denker']))
           				<ul class="list--none">
 						<?php
 						for ($i = 0; $i < $x; $i++) {
-          					echo '<li>'.$result_lit[$i]['type'].': <a href="'.$result_lit[$i]['link'].'" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
-          				}
+							if ($result_lit[$i]['quelle'] =='PDF' && $result_lit[$i]['type'] == 'Artikel') {
+								echo '<li>'.$result_lit[$i]['type'].': <a href="./'.$result_lit[$i]['type'].'/'.$result_lit[$i]['autor'].'/'.$result_lit[$i]['id'].'.pdf" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
+							} else if ($result_lit[$i]['quelle'] == 'PDF') {
+								echo '<li>'.$result_lit[$i]['type'].': <a href="./'.$result_lit[$i]['type'].'/'.$result_lit[$i]['id'].'.pdf" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
+							} else if (empty($result_lit[$i]['link'])) {
+								echo '<li>'.$result_lit[$i]['type'].': '.$result_lit[$i]['titel'].' ('.$result_lit[$i]['jahr'].')';
+							} else {
+								echo '<li>'.$result_lit[$i]['type'].': <a href="'.$result_lit[$i]['link'].'" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
+							}
+						}
 						?>
           				</ul>
       				</div>
