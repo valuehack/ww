@@ -85,24 +85,24 @@
       				</div>
       				<div class="three columns">
 <?php
-      				for ($j = $x+1; $j < $x*2; $j++) {
+      				for ($j = $x; $j < $x*2; $j++) {
 						echo '<a href="?author='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
 					}
 ?>      					
       				</div>
       				<div class="three columns">
 <?php
-      				for ($j = ($x*2)+1; $j < $x*3; $j++) {
+      				for ($j = ($x*2); $j < $x*3; $j++) {
 						echo '<a href="?author='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
 					}
 ?>      					
       				</div>
       				<div class="three columns">
 <?php
-      				for ($j = ($x*3)+1; $j < count($author_l); $j++) {
+      				for ($j = ($x*3); $j < count($author_l); $j++) {
 						echo '<a href="?author='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
 					}
-?>      					
+?>	
       				</div>
       			</div>     			
       		</div>
