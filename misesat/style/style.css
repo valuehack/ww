@@ -659,6 +659,19 @@ a:active {
 	list-style-type: disc;
 }
 
+.list_title {
+  color: rgba(0,0,0,0.9);
+	font-weight: inherit;
+	text-decoration: inherit;
+}
+
+.list_title a:hover {
+  color: rgba(28,109,186,0.75);
+	font-weight: 600;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
 /*======================    ====================*/
 
 .subinfo {

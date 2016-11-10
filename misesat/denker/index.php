@@ -89,7 +89,7 @@ if(isset($_GET['denker']))
 								echo '<li>'.$result_lit[$i]['type'].': <a href="./'.$result_lit[$i]['type'].'/'.$result_lit[$i]['autor'].'/'.$result_lit[$i]['id'].'.pdf" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
 							} else if ($result_lit[$i]['quelle'] == 'PDF') {
 								echo '<li>'.$result_lit[$i]['type'].': <a href="./'.$result_lit[$i]['type'].'/'.$result_lit[$i]['id'].'.pdf" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
-							} else if (empty($result_lit[$i]['link'])) {
+							} else if (empty($result_lit[$i]['quelle'])) {
 								echo '<li>'.$result_lit[$i]['type'].': '.$result_lit[$i]['titel'].' ('.$result_lit[$i]['jahr'].')';
 							} else {
 								echo '<li>'.$result_lit[$i]['type'].': <a href="'.$result_lit[$i]['link'].'" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
