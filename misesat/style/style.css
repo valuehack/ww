@@ -672,6 +672,10 @@ a:active {
 	transition: color 0.3s;
 }
 
+.list_head {
+  cursor: pointer;
+}
+
 /*======================    ====================*/
 
 .subinfo {

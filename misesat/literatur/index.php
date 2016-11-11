@@ -109,12 +109,12 @@
       		<table class="itm-table h-full-width sortable">
       			<thead>
       				<tr>
-      					<th>Titel</th>
-      					<th>Jahr</th>
-      					<th>Autor</th>
-      					<th>Typ</th>
-      					<th>Sprache</th>
-      					<th>Link</th>
+      					<th class="list_head">Titel</th>
+      					<th class="list_head">Jahr</th>
+      					<th class="list_head">Autor</th>
+      					<th class="list_head">Typ</th>
+      					<th class="list_head">Sprache</th>
+      					<th class="list_head">Link</th>
       				</tr>
       			</thead>
       			<tbody>
