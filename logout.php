@@ -1,5 +1,5 @@
 <?php
-header('refresh:3;url=index.php');
+header('refresh:1;url=index.php');
 // check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
     exit('Sorry, this script does not run on a PHP version smaller than 5.3.7 !');
