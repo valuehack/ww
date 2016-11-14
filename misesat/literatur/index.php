@@ -148,13 +148,13 @@
 		$sql_author->execute();
 		$author_id = $sql_author->fetchObject();
 						
-		if($quelle_lit == "PDF" && $typ_lit == "Artikel"){
-			$sitelink = "./".$typ_lit."/".$autor_lit."/".$id_lit.".pdf"; 
-		}	else if ($quelle_lit == "PDF") {
+		if ($quelle_lit == "PDF") {
 			$sitelink = "./".$typ_lit."/".$id_lit.".pdf"; 
-		} else if (empty($quelle_lit)) {
+		}
+		else if (empty($quelle_lit)) {
 			$sitelink = '';
-		} else {
+		}
+		else {
 			$sitelink = $link_lit;
 		}
 		
