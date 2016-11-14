@@ -112,7 +112,8 @@ if(isset($_GET['denker']))
 }
 else {
 
-    $result = $general->getItemList('denker', 'id', 'ASC');
+    $result = $general->getItemList('denker', 'geburt', 'ASC');
+		$result_id = $general->getItemList('denker', 'id', 'ASC');
 ?>
 <!--Denkerliste-->
 
@@ -124,19 +125,38 @@ else {
 
       		<div class="container">
       			<div class="itm-index">
-      				<?php
-      				$l_let = '';
-					$let_list = array();
-      				for ($j = 0; $j < count($result); $j++) {
-      					$let = substr($result[$j]['id'],0,1);
-						if ($let != $l_let) {
-							$let_list[$j] = $let;
-							$l_let = $let;
-						}
-      				}
-					foreach ($let_list as $lett) {
-						echo '<a href="#'.$lett.'">'.ucfirst($lett).'</a> | ';
-					}
+							<?php
+							$l_let = '';
+							$let_list = array();
+							$let_full = array();
+						//	$name_list = array();
+							$new_let = array();
+							for ($j = 0; $j < count($result_id); $j++) {
+								$let = substr($result_id[$j]['id'],0,1);
+								$let_full[$j] = substr($result_id[$j]['id'],0,1);
+								if ($let != $l_let) {
+									$let_list[$j] = $let;
+									$l_let = $let;
+								}
+							}
+						//	for ($n = 0; $n<=count($let_list); $n++) {
+							$n = 0;
+							
+							foreach ($let_list as $lett) {
+								//echo '<a href="#'.$lett.'">'.ucfirst($lett).'</a> | ';
+									echo '
+									<div class="dropdown">
+										<button class="dropbtn">
+												'.ucfirst($lett).'
+										</button>
+										<div class="dropdown-content">';
+											while ($lett == substr($result_id[$n]['id'],0,1)) {
+												echo '<a href="#'.$result_id[$n]['id'].'">'.$result_id[$n]['name'].'</a>';
+												$n ++;
+											}	echo '
+										</div>
+									</div>';
+							}
 					?>
       			</div>
 <?php
@@ -166,7 +186,7 @@ else {
 		}
 
 		?>
-					<div class="one-half column">
+					<div class="one-half column" id="<?=$id?>">
       					<div class="card">
       						<div class="card-head <? if ($img != '') echo 'card-head__overlay';?>">
       							<? if ($img != '') echo '<img src="'.$img.'" alt="'.$name.'">';?>
