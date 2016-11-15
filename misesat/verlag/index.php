@@ -26,10 +26,13 @@
 			
 			$img = 'cover/'.$item['id'].'.jpg';
 			
+			$link = $item['link'];
+			
 			$authors = $item['author'];
 			
 			$author_links = "";
 			$author_list = explode(", ", $authors);
+			
 
 			foreach ($author_list as $key => $author_id) {
 				$author_info = $general->getInfo('denker',$author_id);
@@ -54,12 +57,12 @@
       		<div class="row list-row">
 				<div class="one-third column">
 					<div class="list-itm h-white h-centered">
-						<img class="list-itm_img--big" src="<?=$img?>" alt=".">
+						<a href=<?=$link?>><img class="list-itm_img--big" src="<?=$img?>" alt="."></a>
 					</div>
 				</div>
 				<div class="two-thirds column">
 					<div class="list-itm">
-						<h5 class="title"><?=$item['title']?></h5>
+						<h5> <a class="title" href=<?=$link?>> <?=$item['title']?></a></h5>
 						<p class="text-insert text--raleway"><?=$author_links?></p>
 						<p><?=$item['desc']?></p>
 					</div>
