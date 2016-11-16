@@ -10,11 +10,11 @@
 
     <div id="content">      	
 <?
-	if (isset($_GET['author'])) {
-		$author_name = $general->getInfo('denker', $_GET['author']);
+	if (isset($_GET['autor'])) {
+		$author_name = $general->getInfo('denker', $_GET['autor']);
 				
-		$sql_book = $general->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author ORDER BY jahr DESC');
-		$sql_book->bindValue(':author', $author_name->name, PDO::PARAM_STR);
+		$sql_book = $general->db_connection->prepare('SELECT * FROM buecher WHERE autor = :autor ORDER BY jahr DESC');
+		$sql_book->bindValue(':autor', $author_name->name, PDO::PARAM_STR);
 		$sql_book->execute();
 		$result_book = $sql_book->fetchAll();
 		
@@ -22,8 +22,8 @@
 			$result_book[$m]['type'] = 'Buch';
 		}
 		
-		$sql_art = $general->db_connection->prepare('SELECT * FROM artikel WHERE autor = :author ORDER BY jahr DESC');
-		$sql_art->bindValue(':author', $author_name->name, PDO::PARAM_STR);
+		$sql_art = $general->db_connection->prepare('SELECT * FROM artikel WHERE autor = :autor ORDER BY jahr DESC');
+		$sql_art->bindValue(':autor', $author_name->name, PDO::PARAM_STR);
 		$sql_art->execute();
 		$result_art = $sql_art->fetchAll();
 		
@@ -69,7 +69,7 @@
       		<h1>Literatur</h1>
       		<p><b>mises.at</b> bietet die gr&ouml;&szlig;te und umfassendste Online-Bibliothek der &Ouml;stereichischen Schule der &Ouml;konomik. Hier finden Sie Artikel und B&uuml;cher einer Vielzahl von Denkern der &Ouml;stereichischen Schule &uuml;ber ein breites Spektrum von &ouml;konomischen, sozialwissenschaftlichen und philosophischen Problemstellungen und Themen.</p>
       		
-      		<?if (isset($_GET['author'])) echo '<h3><a href="../denker/?denker='.$_GET['author'].'">'.$author_name->name.'</a></h3>';?>
+      		<?if (isset($_GET['autor'])) echo '<h3><a href="../denker/?denker='.$_GET['autor'].'">'.$author_name->name.'</a></h3>';?>
       	</div>
       	
       	<div class="container">
@@ -79,28 +79,28 @@
       				<div class="three columns">
 <?php
       				for ($j = 0; $j <= $x; $j++) {
-						echo '<a href="?author='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
+						echo '<a href="?autor='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
 					}
 ?>      					
       				</div>
       				<div class="three columns">
 <?php
       				for ($j = $x+1; $j <= $x*2; $j++) {
-						echo '<a href="?author='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
+						echo '<a href="?autor='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
 					}
 ?>      					
       				</div>
       				<div class="three columns">
 <?php
       				for ($j = ($x*2)+1; $j <= $x*3; $j++) {
-						echo '<a href="?author='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
+						echo '<a href="?autor='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
 					}
 ?>      					
       				</div>
       				<div class="three columns">
 <?php
       				for ($j = ($x*3)+1; $j <= count($author_l); $j++) {
-						echo '<a href="?author='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
+						echo '<a href="?autor='.$author_l[$j]['id'].'">'.$author_l[$j]['name'].'</a><br>';
 					}
 ?>
       				</div>

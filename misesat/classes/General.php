@@ -161,13 +161,13 @@ class General {
 		for ($k = 0; $k < count($list); $k++) {
 			$name = $list[$k]['name'];
 		
-			$book = $this->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author ORDER BY jahr DESC');
-			$book->bindValue(':author', $name, PDO::PARAM_STR);
+			$book = $this->db_connection->prepare('SELECT * FROM buecher WHERE autor = :autor ORDER BY jahr DESC');
+			$book->bindValue(':autor', $name, PDO::PARAM_STR);
 			$book->execute();
 			$result_book = $book->fetchAll();
 		
-			$art = $this->db_connection->prepare('SELECT * FROM artikel WHERE autor = :author ORDER BY jahr DESC');
-			$art->bindValue(':author', $name, PDO::PARAM_STR);
+			$art = $this->db_connection->prepare('SELECT * FROM artikel WHERE autor = :autor ORDER BY jahr DESC');
+			$art->bindValue(':autor', $name, PDO::PARAM_STR);
 			$art->execute();
 			$result_art = $art->fetchAll();
 		
