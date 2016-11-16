@@ -38,7 +38,7 @@
 			$year[$key] = $row['jahr'];
 		}
 				
-		array_multisort($year, SORT_ASC, $id, SORT_ASC, $result_lit);
+		array_multisort($year, SORT_DESC, $id, SORT_ASC, $result_lit);
 	}
 	else {
 		# get Buecher and Artikel List and add the type (Buch, Artikel) to the result array			
