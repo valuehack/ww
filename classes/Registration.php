@@ -1281,7 +1281,7 @@ class Registration
         $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
 
         #read header from file
-        $body = file_get_contents('../email_header.html');
+        $body = file_get_contents('/home/content/56/6152056/html/production/email_header.html');
 
         $body = $body.'
                 <img style="" class="" title="" alt="" src="http://www.scholarium.at/style/gfx/email_header_new.jpg" align="left" border="0" height="150" hspace="0" vspace="0" width="600">
@@ -1316,7 +1316,7 @@ class Registration
                 Herzliche Gr&uuml;&szlig;e aus Wien!';
 
 
-        $body = $body.file_get_contents('../email_footer.html');
+        $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
 
         //create curl resource
         $ch = curl_init();
