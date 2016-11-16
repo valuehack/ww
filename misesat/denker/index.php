@@ -96,10 +96,14 @@ if(isset($_GET['denker']))
 						?>
           				</ul>
       				</div>
+      				<?php
+      				if (count($result_lit) > 10) {
+      				?>
       				<div class="h-centered h-extra-space__top">
 						<a class="btn-link h-block" href="../literatur/?autor=<?=$thinker_id?>">gesamte Liste</a>
 					</div>
 					<?php
+							}
 						}
 					?>
       			</div>
