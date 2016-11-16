@@ -47,8 +47,8 @@ if(isset($_GET['denker']))
       			</div>
       			<div class="one-third column">
       				<?php
-   						$sql_book = $general->db_connection->prepare('SELECT * FROM buecher WHERE autor = :author ORDER BY jahr DESC');
-						$sql_book->bindValue(':author', $name, PDO::PARAM_STR);
+   						$sql_book = $general->db_connection->prepare('SELECT * FROM buecher WHERE autor = :autor ORDER BY jahr DESC');
+						$sql_book->bindValue(':autor', $name, PDO::PARAM_STR);
 						$sql_book->execute();
 						$result_book = $sql_book->fetchAll();
 
@@ -56,8 +56,8 @@ if(isset($_GET['denker']))
 							$result_book[$m]['type'] = 'Buch';
 						}
 
-						$sql_art = $general->db_connection->prepare('SELECT * FROM artikel WHERE autor = :author ORDER BY jahr DESC');
-						$sql_art->bindValue(':author', $name, PDO::PARAM_STR);
+						$sql_art = $general->db_connection->prepare('SELECT * FROM artikel WHERE autor = :autor ORDER BY jahr DESC');
+						$sql_art->bindValue(':autor', $name, PDO::PARAM_STR);
 						$sql_art->execute();
 						$result_art = $sql_art->fetchAll();
 
@@ -85,10 +85,8 @@ if(isset($_GET['denker']))
           				<ul class="list--none">
 						<?php
 						for ($i = 0; $i < $x; $i++) {
-							if ($result_lit[$i]['quelle'] =='PDF' && $result_lit[$i]['type'] == 'Artikel') {
-								echo '<li>'.$result_lit[$i]['type'].': <a href="./'.$result_lit[$i]['type'].'/'.$result_lit[$i]['autor'].'/'.$result_lit[$i]['id'].'.pdf" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
-							} else if ($result_lit[$i]['quelle'] == 'PDF') {
-								echo '<li>'.$result_lit[$i]['type'].': <a href="./'.$result_lit[$i]['type'].'/'.$result_lit[$i]['id'].'.pdf" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
+							if ($result_lit[$i]['quelle'] == 'PDF') {
+								echo '<li>'.$result_lit[$i]['type'].': <a href="../literatur/'.$result_lit[$i]['type'].'/'.$result_lit[$i]['id'].'.pdf" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
 							} else if (empty($result_lit[$i]['quelle'])) {
 								echo '<li>'.$result_lit[$i]['type'].': '.$result_lit[$i]['titel'].' ('.$result_lit[$i]['jahr'].')';
 							} else {
@@ -99,7 +97,7 @@ if(isset($_GET['denker']))
           				</ul>
       				</div>
       				<div class="h-centered h-extra-space__top">
-						<a class="btn-link h-block" href="../literatur/?author=<?=$thinker_id?>">gesamte Liste</a>
+						<a class="btn-link h-block" href="../literatur/?autor=<?=$thinker_id?>">gesamte Liste</a>
 					</div>
 					<?php
 						}
@@ -165,11 +163,11 @@ else {
 		$id = $result[$i]['id'];
         $name = $result[$i]['name'];
   		$bio = $result[$i]['bio'];
-			$img_url = 'http://www.mises.at/denker/'.$id.'.jpg';
+			$img_url = './'.$id.'.jpg';
 			if (@getimagesize($img_url)) {
 					$img = $img_url;
 			} else {
-					$img = "http://www.mises.at/denker/ma_logo.jpg";
+					$img = "./ma_logo.jpg";
 			}
 
 		$last_letter = '';
