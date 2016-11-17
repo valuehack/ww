@@ -188,15 +188,17 @@ else {
 		?>
 					<div class="one-half column" id="<?=$id?>">
       					<div class="card">
-      						<div class="card-head <? if ($img != '') echo 'card-head__overlay';?>">
+      						<a href="?denker=<?=$id?>">	<div class="card-head <? if ($img != '') echo 'card-head__overlay';?>">
       							<? if ($img != '') echo '<img src="'.$img.'" alt="'.$name.'">';?>
-      							<span class="card-title <? if ($img != '') echo 'h-white';?>"><?=$name?></span>
-      						</div>
-      						<div class="card-content">
+      						</div></a>
+									
+						 <div class="card-content">
+										<h6> <a href=<? if ($img != ''); ?>><?=$name?></span></a></h6>
       							<p><?=$general->substrCloseTags($bio,200)?></p>
       						</div>
-      						<div class="card-link h-right">
-      							<a href="?denker=<?=$id?>">Zum Denker</a>
+									
+						 <div class="card-link h-right">
+								<a href="?denker=<?=$id?>">Zur Person</a>
       						</div>
       					</div>
       				</div>
