@@ -5,7 +5,7 @@
 
 	include "../page/header2.inc.php";
 	
-	$program_query = $general->db_connection->prepare("SELECT * FROM verlagsprogramm ORDER by id asc");
+	$program_query = $general->db_connection->prepare("SELECT * FROM verlagsprogramm ORDER by n desc");
 	$program_query->execute();
     $program = $program_query->fetchAll();	
 ?>
