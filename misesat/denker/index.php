@@ -195,7 +195,7 @@ else {
       						</div></a>
 									
 						 <div class="card-content">
-										<h6> <a href=<? if ($img != ''); ?>><?=$name?></span></a></h6>
+										<h6> <a href="?denker=<?=$id?>"<?=<? if ($img != ''); ?>><?=$name?></span></a></h6>
       							<p><?=$general->substrCloseTags($bio,200)?></p>
       						</div>
 									
