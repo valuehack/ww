@@ -20,7 +20,7 @@ $plz = trim($result_row->PLZ);
 //additions
 $anrede = trim($result_row->Anrede);
 $telefon = trim($result_row->Telefon);
-$firma = trim($result_row->Firma);
+$company = trim($result_row->Firma);
 
 $ablauf = date_create_from_format('Y-m-d', $result_row->Ablauf);
 
@@ -94,8 +94,8 @@ if ( isset($result_row->Vorname) and trim($result_row->Vorname) and
 
                 <label for="user_telefon">Telefon</label>
                 <input id="user_telefon" type="tel" class="profil_inputfield" value="<?php echo $telefon; ?>" name="profile[user_telefon]" ><br>
-								<label for="user_firma">(ggf. Firma)</label>
-                <input id="user_firma" type="text" class="profil_inputfield" value="<?php echo $firma; ?>" name="profile[user_firma]" ><br>
+								<label for="user_company">(ggf. Firma)</label>
+                <input id="user_company" type="text" class="profil_inputfield" value="<?php echo $company; ?>" name="profile[user_company]" ><br>
 
         		<label for="user_street">Stra&szlig;e</label>
         		<input id="user_street" type="text" class="profil_inputfield" value="<?php echo $strasse; ?>" name="profile[user_street]"><br>
