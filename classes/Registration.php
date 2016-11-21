@@ -1203,19 +1203,25 @@ class Registration
 
         #anrede
         
-        if ($user_anrede == 'Frau'){
-        	$anrede = 'Sehr geehrte Frau';
+        if ($user_anrede == 'Frau' OR $user_anrede == 'Herr'){
+        	$komma = ',';
+			$v_begin = 'v';
+			
+			if ($user_anrede == 'Frau'){
+				$anrede = 'Sehr geehrte Frau';
+			}
+			if ($user_anrede == 'Herr'){
+				$anrede = 'Sehr geehrter Herr';
+			}
         }
-		elseif ($user_anrede == 'Herr') {
-			$anrede = 'Sehr geehrter Herr';
-		}
+		
 		else {
-			$anrede = 'Lieber';
+			$user_surname = '';	
+			$anrede = '';
+			$komma = '';
+			$v_begin = 'V';
 		}
-        
-		if ($user_surname == ''){
-			$user_surname = 'Gast';
-		}
+       
         /*#membership level
         
         switch ($level) {
@@ -1303,9 +1309,9 @@ class Registration
                 <span style="color: #000000;">
                 <!--#/html#-->
                 <br>            
-                '.$anrede.' '.$user_surname.',
+                '.$anrede.' '.$user_surname.''.$komma.'
                 <br>
-                vielen Dank f&uuml;r Ihr Interesse!
+                '.$v_begin.'ielen Dank f&uuml;r Ihr Interesse!
                 <br>';
 
         $body = $body.'
