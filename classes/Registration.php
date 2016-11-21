@@ -453,12 +453,10 @@ class Registration
                 Vorname = :name,
                 Nachname = :surname,
                 Telefon = :telefon,
-                Firma = :firma
+                Firma = :firma,
                 Strasse = :street,
                 PLZ = :plz,
                 Ort = :city,
-                Land = :country,
-                Firma = :company
           WHERE user_email = :user_email"
         );
 
@@ -471,7 +469,6 @@ class Registration
         $update_profile_query->bindValue(':plz', $profile['user_plz'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':city', $profile['user_city'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':country', $profile['user_country'], PDO::PARAM_STR);
-        $update_profile_query->bindValue(':company', $profile['user_company'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':user_email', $profile['user_email'], PDO::PARAM_STR);
 
         $update_profile_query->execute();
