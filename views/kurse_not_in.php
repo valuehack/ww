@@ -192,7 +192,7 @@ else {
         	<label for="user_telefon">Telefon</label>
         	<input class="profil_inputfield" id="user_telefon" type="tel"  name="seminar_profile[user_telefon]"><br>
         	<label for="user_firma">(ggf. Firma)</label>
-            <input id="profil_inputfield" id="user_firma" type="text" name="seminar_profile[user_firma]" ><br>
+            <input id="profil_inputfield" id="user_firma" type="text" name="seminar_profile[user_firma]"><br>
         	<label for="user_street">Stra&szlig;e</label>
         	<input class="profil_inputfield" id="user_street" type="text" name="seminar_profile[user_street]" required><br>
         	<label for="user_plz">PLZ</label> 
