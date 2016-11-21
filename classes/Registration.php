@@ -457,6 +457,7 @@ class Registration
                 Strasse = :street,
                 PLZ = :plz,
                 Ort = :city,
+                Land = :country                
           WHERE user_email = :user_email"
         );
 
