@@ -133,7 +133,7 @@ else {
      						'<h2><?=$name?></h2>'+
      						'<img src="<?=$img?>" alt=".">'+
      						'<p><?=$info_text?></p>'+
-     						'<h6>Denker die hier gelebt und gewirkt haben</h6><p><?=$denker_links?></p>'+
+     						'<h6>Denker, die hier gelebt und gewirkt haben</h6><p><?=$denker_links?></p>'+
      						'</div>'+
      						'<div class="card-link h-right"><a href="?place=<?=$id?>">Mehr</div>';
 
