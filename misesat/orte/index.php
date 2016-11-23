@@ -5,9 +5,9 @@
 
 	include "../page/header2.inc.php";
 	
-if(isset($_GET['orte']))
+if(isset($_GET['ort']))
 {
-	$id = $_GET['orte'];
+	$id = $_GET['ort'];
 
   	$orte_info = $general->getInfo('orte', $id);
 
@@ -135,7 +135,7 @@ else {
      						'<p><?=$info_text?></p>'+
      						'<h6>Denker, die hier gelebt und gewirkt haben</h6><p><?=$denker_links?></p>'+
      						'</div>'+
-     						'<div class="card-link h-right"><a href="?orte=<?=$id?>">Mehr</div>';
+     						'<div class="card-link h-right"><a href="?ort=<?=$id?>">Mehr</div>';
 
         var marker = new google.maps.Marker({
          	position: {lat: <?=$lat?>, lng: <?=$lng?>},
