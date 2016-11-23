@@ -54,7 +54,7 @@ if(isset($_GET['place']))
       			<p><?=$text?></p>
       	</div>
       	<div class="container text">
-      			<h5>Denker die in <?=$name?> gelebt oder gewirkt haben</h5>
+      			<h5>Denker, die in <?=$name?> gelebt oder gewirkt haben</h5>
 				<p><?=$denker_links?></p>   	
        </div>
     </div>
