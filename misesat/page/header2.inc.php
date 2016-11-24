@@ -26,7 +26,7 @@
 		<!-- Begin Header-->
 		<header id="header">
   			<div class="logo">
-  				<a href="../index.php"><img src="../style/ma_logo_text_neu.svg" alt=""></a>
+  				<a href="../index.php"><img src="../style/ma_logo_text.png" alt=""></a>
 			</div>
 			<div class="nav-trigger">
 				<div class="nav-trigger__icon">
