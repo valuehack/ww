@@ -130,7 +130,7 @@ else {
      ?>   
      
      	var contentString = '<div class="map-info">'+
-     						'<h2><?=$name?></h2>'+
+     						'<a href="?ort=<?=$id?>"> <h2><?=$name?></h2></a>'+
      						'<img src="<?=$img?>" alt=".">'+
      						'<p><?=$info_text?></p>'+
      						'<h6>Denker, die hier gelebt und gewirkt haben</h6><p><?=$denker_links?></p>'+
