@@ -15,7 +15,7 @@ $postal = $_POST['postal'];
 $city = $_POST['city'];
 $country = $_POST['country'];
 $telephone = $_POST['telephone'];
-$pref_date = $_POST['pref_date'];
+//$pref_date = $_POST['pref_date'];
 $found_us = $_POST['found_us'];
 
 if ($ok) {
@@ -31,7 +31,6 @@ $in_query = $db->prepare(
 		city,
 		country,
 		telephone,
-		pref_date,
 		found_us,
 		sub_date
 		)
@@ -44,7 +43,6 @@ $in_query = $db->prepare(
 		:city,
 		:country,
 		:telephone,
-		:pref_date,
 		:found_us,
 		NOW()
 		)'
@@ -58,7 +56,7 @@ $in_query->bindValue(':postal', $postal, PDO::PARAM_STR);
 $in_query->bindValue(':city', $city, PDO::PARAM_STR);
 $in_query->bindValue(':country', $country, PDO::PARAM_STR);
 $in_query->bindValue(':telephone', $telephone, PDO::PARAM_STR);
-$in_query->bindValue(':pref_date', $pref_date, PDO::PARAM_STR);
+//$in_query->bindValue(':pref_date', $pref_date, PDO::PARAM_STR);
 $in_query->bindValue(':found_us', $found_us, PDO::PARAM_STR);
 
 $in_query->execute();
@@ -170,7 +168,7 @@ mail ($email,"Willkommen bei der craftprobe",$body,"From: info@scholarium.at\nCo
                 <p><b>Daten:</b></p>
 
                 <ul>
-                	<li>Termin: 1.-31. M&auml;rz oder 1.-31. August 2017</li>
+                	<li>Termin: 1.-31. August 2017</li>
                 	<li>Ort: <i>scholarium</i> in Wien (Schl&ouml;sselgasse 19/2/18, 1080 Wien)</li>
                 	<li>Maximale Teilnehmerzahl: 12 Personen</li>
                 	<li>Kosten: 1.900 &euro;</li>
@@ -282,7 +280,7 @@ mail ($email,"Willkommen bei der craftprobe",$body,"From: info@scholarium.at\nCo
 					<ol>
 
 						<li>Direkt nach Matura/Abitur, bevor Du Dich an der Universit&auml;t einschreibst oder eine andere Karriereentscheidung triffst. Je fr&uuml;her, desto besser, denn je l&auml;nger Du wartest, desto mehr wirst Du es bereuen. Dir einen Monat Zeit zu nehmen, bevor Du an die Universit&auml;t gehst, ist die beste Entscheidung, die Du treffen kannst.</li>
-						<li>W&auml;hrend Deines Studiums in den Semesterferien &ndash; entweder im August oder im M&auml;rz.</li>
+						<li>W&auml;hrend Deines Studiums in den Semesterferien.</li>
 						<li>Nach Deinem Bachelor, wenn Du Dich fragst, ob Du noch einen Master machen sollst oder nicht, oder Wartezeiten zu &uuml;berbr&uuml;cken hast. Viele Studenten qu&auml;len sich in dieser Zeit mit Zweifeln und Frustration. Verschwende Deine Zeit nicht! Die craftprobe ist der perfekte L&uuml;ckenf&uuml;ller, der letztlich wichtiger als Deine Studien und Abschl&uuml;sse sein k&ouml;nnte.</li>
 						<li>Nach dem Abschluss der Universit&auml;tsstudien, wenn es um den Einstieg in den Arbeitsmarkt geht. Hast Du Dir schon einmal unternehmerische Alternativen &uuml;berlegt? Aber auch wenn Du vor Karrierebeginn noch pers&ouml;nlich wachsen und einen Startvorteil erlangen willst, indem Du die realen Lektionen nachholst, die Dir bislang an der Universit&auml;t vorenthalten blieben, ist die craftprobe genau das Richtige f&uuml;r Dich.</li>
 					</ol>
@@ -587,10 +585,10 @@ mail ($email,"Willkommen bei der craftprobe",$body,"From: info@scholarium.at\nCo
 					</select><br>
 					<!-- <textarea name="note" class="inputarea" placeholder=" Hast Du Fragen oder Anmerkungen?" rows="10" required></textarea><br> -->
 					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" Wie hast Du uns gefunden?"><br>
-					<p id="input_zeitraum">Zeitraum:<br>
+					<!--<p id="input_zeitraum">Zeitraum:<br>
 					<input type="radio" name="pref_date" value="2017-03-01" required> 1. bis 31. M&auml;rz 2017<br>
   					<input type="radio" name="pref_date" value="2017-08-01" required> 1. bis 31. August 2017<br>
-					</p>
+					</p>-->
 					<!-- honeypot field to prevent spam-->
 					<div style="display:none;">
 					<label>Dieses Feld bitte freilassen</label>

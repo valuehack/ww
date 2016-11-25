@@ -9,13 +9,13 @@ $postal = $_POST['postal'];
 $city = $_POST['city'];
 $country = $_POST['country'];
 $telephone = $_POST['telephone'];
-$pref_date = $_POST['pref_date'];
-$note = $_POST['note'];
+//$pref_date = $_POST['pref_date'];
+//$note = $_POST['note'];
 $found_us = $_POST['found_us'];
 
 if ($ok) {
 
-$sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, street, postal, city, country, telephone, pref_date, found_us, sub_date, note) VALUES ('', '$email', '$firstname', '$name', '$street', '$postal', '$city', '$country', '$telephone', '$pref_date', '$found_us', NOW(), '$note')";
+$sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, street, postal, city, country, telephone, found_us, sub_date) VALUES ('', '$email', '$firstname', '$name', '$street', '$postal', '$city', '$country', '$telephone', '$found_us', NOW())";
 
 $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
 
@@ -153,7 +153,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					</ol>
 
 				<h2>How much does it cost?</h2>
-				<p>A practical program of this kind is usually prohibitively expensive. As the program is run by a non-profit enterprise which puts a high value on efficiency and effectiveness, we are able to cut costs to 1.900&euro;. Usually, parents or close relatives are willing to help you get a head-start in life. In order to convince them to bear the costs, you can direct them to <a href="http://scholarium.at/eltern.php">this page</a>, if they speak German, where we have compiled all information for your parents/relatives/sponsors.</p>
+				<p>A practical program of this kind is usually prohibitively expensive. As the program is run by a non-profit enterprise which puts a high value on efficiency and effectiveness, we are able to cut costs to 1.900&euro;. Usually, parents or close relatives are willing to help you get a head-start in life. In order to convince them to bear the costs, you can direct them to <a href="http://www.scholarium.at/eltern.php">this page</a>, if they speak German, where we have compiled all information for your parents/relatives/sponsors.</p>
 
 				<h2>Do I get a degree? Will my employability rise?</h2>
 				<p>You will not get a state-accredited degree, but a personal certificate and a documentation of your strengths. Coming on board is not an alternative to university or vocational training, but a short-time program to help you make better decisions on your education and career. Your employability in the sense of a real and proven capacity to create value for real clients should rise a lot.</p>
@@ -583,10 +583,10 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 					</select><br>
 					<!-- <textarea name="note" class="inputarea" placeholder=" Do you have questions or comments?" rows="10" required></textarea><br> -->
 					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" How did you find us?"><br>					
-					<p id="input_zeitraum">Preferred period:<br>
+					<!--<p id="input_zeitraum">Preferred period:<br>
 					<input type="radio" name="pref_date" value="2017-03-01" required> 1 &ndash; 31 March 2017<br>
   					<input type="radio" name="pref_date" value="2017-08-01" required> 1 &ndash; 31 August 2017<br>
-					</p>
+					</p>-->
 					<!-- honeypot field to prevent spam-->
 					<div style="display:none;">
 					<label>Please keep this field blank</label>
