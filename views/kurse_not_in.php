@@ -124,6 +124,15 @@ if(isset($_GET['q']))
 
 else {
   ?>
+  
+  	<div class="salon_info">
+		<h1>Seminare</h1>
+		
+		<?php
+			$static_info = $general->getStaticInfo('seminare');
+			echo $static_info->info	
+		?>
+  	</div>
 	<div class="salon_content">
   <?
   
@@ -152,6 +161,15 @@ else {
 	echo "<div class='centered'><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>";
   } 
 ?>
+    </div>
+    <div class="salon_info">
+    	<div class="centered">
+					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
+						<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
+  						<input type=hidden name="first_reg" value="seminare">
+  						<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
+					</form>
+				</div>
     </div>
 <?
 }
