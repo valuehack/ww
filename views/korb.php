@@ -461,12 +461,17 @@ function checkMe() {
             if ($itemsExtraArray[type] == 'programm') {
 			//E-Mail an uns
 			
-			$headers = 'From: info@scholarium.at' . "\r\n" .
-				'Content-Type: text/plain; charset=iso-8859-1' . "\r\n" .
-				'Content-Transfer-Encoding: 8bit' . "\r\n" .
-				'X-Mailer: SimpleForm';
+			$to = "info@scholarium.at";
+			$subject = "Anmeldung Programm $itemsExtraArray[title]";
+			$message = "$user_name, $user_surname, $user_email hat sich fuer das Programm $itemsExtraArray[id] eingetragen";
+			
+			$headers = array();
+			$headers[] = "From: info@scholarium.at";
+			$headers[] = "Content-Type: text/plain; charset=iso-8859-1";
+			$headers[] = "Content-Transfer-Encoding: 8bit";
+			$headers[] = "X-Mailer: SimpleForm";
 
-			mail ('info@scholarium.at','Anmeldung Programm $itemsExtraArray[title]','$user_name, $user_surname, $user_email hat sich fuer das Programm $itemsExtraArray[id] eingetragen', $headers);
+			mail ($to, $subject, $message, implode("\r\n", $headers));
 			}
             
             
