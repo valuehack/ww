@@ -463,7 +463,7 @@ function checkMe() {
 			
 			$to = "info@scholarium.at";
 			$subject = "Anmeldung Programm $itemsExtraArray[title]";
-			$message = "$user_name, $user_surname, $user_email hat sich fuer das Programm $itemsExtraArray[id] eingetragen";
+			$message = "$user_name $user_surname, $user_email, hat sich fuer das Programm $itemsExtraArray[id] eingetragen";
 			
 			$headers = array();
 			$headers[] = "From: info@scholarium.at";
