@@ -459,9 +459,14 @@ function checkMe() {
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
 
             if ($itemsExtraArray[type] == 'programm') {
-			//Email an Uns
+			//E-Mail an uns
+			
+			$headers = 'From: info@scholarium.at' . "\r\n" .
+				'Content-Type: text/plain; charset=iso-8859-1' . "\r\n" .
+				'Content-Transfer-Encoding: 8bit' . "\r\n" .
+				'X-Mailer: SimpleForm';
 
-			mail ("info@scholarium.at","Anmeldung Programm $itemsExtraArray[title]","$user_name, $user_surname, $user_email hat sich fur das Programm $itemsExtraArray[id] eingetragen","From: $email\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
+			mail ('info@scholarium.at','Anmeldung Programm $itemsExtraArray[title]','$user_name, $user_surname, $user_email hat sich fuer das Programm $itemsExtraArray[id] eingetragen', $headers);
 			}
             
             
