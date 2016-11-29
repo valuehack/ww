@@ -589,7 +589,7 @@ class General {
 				 					 	 "nickmarker"	  		=> false,
 				 					 	 "refresh_delay"		=> 6000,
 				 					 	 "refresh_delay_steps" 	=> array(7000,20000,8000,60000,10000,120000,12000,240000),
-				 					 	 "time_offset"			=> 32400,	 
+				 					 	 "time_offset"			=> 28800,	 
                  					);
 
 						$chat = new phpFreeChat($params);
