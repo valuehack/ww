@@ -367,7 +367,7 @@ function checkMe() {
 
                 <?php
                  }
-                elseif ($type == 'salon' && $format != 2 || $type == 'lehrgang' || $type == 'seminar' || $type == 'kurs'|| $type == 'programm') {
+                elseif ($type == 'salon' && $format != 2 || $type == 'lehrgang' || $type == 'seminar' || $type == 'kurs'|| $type == 'programm' || $type == 'vortrag') {
                     echo '<td>Reserviert</td></tr>';
                 }
 				elseif ($type == 'salon' && $format == 2) {
@@ -458,12 +458,12 @@ function checkMe() {
             $items_extra_result = mysql_query($items_extra_query) or die("Failed Query of " . $items_extra_query. mysql_error());
             $itemsExtraArray = mysql_fetch_array($items_extra_result);
 
-            if ($itemsExtraArray[type] == 'programm') {
+            if ($itemsExtraArray[type] == 'programm' ||  $itemsExtraArray[type] == 'vortrag') {
 			//E-Mail an uns
 			
 			$to = "info@scholarium.at";
-			$subject = "Anmeldung Programm $itemsExtraArray[title]";
-			$message = "$user_name $user_surname, $user_email, hat sich fuer das Programm $itemsExtraArray[id] eingetragen";
+			$subject = "Anmeldung $itemsExtraArray[title]";
+			$message = "$user_name $user_surname, $user_email, hat $itemsExtraArray[id] bestellt";
 			
 			$headers = array();
 			$headers[] = "From: info@scholarium.at";

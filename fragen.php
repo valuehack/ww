@@ -55,6 +55,8 @@ if ($login->isUserLoggedIn() == true) {
 				$entry = mysql_fetch_array($result);
 				
 				echo $entry[info];			
+			
+			if ($login->isUserLoggedIn() == FALSE) {
 			?>
 		
 			<div class="centered">
@@ -63,7 +65,10 @@ if ($login->isUserLoggedIn() == true) {
   					<input type=hidden name="first_reg" value="faq">
   					<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
 				</form>
-			</div> 
+			</div>
+			<?php
+			}
+			?> 
 		</div>		
 	</div>
 </div>
