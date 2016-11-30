@@ -58,7 +58,8 @@ if(isset($_POST['add'])){
     ?>
     <div class="centered">
       	<!-- Button trigger modal -->
-     	<input type="button" class="medien_inputbutton" value="Ausw&auml;hlen" data-toggle="modal" data-target="#myModal">
+     	<!-- <input type="button" class="medien_inputbutton" value="Ausw&auml;hlen" data-toggle="modal" data-target="#myModal"> -->
+     	<a class="blog_linkbutton" href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;">Anfrage schicken</a>
     </div>
     <?php
     }
@@ -89,7 +90,7 @@ if(isset($_POST['add'])){
 
 </div>
 
-<!-- Modal -->
+<!-- Modal 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -103,7 +104,7 @@ if(isset($_POST['add'])){
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 <?php
 include "_footer.php";
 ?>
