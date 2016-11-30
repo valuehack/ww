@@ -330,21 +330,18 @@ elseif ($spots_available == 4) {
   else { 
   if ($_SESSION['Mitgliedschaft'] == 1) {
   ?>
-    <div class="salon_info">  
+    <div class="salon_info">
+    	<h1>Seminare</h1>  
     	<?php  
-			$sql = "SELECT * from static_content WHERE (page LIKE 'seminare')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-	
-				echo $entry4[info];			
+			$static_info = $general->getStaticInfo('seminare');
+			echo $static_info->info				
 			?>
-		<div class="centered">
-			<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
-		</div>
+    </div>
+    <div class="salon_seperator">
+    	<h1>Termine</h1>
     </div>
 	<?
   }
-  elseif ($_SESSION['Mitgliedschaft'] > 1){ 
   ?>  
  	<div class="salon_content">
   <?
@@ -397,7 +394,6 @@ elseif ($spots_available == 4) {
 		</div>
 	</div>
 <?
-  }
 }
 ?>
 <!-- Modal 1 - Mitgliedschaft == 1 

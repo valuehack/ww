@@ -2,35 +2,32 @@
 require_once('../classes/Login.php');
 $title="Veranstaltungen";
 include "_header_in.php";
-?>
-	<div class="content">
-  <?php
+
   $sql = "SELECT * from produkte WHERE (type='salon' or type='lehrgang' or type='seminar' or type='kurs') and (end > NOW()) and (status = 1) order by start asc, n asc";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
 //für Interessenten (Mitgliedschaft 1) Erklärungstext oben
   if ($_SESSION['Mitgliedschaft'] == 1) {
-  	echo "<div class='salon_info'>";
-			$sql = "SELECT * from static_content WHERE (page LIKE 'salon')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry4 = mysql_fetch_array($result);
-
-		    $sql = "SELECT * from static_content WHERE (page LIKE 'seminare')";
-			$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
-			$entry5 = mysql_fetch_array($result);
-
-				echo $entry4[info];
-				echo $entry5[info];
-	?>
-			<div class="centered">
-				<a class="blog_linkbutton" href="../spende/">Unterst&uuml;tzen & Zugang erhalten</a>
-			</div>
-   </div>
+?>  		
+  	<div class="salon_info">
+		<h1>Veranstaltungen</h1>
+		
+		<?php
+			$static_info_seminare = $general->getStaticInfo('seminare');
+			echo $static_info_seminare->info;
+			$static_info_salon = $general->getStaticInfo('salon');
+			echo $static_info_salon->info;	
+		?>
+  	</div>
+    <div class="salon_seperator">
+    	<h1>Termine</h1>
+    </div>
 	<?
   }
-  else {
-  	echo '<div class="salon_content">';
-
+  	?>
+  <div class="salon_content">
+  	
+<?php
   while($entry = mysql_fetch_array($result))
   {
     $id = $entry[id];
@@ -74,9 +71,6 @@ include "_header_in.php";
   }
   ?>
 			</div>
-	<?
-	}
-	?>
 	</div>
 
 <? include "_footer.php"; ?>

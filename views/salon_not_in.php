@@ -76,14 +76,49 @@ else {
 			$static_info = $general->getStaticInfo('salon');
 			echo $static_info->info	
 		?>
-				<div class="centered">
+	</div>
+	<div class="salon_seperator">
+    	<h1>Termine</h1>
+    </div>
+    <div class="salon_content">
+<?
+  $sql = "SELECT * from produkte WHERE type LIKE 'salon' AND end > NOW() AND status = 1 order by start asc, n asc";
+  $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
+
+
+  while($entry = mysql_fetch_array($result))
+  {
+    $id = $entry[id];
+	$date = $general->getDate($entry[start], $entry[end]);
+      ?>
+
+<?php echo "<h1><a href='?q=$id'>".$entry[title]; ?></a></h1>
+		<div class="salon_dates">
+      <?=$date?>
+		</div>
+<?php
+		if ($entry[spots] > 59 && $entry[livestream] != '') {
+?>
+		<div class="salon_dates">
+			<a href='?q=<?=$id?>&stream=true'>zum Stream</a>
+		</div>
+<?php
+}
+			echo $entry[text];
+?>
+			<div class="centered"><p class='linie'><img src='../style/gfx/linie.png' alt=''></p></div>
+  <?php
+  }
+  ?>
+  	</div>
+		
+			<!--	<div class="centered">
 					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
 						<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
   						<input type=hidden name="first_reg" value="salon">
   						<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
 					</form>
-				</div>
-    </div>
+			</div> -->
 <?php
 }
 ?> 

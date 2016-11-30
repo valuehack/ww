@@ -3,10 +3,16 @@ require_once('../classes/Login.php');
 $title="Veranstaltungen";
 include "_header_not_in.php"; 
 ?>
-	<div class="content">
-		<div class="salon_head">
+	<div class="salon_info">
 		<h1>Veranstaltungen</h1>
-		</div>
+		
+		<?php
+			$static_info_seminare = $general->getStaticInfo('seminare');
+			echo $static_info_seminare->info;
+			$static_info_salon = $general->getStaticInfo('salon');
+			echo $static_info_salon->info;	
+		?>
+  	</div>
     <div class="salon_seperator">
     	<h1>Termine</h1>
     </div>
@@ -57,6 +63,5 @@ include "_header_not_in.php";
   }
   ?>
 			</div>
-	</div>
-	
+			
 <? include "_footer.php"; ?>

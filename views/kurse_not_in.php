@@ -133,6 +133,9 @@ else {
 			echo $static_info->info	
 		?>
   	</div>
+  	<div class="salon_seperator">
+    	<h1>Termine</h1>
+    </div>
 	<div class="salon_content">
   <?
   
