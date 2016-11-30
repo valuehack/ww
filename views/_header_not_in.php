@@ -173,6 +173,7 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
                     		<li><a href="/veranstaltungen/">Alle</a></li>
                     		<li><a href="/salon/">Salon</a></li>
                     		<li><a href="/seminare/">Seminare</a></li>
+                    		<li><a href="/vortrag/">Vortrag</a></li>
                     	</ul>
                     	</div>
                     </li>
