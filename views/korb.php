@@ -301,8 +301,9 @@ function checkMe() {
             
 			echo "<tr>";
             echo "<td>".$type2."</td>";
-            echo "<td>".$itemsExtraArray[title].' - ';
+            echo "<td>".$itemsExtraArray[title];
             if (!(is_null($itemsExtraArray[start]))) {
+                echo ' - ';	
                 echo date("d.m.Y",strtotime($itemsExtraArray[start]));
             }   
             echo "<br><i>";
