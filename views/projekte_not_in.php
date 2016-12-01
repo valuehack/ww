@@ -490,13 +490,13 @@ else {
               <input type="radio" class="projekte_investment_radio" name="projekte_profile[betrag]" value="600">600&euro;: Ab diesem Beitrag werden Sie Partner, wir f&uuml;hren Sie (au&szlig;er anders gew&uuml;nscht) pers&ouml;nlich mit Link auf unserer Seite an und laden Sie zu einem exklusiven Abendessen ein (oder Sie erhalten einen Geschenkkorb)<br><br>
               <input type="radio" class="projekte_investment_radio" name="projekte_profile[betrag]" value="1200">1200&euro;: Ab diesem Beitrag nehmen wir Sie als Beirat auf und laden Sie zu unserer Strategieklausur ein.<br><br>
               <input type="radio" class="projekte_investment_radio" name="projekte_profile[betrag]" value="2400">2400&euro;: Ab diesem Beitrag werden Sie Patron und bestimmen bis zu zweimal im Jahr ein Thema f&uuml;r das <i>scholarium</i>.<br>  
-               </div>
-            <p>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:</p> 
+              
+            <div class="projekte_investment_radio"><br>Bitte w&auml;hlen Sie Ihre gew&uuml;nschte Zahlungsmethode:<br><br></div> 
                 
-    		<input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="bank" required>&Uuml;berweisung<br>
-    		<input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="kredit">Paypal<br>
-    		<input type="radio" class="profil_radio" name="projekte_profile[zahlung]" value="bar">Bar<br>
-
+    		<input type="radio" class="projekte_investment_radio" name="projekte_profile[zahlung]" value="bank" required>&Uuml;berweisung<br>
+    		<input type="radio" class="projekte_investment_radio" name="projekte_profile[zahlung]" value="kredit">Paypal<br>
+    		<input type="radio" class="projekte_investment_radio" name="projekte_profile[zahlung]" value="bar">Bar<br>
+				</div>
 		
 			<input type="hidden" name="projekte_profile[first_reg]" value="projekt_<?php echo $n; ?>">
 			<input id="weiter_button" type="submit" class="profil_inputbutton" name="register_projekte_from_outside_submit" value="Investieren">
