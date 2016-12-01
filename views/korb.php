@@ -695,7 +695,6 @@ if($_SESSION['basket']) {
             $url2 = 'salon';
 			}
         elseif ($type == 'media-vorlesung' || $type == 'media-vortrag' || $type == 'media-salon') {
-            $url = 'http://www.scholarium.at/medien/'.$id.'.jpg';
             $url2 = 'medien';
             $type=substr($type,6);
             }
