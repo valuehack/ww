@@ -689,11 +689,9 @@ if($_SESSION['basket']) {
             $url2 = 'scholienbuechlein';
 			}
 		elseif ($type == 'seminar' || $type == 'kurs') {
-			$url = 'http://www.scholarium.at/seminare/'.$id.'.jpg';
             $url2 = 'seminare';
 			}
 		elseif ($type == 'salon') {
-			$url = 'http://www.scholarium.at/salon/'.$id.'.jpg';
             $url2 = 'salon';
 			}
         elseif ($type == 'media-vorlesung' || $type == 'media-vortrag' || $type == 'media-salon') {
