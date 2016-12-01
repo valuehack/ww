@@ -453,7 +453,7 @@ class Registration
                 Vorname = :name,
                 Nachname = :surname,
                 Telefon = :telefon,
-                Firma = :firma,
+                Firma = :company,
                 Strasse = :street,
                 PLZ = :plz,
                 Ort = :city,
@@ -465,7 +465,7 @@ class Registration
         $update_profile_query->bindValue(':name', $profile['user_first_name'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':surname', $profile['user_surname'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':telefon', $profile['user_telefon'], PDO::PARAM_STR);
-        $update_profile_query->bindValue(':firma', $profile['user_firma'], PDO::PARAM_STR);
+        $update_profile_query->bindValue(':company', $profile['user_company'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':street', $profile['user_street'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':plz', $profile['user_plz'], PDO::PARAM_STR);
         $update_profile_query->bindValue(':city', $profile['user_city'], PDO::PARAM_STR);
@@ -618,7 +618,7 @@ class Registration
                 mitgliederExt 
                 (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, Firma, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
                 VALUES
-                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :firma, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
+                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :company, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
 
     }
 
@@ -1051,6 +1051,7 @@ class Registration
         if (isset($profile[first_reg])) $first_reg = $profile[first_reg];
 
         $anrede = $profile[user_anrede];
+        $company = $profile[user_company];
         $telefon = $profile[user_telefon];
 
         $betrag = $profile[betrag];
@@ -1088,7 +1089,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', Gesamt = '$betrag', Anrede = '$anrede', Telefon = '$telefon' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', Gesamt = '$betrag', Anrede = '$anrede', Telefon = '$telefon', Firma = '$company' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -1116,7 +1117,7 @@ class Registration
 
         $anrede = $profile[user_anrede];
         $telefon = $profile[user_telefon];
-        $firma = $profile[user_firma];
+        $company = $profile[user_company];
 
 		$quantity = $profile[quantity];
         //$betrag = $profile[betrag];
@@ -1153,7 +1154,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', credits_left = credits_left+'$betrag', Anrede = '$anrede', Telefon = '$telefon', Firma = '$firma' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', credits_left = credits_left+'$betrag', Anrede = '$anrede', Telefon = '$telefon', Firma = '$company' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -1181,12 +1182,12 @@ class Registration
 
         $anrede = $profile[user_anrede];
         $telefon = $profile[user_telefon];
-        $firma = $profile[user_firma];
+        $company = $profile[user_company];
              
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$first_reg', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon', Firma = '$firma' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$first_reg', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon', Firma = '$company' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -1498,7 +1499,7 @@ class Registration
                 mitgliederExt 
                 (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, Firma, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
                 VALUES
-                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :firma, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
+                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :company, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
 
             $query_move_to_main->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':Mitgliedschaft', $the_row->Mitgliedschaft, PDO::PARAM_STR);
@@ -1511,7 +1512,7 @@ class Registration
             $query_move_to_main->bindValue(':street', $the_row->Strasse, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':plz', $the_row->PLZ, PDO::PARAM_STR);
 			$query_move_to_main->bindValue(':telefon', $the_row->Telefon, PDO::PARAM_STR);
-            $query_move_to_main->bindValue(':firma', $the_row->Firma, PDO::PARAM_STR);
+            $query_move_to_main->bindValue(':company', $the_row->Firma, PDO::PARAM_STR);
 
             $query_move_to_main->bindValue(':first_reg', $the_row->first_reg, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':credits_left', $the_row->credits_left, PDO::PARAM_STR);
@@ -1904,7 +1905,7 @@ class Registration
                 mitgliederExt 
                 (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, Firma, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
                 VALUES
-                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :firma, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
+                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :company, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
 
             $query_move_to_main->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':Mitgliedschaft', $the_row->Mitgliedschaft, PDO::PARAM_INT);
@@ -1917,7 +1918,7 @@ class Registration
             $query_move_to_main->bindValue(':street', $the_row->Strasse, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':plz', $the_row->PLZ, PDO::PARAM_INT);
 			$query_move_to_main->bindValue(':telefon', $the_row->Telefon, PDO::PARAM_STR);
-      $query_move_to_main->bindValue(':firma', $the_row->Firma, PDO::PARAM_STR);
+      		$query_move_to_main->bindValue(':company', $the_row->Firma, PDO::PARAM_STR);
 
             $query_move_to_main->bindValue(':first_reg', $the_row->first_reg, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':credits_left', $credits_left, PDO::PARAM_INT);
