@@ -173,11 +173,10 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
                     		<li><a href="/veranstaltungen/">Alle</a></li>
                     		<li><a href="/salon/">Salon</a></li>
                     		<li><a href="/seminare/">Seminare</a></li>
-                    		<li><a href="/vortrag/">Vortrag</a></li>
                     	</ul>
                     	</div>
                     </li>
-                    	<li id="navelm"><a class="navelm" href="/jubilaeum/">Jubil&auml;um</a></li>
+                    	<li id="navelm"><a class="navelm" href="/vortrag/">Vortrag</a></li>
     					<li id="navelm"><a class="navelm" href="/studium/">Studium</a></li>
               <li id="navelm"><a class="navelm" id="drop1" data-toggle="dropdown" href="../spende/" data-target="#" role="button" aria-haspopup="true" aria-expanded="false">Unterst&uuml;tzen</a>
                 <div class="subnav dropdown-menu" aria-labelledby="drop1">
