@@ -550,10 +550,10 @@ function checkMe() {
 		if ($versand >= 1) {
             $body = $body. "Ihre Bestellung wird an folgende Adresse verschickt:<br><br>
               
-                '.$user_name.' '.$user_surname.'<br>
-                '.$user_street.'<br>
-                '.$user_plz.' '.$user_city.'<br>
-                '.$user_country.'";
+                $user_name $user_surname<br>
+                $user_street<br>
+                $user_plz $user_city<br>
+                $user_country";
             }
         
         $body = $body.file_get_contents('/home/content/56/6152056/html/production/email_footer.html');
