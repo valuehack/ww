@@ -41,52 +41,26 @@ $registration = new Registration();
 
 require_once('../classes/Login.php');
 $title="10 Jahre scholarium: Geschichte und Zukunft Europas";
-include "../views/_header_not_in_jubilaeum.php"; 
-?>
 
-	<div class="content">
-	
-		<div class="jubilaeum_head">
-		<p>Programm f&uuml;r Samstag, den 3.12.2016</p>
-		</div>
-		
-		<div class="blog">
-			<div class="jubilaeum_body">
-			<q>Ab 10:00 Uhr Jubil&auml;umskonferenz “Die Zukunft Europas”</q>
-			<q><p>Vortragende (u.a.):</p></q>
-			<p>Rahim Taghizadegan</p>
-			<p>J&ouml;rg Guido H&uuml;lsmann</p>
-			<p>Hans-Hermann Hoppe</p>
-			<p>Robert Nef</p>
-			<p>Daniel Model</p>
-			<q>Ab 17:00 Uhr Jubil&auml;umsfeier</q>
-			<p>Er&ouml;ffnung im Prunksaal</p>
-			<p>Festessen im Augustinerlesesaal</p>
-			<p>Kulturprogramm im Oratorium</p>
-			<p>Bar im Foyer und Engelraum</p>
-			<q>Optionales Zusatzprogramm am Freitag und Sonntag.</q>
-			</div>
-		</div>
 
-		<div class="blog">
-			<div class="jubilaeum_body2">
-			<p>Konferenz und Festessen finden in den Räumlichkeiten der berühmten Österreichischen Nationalbibliothek statt, einer der umfangreichsten Universalbibliotheken der Welt.</p>
-			</div>
-		</div>
-		
-		<div class="prunksaal">
-    	<a href="/"><img class="prunksaal" src="../style/gfx/prunksaal.jpg" alt="scholarium" name="Home"></a>                 
-        </div>
-		
-		<div class="jubilaeum_head2">
-		<p>Anmeldung</p>
-		</div>
-	</div>
-	
-		<div class="centered">
-    <script type="text/javascript" src="https://ZLNVLYY-modules.xing-events.com/resources/js/amiandoExport.js"></script><iframe src="https://ZLNVLYY-modules.xing-events.com/ZLNVLYY.html?viewType=iframe&distributionChannel=CHANNEL_IFRAME&useDefaults=false&resizeIFrame=true" frameborder="0" width="650px" height="650px" id="_amiandoIFrame2907520"><p>Diese Seite benötigt die Unterstützung von Frames durch Ihren Browser. Bitte nutzen Sie einen Browser, der die Darstellung von Frames unterstützt, damit das Ticketvorverkaufs-Modul angezeigt werden kann.</p><p>Probieren Sie die XING Events <a href="https://www.xing-events.com">online Registrierung</a> noch heute aus.</p></iframe><p style="text-align: left; font-size:10px;"><a href="https://www.xing-events.com?viralRefId=ZLNVLYY&utm_campaign=ev-ZLNVLYY&utm_medium=viral&utm_source=EventWebsite&utm_content=TextLinkBottom&utm_term=text-link" target="_blank" alt="Konferenz - Online Event Management" title="Konferenz - Online Event Management" >Konferenz - Online Event Management</a> mit der Ticketing-Lösung von XING Events</p>
-	</div></div>
 
-	
-<? include "../views/_footer.php"; ?>
+if ($login->isUserLoggedIn() == true)
+{
+    switch ($_SESSION['Mitgliedschaft']) {
+        case 0:
+            include("../views/jubilaeum_not_in.php");
+            break;
+        case ($_SESSION['Mitgliedschaft'] >= 1):
+            include("../views/jubilaeum_in.php");
+            break;
+        default:
+            include("../views/jubilaeum_not_in.php");
+            break;
+    }
 
+
+}
+else {
+    include("../views/jubilaeum_not_in.php");
+
+}
