@@ -22,7 +22,7 @@ include "../views/_header_not_in_jubilaeum.php";
 
       while ($i<=5) {
         //$img = "../bla/bla"+$i+".jpg";
-        echo "<figure><img src='../jubilaeum/Fotos/Benjamin_Zika_20161203_Scholarium_0".$i."'.jpg' /></figure>";
+        echo "<figure><img src='../jubilaeum/Fotos/".$i."'.jpg' /></figure>";
         $i++;
       }
     ?>
