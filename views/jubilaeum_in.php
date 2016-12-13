@@ -18,19 +18,15 @@ include "../views/_header_not_in_jubilaeum.php";
 
     <div class="bss-slides num2" tabindex="2">
     <?
-      $i=1;
-
-      while ($i<=5) {
-        //$img = "../bla/bla"+$i+".jpg";
+      for(i=1;i<=37;i++) {
         echo "<figure><img src='../jubilaeum/Fotos/jubilaeum".$i.".jpg' /></figure>";
-        $i++;
       }
     ?>
     </div>
     <script src="../js/slideshow.js"></script>
     <script>
       var opts = {
-        auto : false,
+        auto : true,
         fullScreen : true,
         swipe : false
       };
