@@ -18,7 +18,7 @@ include "../views/_header_not_in_jubilaeum.php";
 
     <div class="bss-slides num2" tabindex="2">
     <?
-      for(i=1:i<=37:i++) {
+      for($i=1;$i<=37;$i++) {
         echo "<figure><img src='../jubilaeum/Fotos/jubilaeum".$i.".jpg' /></figure>";
       }
     ?>
