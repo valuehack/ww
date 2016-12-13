@@ -26,7 +26,10 @@ include "../views/_header_not_in_jubilaeum.php";
     <script src="../js/slideshow.js"></script>
     <script>
       var opts = {
-        auto : true,
+        auto : {
+                speed : 4000,
+                pauseOnHover : true
+            },
         fullScreen : true,
         swipe : false
       };
