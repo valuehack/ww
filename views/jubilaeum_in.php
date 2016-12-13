@@ -27,7 +27,7 @@ include "../views/_header_not_in_jubilaeum.php";
     <script>
       var opts = {
         auto : {
-                speed : 4000,
+                speed : 5000,
                 pauseOnHover : true
             },
         fullScreen : true,
