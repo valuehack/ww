@@ -430,8 +430,7 @@ a.subnav_head_jubilaeum:hover {
 .bss-slides{
   position: relative;
   display: block;
-	width: 650%;
-	height: 300px;
+	width: 65%;
 	margin-left: 10%;
 }
 .bss-slides:focus{
