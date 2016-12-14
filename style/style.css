@@ -210,12 +210,19 @@ h3 {
 /*==================================================*/
 
 .header_jubilaeum {
-	background: url(gfx/Jubilaeum_header_neu.jpg) no-repeat center;
+	/*background: url(gfx/Jubilaeum_header_neu.jpg) no-repeat center;*/
 	background-size: contain;
-	min-width: 1500px;
 	min-height: 400px;
 	height:0;
 	padding:0;
+}
+
+.header_jubilaeum img {
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+	height: 100%;
+
 }
 
 .jubilaeum_head p {
@@ -442,7 +449,6 @@ a.subnav_head_jubilaeum:hover {
 .bss-slides figure{
   position: absolute;
   top: 0;
-	bottom: 0;
   width: 100%;
 }
 .bss-slides figure:first-child{

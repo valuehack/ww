@@ -68,6 +68,7 @@ if( isset($_POST['ok2']) ) $ok2 = $_POST['ok2'];
 
   <body>
         <header class="header_jubilaeum">
+          <img src="../style/gfx/Jubilaeum_header_neu.jpg"/>
 
                   <?php
                   // show potential errors / feedback (from login object)
