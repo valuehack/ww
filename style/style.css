@@ -433,7 +433,7 @@ a.subnav_head_jubilaeum:hover {
 	width: 60%;
 	margin-left: 20%;
 	border-style: double;
-	border-width: 2px;
+	border-width: 4px;
 	border-color: rgb(120,35,38);
 }
 .bss-slides:focus{
