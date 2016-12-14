@@ -453,7 +453,7 @@ a.subnav_head_jubilaeum:hover {
   transition: opacity 1.2s;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-	width: 100%;
+	height: 100%;
 }
 .bss-slides .bss-show{
   z-index: 2;
