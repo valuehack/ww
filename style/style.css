@@ -432,7 +432,7 @@ a.subnav_head_jubilaeum:hover {
   display: block;
 	width: 60%;
 	margin-left: 20%;
-	border-style: double;
+	border-style: solid;
 	border-width: 4px;
 	border-color: rgb(120,35,38);
 }
