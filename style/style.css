@@ -442,7 +442,8 @@ a.subnav_head_jubilaeum:hover {
 .bss-slides figure{
   position: absolute;
   top: 0;
-  height: 100%;
+	bottom: 0;
+  width: 100%;
 }
 .bss-slides figure:first-child{
   position: relative;
