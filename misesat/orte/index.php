@@ -134,8 +134,8 @@ else {
 			}
 		}
 		
-		$linktext = str_replace ( $denker_nolinks , $denker_links , $text);
-		$linktext = str_replace ( "Angers" , "BLABLA" , $text);
+		$denker_larray = explode(", ", $denker_links);
+		$linktext = str_replace ( $denker_nolinks , $denker_larray , $text);
 		
 		if (strlen($linktext) > 215) {
 			$info_text = substr($linktext, 0, 215).' ...';
