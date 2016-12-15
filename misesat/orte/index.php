@@ -108,6 +108,12 @@ else {
 		$lng = $result[$i]['lng'];
 		$denker = $result[$i]['denker'];
 		
+		//for(denker...)
+		$denker_repl = array('Ludwig von Mises');
+		$denker_link = array('<a href="../denker/?denker=mises">Ludwig von Mises</a>');
+		
+		str_replace ( $denker_repl , $denker_link , $text);
+		
 		if (strlen($text) > 215) {
 			$info_text = substr($text, 0, 215).' ...';
 		}
