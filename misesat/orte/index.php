@@ -122,22 +122,24 @@ else {
 		
 		
 		
-		$denker_nolinks = $denker_list;
+		$denker_nolinks = array();
+		$denker_larray = array();
 
 		foreach ($denker_list as $key => $denker_id) {
 			$denker_info = $general->getInfo('denker', $denker_id);
 			if (count($denker_list) > 1 && count($denker_list) != $key+1) {
 				$denker_links = $denker_links.'<a href="../denker/?denker='.$denker_info->id.'">'.$denker_info->name.'</a>, ';
+				array_push($denker_nolinks, $denker_info->name);
+				array_push($denker_larray, '<a href="../denker/?denker='.$denker_info->id.'">'.$denker_info->name.'</a>');
 			}
 			else {
 				$denker_links = $denker_links.'<a href="../denker/?denker='.$denker_info->id.'">'.$denker_info->name.'</a>';
+				array_push($denker_nolinks, $denker_info->name);
+				array_push($denker_larray, '<a href="../denker/?denker='.$denker_info->id.'">'.$denker_info->name.'</a>');
 			}
 		}
 		
-		$denker_larray = explode(", ", $denker_links);
 		$linktext = str_replace ( $denker_nolinks , $denker_larray , $text);
-		print_r($denker_nolinks);
-		print_r($denker_larray);
 		
 		if (strlen($linktext) > 215) {
 			$info_text = substr($linktext, 0, 215).' ...';
