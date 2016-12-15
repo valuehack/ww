@@ -136,6 +136,8 @@ else {
 		
 		$denker_larray = explode(", ", $denker_links);
 		$linktext = str_replace ( $denker_nolinks , $denker_larray , $text);
+		print($denker_nolinks);
+		print($denker_larray);
 		
 		if (strlen($linktext) > 215) {
 			$info_text = substr($linktext, 0, 215).' ...';
