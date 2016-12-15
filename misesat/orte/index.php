@@ -18,16 +18,25 @@ if(isset($_GET['ort']))
 		
 	$denker_links = "";
 	$denker_list = explode(", ", $denker);
+	
+	$denker_nolinks = array();
+	$denker_larray = array();
 
 	foreach ($denker_list as $key => $denker_id) {
 		$denker_info = $general->getInfo('denker', $denker_id);
 		if (count($denker_list) > 1 && count($denker_list) != $key+1) {
 			$denker_links = $denker_links.'<a href="../denker/?denker='.$denker_info->id.'">'.$denker_info->name.'</a>, ';
+			array_push($denker_nolinks, $denker_info->name);
+			array_push($denker_larray, '<a href="../denker/?denker='.$denker_info->id.'">'.$denker_info->name.'</a>');
 		}
 		else {
 			$denker_links = $denker_links.'<a href="../denker/?denker='.$denker_info->id.'">'.$denker_info->name.'</a>';
+			array_push($denker_nolinks, $denker_info->name);
+			array_push($denker_larray, '<a href="../denker/?denker='.$denker_info->id.'">'.$denker_info->name.'</a>');
 		}   
-	}   
+	}
+	
+	$linktext = str_replace ( $denker_nolinks , $denker_larray , $text);   
 ?>
 <!--Orte-->
 <!--Content-->
@@ -51,7 +60,7 @@ if(isset($_GET['ort']))
       	
       	<div class="container text">
       			<h2>Beschreibung</h2>
-      			<p><?=$text?></p>
+      			<p><?=$linktext?></p>
       	</div>
       	<div class="container text">
       			<h5>Denker, die in <?=$name?> gelebt oder gewirkt haben</h5>
