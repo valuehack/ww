@@ -114,8 +114,9 @@ else {
 		
 		str_replace ( $denker_repl , $denker_link , $text);
 		
+		
 		if (strlen($text) > 215) {
-			$info_text = substr($text, 0, 215).' ...';
+			$info_text = substr($text, 0, 215).' ...BLABLA';
 		}
 		else {
 			$info_text = $text;
