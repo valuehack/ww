@@ -112,7 +112,7 @@ else {
 		$denker_list = explode(", ", $denker);
 		
 		$denker_link = array();
-		foreach($denk as $denker_list) {
+		foreach($denker_list as $denk) {
 			array_push($denker_link, '<a href="../denker/?denker='.$denk.'">'.$denk.'</a>');
 		}
 		$linktext = str_replace ( $denker_list , $denker_link , $text);
