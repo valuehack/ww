@@ -20,7 +20,7 @@ $sql = "INSERT INTO cb_anmeldung (id, email, firstname, name, street, postal, ci
 $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());
 
 	/*$insert_query = $wwalt->db_connection->prepare('INSERT INTO cb_anmeldung (id, email, firstname, name, country, telephone, nationality, found_us, note, sub_date) VALUES (:email, :firstname, :name, :street, :postal, :city, :country, :telephone, :found_us, :note, NOW())');
-	
+
 	$insert_query->bindValue(':email', $email, PDO::PARAM_STR);
 	$insert_query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
 	$insert_query->bindValue(':name', $name, PDO::PARAM_STR);
@@ -63,7 +63,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
         <title>craftprobe</title>
         <meta name="description" content="One Month Program in Entrepreneurship">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../style.css">        
+        <link rel="stylesheet" href="../style.css">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript" src="../js/bootstrap.js"></script>
         <script type="text/javascript" src="../js/general.js"></script>
@@ -77,7 +77,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
   			ga('create', 'UA-62940948-1', 'auto');
   			ga('send', 'pageview');
 		</script>
-			
+
     </head>
     <body>
     	<div id="notice" class="notice">
@@ -113,7 +113,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 }
 ?>
           	<div class="banner" id="top">
-            	<div class="bannerimg" style="background-image: url(http://www.craftprobe.com/img/craftprobe.jpg);"></div>
+            	<div class="bannerimg" style="background-image: url(http://www.craftprobe.com/img/craftprobe_en.jpg);"></div>
 	        	<div class="arrow-down">
             		<a href="#about">
                     	<div class="arrow-down__icon"></div>
@@ -136,12 +136,12 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 <p>We love exploring the unknown, we love entrepreneurship, we love learning new ideas, new skills and new ways, and we love our liberty and individuality. We distrust experts, politicians, bankers, managers, journalists, teachers, venture capitalists, just as much as we distrust gurus, doomsayers, ideologues, do-gooders, hipsters, internet celebrities and trolls. Ready to board our craft? Ready to develop your skills and probe into the unknown? craftprobe is a trial of strength. Joining our expedition is definitely not for the weak of heart. Illusions might get shattered. We cannot tolerate any bullshit on board (it stinks). If you have what it takes, apply to join us on the bridge.</p>
                 <p><a href="#top">Back to the top</a></p>
             </section>
-            
+
             <section id="manual" class="s2">
             	<h1>MANUAL</h1>
 
 				<h2>Who is this for?</h2>
-				
+
 				<p>Anyone old enough to be or become independent, and young enough to challenge conceived wisdom and walk off the beaten track. This means that the usual age bracket of our explorers is 18 to 28. 18 is the minimum age for insurance reasons (we do some dangerous stuff). If you are above 28, but absolutely longing for such a restart and reexamination, and financially independent, we may be able to make it happen. In this case do not apply, just contact us. Normally, 28 is the maximum age, because after that you will either have already invested too much sunk costs in the status quo or be a sad failure (most are, do not take it personally). Please leave us alone if you are looking for a 9-5 career where someone tells you what to do until retirement or if you think your degree somehow deserves you a well paid, fun and easy job. If you suspect that there is more out there than university teaches, the media informs about and politicians admit and that the future may be radically different from what the generation of your parents expects, but do not feel like retiring to virtual reality from a challenging world and have the courage and energy to confront those challenges, then you may just be the crew member we have been looking for.</p>
 
 				<h2>When should I do it?</h2>
@@ -167,7 +167,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             </section>
             <section  id="course" class="s3">
                 <h1>Course</h1>
-                
+
                 <p>You will probe into <b>culture</b>: Most start-ups and entrepreneurial education programs are rather shallow. You mainly learn how to sell promises of endless riches to greedy investors, promises of faked coolness to indebted consumers and promises of heroic images to funding bureaucrats. Our vessel goes much further and ignores all the need for hype and glamour. Based in one of the capitals of old European culture, a historic center of science, art, literature, music and trade, we have access to an ancient treasure trove of thought and creation. We do not live in the past but think about the future standing on the shoulders of giants. Right on board we carry along one of the most spectacular private libraries of Austria, with a unique selection of masterworks in practical philosophy, economics and history.</p>
 
 				<p>You will probe into the <b>market</b>: Many alternative educational programs are too much rooted in the past or too aloof in ivory towers to really understand what is going on in the world today and where it will lead. We are young natives of a globalized and digital world. Our captain is a renowned visionary with both feet firmly on the ground: As an economist, entrepreneur, physicist and investment consultant, he has just the eye to tell promising trends and ominous dynamics from hyped bullshit. We are following the markets and geopolitics, and are sober, down-to-earth entrepreneurs at the forefront of innovation. We are continually checking premises, gathering data, scouting for opportunities and challenges.</p>
@@ -196,16 +196,16 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
                 <p><a href="#top">Back to the top</a></p>
             </section>
 
-            
-            
+
+
             <section  id="crew"  class="s3">
                 <h1>crew</h1>
 
-<?php		
+<?php
 		$get_crew = $pdocon->db_connection->prepare("SELECT * from crew WHERE level <8 order by level asc");
 		$get_crew->execute();
 		$crew_result = $get_crew->fetchAll();
-	
+
 		$check_lvl1 = 0;
 		$check_lvl2 = 0;
 		$check_lvl3 = 0;
@@ -214,64 +214,64 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 		$check_lvl6 = 0;
 		$check_lvl7 = 0;
 		$check_lvl8 = 0;
-		
+
 		for ($i=0; $i < count($crew_result); $i++) {
-				
+
 			$level = $crew_result[$i]['level'];
 			$id = $crew_result[$i]['id'];
 			$link = $crew_result[$i]['link'];
 			$name = $crew_result[$i]['name'];
 			$text_en = $crew_result[$i]['text_en'];
-			
+
 			if ($level == 1){
 				if ($check_lvl1 == 0){
 					$check_lvl1 = 1;
-					echo '<p class="crew_levels">Captain</p>'; 
+					echo '<p class="crew_levels">Captain</p>';
 				}
 			}
 			if ($level == 2){
 				if ($check_lvl2 == 0){
 					$check_lvl2 = 1;
-					echo '<p class="crew_levels">Admiralty</p>'; 
+					echo '<p class="crew_levels">Admiralty</p>';
 				}
 			}
 			if ($level == 3){
 				if ($check_lvl3 == 0){
 					$check_lvl3 = 1;
-					echo '<p class="crew_levels">Officers</p>'; 
+					echo '<p class="crew_levels">Officers</p>';
 				}
 			}
 			if ($level == 4){
 				if ($check_lvl4 == 0){
 					$check_lvl4 = 1;
-					echo '<p class="crew_levels">Mates</p>'; 
+					echo '<p class="crew_levels">Mates</p>';
 				}
 			}
 			if ($level == 5){
 				if ($check_lvl5 == 0){
 					$check_lvl5 = 1;
-					echo '<p class="crew_levels">Ehrenpr&auml;sidenten</p>'; 
+					echo '<p class="crew_levels">Ehrenpr&auml;sidenten</p>';
 				}
 			}
 			if ($level == 6){
 				if ($check_lvl6 == 0){
 					$check_lvl6 = 1;
-					echo '<p class="crew_levels">Beir&auml;te</p>'; 
+					echo '<p class="crew_levels">Beir&auml;te</p>';
 				}
 			}
 			if ($level == 7){
 				if ($check_lvl7 == 0){
 					$check_lvl7 = 1;
-					echo '<p class="crew_levels">Partner</p>'; 
+					echo '<p class="crew_levels">Partner</p>';
 				}
 			}
 			if ($level == 8){
 				if ($check_lvl8 == 0){
 					$check_lvl8 = 1;
-					echo '<p class="crew_levels">Sailors</p>'; 
+					echo '<p class="crew_levels">Sailors</p>';
 				}
 			}
-?>			
+?>
 			<div class="crew">
 				<div class="crew__col-1">
 					<img src="http://www.craftprobe.com/img/<?=$id?>.jpg">
@@ -284,21 +284,21 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 			</div>
 <?php
 		}
-?>	                                             				            
+?>
                     <p><a href="#top">Back to the top</a></p>
             </section>
-            
-            
+
+
        		<section id="board" class="s5">
                 <div class="s5img" style="background: url(http://www.craftprobe.com/img/code2.jpg) center;">
                 <div class="form">
-                 <h1>Now it&apos;s your turn. Join our voyage!</h1> 
-                 <p>What are you waiting for? A television spot to tell you that this is meant for you? A government decree? A viral video to make you part of a crowd? We will try the best we can to avoid hypes, unwanted publicity, and official recognition. A craft like ours has to shun such shallow waters. If you are afraid, then stay ashore. No worries, anyway there is not enough space for everyone. Lifeboats get crowded easily. If you have the courage but just lack the confidence that you are good enough, go ahead and apply. We will get in touch with you. It won&apos;t hurt. But it might open up opportunities you have not even dared to dream about.</p>              
+                 <h1>Now it&apos;s your turn. Join our voyage!</h1>
+                 <p>What are you waiting for? A television spot to tell you that this is meant for you? A government decree? A viral video to make you part of a crowd? We will try the best we can to avoid hypes, unwanted publicity, and official recognition. A craft like ours has to shun such shallow waters. If you are afraid, then stay ashore. No worries, anyway there is not enough space for everyone. Lifeboats get crowded easily. If you have the courage but just lack the confidence that you are good enough, go ahead and apply. We will get in touch with you. It won&apos;t hurt. But it might open up opportunities you have not even dared to dream about.</p>
                      <input type="button" class="inputbutton" value="Boarding request" data-toggle="modal" data-target="#myModal">
                  </div>
                 </div>
             </section>
-        <!--</div>-->    
+        <!--</div>-->
         <footer class="footer">
             <p>
                 &copy; 2015 | scholarium&trade; | Schl&ouml;sselgasse 19/2/18 | 1080 Vienna | Austria <br>
@@ -306,7 +306,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
             <p class="img_links">
                 Background-Image: <a href="https://www.flickr.com/photos/riebart/4466482623/in/photolist-7NFTF6-4qquBv-4qvivG-6WxYTc-57hHm6-mjhDwB-5VKcCj-8SjwXw-79EVn6-nfPx72-6xfvm9-ccQ6rL-75cgcM-59ib1t-7Gyyds-9UNeUM-fKSF1d-asasy3-Mdf4-ptJh3V-apgafX-KnCK4-4U2GPi-bpd8Ht-4usG5p-GH7wh-jmr8PB-as7QVk-ec78kF-b7r6g-6fmKyW-3AvBtV-4nqiZn-5RUuNN-6NKzvV-kmhEbE-7E9fqU-d9A4Eb-7d7ipd-8dpeZZ-buRLHu-5WvBYq-7tnkmy-8dsw7J-asaxj1-asawS3-5XzfyW-aMG5S4-9dUbHm-d9A3SY">"Code" by Michael Himbeault</a>
             </p>
-        </footer>        
+        </footer>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -321,15 +321,15 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 				<p><span class="inputlabel2">Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</span></p>
 				<div class="input">
 					<input type="hidden" name="ok" value="1">
-					
+
 					<input class="inputfield" type="text" name="firstname" placeholder=" First Name" required><br>
         			<input class="inputfield" type="text" name="name" placeholder=" Surname" required><br>
-        			<input class="inputfield" type="email" name="email" placeholder=" Email" required><br> 
+        			<input class="inputfield" type="email" name="email" placeholder=" Email" required><br>
         			<input class="inputfield" type="tel" name="telephone" placeholder=" Telephone/ Mobile (e.g. +431234567)"><br>
 					<input class="inputfield" type="text" name="street" placeholder=" Street" required><br>
 					<input class="inputfield" type="text" name="postal" placeholder=" Postal Code" required><br>
 					<input class="inputfield" type="text" name="city" placeholder=" City" required><br>
-					 
+
         			<select class="inputfield_select" id="user_country" name="country" placeholder=" Country" required>
 <option value="Austria" selected>Austria</option>
 <option value="Germany">Germany</option>
@@ -582,7 +582,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
 <option value="Zimbabwe">Zimbabwe</option>
 					</select><br>
 					<!-- <textarea name="note" class="inputarea" placeholder=" Do you have questions or comments?" rows="10" required></textarea><br> -->
-					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" How did you find us?"><br>					
+					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" How did you find us?"><br>
 					<!--<p id="input_zeitraum">Preferred period:<br>
 					<input type="radio" name="pref_date" value="2017-03-01" required> 1 &ndash; 31 March 2017<br>
   					<input type="radio" name="pref_date" value="2017-08-01" required> 1 &ndash; 31 August 2017<br>
