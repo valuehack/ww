@@ -108,10 +108,14 @@ else {
 		$lng = $result[$i]['lng'];
 		$denker = $result[$i]['denker'];
 		
-		//for(denker...)
-		$denker_repl = array('Ludwig von Mises');
-		$denker_link = array('<a href="../denker/?denker=mises">Ludwig von Mises</a>');
-		$linktext = str_replace ( $denker_repl , $denker_link , $text);
+		$denker_links = "";
+		$denker_list = explode(", ", $denker);
+		
+		$denker_link = array();
+		foreach($denk as $denker_list) {
+			array_push($denker_link, '<a href="../denker/?denker='.$denk.'">'.$denk.'</a>');
+		}
+		$linktext = str_replace ( $denker_list , $denker_link , $text);
 		
 		
 		if (strlen($linktext) > 215) {
@@ -121,8 +125,7 @@ else {
 			$info_text = $linktext;
 		}
 		
-		$denker_links = "";
-		$denker_list = explode(", ", $denker);
+
 
 		foreach ($denker_list as $key => $denker_id) {
 			$denker_info = $general->getInfo('denker', $denker_id);
