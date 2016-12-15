@@ -135,6 +135,7 @@ else {
 		}
 		
 		$linktext = str_replace ( $denker_nolinks , $denker_links , $text);
+		$linktext = str_replace ( "Angers" , "BLABLA" , $text);
 		
 		if (strlen($linktext) > 215) {
 			$info_text = substr($linktext, 0, 215).' ...';
