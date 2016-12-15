@@ -481,6 +481,7 @@ elseif (isset($_POST['ok']))
     //payments coming from kurse_not_in
     if ($_POST['ok'] == 2) { 
 
+      echo "<div class='payment_success'><p>Vielen Dank, ein Seminarplatz wurde f&uuml;r Sie reserviert. Au&szlig;erdem sind Sie nun <b>&bdquo;Teilnehmer&ldquo;</b> und haben als Unterst&uuml;tzer ein Jahr lang Zugang zu unserem Unterst&uuml;tzerbereich &ndash; hierf&uuml;r sind auch Ihre 25 Guthabenpunkte. (Sollten Sie Ihre Unterst&uuml;tzung erneuern wollen, k&ouml;nnen Sie dies jederzeit tun &ndash; hierzu auf Ihre E-Mail-Adresse oben rechts klicken und &bdquo;Unterst&uuml;tzen&ldquo; w&auml;hlen.)</p></div>";
 	  /*
       $user_query = "SELECT * from mitgliederExt WHERE `user_email` LIKE '$user_email' ";
       $user_result = mysql_query($user_query) or die("Failed Query of " . $user_query. mysql_error());
