@@ -36,7 +36,7 @@ if(isset($_GET['ort']))
 		}   
 	}
 	
-	$linktext = str_replace ( $denker_nolinks , $denker_larray , $text);   
+	$linktext = str_replace($denker_nolinks , $denker_larray , $text);   
 ?>
 <!--Orte-->
 <!--Content-->
@@ -60,6 +60,7 @@ if(isset($_GET['ort']))
       	
       	<div class="container text">
       			<h2>Beschreibung</h2>
+						<p>Merlin was here.</p>
       			<p><?=$linktext?></p>
       	</div>
       	<div class="container text">
