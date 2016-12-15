@@ -136,7 +136,7 @@ else {
 		
 		$denker_larray = explode(", ", $denker_links);
 		$linktext = str_replace ( $denker_nolinks , $denker_larray , $text);
-		print_r($denker_nolinks."////");
+		print_r($denker_nolinks);
 		print_r($denker_larray);
 		
 		if (strlen($linktext) > 215) {
