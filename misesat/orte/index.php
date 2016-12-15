@@ -112,8 +112,8 @@ else {
 		$denker_repl = array('Ludwig von Mises');
 		$denker_link = array('<a href="../denker/?denker=mises">Ludwig von Mises</a>');
 		
-		$test_repl = array('Lemberg');
-		$test_link = array('BLABLA');
+		$test_repl = array("Lemberg");
+		$test_link = array("BLABLA");
 		
 		str_replace ( $test_repl , $test_link , $text);
 		
