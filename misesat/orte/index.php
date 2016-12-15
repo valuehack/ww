@@ -111,21 +111,18 @@ else {
 		$denker_links = "";
 		$denker_list = explode(", ", $denker);
 		
+		/*
 		$denker_link = array();
 		foreach($denker_list as $denk) {
 			array_push($denker_link, '<a href="../denker/?denker='.$denk.'">'.$denk.'</a>');
 		}
 		$linktext = str_replace ( $denker_list , $denker_link , $text);
+		*/
 		
 		
-		if (strlen($linktext) > 215) {
-			$info_text = substr($linktext, 0, 215).' ...';
-		}
-		else {
-			$info_text = $linktext;
-		}
 		
-
+		
+		$denker_nolinks = $denker_list;
 
 		foreach ($denker_list as $key => $denker_id) {
 			$denker_info = $general->getInfo('denker', $denker_id);
@@ -136,6 +133,16 @@ else {
 				$denker_links = $denker_links.'<a href="../denker/?denker='.$denker_info->id.'">'.$denker_info->name.'</a>';
 			}
 		}
+		
+		$linktext = str_replace ( $denker_nolinks , $denker_links , $text);
+		
+		if (strlen($linktext) > 215) {
+			$info_text = substr($linktext, 0, 215).' ...';
+		}
+		else {
+			$info_text = $linktext;
+		}
+		
      ?>   
      
      	var contentString = '<div class="map-info">'+
