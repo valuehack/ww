@@ -60,7 +60,6 @@ if(isset($_GET['ort']))
       	
       	<div class="container text">
       			<h2>Beschreibung</h2>
-						<p>Merlin was here.</p>
       			<p><?=$linktext?></p>
       	</div>
       	<div class="container text">
