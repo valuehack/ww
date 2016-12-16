@@ -39,6 +39,7 @@ if ($id = $_GET["q"])
 	$project_info = $general->getProduct($id);
 	$title = $project_info->title;
 	$text = $project_info->text;
+	$text2 = $project_info->text2;
 	$n = $project_info->n;
 	$avail = $project_info->spots - $project_info->spots_sold;
 ?>
@@ -51,19 +52,39 @@ if ($id = $_GET["q"])
 	<div class="medien_content">
 
 <?php
-  	echo $text;
-
-  if ($_SESSION['Mitgliedschaft'] == 1) {
+  	if ($text) echo $text;
+    if ($text2) echo $text2;
+	
+	if ($_SESSION['Mitgliedschaft'] == 1) {
     ?>
+     <!-- Button trigger modal -->
     <div class="centered">
-      	<!-- Button trigger modal -->
+    <p>Private Unterst&uuml;tzer haben bereits <?=$project_info->spots_sold?> von n&ouml;tigen <?=$project_info->spots?> &euro; investiert.</p>
+    
+    <?php if($avail == 0) { ?>
+    	<p>Das Projekt ist damit ausfinanziert. Vielen Dank!</p>
+    <?php }
+	
+		else { ?>	
      	<input type="button" class="medien_inputbutton" value="Investieren" data-toggle="modal" data-target="#myModal">
+     <?php } ?>
+     
     </div>
+    <div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>">zur&uuml;ck zu den Projekten</a></div>
+    </div>
+    
     <?php
     }
-    else {
-		echo "<div class='projekte_invest'>
-		<p>Private Unterst&uuml;tzer haben bereits <span class='projekte_credits_sold'>".$project_info->spots_sold."</span> von <span class='projekte_credits_sold'>".$project_info->spots."</span> n&ouml;tigen <img class='projekte_coin' src='../style/gfx/coin.png'> investiert.</p>"; ?>
+    else { ?>
+    	<div class='projekte_invest'>
+		<p>Private Unterst&uuml;tzer haben bereits <span class='projekte_credits_sold'><?=$project_info->spots_sold?></span> von <span class='projekte_credits_sold'><?=$project_info->spots?></span> n&ouml;tigen <img class='projekte_coin' src='../style/gfx/coin.png'> investiert.</p>
+      	
+      	<?php if($avail == 0) { ?>
+    	<p>Das Projekt ist damit ausfinanziert. Vielen Dank!</p>
+    	<?php }
+		
+			else { ?>
+      		
       	<form class="projekte_invest_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
         	<input type="hidden" name="add" value="<?=$n?>">
         	<span class="projekte_invest_span">Ich m&ouml;chte mit </span>
@@ -72,7 +93,9 @@ if ($id = $_GET["q"])
         	<input type="hidden" name="projekt" value="1">
           <input type="submit" class="medien_inputbutton" value="Jetzt beitragen">
       	</form>
-      </div>
+      	
+      	<?php } ?>
+      	</div>
       <div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Projekten</a></div>
     <?php
     }
@@ -99,7 +122,7 @@ else {
      First get total number of rows in data table.
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
-  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status = 1";
+  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE `type` LIKE 'projekt' AND status = 1";
   $total_pages = mysql_fetch_array(mysql_query($query));
   $total_pages = $total_pages[num];
 
@@ -113,7 +136,7 @@ else {
     $start = 0;               //if no page var is given, set start to 0
 
   /* Get data. */
-  $sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status = 1 order by n asc LIMIT $start, $limit";
+  $sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND status = 1 order by n asc LIMIT $start, $limit";
 
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 
@@ -253,7 +276,7 @@ else {
      First get total number of rows in data table.
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
-  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status = 1";
+  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE `type` LIKE 'projekt' AND status = 1";
   $total_pages = mysql_fetch_array(mysql_query($query));
   $total_pages = $total_pages[num];
 
@@ -267,7 +290,7 @@ else {
     $start = 0;               //if no page var is given, set start to 0
 
   /* Get data. */
-  $sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status = 1 order by n asc LIMIT $start, $limit";
+  $sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND status = 1 order by n asc LIMIT $start, $limit";
 
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 

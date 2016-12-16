@@ -36,9 +36,24 @@ if ($id = $_GET["q"])
    		<!-- Button trigger modal -->
    		<div class="centered">
    		<p>Private Unterst&uuml;tzer haben bereits <?=$project_info->spots_sold?> von n&ouml;tigen <?=$project_info->spots?> &euro; investiert.</p>
-    		<input type="button" value="Investieren" class="medien_inputbutton" data-toggle="modal" data-target="#myModal"> 
+   	<?php if($avail == 0) { ?> 
+   				<p>Das Projekt ist damit ausfinanziert. Vielen Dank!
+   				Sie k&ouml;nnen sich unten kostenlos eintragen, um zuk&uuml;nftig &uuml;ber weitere Projekte informiert zu werden.</p>
+   				<div class="centered">
+					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="registerform">
+  						<input class="inputfield" id="user_email" type="email" placeholder=" E-Mail-Adresse" name="user_email" required>
+  						<input type=hidden name="first_reg" value="projekte">
+  						<input class="inputbutton" type="submit" name="eintragen_submit" value="Kostenlos eintragen">
+					</form>
+				</div>
+	<?php }
+	
+		else { ?>
+		
+    		<input type="button" value="Investieren" class="medien_inputbutton" data-toggle="modal" data-target="#myModal">
+    <?php } ?>	 
     	</div>
-    	<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>">zur&uuml;ck zu den Projekten</a></div>
+    	<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>"><br>zur&uuml;ck zu den Projekten</a></div>
 	</div>
 
 <?php
@@ -69,7 +84,7 @@ else {
      First get total number of rows in data table. 
      If you have a WHERE clause in your query, make sure you mirror it here.
   */
-  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status = 1";
+  $query = "SELECT COUNT(*) as num FROM $tbl_name WHERE `type` LIKE 'projekt' AND status = 1";
   $total_pages = mysql_fetch_array(mysql_query($query));
   $total_pages = $total_pages[num];
   
@@ -83,7 +98,7 @@ else {
     $start = 0;               //if no page var is given, set start to 0
   
   /* Get data. */
-  $sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND spots_sold < spots AND status = 1 order by n asc LIMIT $start, $limit";
+  $sql = "SELECT * from produkte WHERE `type` LIKE 'projekt' AND status = 1 order by n asc LIMIT $start, $limit";
   
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   
