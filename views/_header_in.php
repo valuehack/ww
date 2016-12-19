@@ -3,7 +3,7 @@
 	<head>
     	<meta charset="UTF-8">
 		<title><?=$title?> | Scholarium</title>
-<?php
+<?php //
 		if ($type == 'blog'){
 			?>
     	<meta name="twitter:card" content="summary">

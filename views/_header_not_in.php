@@ -56,7 +56,7 @@
   </head>
     
 <?php
-//set timezone
+//set timezone.
 mysql_query("SET time_zone = 'Europe/Vienna'");
 ?>
 

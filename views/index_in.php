@@ -33,7 +33,7 @@ include ("_header_in.php");
             	<a href="<?=$livestream_url?>">Sehen Sie unseren <?=ucfirst($livestream_type)?> <em><?=$livestream_title?></em> im Livestream</a>
             </div>
 			<?php
-    }//
+    }
 			?>
       
       <div class="jubilaeum_banner">

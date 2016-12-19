@@ -5,7 +5,7 @@
     <title><?=$title?> | Scholarium</title>
 
 
-<?php
+<?php //
     if ($type == 'blog'){
       ?>
 

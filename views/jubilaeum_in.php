@@ -3,7 +3,7 @@ require_once('../classes/Login.php');
 //$title="Schriften";
 include "../views/_header_in_jubilaeum.php";
 
-
+//
 
 ?>
 

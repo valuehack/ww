@@ -76,7 +76,7 @@ include "../views/_header_not_in_jubilaeum.php";
     <div class="salon_type"><?echo ucfirst($entry[type]);?></div>        
     <h1><a href='../<?=$type?>/index.php?q=<?=$id?>'><?=$entry[title]; ?></a></h1>		
     <div class="salon_dates">
-      <?php 
+      <?php //
       if ($entry[start] != NULL && $entry[end] != NULL)
       {
         $tag=date("w",strtotime($entry[start]));
