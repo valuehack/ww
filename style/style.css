@@ -636,6 +636,27 @@ a.subnav_head_jubilaeum:hover {
   padding-top: 100px;
 }
 
+.jubilaeum_banner {
+	width: 70%;
+	padding: 20px 0px 20px 0px;
+	display: inline-block;
+	color: rgb(20,20,20);
+	background: rgb(46,74,98) none repeat scroll 0% 0%;
+	margin: 0px 15% 10px 15%;
+	font-size: 16pt;
+	text-align: center;
+}
+
+
+.jubilaeum_banner a,  .jubilaeum_banner a:hover, .jubilaeum_banner a:visited {
+	color: rgb(255,255,255) !important;
+	text-decoration: none;
+}
+
+.jubilaeum_banner:hover {
+	background: rgb(30,48,64);
+}
+
 /*==================================================*/
 /*                   Ende Jubilaeum              	*/
 /*==================================================*/

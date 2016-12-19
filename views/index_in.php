@@ -35,6 +35,11 @@ include ("_header_in.php");
 			<?php
             }
 			?>
+      
+      <div class="jubilaeum_banner">
+        <a href="jubilaeum">Sehen Sie sich hier die Fotos unseres vergangenen Jubiläums an</a>
+      </div>
+      
             <div class="startpage_section_last_scholie">
 
             		<?php
