@@ -13,7 +13,8 @@ include "../views/_header_not_in_jubilaeum.php";
   </div>
   <div class="jubilaeum_body">
     <p>Das scholarium möchte sich an dieser Stelle bei allen Teilnehmern herzlichst bedanken. Ohne Ihre treue Unterstützung hätte diese Jubiläumskonferenz nicht durchgeführt werden können. Bitte halten Sie uns weiterhin die Treue und lassen Sie uns im Jahr 2026 wieder ein gemeinsames Jubiläum feiern.</p>
-    <p>Für Zugang zu allen Fotos melden Sie sich bitte an. Sollten sie noch keinen Account bei uns haben, können Sie sich neu eintragen.</p>
+    <p>Melden Sie sich mit Ihren Zugangsdaten an, um alle Fotos ansehen zu können. Sollten Sie noch keinen Zugang haben, tragen Sie sich bitte zunächst ein.</p>
+    <p>Wir würden uns freuen, Sie auch im nächsten Jahr wieder willkommen zu heißen. Eine Übersicht unserer kommenden Veranstaltungen finden Sie unten.</p>
   </div>
     <div class="center">
       <button class="inputbutton" type="button" data-toggle="modal" data-target="#login" value="Anmelden">Anmelden</button>

@@ -15,10 +15,11 @@ include "../views/_header_in_jubilaeum.php";
   </div>
   <div class="jubilaeum_body">
     <p>Das scholarium möchte sich an dieser Stelle bei allen Teilnehmern herzlichst bedanken. Ohne Ihre treue Unterstützung hätte diese Jubiläumskonferenz nicht durchgeführt werden können. Bitte halten Sie uns weiterhin die Treue und lassen Sie uns im Jahr 2026 wieder ein gemeinsames Jubiläum feiern.</p>
+    <p>Wir würden uns freuen, Sie auch im nächsten Jahr wieder willkommen zu heißen. Eine Übersicht unserer kommenden Veranstaltungen finden Sie unten.</p>
     <div class="grid">
     <div>
       <?
-        for($i=1;$i<=157;$i++) {
+        for($i=1;$i<=148;$i++) {
           echo "<a href='../jubilaeum/Galerie/jubilaeum".$i.".jpg'><figure><img src='../jubilaeum/Vorschau/jubilaeum".$i.".jpg' /></figure></a>";
         }
       ?>
