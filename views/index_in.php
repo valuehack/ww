@@ -36,9 +36,9 @@ include ("_header_in.php");
     }
 			?>
       
-      <!--div class="jubilaeum_banner">
+      <div class="jubilaeum_banner">
         <a href="jubilaeum">Sehen Sie sich hier die Fotos unseres vergangenen Jubiläums an</a>
-      </div-->
+      </div>
       
             <div class="startpage_section_last_scholie">
 

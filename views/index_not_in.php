@@ -5,9 +5,9 @@ include ("_header_not_in.php"); //
 ?>
 <div class="content">
 	
-	<!--div class="jubilaeum_banner">
+	<div class="jubilaeum_banner">
 		<a href="jubilaeum">Sehen Sie sich hier die Fotos unseres vergangenen Jubiläums an</a>
-	</div-->
+	</div>
 	
 	<div class="blog">
 		<div class="blog_text">
