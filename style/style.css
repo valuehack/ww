@@ -172,6 +172,11 @@ h3 {
 }
 
 /* Class for div - centers everything within */
+.center {
+	display: table;
+	margin: auto;
+}
+
 .centered {
 	text-align: center;
 }
@@ -215,6 +220,7 @@ h3 {
 	min-height: 400px;
 	height:0;
 	padding:0;
+	padding-top: 20px;
 }
 
 .header_jubilaeum img {
@@ -270,14 +276,9 @@ h3 {
 	margin: 0px !important;
 }
 
-.jubilaeum_body2 p {
-	margin-top: 30px;
-	line-height: 20pt !important;
-	font-size: 16pt !important;
-	font-style: italic;
-	color: rgb(64,64,128);
-	text-align: center;
-	margin: 0px !important;
+.jubilaeum_body2 {
+	display: block;
+	margin:auto;
 }
 
 .prunksaal {
@@ -442,6 +443,7 @@ a.subnav_head_jubilaeum:hover {
 	border-style: solid;
 	border-width: 4px;
 	border-color: rgb(120,35,38);
+	margin-bottom: 50px;
 }
 .bss-slides:focus{
  outline: 0;
@@ -576,6 +578,62 @@ a.subnav_head_jubilaeum:hover {
     background: rgba(0,0,0,.4) url(../img/compress_ffffff_64.png);
     -webkit-background-size: contain;
     background-size: contain;
+}
+
+/* Imagegrid */
+
+.grid div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+	width: 80%;
+	margin:auto;
+}
+
+.grid a {
+  display: inline-block;
+  margin-bottom: 8px;
+  width: calc(50% - 4px);
+  text-decoration: none;
+  color: black;
+}
+
+@media screen and (min-width: 75em) {
+  .grid a {
+    width: calc(25% - 6px);
+  }
+}
+
+.grid a:hover img {
+  transform: scale(1.15);
+}
+
+.grid figure {
+  margin: 0;
+  overflow: hidden;
+}
+
+.grid img {
+  border: none;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  background: #ccc;
+  transition: transform .2s ease-in-out;
+}
+
+.p a {
+  display: inline;
+  font-size: 13px;
+  margin: 0;
+  text-decoration: underline;
+  color: blue;
+}
+
+.p {
+  text-align: center;
+  font-size: 13px;
+  padding-top: 100px;
 }
 
 /*==================================================*/
@@ -1573,6 +1631,7 @@ a.subnav_head:hover {
 }
 
 .linie img {
+	display: inline;
 	max-height: 35px;
 	margin: 0px !important;
 }
