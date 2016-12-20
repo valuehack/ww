@@ -21,7 +21,6 @@ if(isset($_GET['denker']))
 	} else {
 			$img = "http://www.mises.at/denker/ma_logo.jpg";
 	}
-	//$img = $result->img;
 
 ?>
 <!--Denker-->
@@ -37,6 +36,35 @@ if(isset($_GET['denker']))
       					if ($img !== "" OR $img !== 0) {
       					echo '<img src="'.$img.'" class="img--portrait" alt="'.$name.'">';
 			}
+			
+			$sql_orte = $general->db_connection->prepare('SELECT id, name FROM orte ORDER BY id DESC');
+			$sql_orte->execute();
+			$result_orte = $sql_orte->fetchAll();
+			
+			$sql_denker = $general->db_connection->prepare('SELECT id, name FROM denker ORDER BY id DESC');
+			$sql_denker->execute();
+			$result_denker = $sql_denker->fetchAll();
+			
+			
+			function addlinks($text, $arrayin, $type){ //$type={denker, ort, ...}
+				$zeichen = array(".",",",")"," ","s","'",";");
+				$name = "name";
+				$id = "id";
+				foreach($zeichen as $i){
+					$links = array();
+					$words = array();
+					for ($n = 0; $n < count($arrayin); $n++) {
+						array_push($links, "<a href='../".$type."/?".$type."=".$arrayin[$n][$id]."'>".$arrayin[$n][$name]."</a>".$i);
+						array_push($words, $arrayin[$n][$name].$i);
+					}
+					$text = str_replace($words , $links , $text); 
+				}
+				return $text;
+			}
+			
+			$bio = addlinks($bio, $result_orte, "ort");
+			$bio = addlinks($bio, $result_denker, "denker");
+			
       	?>
       			</div>
       		</div>
