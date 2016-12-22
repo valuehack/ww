@@ -46,7 +46,7 @@ if(isset($_GET['denker']))
 			$result_denker = $sql_denker->fetchAll();
 			
 			
-			function addlinks($text, $arrayin, $type){ //$type={denker, ort, ...}
+			function addlinks($text, $arrayin, $category, $type){ //$type={denker, ort, ...}
 				$zeichen = array(".",",",")"," ","s","'",";");
 				$name = "name";
 				$id = "id";
@@ -54,7 +54,7 @@ if(isset($_GET['denker']))
 					$links = array();
 					$words = array();
 					for ($n = 0; $n < count($arrayin); $n++) {
-						array_push($links, "<a href='../".$type."/?".$type."=".$arrayin[$n][$id]."'>".$arrayin[$n][$name]."</a>".$i);
+						array_push($links, "<a href='../".$category."/?".$type."=".$arrayin[$n][$id]."'>".$arrayin[$n][$name]."</a>".$i);
 						array_push($words, $arrayin[$n][$name].$i);
 					}
 					$text = str_replace($words , $links , $text); 
@@ -62,8 +62,8 @@ if(isset($_GET['denker']))
 				return $text;
 			}
 			
-			$bio = addlinks($bio, $result_orte, "ort");
-			$bio = addlinks($bio, $result_denker, "denker");
+			$bio = addlinks($bio, $result_orte, "orte", "ort");
+			$bio = addlinks($bio, $result_denker, "denker", "denker");
 			
       	?>
       			</div>
