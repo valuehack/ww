@@ -67,16 +67,16 @@ $result = mysql_query($sql) or die("Failed Query of " . $sql. mysql_error());*/
 
 //Email an Interessenten
 
-$body = "Hallo $firstname,\n\n
-Vielen Dank fuer Dein Interesse. Wir melden uns in Kuerze bei Dir.\n\n
-Wir freuen uns schon, Dich bald an Bord zu haben!\n\n
-Die Crew der craftprobe";
+$body = "Hello $firstname,\n\n
+We are glad that you are interested in joining our voyage and we will get back to you shortly.\n\n
+Looking forward to seeing you on board!\n
+The craftprobe crew\n\n";
 
-mail ($email,"Willkommen bei der craftprobe",$body,"From: info@scholarium.at\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
+mail ($email,"Welcome to craftprobe",$body,"From: info@scholarium.at\nContent-Type: text/plain; charset=\"UTF-8\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
 
 //Email an Uns
 
-//mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat sich als Interessent eingetragen","From: $email\nContent-Type: text/plain; charset=\"iso-8859-1\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
+mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat sich als Interessent eingetragen","From: $email\nContent-Type: text/plain; charset=\"UTF-8\"\nContent-Transfer-Encoding: 8bit\nX-Mailer: SimpleForm");
 }
 
 ?>
@@ -86,7 +86,7 @@ mail ($email,"Willkommen bei der craftprobe",$body,"From: info@scholarium.at\nCo
     <head>
         <meta charset="UTF-8">
         <title>craftprobe</title>
-        <meta name="description" content="Ein intensives Monatsprogramm">
+        <meta name="description" content="One Month Program in Entrepreneurship">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -105,6 +105,10 @@ mail ($email,"Willkommen bei der craftprobe",$body,"From: info@scholarium.at\nCo
 
     </head>
     <body>
+    	<div id="notice" class="notice">
+    		<a href="http://www.scholarium.at/eltern.php">&rarr; deutschsprachige Information f&uuml;r Eltern</a>
+    		<button class="dismiss" onclick="dismissNotice();">X</button>
+    	</div>
     	<section class="main-title">
         	<header class="header">
             	<a href="."><p>craft<span>probe</span></p></a>
@@ -115,25 +119,24 @@ mail ($email,"Willkommen bei der craftprobe",$body,"From: info@scholarium.at\nCo
 				</div>
 				<div id="nav">
             		<ul>
-               	 		<li><a href="#ueber" onclick="showNav();return false;">Über</a></li>
-                		<li><a href="#programm" onclick="showNav();return false;">Programm</a></li>
-                		<li><a href="#ort" onclick="showNav();return false;">Ort</a></li>
-                	    <li><a href="#fragen" onclick="showNav();return false;">Fragen</a></li>
-                		<li><a href="#teilnahme" onclick="showNav();return false;">Teilnahme</a></li>
-                		<li>&nbsp;</li>
-                		<li><a href="http://craftprobe.com/en/"><i>English</i></a></li>
+               	 		<li><a href="#about" onclick="showNav();return false;">About</a></li>
+                		<li><a href="#manual" onclick="showNav();return false;">Manual</a></li>
+                		<li><a href="#course" onclick="showNav();return false;">Course</a></li>
+                		<li><a href="#vessel" onclick="showNav();return false;">Vessel</a></li>
+                		<li><a href="#crew" onclick="showNav();return false;">Crew</a></li>
+                		<li><a href="#board" onclick="showNav();return false;">Board</a></li>
             		</ul>
            		</div>
        	 	</header>
         	<?   if($ok == 1) {
 					echo '<div class="ok">
-					<h1>Danke f&uuml;r Dein Interesse.</h1>
-					<p>Deine Teilnahmebewerbung wurde abgeschickt.</p>
+					<h1>Thank you for your interest in craftprobe!</h1>
+					<p>You successfully submitted your boarding request.</p>
 					</div>';
 }
 ?>
           	<div class="banner" id="oben">
-            	<div class="bannerimg" style="background-image: url(img/craftprobe.jpg);"></div>
+            	<div class="bannerimg" style="background-image: url(img/craftprobe_en.jpg);"></div>
 	        	<div class="arrow-down">
             		<a href="#ueber">
                     	<div class="arrow-down__icon"></div>
@@ -142,174 +145,186 @@ mail ($email,"Willkommen bei der craftprobe",$body,"From: info@scholarium.at\nCo
         	</div>
         </section>
         <!--<div class="content">-->
-            <section id="ueber" class="s1">
+            <section id="about" class="s1">
 
-				<p>Frauen und M&auml;nner f&uuml;r ein waghalsiges Abenteuer gesucht. Keine Multiple-Choice-Tests, kein veraltetes Schulbuchwissen, aber auch kein hipper Start-Up-Unsinn. Zeitig aufstehen, intensives Arbeiten. Muskelkater wahrscheinlich. Erkenntnisgewinn sicher. Eine schonungslose Konfrontation mit der Realit&auml;t.</p>
-				<a><img class="img_floatr" src="img/cp1.jpg" name="Home"></a>
-				<p>Jugendliche von heute sind &uuml;berrumpelt von den scheinbar unendlichen M&ouml;glichkeiten, die ihnen geboten werden und haben Sorge, das entscheidende Ereignis zu verpassen. Einige fliehen in virtuelle Welten, andere verfallen einem ungesunden Karrierismus &ndash; kalt l&auml;sst diese Zeit niemanden. Ein Universit&auml;tsstudium ist oft nur ein willkommenes Alibi, um das Erwachsenwerden hinauszuschieben oder sinnlose Zertifikate zu sammeln, w&auml;hrend man sich um wesentliche Entscheidungen herumdr&uuml;ckt.</p>
+				<p>craftprobe is an intense one-month program in Vienna, Austria, offering a limited number of selected participants a unique educational and life experience to prepare for the future and make better decisions. Young people today are flooded with educational, entrepreneurial and career options, which makes life decisions really difficult. After a month of craftprobe you will know your strengths, have a clearer picture of future developments and your place within the world. You will be able to develop, with the support of some of the best brains and tools and through entrepreneurial projects, practical experiments and profound reflection, the necessary skills and ideas to create real value. Not the fake value pseudo-managers and pseudo-politicians are offering: either some over-hyped shiny stuff you do not need, to be paid for with money you do not have, or the fiction by which everyone tries to live at the expense of everybody else. Cut the crap, get real!</p>
 
+<p>craftprobe is a systematic reality check, always intent to build real things and develop real solutions, as it is run by an enterprise and not an agency, program or school. In view of the hugely distorted markets the shareholders of craftprobe&apos;s mothership do not strive to pocket quick profits but to develop a unique entrepreneurial laboratory to find feasible, small-scale solutions for tomorrow&apos;s problems.</p>
 
-				<p>Die craftprobe ist eine Realit&auml;tspr&uuml;fung f&uuml;r junge Erwachsene mit Drang zum Selberdenken und Andersmachen. Dabei handelt es sich um ein extrem intensives einmonatiges Programm in Wien (&Ouml;sterreich), das einer beschr&auml;nkten Zahl von Teilnehmern eine einzigartige Lebenserfahrung bietet, die darauf vorbereitet, bessere Entscheidungen unter der Ungewissheit der Zukunft zu treffen. Nach der craftprobe kennst Du Deine St&auml;rken und hast ein klareres Bild von zuk&uuml;nftigen Entwicklungen und Deinem Platz in der Welt. Mit der Hilfe einiger der besten K&ouml;pfe und Werkzeuge und in unternehmerischen Projekten, praktischen Experimenten und tiefgehender Reflexion entwickelst Du die notwendigen Fertigkeiten und Ideen, um reale Werte zu schaffen. Nicht die Pseudowerte, die Pseudomanager und Pseudopolitiker anbieten: entweder irgendeinen gehypten Schrott, den Du nicht brauchst, bezahlt mit Geld, das Du nicht hast, oder die Fiktion, durch die jeder versucht, auf Kosten aller anderen zu leben.</p>
-				<a><img class="img_floatl" src="img/cp7.jpg" name="Home"></a>
-				<p>craftprobe wird von einem Unternehmen angeboten, nicht von einer Agentur, Beh&ouml;rde oder Schule. Die Eigent&uuml;mer des Tr&auml;gerunternehmens zielen angesichts der verzerrten M&auml;rkte nicht auf schnelle Profite ab, sondern wollen ein unternehmerisches Labor aufbauen, in dem realistische, kleinr&auml;umige L&ouml;sungen f&uuml;r die Probleme von morgen entwickelt werden. Das Programm tr&auml;gt den Namen craftprobe, was im Englischen grob &uuml;bersetzt &bdquo;Sondieren beruflicher Fertigkeiten&ldquo; bedeutet und im Deutschen auf die Kraftproben Bezug nimmt, die in traditionellen Gesellschaften den &Uuml;bergang von der Jugend ins Erwachsenenalter markieren. Fehlen solche selbst&auml;ndigen Kraftproben, werden sie durch leichtsinnige Mutproben kompensiert oder die Selbst&auml;ndigkeit misslingt zum Preis ewiger Abh&auml;ngigkeiten.</p>
+<p>Are you looking for a job? Almost everyone is, but entry level jobs are becoming scarcer and scarcer. Bad news: Due to current technological developments, the business cycle and political interventionism, soon there will be hardly any jobs for young people who have had no chance to prove their creativity and productivity &mdash; a vicious circle, because how to prove yourself without ever landing a sustainable job? Teachers, journalists, politicians have been misleading you for quite a while, but they do not know better. We understand your anger and fear. Better shape up and try to prepare for an uncertain future where many economic premises will turn out to be illusions.</p>
 
-				<p>Suchst Du einen Job? Fast jeder tut das heute, aber Einstiegsjobs werden immer knapper. Schlechte Nachrichten: Aufgrund aktueller technischer Entwicklungen, des Konjunkturzyklus und politischen Interventionismus wird es bald kaum noch Jobs f&uuml;r junge Menschen geben, die bislang noch keine Gelegenheit hatten, ihre Kreativit&auml;t und Produktivit&auml;t zu beweisen &ndash; ein Teufelskreislauf, denn wie soll man sich beweisen, wenn man gar keine Gelegenheit dazu erh&auml;lt? Lehrer, Journalisten und Politiker haben junge Menschen schon eine ganze Weile in die Irre gef&uuml;hrt, aber sie wissen es auch nicht besser. Wir verstehen Deine Wut und Angst. Sinnvoller ist es, wenn Du Dich selbst f&uuml;r eine ungewisse Zukunft vorbereitest, in der sich viele wirtschaftliche Annahmen als Illusionen erweisen werden.</p>
+<p>This is where we come in. Not because we know the future, but because we are open and willing to face it. We are an enterprise that does not entirely depend on current markets but explores future markets and checks today&apos;s premises. craftprobe is a unique personal development program to help you prepare for this uncertain future, but not through brainwashing, psychobabble or motivational lectures, ebooks, guides and videos that promise you some kind of bogus certainty, but through concrete and relevant projects and tasks that explore products, processes, tools, markets and ideas.</p>
 
-				<p>Dazu dient die craftprobe. Nicht, weil wir die Zukunft genau kennen, sondern weil wir offen und bereit sind, die Herausforderung anzunehmen. Die craftprobe ist ein einzigartiges Pers&ouml;nlichkeitsentwicklungsprogramm, um Dich auf diese ungewisse Zukunft vorzubereiten, aber nicht durch Hirnw&auml;sche, Psychogeschw&auml;tz oder motivierende Reden, e-Books, Ratgeber oder Videos, die Dir eine falsche Gewissheit versprechen, sondern durch konkrete und relevante Projekte und Aufgaben, die Produkte, Prozesse, Werkzeuge, M&auml;rkte und Ideen erkunden. Wir lieben das Erkunden des Unbekannten, wir lieben Unternehmertum, wir lieben das Lernen neuer Ideen, Fertigkeiten und Wege, wir lieben unsere Freiheit und Individualit&auml;t. Wir misstrauen Experten, Politikern, Bankiers, Managern, Journalisten, Lehrern, Venturekapitalisten genauso wie wir Gurus, Untergangspropheten, Ideologen, Gutmenschen, Hipstern, Internetpromis und -trollen misstrauen. craftprobe ist eine Kraftprobe &ndash; die Teilnahme an unserer Expedition ist definitiv nichts f&uuml;r Weicheicher. Bequeme Illusionen k&ouml;nnten ersch&uuml;ttert werden. Wir tolerieren keinerlei Bullshit an Bord.</p>
-
-				<div class="centered">
-					<iframe width="100%" height="500" src="https://www.youtube.com/embed/GvkK5SRvE2I/?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
-				</div>
-                <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
-            </section>
-            <section  id="programm" class="s2">
-                <h1>Programm</h1>
-
-                <p><b>Daten:</b></p>
-
-                <ul>
-                	<li>Termin: 1.-31. August 2017</li>
-                	<li>Ort: <i>scholarium</i> in Wien (Schl&ouml;sselgasse 19/2/18, 1080 Wien)</li>
-                	<li>Maximale Teilnehmerzahl: 12 Personen</li>
-                	<li>Kosten: 1.900 &euro;</li>
-                	<li>Kontakt: <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;">&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;</a></li>
-                </ul>
-
-                <p>Die Ausbildungsschwerpunkte liegen in den Bereichen Praktische Philosophie, Unternehmertum, digitale und analoge Werkzeuge sowie Naturkunde. Eine Auswahl der bislang angebotenen Module:</p>
-
-				<div class="block">
-					<div class="blockr">
-						<a><img class="img_floatr" src="img/cp2.jpg" name="Home"></a>
-							<div class="textl">
-								<ul>
-									<li>Unternehmensgr&uuml;ndung und Unternehmensf&uuml;hrung</li>
-									<li>Wirtschaftswissenschaft, Sozialwissenschaft und Philosophie</li>
-									<li>CNC-Steuerung und 3D-Druck, Prototypenerstellung</li>
-									<li>Grundlagen der Medizin und Neurowissenschaft</li>
-									<li>Marketing und SEO-Optimierung</li>
-									<li>Produktion eines Werbefilms</li>
-									<li>Grundlagen der Politik- und Rechtswissenschaft</li>
-									<li>Landwirtschaftsprojekt: Anbau von Biogem&uuml;se</li>
-								</ul>
-							</div>
-						</div>
-						<div class="blockl">
-							<a><img class="img_floatl" src="img/cp3.jpg" name="Home"></a>
-							<div class="textr">
-								<ul>								
-									<li>Einf&uuml;hrung in Aquaponik</li>
-									<li>Grundlagen der Permakultur</li>
-									<li>Einf&uuml;hrung ins Bauingenieurwesen</li>
-									<li>Besuche von Unternehmern, Wissenschaftlern, Künstlern</li>
-									<li>Wanderungen, Survival</li>
-									<li>Schauspielkurs mit Roland D&uuml;ringer</li>
-									<li>Professionelle Fotografie</li>
-									<li>Einf&uuml;hrung in Typographie und Corporate Design</li>
-								</ul>
-							</div>
-						</div>
-						<div class="blockr">
-							<a><img class="img_floatr" src="img/cp6.jpg" name="Home"></a>
-							<div class="textl">
-								<ul>
-									<li>Design-orientiertes Gr&uuml;nden</li>
-									<li>Einf&uuml;hrung in Modeschnitt</li>
-									<li>Technisches Zeichnen mit AutoCAD</li>
-									<li>Satz mit Indesign</li>
-									<li>Grafisches Gestalten mit Photoshop</li>
-									<li>Programmieren in PHP, SQL, C, Python und Javascript</li>
-									<li>Webgestaltung mit HTML, CSS und Templates</li>
-									<li>Leichtathletik, Tennis, Fu&szlig;ball, Trampolin</li>
-							</div>
-						</div>
-						<div class="blockl">
-							<a><img class="img_floatl" src="img/cp5.jpg" name="Home"></a>
-							<div class="textr">
-								<ul>
-									<li>Grundlagen des M&ouml;belbaus</li>
-									<li>Bibliotheksverwaltung</li>
-									<li>Grundlagen des Interior Design</li>
-									<li>Psychologische Typenerkennung</li>
-									<li>Sprachkurse: Chinesisch, Russisch, Italienisch</li>
-									<li>Textwerkstatt Deutsch/Englisch, Fach&uuml;bersetzung</li>
-									<li>Eventorganisation &amp; Catering</li>
-									<li>Entwicklung und Pr&uuml;fung von Unternehmensideen</li>
-								</ul>
-							</div>
-						</div>
-						<div class="blockr">
-							<a><img class="img_floatr" src="img/cp4.jpg" name="Home"></a>
-								<div class="textl">
-									<ul>
-										<li>Robotik mit Arduino</li>
-										<li>Social Media Marketing</li>
-										<li>Hausbau/Lehmbau</li>
-										<li>Einf&uuml;hrung in Botanik &amp; Pflanzenzucht</li>
-										<li>Gesangsschulung</li>
-										<li>Musikarrangement und Komposition</li>
-									</ul>
-								</div>
-						</div>
-					</div>
-
-                <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
-            </section>
-            <section  id="ort" class="s3">
-                <h1>Ort</h1>
-
-                <p>Das <i>scholarium</i> ist eine unabh&auml;ngige Forschungs- und Bildungseinrichtung, die ausschlie&szlig;lich &uuml;ber das freiwillige Engagement von B&uuml;rgern finanziert wird. <i>scholarium</i> steht f&uuml;r die &bdquo;Gemeinschaft der Lernenden&ldquo;, und als lernendes Unternehmen bietet es eine Erg&auml;nzung zu anerkannten universit&auml;ren Ausbildungen. Das praktische Curriculum wird in Kooperation mit erfolgreichen &ouml;sterreichischen und internationalen Unternehmen entwickelt und evaluiert. Die Eigent&uuml;mer dieser Unternehmen &uuml;ben als Gesellschafter die Aufsicht und Qualit&auml;tskontrolle des <i>scholarium</i> aus. Das Tr&auml;gerunternehmen des Programms ist gemeinn&uuml;tzig und wurde von einer Gruppe erfolgreicher Unternehmer aus &Ouml;sterreich, Deutschland, Schweiz und Liechtenstein gegr&uuml;ndet, aus dem Antrieb heraus, der n&auml;chsten Generation Wertvolles mitzugeben und ihr Mut zur Eigenverantwortung zu machen.</p>
-
-                <p>Das <i>scholarium</i> liegt in einem der &auml;ltesten, kreativsten und gebildetsten Vierteln Wiens, in der N&auml;he einer der &auml;ltesten Universit&auml;ten der Welt (von deren glorreicher Vergangenheit aber kaum mehr als die Fassaden &uuml;berlebt haben), direkt neben einem sch&ouml;nen, versteckten Kloster, in dem die allerletzten Stadtm&ouml;nche Garten und Bibliothek hegen. Die Sch&ouml;nheit des Ortes ist inspirierend: Historische R&auml;umlichkeiten mit hohen Decken, ges&auml;umt von einer der gro&szlig;artigsten Privatbibliotheken Wiens, die gen&uuml;gend Platz und Ruhe f&uuml;r praktische Experimente und theoretische Reflexion bieten.</p>
-
-				<p>Wir w&auml;hlten Wien als Heimathafen aufgrund der hohen Lebensqualit&auml;t, des einmaligen Zugangs zu Kultur und Natur und des reichen Erbes als historisches Zentrum von Wissenschaft und Unternehmertum. Wien ist der Geburtsort der Wiener Schule der &Ouml;konomik, die einzige &ouml;konomische Tradition, die sich auf den Unternehmer konzentriert und das Unternehmertum hochh&auml;lt, w&auml;hrend sie gegen&uuml;ber der finanziell und politisch inflationierten Blasenwirtschaft und der damit verbundenen Inflation von Unsinn h&ouml;chst kritisch ist. Doch Wien ist auch der Geburtsort der Logotherapie, der Sinnsuche und der Kritik des Zynismus, Relativismus und verk&uuml;rzten Materialismus.</p>
-
-				<p>Wenn Du f&uuml;r diese Reise geeignet bist, sind wir &uuml;berzeugt, dass Du die Zeit bei uns an Bord niemals vergessen wirst &ndash; es wird einer der besten und sch&ouml;nsten Lebenserfahrungen bleiben, wie zahlreiche begeisterte Teilnehmer best&auml;tigen. Kein anderes Bildungsprogramm oder Praktikum kommt dieser Erfahrung auch nur nahe.</p>
-
-   <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
+<p>We love exploring the unknown, we love entrepreneurship, we love learning new ideas, new skills and new ways, and we love our liberty and individuality. We distrust experts, politicians, bankers, managers, journalists, teachers, venture capitalists, just as much as we distrust gurus, doomsayers, ideologues, do-gooders, hipsters, internet celebrities and trolls. Ready to board our craft? Ready to develop your skills and probe into the unknown? craftprobe is a trial of strength. Joining our expedition is definitely not for the weak of heart. Illusions might get shattered. We cannot tolerate any bullshit on board (it stinks). If you have what it takes, apply to join us on the bridge.</p>
+                <p><a href="#top">Back to the top</a></p>
             </section>
 
-            <section id="fragen" class="s4">
-            	<h1>Fragen</h1>
+            <section id="manual" class="s2">
+            	<h1>MANUAL</h1>
 
-				<h2>F&uuml;r wen ist die craftprobe gedacht?</h2>
+				<h2>Who is this for?</h2>
 
-				<p>F&uuml;r alle, die alt genug sind, um unabh&auml;ngig zu werden, und jung genug sind, um abseits der ausgetretenen Pfade zu wandern. Das bedeutet &uuml;blicherweise ein Alter zwischen 17 und 27. Die craftprobe ist ganz sicher nichts f&uuml;r jene, die eine typische Karriere suchen, in der ihnen jemand bis zur Pensionierung vorschreibt, was zu tun ist, oder jene, die glauben, dass ein Universit&auml;tsdiplom einen Anspruch auf einen gut bezahlten, interessanten und einfachen Job bedeutet. Wenn Du den Verdacht hast, dass es da drau&szlig;en mehr gibt, als die Universit&auml;t lehrt, die Medien beschreiben, die Politiker zugeben, und dass die Zukunft radikal anders sein k&ouml;nnte als die Elterngeneration erwartete, und Dich trotzdem nicht einfach in die virtuelle Realit&auml;t vor einer herausfordernden Welt zur&uuml;ckziehen willst, sondern den Mut und die Energie hast, diesen Herausforderungen zu begegnen, dann bist Du genau derjenige/diejenige, den/die wir suchen.</p>
+				<p>Anyone old enough to be or become independent, and young enough to challenge conceived wisdom and walk off the beaten track. This means that the usual age bracket of our explorers is 18 to 28. 18 is the minimum age for insurance reasons (we do some dangerous stuff). If you are above 28, but absolutely longing for such a restart and reexamination, and financially independent, we may be able to make it happen. In this case do not apply, just contact us. Normally, 28 is the maximum age, because after that you will either have already invested too much sunk costs in the status quo or be a sad failure (most are, do not take it personally). Please leave us alone if you are looking for a 9-5 career where someone tells you what to do until retirement or if you think your degree somehow deserves you a well paid, fun and easy job. If you suspect that there is more out there than university teaches, the media informs about and politicians admit and that the future may be radically different from what the generation of your parents expects, but do not feel like retiring to virtual reality from a challenging world and have the courage and energy to confront those challenges, then you may just be the crew member we have been looking for.</p>
 
-				<h2>Wann soll ich teilnehmen?</h2>
-				<p>Die h&auml;ufigsten Optionen sind:</p>
+				<h2>When should I do it?</h2>
+				<p>The most common options are:</p>
 					<ol>
-
-						<li>Direkt nach Matura/Abitur, bevor Du Dich an der Universit&auml;t einschreibst oder eine andere Karriereentscheidung triffst. Je fr&uuml;her, desto besser, denn je l&auml;nger Du wartest, desto mehr wirst Du es bereuen. Dir einen Monat Zeit zu nehmen, bevor Du an die Universit&auml;t gehst, ist die beste Entscheidung, die Du treffen kannst.</li>
-						<li>W&auml;hrend Deines Studiums in den Semesterferien.</li>
-						<li>Nach Deinem Bachelor, wenn Du Dich fragst, ob Du noch einen Master machen sollst oder nicht, oder Wartezeiten zu &uuml;berbr&uuml;cken hast. Viele Studenten qu&auml;len sich in dieser Zeit mit Zweifeln und Frustration. Verschwende Deine Zeit nicht! Die craftprobe ist der perfekte L&uuml;ckenf&uuml;ller, der letztlich wichtiger als Deine Studien und Abschl&uuml;sse sein k&ouml;nnte.</li>
-						<li>Nach dem Abschluss der Universit&auml;tsstudien, wenn es um den Einstieg in den Arbeitsmarkt geht. Hast Du Dir schon einmal unternehmerische Alternativen &uuml;berlegt? Aber auch wenn Du vor Karrierebeginn noch pers&ouml;nlich wachsen und einen Startvorteil erlangen willst, indem Du die realen Lektionen nachholst, die Dir bislang an der Universit&auml;t vorenthalten blieben, ist die craftprobe genau das Richtige f&uuml;r Dich.</li>
+						<li>Directly after your school-leaving exam, before enrolling at university or making another career choice. You either take a gap year or at least use shorter gaps to prepare for a better decision and lay the right foundations for your life. The earlier the better, the longer you wait the more you will regret. Taking time for a month before going to university is the best choice you can make.</li>
+						<li>After your Bachelor&apos;s degree, when considering or waiting for enrollment for a Master&apos;s degree. Many students face extended periods in doubt and frustration. Do not waste this time! craftprobe is the perfect gap filler, next to which in retrospect your studies and degrees will fade in importance.</li>
+						<li>After finishing university and when trying to enter the job market. You will realize that it is getting more and more difficult to land a job right out of university. Have you considered entrepreneurial alternatives? Even if you just want to grow personally, develop a network and get a head-start for your professional career, by making up for all the real-life lessons university has spared you, craftprobe is just what you are looking for.</li>
 					</ol>
+				<p>The next craftprobe will take place in August 2017 (1st&ndash;31st).</p>
 
-				<h2>Wieviel kostet es?</h2>
-				<p>Ein praktisches Programm dieser Art ist normalerweise unleistbar, alternative Angebote kosten 7.000 &euro; und mehr. Da die craftprobe von einem steuerbefreiten Unternehmen angeboten wird, das gr&ouml;&szlig;ten Wert auf Effizienz und Effektivit&auml;t legt, konnten wir die Kosten auf 1.900 &euro; reduzieren. Dieses Angebot gilt nur f&uuml;r 12 Teilnehmer. Wenn Du den Kostenbeitrag selbst nicht aufbringen kannst, helfen Dir vielleicht Eltern oder Verwandte dabei. Gerne stehen wir diesen f&uuml;r Fragen zur Verf&uuml;gung.</p>
+				<h2>How much does it cost?</h2>
+				<p>A practical program of this kind is usually prohibitively expensive. As the program is run by a non-profit enterprise which puts a high value on efficiency and effectiveness, we are able to cut costs to 1.900&euro;. Usually, parents or close relatives are willing to help you get a head-start in life. In order to convince them to bear the costs, you can direct them to <a href="http://www.scholarium.at/eltern.php">this page</a>, if they speak German, where we have compiled all information for your parents/relatives/sponsors.</p>
 
-				<h2>Bekomme ich einen Abschluss? Und damit leichter einen Job?</h2>
-				<p>Du bekommst kein staatlich akkreditiertes Diplom, sondern eine persönliche Urkunde, die Arbeitgebern den Wert und Inhalt des Programms vermittelt. Die craftprobe ist keine Alternative zu einem akkreditierten Studium, sondern die notwendige Ergänzung, um bessere Bildungs- und Karriereentscheidungen zu treffen. Deine Jobaussichten im Sinne von realen und nachvollziehbaren Fähigkeiten, realen Wert für reale Kunden zu schaffen, sollten sich dramatisch verbessern.</p>
+				<h2>Do I get a degree? Will my employability rise?</h2>
+				<p>You will not get a state-accredited degree, but a personal certificate and a documentation of your strengths. Coming on board is not an alternative to university or vocational training, but a short-time program to help you make better decisions on your education and career. Your employability in the sense of a real and proven capacity to create value for real clients should rise a lot.</p>
 
-        <a><img class="mittig" src="img/cp8.jpg" name="Home"></a>
-            <p><a href="#oben">Zur&uuml;ck nach oben</a></p>
+				<h2>Why should I do that? No degree, no certificate, no money, no prestige, are you kidding? What is in it for me?</h2>
+				<p>YOU should not. It all seems so easy in the beginning. You will get a degree, you will gather a few more certificates, and your dream job is waiting for you. If you are not employed right away, you only have to gather more certificates and do more internships. Until some day you realize that no-one is waiting for you. Then the only way out of frustration is enthusiasm for some start-up. While you dream of sudden riches, you exploit yourself for another web app, another drink, another gadget. Only that 80% of start-ups fail, and we are still in the midst of a bubble economy. More will fail when the bubble bursts. Or, on the other hand, you are a high-potential. A consultancy firm, investment bank or big corporation has recruited you right away. If you are checking out this site it is unlikely that you are at this stage. You would be exploited for good money and prestige and have neither time nor eagerness to explore alternatives. If you are not broken physically, you are broken mentally, and if not mentally, you are broken spiritually. At age 30 you may come to us whining, and it may well be too late. We do not mean to take away all hope. We are quite optimistic, only very down to earth. If you aim too hard at success, you will most certainly miss it. But there is still so much to succeed at in this world, so many unsolved problems, awaiting challenges, hidden treasures. We may not have a map for treasure island, but our amazing vessel can go places where no one else is digging. Yes, you will get no fancy paper. Instead, you will get inspired, challenged, and prepared for the real world. No bullshit.</p>
 
+				<h2>Why is it all in English? Are you embarrassing hipsters?</h2>
+				<p>We live in a global age. We have been connected for power and profit, for this we cannot take the blame. The things, ideas and voices that make sense are so rare and widely dispersed in this ocean of bullshit, which has been let loose around the globe, that we simply cannot afford to withdraw from the world and play deaf and mute for national pride. For most of our team, English is not a native language, but we are natives of a world that converses in English. We are masters of our native languages, we love them and we need them. Currently, our team is able to converse in German, French, Spanish, Persian, Arabic and Hungarian as well, if you prefer. Everyone who joins us will at least perfect his English and learn German. Speaking German or English is no condition to come on board, but speaking either of those languages and being willing to learn some of the other is. German is not only one of the richest and most precise languages that opens up a rich heritage of science and culture, but also the language that adds the most economic benefit for foreign speakers. According to a recent study, Americans who are able to speak German earn on average $128,000 more during their lifetime.</p>
+                <p><a href="#top">Back to the top</a></p>
+            </section>
+            <section  id="course" class="s3">
+                <h1>Course</h1>
+
+                <p>You will probe into <b>culture</b>: Most start-ups and entrepreneurial education programs are rather shallow. You mainly learn how to sell promises of endless riches to greedy investors, promises of faked coolness to indebted consumers and promises of heroic images to funding bureaucrats. Our vessel goes much further and ignores all the need for hype and glamour. Based in one of the capitals of old European culture, a historic center of science, art, literature, music and trade, we have access to an ancient treasure trove of thought and creation. We do not live in the past but think about the future standing on the shoulders of giants. Right on board we carry along one of the most spectacular private libraries of Austria, with a unique selection of masterworks in practical philosophy, economics and history.</p>
+
+				<p>You will probe into the <b>market</b>: Many alternative educational programs are too much rooted in the past or too aloof in ivory towers to really understand what is going on in the world today and where it will lead. We are young natives of a globalized and digital world. Our captain is a renowned visionary with both feet firmly on the ground: As an economist, entrepreneur, physicist and investment consultant, he has just the eye to tell promising trends and ominous dynamics from hyped bullshit. We are following the markets and geopolitics, and are sober, down-to-earth entrepreneurs at the forefront of innovation. We are continually checking premises, gathering data, scouting for opportunities and challenges.</p>
+
+				<p>You will probe into <b>nature</b>: Austria is famous for its magnificent, largely intact, rough nature. This is a boundless resource for knowledge and self-reliance. It is a historic center of alpinism, of seeking challenges, sharpening the senses and strengthening the body in the world&apos;s most beautiful and breathtaking training circuit toughened by elements and terrain. In Austria, ancient traditions of agriculture, horticulture, medicine and craft have survived the ages which contain amazing amounts of lost knowledge. We gain hands-on experience and learn from masters hidden in distant valleys and on secluded mountains. No laboratory, no network, no university can replace this immense study resource at our hands. Our team comprises tough sportsmen and survivalists that guide us through challenging explorations of natural abundance and our inner potential to become truly self-reliant.</p>
+
+				<p>You will probe into <b>digital tools</b>: A thorough command of cutting-edge digital tools is a precondition of a successful, creative, entrepreneurial and self-reliant life. Most modern interactions, be it in communication, research or trade, are based on a digital infrastructure. Learning to code is like the sailing license without which you will not be very useful on board of a craft in today's stormy waters. We are learning by doing and continually probing into the newest tools, most of which are of course senseless time-wasters, but some of which are absolutely necessary to stay on top of the wave. Access to modern CNC and prototyping equipment allows us to translate our digital endeavors into real objects.</p>
+
+				<p>You will probe into <b>analog tools</b>: Austria is infused with a spirit of makers, craftsmen and artists. On the countryside people are to an amazing degree technologically self-reliant, being able to fix what is broken and continually finding hacks to make work what seems impossible. We get our hands dirty and experiment with the most versatile tools we can lay our hands on. A network of master craftsmen helps us in our explorations. The artist and creator is unthinkable without the right tools. There is so much of value outside our screens with their unhandy, fake gadgets. We need to understand the real, physical world in order to change it. Most educational alternatives just bombard you with even more digital information. You need to cut the cord once in a while if you really mean to learn something useful.</p>
+
+				<p>You will probe into your <b>own projects and ideas</b>. We will support you with infrastructure, investment, tools, contacts, and brains. This way you will be able to try out and develop skills, ideas, products, solutions, campaigns, brands, research interests, maybe even your own company or organization, in the widest possible variety of industries and fields. In your free time you can have all the culture, partying and nature you like &ndash; partly on your own, making new friends, partly with fellow crew members. Explore art, music, theatre, opera, history, go skiing, rafting, hiking, biking, travel to neighboring Italy, Czech Republic, Hungary, Slovakia, Slovenia, Switzerland, Germany, Liechtenstein, or simply relax in the place ranked to have the highest quality of life on this planet.</p>
+                <p><a href="#top">Back to the top</a></p>
+            </section>
+            <section  id="vessel" class="s4">
+                <h1>Vessel</h1>
+                <p>Our first craft is anchored in one of the most ancient, creative and educated parts of Vienna, close to one of the oldest universities of the world (alas, of past glories not much more than the facades has survived), neighboring a beautiful, hidden monastery where the last remaining urban monks tend to their garden and library. The beauty of our deck and cabins will inspire you: in a historic building with high ceilings and impeccable interiors we explore, experiment and innovate within walls adorned by one of the most spectacular private libraries of Vienna, yet with plenty of space and equipment for practical endeavors.</p>
+
+				<p>We chose Austria as our home port for the high quality of life (Vienna is ranked highest worldwide), the unparalleled access to culture and nature, and the rich heritage as a center of science and entrepreneurship. Austria is the birthplace of the Austrian School of Economics, the only economic tradition that focusses on the entrepreneur and cherishes entrepreneurship while at the same time being highly critical of the financially and politically inflated bubble economy and the concomitant inflation of bullshit. But Austria is also the birthplace of logo-therapy, of the search for meaning and the rejection of cynicism, relativism and short-term materialism.</p>
+
+				<!--<p>Our current craft only offers space for twelve explorers, which is why our expeditions into the unknown are selective. The journey takes 2-12 months; new explorers may come on board anytime. The cost of riding along is either borne by sponsorship through private donors, by parents and relatives or by the explorers themselves. Proven explorers may stay on and earn their living on board depending on their courage and entrepreneurial acumen.</p>-->
+
+				<p>Our mothership is a private, tax-exempted, non-profit enterprise founded by successful entrepreneurs and visionaries from Austria, Germany, Liechtenstein and Switzerland eager to pass on the spark to future generations. Contributions go directly to financing our explorations and scholarships, without deductions for interests, profits or taxes, keeping the costs for new explorers as low as possible. Even if you are unable to finance your journey, do not hesitate to apply.</p>
+
+
+				<p>If you have what it takes, we are absolutely sure that you will love this journey and it will be one of the greatest experiences of your life. No other educational program, internship, traineeship or job opportunity comes close to it. You will be reluctant to go ashore again and will either stay on board or join another vessel to boldly go where no one has gone before.</p>
+                <p><a href="#top">Back to the top</a></p>
             </section>
 
 
-       		<section id="teilnahme" class="s5">
-                <div class="s5img" style="background: url(img/code2.jpg) center;">
+
+            <section  id="crew"  class="s3">
+                <h1>crew</h1>
+
+<?php
+		$get_crew = $db2->prepare("SELECT * from crew WHERE level <8 order by level asc");
+		$get_crew->execute();
+		$crew_result = $get_crew->fetchAll();
+
+		$check_lvl1 = 0;
+		$check_lvl2 = 0;
+		$check_lvl3 = 0;
+		$check_lvl4 = 0;
+		$check_lvl5 = 0;
+		$check_lvl6 = 0;
+		$check_lvl7 = 0;
+		$check_lvl8 = 0;
+
+		for ($i=0; $i < count($crew_result); $i++) {
+
+			$level = $crew_result[$i]['level'];
+			$id = $crew_result[$i]['id'];
+			$link = $crew_result[$i]['link'];
+			$name = $crew_result[$i]['name'];
+			$text_en = $crew_result[$i]['text_en'];
+
+			if ($level == 1){
+				if ($check_lvl1 == 0){
+					$check_lvl1 = 1;
+					echo '<p class="crew_levels">Captain</p>';
+				}
+			}
+			if ($level == 2){
+				if ($check_lvl2 == 0){
+					$check_lvl2 = 1;
+					echo '<p class="crew_levels">Admiralty</p>';
+				}
+			}
+			if ($level == 3){
+				if ($check_lvl3 == 0){
+					$check_lvl3 = 1;
+					echo '<p class="crew_levels">Officers</p>';
+				}
+			}
+			if ($level == 4){
+				if ($check_lvl4 == 0){
+					$check_lvl4 = 1;
+					echo '<p class="crew_levels">Mates</p>';
+				}
+			}
+			if ($level == 5){
+				if ($check_lvl5 == 0){
+					$check_lvl5 = 1;
+					echo '<p class="crew_levels">Ehrenpr&auml;sidenten</p>';
+				}
+			}
+			if ($level == 6){
+				if ($check_lvl6 == 0){
+					$check_lvl6 = 1;
+					echo '<p class="crew_levels">Beir&auml;te</p>';
+				}
+			}
+			if ($level == 7){
+				if ($check_lvl7 == 0){
+					$check_lvl7 = 1;
+					echo '<p class="crew_levels">Partner</p>';
+				}
+			}
+			if ($level == 8){
+				if ($check_lvl8 == 0){
+					$check_lvl8 = 1;
+					echo '<p class="crew_levels">Sailors</p>';
+				}
+			}
+?>
+			<div class="crew">
+				<div class="crew__col-1">
+					<img src="../img/<?=$id?>.jpg">
+				</div>
+				<div class="crew__col-4">
+					<h1><?=$name?></h1>
+					<a class="crew__col-4__a" href="http://<?=$link?>"><?=$link?></a>
+					<p><?=$text_en?></p>
+				</div>
+			</div>
+<?php
+		}
+?>
+                    <p><a href="#top">Back to the top</a></p>
+            </section>
+
+
+       		<section id="board" class="s5">
+                <div class="s5img" style="background: url(../img/code2.jpg) center;">
                 <div class="form">
-                 <h1>Jetzt liegt es an Dir. Komm an Bord!</h1>
-                 <p>Worauf wartest Du? Eine virale Fernsehwerbung, die Dir versichert, dass Du als Teilnehmer Teil einer hippen Masse bist? Einen Regierungserlass? Wir versuchen, so gut wir k&ouml;nnen, einen Hype, Massenaufmerksamkeit und staatliche Anerkennung und damit Intervention zu vermeiden. Wenn Du Angst hast, bleib an Land. Keine Sorge, an Bord ist ohnehin nicht genug Platz f&uuml;r jeden. Rettungsboote sind schnell &uuml;berf&uuml;llt. Wenn Du den Mut hast, aber noch zweifelst, ob Du geeignet bist, gib Dir einen Ruck. Nach der craftprobe bist Du es gewiss. Wir melden uns zur&uuml;ck, das tut nicht weh. Doch es k&ouml;nnte Dir M&ouml;glichkeiten er&ouml;ffnen, von denen Du bislang noch nicht einmal zu tr&auml;umen gewagt hast.</p>
-                     <input type="button" class="inputbutton" value="Anfrage" data-toggle="modal" data-target="#myModal">
+                 <h1>Now it&apos;s your turn. Join our voyage!</h1>
+                 <p>What are you waiting for? A television spot to tell you that this is meant for you? A government decree? A viral video to make you part of a crowd? We will try the best we can to avoid hypes, unwanted publicity, and official recognition. A craft like ours has to shun such shallow waters. If you are afraid, then stay ashore. No worries, anyway there is not enough space for everyone. Lifeboats get crowded easily. If you have the courage but just lack the confidence that you are good enough, go ahead and apply. We will get in touch with you. It won&apos;t hurt. But it might open up opportunities you have not even dared to dream about.</p>
+                     <input type="button" class="inputbutton" value="Boarding request" data-toggle="modal" data-target="#myModal">
                  </div>
                 </div>
             </section>
         <!--</div>-->
         <footer class="footer">
             <p>
-                &copy; scholarium&trade; | Schl&ouml;sselgasse 19/2/18 | 1080 Wien <br>
+                &copy; scholarium&trade; | Schl&ouml;sselgasse 19/2/18 | 1080 Vienna | Austria <br>
             </p>
             <p class="img_links">
                 Background-Image: <a href="https://www.flickr.com/photos/riebart/4466482623/in/photolist-7NFTF6-4qquBv-4qvivG-6WxYTc-57hHm6-mjhDwB-5VKcCj-8SjwXw-79EVn6-nfPx72-6xfvm9-ccQ6rL-75cgcM-59ib1t-7Gyyds-9UNeUM-fKSF1d-asasy3-Mdf4-ptJh3V-apgafX-KnCK4-4U2GPi-bpd8Ht-4usG5p-GH7wh-jmr8PB-as7QVk-ec78kF-b7r6g-6fmKyW-3AvBtV-4nqiZn-5RUuNN-6NKzvV-kmhEbE-7E9fqU-d9A4Eb-7d7ipd-8dpeZZ-buRLHu-5WvBYq-7tnkmy-8dsw7J-asaxj1-asawS3-5XzfyW-aMG5S4-9dUbHm-d9A3SY">"Code" by Michael Himbeault</a>
@@ -322,281 +337,287 @@ mail ($email,"Willkommen bei der craftprobe",$body,"From: info@scholarium.at\nCo
     <div class="modal-content-login">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h2 class="modal-title" id="myModalLabel">Komm an Bord!</h2>
+        <h2 class="modal-title" id="myModalLabel">Join our voyage</h2>
       </div>
       <div class="modal-body">
 		<form method="post" action="index.php" name="user_create_profile_form" onsubmit="return validateMyForm();">
-				<!--<p><span class="inputlabel2">Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</span></p>-->
+				<p><span class="inputlabel2">Application form can be filled out in English, German, French, Spanish, Arabic, Persian, Italian or Hungarian.</span></p>
 				<div class="input">
 					<input type="hidden" name="ok" value="1">
 
-					<input class="inputfield" type="text" name="firstname" placeholder=" Vorname" required><br>
-        			<input class="inputfield" type="text" name="name" placeholder=" Nachname" required><br>
-        			<input class="inputfield" type="email" name="email" placeholder=" E-Mail" required><br>
-        			<input class="inputfield" type="tel" name="telephone" placeholder=" Telefonnummer (z.B. +431234567)"><br>
-					<input class="inputfield" type="text" name="street" placeholder=" Stra&szlig;e" required><br>
-					<input class="inputfield" type="text" name="postal" placeholder=" PLZ" required><br>
-					<input class="inputfield" type="text" name="city" placeholder=" Stadt" required><br>
+					<input class="inputfield" type="text" name="firstname" placeholder=" First Name" required><br>
+        			<input class="inputfield" type="text" name="name" placeholder=" Surname" required><br>
+        			<input class="inputfield" type="email" name="email" placeholder=" Email" required><br>
+        			<input class="inputfield" type="tel" name="telephone" placeholder=" Telephone/ Mobile (e.g. +431234567)"><br>
+					<input class="inputfield" type="text" name="street" placeholder=" Street" required><br>
+					<input class="inputfield" type="text" name="postal" placeholder=" Postal Code" required><br>
+					<input class="inputfield" type="text" name="city" placeholder=" City" required><br>
 
-        			<select class="inputfield_select" id="user_country" name="country" placeholder=" Land" required>
-					<option value="&Ouml;sterreich">&Ouml;sterreich</option>
-        			<option value="Deutschland">Deutschland</option>
-        			<option value="Schweiz">Schweiz</option>
-        			<option value="Liechtenstein">Liechtenstein</option>
-        			<option value="divider" disabled>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>
-        			<option value="Afghanistan">Afghanistan</option>
-        			<option value="&Auml;gypten">&Auml;gypten</option>
-        			<option value="Aland">Aland</option>
-        			<option value="Albanien">Albanien</option>
-        			<option value="Algerien">Algerien</option>
-        			<option value="Amerikanisch-Samoa">Amerikanisch-Samoa</option>
-        			<option value="Amerikanische Jungferninseln">Amerikanische Jungferninseln</option>
-        			<option value="Andorra">Andorra</option>
-					<option value="Angola">Angola</option>
-					<option value="Anguilla">Anguilla</option>
-					<option value="Antarktis">Antarktis</option>
-					<option value="Antigua und Barbuda">Antigua und Barbuda</option>
-                    <option value="&Auml;quatorialguinea">&Auml;quatorialguinea</option>
-                    <option value="Argentinien">Argentinien</option>
-                    <option value="Armenien">Armenien</option>
-                    <option value="Aruba">Aruba</option>
-                    <option value="Ascension">Ascension</option>
-                    <option value="Aserbaidschan">Aserbaidschan</option>
-                    <option value="&Auml;thiopien">&Auml;thiopien</option>
-                    <option value="Australien">Australien</option>
-                    <option value="Bahamas">Bahamas</option>
-                    <option value="Bahrain">Bahrain</option>
-                    <option value="Bangladesch">Bangladesch</option>
-                    <option value="Barbados">Barbados</option>
-                    <option value="Belgien">Belgien</option>
-                    <option value="Belize">Belize</option>
-                    <option value="Benin">Benin</option>
-                    <option value="Bermuda">Bermuda</option>
-                    <option value="Bhutan">Bhutan</option>
-                    <option value="Bolivien">Bolivien</option>
-                    <option value="Bosnien und Herzegowina">Bosnien und Herzegowina</option>
-                    <option value="Botswana">Botswana</option>
-                    <option value="Bouvetinsel">Bouvetinsel</option>
-                    <option value="Brasilien">Brasilien</option>
-                    <option value="Brunei">Brunei</option>
-                    <option value="Bulgarien">Bulgarien</option>
-                    <option value="Burkina Faso">Burkina Faso</option>
-                    <option value="Burundi">Burundi</option>
-                    <option value="Chile">Chile</option>
-                    <option value="China">China</option>
-                    <option value="Cookinseln">Cookinseln</option>
-                    <option value="Costa Rica">Costa Rica</option>
-                    <option value="Cote d'Ivoire">Cote d'Ivoire</option>
-                    <option value="D&auml;nemark">D&auml;nemark</option>
-                    <option value="Diego Garcia">Diego Garcia</option>
-                    <option value="Dominica">Dominica</option>
-                    <option value="Dominikanische Republik">Dominikanische Republik</option>
-                    <option value="Dschibuti">Dschibuti</option>
-                    <option value="Ecuador">Ecuador</option>
-                    <option value="El Salvador">El Salvador</option>
-                    <option value="Eritrea">Eritrea</option>
-                    <option value="Estland">Estland</option>
-                    <option value="Europ&auml;ische Union">Europ&auml;ische Union</option>
-                    <option value="Falklandinseln">Falklandinseln</option>
-                    <option value="F&auml;r&ouml;er">F&auml;r&ouml;er</option>
-                    <option value="Fidschi">Fidschi</option>
-                    <option value="Finnland">Finnland</option>
-                    <option value="Frankreich">Frankreich</option>
-                    <option value="Franz&ouml;sisch-Guayana">Franz&ouml;sisch-Guayana</option>
-                    <option value="Franz&ouml;sisch-Polynesien">Franz&ouml;sisch-Polynesien</option>
-                    <option value="Gabun">Gabun</option>
-                    <option value="Gambia">Gambia</option>
-                    <option value="Georgien">Georgien</option>
-                    <option value="Ghana">Ghana</option>
-                    <option value="Gibraltar">Gibraltar</option>
-                    <option value="Grenada">Grenada</option>
-                    <option value="Griechenland">Griechenland</option>
-                    <option value="Gr&ouml;nland">Gr&ouml;nland</option>
-                    <option value="Gro&szlig;britannien">Gro&szlig;britannien</option>
-                    <option value="Guadeloupe">Guadeloupe</option>
-                    <option value="Guam">Guam</option>
-                    <option value="Guatemala">Guatemala</option>
-                    <option value="Guernsey">Guernsey</option>
-                    <option value="Guinea">Guinea</option>
-                    <option value="Guinea-Bissau">Guinea-Bissau</option>
-                    <option value="Guyana">Guyana</option>
-                    <option value="Haiti">Haiti</option>
-                    <option value="Heard und McDonaldinseln">Heard und McDonaldinseln</option>
-                    <option value="Honduras">Honduras</option>
-                    <option value="Hongkong">Hongkong</option>
-                    <option value="Indien">Indien</option>
-                    <option value="Indonesien">Indonesien</option>
-                    <option value="Irak">Irak</option>
-                    <option value="Iran">Iran</option>
-                    <option value="Irland">Irland</option>
-                    <option value="Island">Island</option>
-                    <option value="Israel">Israel</option>
-                    <option value="Italien">Italien</option>
-                    <option value="Jamaika">Jamaika</option>
-                    <option value="Japan">Japan</option>
-                    <option value="Jemen">Jemen</option>
-                    <option value="Jersey">Jersey</option>
-                    <option value="Jordanien">Jordanien</option>
-                    <option value="Kaimaninseln">Kaimaninseln</option>
-                    <option value="Kambodscha">Kambodscha</option>
-                    <option value="Kamerun">Kamerun</option>
-                    <option value="Kanada">Kanada</option>
-                    <option value="Kanarische Inseln">Kanarische Inseln</option>
-                    <option value="Kap Verde">Kap Verde</option>
-                    <option value="Kasachstan">Kasachstan</option>
-                    <option value="Katar">Katar</option>
-                    <option value="Kenia">Kenia</option>
-                    <option value="Kirgisistan">Kirgisistan</option>
-                    <option value="Kiribati">Kiribati</option>
-                    <option value="Kokosinseln">Kokosinseln</option>
-                    <option value="Kolumbien">Kolumbien</option>
-                    <option value="Komoren">Komoren</option>
-                    <option value="Kongo">Kongo</option>
-                    <option value="Kroatien">Kroatien</option>
-                    <option value="Kuba">Kuba</option>
-                    <option value="Kuwait">Kuwait</option>
-                    <option value="Laos">Laos</option>
-                    <option value="Lesotho">Lesotho</option>
-                    <option value="Lettland">Lettland</option>
-                    <option value="Libanon">Libanon</option>
-                    <option value="Liberia">Liberia</option>
-                    <option value="Libyen">Libyen</option>
-                    <option value="Litauen">Litauen</option>
-                    <option value="Luxemburg">Luxemburg</option>
-                    <option value="Macao">Macao</option>
-                    <option value="Madagaskar">Madagaskar</option>
-                    <option value="Malawi">Malawi</option>
-                    <option value="Malaysia">Malaysia</option>
-                    <option value="Malediven">Malediven</option>
-                    <option value="Mali">Mali</option>
-                    <option value="Malta">Malta</option>
-                    <option value="Marokko">Marokko</option>
-                    <option value="Marshallinseln">Marshallinseln</option>
-                    <option value="Martinique">Martinique</option>
-                    <option value="Mauretanien">Mauretanien</option>
-                    <option value="Mauritius">Mauritius</option>
-                    <option value="Mayotte">Mayotte</option>
-                    <option value="Mazedonien">Mazedonien</option>
-                    <option value="Mexiko">Mexiko</option>
-                    <option value="Mikronesien">Mikronesien</option>
-                    <option value="Moldawien">Moldawien</option>
-                    <option value="Monaco">Monaco</option>
-                    <option value="Mongolei">Mongolei</option>
-                    <option value="Montserrat">Montserrat</option>
-                    <option value="Mosambik">Mosambik</option>
-                    <option value="Myanmar">Myanmar</option>
-                    <option value="Namibia">Namibia</option>
-                    <option value="Nauru">Nauru</option>
-                    <option value="Nepal">Nepal</option>
-                    <option value="Neukaledonien">Neukaledonien</option>
-                    <option value="Neuseeland">Neuseeland</option>
-                    <option value="Neutrale Zone">Neutrale Zone</option>
-                    <option value="Nicaragua">Nicaragua</option>
-                    <option value="Niederlande">Niederlande</option>
-                    <option value="Niederl&auml;ndische Antillen">Niederl&auml;ndische Antillen</option>
-                    <option value="Niger">Niger</option>
-                    <option value="Nigeria">Nigeria</option>
-                    <option value="Niue">Niue</option>
-                    <option value="Nordkorea">Nordkorea</option>
-                    <option value="N&ouml;rdliche Marianen">N&ouml;rdliche Marianen</option>
-                    <option value="Norfolkinsel">Norfolkinsel</option>
-                    <option value="Norwegen">Norwegen</option>
-                    <option value="Oman">Oman</option>
-                    <option value="Pakistan">Pakistan</option>
-                    <option value="Pal&auml;stina">Pal&auml;stina</option>
-                    <option value="Palau">Palau</option>
-                    <option value="Panama">Panama</option>
-                    <option value="Papua-Neuguinea">Papua-Neuguinea</option>
-                    <option value="Paraguay">Paraguay</option>
-                    <option value="Peru">Peru</option>
-                    <option value="Philippinen">Philippinen</option>
-                    <option value="Pitcairninseln">Pitcairninseln</option>
-                    <option value="Polen">Polen</option>
-                    <option value="Portugal">Portugal</option>
-                    <option value="Puerto Rico">Puerto Rico</option>
-                    <option value="Réunion">Réunion</option>
-                    <option value="Ruanda">Ruanda</option>
-                    <option value="Rum&auml;nien">Rum&auml;nien</option>
-                    <option value="Russische F&ouml;deration">Russische F&ouml;deration</option>
-                    <option value="Salomonen">Salomonen</option>
-                    <option value="Sambia">Sambia</option>
-                    <option value="Samoa">Samoa</option>
-                    <option value="San Marino">San Marino</option>
-                    <option value="São Tomé und Príncipe">São Tomé und Príncipe</option>
-                    <option value="Saudi-Arabien">Saudi-Arabien</option>
-                    <option value="Schweden">Schweden</option>
-                    <option value="Senegal">Senegal</option>
-                    <option value="Serbien und Montenegro">Serbien und Montenegro</option>
-                    <option value="Seychellen">Seychellen</option>
-                    <option value="Sierra Leone">Sierra Leone</option>
-                    <option value="Simbabwe">Simbabwe</option>
-                    <option value="Singapur">Singapur</option>
-                    <option value="Slowakei">Slowakei</option>
-                    <option value="Slowenien">Slowenien</option>
-                    <option value="Somalia">Somalia</option>
-                    <option value="Spanien">Spanien</option>
-                    <option value="Sri Lanka">Sri Lanka</option>
-                    <option value="St. Helena">St. Helena</option>
-                    <option value="St. Kitts und Nevis">St. Kitts und Nevis</option>
-                    <option value="St. Lucia">St. Lucia</option>
-                    <option value="St. Pierre und Miquelon">St. Pierre und Miquelon</option>
-                    <option value="St. Vincent/Grenadinen (GB)">St. Vincent/Grenadinen (GB)</option>
-                    <option value="S&uuml;dafrika, Republik">S&uuml;dafrika, Republik</option>
-                    <option value="Sudan">Sudan</option>
-                    <option value="S&uuml;dkorea">S&uuml;dkorea</option>
-                    <option value="Suriname">Suriname</option>
-                    <option value="Svalbard und Jan Mayen">Svalbard und Jan Mayen</option>
-                    <option value="Swasiland">Swasiland</option>
-                    <option value="Syrien">Syrien</option>
-                    <option value="Tadschikistan">Tadschikistan</option>
-                    <option value="Taiwan">Taiwan</option>
-                    <option value="Tansania">Tansania</option>
-                    <option value="Thailand">Thailand</option>
-                    <option value="Timor-Leste">Timor-Leste</option>
-                    <option value="Togo">Togo</option>
-                    <option value="Tokelau">Tokelau</option>
-                    <option value="Tonga">Tonga</option>
-                    <option value="Trinidad und Tobago">Trinidad und Tobago</option>
-                    <option value="Tristan da Cunha">Tristan da Cunha</option>
-                    <option value="Tschad">Tschad</option>
-                    <option value="Tschechische Republik">Tschechische Republik</option>
-                    <option value="Tunesien">Tunesien</option>
-                    <option value="T&uuml;rkei">T&uuml;rkei</option>
-                    <option value="Turkmenistan">Turkmenistan</option>
-                    <option value="Turks- und Caicosinseln">Turks- und Caicosinseln</option>
-                    <option value="Tuvalu">Tuvalu</option>
-                    <option value="Uganda">Uganda</option>
-                    <option value="Ukraine">Ukraine</option>
-                    <option value="Ungarn">Ungarn</option>
-                    <option value="Uruguay">Uruguay</option>
-                    <option value="Usbekistan">Usbekistan</option>
-                    <option value="Vanuatu">Vanuatu</option>
-                    <option value="Vatikanstadt">Vatikanstadt</option>
-                    <option value="Venezuela">Venezuela</option>
-                    <option value="Vereinigte Arabische Emirate">Vereinigte Arabische Emirate</option>
-                    <option value="Vereinigte Staaten von Amerika">Vereinigte Staaten von Amerika</option>
-                    <option value="Vietnam">Vietnam</option>
-                    <option value="Wallis und Futuna">Wallis und Futuna</option>
-                    <option value="Weihnachtsinsel">Weihnachtsinsel</option>
-                    <option value="Wei&szlig;russland">Wei&szlig;russland</option>
-                    <option value="Westsahara">Westsahara</option>
-                    <option value="Zentralafrikanische Republik">Zentralafrikanische Republik</option>
-                    <option value="Zypern">Zypern</option>
+        			<select class="inputfield_select" id="user_country" name="country" placeholder=" Country" required>
+<option value="Austria" selected>Austria</option>
+<option value="Germany">Germany</option>
+<option value="Switzerland">Switzerland</option>
+<option value="Liechtenstein">Liechtenstein</option>
+<option value="divider" disabled>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>
+<option value="Afghanistan">Afghanistan</option>
+<option value="Åland Islands">Aland Islands</option>
+<option value="Albania">Albania</option>
+<option value="Algeria">Algeria</option>
+<option value="American Samoa">American Samoa</option>
+<option value="Andorra">Andorra</option>
+<option value="Angola">Angola</option>
+<option value="Anguilla">Anguilla</option>
+<option value="Antarctica">Antarctica</option>
+<option value="Antigua and Barbuda">Antigua and Barbuda</option>
+<option value="Argentina">Argentina</option>
+<option value="Armenia">Armenia</option>
+<option value="Aruba">Aruba</option>
+<option value="Australia">Australia</option>
+<option value="Austria">Austria</option>
+<option value="Azerbaijan">Azerbaijan</option>
+<option value="Bahamas">Bahamas</option>
+<option value="Bahrain">Bahrain</option>
+<option value="Bangladesh">Bangladesh</option>
+<option value="Barbados">Barbados</option>
+<option value="Belarus">Belarus</option>
+<option value="Belgium">Belgium</option>
+<option value="Belize">Belize</option>
+<option value="Benin">Benin</option>
+<option value="Bermuda">Bermuda</option>
+<option value="Bhutan">Bhutan</option>
+<option value="Bolivia">Bolivia</option>
+<option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+<option value="Botswana">Botswana</option>
+<option value="Bouvet Island">Bouvet Island</option>
+<option value="Brazil">Brazil</option>
+<option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+<option value="Brunei Darussalam">Brunei Darussalam</option>
+<option value="Bulgaria">Bulgaria</option>
+<option value="Burkina Faso">Burkina Faso</option>
+<option value="Burundi">Burundi</option>
+<option value="Cambodia">Cambodia</option>
+<option value="Cameroon">Cameroon</option>
+<option value="Canada">Canada</option>
+<option value="Cape Verde">Cape Verde</option>
+<option value="Cayman Islands">Cayman Islands</option>
+<option value="Central African Republic">Central African Republic</option>
+<option value="Chad">Chad</option>
+<option value="Chile">Chile</option>
+<option value="China">China</option>
+<option value="Christmas Island">Christmas Island</option>
+<option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+<option value="Colombia">Colombia</option>
+<option value="Comoros">Comoros</option>
+<option value="Congo">Congo</option>
+<option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
+<option value="Cook Islands">Cook Islands</option>
+<option value="Costa Rica">Costa Rica</option>
+<option value="Cote D'ivoire">Cote D'ivoire</option>
+<option value="Croatia">Croatia</option>
+<option value="Cuba">Cuba</option>
+<option value="Cyprus">Cyprus</option>
+<option value="Czech Republic">Czech Republic</option>
+<option value="Denmark">Denmark</option>
+<option value="Djibouti">Djibouti</option>
+<option value="Dominica">Dominica</option>
+<option value="Dominican Republic">Dominican Republic</option>
+<option value="Ecuador">Ecuador</option>
+<option value="Egypt">Egypt</option>
+<option value="El Salvador">El Salvador</option>
+<option value="Equatorial Guinea">Equatorial Guinea</option>
+<option value="Eritrea">Eritrea</option>
+<option value="Estonia">Estonia</option>
+<option value="Ethiopia">Ethiopia</option>
+<option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+<option value="Faroe Islands">Faroe Islands</option>
+<option value="Fiji">Fiji</option>
+<option value="Finland">Finland</option>
+<option value="France">France</option>
+<option value="French Guiana">French Guiana</option>
+<option value="French Polynesia">French Polynesia</option>
+<option value="French Southern Territories">French Southern Territories</option>
+<option value="Gabon">Gabon</option>
+<option value="Gambia">Gambia</option>
+<option value="Georgia">Georgia</option>
+<option value="Germany">Germany</option>
+<option value="Ghana">Ghana</option>
+<option value="Gibraltar">Gibraltar</option>
+<option value="Greece">Greece</option>
+<option value="Greenland">Greenland</option>
+<option value="Grenada">Grenada</option>
+<option value="Guadeloupe">Guadeloupe</option>
+<option value="Guam">Guam</option>
+<option value="Guatemala">Guatemala</option>
+<option value="Guernsey">Guernsey</option>
+<option value="Guinea">Guinea</option>
+<option value="Guinea-bissau">Guinea-bissau</option>
+<option value="Guyana">Guyana</option>
+<option value="Haiti">Haiti</option>
+<option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
+<option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+<option value="Honduras">Honduras</option>
+<option value="Hong Kong">Hong Kong</option>
+<option value="Hungary">Hungary</option>
+<option value="Iceland">Iceland</option>
+<option value="India">India</option>
+<option value="Indonesia">Indonesia</option>
+<option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+<option value="Iraq">Iraq</option>
+<option value="Ireland">Ireland</option>
+<option value="Isle of Man">Isle of Man</option>
+<option value="Israel">Israel</option>
+<option value="Italy">Italy</option>
+<option value="Jamaica">Jamaica</option>
+<option value="Japan">Japan</option>
+<option value="Jersey">Jersey</option>
+<option value="Jordan">Jordan</option>
+<option value="Kazakhstan">Kazakhstan</option>
+<option value="Kenya">Kenya</option>
+<option value="Kiribati">Kiribati</option>
+<option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+<option value="Korea, Republic of">Korea, Republic of</option>
+<option value="Kuwait">Kuwait</option>
+<option value="Kyrgyzstan">Kyrgyzstan</option>
+<option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+<option value="Latvia">Latvia</option>
+<option value="Lebanon">Lebanon</option>
+<option value="Lesotho">Lesotho</option>
+<option value="Liberia">Liberia</option>
+<option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+<option value="Liechtenstein">Liechtenstein</option>
+<option value="Lithuania">Lithuania</option>
+<option value="Luxembourg">Luxembourg</option>
+<option value="Macao">Macao</option>
+<option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+<option value="Madagascar">Madagascar</option>
+<option value="Malawi">Malawi</option>
+<option value="Malaysia">Malaysia</option>
+<option value="Maldives">Maldives</option>
+<option value="Mali">Mali</option>
+<option value="Malta">Malta</option>
+<option value="Marshall Islands">Marshall Islands</option>
+<option value="Martinique">Martinique</option>
+<option value="Mauritania">Mauritania</option>
+<option value="Mauritius">Mauritius</option>
+<option value="Mayotte">Mayotte</option>
+<option value="Mexico">Mexico</option>
+<option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+<option value="Moldova, Republic of">Moldova, Republic of</option>
+<option value="Monaco">Monaco</option>
+<option value="Mongolia">Mongolia</option>
+<option value="Montenegro">Montenegro</option>
+<option value="Montserrat">Montserrat</option>
+<option value="Morocco">Morocco</option>
+<option value="Mozambique">Mozambique</option>
+<option value="Myanmar">Myanmar</option>
+<option value="Namibia">Namibia</option>
+<option value="Nauru">Nauru</option>
+<option value="Nepal">Nepal</option>
+<option value="Netherlands">Netherlands</option>
+<option value="Netherlands Antilles">Netherlands Antilles</option>
+<option value="New Caledonia">New Caledonia</option>
+<option value="New Zealand">New Zealand</option>
+<option value="Nicaragua">Nicaragua</option>
+<option value="Niger">Niger</option>
+<option value="Nigeria">Nigeria</option>
+<option value="Niue">Niue</option>
+<option value="Norfolk Island">Norfolk Island</option>
+<option value="Northern Mariana Islands">Northern Mariana Islands</option>
+<option value="Norway">Norway</option>
+<option value="Oman">Oman</option>
+<option value="Pakistan">Pakistan</option>
+<option value="Palau">Palau</option>
+<option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+<option value="Panama">Panama</option>
+<option value="Papua New Guinea">Papua New Guinea</option>
+<option value="Paraguay">Paraguay</option>
+<option value="Peru">Peru</option>
+<option value="Philippines">Philippines</option>
+<option value="Pitcairn">Pitcairn</option>
+<option value="Poland">Poland</option>
+<option value="Portugal">Portugal</option>
+<option value="Puerto Rico">Puerto Rico</option>
+<option value="Qatar">Qatar</option>
+<option value="Reunion">Reunion</option>
+<option value="Romania">Romania</option>
+<option value="Russian Federation">Russian Federation</option>
+<option value="Rwanda">Rwanda</option>
+<option value="Saint Helena">Saint Helena</option>
+<option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+<option value="Saint Lucia">Saint Lucia</option>
+<option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+<option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
+<option value="Samoa">Samoa</option>
+<option value="San Marino">San Marino</option>
+<option value="Sao Tome and Principe">Sao Tome and Principe</option>
+<option value="Saudi Arabia">Saudi Arabia</option>
+<option value="Senegal">Senegal</option>
+<option value="Serbia">Serbia</option>
+<option value="Seychelles">Seychelles</option>
+<option value="Sierra Leone">Sierra Leone</option>
+<option value="Singapore">Singapore</option>
+<option value="Slovakia">Slovakia</option>
+<option value="Slovenia">Slovenia</option>
+<option value="Solomon Islands">Solomon Islands</option>
+<option value="Somalia">Somalia</option>
+<option value="South Africa">South Africa</option>
+<option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
+<option value="Spain">Spain</option>
+<option value="Sri Lanka">Sri Lanka</option>
+<option value="Sudan">Sudan</option>
+<option value="Suriname">Suriname</option>
+<option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+<option value="Swaziland">Swaziland</option>
+<option value="Sweden">Sweden</option>
+<option value="Switzerland">Switzerland</option>
+<option value="Syrian Arab Republic">Syrian Arab Republic</option>
+<option value="Taiwan, Province of China">Taiwan, Province of China</option>
+<option value="Tajikistan">Tajikistan</option>
+<option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+<option value="Thailand">Thailand</option>
+<option value="Timor-leste">Timor-leste</option>
+<option value="Togo">Togo</option>
+<option value="Tokelau">Tokelau</option>
+<option value="Tonga">Tonga</option>
+<option value="Trinidad and Tobago">Trinidad and Tobago</option>
+<option value="Tunisia">Tunisia</option>
+<option value="Turkey">Turkey</option>
+<option value="Turkmenistan">Turkmenistan</option>
+<option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+<option value="Tuvalu">Tuvalu</option>
+<option value="Uganda">Uganda</option>
+<option value="Ukraine">Ukraine</option>
+<option value="United Arab Emirates">United Arab Emirates</option>
+<option value="United Kingdom">United Kingdom</option>
+<option value="United States">United States</option>
+<option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+<option value="Uruguay">Uruguay</option>
+<option value="Uzbekistan">Uzbekistan</option>
+<option value="Vanuatu">Vanuatu</option>
+<option value="Venezuela">Venezuela</option>
+<option value="Viet Nam">Viet Nam</option>
+<option value="Virgin Islands, British">Virgin Islands, British</option>
+<option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+<option value="Wallis and Futuna">Wallis and Futuna</option>
+<option value="Western Sahara">Western Sahara</option>
+<option value="Yemen">Yemen</option>
+<option value="Zambia">Zambia</option>
+<option value="Zimbabwe">Zimbabwe</option>
 					</select><br>
-					<!-- <textarea name="note" class="inputarea" placeholder=" Hast Du Fragen oder Anmerkungen?" rows="10" required></textarea><br> -->
-					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" Wie hast Du uns gefunden?"><br>
-					<!--<p id="input_zeitraum">Zeitraum:<br>
-					<input type="radio" name="pref_date" value="2017-03-01" required> 1. bis 31. M&auml;rz 2017<br>
-  					<input type="radio" name="pref_date" value="2017-08-01" required> 1. bis 31. August 2017<br>
+					<!-- <textarea name="note" class="inputarea" placeholder=" Do you have questions or comments?" rows="10" required></textarea><br> -->
+					<input class="inputfield bottom_border" type="text" name="found_us" placeholder=" How did you find us?"><br>
+					<!--<p id="input_zeitraum">Preferred period:<br>
+					<input type="radio" name="pref_date" value="2017-03-01" required> 1 &ndash; 31 March 2017<br>
+  					<input type="radio" name="pref_date" value="2017-08-01" required> 1 &ndash; 31 August 2017<br>
 					</p>-->
 					<!-- honeypot field to prevent spam-->
 					<div style="display:none;">
-					<label>Dieses Feld bitte freilassen</label>
+					<label>Please keep this field blank</label>
 					<input type="text" name="honeypot" id="honeypot" />
 					</div>
 				</div>
-    			<input type="submit" class="inputbutton_subscribe" name="registrationform" value="Anmelden">
-    			<p>Solltest Du vorab noch etwas fragen oder klären wollen, schreib uns einfach eine Mail an:&nbsp;<a href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;</a></p>
+    			<input type="submit" class="inputbutton_subscribe" name="registrationform" value="Boarding request">
+				<p>If you have any questions before boarding, we are glad to answer them. Just write us an email:&nbsp;<a href="mailto:&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;">&#105;nf&#111;&#064;&#115;&#99;ho&#108;&#97;ri&#117;&#109;.&#97;&#116;</a></p>
 			</form>
 		</div>
     </div>

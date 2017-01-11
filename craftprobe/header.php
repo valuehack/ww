@@ -10,4 +10,6 @@ try {
 	echo 'Connection failed: '.$e->getMessage();
 }
 
+header('Content-Type: text/html; charset=UTF-8');
+
 ?>
