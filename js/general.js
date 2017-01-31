@@ -38,6 +38,56 @@ function setPrintView() {
 	});
 }
 
+//Themenwahl: hide radio buttons until "Für ein Thema abstimmen"- button is clicked
+
+function openAbstimmung() {
+	$(document).ready(function() {
+    
+        $(".topic_radio").hide();
+        $("#topic_button").hide();
+        $("#open_abstimmung").click(function() {
+        	$(".topic_radio").show();
+        	$("#topic_button").show();
+        	$("#open_abstimmung").hide();        	
+        });
+   });     
+}
+
+function openVorschlag() {
+	$(document).ready(function() {
+    
+        $("#suggestion_title").hide();
+        $("#suggestion_input").hide();
+        $("#suggestion_inputbutton").hide();
+        $("#open_vorschlag").click(function() {
+        	$("#suggestion_title").show().focus();
+        	$("#suggestion_input").show();
+        	$("#suggestion_inputbutton").show();
+        	$("#open_vorschlag").hide();
+        	$('html,body').animate({
+        	scrollTop: window.scrollY+250}, 'fast'); //scrolls 250px down (minus-sign would be upwards)      	
+        });
+   });     
+}
+
+/* This function closes the actual window and refreshes the
+ * page from which the actual window has been opened.
+ */
+function CloseChildRefreshParent() {
+	opener.location.reload();
+  	window.close();
+}
+
+function setCommentEditView() {
+        $(document).ready(function(){
+        	$("header").hide();
+	});
+}
+
+function focusEndOfTextarea() {
+	$('textarea').text($('textarea').text()).focus();
+}
+
 /*
 done by dainus and ulrich
 
