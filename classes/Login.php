@@ -2421,7 +2421,7 @@ user_plz
 				<br>'
 				.$user_vorname.' '.$user_nachname.' (user_id: '.$user_id.')<br><br>
 				Titel: '.$suggestion_title.'<br><br>
-				Beschreibung: '.$suggestion_description.'<br>
+				Beschreibung: '.nl2br($suggestion_description).'<br>
                 ';
 
         //create curl resource
