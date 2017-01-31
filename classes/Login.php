@@ -2445,7 +2445,7 @@ user_plz
         $mail->AddAddress("gk@scholarium.at");
         $mail->Subject = 'Neuer Themenvorschlag';
 
-        $body = $user_vorname.' '.$user_nachname.' (user_id: '.$user_id.') hat einen Themenvorschlag.<br><br>
+        $body = 'Unterstuetzer: '.$user_vorname.' '.$user_nachname.' (user_id: '.$user_id.') hat einen Themenvorschlag.<br><br>
         		<b>Titel:</b> '.$suggestion_title.'<br><br><b>Beschreibung:</b> '.$suggestion_description;
 
         $mail->Body = $body;
