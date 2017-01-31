@@ -19,7 +19,7 @@ require_once('../libraries/PHPMailer.php');
 
 // load the login class
 require_once('../classes/General.php');
-require_once('../classes/test_Login.php');
+require_once('../classes/Login.php');
 require_once('../classes/Registration.php');
 require_once('../classes/Email.php');
 // require_once('../classes/Transaction.php');
