@@ -2414,41 +2414,54 @@ user_plz
 		$this->sendSuggestionMailToInstitute($user_id, $user_query->Vorname, $user_query->Nachname, $suggestion_title, $suggestion_description);
 	}
 
-	public function sendSuggestionMailToInstitute($user_id, $user_vorname, $user_nachname, $suggestion_title, $suggestion_description)
-    {
-        $mail = new PHPMailer;
+	public function sendSuggestionMailToInstitute($user_id, $user_vorname, $user_nachname, $suggestion_title, $suggestion_description) {
+			
+		$body = '
+				Neuer Themenvorschlag:<br>
+				<br>'
+				.$user_vorname.' '.$user_nachname.' (user_id: '.$user_id.')<br><br>
+				Titel: '.$suggestion_title.'<br><br>
+				Beschreibung: '.$suggestion_description.'<br>
+                ';
 
-        // please look into the config/config.php for much more info on how to use this!
-        // use SMTP or use mail()
-        if (EMAIL_USE_SMTP) {
-            // Set mailer to use SMTP
-            $mail->IsSMTP();
-            //useful for debugging, shows full SMTP errors
-            //$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-            // Enable SMTP authentication
-            $mail->SMTPAuth = EMAIL_SMTP_AUTH;
-            // Enable encryption, usually SSL/TLS
-            if (defined(EMAIL_SMTP_ENCRYPTION)) {
-                $mail->SMTPSecure = EMAIL_SMTP_ENCRYPTION;
-            }
-            // Specify host server
-            $mail->Host = EMAIL_SMTP_HOST;
-            $mail->Username = EMAIL_SMTP_USERNAME;
-            $mail->Password = EMAIL_SMTP_PASSWORD;
-            $mail->Port = EMAIL_SMTP_PORT;
-        } else {
-            $mail->IsMail();
+        //create curl resource
+        $ch = curl_init();
+
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array(SENDGRID_API_KEY));
+
+        //set url
+        curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/api/mail.send.json");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        $post_data = array(
+            'to' => 'info@scholarium.at',
+            'subject' => 'Neuer Themenvorschlag',
+            'html' => $body,
+            'from' => 'info@scholarium.at',
+            'fromname' => 'scholarium'
+            );
+
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post_data);
+
+        // $output contains the output string
+        $response = curl_exec($ch);
+
+
+        if(empty($response))
+        {
+            #die("Error: No response."); 
+            $this->errors[] = MESSAGE_PASSWORD_RESET_MAIL_FAILED;
+            return false;
+        }
+        else
+        {
+            $json = json_decode($response);
+            return true;
         }
 
-        $mail->From = "info@scholarium.at";
-        $mail->FromName = "scholarium";
-        $mail->AddAddress("gk@scholarium.at");
-        $mail->Subject = 'Neuer Themenvorschlag';
-
-        $body = 'Unterstuetzer: '.$user_vorname.' '.$user_nachname.' (user_id: '.$user_id.') hat einen Themenvorschlag.<br><br>
-        		<b>Titel:</b> '.$suggestion_title.'<br><br><b>Beschreibung:</b> '.$suggestion_description;
-
-        $mail->Body = $body;
+        curl_close($ch);
     }
 
 	public function commentThemenwahl($comment) {
@@ -2466,7 +2479,7 @@ user_plz
 			$comment_query->execute();
 	}
 
-public function EditComment($edited_comment) {
+	public function EditComment($edited_comment) {
 
 		$edited_comment_query = $this->db_connection->prepare('UPDATE themen_kommentare SET comment = :comment_edit, edit_datetime = NOW(), status = :status WHERE id = :comment_id LIMIT 1');
             $edited_comment_query->bindValue(':comment_edit', $edited_comment[comment], PDO::PARAM_STR);
@@ -2475,7 +2488,7 @@ public function EditComment($edited_comment) {
             $edited_comment_query->execute();
 	}
 
-public function DeleteComment($deleted_comment) {
+	public function DeleteComment($deleted_comment) {
 
 		$deleted_comment_query = $this->db_connection->prepare('UPDATE themen_kommentare SET comment = :comment_delete, delete_datetime = NOW(), status = :status WHERE id = :comment_id LIMIT 1');
 			$deleted_comment_query->bindValue(':comment_delete', $deleted_comment[comment], PDO::PARAM_STR);
