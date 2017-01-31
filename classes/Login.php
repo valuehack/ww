@@ -133,6 +133,21 @@ class Login
             }elseif (isset($_POST['oneClickReg'])) {
             	$product = $_POST['product'];
             	$this->oneClickReg($product);
+            } elseif (isset($_POST["themenwahl_submit"])) {
+            	#Abstimmung Themenwahl
+            	$this->voteThemenwahl($_POST['themenwahl']);
+            } elseif (isset($_POST["suggestion_submit"])) {
+            	#Vorschlag Themenwahl
+            	$this->suggestionThemenwahl($_POST['suggestion']);
+            } elseif (isset($_POST["comment_submit"])) {
+            	#Kommentar Themenwahl
+            	$this->commentThemenwahl($_POST['comment']);
+            } elseif (isset($_POST["edit_comment_submit"])) {
+            	#Bearbeiten Kommentar Themenwahl
+            	$this->EditComment($_POST['edited_comment']);
+            } elseif (isset($_POST["delete_comment_submit"])) {
+            	#Löschen Kommentar Themenwahl
+            	$this->DeleteComment($_POST['deleted_comment']);
             }
 			
         }
@@ -1140,7 +1155,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
         $editProfile = 0;
         if ($_SESSION['Mitgliedschaft'] == 1) $editProfile = 1;
 
-        $upgrade_query = "UPDATE mitgliederExt SET Mitgliedschaft = '$Mitgliedschaft', Ablauf = DATE_ADD(CURDATE(), INTERVAL 1 YEAR)  WHERE `user_email` LIKE '$user_email'";
+        $upgrade_query = "UPDATE mitgliederExt SET Mitgliedschaft = '$Mitgliedschaft', Mahnstufe = 1, Ablauf = DATE_ADD(CURDATE(), INTERVAL 1 YEAR)  WHERE `user_email` LIKE '$user_email'";
         $upgrade_result = mysql_query($upgrade_query) or die("Failed Query of " . $upgrade_query. mysql_error());
         $_SESSION['Mitgliedschaft'] = $Mitgliedschaft;
 
@@ -1165,7 +1180,7 @@ if (!isset($_COOKIE['gaveCredits'])) {
 //DATE_ADD(NOW(), INTERVAL ? MONTH)
 //date = DATE_ADD(date, INTERVAL 1 YEAR)
 
-        $upgrade_query = "UPDATE mitgliederExt SET credits_left = '$newCredits', Ablauf = DATE_ADD(CURDATE(), INTERVAL 1 YEAR) WHERE `user_email` LIKE '$user_email'";
+        $upgrade_query = "UPDATE mitgliederExt SET credits_left = '$newCredits', Mahnstufe = 1, Ablauf = DATE_ADD(CURDATE(), INTERVAL 1 YEAR) WHERE `user_email` LIKE '$user_email'";
         $upgrade_result = mysql_query($upgrade_query) or die("Failed Query of " . $upgrade_query. mysql_error());
 
         $this->sendUpgradeMailToUser($betrag, $zahlung, $level);
@@ -2355,5 +2370,117 @@ user_plz
 		
 		# Does not work yet but is not urgent either		
 		#$email->sendOneClick($_SESSION['user_id'], $product['event_id'], $product['quantity'], $product['format']);
+	}
+	
+	public function voteThemenwahl($themenwahl) {
+		
+		$thema_n = $themenwahl[thema_n];
+		$weight = $themenwahl[weight];
+		$user_id = $themenwahl[user_id];
+		
+		$topic_query = $this->db_connection->prepare('UPDATE themen SET amount = amount + :weight, last_vote = NOW() WHERE n = :thema_n LIMIT 1');
+            $topic_query->bindValue(':weight', $weight, PDO::PARAM_INT);
+			$topic_query->bindValue(':thema_n', $thema_n, PDO::PARAM_INT);
+            $topic_query->execute();
+			
+		$update_mahnstufe = $this->db_connection->prepare('UPDATE mitgliederExt SET Mahnstufe = Mahnstufe - 1 WHERE user_id = :user_id LIMIT 1');
+			$update_mahnstufe->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+			$update_mahnstufe->execute();
+			
+		$reg_topic_query = $this->db_connection->prepare('INSERT INTO themen_registration (topic_id, user_id, quantity, reg_datetime)
+															VALUES (:thema_n, :user_id, :weight, NOW())');
+			$reg_topic_query->bindValue(':thema_n', $thema_n, PDO::PARAM_INT);
+			$reg_topic_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+			$reg_topic_query->bindValue(':weight', $weight, PDO::PARAM_INT);
+			$reg_topic_query->execute();
+	}
+	
+	public function suggestionThemenwahl($suggestion) {
+		
+		$suggestion_title = $suggestion[title];
+		$suggestion_description = $suggestion[description];
+		$user_id = $suggestion[user_id];
+		
+		$suggestion_query = $this->db_connection->prepare('INSERT INTO themen (title, description, user_id, status)
+															VALUES (:suggestion_title, :suggestion_description, :user_id, :status)');
+			$suggestion_query->bindValue(':suggestion_title', $suggestion_title, PDO::PARAM_STR);
+			$suggestion_query->bindValue(':suggestion_description', $suggestion_description, PDO::PARAM_STR);
+			$suggestion_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+			$suggestion_query->bindValue(':status', 2, PDO::PARAM_INT);
+			$suggestion_query->execute();
+			
+		$user_query = $this->getUserData($_SESSION['user_email']);
+		
+		$this->sendSuggestionMailToInstitute($user_id, $user_query->Vorname, $user_query->Nachname, $suggestion_title, $suggestion_description);
+	}
+
+	public function sendSuggestionMailToInstitute($user_id, $user_vorname, $user_nachname, $suggestion_title, $suggestion_description)
+    {
+        $mail = new PHPMailer;
+
+        // please look into the config/config.php for much more info on how to use this!
+        // use SMTP or use mail()
+        if (EMAIL_USE_SMTP) {
+            // Set mailer to use SMTP
+            $mail->IsSMTP();
+            //useful for debugging, shows full SMTP errors
+            //$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+            // Enable SMTP authentication
+            $mail->SMTPAuth = EMAIL_SMTP_AUTH;
+            // Enable encryption, usually SSL/TLS
+            if (defined(EMAIL_SMTP_ENCRYPTION)) {
+                $mail->SMTPSecure = EMAIL_SMTP_ENCRYPTION;
+            }
+            // Specify host server
+            $mail->Host = EMAIL_SMTP_HOST;
+            $mail->Username = EMAIL_SMTP_USERNAME;
+            $mail->Password = EMAIL_SMTP_PASSWORD;
+            $mail->Port = EMAIL_SMTP_PORT;
+        } else {
+            $mail->IsMail();
+        }
+
+        $mail->From = "info@scholarium.at";
+        $mail->FromName = "scholarium";
+        $mail->AddAddress("gk@scholarium.at");
+        $mail->Subject = 'Neuer Themenvorschlag';
+
+        $body = $user_vorname.' '.$user_nachname.' (user_id: '.$user_id.') hat einen Themenvorschlag.<br><br>
+        		<b>Titel:</b> '.$suggestion_title.'<br><br><b>Beschreibung:</b> '.$suggestion_description;
+
+        $mail->Body = $body;
+    }
+
+	public function commentThemenwahl($comment) {
+			
+		$user_id = $_SESSION['user_id'];	
+		$comment_comment = $comment[comment];
+		$comment_topic_id = $comment[topic_id];
+		
+		$comment_query = $this->db_connection->prepare('INSERT INTO themen_kommentare (topic_id, user_id, comment, comment_datetime, status)
+															VALUES (:topic_id, :user_id, :comment, NOW(), :status)');
+			$comment_query->bindValue(':topic_id', $comment_topic_id, PDO::PARAM_INT);
+			$comment_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+			$comment_query->bindValue(':comment', $comment_comment, PDO::PARAM_STR);
+			$comment_query->bindValue(':status', 1, PDO::PARAM_INT);
+			$comment_query->execute();
+	}
+
+public function EditComment($edited_comment) {
+
+		$edited_comment_query = $this->db_connection->prepare('UPDATE themen_kommentare SET comment = :comment_edit, edit_datetime = NOW(), status = :status WHERE id = :comment_id LIMIT 1');
+            $edited_comment_query->bindValue(':comment_edit', $edited_comment[comment], PDO::PARAM_STR);
+			$edited_comment_query->bindValue(':status', 2, PDO::PARAM_INT);
+			$edited_comment_query->bindValue(':comment_id', $edited_comment[comment_id], PDO::PARAM_INT);
+            $edited_comment_query->execute();
+	}
+
+public function DeleteComment($deleted_comment) {
+
+		$deleted_comment_query = $this->db_connection->prepare('UPDATE themen_kommentare SET comment = :comment_delete, delete_datetime = NOW(), status = :status WHERE id = :comment_id LIMIT 1');
+			$deleted_comment_query->bindValue(':comment_delete', $deleted_comment[comment], PDO::PARAM_STR);
+			$deleted_comment_query->bindValue(':status', 3, PDO::PARAM_INT);
+			$deleted_comment_query->bindValue(':comment_id', $deleted_comment[comment_id], PDO::PARAM_INT);
+            $deleted_comment_query->execute();
 	}
 }

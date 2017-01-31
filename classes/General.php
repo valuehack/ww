@@ -146,6 +146,31 @@ class General {
 		return $product_query->fetchAll();
 		//return $product_query->debugDumpParams();
 	}
+
+	public function getTopic () {
+		
+		$topic_query = $this->db_connection->prepare('SELECT * FROM themen WHERE status = 1 order by amount desc');
+		$topic_query->execute();
+		
+		$topic_result = $topic_query->fetchAll();
+		
+		return $topic_result;
+		
+	}
+	
+	public function getTopicComments () {
+		
+		$comments_query = $this->db_connection->prepare('SELECT themen_kommentare.*, mitgliederExt.Nachname, mitgliederExt.Vorname
+														FROM themen_kommentare INNER JOIN mitgliederExt
+														ON themen_kommentare.user_id = mitgliederExt.user_id
+														WHERE themen_kommentare.status > 0
+														ORDER BY themen_kommentare.comment_datetime ASC');
+		$comments_query->execute();
+		
+		$comments_result = $comments_query->fetchAll();
+		
+		return $comments_result;
+	}
 	
 	public function getUserInfo ($user_id) {
 		
@@ -170,7 +195,7 @@ class General {
 	}
 
 	public function getEventReg ($user_id, $event_id) {
-		#$event_id has to nummeric
+		#$event_id has to be nummeric
 		
 		$reg_event_query = $this->db_connection->prepare('SELECT * FROM registration WHERE event_id = :event_id AND user_id = :user_id');
 		$reg_event_query->bindValue(':event_id', $event_id, PDO::PARAM_INT);
@@ -178,6 +203,19 @@ class General {
 		$reg_event_query->execute();
 		
 		return $reg_event_query->fetchObject();
+	}
+
+	public function getLatestTopicReg ($user_id) {
+		
+		$reg_topic_query = $this->db_connection->prepare('SELECT title FROM themen 
+														INNER JOIN themen_registration 
+														ON themen_registration.topic_id = themen.n 
+														WHERE themen_registration.user_id = :user_id 
+														ORDER BY themen_registration.reg_datetime DESC LIMIT 1');
+		$reg_topic_query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+		$reg_topic_query->execute();
+		
+		return $reg_topic_query->fetchObject();
 	}
 
 	public function getStaticInfo($page) {

@@ -90,7 +90,7 @@ class Registration
             if ($this->registration_successful)
             {
                 $this->addPersonalDataForUserReg($profile, $_POST["betrag"]);
-                $this->sendNewPayingUserEmailToInstitute($user_email);
+                $this->sendNewPayingUserEmailToInstitute($user_email, $_POST["zahlung"]);
 
             }
 
@@ -108,6 +108,7 @@ class Registration
             $user_email = $profile[user_email];
 			$user_anrede = $profile[user_anrede];
 			$user_surname = $profile[user_surname];
+			$zahlung = $profile[zahlung];
             $betrag = 150;
 						
             #if $user_email is unique -> then dateontinue with registration
@@ -119,7 +120,7 @@ class Registration
                 $this->addPersonalData($profile);
 
                 #comment this out when testing
-                $this->sendNewPayingUserEmailToInstitute($user_email);
+                $this->sendNewPayingUserEmailToInstitute($user_email, $zahlung);
 
                 //only redirect after registration was successfully finished
                 #header("Location: ../spende/zahlung.php");     
@@ -138,6 +139,7 @@ class Registration
             $user_email = $profile[user_email];
             $user_anrede = $profile[user_anrede];
             $user_surname = $profile[user_surname];
+			
                                     
             #if $user_email is unique -> then continue with registration
             #if already exist - direct to login 
@@ -148,7 +150,7 @@ class Registration
                 $this->addPersonalDataForProjekteReg($profile);
 
                 #comment this out when testing
-                $this->sendNewPayingUserEmailToInstitute($user_email);
+                $this->sendNewPayingUserEmailToInstitute($user_email, $_POST["zahlung"]);
 
                 //only redirect after registration was successfully finished
                 #zahlung_info.php displays extra info for selected payment method
@@ -375,6 +377,7 @@ class Registration
             user_email, 
             Mitgliedschaft,
             credits_left,
+            Mahnstufe,
             Ablauf, 
             first_reg, 
             user_active,
@@ -385,6 +388,7 @@ class Registration
             :user_email, 
             :Mitgliedschaft, 
             :credits_left,
+            :mahnstufe
             :Ablauf,
             :first_reg, 
             :user_active,
@@ -397,6 +401,7 @@ class Registration
         $qry_new_user->bindValue(':Mitgliedschaft', $donation['level'], PDO::PARAM_STR);
         $qry_new_user->bindValue(':credits_left', $profile['credits'], PDO::PARAM_STR);
         $qry_new_user->bindValue(':Ablauf', $donation['end_ymd'], PDO::PARAM_STR);
+		$qry_new_user->bindValue(':mahnstufe', 1, PDO::PARAM_INT);
         $qry_new_user->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
         $qry_new_user->bindValue(':user_active', 1, PDO::PARAM_INT);
         $qry_new_user->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
@@ -485,13 +490,15 @@ class Registration
         $give_credits_qry = $this->db_connection->prepare(
         "UPDATE mitgliederExt   
             SET credits_left = credits_left+:credits,
-                Mitgliedschaft = GREATEST(Mitgliedschaft, :Mitgliedschaft)
+                Mitgliedschaft = GREATEST(Mitgliedschaft, :Mitgliedschaft),
+                Mahnstufe = :mahnstufe
           WHERE user_email = :user_email"
         );
 
         $give_credits_qry->bindValue(':credits', $credits, PDO::PARAM_INT);
         $give_credits_qry->bindValue(':user_email', $user_email, PDO::PARAM_STR);
         $give_credits_qry->bindValue(':Mitgliedschaft', $membership_level, PDO::PARAM_STR);
+		$give_credits_qry->bindValue(':mahnstufe', 1, PDO::PARAM_INT);
 
         $give_credits_qry->execute();
 
@@ -616,9 +623,9 @@ class Registration
 
             $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
                 mitgliederExt 
-                (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, Firma, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
+                (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, Firma, first_reg, credits_left, Mahnstufe, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
                 VALUES
-                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :company, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
+                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :company, :first_reg, :credits_left, :mahnstufe, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
 
     }
 
@@ -1089,7 +1096,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', Gesamt = '$betrag', Anrede = '$anrede', Telefon = '$telefon', Firma = '$company' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', Gesamt = '$betrag', Anrede = '$anrede', Telefon = '$telefon', Firma = '$company', Mahnstufe = 1 WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -1154,7 +1161,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', credits_left = credits_left+'$betrag', Anrede = '$anrede', Telefon = '$telefon', Firma = '$company' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', Mitgliedschaft = '$Mitgliedschaft', first_reg = '$first_reg', credits_left = credits_left+'$betrag', Anrede = '$anrede', Telefon = '$telefon', Firma = '$company', Mahnstufe = 1 WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -1187,7 +1194,7 @@ class Registration
         $query_edit_user_profile = "UPDATE grey_user SET Vorname = '$name', Nachname = '$surname' WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_profile) or die($this->errors[] = "Failed Query of " . $query_edit_user_profile.mysql_error());
 
-        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$first_reg', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon', Firma = '$company' WHERE user_email LIKE '$user_email'";
+        $query_edit_user_address = "UPDATE grey_user SET Land = '$country', Ort = '$city', Strasse = '$street', PLZ = '$plz', first_reg = '$first_reg', credits_left = '$credits', Anrede = '$anrede', Telefon = '$telefon', Firma = '$company', Mahnstufe = 1 WHERE user_email LIKE '$user_email'";
         $edit_user_profile_result = mysql_query($query_edit_user_address) or die($this->errors[] = "Failed Query of " . $query_edit_user_address.mysql_error());
      
     }
@@ -1423,10 +1430,10 @@ class Registration
 
     #-------------------------------------
     //send an email to a newly subscribed member, containing password and activation link
-    public function sendNewPayingUserEmailToInstitute($user_email)
+    public function sendNewPayingUserEmailToInstitute($user_email, $zahlung)
     {
         //construct body
-        $body = "Check database, there is a new paying member ".$user_email;
+        $body = "Check database, there is a new paying member ".$user_email." Zahlungsart: ".$zahlung;
 
         //create curl resource
         $ch = curl_init();
@@ -1497,9 +1504,9 @@ class Registration
             //copy data to the main database
             $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
                 mitgliederExt 
-                (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, Firma, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
+                (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, Firma, first_reg, credits_left, Mahnstufe, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
                 VALUES
-                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :company, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
+                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :company, :first_reg, :credits_left, :mahnstufe, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
 
             $query_move_to_main->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':Mitgliedschaft', $the_row->Mitgliedschaft, PDO::PARAM_STR);
@@ -1516,6 +1523,7 @@ class Registration
 
             $query_move_to_main->bindValue(':first_reg', $the_row->first_reg, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':credits_left', $the_row->credits_left, PDO::PARAM_STR);
+			$query_move_to_main->bindValue(':mahnstufe', $the_row->Mahnstufe, PDO::PARAM_INT);
         
             $query_move_to_main->bindValue(':user_password_hash', $the_row->user_password_hash, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
@@ -1903,9 +1911,9 @@ class Registration
             //copy data to the main database
             $query_move_to_main = $this->db_connection->prepare('INSERT INTO 
                 mitgliederExt 
-                (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, Firma, first_reg, credits_left, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
+                (user_email, Mitgliedschaft, Vorname, Nachname, Anrede, Land, Ort, Strasse, PLZ, Telefon, Firma, first_reg, credits_left, Mahnstufe, Ablauf, user_password_hash, user_registration_ip, user_active, user_registration_datetime) 
                 VALUES
-                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :company, :first_reg, :credits_left, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
+                (:user_email, :Mitgliedschaft, :name, :surname, :anrede, :country, :city, :street, :plz, :telefon, :company, :first_reg, :credits_left, :mahnstufe, DATE_ADD(CURDATE(), INTERVAL 1 YEAR), :user_password_hash, :user_registration_ip, :user_active, NOW())');
 
             $query_move_to_main->bindValue(':user_email', $the_row->user_email, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':Mitgliedschaft', $the_row->Mitgliedschaft, PDO::PARAM_INT);
@@ -1922,6 +1930,7 @@ class Registration
 
             $query_move_to_main->bindValue(':first_reg', $the_row->first_reg, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':credits_left', $credits_left, PDO::PARAM_INT);
+			$query_move_to_main->bindValue(':mahnstufe', $the_row->Mahnstufe, PDO::PARAM_INT);
         
             $query_move_to_main->bindValue(':user_password_hash', $the_row->user_password_hash, PDO::PARAM_STR);
             $query_move_to_main->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
