@@ -172,6 +172,39 @@ class General {
 		return $comments_result;
 	}
 	
+	public function getIDLatestComment() {
+		
+		$latest_comment_query = $this->db_connection->prepare('SELECT id FROM themen_kommentare ORDER BY comment_datetime DESC LIMIT 1');
+		$latest_comment_query->execute();
+		
+		$latest_comment_result = $latest_comment_query->fetch();
+		$latest_id = $latest_comment_result[id];
+		
+		return $latest_id;
+	}
+	
+	public function getIDLatestEditedComment() {
+		
+		$latest_edit_query = $this->db_connection->prepare('SELECT id FROM themen_kommentare ORDER BY edit_datetime DESC LIMIT 1');
+		$latest_edit_query->execute();
+		
+		$latest_edit_result = $latest_edit_query->fetch();
+		$latest_edited_id = $latest_edit_result[id];
+		
+		return $latest_edited_id;
+	}
+	
+	public function getIDLatestDeletedComment() {
+		
+		$latest_delete_query = $this->db_connection->prepare('SELECT id FROM themen_kommentare ORDER BY delete_datetime DESC LIMIT 1');
+		$latest_delete_query->execute();
+		
+		$latest_delete_result = $latest_delete_query->fetch();
+		$latest_deleted_id = $latest_delete_result[id];
+		
+		return $latest_deleted_id;
+	}
+	
 	public function getUserInfo ($user_id) {
 		
 		$table = 'mitgliederExt';

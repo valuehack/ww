@@ -3,22 +3,54 @@ require_once('../classes/Login.php');
 $title="Themenwahl";
 include ("_header_in.php");
 
+#Post-Redirect-Get Method to prevent double form submission upon page refreshing
+if (isset($_GET['kommentar-abgeschickt'])) { ?>
+	
+	<div class='basket_message'>Vielen Dank f&uuml;r Ihren Kommentar!</div>
+	
+<?php
+	
+	$latest_comment_id = $general->getIDLatestComment();
+	
+	header("refresh:0;url=/themenwahl/#kommentar-$latest_comment_id");
+}
+
+if (isset($_GET['kommentar-geloescht'])) { ?>
+	
+	<div class='basket_message'>Ihr Kommentar wurde gel&ouml;scht.</div>
+
+<?php
+	
+	$latest_deleted_comment_id = $general->getIDLatestDeletedComment();
+	
+	header("refresh:0;url=/themenwahl/#kommentar-$latest_deleted_comment_id");
+}
+
+if (isset($_GET['vorschlag-einreichen'])) {
+	
+	header("refresh:0;url=?themenvorschlag-eingereicht");
+}
+
+if (isset($_GET['abstimmen'])) {
+	
+	header("refresh:0;url=?abstimmung-erfolgreich");
+}
+
 ?>
 <div class="content">
 
 	<div class="medien_info">
 		
-<?php 
+<?php
 	
 # messages appear at the top if suggestion or vote was successful	
-	if(isset($_POST['suggestion'])){ ?>
-	
+	if(isset($_GET['themenvorschlag-eingereicht'])){ ?>
+		
 		<div class='basket_message'>Vielen Dank f&uuml;r Ihren Themenvorschlag!<br>Wir melden uns bei Ihnen, sobald dieser zur Abstimmung bereitsteht.</div>
-	
 <?php
 	}
 	
-	if(isset($_POST['themenwahl'])){ ?>
+	if(isset($_GET['abstimmung-erfolgreich'])){ ?>
 		
 		<div class='basket_message'>Vielen Dank!<br>Ihre Abstimmung wurde eingetragen.</div>
 
@@ -30,7 +62,7 @@ include ("_header_in.php");
 		$topic_static = $general->getStaticInfo('themenwahl');
 		#show first static_content - text		
 		echo "<p>".$topic_static->info."</p>";
-						
+		
 		$topic_info = $general->getTopic();
 		
 		#get $weight with amount of support because it is the same
@@ -77,7 +109,7 @@ if ($_SESSION['Mitgliedschaft'] == 1) {
     	<p><?=$topic_static->info1?></p>
     	<p><?=$topic_static->info2?></p>
     		
-    	<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="themenwahl_form">
+    	<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']), '?abstimmen'; ?>" name="themenwahl_form">
     	
 		<?php foreach($topic_info as $row) {
     			$n = $row['n'];
@@ -124,7 +156,7 @@ if ($_SESSION['Mitgliedschaft'] == 1) {
 		
 		
 		<div class="suggestion">
-		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" name="themenwahl_suggestion_form">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']), '?vorschlag-einreichen'; ?>" name="themenwahl_suggestion_form">
         	<input id="suggestion_title" type="text" class="suggestion_inputfield" placeholder="Titel des Themenvorschlags" name="suggestion[title]" required><br>
         	<textarea class="suggestion_inputarea" id="suggestion_input" placeholder="Kurze Beschreibung des Themenvorschlags" rows="10" name="suggestion[description]"></textarea>
         	<input type="hidden" name="suggestion[user_id]" value="<?=$user_id?>">
@@ -153,6 +185,7 @@ if ($_SESSION['Mitgliedschaft'] == 1) {
 					$comment_topic_id = $value['topic_id'];
 					$comment_datetime = strftime("%d.%m.%Y, %H:%M Uhr", strtotime($value['comment_datetime']));
 					$comment_name = $value['Vorname'].' '.$value['Nachname'];
+					$comment_id = $value['id'];
 					
 					if ($value['status'] == 2) {
 						$comment_edited = " (bearbeitet am ".strftime('%d.%m.%Y, %H:%M Uhr', strtotime($value['edit_datetime'])).")";
@@ -165,24 +198,24 @@ if ($_SESSION['Mitgliedschaft'] == 1) {
 					
 					if ($comment_topic_id == $n) { ?>
 						
-					<div class='comments'>
+					<div class='comments' id="kommentar-<?=$comment_id?>">
 						<p id='comments_name_date'><span class='comments_name'><?=$comment_name?></span>
 						<br><span class='comments_time'><?=$comment_datetime . $comment_edited?></span></p>
 						<p id='comments_comm'><?=nl2br($comment)?></p>
 <?php
 					if ($user_id == $value['user_id'] && $value['status'] != 3) {
 ?>					
-					<form class="comment_edit_form" method="post" action="kommentar-bearbeiten.php" target="editComment">
+					<form class="comment_edit_form" method="post" action="<?php echo htmlentities('kommentar-bearbeiten.php');?>" target="editComment">
 						<input type="hidden" name="comment_id" value="<?=$value['id']?>">
 						<input type="hidden" name="topic_id" value="<?=$id?>">
 						<input type="hidden" name="comment" value="<?=$comment?>">
 						<button onclick="window.open('kommentar-bearbeiten.php', 'editComment', 'width=900,height=400'); $(this).closest('form').submit();">Bearbeiten</button>
 					</form>
 					
-					<form class="comment_edit_form" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']), '#kommentare-'.$id; ?>" name="delete_comment_form">
+					<form class="comment_edit_form" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']), '?kommentar-geloescht'; ?>" name="delete_comment_form">
 						<input type="hidden" name="deleted_comment[comment_id]" value="<?=$value['id']?>">
 						<input type="hidden" name="deleted_comment[comment]" value="">
-						<input type="submit" class="delete_comment_inputbutton" name="delete_comment_submit" value="L&ouml;schen">
+						<input type="submit" class="delete_comment_inputbutton" name="delete_comment_submit" value="L&ouml;schen" onclick="return checkDelete();">
 					</form>
 <?php					
 					}				
@@ -193,7 +226,7 @@ if ($_SESSION['Mitgliedschaft'] == 1) {
 			} ?>
 					</div>
 					
-					<form class="comment_input_form" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']), '#kommentare-'.$id; ?>" name="themenwahl_comment_form">
+					<form class="comment_input_form" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']), '?kommentar-abgeschickt'; ?>" name="themenwahl_comment_form">
 						<textarea class="suggestion_inputarea" id="comment_inputarea" placeholder="Kommentar oder Erg&auml;nzung zum Thema &bdquo;<?=$title?>&ldquo;" rows="3" name="comment[comment]" required></textarea>
 						<input type="hidden" name="comment[topic_id]" value="<?=$n?>">
 						<input type="submit" class="inputbutton" id="comment_inputbutton" name="comment_submit" value="Kommentar zum Thema &bdquo;<?=$title?>&ldquo; absenden" <?if ($expired < time()) echo 'disabled'?>>

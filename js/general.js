@@ -88,6 +88,14 @@ function focusEndOfTextarea() {
 	$('textarea').text($('textarea').text()).focus();
 }
 
+function checkDelete() {
+	if (confirm("Sind Sie sicher?")) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 /*
 done by dainus and ulrich
 

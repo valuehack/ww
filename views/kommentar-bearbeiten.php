@@ -23,6 +23,7 @@ include ("_header_in.php");
 		</form>
 		<script>focusEndOfTextarea();</script>
 <?php
+#see ../js/general.js for the implemented javascript functions
 		if(isset($_POST['edited_comment'])){echo "<script>CloseChildRefreshParent();</script>";}
 ?>		
 
