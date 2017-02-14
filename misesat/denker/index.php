@@ -15,6 +15,7 @@ if(isset($_GET['denker']))
 
   $name = $result->name;
   $bio = $result->bio;
+  $gen = $result->gen;
 	$img_url = 'http://www.mises.at/denker/'.$thinker_id.'.jpg';
 	if (@getimagesize($img_url)) {
 			$img = $img_url;
@@ -46,24 +47,10 @@ if(isset($_GET['denker']))
 			$result_denker = $sql_denker->fetchAll();
 			
 			
-			function addlinks($text, $arrayin, $category, $type){ //$type={denker, ort, ...}
-				$zeichen = array(".",",",")"," ","s","'",";");
-				$name = "name";
-				$id = "id";
-				foreach($zeichen as $i){
-					$links = array();
-					$words = array();
-					for ($n = 0; $n < count($arrayin); $n++) {
-						array_push($links, "<a href='../".$category."/?".$type."=".$arrayin[$n][$id]."'>".$arrayin[$n][$name]."</a>".$i);
-						array_push($words, $arrayin[$n][$name].$i);
-					}
-					$text = str_replace($words , $links , $text); 
-				}
-				return $text;
-			}
+			include "../classes/link.php";
 			
 			$bio = addlinks($bio, $result_orte, "orte", "ort");
-			$bio = addlinks($bio, $result_denker, "denker", "denker");
+			$bio = addlinks($bio, $result_denker, "denker", "denker", $name);
 			
       	?>
       			</div>
@@ -190,11 +177,15 @@ else {
 					?>
       			</div>
 <?php
+    $gencount = 1;
+    
+    
 	for ($i = 0; $i < count($result); $i++)
 	{
 		$id = $result[$i]['id'];
         $name = $result[$i]['name'];
   		$bio = $result[$i]['bio'];
+        $gen = $result[$i]['gen'];
 			$img_url = './'.$id.'.jpg';
 			if (@getimagesize($img_url)) {
 					$img = $img_url;
@@ -210,11 +201,19 @@ else {
 		}
 
 		$last_letter = $letter;
-
-		if (($i % 2) === 0) {
+        
+        
+        
+        if (($i % 2) === 0) {
 			echo '<div class="row">';
 		}
-
+        
+        if($gen == $gencount){
+            echo("</div><div class=''><h3 class='style-bl--red h-extra-space__top'>".$gen.". Generation</h3></div><div class='row'>");
+            $gencount++;
+        } 
+        
+        
 		?>
 					<div class="one-half column" id="<?=$id?>">
       					<div class="card">

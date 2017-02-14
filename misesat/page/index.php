@@ -172,4 +172,3 @@ Diese b&uuml;ndige, aber tiefgehende Darstellung der Irrwege moderner Wirtschaft
 	
 	</body>
 </html>   
-

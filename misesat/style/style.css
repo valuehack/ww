@@ -577,6 +577,28 @@ a:active {
 	}
 }
 
+.card-bottom{
+  padding-bottom: 2em;
+}
+
+.card-head-2 {
+	max-width: 100%;
+	height: 15em;
+	display: inherit;
+    overflow: hidden;
+	position: relative;
+	display: inherit;
+}
+
+@media (max-width: 2000px) {
+    .hiderow {
+        display: block;
+        width: 100%;
+        min-width: 100%;
+        max-width: none;
+        margin: 0px;
+    }
+}
 /*===================  Item List  ==================*/
 
 .list-row {
@@ -1095,4 +1117,11 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 #footer a:hover {
 	text-decoration: underline;
+}
+
+.sidebar-img {
+    max-width: 20em;
+    display: block;
+    margin-left: auto;
+    margin-right:auto;
 }
