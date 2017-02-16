@@ -68,26 +68,10 @@ $title = "Index";
                         <div class="two-thirds column">
                             <div class="row style-space--bottom">
                                 <h1>Willkommen!</h1>
-                                <p>All hail King Mises.
+                                <p>Auf dieser Seite finden Sie Informationen über die österreichische Schule der Nationalökonomie, ihrer Denker und eine Sammlung an Büchern und Artikeln. 
                                     <br> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                             </div>
                             <div>
-                                
-                                <!--div>
-                                    <h3>Blog</h3>
-                                    <div class="container">
-                                        <h5 class="style-bl--red h-extra-space__top">Artikel Nummer 1</h5>
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet...</p>
-                                        <div class="card-link h-right h-extra-space__bottom">
-                                            <a href=<?=$link?>>Zum Artikel</a>
-                                        </div>
-                                        <h5 class="style-bl--red h-extra-space__top">Artikel Nummer 2</h5>
-                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet...</p>
-                                        <div class="card-link h-right">
-                                            <a href=<?=$link?>>Zum Artikel</a>
-                                        </div>
-                                    </div>
-                                </div-->
 
                                 <h3>Neuerscheinungen</h3>
                                 <div class="row hiderow">
@@ -173,7 +157,7 @@ $title = "Index";
                                 <div class="card-content">
                                     <?
                 
-                $sql_denker = $general->db_connection->prepare('SELECT id, name, geburt, tod FROM denker ORDER BY id DESC');
+                $sql_denker = $general->db_connection->prepare('SELECT n, id, name, geburt, tod FROM denker ORDER BY n DESC');
                 $sql_denker->execute();
                 $result_denker = $sql_denker->fetchAll();
                 
@@ -217,12 +201,73 @@ $title = "Index";
                   if ($fittingday == false) {
                     echo("<script>document.getElementById('tagesbezogenes').style.display = 'none';</script>");
                   }
+                                            
+                  
                   ?></p>
                                 </div>
                             </div>
+                            
+                            <h5 class="style-bl--red h-extra-space__bottom h-extra-space__top">Neuste Beiträge</h5>
+                                <div class="">
+                                
+                                 
+                                <div class="">
+                                 <!--h5 class="h-centered">Denker</h5-->
+                                 
+                                
+                                  <?
+                                    for($m=0;$m<=3;$m++){
+                                        $denk = $result_denker[$m];
+                                        
+                                        $id = $denk['id'];
+                                        $name = $denk['name'];
+                                        
+                                        $img_url = 'denker/'.$id.'.jpg';
+                                        if (@getimagesize($img_url)) {
+                                                $img = $img_url;
+                                        } else {
+                                                $img = "denker/ma_logo.jpg";
+                                        }
+                                        
+                                        if (($m % 2) === 0) {
+                                            echo '<div class="row">';
+                                        } 
+                                    
+                                    ?>
+                                    <div class="one-half column">
+                                        <div class="card">
+                                            <a href="denker/?denker=<?=$id?>">	
+                                                <div class="card-head <? if ($img != '') echo 'card-head__overlay';?>">
+                                                <? 
+                                                    if ($img != '') echo '<img src="'.$img.'" alt="'.$name.'">';
+                                                ?>
+                                                </div>
+                                            </a>
 
+                                            <div>
+                                                <div class="text--raleway h-centered card-text"> <a href="denker/?denker=<?=$id?>"><?=$name?></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?
+                                     
+                                        if (($m + 1) % 2 === 0) {
+                                            echo '</div>';
+                                        }
+                                    }
+                                  ?>
+                                  
+                                  <br>
+                                  
+                                </div>
+                                <div class="card-link h-right">
+                                    <a href="#">Alle Denker</a>
+                                </div>
+                                </div>
+
+                           
                             <div>
-                                <h5 class="style-bl--red">Aktuelle Projekte</h5>
+                                <h5 class="style-bl--red h-extra-space__bottom h-extra-space__top">Aktuelle Projekte</h5>
                                 <div class="card">
                                 <div class="card-content">
                                   <h3>Human Action</h3>
@@ -231,7 +276,7 @@ $title = "Index";
                                     <!--img class="container h-extra-space__bottom sidebar-img" src="literatur/HumanAction.png"-->
                                     
                                     <div class="h-centered h-extra-space__top">
-                                        <a class="btn-link h-block" href="#">Jetzt Spenden</a>
+                                        <a class="btn-link h-block" href="verlag/impressum.php">Kontakt</a>
                                     </div>
                                     <br><br>
 

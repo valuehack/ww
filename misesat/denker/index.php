@@ -178,7 +178,7 @@ else {
       			</div>
 <?php
     $gencount = 1;
-    
+    $n = 0;
     
 	for ($i = 0; $i < count($result); $i++)
 	{
@@ -204,13 +204,17 @@ else {
         
         
         
-        if (($i % 2) === 0) {
+        if (($n % 2) == 0) { 
 			echo '<div class="row">';
-		}
-        
+        }
+
         if($gen == $gencount){
+            
             echo("</div><div class=''><h3 class='style-bl--red h-extra-space__top'>".$gen.". Generation</h3></div><div class='row'>");
             $gencount++;
+            if((($n+1) % 2) == 0){
+                $n++;
+            }
         } 
         
         
@@ -233,9 +237,10 @@ else {
       				</div>
 
 		<?
-		if (($i + 1) % 2 === 0 || ($i + 1) === count($result)) {
+		if ((($n + 1) % 2 == 0 || ($i + 1) == count($result))) {
 			echo '</div>';
 		}
+        $n++;
 	}
 ?>
 			</div>
