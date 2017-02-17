@@ -176,8 +176,37 @@ else {
 							}
 					?>
       			</div>
+						<div class="container h-centered style-space--bottom">
+							<div class="row">
+							<? 
+							$gen = array("menger", "bawerk", "mises", "rothbard");
+							for($i=0;$i<=3;$i++){ 
+								if ((($i) % 2) == 0) { 
+									echo '<div class="row">';
+				        } ?>
+								<div class="one-half column button-column">
+								<a href="#<?=$gen[$i]?>"><div class='card button-card'>
+									<img class="card-head button-img" src="<?=$gen[$i]?>.jpg"></img>
+									
+								</div><h6 class="button-title"><?=($i+1)?>. Generation<h6></a>
+								
+							</div>
+								
+							<?} 
+							if ((($i+1) % 2 == 0 || ($i+1) == count($result))) {
+								echo '</div>';
+							}
+							?>
+						</div>
+						</div>
+						</div>
+					</div>
+						
+						</div>
+						
+						
 <?php
-    $gencount = 1;
+    //$gencount = 1;
     $n = 0;
     
 	for ($i = 0; $i < count($result); $i++)
@@ -208,14 +237,14 @@ else {
 			echo '<div class="row">';
         }
 
-        if($gen == $gencount){
+        /*if($gen == $gencount){
             
             echo("</div><div class=''><h3 class='style-bl--red h-extra-space__top'>".$gen.". Generation</h3></div><div class='row'>");
             $gencount++;
             if((($n+1) % 2) == 0){
                 $n++;
             }
-        } 
+        } */
         
         
 		?>
