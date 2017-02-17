@@ -38,19 +38,8 @@ if(isset($_GET['denker']))
       					echo '<img src="'.$img.'" class="img--portrait" alt="'.$name.'">';
 			}
 			
-			$sql_orte = $general->db_connection->prepare('SELECT id, name FROM orte ORDER BY id DESC');
-			$sql_orte->execute();
-			$result_orte = $sql_orte->fetchAll();
-			
-			$sql_denker = $general->db_connection->prepare('SELECT id, name FROM denker ORDER BY id DESC');
-			$sql_denker->execute();
-			$result_denker = $sql_denker->fetchAll();
-			
-			
 			include "../classes/link.php";
-			
-			$bio = addlinks($bio, $result_orte, "orte", "ort");
-			$bio = addlinks($bio, $result_denker, "denker", "denker", $name);
+			$bio = addlinks($bio, $name);
 			
       	?>
       			</div>

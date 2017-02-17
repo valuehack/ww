@@ -38,18 +38,11 @@ if(isset($_GET['ort']))
 	
 	//$linktext = str_replace($denker_nolinks , $denker_larray , $text);  
 	
-	$sql_orte = $general->db_connection->prepare('SELECT id, name FROM orte ORDER BY id DESC');
-	$sql_orte->execute();
-	$result_orte = $sql_orte->fetchAll();
 	
-	$sql_denker = $general->db_connection->prepare('SELECT id, name FROM denker ORDER BY id DESC');
-	$sql_denker->execute();
-	$result_denker = $sql_denker->fetchAll();
+	//include "../classes/link.php";
 	
-	include "../classes/link.php";
-	
-	$linktext = addlinks($text, $result_orte, "orte", "ort", $name);
-	$linktext = addlinks($text, $result_denker, "denker", "denker");
+	//$linktext = addlinks($text, $result_orte, "orte", "ort", $name);
+	//$linktext = addlinks($text, $result_denker, "denker", "denker");
 ?>
 <!--Orte-->
 <!--Content-->
