@@ -29,24 +29,25 @@ function addlinks($text, $arrayin, $category, $type){ //$arrayin: words to be re
                         $denkername = $arrayin[$n][$name];
                         $denkerid = $arrayin[$n][$id];
                         
+                        $current = func_get_arg(4);
+                        if($current == $denkername){ //Überspringen, damit nicht auf die aktuelle Denkerseite verlinkt wird.
+                            continue;
+                        }
+                        
                         if($type=="denker"){  
                             
                             
                             $pieces = explode(' ', $denkername);
-                            $current = func_get_arg(4);
                         
                             //echo("Aktuell: ".$current."<br>");
                             
-                            if($current == $denkername){ //Überspringen, damit nicht auf die aktuelle Denkerseite verlinkt wird.
-                                continue;
-                            } else { //Falls Vorname der gleiche ist, weiterspringen.
-                                $current_p = explode(" ", $current);
+                            $current_p = explode(" ", $current);
                                 if(strcmp($pieces[0], $current_p[0])==0){
                                     //echo("PRENAME CONFLICT: ".$pieces[0]."<br>");
                                     continue;
                                 }
                                 //echo(".".$pieces[0]."==".$current_p[0]."."."<br>");
-                            }
+                            
                             
                             
                             foreach($zincluded as $s){
