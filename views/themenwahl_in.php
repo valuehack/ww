@@ -4,6 +4,7 @@ $title="Themenwahl";
 include ("_header_in.php");
 
 #Post-Redirect-Get Method to prevent double form submission upon page refreshing
+# buggy - needs to be fixed: no output before header function!
 if (isset($_GET['kommentar-abgeschickt'])) { ?>
 	
 	<div class='basket_message'>Vielen Dank f&uuml;r Ihren Kommentar!</div>
