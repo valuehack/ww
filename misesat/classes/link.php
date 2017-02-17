@@ -36,8 +36,12 @@ foreach($zeichen as $i){ //Cycle through seperators
   
   
   
-
-
+  if(func_get_arg(1) != FALSE){
+    $current = func_get_arg(1);
+  } else {
+    $current = "";
+  }
+  
   
   
   
@@ -50,7 +54,6 @@ foreach($zeichen as $i){ //Cycle through seperators
       
       
       $pieces = explode(' ', $denkername);
-      $current = func_get_arg(1);
       
       //echo("Aktuell: ".$current."<br>");
       
@@ -89,8 +92,14 @@ foreach($zeichen as $i){ //Cycle through seperators
   }
   
   for ($n = 0; $n < count($result_orte); $n++){
+    
     $ortname = $result_orte[$n][$name];
     $ortid = $result_orte[$n][$id];
+    
+    if($current == $ortname){ //Überspringen, damit nicht auf die aktuelle Denkerseite verlinkt wird.
+      continue;
+    }
+    
     array_push($links, "<a href='../orte/?ort=".$ortid."'>".$ortname."</a>".$i);
     array_push($words, $ortname.$i);
   }
