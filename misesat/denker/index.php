@@ -176,7 +176,7 @@ else {
 							}
 					?>
       			</div>
-						<div class="container h-centered style-space--bottom">
+						<div class="container h-centered style-space--bottom genbuttons">
 							<div class="row">
 							<? 
 							$gen = array("menger", "bawerk", "mises", "rothbard");
@@ -186,7 +186,7 @@ else {
 				        } ?>
 								<div class="one-half column button-column">
 								<a href="#<?=$gen[$i]?>"><div class='card button-card'>
-									<img class="card-head button-img" src="<?=$gen[$i]?>.jpg"></img>
+									<img class="card-head button-img" src="buttons/<?=$gen[$i]?>2.jpg"></img>
 									
 								</div><h6 class="button-title"><?=($i+1)?>. Generation<h6></a>
 								

@@ -1063,11 +1063,17 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
   overflow: hidden;
 }
 
+.genbuttons {
+  max-width: 60em;
+  margin-bottom: 5em;
+}
+
 .button-img {
-  bottom: 50%;
+  float: right;
   min-width: 22em;
   height: auto;
   width: 100%;
+  filter: grayscale(1);
 }
 
 .button-column {
@@ -1077,7 +1083,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 .button-title {
   position: relative;
   float: left;
-  bottom: 2.3em;
+  bottom: 2.5em;
   z-index: 1000;
   padding: 1rem;
   text-transform: uppercase;
