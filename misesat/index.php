@@ -68,8 +68,7 @@ $title = "Index";
                         <div class="two-thirds column">
                             <div class="row style-space--bottom">
                                 <h1>Willkommen!</h1>
-                                <p>Auf dieser Seite finden Sie Informationen über die österreichische Schule der Nationalökonomie, ihrer Denker und eine Sammlung an Büchern und Artikeln. 
-                                    <br> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                                <p>Endlich ist das Mises-Institut nach Österreich heimgekehrt. Auf Mises.AT entsteht die größte deutschsprachige Ressource zur Österreichischen Schule der Nationalökonomie. Schon seit einiger Zeit hat sich Mises.AT als Fachverlag für Werke der Österreichischen Schule einen Namen gemacht. Dank der akademischen Unterstützung der wichtigsten heutigen Vertreter der Österreichischen Schule kann Mises.AT bei allen Publikationen höchsten wissenschaftlichen Standards entsprechen. Mises.AT ist ein ehrenamtliches Projekt ohne Gewinnabsicht und sucht Unterstützung zur Durchführung von Fachübersetzungen auf höchstem Niveau. Kontaktieren Sie uns unter <a href="mailto:info@mises.at">info@mises.at</a></p>
                             </div>
                             <div>
 
