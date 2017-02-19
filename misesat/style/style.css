@@ -616,6 +616,10 @@ a:active {
 	font-family: 'Raleway', sans-serif;
 }
 
+.noborder {
+  border: 0px;
+}
+
 /*===================  Item List  ==================*/
 
 .list-row {

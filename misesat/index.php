@@ -68,7 +68,7 @@ $title = "Index";
                         <div class="two-thirds column">
                             <div class="row style-space--bottom">
                                 <h1>Willkommen!</h1>
-                                <p>Endlich ist das Mises-Institut nach Österreich heimgekehrt. Auf Mises.AT entsteht die größte deutschsprachige Ressource zur Österreichischen Schule der Nationalökonomie. Schon seit einiger Zeit hat sich Mises.AT als Fachverlag für Werke der Österreichischen Schule einen Namen gemacht. Dank der akademischen Unterstützung der wichtigsten heutigen Vertreter der Österreichischen Schule kann Mises.AT bei allen Publikationen höchsten wissenschaftlichen Standards entsprechen. Mises.AT ist ein ehrenamtliches Projekt ohne Gewinnabsicht und sucht Unterstützung zur Durchführung von Fachübersetzungen auf höchstem Niveau. Kontaktieren Sie uns unter <a href="mailto:info@mises.at">info@mises.at</a></p>
+                                <p>Endlich ist das Mises-Institut nach Österreich heimgekehrt. Auf <b>mises.at</b> entsteht die größte deutschsprachige Ressource zur Österreichischen Schule der Nationalökonomie. Schon seit einiger Zeit hat sich <b>mises.at</b> als Fachverlag für Werke der Österreichischen Schule einen Namen gemacht. Dank der akademischen Unterstützung der wichtigsten heutigen Vertreter der Österreichischen Schule kann <b>mises.at</b> bei allen Publikationen höchsten wissenschaftlichen Standards entsprechen. <b>mises.at</b> ist ein ehrenamtliches Projekt ohne Gewinnabsicht und sucht Unterstützung zur Durchführung von Fachübersetzungen auf höchstem Niveau. Kontaktieren Sie uns unter <a href="mailto:info@mises.at">info@mises.at</a></p>
                             </div>
                             <div>
 
@@ -160,6 +160,14 @@ $title = "Index";
                 $sql_denker->execute();
                 $result_denker = $sql_denker->fetchAll();
                 
+                $sql_lit = $general->db_connection->prepare('SELECT * FROM buecher ORDER BY n DESC');
+                $sql_lit->execute();
+                $result_lit = $sql_lit->fetchAll();
+                
+                $sql_art = $general->db_connection->prepare('SELECT * FROM artikel ORDER BY n DESC');
+                $sql_art->execute();
+                $result_art = $sql_art->fetchAll();
+                
                 $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
                 $monatsnamen = array(
                   1=>"Januar",
@@ -178,7 +186,7 @@ $title = "Index";
                   $monat = date("n");
                   $datum = (date("m")."-".date("d"));
                   $fittingday = false;
-                  $datum = ("02-23");
+                  //$datum = ("02-23");
                   ?>
                                         <h3><?=$tage[$tag]?>, der <?=date("j")?>. <?=$monatsnamen[$monat]?></h3>
                                         <p class="card-bottom">
@@ -262,6 +270,84 @@ $title = "Index";
                                 <div class="card-link h-right">
                                     <a href="#">Alle Denker</a>
                                 </div>
+                                <div class="card">
+                                  <h2 class="card-content h-centered">Literatur</h2>
+                                  <div class="container h-extra-space__top list">
+                              				<ul class="list--none">
+                                  <?
+                                  
+                                  $buecher_list = array();
+                                  $artikel_list = array();
+                                  
+                                  for($m=0;$m<=1;$m++){
+                                    
+                                    $buch = $result_lit[$m];
+                                    $titel = $buch['titel'];
+                                    $id = $buch['id'];
+                                    $autor = $buch['autor'];
+                                    $link = $buch['link'];
+                                    $quelle = $buch['quelle'];
+                                    $jahr = $buch['jahr'];
+                                    $type = "Buch";
+                                    
+                                    $sql_author = $general->db_connection->prepare('SELECT id FROM denker WHERE name = :name');
+                                		$sql_author->bindValue(':name', $autor, PDO::PARAM_STR);
+                              		  $sql_author->execute();
+                              		  $author_id = $sql_author->fetchObject();
+                              
+                                    
+                                    if ($quelle == "PDF") {
+                                        array_push($buecher_list, ("<li>".$type.": <a href='./literatur/".$type."/".$id.".pdf' target='_blank'>".$titel." <br><br><a href='./denker/?denker=".$author_id->id."'><div class='itm-table_sec h-right'>".$autor."</div></a>"));
+                                		}
+                                		else if (empty($quelle)) {
+                                        array_push($buecher_list, ("<li>".$titel." <br><br><a href='./denker/?denker=".$author_id->id."'><div class='itm-table_sec h-right'>".$autor."</div></a>"));
+                                		}
+                                		else {
+                                        array_push($buecher_list, ("<li><a href=".$link." target='_blank'>".$titel." <br><br><a href='./denker/?denker=".$author_id->id."'><div class='itm-table_sec h-right'>".$autor."</div></a>"));
+                                		}
+                                    
+                                    $artikel = $result_art[$m];
+                                    $titel = $artikel['titel'];
+                                    $id = $artikel['id'];
+                                    $autor = $artikel['autor'];
+                                    $link = $artikel['link'];
+                                    $quelle = $artikel['quelle'];
+                                    $jahr = $artikel['jahr'];
+                                    $type = "Artikel";
+                                    
+                                    $sql_author = $general->db_connection->prepare('SELECT id FROM denker WHERE name = :name');
+                                		$sql_author->bindValue(':name', $autor, PDO::PARAM_STR);
+                              		  $sql_author->execute();
+                              		  $author_id = $sql_author->fetchObject();
+                              
+                                    
+                                    if ($quelle == "PDF") {
+                                        array_push($artikel_list, ("<li>".$type.": <a href='./literatur/".$type."/".$id.".pdf' target='_blank'>".$titel." <br><br><a href='./denker/?denker=".$author_id->id."'><div class='itm-table_sec h-right'>".$autor."</div></a>"));
+                                		}
+                                		else if (empty($quelle)) {
+                                        array_push($artikel_list, ("<li>".$titel." <br><br><a href='./denker/?denker=".$author_id->id."'><div class='itm-table_sec h-right'>".$autor."</div></a>"));
+                                		}
+                                		else {
+                                        array_push($artikel_list, ("<li><a href=".$link." target='_blank'>".$titel." <br><br><a href='./denker/?denker=".$author_id->id."'><div class='itm-table_sec h-right'>".$autor."</div></a>"));
+                                		}
+                                    
+                                  }
+                                  
+                                  foreach ($buecher_list as $m) {
+                                    echo $m;
+                                  }
+                                  foreach ($artikel_list as $m) {
+                                    echo $m;
+                                  }
+                                  
+                                  ?>
+                                </ul>
+                              </div>
+                            </div>
+                                <div class="card-link h-extra-space__top h-right">
+                                    <a href="./literatur">Alle Literatur</a>
+                                </div>
+                                
                                 </div>
 
                            
@@ -269,7 +355,7 @@ $title = "Index";
                                 <h5 class="style-bl--red h-extra-space__bottom h-extra-space__top">Aktuelle Projekte</h5>
                                 <div class="card">
                                 <div class="card-content">
-                                  <h3>Human Action</h3>
+                                  <h3 class="h-centered">Human Action</h3>
                                    <img class="container h-extra-space__top h-extra-space__bottom sidebar-img" src="literatur/HumanAction.png">
                                     <p>Wir arbeiten momentan an einer kompletten Übersetzung von <a href="denker/?denker=mises">Ludwig von Mises</a> Hauptwerk, Human Action, ins Deutsche. Für diesen immensen Aufwand begrüßen wir jede kleine Unterstützung.</p>
                                     <!--img class="container h-extra-space__bottom sidebar-img" src="literatur/HumanAction.png"-->

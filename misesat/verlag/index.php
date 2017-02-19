@@ -16,7 +16,7 @@
       	<div class="container index-link"><p><a href="../index.php">Mises Austria</a> / Verlag</p></div>
       	<div class="container text">
       		<h1>Verlag</h1>
-      		<p>Infotext</p>
+      		<p>Schon seit einiger Zeit hat sich <b>mises.at</b> als Fachverlag für Werke der Österreichischen Schule einen Namen gemacht. Auf dieser Seite finden Sie alle bisherigen Veröffentlichungen unseres Verlagsprograms.</a></p>
       	</div> 
       	<div class="container">
       		<h3 class="h-extra-space__bottom">Verlagsprogramm</h3>
