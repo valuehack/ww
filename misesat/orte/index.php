@@ -16,7 +16,7 @@ if(isset($_GET['ort']))
   	$img = $orte_info->img;
   	$denker = $orte_info->denker;
 		
-	/*$denker_links = "";
+	$denker_links = "";
 	$denker_list = explode(", ", $denker);
 	
 	$denker_nolinks = array();
@@ -34,7 +34,7 @@ if(isset($_GET['ort']))
 			array_push($denker_nolinks, $denker_info->name);
 			array_push($denker_larray, '<a href="../denker/?denker='.$denker_info->id.'">'.$denker_info->name.'</a>');
 		}   
-	}*/
+	}
 	
 	//$linktext = str_replace($denker_nolinks , $denker_larray , $text);  
 	
@@ -42,6 +42,7 @@ if(isset($_GET['ort']))
 	include "../classes/link.php";
 	
 	//$linktext = addlinks($text, $result_orte, "orte", "ort", $name);
+
 	$linktext = addlinks($text, $name);
 ?>
 <!--Orte-->

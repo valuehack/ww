@@ -1,12 +1,11 @@
 <?php
 
-
 function addlinks($text){ //$arrayin: words to be replaced. $category: Notwendig fuer Link. $type={denker, ort, ...}
 require_once ('../config/config.php');
 require_once ('General.php');
 $general = new General();
 
-//echo "<pre>I've thrown out: "; print_r(array_pop($arrayin)); echo '</pre><br>'; //Nur Roland Baader macht Probleme? Wieso?? (Nicht die letzte Stelle; Orte gehen alle.) TODO: Fix.
+//echo "<pre>I've thrown out: "; print_r(array_pop($arrayin)); echo '</pre><br>'; 
 
 $sql_orte = $general->db_connection->prepare('SELECT id, name FROM orte ORDER BY id DESC');
 $sql_orte->execute();
@@ -76,8 +75,8 @@ foreach($zeichen as $i){ //Cycle through seperators
       //Carl Menger => <a href="../denker/?denker=menger>Carl</a>
       
       //Vorname
-      array_push($links2, "<a href='../denker/?denker=".$denkerid."'>".$pieces[0].$s."</a>".$i);  
-      array_push($words2, $pieces[0].$s.$i);
+      //array_push($links2, "<a href='../denker/?denker=".$denkerid."'>".$pieces[0].$s."</a>".$i);  
+      //array_push($words2, $pieces[0].$s.$i);
       //Carl => <a href="../denker/?denker=menger>Carl</a>
       
       //Nachname
