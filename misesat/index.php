@@ -60,7 +60,8 @@ $title = "Index";
         <div id="content">
 
 <?php
-				$infotext = $general->getInfo('statische_inhalte', 'startseite');
+				$inhalt = $general->getInfo('statische_inhalte', 'startseite');
+				$infotext = $inhalt->info;
 ?>			
 			
                 <div class="container">
