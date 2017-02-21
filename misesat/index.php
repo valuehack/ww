@@ -361,7 +361,7 @@ $title = "Index";
                                     <!--img class="container h-extra-space__bottom sidebar-img" src="literatur/HumanAction.png"-->
                                     
                                     <div class="h-centered h-extra-space__top">
-                                        <a class="btn-link h-block button-text" href="verlag/impressum.php">Kontakt</a>
+                                        <a class="btn-link h-block button-text" href="#">Kontakt</a>
                                     </div>
                                     <br><br>
 
