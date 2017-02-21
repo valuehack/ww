@@ -1117,16 +1117,6 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 	height: 100vh;
 }
 
-@media (min-width: 550px) {
-	.map__map {
-		height: 100vh;
-	}
-}
-.mapsite {
-  height: 100vh;
-  background-color: rgba(255,255,255,1);
-} 
-
 .mapfooter {
   position: fixed;
   bottom: 0;
