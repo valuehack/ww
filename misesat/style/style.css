@@ -1124,7 +1124,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 }
 .mapsite {
   height: 100vh;
-  background-color: greybg;
+  background-color: rgba(255,255,255,1);
 } 
 
 .map-info {
