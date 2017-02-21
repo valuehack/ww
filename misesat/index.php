@@ -59,16 +59,18 @@ $title = "Index";
         <!-- End Header -->
         <div id="content">
 
-        
-
-
+<?php
+				$inhalt = $general->getInfo('statische_inhalte', 'startseite');
+				$infotext = $inhalt->info;
+?>			
+			
                 <div class="container">
 
                     <div class="row">
                         <div class="two-thirds column">
                             <div class="row style-space--bottom">
                                 <h1>Willkommen!</h1>
-                                <p>Endlich ist das Mises-Institut nach Österreich heimgekehrt. Auf <b>mises.at</b> entsteht die größte deutschsprachige Ressource zur Österreichischen Schule der Nationalökonomie. Schon seit einiger Zeit hat sich <b>mises.at</b> als Fachverlag für Werke der Österreichischen Schule einen Namen gemacht. Dank der akademischen Unterstützung der wichtigsten heutigen Vertreter der Österreichischen Schule kann <b>mises.at</b> bei allen Publikationen höchsten wissenschaftlichen Standards entsprechen. <b>mises.at</b> ist ein ehrenamtliches Projekt ohne Gewinnabsicht und sucht Unterstützung zur Durchführung von Fachübersetzungen auf höchstem Niveau. Kontaktieren Sie uns unter <a href="mailto:info@mises.at">info@mises.at</a></p>
+                                <p><?=$infotext?></p>
                             </div>
                             <div>
 
@@ -172,7 +174,7 @@ $title = "Index";
                 $monatsnamen = array(
                   1=>"Januar",
                   2=>"Februar",
-                  3=>"März",
+                  3=>"M&auml;rz",
                   4=>"April",
                   5=>"Mai",
                   6=>"Juni",
@@ -214,7 +216,7 @@ $title = "Index";
                                 </div>
                             </div>
                             
-                            <h5 class="style-bl--red h-extra-space__bottom h-extra-space__top">Neuste Beiträge</h5>
+                            <h5 class="style-bl--red h-extra-space__bottom h-extra-space__top">Neueste Eintr&auml;ge</h5>
                                 <div class="">
                                 
                                  
@@ -268,7 +270,7 @@ $title = "Index";
                                   
                                 </div>
                                 <div class="card-link h-right">
-                                    <a href="#">Alle Denker</a>
+                                    <a href="./denker">Alle Denker</a>
                                 </div>
                                 <div class="card">
                                   <h2 class="card-content h-centered">Literatur</h2>
@@ -345,7 +347,7 @@ $title = "Index";
                               </div>
                             </div>
                                 <div class="card-link h-extra-space__top h-right">
-                                    <a href="./literatur">Alle Literatur</a>
+                                    <a href="./literatur">Gesamte Literatur</a>
                                 </div>
                                 
                                 </div>
@@ -357,11 +359,11 @@ $title = "Index";
                                 <div class="card-content">
                                   <h3 class="h-centered">Human Action</h3>
                                    <img class="container h-extra-space__top h-extra-space__bottom sidebar-img" src="literatur/HumanAction.png">
-                                    <p>Wir arbeiten momentan an einer kompletten Übersetzung von <a href="denker/?denker=mises">Ludwig von Mises</a> Hauptwerk, Human Action, ins Deutsche. Für diesen immensen Aufwand begrüßen wir jede kleine Unterstützung.</p>
+                                    <p>Wir arbeiten momentan an einer kompletten &Uuml;bersetzung von <a href="denker/?denker=mises">Ludwig von Mises'</a> Hauptwerk, Human Action, ins Deutsche. F&uuml;r diesen immensen Aufwand begr&uuml;&szlig;en wir jede kleine Unterst&uuml;tzung.</p>
                                     <!--img class="container h-extra-space__bottom sidebar-img" src="literatur/HumanAction.png"-->
                                     
                                     <div class="h-centered h-extra-space__top">
-                                        <a class="btn-link h-block button-text" href="#">Kontakt</a>
+                                        <a class="btn-link h-block button-text" href="mailto:&#105;nf&#111;&#064;&#109;&#105;se&#115;.&#97;&#116;">Kontakt</a>
                                     </div>
                                     <br><br>
 
@@ -393,7 +395,7 @@ $title = "Index";
 
         <!--Begin Footer-->
         <footer id="footer">
-            <p>&copy; mises.at 2015-2016 &mdash; <a href="verlag/impressum.php">Impressum</a> &mdash; <a href="verlag/index.php">&Uuml;ber Uns</a></p>
+            <p>&copy; mises.at 2015-<?php echo date('Y'); ?> &mdash; <!--<a href="verlag/impressum.php">Impressum</a> &mdash; --><a href="verlag/index.php">&Uuml;ber Uns</a></p>
         </footer>
         <!--End Footer-->
     </body>
