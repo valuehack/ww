@@ -1129,6 +1129,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 .mapfooter {
   position: fixed;
+  bottom: 0;
 }
 
 .map-info {
