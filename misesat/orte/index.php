@@ -75,11 +75,13 @@ if(isset($_GET['ort']))
        </div>
     </div>
 <?php
+	include "../page/footer.inc.php";
 }
 else {			
     $result = $general->getItemList('orte', 'id', 'ASC');
    
 ?>
+<div class="mapsite">
 <!--Ortsliste-->	
 	<!--<div id="content">
   	
@@ -206,6 +208,9 @@ else {
 
 <?	
 	//}
-}
 	include "../page/footer.inc.php";
+	?>
+	</div>
+	<?
+}
 ?>
