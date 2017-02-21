@@ -81,7 +81,6 @@ else {
     $result = $general->getItemList('orte', 'id', 'ASC');
    
 ?>
-<div class="mapsite">
 <!--Ortsliste-->	
 	<!--<div id="content">
   	
@@ -196,6 +195,7 @@ else {
         
     	}
 	}
+	
 	</script>
 
 		<!--echo"var info = '<div><h1>".$name."</h1><p>".substr($text, 0, 200)."</p></div>';";-->
@@ -205,7 +205,7 @@ else {
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChP6VPcxuqcO5r8q7733mF7hzjNg4r9EY&callback=initMap">
     </script>
-
+<div class="mapfooter">
 <?	
 	//}
 	include "../page/footer.inc.php";

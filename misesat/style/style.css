@@ -1119,13 +1119,17 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 @media (min-width: 550px) {
 	.map__map {
-		height: 50%;
+		height: 100vh;
 	}
 }
 .mapsite {
   height: 100vh;
   background-color: rgba(255,255,255,1);
 } 
+
+.mapfooter {
+  position: fixed;
+}
 
 .map-info {
 	padding: 1rem;
