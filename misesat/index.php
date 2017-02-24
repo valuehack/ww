@@ -391,16 +391,4 @@ $title = "Index";
                 </div>
 
         </div>
-
-
-        <!--Begin Footer-->
-        <footer id="footer">
-            <p>&copy; mises.at 2015-<?php echo date('Y'); ?> &mdash; <!--<a href="verlag/impressum.php">Impressum</a> &mdash; --><a href="verlag/index.php">&Uuml;ber Uns</a></p>
-        </footer>
-        <!--End Footer-->
-    </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/general.js"></script>
-    <script src="js/sorttable.js"></script>
-
-    </html>
+<?php include "page/footer.inc.php"; ?>

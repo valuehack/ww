@@ -1093,13 +1093,15 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
   position: relative;
   float: left;
   bottom: 2.5em;
-  z-index: 1000;
+  z-index: 10;
   padding: 1rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: rgba(203,44,52,0.75);
+  color: rgba(28,109,186,0.75);
   font-family: "Raleway", Helvetica, Arial, sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-shadow: 0px 0px 15px rgba(255, 255, 255, 1);
 }
 
 /*==================================================*/
