@@ -1,9 +1,3 @@
-<?
-  $path = substr(dirname(dirname(__FILE__)), strpos(dirname(dirname(__FILE__)), 'misesat') + 1);
-  $path2 = dirname(dirname(__FILE__));
-  $path3 = "/misesat"
-?>
-
 		<!--Begin Footer-->
   		<footer id="footer">
   	  		<p>&copy; mises.at 2015-2017 &mdash; <!--a href="../verlag/impressum.php">Impressum</a--> <a href="/verlag/index.php">&Uuml;ber Uns</a></p>
