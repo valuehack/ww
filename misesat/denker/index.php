@@ -123,7 +123,7 @@ else {
 ?>
 <!--Denkerliste-->
 
-			<div class="container index-link"><p><a href="/index.php">mises.at</a> / Denker</p></div>
+			<div class="container index-link"><p><a href="../index.php">mises.at</a> / Denker</p></div>
       		<div class="container">
       			<h1>Denker</h1>
       			<p>Hier finden Sie eine umfassende &Uuml;bersicht der in der Denktradition der &Ouml;sterreichischen Schule stehenden Denker.</p>
@@ -204,11 +204,11 @@ else {
         $name = $result[$i]['name'];
   		$bio = $result[$i]['bio'];
         $gen = $result[$i]['gen'];
-			$img_url = '/production/misesat/denker/'.$id.'.jpg';
+			$img_url = './'.$id.'.jpg';
 			if (@getimagesize($img_url)) {
 					$img = $img_url;
 			} else {
-					$img = "/denker/ma_logo.jpg";
+					$img = "./ma_logo.jpg";
 			}
 
 		$last_letter = '';
