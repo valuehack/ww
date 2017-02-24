@@ -1,7 +1,7 @@
 <?php
-require_once ('config/config.php');
+require_once (__DIR__.'/config/config.php');
 
-require_once ('classes/General.php');
+require_once (__DIR__.'classes/General.php');
 $general = new General();
 $title = "Index";
 ?>
