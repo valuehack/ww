@@ -1,8 +1,5 @@
 <?php
-require_once (__DIR__.'/config/config.php');
-
-require_once (__DIR__.'/classes/General.php');
-$general = new General();
+require_once (__DIR__."/config/header1.inc.php");
 $title = "Index";
 ?>
     <!DOCTYPE html >
@@ -270,7 +267,7 @@ $title = "Index";
                                   
                                 </div>
                                 <div class="card-link h-right">
-                                    <a href="./denker">Alle Denker</a>
+                                    <a href="<?=readlink(__DIR__)?>./denker">Alle Denker</a>
                                 </div>
                                 <div class="card">
                                   <h2 class="card-content h-centered">Literatur</h2>
@@ -391,4 +388,4 @@ $title = "Index";
                 </div>
 
         </div>
-<?php include "page/footer.inc.php"; ?>
+<?php include (__DIR__."/page/footer.inc.php"); ?>
