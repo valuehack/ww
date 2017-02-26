@@ -55,6 +55,15 @@ class General {
 		return $info_query->fetchObject();
 	}
 	
+	public function getSpecialList ($table, $prop, $id, $orderby, $order) {
+		
+		$list_query = $this->db_connection->prepare('SELECT * FROM '.$table.' WHERE '.$prop.' = :'.$prop.' ORDER by '.$orderby.' '.$order.'');
+		$list_query->bindValue(':'.$prop, $id, PDO::PARAM_STR);
+		$list_query->execute();
+		
+		return $list_query->fetchAll();
+	}
+	
 	public function getRandomInfo ($table) {
 		# Takes a random entry out of  the table specified
 		

@@ -155,9 +155,7 @@ $title = "Index";
                 
                 
                 $result_denker = $general->getItemList('denker', 'n', 'desc');
-                
                 $result_lit = $general->getItemList('buecher', 'n', 'desc');
-                
                 $result_art = $general->getItemList('artikel', 'n', 'desc');
                 
                 $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
@@ -361,20 +359,6 @@ $title = "Index";
                                 </div>
                                 
                             </div>
-
-                            <!--div class="card">
-                                <div class="card-content">
-                                    <h3>Aktuelle Projekte</h3>
-                                    <p>Wir arbeiten momentan an einer kompletten Übersetzung von <a href="denker/?denker=mises">Ludwig von Mises</a> Hauptwerk, Human Action, ins Deutsche. Für diesen immensen Aufwand begrüßen wir jede kleine Unterstützung.</p>
-                                    <img class="container" src="literatur/HumanAction.png">
-
-                                </div>
-                                <div class="card-link h-right">
-                                    <a href="#">Jetzt spenden!</a>
-                                </div>
-                            </div-->
-                            
-                            
                             
                         </div>
                     </div>
