@@ -267,7 +267,7 @@ $title = "Index";
                                   
                                 </div>
                                 <div class="card-link h-right">
-                                    <a href="<?=readlink($misesat_path)?>/denker">Alle Denker</a>
+                                    <a href="./denker">Alle Denker</a>
                                 </div>
                                 <div class="card">
                                   <h2 class="card-content h-centered">Literatur</h2>
