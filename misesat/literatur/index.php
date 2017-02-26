@@ -1,5 +1,5 @@
 <? 
-	include "../config/header1.inc.php";
+	require_once (dirname(__DIR__)."/config/header1.inc.php");
 
 	$title='Literatur';
 
