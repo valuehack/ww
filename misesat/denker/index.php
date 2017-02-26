@@ -52,23 +52,13 @@ if(isset($_GET['denker']))
       			<div class="one-third column">
       				<?php
 							
-							$result_book = $general->getSpecialList('buecher', 'autor', $name, 'jahr', 'DESC');
-							
-   						/*$sql_book = $general->db_connection->prepare('SELECT * FROM buecher WHERE autor = :autor ORDER BY jahr DESC');
-						$sql_book->bindValue(':autor', $name, PDO::PARAM_STR);
-						$sql_book->execute();
-						$result_book = $sql_book->fetchAll();*/
+						$result_book = $general->getSpecialList('*', 'buecher', 'autor', $name, 'jahr', 'DESC');
 
 						for ($m = 0; $m < count($result_book); $m++) {
 							$result_book[$m]['type'] = 'Buch';
 						}
 						
-						$result_art = $general->getSpecialList('artikel', 'autor', $name, 'jahr', 'DESC');
-
-						/*$sql_art = $general->db_connection->prepare('SELECT * FROM artikel WHERE autor = :autor ORDER BY jahr DESC');
-						$sql_art->bindValue(':autor', $name, PDO::PARAM_STR);
-						$sql_art->execute();
-						$result_art = $sql_art->fetchAll();*/
+						$result_art = $general->getSpecialList('*', 'artikel', 'autor', $name, 'jahr', 'DESC');
 
 						for ($n = 0; $n < count($result_art); $n++) {
 							$result_art[$n]['type'] = 'Artikel';

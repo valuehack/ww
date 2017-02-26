@@ -12,20 +12,24 @@
 <?
 	if (isset($_GET['autor'])) {
 		$author_name = $general->getInfo('denker', $_GET['autor']);
+		
+		$result_book = $general->getSpecialList('*', 'buecher', 'autor', $author_name->name, 'jahr', 'desc');
 				
-		$sql_book = $general->db_connection->prepare('SELECT * FROM buecher WHERE autor = :autor ORDER BY jahr DESC');
+		/*$sql_book = $general->db_connection->prepare('SELECT * FROM buecher WHERE autor = :autor ORDER BY jahr DESC');
 		$sql_book->bindValue(':autor', $author_name->name, PDO::PARAM_STR);
 		$sql_book->execute();
-		$result_book = $sql_book->fetchAll();
+		$result_book = $sql_book->fetchAll();*/
 		
 		for ($m = 0; $m < count($result_book); $m++) {
 			$result_book[$m]['type'] = 'Buch';
 		}
 		
-		$sql_art = $general->db_connection->prepare('SELECT * FROM artikel WHERE autor = :autor ORDER BY jahr DESC');
+		$result_art = $general->getSpecialList('*', 'artikel', 'autor', $author_name->name, 'jahr', 'desc');
+		
+		/*$sql_art = $general->db_connection->prepare('SELECT * FROM artikel WHERE autor = :autor ORDER BY jahr DESC');
 		$sql_art->bindValue(':autor', $author_name->name, PDO::PARAM_STR);
 		$sql_art->execute();
-		$result_art = $sql_art->fetchAll();
+		$result_art = $sql_art->fetchAll();*/
 		
 		for ($n = 0; $n < count($result_art); $n++) {
 			$result_art[$n]['type'] = 'Artikel';
@@ -141,10 +145,12 @@
 			default: $lang = 'Deutsch'; break;
 		}
 				
-  		$sql_author = $general->db_connection->prepare('SELECT id FROM denker WHERE name = :name');
+			 $author_id = $general->getSpecialObject('id', 'denker', 'name', $autor_lit);
+				
+  		/*$sql_author = $general->db_connection->prepare('SELECT id FROM denker WHERE name = :name');
   		$sql_author->bindValue(':name', $autor_lit, PDO::PARAM_STR);
 		$sql_author->execute();
-		$author_id = $sql_author->fetchObject();
+		$author_id = $sql_author->fetchObject();*/
 						
 		if ($quelle_lit == "PDF") { //PDF Links vorsichtshalber entfernt.
 			$sitelink = ""; // "./".$typ_lit."/".$id_lit.".pdf"; 

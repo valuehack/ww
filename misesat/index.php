@@ -280,10 +280,7 @@ $title = "Index";
                                     $jahr = $buch['jahr'];
                                     $type = "Buch";
                                     
-                                    $sql_author = $general->db_connection->prepare('SELECT id FROM denker WHERE name = :name');
-                                		$sql_author->bindValue(':name', $autor, PDO::PARAM_STR);
-                              		  $sql_author->execute();
-                              		  $author_id = $sql_author->fetchObject();
+                                    $author_id = $general->getSpecialObject('id', 'denker', 'name', $autor);
                               
                                     
                                     if ($quelle == "PDF") {
@@ -305,11 +302,7 @@ $title = "Index";
                                     $jahr = $artikel['jahr'];
                                     $type = "Artikel";
                                     
-                                    $sql_author = $general->db_connection->prepare('SELECT id FROM denker WHERE name = :name');
-                                		$sql_author->bindValue(':name', $autor, PDO::PARAM_STR);
-                              		  $sql_author->execute();
-                              		  $author_id = $sql_author->fetchObject();
-                              
+                                    $author_id = $general->getSpecialObject('id', 'denker', 'name', $autor);
                                     
                                     if ($quelle == "PDF") {
                                         array_push($artikel_list, ("<li>".$type.": <a href='./literatur/".$type."/".$id.".pdf' target='_blank'>".$titel." <br><br><a href='./denker/?denker=".$author_id->id."'><div class='itm-table_sec h-right'>".$autor."</div></a>"));

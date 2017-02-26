@@ -55,13 +55,22 @@ class General {
 		return $info_query->fetchObject();
 	}
 	
-	public function getSpecialList ($table, $prop, $id, $orderby, $order) {
+	public function getSpecialList ($n, $table, $prop, $id, $orderby, $order) {
 		
-		$list_query = $this->db_connection->prepare('SELECT * FROM '.$table.' WHERE '.$prop.' = :'.$prop.' ORDER by '.$orderby.' '.$order.'');
+		$list_query = $this->db_connection->prepare('SELECT '.$n.' FROM '.$table.' WHERE '.$prop.' = :'.$prop.' ORDER by '.$orderby.' '.$order.'');
 		$list_query->bindValue(':'.$prop, $id, PDO::PARAM_STR);
 		$list_query->execute();
 		
 		return $list_query->fetchAll();
+	}
+	
+	public function getSpecialObject ($n, $table, $prop, $id) {
+		
+		$info_query = $this->db_connection->prepare('SELECT '.$n.' FROM '.$table.' WHERE '.$prop.' = :'.$prop.'');
+		$info_query->bindValue(':'.$prop, $id, PDO::PARAM_STR);
+		$info_query->execute();
+		
+		return $info_query->fetchObject();
 	}
 	
 	public function getRandomInfo ($table) {
