@@ -74,9 +74,7 @@ $title = "Index";
                                 <h3>Neuerscheinungen</h3>
                                 <div class="row hiderow">
                                     <?
-              $program_query = $general->db_connection->prepare("SELECT * FROM verlagsprogramm ORDER by n desc");
-              $program_query->execute();
-              $program = $program_query->fetchAll();	
+                                    $program = $general->getItemList('verlagsprogramm', 'n', 'desc');
               
                 $n = 0;
                                     
@@ -155,17 +153,12 @@ $title = "Index";
                                 <div class="card-content">
                                     <?
                 
-                $sql_denker = $general->db_connection->prepare('SELECT n, id, name, geburt, tod FROM denker ORDER BY n DESC');
-                $sql_denker->execute();
-                $result_denker = $sql_denker->fetchAll();
                 
-                $sql_lit = $general->db_connection->prepare('SELECT * FROM buecher ORDER BY n DESC');
-                $sql_lit->execute();
-                $result_lit = $sql_lit->fetchAll();
+                $result_denker = $general->getItemList('denker', 'n', 'desc');
                 
-                $sql_art = $general->db_connection->prepare('SELECT * FROM artikel ORDER BY n DESC');
-                $sql_art->execute();
-                $result_art = $sql_art->fetchAll();
+                $result_lit = $general->getItemList('buecher', 'n', 'desc');
+                
+                $result_art = $general->getItemList('artikel', 'n', 'desc');
                 
                 $tage = array("Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag");
                 $monatsnamen = array(
