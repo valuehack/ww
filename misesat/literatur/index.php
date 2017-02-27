@@ -154,7 +154,6 @@
 						
 		if ($quelle_lit == "PDF") { 
 			$sitelink = "./".$typ_lit."/".$id_lit.".pdf"; 
-			$quelle_lit = "";
 		}
 		else if (empty($quelle_lit)) {
 			$sitelink = '';
