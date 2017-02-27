@@ -29,7 +29,7 @@ include ("_header_in.php");
 
 			if ($livestream_result->livestream != '' && ($mitgliedschaft >=2 || $livestream_result->spots > 59)){
             ?>
-            <div class="startpage_section_last_scholie startpage-livestream">
+            <div class="jubilaeum_banner">
             	<a href="<?=$livestream_url?>">Sehen Sie unseren <?=ucfirst($livestream_type)?> <em><?=$livestream_title?></em> im Livestream</a>
             </div>
 			<?php
