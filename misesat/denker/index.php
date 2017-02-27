@@ -84,9 +84,8 @@ if(isset($_GET['denker']))
           				<ul class="list--none">
 						<?php
 						for ($i = 0; $i < $x; $i++) {
-							if ($result_lit[$i]['quelle'] == 'PDF') { //PDF Links vorsichtshalber entfernt.
-								//echo '<li>'.$result_lit[$i]['type'].': <a href="../literatur/'.$result_lit[$i]['type'].'/'.$result_lit[$i]['id'].'.pdf" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
-								echo '<li>'.$result_lit[$i]['type'].': '.$result_lit[$i]['titel'].' ('.$result_lit[$i]['jahr'].')';
+							if ($result_lit[$i]['quelle'] == 'PDF') { 
+								echo '<li>'.$result_lit[$i]['type'].': <a href="../literatur/'.$result_lit[$i]['type'].'/'.$result_lit[$i]['id'].'.pdf" target="_blank">'.$result_lit[$i]['titel'].'</a> ('.$result_lit[$i]['jahr'].')';
 							} else if (empty($result_lit[$i]['quelle'])) {
 								echo '<li>'.$result_lit[$i]['type'].': '.$result_lit[$i]['titel'].' ('.$result_lit[$i]['jahr'].')';
 							} else {

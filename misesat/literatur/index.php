@@ -152,8 +152,8 @@
 		$sql_author->execute();
 		$author_id = $sql_author->fetchObject();*/
 						
-		if ($quelle_lit == "PDF") { //PDF Links vorsichtshalber entfernt.
-			$sitelink = ""; // "./".$typ_lit."/".$id_lit.".pdf"; 
+		if ($quelle_lit == "PDF") { 
+			$sitelink = "./".$typ_lit."/".$id_lit.".pdf"; 
 			$quelle_lit = "";
 		}
 		else if (empty($quelle_lit)) {
