@@ -196,4 +196,91 @@ class General {
 	$l = array_values($l);
 	return $l;
 	}
+	
+	public function addlinks($text){ 
+
+	$sql_orte = $this->db_connection->prepare('SELECT id, name FROM orte ORDER BY id DESC');
+	$sql_orte->execute();
+	$result_orte = $sql_orte->fetchAll();
+
+	$sql_denker = $this->db_connection->prepare('SELECT id, name FROM denker ORDER BY id DESC');
+	$sql_denker->execute();
+	$result_denker = $sql_denker->fetchAll();
+
+	$zeichen = array(".",",",")"," ",";","'"); //Seperators/Endings included
+	$zincluded = array("","s");
+
+	$name = "name";
+	$id = "id";
+
+	$links = array();
+	$words = array();
+
+	$links2 = array(); //Fuer Vor- oder Nachnamen
+	$words2 = array();
+
+	$links3 = array(); //Fuer Vor- oder Nachnamen
+	$words3 = array();
+
+	foreach($zeichen as $i){ //Cycle through seperators
+	  
+	  if(func_get_arg(1) != FALSE){
+	    $current = func_get_arg(1);
+	  } else {
+	    $current = "";
+	  }
+	  
+	  foreach($zincluded as $s){
+	    
+	    for ($n = 0; $n < count($result_denker); $n++) {
+	      
+	      $denkername = $result_denker[$n][$name];
+	      $denkerid = $result_denker[$n][$id];
+	      
+	      $pieces = explode(' ', $denkername);
+	      
+	      if($current == $denkername){ //Überspringen, damit nicht auf die aktuelle Denkerseite verlinkt wird.
+	        continue;
+	      } else { //Falls Vorname der gleiche ist, weiterspringen.
+	        $current_p = explode(" ", $current);
+	        if(strcmp($pieces[0], $current_p[0])==0){
+	          continue;
+	        }
+	      }
+	      
+	      //Ganzer Name
+	      array_push($links, "<a href='../denker/?denker=".$denkerid."'>".str_replace(" ","_",$denkername).$s."</a>".$i); 
+	      array_push($words, $denkername.$s.$i);
+	      
+	      //Vorname
+	      //array_push($links2, "<a href='../denker/?denker=".$denkerid."'>".$pieces[0].$s."</a>".$i);  
+	      //array_push($words2, $pieces[0].$s.$i);
+	      
+	      //Nachname
+	      $last = end($pieces);
+	      array_push($links3, "<a href='../denker/?denker=".$denkerid."'>".$last.$s."</a>".$i); 
+	      array_push($words3, $last.$s.$i);
+	    }
+	  }
+	  
+	  for ($n = 0; $n < count($result_orte); $n++){
+	    
+	    $ortname = $result_orte[$n][$name];
+	    $ortid = $result_orte[$n][$id];
+	    
+	    if($current == $ortname){ //Überspringen, damit nicht auf die aktuelle Denkerseite verlinkt wird.
+	      continue;
+	    }
+	    
+	    array_push($links, "<a href='../orte/?ort=".$ortid."'>".$ortname."</a>".$i);
+	    array_push($words, $ortname.$i);
+	  }
+	}
+
+	$text = str_replace($words,$links,$text); //Replace $words with $links in $text.
+	$text = str_replace($words2,$links2,$text); //Replace $words with $links in $text.
+	$text = str_replace($words3,$links3,$text);
+	$text = str_replace("_"," ",$text);
+	return $text;
+	}
 }

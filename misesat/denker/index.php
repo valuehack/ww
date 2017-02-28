@@ -38,8 +38,7 @@ if(isset($_GET['denker']))
       					echo '<img src="'.$img.'" class="img--portrait" alt="'.$name.'">';
 			}
 			
-			include "../classes/link.php";
-			$bio = addlinks($bio, $name);
+			$bio = $general->addlinks($bio, $name);
 			
       	?>
       			</div>

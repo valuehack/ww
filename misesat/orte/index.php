@@ -39,11 +39,10 @@ if(isset($_GET['ort']))
 	//$linktext = str_replace($denker_nolinks , $denker_larray , $text);  
 	
 	
-	include "../classes/link.php";
 	
 	//$linktext = addlinks($text, $result_orte, "orte", "ort", $name);
 
-	$linktext = addlinks($text, $name);
+	$linktext = $general->addlinks($text, $name);
 ?>
 <!--Orte-->
 <!--Content-->
