@@ -62,7 +62,7 @@
 					<div class="list-itm h-extra-space__top">
 						<h5> <a class="title" href=<?=$link?>> <?=$item['title']?></a></h5>
 						<p class="text-insert text--raleway"><?=$author_links?></p>
-						<p><?=$item['desc']?></p>
+						<p><?=$general->addlinks($item['desc'], $item['title']);?></p>
 					</div>
 				</div>
 			</div>

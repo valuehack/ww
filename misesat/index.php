@@ -124,7 +124,7 @@ $title = "Index";
                                                         <?=$author_links?>
                                                     </p>
                                                     <p>
-                                                        <?=$item['desc']?>
+                                                        <?=$general->addlinks($item['desc'], $item['title']);?>
                                                     </p>
                                                 </div>
                                                 <div class="card-link h-right">
