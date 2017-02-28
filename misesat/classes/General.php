@@ -9,6 +9,7 @@ class General {
 	public function __construct() {
 		
 		$this->databaseConnection();
+		
 	}
 	
 	private function databaseConnection()
@@ -206,8 +207,16 @@ class General {
 	$sql_denker = $this->db_connection->prepare('SELECT id, name FROM denker ORDER BY id DESC');
 	$sql_denker->execute();
 	$result_denker = $sql_denker->fetchAll();
+	
+	$sql_lit = $this->db_connection->prepare('SELECT id, titel, link, quelle FROM buecher ORDER BY id DESC');
+	$sql_lit->execute();
+	$result_lit = $sql_lit->fetchAll();
+	
+	$sql_art = $this->db_connection->prepare('SELECT id, titel, link, quelle FROM artikel ORDER BY id DESC');
+	$sql_art->execute();
+	$result_art = $sql_art->fetchAll();
 
-	$zeichen = array(".",",",")"," ",";","'"); //Seperators/Endings included
+	$zeichen = array(".",",",")"," ",";","'","<"); //Seperators/Endings included
 	$zincluded = array("","s");
 
 	$name = "name";
@@ -229,6 +238,8 @@ class General {
 	  } else {
 	    $current = "";
 	  }
+		
+		
 	  
 	  foreach($zincluded as $s){
 	    
@@ -274,6 +285,56 @@ class General {
 	    
 	    array_push($links, "<a href='../orte/?ort=".$ortid."'>".$ortname."</a>".$i);
 	    array_push($words, $ortname.$i);
+	  }
+		
+		for ($n = 0; $n < count($result_lit); $n++){
+			
+	    $titel = $result_lit[$n]['titel'];
+	    $litid = $result_lit[$n][$id];
+			$quelle = $result_lit[$n]['quelle'];
+			$link = $result_lit[$n]['link'];
+	    
+	    if($current == $titel){ //Überspringen, damit nicht auf die aktuelle Denkerseite verlinkt wird.
+	      continue;
+	    }
+			
+			if ($quelle == "PDF") { 
+				$sitelink = "../literatur/Buch/".$litid.".pdf"; 
+			}
+			else if (empty($quelle)) {
+				continue;
+			}
+			else {
+				$sitelink = $link;
+			}
+	    
+	    array_push($links, "<a href='".$sitelink."'>".$titel."</a>".$i);
+	    array_push($words, $titel.$i);
+	  }
+		
+		for ($n = 0; $n < count($result_art); $n++){
+			
+	    $titel = $result_art[$n]['titel'];
+	    $artid = $result_art[$n][$id];
+			$quelle = $result_art[$n]['quelle'];
+			$link = $result_art[$n]['link'];
+	    
+	    if($current == $titel){ //Überspringen, damit nicht auf die aktuelle Denkerseite verlinkt wird.
+	      continue;
+	    }
+			
+			if ($quelle == "PDF") { 
+				$sitelink = "../literatur/Artikel/".$artid.".pdf"; 
+			}
+			else if (empty($quelle)) {
+				continue;
+			}
+			else {
+				$sitelink = $link;
+			}
+			
+	    array_push($links, "<a href='".$sitelink."'>".$titel."</a>".$i);
+	    array_push($words, $titel.$i);
 	  }
 	}
 
