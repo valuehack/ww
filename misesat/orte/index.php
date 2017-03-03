@@ -192,6 +192,9 @@ else {
 					if (infowindow) {
         		infowindow.close();
     			}	
+					var infowindow = new google.maps.InfoWindow({
+        	content: info
+       		 });
         	infowindow.open(map, marker);
         	});
         
