@@ -179,23 +179,23 @@ else {
          	map: map,
          	title: '<?=$name?>'
         });
+				var infowindow = null;
         attachInfoWindow(marker, contentString);
 <?php       
 	}
 ?>
     	function attachInfoWindow(marker, info) {
-        	var infowindow = new google.maps.InfoWindow({
-        	content: info
-       		 });
-        
+				
        		marker.addListener('click', function() {
-					if (infowindow) {
-        		infowindow.close();
-    			}	
-					var infowindow = new google.maps.InfoWindow({
-        	content: info
-       		 });
-        	infowindow.open(map, marker);
+						
+						if (infowindow) {
+	        		infowindow.close();
+	    			}
+						var infowindow = new google.maps.InfoWindow({
+	        	content: info
+	       		 });
+	        	infowindow.open(map, marker);
+						
         	});
         
     	}
