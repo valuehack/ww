@@ -191,8 +191,8 @@ else {
 						if (infowindow) {
 	        		infowindow.close();
 	    			}
-						var infowindow = new google.maps.InfoWindow({
-	        	content: info
+						infowindow = new google.maps.InfoWindow({
+	        	content: (info+' TEST 1')
 	       		 });
 	        	infowindow.open(map, marker);
 						
