@@ -230,16 +230,16 @@ class General {
 
 	$links3 = array(); //Fuer Vor- oder Nachnamen
 	$words3 = array();
+	
+	$numargs = func_num_args();
+	
+	if($numargs >= 2){
+		$current = func_get_arg(1);
+	} else {
+		$current = "";
+	}
 
 	foreach($zeichen as $i){ //Cycle through seperators
-	  
-	  if(func_get_arg(1) != FALSE){
-	    $current = func_get_arg(1);
-	  } else {
-	    $current = "";
-	  }
-		
-		
 	  
 	  foreach($zincluded as $s){
 	    
