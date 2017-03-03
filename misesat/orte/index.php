@@ -189,6 +189,9 @@ else {
        		 });
         
        		marker.addListener('click', function() {
+					if (infowindow) {
+        		infowindow.close();
+    			}	
         	infowindow.open(map, marker);
         	});
         
