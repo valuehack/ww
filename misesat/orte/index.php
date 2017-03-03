@@ -192,7 +192,7 @@ else {
 	        		infowindow.close();
 	    			}
 						infowindow = new google.maps.InfoWindow({
-	        	content: (info+' TEST 1')
+	        	content: info
 	       		 });
 	        	infowindow.open(map, marker);
 						
