@@ -49,6 +49,7 @@ $title = "Index";
                         <li><a href="literatur/" onclick="showNav();">Literatur</a></li>
                         <!--<li><a href="dokumente/" onclick="showNav();">Dokumente</a></li>-->
                         <li><a href="orte/" onclick="showNav();">Orte</a></li>
+                        <li><a href="projekte/" onclick="showNav();">Projekte</a></li>
                     </ul>
                 </div>
             </div>

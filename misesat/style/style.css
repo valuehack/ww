@@ -1206,13 +1206,39 @@ progress[value]::-webkit-progress-value {
 }
 
 .projectcard {
-  width: 29em;
-  margin-left: 2em;
-  margin-right: 2em;
+  flex-grow: 1;
+  width: 25em;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 .flex_container {
   display: flex;
   flex-flow: wrap;
+  justify-content: space-around;
   width: 100%;
 }
+/*
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+}
+
+.Aligner-item--top {
+  align-self: flex-start;
+  width: 100%;
+}
+
+.Aligner-item--bottom {
+  align-self: flex-end;
+  width: 100%;
+}
+
+.bottomdiv {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+*/
