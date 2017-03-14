@@ -625,7 +625,7 @@ class General {
 
 	public function createChat($n, $type) {
 			
-		$file = '../phpfreechat-1.7/chats/'.$type.'-'.$n.'.php';
+		$file = '../phpfreechat/chats/'.$type.'-'.$n.'.php';
 		
 		if (file_exists($file)) {
 			
@@ -637,7 +637,7 @@ class General {
 		
 			$content = '<?php
 
-						require_once "../../phpfreechat-1.7/src/phpfreechat.class.php";
+						require_once "../../phpfreechat/src/phpfreechat.class.php";
 
 						$params =  array("title"		  		=> "Diskussion",
 				 						 "max_msg"		 		=> 400,
