@@ -5,6 +5,6 @@
 		<!--End Footer-->  
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="<?=__DIR__?>/js/general.js"></script>
+	<script src="../js/general.js"></script>
 	<script src="../js/sorttable.js")></script>
 </html>
