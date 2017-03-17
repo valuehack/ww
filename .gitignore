@@ -27,3 +27,5 @@ test/foreach.php
 
 misesat/denker/*.jpg
 misesat/denker/buttons/*.jpg
+
+.DS_Store
