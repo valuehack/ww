@@ -110,6 +110,9 @@ if (!$edit_rows == 0) {
 			//get rid of the line
 			$text=str_replace('<hr />', '',$text);
 
+			//html Sonderzeichen
+			$text=htmlentities($text);
+
 			//Kontrolle
 			//echo $text."<br>";
 
