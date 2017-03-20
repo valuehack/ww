@@ -29,3 +29,6 @@ misesat/denker/*.jpg
 misesat/denker/buttons/*.jpg
 
 .DS_Store
+*.pdf
+misesat/verlag/cover/freie-markt-und-seine-feinde.jpg
+cron_job_scripts/test.php
