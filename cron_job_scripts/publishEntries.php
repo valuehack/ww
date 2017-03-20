@@ -4,6 +4,8 @@
 //author: Bernhard Hegyi
 
 require_once('../config/config.php');
+include 'parsedown.php';
+$Parsedown = new Parsedown();
 
 @$con=mysql_connect(DB_HOST,DB_USER,DB_PASS) or die ("cannot connect to MySQL");
 mysql_select_db(DB_NAME);
@@ -13,7 +15,7 @@ mysql_select_db(DB_NAME);
 //TO DO: Check publication plan, wenn 2 geplante Posts 4 Tage auseinander sind
 $publ_query = "SELECT * FROM blog WHERE publ_date <= CURDATE() AND DATEDIFF(CURDATE(),publ_date) < 6";
 $publ_result = mysql_query($publ_query) or die("Failed Query of " .$publ_query. mysql_error());
-$publ_rows = mysql_num_rows($publ_result); 
+$publ_rows = mysql_num_rows($publ_result);
 
 echo $publ_rows."<br>";
 
@@ -22,16 +24,16 @@ if ($publ_rows == 0) {
 	//1. is there a unpublished entry that has priority status?
 	$priority_query = "SELECT * FROM blog WHERE publ_date = '0000-00-00' AND priority = 1 ORDER BY n asc LIMIT 1";
 	$priority_result = mysql_query($priority_query) or die("Failed Query of " .$priority_query. mysql_error());
-	$priority_rows = mysql_num_rows($priority_result); 
+	$priority_rows = mysql_num_rows($priority_result);
 
 	//echo $priority_rows;
-	
+
 	if ($priority_rows == 1) {
 		$priority_entry = mysql_fetch_array($priority_result);
 		$n = $priority_entry[n];
 	}
-	
-	//2. if no priority entry available, pick the oldest unpublished one 
+
+	//2. if no priority entry available, pick the oldest unpublished one
 	else {
 	$n_query = "SELECT * FROM blog WHERE publ_date = '0000-00-00' ORDER BY n asc LIMIT 1";
 	$n_result = mysql_query($n_query) or die("Failed Query of " .$n_query. mysql_error());
@@ -44,13 +46,13 @@ if ($publ_rows == 0) {
 	//publish the entry where publ_date is NULL, which has the lowest identification number(n)
 	$update_query = "UPDATE blog SET publ_date = CURDATE() WHERE n = '$n'";
 	mysql_query($update_query) or die("Failed Query of " .$update_query. mysql_error());
-}	
+}
 
 
 //edit the future entries
 $edit_query = "SELECT * FROM blog WHERE edited = 0";
 $edit_result = mysql_query($edit_query) or die("Failed Query of " .$edit_query. mysql_error());
-$edit_rows = mysql_num_rows($edit_result); 
+$edit_rows = mysql_num_rows($edit_result);
 
 echo $edit_rows."<br>";
 
@@ -63,49 +65,78 @@ if (!$edit_rows == 0) {
 		//transformation of published entry to HTML in title
 		$html_query = "SELECT * FROM blog WHERE n = '$n'";
 		$html_result = mysql_query($html_query) or die("Failed Query of " .$html_query. mysql_error());
-		$html_entry = mysql_fetch_array($html_result);
+		$html_entry = mysql_fetch_array($html_result); //ACHTUNG: Funktioniert ab php 7.0 nicht mehr!
 
-		$title = htmlentities($html_entry[title]);
+		//$title = htmlentities($html_entry[title]);
+		echo $title."<br>";
 
 		$transform_query = "UPDATE blog SET title = '$title' WHERE n = '$n'";
 		mysql_query($transform_query) or die("Failed Query of " .$transform_query. mysql_error());
 
+		//NEW for trello
+		//ID Bearbeitung
+		$alt= array("?","(",")");
+		$id = str_replace($alt, ' ', $html_entry[id]);
+		$id = trim($id);
+		$id = preg_replace('/\s/', '-',$id );
+		$transform_query = "UPDATE blog SET id = '$id' WHERE n = '$n'";
+		mysql_query($transform_query) or die("Failed Query of " .$transform_query. mysql_error());
 
-		//get rid of <p>&nbsp;</p>
-		$nbsp_query = "UPDATE blog SET private_text = replace(private_text, '<p>&nbsp;</p>', '') WHERE n = '$n'";
-		mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
+		//Bearbeitung der Inhalte der zwei Textfelder
+		$arr = array(private_text, public_text, title);
+		foreach ($arr as &$feld) {
 
-		$nbsp_query = "UPDATE blog SET public_text = replace(public_text, '<p>&nbsp;</p>', '') WHERE n = '$n'";
-		mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
+			$text=$html_entry[$feld];
 
-		
-		//special css format for blockquotes (french quote marks)
-		$blockquote = '"blockquote"';
+			// _ für kursiv, von Parsedown nicht erkannt
+			$text = preg_replace('/(\s|\A)_(?!\s)/', '$1*$2', $text);
+			$text = str_replace("_", '*', $text);
 
-		$quote_query = "UPDATE blog SET public_text = replace(public_text, '<p>&laquo;', '<blockquote class=$blockquote><p>') WHERE n = '$n'";
-		mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+			//links
+			$text=preg_replace('/\((.*):\s(\d*)\)\s\[(.*)\]/', "(<a target=\"_blank\" href=\"https://www.amazon.de/dp/$3/&tag=scholarium-21\">$1, S.$2</a>)", $text);
 
-		$quote_query = "UPDATE blog SET public_text = replace(public_text, '&raquo;</p>', '</p></blockquote>') WHERE n = '$n'";
-		mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+			//'Markdown' nach 'html' mittels Parsedown
+			$text=$Parsedown->text($text);
 
-		$quote_query = "UPDATE blog SET private_text = replace(private_text, '<p>&laquo;', '<blockquote class=$blockquote><p>') WHERE n = '$n'";
-		mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
+			//Anführungszeichen: Schreibmaschinensatz (&quot;, &quot;) nach deutsch (&bdquo;, &ldquo;)
+			$text = preg_replace('/(\s|\A)&quot;(?!\s)/', '$1&bdquo;$2', $text);
+			$text = str_replace("&quot;", '&ldquo;', $text);
 
-		$quote_query = "UPDATE blog SET private_text = replace(private_text, '&raquo;</p>', '</p></blockquote>') WHERE n = '$n'";
-		mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-		
-
-		//get rid of &nbsp; --> WYSIWYG-editor error for some PDFs
-		$nbsp_query = "UPDATE blog SET private_text = replace(private_text, '&nbsp;', ' ') WHERE n = '$n'";
-		mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
-
-		$nbsp_query = "UPDATE blog SET public_text = replace(public_text, '&nbsp;', ' ') WHERE n = '$n'";
-		mysql_query($nbsp_query) or die("Failed Query of " .$nbsp_query. mysql_error());
+			//Anführungszeichen: fehlerhafte(englisch schließend) (&rdquo;, &rdquo;) nach deutsch (&bdquo;, &ldquo;)
+			$text = preg_replace('/(\s|\A)&ldquo;(?!\s)/', '$1&bdquo;$2', $text);
+			$text = str_replace("&rdquo;", '&ldquo;', $text);
 
 
-		//get rid of the line
-		$line_query = "UPDATE blog SET private_text = replace(private_text, '<hr />', '') WHERE n = '$n'";
-		mysql_query($line_query) or die("Failed Query of " .$line_query. mysql_error());
+			//get rid of <p>&nbsp;</p>
+			$text=str_replace('<p>&nbsp;</p>', '',$text);
+
+			//special css format for blockquotes
+			$text=str_replace('<blockquote>', "<blockquote class=\"blockquote\">",$text);
+
+			//get rid of &nbsp; --> WYSIWYG-editor error for some PDFs
+			$text=str_replace('&nbsp;', ' ',$text);
+
+			//get rid of the line
+			$text=str_replace('<hr />', '',$text);
+
+			//Gedankenstriche
+			$text=preg_replace('/(\s)\-(\s)/', '$1&ndash;$2',$text);
+
+
+
+			//html Sonderzeichen
+			//$text=htmlentities($text);
+
+			//Kontrolle
+			//echo $text."<br>";
+			if ($feld == title){
+				$text=str_replace('<p>','',$text);
+				$text=str_replace('</p>','',$text);
+			}
+			//Update Datenbank
+			$update_query = "UPDATE blog SET $feld = '$text' WHERE n = '$n'";
+			mysql_query($update_query) or die("Failed Query of " .$update_query. mysql_error());
+		}
 
 
 		//set edited to 1
@@ -114,106 +145,4 @@ if (!$edit_rows == 0) {
 	}
 }
 
-
-
-
-
-
-
-
-
-	/*
-	$public = htmlentities($html_entry[public_text]);
-	$private = htmlentities($html_entry[private_text]);
-
-	$transform_query = "UPDATE blog SET public_text = '$public' WHERE n = '$n'";
-	mysql_query($transform_query) or die("Failed Query of " .$transform_query. mysql_error());
-
-	$transform_query = "UPDATE blog SET private_text = '$private' WHERE n = '$n'";
-	mysql_query($transform_query) or die("Failed Query of " .$transform_query. mysql_error());
-						
-	
-	//inserting paragraphes
-	$paragraph_query = "UPDATE blog SET public_text = CONCAT('<p>', public_text) WHERE n = '$n'";
-	mysql_query($paragraph_query) or die("Failed Query of " .$paragraph_query. mysql_error());
-
-	$paragraph_query = "UPDATE blog SET public_text = replace(public_text, '\n', '</p><p>') WHERE n = '$n'";
-	mysql_query($paragraph_query) or die("Failed Query of " .$paragraph_query. mysql_error());
-
-	$paragraph_query = "UPDATE blog SET public_text = CONCAT(public_text, '</p>') WHERE n = '$n'";
-	mysql_query($paragraph_query) or die("Failed Query of " .$paragraph_query. mysql_error());
-
-
-	$paragraph_query = "UPDATE blog SET private_text = CONCAT('<p>', private_text) WHERE n = '$n'";
-	mysql_query($paragraph_query) or die("Failed Query of " .$paragraph_query. mysql_error());
-
-	$paragraph_query = "UPDATE blog SET private_text = replace(private_text, '\n', '</p><p>') WHERE n = '$n'";
-	mysql_query($paragraph_query) or die("Failed Query of " .$paragraph_query. mysql_error());
-
-	$paragraph_query = "UPDATE blog SET private_text = CONCAT(private_text, '</p>') WHERE n = '$n'";
-	mysql_query($paragraph_query) or die("Failed Query of " .$paragraph_query. mysql_error());
-
-	
-	//special css format for blockquotes (french)
-	//$quote = '"quote"';
-
-	$quote_query = "UPDATE blog SET public_text = replace(public_text, '<p>&laquo;', '<blockquote>') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-
-	$quote_query = "UPDATE blog SET public_text = replace(public_text, '&raquo;</p>', '</blockquote>') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-
-	$quote_query = "UPDATE blog SET private_text = replace(private_text, '<p>&laquo;', '<blockquote>') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-
-	$quote_query = "UPDATE blog SET private_text = replace(private_text, '&raquo;</p>', '</blockquote>') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-	
-
-	//normal quote marks
-	$quote_query = "UPDATE blog SET public_text = replace(public_text, '&bdquo;', '&bdquo;') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-
-	$quote_query = "UPDATE blog SET private_text = replace(private_text, '&rdquo;', '&rdquo;') WHERE n = '$n'";
-	mysql_query($quote_query) or die("Failed Query of " .$quote_query. mysql_error());
-	*/
-
-
-
-/*
-//Another possible, but more complicated solution (using htmlentities) for transforming to html that has some mistake:
-
-$transform_query = "UPDATE blog SET title = replace(title, '%ä%', '%&auml%;') WHERE n = '$n';
-						UPDATE blog SET title = replace(title, '%Ä%', '%&Auml%;') WHERE n = '$n';
-						UPDATE blog SET title = replace(title, 'ü', '&uuml;') WHERE n = '$n';
-						UPDATE blog SET title = replace(title, 'Ü', '&Uuml;') WHERE n = '$n';
-						UPDATE blog SET title = replace(title, 'ö', '&ouml;') WHERE n = '$n';
-						UPDATE blog SET title = replace(title, 'Ö', '&Ouml;') WHERE n = '$n';
-						UPDATE blog SET title = replace(title, 'ß', '&szlig;') WHERE n = '$n';
-						UPDATE blog SET title = replace(title, '€', '&euro;') WHERE n = '$n';
-						
-						UPDATE blog SET public = replace(public, 'ä', '&auml;') WHERE n = '$n';
-						UPDATE blog SET public = replace(public, 'Ä', '&Auml;') WHERE n = '$n';
-						UPDATE blog SET public = replace(public, 'ü', '&uuml;') WHERE n = '$n';
-						UPDATE blog SET public = replace(public, 'Ü', '&Uuml;') WHERE n = '$n';
-						UPDATE blog SET public = replace(public, 'ö', '&ouml;') WHERE n = '$n';
-						UPDATE blog SET public = replace(public, 'Ö', '&Ouml;') WHERE n = '$n';
-						UPDATE blog SET public = replace(public, 'ß', '&szlig;') WHERE n = '$n';
-						UPDATE blog SET public = replace(public, '€', '&euro;') WHERE n = '$n';
-
-						UPDATE blog SET private = replace(private, 'ä', '&auml;') WHERE n = '$n';
-						UPDATE blog SET private = replace(private, 'Ä', '&Auml;') WHERE n = '$n';
-						UPDATE blog SET private = replace(private, 'ü', '&uuml;') WHERE n = '$n';
-						UPDATE blog SET private = replace(private, 'Ü', '&Uuml;') WHERE n = '$n';
-						UPDATE blog SET private = replace(private, 'ö', '&ouml;') WHERE n = '$n';
-						UPDATE blog SET private = replace(private, 'Ö', '&Ouml;') WHERE n = '$n';
-						UPDATE blog SET private = replace(private, 'ß', '&szlig;') WHERE n = '$n';
-						UPDATE blog SET private = replace(private, '€', '&euro;') WHERE n = '$n';";
-
-	mysqli_multi_query($transform_query) or die("Failed Query of " .$transform_query. mysql_error());
-
-*/
-
-
 ?>
-
