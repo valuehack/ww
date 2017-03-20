@@ -339,15 +339,30 @@ $title = "Index";
                                 <h5 class="style-bl--red h-extra-space__bottom h-extra-space__top">Aktuelle Projekte</h5>
                                 <div class="card">
                                 <div class="card-content">
-                                  <h3 class="h-centered">Human Action</h3>
-                                   <img class="container h-extra-space__top h-extra-space__bottom sidebar-img" src="literatur/HumanAction.png">
-                                    <p>Wir arbeiten momentan an einer kompletten &Uuml;bersetzung von <a href="denker/?denker=mises">Ludwig von Mises'</a> Hauptwerk, Human Action, ins Deutsche. F&uuml;r diesen immensen Aufwand begr&uuml;&szlig;en wir jede kleine Unterst&uuml;tzung.</p>
+                                  <h3 class="h-centered">Übersetzung: Man, Economy and State</h3>
+                                  <a class="link" href="../denker/?denker=rothbard"><h6 class="h-left" style="text-align: left;">Murray Rothbard</h6></a>
+                                   <!--mg class="container h-extra-space__top h-extra-space__bottom sidebar-img" src="literatur/HumanAction.png"-->
+                                    <p>Das umfassendste Lehrbuch zur Österreichischen Schule und Lebenswerk von Murray N. Rothbard liegt noch immer nicht in deutscher Fassung vor. Die Österreichische Schule bietet eine wichtige Grundlage realistischer Ökonomie, auch wenn Sie heute meist in einer vulgärpolitischen Zerrform rezipiert wird. Rothbard ist durch seine Radikalität politisch schwer zu missbrauchen und umso grundlegender für Didaktik und wissenschaftliche Neuansätze. Wir haben schon erste Vorarbeiten durchgeführt, doch der Übersetzungsaufwand ist sehr groß. Diese Arbeit ist sehr schwierig und darf nicht Hobbyübersetzern überlassen werden. Ohne wissenschaftliche Präzision wäre das Ergebnis unbrauchbar und würde die akademische Rezeption der Österreichischen Schule verunmöglichen. Alle Unterstützer werden (auf Wunsch) freilich im Buch vermerkt.</p>
                                     <!--img class="container h-extra-space__bottom sidebar-img" src="literatur/HumanAction.png"-->
                                     
-                                    <div class="h-centered h-extra-space__top">
+                                    <!--div class="h-centered h-extra-space__top">
                                         <a class="btn-link h-block button-text" href="mailto:&#105;nf&#111;&#064;&#109;&#105;se&#115;.&#97;&#116;">Kontakt</a>
+                                    </div-->
+                                    <div class="">
+                            					<progress value="22.2" max="100"></progress>
+                            						<table class="progresstable">
+                            							<tr class="">
+                            								<td class="">
+                            						<p class=""><b>22.2%</b> finanziert</p></td><td class=""><p> <b>2220€</b> beigetragen</p></td>
+                            							</tr>
+                            						</table>
+                            					<? if($prozent==100){echo "<br>";} else {?>
+                            					<div class="h-centered">
+                            					<a class="btn-link h-block button-text" href="mailto:&#105;nf&#111;&#064;&#109;&#105;se&#115;.&#97;&#116;">Kontakt</a><br><br><br><br>
                                     </div>
-                                    <br><br>
+                            					<?}?>
+                            				</div>
+
 
                                 </div>
                                 </div>

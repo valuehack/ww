@@ -44,9 +44,9 @@
 					<div class="card projectcard" style="order: <?=$order?>;">
 				<div class="card-content">
 						<div class="list-itm h-extra-space__top">
-							<h5> <a class="title" href="#"><?=$titel?></a></h5>
+							<h5> <h3 class="title" ><?=$titel?></h3></h5>
 							<a class="link" href="../denker/?denker=<?=$autor_id?>"><h6 class="h-left" style="text-align: left;"><?=$autor?></h6></a>
-							<p><?=$general->addlinks($desc);?></p>
+							<p><?=$desc;?></p>
 						</div>
 							<div class="">
 						
