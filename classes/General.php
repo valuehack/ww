@@ -637,7 +637,7 @@ class General {
 		
 			$content = '<?php
 
-						require_once "../phpfreechat/src/phpfreechat.class.php";
+						require_once "../../phpfreechat/src/phpfreechat.class.php";
 
 						$params =  array("title"		  		=> "Diskussion",
 				 						 "max_msg"		 		=> 400,
