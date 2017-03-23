@@ -1,6 +1,6 @@
 <?php
 
-require_once "../phpfreechat/src/phpfreechat.class.php"; // adjust to your own path
+require_once "../phpfreechat-1.7/src/phpfreechat.class.php"; // adjust to your own path
 
 $params =  array("title"		  => "Diskussion",
 				 "max_msg"		  => 400,
