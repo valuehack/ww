@@ -186,11 +186,11 @@ $title = "Index";
                   foreach ($result_denker as $key => $item) {
                     if ($datum==(substr($item['geburt'],5,9))) {
                       $yeardif = (date("Y")-substr($item['geburt'],0,4));
-                      echo("Heute vor ".$yeardif." Jahren ist <a href='denker/?denker=".$item['id']."'>".$item['name']."</a> geboren!<br>");
+                      echo("Heute vor ".$yeardif." Jahren ist <a href='denker/?denker=".$item['id']."'>".$item['name']."</a> geboren.<br>");
                       $fittingday = true;
                     } else if ($datum==(substr($item['tod'],5,9))) {
                       $yeardif = (date("Y")-substr($item['tod'],0,4));
-                      echo("Heute vor ".$yeardif." Jahren ist <a href='denker/?denker=".$item['id']."'>".$item['name']."</a> gestorben!<br>");
+                      echo("Heute vor ".$yeardif." Jahren ist <a href='denker/?denker=".$item['id']."'>".$item['name']."</a> gestorben.<br>");
                       $fittingday = true;
                     } 
                     
