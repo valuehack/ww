@@ -75,8 +75,11 @@ if (!$edit_rows == 0) {
 
 		//NEW for trello
 		//ID Bearbeitung
-		$alt= array("?","(",")");
-		$id = str_replace($alt, ' ', $html_entry[id]);
+		$search = array("Ä", "Ö", "Ü", "ä", "ö", "ü", "ß", "´");
+		$replace = array("Ae", "Oe", "Ue", "ae", "oe", "ue", "ss", "");
+		$id= str_replace($search, $replace, $html_entry[id]);
+		$alt= array("?", "(" , ")" , " - " , "," , "." , ";" , ":" , "\"" , "!");
+		$id = str_replace($alt, ' ', $id);
 		$id = trim($id);
 		$id = preg_replace('/\s/', '-',$id );
 		$transform_query = "UPDATE blog SET id = '$id' WHERE n = '$n'";
