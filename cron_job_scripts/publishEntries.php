@@ -78,8 +78,10 @@ if (!$edit_rows == 0) {
 		$search = array("Ä", "Ö", "Ü", "ä", "ö", "ü", "ß", "´");
 		$replace = array("Ae", "Oe", "Ue", "ae", "oe", "ue", "ss", "");
 		$id= str_replace($search, $replace, $html_entry[id]);
-		$alt= array("?", "(" , ")" , " - " , "," , "." , ";" , ":" , "\"" , "!");
+		$alt= array("?", "(" , ")" , " - " , chr(150) ,chr(151), "," , "." , ";" , ":" , "\"" , "!");
 		$id = str_replace($alt, ' ', $id);
+		$id = str_replace("  ", ' ', $id);
+		$id = str_replace("  ", ' ', $id);
 		$id = trim($id);
 		$id = preg_replace('/\s/', '-',$id );
 		$transform_query = "UPDATE blog SET id = '$id' WHERE n = '$n'";
@@ -125,7 +127,8 @@ if (!$edit_rows == 0) {
 			//Gedankenstriche
 			$text=preg_replace('/(\s)\-(\s)/', '$1&ndash;$2',$text);
 
-
+			// Escape für mysql Sonderzeichen
+			$text=mysql_real_escape_string($text);
 
 			//html Sonderzeichen
 			//$text=htmlentities($text);
