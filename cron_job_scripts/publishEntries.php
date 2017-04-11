@@ -85,7 +85,7 @@ if (!$edit_rows == 0) {
 		$transform_query = "UPDATE blog SET id = '$id' WHERE n = '$n'";
 		mysql_query($transform_query) or die("Failed Query of " .$transform_query. mysql_error());
 
-		//Bearbeitung der Inhalte der zwei Textfelder
+		//Bearbeitung der Inhalte der Textfelder
 		$arr = array(private_text, public_text, title);
 		foreach ($arr as &$feld) {
 
@@ -109,7 +109,6 @@ if (!$edit_rows == 0) {
 			$text = preg_replace('/(\s|\A)&ldquo;(?!\s)/', '$1&bdquo;$2', $text);
 			$text = str_replace("&rdquo;", '&ldquo;', $text);
 
-
 			//get rid of <p>&nbsp;</p>
 			$text=str_replace('<p>&nbsp;</p>', '',$text);
 
@@ -126,7 +125,8 @@ if (!$edit_rows == 0) {
 			$text=preg_replace('/(\s)\-(\s)/', '$1&ndash;$2',$text);
 
 
-
+			// Escape für mysql Sonderzeichen
+			$text=mysql_real_escape_string($text);
 			//html Sonderzeichen
 			//$text=htmlentities($text);
 
