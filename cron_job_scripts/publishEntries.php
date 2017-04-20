@@ -98,7 +98,7 @@ if (!$edit_rows == 0) {
 			$text = str_replace("_", '*', $text);
 
 			//links
-			$text=preg_replace('/\((.*):\s(\d*)\)\s\[(.*)\]/', "(<a target=\"_blank\" href=\"https://www.amazon.de/dp/$3/&tag=scholarium-21\">$1, S.$2</a>)", $text);
+			$text=preg_replace('/\(([0-9a-zA-Z\s-\.]*):\s(.*)\)\s\[(.*)\]/', "(<a target=\"_blank\" href=\"https://www.amazon.de/dp/$3/&tag=scholarium-21\">$1, S.$2</a>)", $text);
 
 			//'Markdown' nach 'html' mittels Parsedown
 			$text=$Parsedown->text($text);
