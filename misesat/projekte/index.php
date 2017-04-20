@@ -60,7 +60,7 @@
 						<table class="progresstable">
 							<tr class="">
 								<td class="">
-						<p class=""><b><?=$prozent?>%</b> finanziert</p></td><td class=""><p> <b><?=$spenden?>€</b> beigetragen</p></td>
+						<p class=""><b><?=$prozent?>%</b> finanziert</p></td><p>
 							</tr>
 						</table>
 					<? if($prozent==100){echo "<br>";} else {?>
