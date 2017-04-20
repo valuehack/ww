@@ -104,11 +104,11 @@ if (!$edit_rows == 0) {
 			$text=$Parsedown->text($text);
 
 			//Anführungszeichen: Schreibmaschinensatz (&quot;, &quot;) nach deutsch (&bdquo;, &ldquo;)
-			$text = preg_replace('/(\s|\A)&quot;(?!\s)/', '$1&bdquo;$2', $text);
+			$text = preg_replace('/(\s|>|\A)&quot;(?!\s)/', '$1&bdquo;$2', $text);
 			$text = str_replace("&quot;", '&ldquo;', $text);
 
 			//Anführungszeichen: fehlerhafte(englisch schließend) (&rdquo;, &rdquo;) nach deutsch (&bdquo;, &ldquo;)
-			$text = preg_replace('/(\s|\A)&ldquo;(?!\s)/', '$1&bdquo;$2', $text);
+			$text = preg_replace('/(\s|>|\A)&ldquo;(?!\s)/', '$1&bdquo;$2', $text);
 			$text = str_replace("&rdquo;", '&ldquo;', $text);
 
 
