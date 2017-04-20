@@ -57,12 +57,8 @@
 				
 				<div class="">
 					<progress value="<?=$prozent?>" max="100"></progress>
-						<table class="progresstable">
-							<tr class="">
-								<td class="">
-						<p class=""><b><?=$prozent?>%</b> finanziert</p></td><p>
-							</tr>
-						</table>
+						
+						<p class=""><b><?=$prozent?>%</b> finanziert</p>
 					<? if($prozent==100){echo "<br>";} else {?>
 					
 					<a class="btn-link h-block button-text h-centered" href="mailto:&#105;nf&#111;&#064;&#109;&#105;se&#115;.&#97;&#116;">Kontakt</a><br><br><br><br>
