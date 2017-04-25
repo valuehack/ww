@@ -60,6 +60,11 @@ if(isset($_GET['q']))
   $status = $entry3[status];
   $livestream = $entry3[livestream];
   
+  $price_lv1 = $price + 25;
+  if ($title == "craftprobe") {
+      $price_lv1 = $price;
+  }
+  
   //Userdetails
   $user_items_query = "SELECT * from registration WHERE `user_id`=$user_id and event_id='$n'";
   $user_items_result = mysql_query($user_items_query) or die("Failed Query of " . $user_items_query. mysql_error());
@@ -122,15 +127,16 @@ if(isset($_GET['q']))
 	//elseif ($bought >= 1) {
 		//echo '<p class="salon_reservation_span_a">Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.</p>';
 	//}
-	else {    
-    	echo '<p class="salon_reservation_span_d">150&euro; pro Teilnehmer</p>';
-	}
+	else { ?>
+    	<p class="salon_reservation_span_d"><?=$price_lv1?>&euro; pro Teilnehmer</p>
+<?php	
+    }
 	?>
     <form method="post" action="../spende/zahlung.php" name="user_create_profile_form">
       <input type="hidden" name="event_id" value="<?php echo $n ?>">
       <input type="hidden" name="title" value="<?php echo $title ?>">
       <input type="hidden" name="pay" value="2">
-      <input type="hidden" name="betrag" value='150'>
+      <input type="hidden" name="betrag" value="<?php echo $price_lv1 ?>">
       <input class="inputbutton" type="submit" value="Anmelden" <?if($spots_available == 0 || $bought >= 1){echo 'disabled';}?>><br>
     </form>
     <p class="salon_reservation_span_c">Melden Sie sich heute noch an (beschr&auml;nkte Pl&auml;tze) &ndash; Sie erhalten nicht nur eine Eintrittskarte f&uuml;r das Seminar, sondern auch Zugang zu unserem weiteren Angebot (u.a. Scholien, unserem Salon, Schriften, Medien).</p>
