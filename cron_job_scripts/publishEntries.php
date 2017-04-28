@@ -128,7 +128,7 @@ if (!$edit_rows == 0) {
 			$text=preg_replace('/(\s)\-(\s)/', '$1&ndash;$2',$text);
 
 			// Escape für mysql Sonderzeichen
-			//$text=mysql_real_escape_string($text);
+			$text=mysql_real_escape_string($text);
 
 			//html Sonderzeichen
 			//$text=htmlentities($text);
