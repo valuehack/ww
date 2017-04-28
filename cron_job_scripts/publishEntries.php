@@ -78,10 +78,10 @@ if (!$edit_rows == 0) {
 		$search = array("Ä", "Ö", "Ü", "ä", "ö", "ü", "ß", "´");
 		$replace = array("Ae", "Oe", "Ue", "ae", "oe", "ue", "ss", "");
 		$id= str_replace($search, $replace, $html_entry[id]);
-		$alt= array("?", "(" , ")" , " - " , chr(150) ,chr(151), "," , "." , ";" , ":" , "\"" , "!");
-		$id = str_replace($alt, ' ', $id);
-		$id = str_replace("  ", ' ', $id);
-		$id = str_replace("  ", ' ', $id);
+//		$alt= array("?", "(" , ")" , " - " , chr(150) ,chr(151), "," , "." , ";" , ":" , "\"" , "!");
+//		$id = str_replace($alt, ' ', $id);
+//		$id = str_replace("  ", ' ', $id);
+//	$id = str_replace("  ", ' ', $id);
 		$id = trim($id);
 		$id = preg_replace('/\s/', '-',$id );
 		$transform_query = "UPDATE blog SET id = '$id' WHERE n = '$n'";
