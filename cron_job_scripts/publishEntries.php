@@ -98,13 +98,13 @@ if (!$edit_rows == 0) {
 			$text = str_replace("_", '*', $text);
 
 			//links
-			//$text=preg_replace('/\(([0-9a-zA-Z\s-\.]*):\s(.*)\)\s\[(.*)\]/', "(<a target=\"_blank\" href=\"https://www.amazon.de/dp/$3/&tag=scholarium-21\">$1, S.$2</a>)", $text);
+			$text=preg_replace('/\(([0-9a-zA-Z\s-\.]*):\s(.*)\)\s\[(.*)\]/', "(<a target=\"_blank\" href=\"https://www.amazon.de/dp/$3/&tag=scholarium-21\">$1, S.$2</a>)", $text);
 
 			//'Markdown' nach 'html' mittels Parsedown
 			$text=$Parsedown->text($text);
 
 			//Anführungszeichen: Schreibmaschinensatz (&quot;, &quot;) nach deutsch (&bdquo;, &ldquo;)
-			//$text = preg_replace('/(\s|>|\A)&quot;(?!\s)/', '$1&bdquo;$2', $text);
+			$text = preg_replace('/(\s|>|\A)&quot;(?!\s)/', '$1&bdquo;$2', $text);
 			$text = str_replace("&quot;", '&ldquo;', $text);
 
 			//Anführungszeichen: fehlerhafte(englisch schließend) (&rdquo;, &rdquo;) nach deutsch (&bdquo;, &ldquo;)
