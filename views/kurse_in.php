@@ -324,7 +324,7 @@ elseif ($spots_available == 4) {
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	$entry4 = mysql_fetch_array($result);
 	
-			if (entry3[title] NOT LIKE "%coaching%") echo $entry4[info];			
+			echo $entry4[info];			
 			?>
 
 		<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Seminaren</a></div>
