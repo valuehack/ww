@@ -61,7 +61,7 @@ if(isset($_GET['q']))
   $livestream = $entry3[livestream];
   
   $price_lv1 = $price + 25;
-  if ($title == "craftprobe" || $title == "%coaching%") {
+  if ($title == "craftprobe" || $title == "Intensives Orientierungscoaching für realistische Karriere- und Bildungswege") {
       $price_lv1 = $price;
   }
   
