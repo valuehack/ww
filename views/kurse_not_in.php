@@ -66,7 +66,7 @@ if(isset($_GET['q']))
   $event_price = $entry3[price];
   $status = $entry3[status];
   
-    if ($title == "craftprobe" || $title LIKE '%coaching%') {
+    if ($title == "craftprobe" || $title == "%coaching%") {
     	$event_price = $entry3[price]-25;
     }
     
