@@ -61,7 +61,7 @@ if(isset($_GET['q']))
   $livestream = $entry3[livestream];
   
   $price_lv1 = $price + 25;
-  if ($title == "craftprobe" || $title == "%coaching%") {
+  if ($title == "craftprobe" || $title LIKE '%coaching%') {
       $price_lv1 = $price;
   }
   
@@ -324,7 +324,9 @@ elseif ($spots_available == 4) {
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	$entry4 = mysql_fetch_array($result);
 	
-			echo $entry4[info];			
+    if ($title NOT LIKE "%coaching%") {
+			echo $entry4[info];
+        }
 			?>
 
 		<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Seminaren</a></div>

@@ -55,7 +55,7 @@ if(isset($_GET['q']))
   $id = $_GET['q'];
 
   //Termindetails
-  $sql="SELECT * from produkte WHERE (type='lehrgang' or type='seminar' or type='kurs') AND id='$id' AND (status = 1)";
+  $sql="SELECT * from produkte WHERE (type='lehrgang' or type='seminar' or type='kurs') AND id='$id' AND (status > 0)";
   $result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
   $entry3 = mysql_fetch_array($result);
   $title=$entry3[title];
@@ -66,7 +66,7 @@ if(isset($_GET['q']))
   $event_price = $entry3[price];
   $status = $entry3[status];
   
-    if ($title == "craftprobe" || $title == "%coaching%") {
+    if ($title == "craftprobe" || $title LIKE '%coaching%') {
     	$event_price = $entry3[price]-25;
     }
     
