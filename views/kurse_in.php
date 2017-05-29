@@ -151,7 +151,7 @@ if(isset($_GET['q']))
 <?php
 
 	if ($title == "Intensives Orientierungscoaching für realistische Karriere- und Bildungswege") {
-		echo '<a href="#anmeldung"><button class="inputbutton" >Direkt zur Anmeldung</button></a>';
+		echo '<a href="#anmeldung"><button class="inputbutton" >Direkt zur Anmeldung</button></a>'; #id="anmeldung" in database
 	}
 	
 	else {
@@ -368,7 +368,7 @@ elseif ($spots_available == 4) {
 			}
 		?>
 		
-    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
       <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')" <? if($bought >= 1) echo "disabled"?>>
       	<option value="1">1</option>
@@ -391,7 +391,7 @@ elseif ($spots_available == 4) {
 			echo "</span><br>";
 			}
 		?>
-    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
       <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')" <? if($bought >= 1) echo "disabled"?>>
       	<option value="1">1</option>
@@ -414,7 +414,7 @@ elseif ($spots_available == 4) {
 			echo "</span><br>";
 			}
 		?>
-    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
       <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')" <? if($bought >= 1) echo "disabled"?>>
       	<option value="1">1</option>
@@ -437,7 +437,7 @@ elseif ($spots_available == 4) {
 			echo "</span><br>";
 			}
 		?>
-    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
       <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')" <? if($bought >= 1) echo "disabled"?>>
       	<option value="1">1</option>
@@ -458,7 +458,7 @@ elseif ($spots_available == 4) {
 			echo "</span><br>";
 			}
 		?>
-    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
       <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')" <? if($bought >= 1) echo "disabled"?>>
       	<option value="1">1</option>      
@@ -480,7 +480,7 @@ elseif ($spots_available == 4) {
 		}
 		?>
 		</span><br>
-    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+    <form class="salon_reservation_form" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
       <input type="hidden" name="add" value="<?php echo $n; ?>" />      
       <select name="quantity" disabled onchange="changePrice(this.value,'<?php echo $price; ?>')">
       	<option value="0">0</option>     
