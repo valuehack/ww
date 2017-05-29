@@ -378,7 +378,7 @@ elseif ($spots_available == 4) {
       </select> 
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($bought >= 1) echo "disabled"?>><br>     
     </form>
-  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+  <div class='coaching_price_list'><li id="change" class="coaching_reservation_span"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
   
  <?php
   	}
@@ -400,7 +400,7 @@ elseif ($spots_available == 4) {
       </select> 
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($bought >= 1) echo "disabled"?>><br>     
     </form>
-  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+  <div class='coaching_price_list'><li id="change" class="coaching_reservation_span"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
 
 <?php	
 	}
@@ -422,7 +422,7 @@ elseif ($spots_available == 4) {
       </select> 
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($bought >= 1) echo "disabled"?>><br>     
     </form>
-  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+  <div class='coaching_price_list'><li id="change" class="coaching_reservation_span"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
  
  <?php	
 	}
@@ -444,7 +444,7 @@ elseif ($spots_available == 4) {
       </select> 
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($bought >= 1) echo "disabled"?>><br>     
     </form>
-  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+  <div class='coaching_price_list'><li id="change" class="coaching_reservation_span"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
  
  <?php	
 	}
@@ -464,7 +464,7 @@ elseif ($spots_available == 4) {
       </select> 
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($bought >= 1) echo "disabled"?>><br>     
     </form>
-  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+  <div class='coaching_price_list'><li id="change" class="coaching_reservation_span"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
 
  <?php	
 	}
@@ -486,7 +486,7 @@ elseif ($spots_available == 4) {
       </select> 
       <input class="inputbutton" type="submit" value="Ausw&auml;hlen" disabled><br>     
     </form>
-	<div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+	<div class='coaching_price_list'><li id="change" class="coaching_reservation_span"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
 <?php
 			}
 		}

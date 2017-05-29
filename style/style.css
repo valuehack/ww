@@ -2124,6 +2124,22 @@ a.socialimg:visited {
 	float: left;
 }
 
+.coaching_price_list img {
+	margin: 0;
+}
+
+.coaching_price_list li {
+	list-style: none;
+	float: left;
+	font-size: 18pt;
+	line-height: normal;
+}
+
+.coaching_reservation_span {
+	font-size: 18pt;
+	margin: 10px 0px 0px 140px;
+}
+
 .coaching li {
 	font-size: 16pt;
 	line-height: 1.6;
