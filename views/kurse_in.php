@@ -320,7 +320,9 @@ elseif ($spots_available == 4) {
 	<div class="salon_content">
   <?
   if ($title == "Intensives Orientierungscoaching für realistische Karriere- und Bildungswege") {
-  	echo '<div class="coaching">';
+  	?>
+  	<div class="coaching">
+  	<?php	
   }
   /* weekdays don't work
     $day=date("w",strtotime($entry3[start]));
@@ -337,9 +339,8 @@ elseif ($spots_available == 4) {
 	$entry4 = mysql_fetch_array($result);
 	
 	if ($title == "Intensives Orientierungscoaching für realistische Karriere- und Bildungswege") {
-		echo '</div>';
 		?>
-		
+	</div>
 		<div class="centered">
 			<div class="salon_reservation">
 		
@@ -574,10 +575,10 @@ elseif ($spots_available == 4) {
   } 
 ?>
 		</div>
-	</div>
 <?
 }
 ?>
+</div>
 <!-- Modal 1 - Mitgliedschaft == 1 
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
