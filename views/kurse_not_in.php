@@ -103,9 +103,23 @@ if(isset($_GET['q']))
 		<h1>Inhalt und Informationen</h1>
 	</div>
 	<div class="salon_content">
-<?  
+<?
+
+  if ($title == "Intensives Orientierungscoaching für realistische Karriere- und Bildungswege") {
+  	echo '<div class="coaching">';
+  }
+
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
+  
+  if ($title =="Intensives Orientierungscoaching für realistische Karriere- und Bildungswege") {
+  	echo '</div>';
+  	echo '<div class="centered">';
+	echo '<div class="salon_reservation">';
+  	echo '<input type="button" class="salon_reservation_inputbutton" value="Anmelden" data-toggle="modal" data-target="#myModal" if($spots_available == 0){echo "disabled";}>';
+	echo '</div>';
+	echo '</div>';
+  }
 ?>
 		<div class="medien_anmeldung"><a href="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">zur&uuml;ck zu den Seminaren</a></div>
 	</div>

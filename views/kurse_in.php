@@ -148,7 +148,14 @@ if(isset($_GET['q']))
   if ($_SESSION['Mitgliedschaft'] > 1) {
     ?>
     <!--<p class="salon_reservation_span_d"><?echo $entry3[price]?> Credits pro Teilnehmer</p>-->
-<?php  
+<?php
+
+	if ($title == "Intensives Orientierungscoaching für realistische Karriere- und Bildungswege") {
+		echo '<a href="#anmeldung"><button class="inputbutton" >Direkt zur Anmeldung</button></a>';
+	}
+	
+	else {
+	 
 	if ($spots_available >= 5) {
 		?>	
 				
@@ -300,6 +307,7 @@ elseif ($spots_available == 4) {
     </form>
 	<div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
 <?php
+		}
 	}	
   }
 ?>
@@ -310,7 +318,10 @@ elseif ($spots_available == 4) {
 		<h1>Inhalt und Informationen</h1>
 	</div>
 	<div class="salon_content">
-  <? 
+  <?
+  if ($title == "Intensives Orientierungscoaching für realistische Karriere- und Bildungswege") {
+  	echo '<div class="coaching">';
+  }
   /* weekdays don't work
     $day=date("w",strtotime($entry3[start]));
     if ($day==0) $day=7;
@@ -319,12 +330,176 @@ elseif ($spots_available == 4) {
     
   if ($entry3[text]) echo "<p>$entry3[text]</p>";
   if ($entry3[text2]) echo "<p>$entry3[text2]</p>";
+  
 				
 	$sql = "SELECT * from static_content WHERE (page LIKE 'seminare')";
 	$result = mysql_query($sql) or die("Failed Query of " . $sql. " - ". mysql_error());
 	$entry4 = mysql_fetch_array($result);
 	
-			echo $entry4[info];
+	if ($title == "Intensives Orientierungscoaching für realistische Karriere- und Bildungswege") {
+		echo '</div>';
+		?>
+		
+		<div class="centered">
+			<div class="salon_reservation">
+		
+		<?php
+	if ($_SESSION['Mitgliedschaft'] == 1) {
+		?>
+		<form method="post" action="../spende/zahlung.php" name="user_create_profile_form">
+      	<input type="hidden" name="event_id" value="<?php echo $n ?>">
+      	<input type="hidden" name="title" value="<?php echo $title ?>">
+      	<input type="hidden" name="pay" value="2">
+      	<input type="hidden" name="betrag" value="<?php echo $price_lv1 ?>">
+      	<input class="inputbutton" type="submit" value="Anmelden" <?if($spots_available == 0 || $bought >= 1){echo 'disabled';}?>><br>
+    	</form>
+    	<?php
+    	}
+	
+	else {
+		
+		if ($spots_available >= 5) {
+				
+		if ($bought >= 1) {
+			echo "<span class='salon_reservation_span_a'>";
+			echo "Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.";
+			echo "</span><br>";
+			}
+		?>
+		
+    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')" <? if($bought >= 1) echo "disabled"?>>
+      	<option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>        
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($bought >= 1) echo "disabled"?>><br>     
+    </form>
+  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+  
+ <?php
+  	}
+
+elseif ($spots_available == 4) {
+	 if ($bought >= 1) {
+			echo "<span class='salon_reservation_span_a'>";
+			echo "Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.";
+			echo "</span><br>";
+			}
+		?>
+    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')" <? if($bought >= 1) echo "disabled"?>>
+      	<option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>        
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($bought >= 1) echo "disabled"?>><br>     
+    </form>
+  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+
+<?php	
+	}
+ 
+ elseif ($spots_available == 3) {
+	
+		if ($bought >= 1) {
+			echo "<span class='salon_reservation_span_a'>";
+			echo "Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.";
+			echo "</span><br>";
+			}
+		?>
+    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')" <? if($bought >= 1) echo "disabled"?>>
+      	<option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>        
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($bought >= 1) echo "disabled"?>><br>     
+    </form>
+  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+ 
+ <?php	
+	}
+ 
+ 
+ elseif ($spots_available == 2) {
+	
+		if ($bought >= 1) {
+			echo "<span class='salon_reservation_span_a'>";
+			echo "Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.";
+			echo "</span><br>";
+			}
+		?>
+    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')" <? if($bought >= 1) echo "disabled"?>>
+      	<option value="1">1</option>
+        <option value="2">2</option>       
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($bought >= 1) echo "disabled"?>><br>     
+    </form>
+  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+ 
+ <?php	
+	}
+ 
+ 
+ elseif ($spots_available == 1) {
+	if($bought >= 1) {
+			echo "<span class='salon_reservation_span_a'>";
+			echo "Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.";
+			echo "</span><br>";
+			}
+		?>
+    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" onchange="changePrice(this.value,'<?php echo $price; ?>')" <? if($bought >= 1) echo "disabled"?>>
+      	<option value="1">1</option>      
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen" <? if($bought >= 1) echo "disabled"?>><br>     
+    </form>
+  <div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+
+ <?php	
+	}
+ 	elseif ($spots_avaibale == 0){
+?>	
+	<span class="salon_reservation_span_a">
+	<? if($bought >= 1) {
+			echo "Sie haben sich f&uuml;r diese Veranstaltung bereits registriert.";
+			}
+		else {
+			echo "Diese Veranstaltung ist leider ausgebucht.";
+		}
+		?>
+		</span><br>
+    <form class="salon_reservation_form" id="anmeldung" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+      <input type="hidden" name="add" value="<?php echo $n; ?>" />      
+      <select name="quantity" disabled onchange="changePrice(this.value,'<?php echo $price; ?>')">
+      	<option value="0">0</option>     
+      </select> 
+      <input class="inputbutton" type="submit" value="Ausw&auml;hlen" disabled><br>     
+    </form>
+	<div class='salon_price_list'><li id="change" class="salon_reservation_span_b"><?php echo $price; ?></li><li class='salon_coin'><img src="../style/gfx/coin.png"></li></div>
+<?php
+			}
+		}
+?>
+		</div>
+	</div>
+<?php	
+	}
+	
+	else {
+		echo $entry4[info];
+	}
+			
         
 			?>
 

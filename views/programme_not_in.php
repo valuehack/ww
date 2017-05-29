@@ -28,12 +28,13 @@ if(isset($_GET['q']))
 		<h1>Inhalt und Informationen</h1>
 	</div>
 	<div class="medien_content">
+		<div class="coaching">
 
 <?php		
   	echo $text;
 	echo $text2;
-
-  ?>
+?>
+		</div>
 			<div class="centered">
 				<a class="blog_linkbutton" href="mailto:&#105;&#110;&#102;&#111;&#064;&#115;&#099;&#104;&#111;&#108;&#097;&#114;&#105;&#117;&#109;&#046;&#097;&#116;">Anfrage schicken</a>
 			</div>		

@@ -2124,6 +2124,11 @@ a.socialimg:visited {
 	float: left;
 }
 
+.coaching li {
+	font-size: 16pt;
+	line-height: 1.6;
+	font-family: Garamond, Georgia, Times, sans-serif;
+}
 
 /*==================================================*/
 /*               Schriften - Medien 	            */
@@ -4823,14 +4828,4 @@ button.close {
 .fs20pt {
 	font-size: 20pt;
 	color: rgba(0,0,0,0.9);
-}
-
-.ul_new {
-    font-family: "Garamond", Georgia, Times, sans-serif;
-    letter-spacing: 0.5px;
-}
-
-.li_new {
-    font-size: 16pt;
-    font-family: "Garamond", Georgia, Times, sans-serif;
 }

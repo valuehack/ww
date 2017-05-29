@@ -17,6 +17,9 @@ if (!isset($_COOKIE['gaveCredits'])) {
           case 150:
               $level = 'Teilnehmer';
               break;
+		  case 990:
+              $level = 'Teilnehmer';
+              break;			  
           case 300:
               $level = 'Scholar';
               break;

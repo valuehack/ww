@@ -57,10 +57,14 @@ if(isset($_GET['q']))
 		<h1>Inhalt und Informationen</h1>
 	</div>
 	<div class="medien_content">
+		<div class="coaching">
 
 <?php
   	echo $text;
 	echo $text2;
+?>
+		</div>
+<?php
 
   if ($_SESSION['Mitgliedschaft'] == 1) {
     ?>
