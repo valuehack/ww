@@ -106,7 +106,7 @@ mail ("info@scholarium.at","craftprobe Anmeldung","$firstname, $name, $email hat
     </head>
     <body>
     	<div id="notice" class="notice">
-    		<a href="http://www.scholarium.at/eltern.php">&rarr; deutschsprachige Information f&uuml;r Eltern</a>
+    		<a href="http://www.scholarium.at/seminare/?q=orientierungscoaching-august2017">&rarr; Wir bieten vom 1. bis 15. August 2017 ein intensives Programm der craftprobe f&uuml;r deutschsprachige Studenten an.</a>
     		<button class="dismiss" onclick="dismissNotice();">X</button>
     	</div>
     	<section class="main-title">
