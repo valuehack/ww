@@ -1135,6 +1135,9 @@ if (!isset($_COOKIE['gaveCredits'])) {
         case 150:
             $Mitgliedschaft = 3;
             break;
+		case 990:
+            $Mitgliedschaft = 3;
+            break;
         case 300:
             $Mitgliedschaft = 4;
             break;
