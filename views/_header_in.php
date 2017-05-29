@@ -264,8 +264,8 @@ while ($entry = mysql_fetch_array($result))
                     	<div class="subnav dropdown-menu" aria-labelledby="drop4">
                     	<ul>
                     		<li class="subnav_head"><a class="subnav_head" href="/studium/">Studium</a></li>
+                    		<li><a href="/studium/?q=orientierungscoaching">Orientierungscoaching</a></li>
                     		<li><a href="/studium/?q=studium">Studium generale</a></li>
-                    		<li><a href="/studium/?q=craftprobe">craftprobe</a></li>
                     		<li><a href="/studium/?q=baader-stipendium">Stipendium</a></li>
                     		<li><a href="/studium/?q=beratung">Beratung</a></li>
                     	</ul>

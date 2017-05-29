@@ -37,7 +37,7 @@ include ("_header_in.php");
 			else {
 			?>
 			<div class="jubilaeum_banner">
-        		<a href="jubilaeum">Sehen Sie sich hier die Fotos unseres vergangenen Jubil&auml;ums an</a>
+        		<a href="seminare/?q=orientierungscoaching-august2017">Zum intensiven Orientierungscoaching für realistische Karriere- und Bildungswege anmelden</a>
       		</div>
       		<?php	
 	}
