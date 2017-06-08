@@ -95,7 +95,8 @@ if (!$edit_rows == 0) {
 
 			// _ für kursiv, von Parsedown nicht erkannt
 			$text = preg_replace('/(\s|\A)_(?!\s)/', '$1*$2', $text);
-			$text = str_replace("_", '*', $text);
+			$text = str_replace("(\s)_", '$1*', $text);
+			$text = str_replace("_([\s-\.])", '*$1', $text);
 
 			//links
 			$text=preg_replace('/\(([0-9a-zA-Z\s-\.]*):\s(.*)\)\s\[(.*)\]/', "(<a target=\"_blank\" href=\"https://www.amazon.de/dp/$3/&tag=scholarium-21\">$1, S.$2</a>)", $text);
