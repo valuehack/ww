@@ -36,6 +36,7 @@ if(isset($_POST['checkout'])) {
 	$user_surname = $userCreditsArray['Nachname'];
 	$user_email = $userCreditsArray['user_email'];
 	
+	$user_company = $userCreditsArray['Firma'];
 	$user_street = $userCreditsArray['Strasse'];
 	$user_plz = $userCreditsArray['PLZ'];
 	$user_city = $userCreditsArray['Ort'];
@@ -171,9 +172,9 @@ if(isset($_POST['checkout'])) {
                 }
 
 		//Send Book Order eMail
-		function sendBookOrder($user_name, $user_surname, $user_email, $user_id, $user_street, $user_plz, $user_city, $user_country, $druck_array)
+		function sendBookOrder($user_name, $user_surname, $user_email, $user_id, $user_company, $user_street, $user_plz, $user_city, $user_country, $druck_array)
     	{
-        //consturct email body
+        //construct email body
         $body = '<h3>Buchbestellung</h3>
         		<b>Kundeninformationen</b><br>
         		'.$user_name.' '.$user_surname.'<br>
@@ -181,6 +182,7 @@ if(isset($_POST['checkout'])) {
         		User ID: '.$user_id.'<br>
         		<br>
         		Adresse:<br>
+			'.$user_company.'<br>
         		'.$user_street.'<br>
         		'.$user_plz.' '.$user_city.'<br>
         		'.$user_country.'<br>
@@ -234,7 +236,7 @@ if(isset($_POST['checkout'])) {
     }
 	
 	if (isset($druck_array)){
-	sendBookOrder($user_name, $user_surname, $user_email, $user_id, $user_street, $user_plz, $user_city, $user_country, $druck_array);
+	sendBookOrder($user_name, $user_surname, $user_email, $user_id, $user_company, $user_street, $user_plz, $user_city, $user_country, $druck_array);
 	}
 					
         
@@ -551,6 +553,7 @@ function checkMe() {
             $body = $body. "Ihre Bestellung wird an folgende Adresse verschickt:<br><br>
               
                 $user_name $user_surname<br>
+		$user_company<br>
                 $user_street<br>
                 $user_plz $user_city<br>
                 $user_country";
