@@ -1173,6 +1173,10 @@ a.subnav_head:hover {
 	font-family: "Garamond", Georgia, Times, sans-serif;
 }
 
+.en_wider_inputfield {
+	width: 232px;
+}
+
 .inputbutton {
 	text-decoration: none;
 	background: rgb(46,74,98);
