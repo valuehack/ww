@@ -174,7 +174,7 @@ if(isset($_POST['checkout'])) {
 		//Send Book Order eMail
 		function sendBookOrder($user_name, $user_surname, $user_email, $user_id, $user_company, $user_street, $user_plz, $user_city, $user_country, $druck_array)
     	{
-        //construct email body
+        //construct email body:
         $body = '<h3>Buchbestellung</h3>
         		<b>Kundeninformationen</b><br>
         		'.$user_name.' '.$user_surname.'<br>
