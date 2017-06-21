@@ -72,14 +72,14 @@ $in_query->execute();
 //Email an Interessenten
 
 $to = $email;
-$subject = "Thank you for joining!";
+$subject = "Reality Check";
 $message = "Hey,\n\n
 We are glad that you are interested in joining our program and we will get back to you shortly.\n\n
 Looking forward to seeing you in Vienna!\n
 The scholarium team\n\n";
 
 $headers = array();
-$headers[] = "From: info@scholarium.at";
+$headers[] = "From: scholarium <info@scholarium.at>";
 $headers[] = "Content-Type: text/plain; charset=iso-8859-1";
 $headers[] = "Content-Transfer-Encoding: 8bit";
 $headers[] = "X-Mailer: SimpleForm";
