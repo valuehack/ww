@@ -118,8 +118,6 @@ $email = new Email();
 $registration = new Registration();
 
 // ... ask if we are logged in here:
-echo $lang;
-echo ip_visitor_country();
 if ($login->isUserLoggedIn() == true) 
 {
 	include("views/index_in.php");
