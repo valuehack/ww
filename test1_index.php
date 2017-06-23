@@ -8,7 +8,7 @@ if a user has browser language German or is located (IP-address)
  * be a link to the German page which sends a variable which is received here (GET)
  * to prevent the redirection the English page again. */
  
-if (!isset($_GET['?sprache=de'])) { //do not redirect if user clicked "Deutsch"-link on English page
+if ($_GET['sprache'] != "de" || !isset($_GET['sprache'])) { //do not redirect if user clicked "Deutsch"-link on English page
 
 $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 //we only need the first two letters (so de-at is the same as de-ch etc.)

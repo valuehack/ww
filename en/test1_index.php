@@ -362,7 +362,7 @@ while ($entry = mysql_fetch_array($result))
 <?
 							} ?>
 					
-                	<div class="login_basket"><i><a href="../?sprache=de">Deutsch</a></i></div>
+                	<div class="login_basket"><i><a href="../test1_index.php?sprache=de">Deutsch</a></i></div>
 <?
 	#isset and while-loop
 		}
@@ -435,7 +435,7 @@ else {
 	<body>
         <header class="header">
         	<div class="login">
-              		<div class="anmelden"><i><a href="../?sprache=de">Deutsch</a></i></div>
+              		<div class="anmelden"><i><a href="../test1_index.php?sprache=de">Deutsch</a></i></div>
                                	 
             </div>
             <div class="logo">
