@@ -153,6 +153,7 @@ mysql_query("SET time_zone = 'Europe/Vienna'");
 
 //if-condition to distinguish different headers (in vs. not_in); copied from _header-files in views-folder
 // here is the beginning of header_in
+
 if ($login->isUserLoggedIn() == true) 
 {
 	$user_id = $_SESSION['user_id'];
@@ -320,7 +321,7 @@ while ($entry = mysql_fetch_array($result))
 <?
 							} ?>
 					
-                	<div class="login_basket"><i><a href="../?sprache=de">Deutsch</a></i></div>
+                	<div class="login_basket"><i><a href="../?sprache=de">Zur deutschsprachigen Startseite</a></i></div>
 <?
 	#isset and while-loop
 		}
@@ -393,7 +394,7 @@ else {
 	<body>
         <header class="header">
         	<div class="login">
-              		<div class="anmelden"><i><a href="../?sprache=de">Deutsch</a></i></div>
+              		<div class="anmelden"><i><a href="../?sprache=de">Zur deutschsprachigen Startseite</a></i></div>
                                	 
             </div>
             <div class="logo">
