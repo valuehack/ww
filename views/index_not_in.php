@@ -5,9 +5,9 @@ include ("_header_not_in.php"); //
 ?>
 <div class="content">
 	
-	<div class="jubilaeum_banner">
+	<!-- <div class="jubilaeum_banner">
 		<a href="seminare/?q=orientierungscoaching-august2017">Zum intensiven Orientierungscoaching für realistische Karriere- und Bildungswege anmelden</a>
-	</div>
+	</div> -->
 	
 	<div class="blog">
 		<div class="blog_text">
