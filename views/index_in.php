@@ -34,14 +34,14 @@ include ("_header_in.php");
             </div>
 			<?php
     }
-			else {
+		/*	else {
 			?>
 			<div class="jubilaeum_banner">
         		<a href="seminare/?q=orientierungscoaching-august2017">Zum intensiven Orientierungscoaching für realistische Karriere- und Bildungswege anmelden</a>
       		</div>
       		<?php	
 	}
-			?>      
+		*/	?>      
       
             <div class="startpage_section_last_scholie">
 
