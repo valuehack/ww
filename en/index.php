@@ -459,7 +459,7 @@ else {
 			<p>Vienna is ranked as the place with the highest quality of life worldwide and boasts unparalleled access to culture and nature and rich heritage as a center of science and entrepreneurship. Austria is famous for its magnificent, largely intact, rough nature. This is a boundless resource for knowledge and self-reliance. It is a historic center of alpinism, of seeking challenges, sharpening the senses and strengthening the body in the world's most beautiful and breathtaking training circuit toughened by elements and terrain. In Austria, ancient traditions of agriculture, horticulture, medicine and craft have survived the ages which contain amazing amounts of lost knowledge.</p>
 			
 			<h2>How much does it cost?</h2>
-			<p>Only 990&euro;, excluding accommodation. We will help you find a place to stay according to your budget.</p>
+			<p>Only 1900&euro;, excluding accommodation. We will help you find a place to stay according to your budget.</p>
 			
 			<h2>The next <em>Reality Check</em> will take place in February 2018 (5th&ndash;18th).</h2>
 			
