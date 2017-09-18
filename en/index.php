@@ -439,7 +439,7 @@ else {
 			<p>Our full-time study program in the living Austrian tradition of realistic economics, philosophy and politics is currently only open to those with good command of the German language as we go to the sources and the level of material, discussions and teaching is very high. However, we offer a limited number of English-speaking participants a unique educational program in Vienna.</p>
 		
 			<h1><em>Real &amp; Applied Austrian Economics</em></h1>
-      <h3>Crisis Investing &ndash; Entrepreneurship &ndash; Uncertainty Assessment</h3>
+      <h2 style="font-size: 18pt;">Crisis Investing &ndash; Entrepreneurship &ndash; Uncertainty Assessment</h2>
 			<p>We invite you to spend two intense weeks in Vienna that might change your life. We offer a unique program to help prepare for an uncertain future, but not through brainwashing, psychobabble or motivational lectures, ebooks, guides and videos that promise some kind of bogus certainty. Based on old knowledge and new insights, you will develop an interdisciplinary and entrepreneurial mindset and a clearer picture of future developments and your place within the world.</p>
 			
 			<h2>Program:</h2>
